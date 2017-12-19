@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+	<meta charset="UTF-8">
+	<title>会议信息</title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="会议信息" />
+    <meta content="telephone=no" name="format-detection" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+    <link rel="stylesheet" href="css/bootstrap.css" />  
+    <link rel="stylesheet" href="../../css/common/bootstrap-datetimepicker.min.css" />
+	<link rel="stylesheet" href="css/style.css" />
+	
+  </head>
+  <body>     
+    <iframe name="head" class="m-head" 
+		marginwidth="0" marginheight="0" width="100%" height="50" src="header.html" frameborder="0"></iframe> 
+	<div class="order-box">
+		<div class="hd">		   
+		   <div>
+			  <p><font style="font-size:20px;line-height:40px;color:#000" id="wx-title"></font></p>
+			  <p style="color:#999;font-size:14px;" id="wx-theme"></font></p>			   
+		   </div>
+		   <div class="tab-detail-title"><img class="tab-detail-img" src="images/icon_info.png"/>会议概况</div>
+		   <hr class="split-hr1"/>
+		   <div class="tab-detail-info" id="wx-outlines">		     
+			  正在加载，请稍后...	 
+		   </div>		    
+		   <div class="tab-detail-title"><img class="tab-detail-img" src="images/icon_history.png"/>会议简介</div>
+		   <hr class="split-hr1"/>
+		   <div class="tab-detail-info" id="wx-desc">		      
+			  正在加载，请稍后...			
+		   </div>
+		   <div class="tab-detail-title"><img class="tab-detail-img" src="images/icon_related.png"/>主要议题</div>
+		   <hr class="split-hr1"/>
+		   <div class="tab-detail-info" id="wx-problem">		      
+			  正在加载，请稍后...			
+		   </div>
+		    <div class="tab-detail-title"><img class="tab-detail-img" src="images/icon_related.png"/>会议行程</div>
+		   <hr class="split-hr1"/>
+		   <div class="tab-detail-info" id="wx-schedual">		      
+			  正在加载，请稍后...			
+		   </div>
+		   <div class="tab-detail-title"><img class="tab-detail-img" src="images/icon_info.png"/>联系方式</div>
+		   <hr class="split-hr1"/>
+		   <div class="tab-detail-info" id="wx-contact">	
+		       正在加载，请稍后...			  	 
+		   </div>
+		   <div class="tab-detail-title"><img class="tab-detail-img" src="images/icon_info.png"/>机票&酒店</div>
+		   <hr class="split-hr1"/>
+		   <div class="tab-detail-info" >	
+		       <ul class="nav nav-pills" role="tablist">
+			    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">机 票</a></li>
+			    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">酒 店</a></li>			      
+			  </ul>
+			  <div class="tab-content">
+			    <div role="tabpanel" class="tab-pane active" id="home">	
+			    	<div class="clear"/>		         
+			    	<form id="airlineform" class="form-inline">			    	    
+			    		<div class="form-group">	
+			    		 	 <label class="col-sm-3 col-xs-3 control-label">出发城市</label>					    
+						    <div class="col-sm-8 col-xs-8">								
+						        <input type="text"  class="form-control" placeholder="" >
+						    </div>						     
+						</div>
+						<div class="form-group">	
+			    		 	 <label class="col-sm-3 col-xs-3 control-label">到达城市</label>					    
+						    <div class="col-sm-8 col-xs-8">								
+						        <input type="text"  class="form-control" placeholder="" >
+						    </div>						     
+						</div>
+						<div class="form-group">	
+			    		 	 <label class="col-sm-3 col-xs-3 control-label">出发时间</label>					    
+						    <div class="col-sm-8 col-xs-8">								
+						        <input type="text"  class="form-control datetime" placeholder="" >
+						    </div>						     
+						</div>						 
+						<div class="form-group text-center">
+							<input type="button" class="btn btn-warning"  value="查询">
+						</div>
+			    	</form>			    	 
+			    </div>
+			    <div role="tabpanel" class="tab-pane" id="profile">
+			    </div>			  
+			  </div>
+  	           			  	 
+		   </div>
+		   <div class="tab-detail-title"><img class="tab-detail-img" src="images/icon_info.png"/>提示</div>
+		   <hr class="split-hr1"/>
+		   <div class="tab-detail-info" id="wx-contact">
+		       <img src="images/wx-mp-2code.jpg" style="width:70%;margin:0 auto"><br/>
+			   关注公众号可扫码签到
+			  	 
+		   </div>
+		</div>
+		<div style="position:fixed;top:70%;right:5%">
+		  <a href="javascript:checkin()"><img src="images/icon-sign.jpg" style="width:50px"/></a>
+		</div> 
+		<div style="height:40px;">&nbsp;
+		</div>
+	</div>  
+	<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" id="msgmodal">
+	  <div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">			 
+			<h4 class="modal-title">提示</h4>
+		  </div>
+		  <div class="modal-body">
+			<p id="msg"></p>
+		  </div>		   
+		</div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	<iframe name="footer" class="m-foot" 
+		marginwidth="0" marginheight="0" width="100%" height="30" src="footer.html" frameborder="0"></iframe>
+  </body>   
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/jquery.cookie.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>  
+  <script type="text/javascript" src="../../js/bootstrap-datetimepicker.min.js"></script> 
+  <script type="text/javascript" src="../../js/bootstrap-datetimepicker.zh-CN.js"></script>
+  <script type="text/javascript" src="../../js/user/address.js"></script>
+  <script type="text/javascript" src="js/pub.js"></script>
+  <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script> 
+  
+  
+  <script>
+    var confid ;  
+	var title, confdesc,imgurl;
+	var share;
+	 $(function(){
+		 
+		 $.ajax({
+			 url:"../../wx/islogin",
+			 dataType: "text",
+			 success: function(data){
+				if(data == "notlogin"){
+					var request=new UrlSearch(); //实例化
+					confid = request.id;
+					if(typeof(confid) == "string")
+					  window.location.href="login.html?id="+confid;
+					else
+					  window.location.href="login.html";
+					  
+				}
+			}
+		 });
+		 
+		 var request=new UrlSearch(); //实例化
+		 confid = request.id;
+		 $.post("../../user/activity/get.do",
+		    {"id":confid},
+		    function(data){
+			 var json = data.data.activity;
+			 document.title = json.name;
+			 title = json.name;
+			 $("#wx-title").html(json.name);
+			 $("#wx-theme").html(json.theme);
+			 $("#wx-outlines").html(
+				"<p><b>会议时间</b>:"+json.stime+" 至 "+json.etime+"</p>"+
+				 
+				"<p><b>举办城市</b>:"+json.province+"</p>"+
+				"<p><b>举办地点</b>:"+json.city+'-'+json.location+"</p>"+
+				//"<p><b>发布单位</b>:"+json.organizer+"</p>"+
+				"<p><b>参会状态</b>:"+data.data.state+"</p>");
+		 
+			var desc = json.introduction.replace(new RegExp(/(\r\n)/g),'<br/>');
+			confdesc = json.introduction;
+			 
+			$("#wx-desc").html(desc);
+			
+			$("#wx-problem").html(json.issue);	
+			var scheduals = data.data.schedual;
+			var schedualDesc = "";
+			for(var o in scheduals){
+				schedualDesc += scheduals[o].stime + "至" + scheduals[o].etime
+					+ "  " +scheduals[o].content + "<br/>";
+
+			}			 
+			$("#wx-schedual").html(schedualDesc);
+
+			$("#wx-contact").html(
+				"<p><b>联系人</b>:"+json.contactUser+"</p>"+
+				"<p><b>电&nbsp;&nbsp;&nbsp;&nbsp;话</b>:"+json.contactPhone+"</p>"+
+				"<p><b>邮&nbsp;&nbsp;&nbsp;&nbsp;箱</b>:"+json.contactEmail+"</p>");
+		    },
+			'json'
+		);
+		 
+		 $.getJSON("../../wx/getjssign.do?url="+encodeURIComponent(location.href),function(json){
+			wx.config({  
+				debug: false,  
+				appId: json.appId,  
+				timestamp: json.timestamp,  
+				nonceStr: json.noncestr,  
+				signature: json.sign,  
+				jsApiList: [  
+				  // 所有要调用的 API 都要加到这个列表中  		
+				  'checkJsApi',				  
+				  'scanQRCode',
+				  'onMenuShareTimeline',
+				  'onMenuShareAppMessage',
+				  'onMenuShareQQ',
+				  'onMenuShareWeibo'
+				]  
+			}); 			 
+		  });
+		 
+		 $('.datetime').datetimepicker({
+		        language:  'zh-CN',
+		        weekStart: 1,
+		        todayBtn:  1,
+				autoclose: 1,
+				todayHighlight: 1,
+				startView: 2,
+				forceParse: 0,
+		        showMeridian: 1
+		    });
+	 });
+	 
+	wx.ready(function () {		 	
+		share = {
+		  title:title,
+		  link:host+"/page/mobile/confdetail.html?id="+confid,
+		  desc:confdesc,
+		  imgUrl:imgurl,
+		  success:function(){
+			   
+		  }	   
+		};
+		wx.onMenuShareTimeline(share);
+	    wx.onMenuShareAppMessage(share);
+	    wx.onMenuShareQQ(share);
+	    wx.onMenuShareWeibo(share);	
+	 });
+	 
+
+	function msgshow(msg){
+		$("#msg").html(msg);
+		$("#msgmodal").modal("show");
+		setTimeout('$("#msgmodal").modal("hide")',3000);
+	}
+
+	  
+	 
+	 function checkin(){		 
+		wx.scanQRCode({
+			needResult: 1, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
+			scanType: ["qrCode","barCode"], // 可以指定扫二维码还是一维码，默认二者都有
+			success: function (res) {
+				var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果;
+				//alert(encodeURIComponent(result));
+				 
+				 
+				$.getJSON(result+"&signType=1" ,function(json){
+					if(json.flag == true){
+						msgshow("签到成功");
+						setTimeout('window.location.reload()',3000);
+					}
+					else
+						msgshow(json.msg);
+				});			 
+			}
+		});
+		  
+		 
+	 }
+  </script>
+</html>

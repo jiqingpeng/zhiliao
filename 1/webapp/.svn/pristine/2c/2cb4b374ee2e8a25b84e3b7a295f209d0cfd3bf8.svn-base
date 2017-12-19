@@ -1,0 +1,189 @@
+<%@page import="com.sjxd.gconfs.util.UtilSession"%>
+<%@page import="java.util.*"%>
+<%@page import="com.sjxd.gconfs.util.UtilIP"%>
+<%@page import="com.sjxd.gconfs.util.Util"%>
+<%@page import="java.util.concurrent.ConcurrentMap"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="refresh" content="30">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>pcu</title>
+<link rel="shortcut icon" href="../../img/webicon.ico"
+	type="image/x-icon" />
+<link href="../../css/common/bootstrap.min.css" rel="stylesheet">
+<link href="../../css/common/bootstrap-table.min.css" rel="stylesheet">
+<link href="../../css/style.css" rel="stylesheet" />
+<link href="../../css/main.css" rel="stylesheet" />
+<style type="text/css">
+.dropdown-menu {
+	width: 384px;
+	padding: 0px;
+	min-width: auto;
+	z-index: auto;
+}
+</style>
+</head>
+<body>
+	<%
+		for (int i = 0; i < UtilSession.pcuList().size(); i++) {
+			for (int j = i + 1; j < UtilSession.pcuList().size() - 1; j++) {
+				ConcurrentMap<String, Object> map = UtilSession.pcuList().get(i);
+				ConcurrentMap<String, Object> mapNew = UtilSession.pcuList().get(j);
+				if (String.valueOf(map.get("ipAddress")) == null
+						|| String.valueOf(map.get("ipAddress")).equalsIgnoreCase("")
+						|| String.valueOf(map.get("ipAddress")).equalsIgnoreCase("null")) {
+					if (String.valueOf(mapNew.get("ipAddress")) != null
+							&& !String.valueOf(mapNew.get("ipAddress")).equalsIgnoreCase("")
+							&& !String.valueOf(mapNew.get("ipAddress")).equalsIgnoreCase("null")) {
+						if (String.valueOf(mapNew.get("ipAddress")).equals(String.valueOf(map.get("ipAddress")))) {
+							map.put("ipAddress", String.valueOf(mapNew.get("ipAddress")));
+						}
+					}
+				}
+			}
+		}
+		for (ConcurrentMap<String, Object> map : UtilSession.pcuList()) {
+			if (String.valueOf(map.get("ipAddress")) == null
+					|| String.valueOf(map.get("ipAddress")).equalsIgnoreCase("")
+					|| String.valueOf(map.get("ipAddress")).equalsIgnoreCase("null")) {
+				String str = UtilIP.getIpAddress(map.get("ip").toString());
+				map.put("ipAddress", str);
+			}
+		}
+	%>
+	<span id="pcuList" style="display: none;"><%=Util.convJSONObject(UtilSession.pcuList())%></span>
+	<!-- 引入页头 -->
+	<script type="text/javascript" src="../../js/common/header.js"></script>
+	<div class="mops-con">
+		<div class="con-nav">
+			<a href="pcu.jsp">在线用户列表</a>
+		</div>
+		<!-- 内容部分导航头的class : con-nav (必须) -->
+		<div class="con-box">
+			<!-- 内容部分主体内容的class : con-box (必须) -->
+			<!-- 以下为每个页面自己编写的部分 -->
+			<div id="subMenu">
+				<div id="subMenuBody" class="btn-group-vertical dropdown-menu"
+					role="group">
+					<ul>
+						<a href="pcu.jsp"><li class="menuAct">在线用户列表</li></a>
+						<a href="log.jsp"><li>实时日志</li></a>
+						<a href="log.jsp"><li>系统信息</li></a>
+					</ul>
+				</div>
+			</div>
+			<div id="contentBody" class="mops-table" style="max-width: 1180px;">
+				<div id="toolbar">
+					<span class="btn btn-sm btn-default">在线：<%=UtilSession.getPcuList().size()%>&nbsp;人
+					</span><span class="btn btn-sm btn-default">访问：<%=UtilSession.getVisits()%>&nbsp;次
+					</span>
+				</div>
+				<table id="texttable" style="text-align: center"></table>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="../../js/common/footer.js"></script>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/bootstrap-table.min.js"></script>
+<script src="../../js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/common/main.js"></script>
+<script>
+	$(function() {
+		var data = $("#pcuList").html();
+		init($.parseJSON(data));
+	})
+	function init(data) {
+		$('#texttable').bootstrapTable({
+			dataType : 'json', //数据格式
+			dataLocale : 'zh-US', //表格汉化
+			toolbar : '#toolbar',
+			striped : true, //是否显示行间隔色
+			cache : false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+			pagination : true, //是否显示分页（*）
+			sortable : true, //是否启用排序
+			sortOrder : "desc", //排序方式
+			search : true,
+			searchFormatter : false,
+			showRefresh : false, //是否显示刷新按钮
+			cellStyle : true,
+			checkbox : true,
+			sidePagination : "client", //分页方式：client客户端分页，server服务端分页（*）
+			pageNumber : 1, //初始化加载第一页，默认第一页
+			pageSize : 10, //每页的记录行数（*）
+			pageList : [ 10, 20, 30, 40, 50 ], //可供选择的每页的行数（*）
+			columns : [ {
+				field : 'id',
+				title : 'ID',
+				align : 'center',
+				valign : 'middle',
+				sortable : true,
+				align : 'center'
+			}, {
+				field : 'nick',
+				title : '昵称',
+				align : 'center',
+				valign : 'middle',
+				sortable : true,
+				align : 'center'
+			}, {
+				field : 'type',
+				title : '类别',
+				align : 'center',
+				valign : 'middle',
+				sortable : true,
+				align : 'center'
+			}, {
+				field : 'unit',
+				title : '单位',
+				align : 'center',
+				valign : 'middle',
+				sortable : true,
+				align : 'center'
+			}, {
+				field : 'mobile',
+				title : '手机号',
+				align : 'center',
+				valign : 'middle',
+				sortable : true,
+				align : 'center'
+			}, {
+				field : 'ip',
+				title : 'IP',
+				align : 'center',
+				valign : 'middle',
+				sortable : true,
+				align : 'center'
+			}, {
+				field : 'ipAddress',
+				title : '地址',
+				align : 'center',
+				valign : 'middle',
+				sortable : true,
+				align : 'center'
+			}, {
+				field : 'stime',
+				title : '登陆时间',
+				align : 'center',
+				valign : 'middle',
+				sortable : true,
+				align : 'center'
+			}, {
+				field : 'utime',
+				title : '最后操作时间',
+				align : 'center',
+				valign : 'middle',
+				sortable : true,
+				align : 'center'
+			} ]
+		});
+		$('#texttable').bootstrapTable('hideColumn', 'id');
+		$('#texttable').bootstrapTable('load', data);
+	}
+</script>
+</html>

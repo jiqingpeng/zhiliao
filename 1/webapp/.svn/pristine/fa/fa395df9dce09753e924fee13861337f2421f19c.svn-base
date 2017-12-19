@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+	<link rel="stylesheet" href="../../../css/common/bootstrap.css">
+	<link rel="stylesheet" href="../../../css/style.css">
+	<link rel="stylesheet" href="../../../css/weixin/style.css">
+	<title class="title">全部订单</title>
+	<style>
+		body{
+			background:rgb(236,239,244);
+		}
+		.app-header{
+			height: 48px;
+			line-height: 48px;
+			background-color: #f36a1c;
+			color: #fff;
+			/*padding:0 10px;*/
+			position: fixed;
+			top: 0;
+			z-index: 99;
+			width: 100%;
+			text-align: center;
+		}
+		.app-header div{
+			display: inline-block;
+		}
+		.navImg{
+			position: absolute;
+			top: 0px;
+			left: 12px;
+		}
+		.app-header img{
+			width: 12px;
+			vertical-align: middle;
+		}
+		.app-header .navDetail{
+			font-size:18px;
+			font-weight: bold;
+		}
+		.order-box .hd{
+			padding:0 5px;
+		}
+		.order-item{
+			width:100%;
+			background:#fff;
+			margin-top:10px;
+			padding:10px;
+		}
+		.order-item:nth-child(1){
+			margin-top: 35px;
+		}
+		.order-item .ord-tit{
+			width:100%;
+			height:50px;
+			line-height: 50px;			
+		}
+		.order-item .ord-tit .ord-statu{
+			text-align:right;
+			font-size:18px;
+			color:#ff6633;
+		}
+		.order-item .ord-city{
+			width:100%;
+			height:50px;
+			line-height: 50px;
+			font-size:18px;
+		}
+		.order-item .ord-detail{
+			width:100%;
+			width:100%;
+			height:50px;
+		}
+		.order-item .ord-type{
+			padding:0;
+		}
+		.order-item .ord-detail .ord-time{
+			padding:0;
+		}
+		.order-item .ord-detail .ord-time>p{
+			color:#878787;
+			margin:5px 0;
+			padding:0;
+		}
+		.order-item .ord-detail .ord-price{
+			color:#ff6633;
+			font-size:16px;
+			margin-top:26px;
+			text-align: right;
+		}
+		.order-item .del-box{
+			height:30px;
+			margin-top:10px;
+		}
+		.order-item .del-box .del{
+			height:30px;
+			line-height: 30px;
+			float:right;
+			box-sizing: border-box;
+			color:#ff6633;
+			text-align: right;
+			font-size:16px;
+			padding:0;
+		}
+		.ord-type img{
+			vertical-align: middle;
+		}
+	</style>
+	<style type="text/css">
+		/*.navBox{
+			margin: 10px 0 20px 0;
+			text-align: center;
+			width: 100%;
+			height: 40px;
+			line-height: 40px;
+		}*/
+		.trainTil{
+			background-color: #ccc;
+			width: 96%;
+			padding: 7px 2%;
+			margin-left: 2%;
+			border-bottom: 1px solid #ddd;
+		}
+		.grogTil{
+			background-color: #ccc;
+			width: 96%;
+			padding: 7px 2%;
+			margin-left: 2%;
+		}
+		/*.margin-box{
+			display: none;
+		}*/
+		.grogContent{
+			height: 100%;
+			margin: 0 auto;
+			width: 97%;
+			padding: 20px 0;
+			background-color: #fff;
+		}
+		.grogBox{
+			margin-bottom: 20px;
+			margin-top: -30px;
+		}
+		.grogInfo{
+			margin-bottom: 20px;
+			margin-top: 10px;
+		}
+		.grogInfo{
+			margin-bottom: 10px;
+		}
+		.grogImg{
+			width: 20px;
+			height: 20px;
+		}
+		.comstyle{
+			font-size: 12px;
+			color: #daa520;
+		}
+		.grogIndent{
+			color: red;
+			margin-top: 10px;
+			font-size: 18px;
+		}
+		.grogStyle{
+			margin-top: 10px;
+			color: #fff;
+			border-radius: 5px;
+		}
+		.grogCancel{
+			width: 80px;
+			height: 25px;
+			line-height: 25px;
+			background-color: #ccc;
+			text-align: center;
+			margin-right: 10px;
+		}
+		.grogDelete{
+			width: 80px;
+			height: 25px;
+			line-height: 25px;
+			text-align: center;
+			background-color: #ff6100;
+		}
+		.none{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="app-header">
+		<div class="navImg">
+			<img src="../../../img/app/arrowLeft-icon.png">
+		</div>
+		<div class="navDetail">我的订单</div>
+		
+	</div>
+	<div class="order-box">
+		<input type="hidden" id="id"/>
+		<div class="hd">
+			
+		</div>
+	</div>
+	<!-- <div class="grogTil col-xs-12">酒店</div> -->
+	<div class="grogBox">
+		<!-- <div class="grogContent clearfix">
+			<div class="col-xs-7 grogInfo">
+				<img  class="grogImg" src="../../img/grogshop.png">
+				<span>酒店信息</span>
+			</div>
+			<div class="col-xs-5 grogIndent">订单已过期</div>
+			<div class="col-xs-12 grogInfo">武夷山大酒店</div>
+			<div class="col-xs-4 comstyle">入住时间</div>
+			<div class="col-xs-5 comstyle">2017-06-07</div>
+			<div class="col-xs-4 comstyle">价格</div>
+			<div class="col-xs-5 comstyle">$189</div>
+			<div class="col-xs-4 comstyle">姓名</div>
+			<div class="col-xs-5 comstyle">龚克春</div>
+			<div class="col-xs-4 comstyle">电话</div>
+			<div class="col-xs-6 comstyle">15645784547</div>
+			<div class="col-xs-5 comstyle"></div>
+			<div class="col-xs-4 comstyle grogCancel grogStyle">取消订单</div>
+			<div class="col-xs-4 comstyle grogDelete grogStyle">删除订单</div>
+		</div> -->
+	</div>
+	<!-- <iframe name="footer" class="m-foot" marginwidth="0" marginheight="0" width="100%" src="footer.html" frameborder="0"></iframe> -->
+	<script src="../../js/weixin/wxLoginModel.js"></script>
+</body>
+<script type="text/javascript" src="../../../js/zepto.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<script src="../../../js/user/userMain.js"></script>
+<!-- <script type="text/javascript" src="../../../js/jquery.min.js"></script> -->
+<!-- <script src="../../../js/bootstrap.min.js"></script> -->
+<!-- <script src="../../../js/common/common.js"></script> -->
+<script src="../../../js/user/userMain.js"></script>
+<!-- <script src="../../../js/weixin/wxCommon.js"></script> -->
+<script type="text/javascript">
+
+$(function(){
+	// 活动ID
+	$("#id").val(Request('actId')); 
+	//页面初始化
+	initPage();
+	//订单详情
+	$(document).on('click','.order-item',function(){
+		var fTime = $(this).find('.a-time').html();
+		var tTime = $(this).find('.c-time').html();
+		var ticketJson={};
+		ticketJson.id = $(this).find('.id').val();
+		ticketJson.fCity = $(this).find('.a-city').html();
+		ticketJson.tCity = $(this).find('.c-city').html();
+		ticketJson.fTime = getSubstring(fTime,16,5);
+		ticketJson.cTime = getSubstring(tTime,16,5);
+		ticketJson.runTime = getTime(fTime, tTime);
+		window.location.href='trainOrderDetail.html?ticketJson='+setUrlJson(ticketJson);
+	});
+	//删除订单
+	$(document).on('click','.del',function(event){
+		var url = basePath+'user/trainorder/del.do';
+		var id = $(this).parents('.order-item').find('.id').val();
+		console.log(id);
+		$.myAjax({
+			url:url,
+			data:{id:id},
+			success:function(result){
+				console.log(result)
+				if(result.flag){
+					$('.hd').html('');
+					init();
+				};
+			},
+			error:function(result){
+				myAlert(result.msg);
+			}
+		});
+		return false;
+	});
+});
+function initPage() {
+	myLoading();
+	$.myAjax({
+		url: basePath + "user/activity/get.do",
+		data:{id:$("#id").val(),type:"5"},
+		success:function(result){
+			$(".loading").remove();
+			
+			initGrog();
+
+			var str ='';
+			if(result.flag){
+				$(".title").html(result.data.activity.name);
+				for(var i= 0; i < result.data.trainOrder.length; i ++){
+					str += '<div class="order-item">'+
+						'<input class="id" type="hidden" value="'+result.data.trainOrder[i].id+'"/>'+
+						'<div class="ord-tit">'+
+							'<div class="ord-type col-xs-6">'+
+								'<img src="../../../img/weixin/trainbg.jpg" alt="">'+
+								'<span>火车票</span>'+
+							'</div>'+
+							'<div class="ord-statu col-xs-6">'+result.data.trainOrder[i].orderStateValue+'</div>'+
+						'</div>'+
+						'<div class="ord-city">'+
+							'<span class="a-city">'+result.data.trainOrder[i].fromStation+'</span>'+
+							'<span>-</span>'+
+							'<span class="c-city">'+result.data.trainOrder[i].toStation+'</span>'+
+							'<span class="number">('+result.data.trainOrder[i].trainNo+')</span>'+
+						'</div>'+
+						'<div class="ord-detail">'+
+							'<div class="col-xs-9 ord-time">'+
+								'<p class="a-time">出行时间:'+result.data.trainOrder[i].departureTime+'</p>'+
+								'<p class="c-time">出行时间:'+result.data.trainOrder[i].arrivalTime+'</p>'+
+							'</div>'+
+							'<div class="col-xs-3 ord-price">￥'+result.data.trainOrder[i].orderPrice+'</div>'+
+						'</div>'+
+						'<div class="del-box">'+
+							'<a class="del col-xs-3" href="javascript:;">删除订单</a>'+
+						'</div>'+
+					'</div>';
+					$('.hd').html(str)
+				};
+			} else {
+				myAlert(result.msg);
+			};
+		},
+		error:function(){
+			$(".loading").remove();
+			myAlert('请求失败');
+		}
+	});
+}
+
+function initGrog(){
+	$(".nav-title").html("我的订单");
+	var url = basePath + "user/activity/get.do";
+	var actId = Request("actId");
+	$.myAjax({
+		url: url,
+		data:{id: actId, type: "6"},
+		success: function(result){
+			$(".loading").remove();
+			if(result.flag){
+				// if(result.data.hotelOrder.length == 0){
+				// 	myAlert("暂无数据");
+				// 	return;
+				// }
+				var listData = result.data.hotelOrder;
+				var str = '';
+				
+				for(var i = 0; i < listData.length; i++){
+					if(listData[i].amount){
+					var amount = listData[i].amount;
+				}else{
+					// amount = "暂无报价"
+					$(".amount").html("暂无报价");
+				};
+				if(listData[i].hotelState==0){
+					var hotelState = "待确认库存"
+				};
+				if(listData[i].hotelState==1){
+					hotelState = "待支付"
+				};
+				if(listData[i].hotelState==2){
+					hotelState = "已取消";
+					$(".grogCancel").addClass("notClick");
+				};;
+				if(listData[i].hotelState==3){
+					hotelState = "已支付"
+				};
+				if(listData[i].hotelState==5){
+					hotelState = "待同程确认"
+				};
+				if(listData[i].hotelState==10){
+					hotelState = "同程已确认"
+				};
+				if(listData[i].hotelState==11){
+					hotelState = "确认入住"
+				};
+				if(listData[i].hotelState==12){
+					hotelState = "确认未住"
+				};
+				if(listData[i].hotelState==15){
+					hotelState = "申请部分退款"
+				};
+				if(listData[i].hotelState==20){
+					hotelState = "申请全额退款"
+				};
+				if(listData[i].hotelState==25){
+					hotelState = "全额退款结束"
+				};
+				if(listData[i].hotelState==30){
+					hotelState = "部分退款结束"
+				};
+				if(listData[i].hotelState==35){
+					hotelState = "已结算"
+				}
+				if(listData[i].hotelState==40){
+					hotelState = "订单结束"
+				};
+				str += '<div class="grogContent clearfix">' + 
+						'<div class="col-xs-7 grogInfo">' +
+							'<img  class="grogImg" src="../../img/grogshop.png">'+
+							'<span>酒店信息</span>' +
+						'</div>' +
+						'<div class="col-xs-5 grogIndent">' +
+							hotelState +
+						'</div>' +
+						'<div class="col-xs-12 grogInfo">' +
+							listData[i].hotelName +
+						'</div>' +
+						'<div class="col-xs-4 comstyle">入住时间</div>' +
+						'<div class="col-xs-5 comstyle">' +
+							listData[i].inTime +
+						'</div>' +
+						'<div class="col-xs-4 comstyle">价格</div>' +
+						'<div class="col-xs-5 comstyle">' +
+							'¥' + listData[i].amount +
+						'</div>' +
+						'<div class="col-xs-4 comstyle">姓名</div>' +
+						'<div class="col-xs-5 comstyle">' +
+							listData[i].linkManName +
+						'</div>' +
+						'<div class="col-xs-4 comstyle">电话</div>' +
+						'<div class="col-xs-6 comstyle">' +
+							listData[i].linkManMobile +
+						'</div>' +
+						'<div class="col-xs-5 comstyle"></div>';
+						if(hotelState == "已取消"){
+							str += '<div class="col-xs-4 comstyle grogCancel grogStyle notClick">取消订单</div>' +
+								'<input type="hidden" class="grogId" value = "'+listData[i].id+'"/>' +
+								'<div class="col-xs-4 comstyle grogDelete grogStyle">删除订单</div>' +
+							'</div>';
+						} else {
+							str += '<div class="col-xs-4 comstyle grogCancel grogStyle">取消订单</div>' +
+								'<input type="hidden" class="grogId" value = "'+listData[i].id+'"/>' +
+								'<div class="col-xs-4 comstyle grogDelete grogStyle">删除订单</div>' +
+							'</div>';
+						}
+				};
+				$(".grogBox").html(str);
+			}else{
+				myAlert(result.msg, "slow");
+			}
+		},
+		error: function(){
+			$(".loading").remove();
+			myAlert("请求失败", "slow");
+		}
+	})
+	$(document).on("click", ".grogCancel", function(){
+		if($(this).hasClass("notClick")){
+			myAlert("订单已取消", "slow");
+			return false;
+		}
+		var cancelId = $(this).next(".grogId").val();
+		// myAlert("quxiao");return;
+		myConfirm("确定取消订单", function(){
+			loading();
+			$.myAjax({
+				url: basePath + "user/hotelorder/cancel.do",
+				data: {id: cancelId, reasonId : "1"},
+				success: function(result){
+					$(".loading").remove();
+					if(result.flag){
+						myAlert(result.msg, "slow");
+						$(".grogCancel").addClass("notClick");
+					}else{
+						myAlert(result.msg, "slow");
+					}
+				},
+				error: function(){
+					$(".loading").remove();
+					myAlert("请求失败!", "slow");
+				}
+			})
+		});	
+	});
+
+	$(document).on("click", ".grogDelete", function(){
+		var DeleteId = $(this).prev(".grogId").val();
+		// console.log(DeleteId);
+		myConfirm("确定删除订单(删除订单后无法取消订单)", function(){
+			loading();
+			$.myAjax({
+				url: basePath + "user/hotelorder/del.do",
+				data: {id: DeleteId, reasonId : "1"},
+				success: function(result){
+					$(".loading").remove();
+					if(result.flag){
+						myAlert(result.msg, "slow");
+					}else{
+						myAlert(result.msg, "slow");
+					}
+				},
+				error: function(){
+					$(".loading").remove();
+					myAlert("请求失败!", "slow");
+				}
+			})
+		});	
+	});
+}
+</script>
+</html>

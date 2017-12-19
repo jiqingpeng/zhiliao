@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>静态页面效果图</title>
+	<link href="../../css/common/bootstrap.css" rel="stylesheet">
+	<link href="../../css/common/jquery-confirm.css" rel="stylesheet">
+	<link href="../../css/common/bootstrapValidator.min.css"/>
+	<link href="../../css/style.css" rel="stylesheet">
+	<link href="../../css/main.css" rel="stylesheet">
+	<link href="../../css/userfiled.css" rel="stylesheet">
+</head>
+<body>
+<div id="header">
+	<span id="lineicon"></span>
+	<span class="hotline">客服热线：010-82363670</span>
+	<span id="userinfo">
+		<span id="usertil">欢迎您</span>
+		<span id="user">巩克春</span>
+		<a href="#">注销<span id="usericon"></span></a>
+	</span>
+</div>
+<div id="sysnav">
+	<div id="logo"><img src="../../img/logoandname.png" alt="群英汇：一体化会议系统" /></div>
+	<span class="nav">
+		<a href="=basePath">首页</a>
+	</span>
+</div>
+<div class="prejoincon">
+<form class="attendForm">
+	<input type="hidden" name="userId" value="asdzxcasd1qwe345ertflkjoiu987s99"/>
+	<input type="hidden" name="activityId" id="activityId"/>
+	<div class="activname">群英汇活动报名表 报名表</div>
+    <div class="jcon person">
+   		<div class="jconheader">
+   			<span class="jcontil">
+   				<span class="jconnum">1</span>个人信息
+   			</span>
+   		</div>
+   		<ul class="jcondetail personInfo form-horizontal">
+			<!-- <li>
+				<span class="til"><span class="red">* </span><label>姓名</label></span>
+				<input class="inp" type="text" name="name">
+			</li>
+			 -->
+   		</ul>
+    </div>
+    <div class="jcon unit">
+   		<div class="jconheader">
+   			<span class="jcontil">
+   				<span class="jconnum">2</span>单位信息
+   			</span>
+   		</div>
+   		<ul class="jcondetail unitInfo form-horizontal">
+			<!-- <li>
+				<span class="til"><label>单位名称</label></span>
+				<input class="inp" type="text" name="name">
+			</li>
+			 -->
+			
+   		</ul>
+    </div>
+    <div class="jcon other">
+   		<div class="jconheader">
+   			<span class="jcontil">
+   				<span class="jconnum">3</span>其他信息
+   			</span>
+   		</div>
+   		<ul class="jcondetail otherInfo form-horizontal">
+			<!-- <li>
+				<span class="til"><label>备注</label></span>
+				<input class="inp" type="text" name="phone">
+			</li> -->
+   		</ul>
+    </div>
+    <div class="joinbtn btncon">
+   		<button type="button" class="btn btn-warning joinok">保&nbsp存</button>
+   		<button type="button" class="btn btn-default canclej">取&nbsp消</button>
+    </div>
+</form>
+</div>
+<div id="footer">
+	<div id="hytlink">
+		<span><a target="_blank" href="#">关于我们</a></span>
+		<span><a target="_blank" href="#">联系我们</a></span>
+		<span><a target="_blank" href="#">帮助中心</a></span>
+		<span><a target="_blank" href="#">网站声明</a></span>
+		<span><a target="_blank" href="#">公司新闻</a></span>
+	</div>
+	<p>未经gconfs.com同意，不得转发网站会议信息</p>
+	<p>京ICP备17018133号</p>
+</div> 
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/bootstrapValidator.min.js"></script>
+<script src="../../js/jquery-confirm.js"></script>
+<script src="../../js/common/common.js"></script>
+<script type="text/javascript">
+$(function(){
+
+	var id = '';
+	if(Request('actId') && Request("id").length == 32){
+		id = Request('actId');
+		$("#activityId").val(id);
+	} else if(sessionStorage.getItem('actId')) {
+		id = sessionStorage.getItem('actId');
+		$("#activityId").val(id);
+	}
+	getData();
+
+	$(".joinok").click(function(){
+		$.ajax({
+			type : 'post',
+			url : basePath + 'user/userattend/save.do',
+			data : $(".attendForm").serialize(),
+			dataType : 'json',
+			xhrFields: {
+	           withCredentials: true
+	        },
+	        crossDomain: true,
+			success : function(result){
+				if(result.flag){
+					myAlert(result.msg);
+					window.location.href = 'detail.html?location='+$("#activityId").val();
+				} else {
+					myConfirm(result.msg);
+				}
+			},
+			error : function(result) {
+				myConfirm("请求失败！！");
+			}
+		});
+	});
+	$(".canclej").click(function(){
+		getData();
+	});
+	// $(".attendForm").bootstrapValidator({
+ //        message: 'This value is not valid',
+ //        feedbackIcons: {
+ //            valid: 'glyphicon glyphicon-ok',
+ //            invalid: 'glyphicon glyphicon-remove',
+ //            validating: 'glyphicon glyphicon-refresh'
+ //        },
+ //        fields: {
+ //            name: {
+ //                validators: {
+ //                    notEmpty: {
+ //                        message: '会议名称不能为空！'
+ //                    }
+ //                }
+ //            },
+ //            selectTitle: {
+ //                validators: {
+ //                    notEmpty: {
+ //                        message: '组织机构不能为空！'
+ //                    }
+ //                }
+ //            },
+ //            selectContent: {
+ //                validators: {
+ //                    notEmpty: {
+ //                        message: '组织方名称不能为空！'
+ //                    }
+ //                }
+ //            },
+ //            provFrist: {
+ //                validators: {
+ //                    notEmpty: {
+ //                        message: '会议地点不能为空'
+ //                    }
+ //                }
+ //            },
+ //            takepartNum: {
+ //                validators: {
+ //                    regexp: {
+ //                        regexp:  /^\d+$/ ,
+ //                        message: '会议人数只能是阿拉伯数字'
+ //                    }
+ //                }
+ //            },
+ //            initNum: {
+ //                validators: {
+ //                    regexp: {
+ //                        regexp:  /^\d+$/ ,
+ //                        message: '预置报名人数只能是阿拉伯数字'
+ //                    }
+ //                }
+ //            }
+ //        }
+	// });
+
+});
+
+function getData(){
+	var url = basePath + 'admin/activityregconfig/list.do';
+	$.ajax({
+		type : 'post',
+		url : url,
+		data : {activityId:$("#activityId").val()},
+		dataType : 'json',
+
+		xhrFields: {
+           withCredentials: true
+        },
+        crossDomain: true,
+
+		success : function(result){
+			if(result.flag){
+				$(".activname").html(result.data.activity.name+'&nbsp报名表');
+				initPage(result.data.activityRegConfig);
+			} else {
+				myConfirm(result.msg);
+			}
+			
+		},
+		error : function(data) {
+			alert("请求失败！！");
+		}
+	});
+}
+
+function initPage(data){
+	if(data.length <= 0){
+		$(".joinbtn, .jcon").css('display','none');
+		var str = '<p id="marked">主办方尚未设置报名字段，如需参会，请联系主办方！</p>';
+		
+		$(".attendForm").append(str);
+		$("#marked").css({
+			"font-weight": "bold",
+			'margin': '60px 0 0 100px'
+		});
+		return false;
+	}
+	var personInfo = '',
+		unitInfo = '',
+		otherInfo = '';
+	for(var i=0; i<data.length; i++){
+		var val = data[i];
+		var str = '';
+		if(val.isNeeded == '1'){ // 必填
+			str += '<span class="col-sm-2 control-label"><span class="red">* </span><label>'+ val.showname +'</label></span>';
+		} else { // 选填
+			str += '<span class="control-label col-sm-2"><label>'+ val.showname +'</label></span>';
+		}
+
+		if(val.type == '1'){ // 单行文本
+			str += '<div class="col-sm-7"><input class="form-control" type="text" name="'+ val.name +'"/></div>';
+		} else if(val.type == '2'){ // 多行文本
+			str += '<div class="col-sm-7"><textarea class="form-control" name="'+ val.name +'"></textarea></div>';
+		} else if(val.type == '3'){ // 单选按钮
+			if(val.name == 'gender'){
+				str += '<div class="col-sm-7">男<input class="radioinp form-control" type="radio" value="1" selected name="'+ val.name +'">女<input class="radioinp form-control" value="2" type="radio" name="'+ val.name +'"/></div>';
+			}
+		} else if(val.type == '4'){ // 下拉列表
+			str += '<div class="col-sm-7"><select class="sel" name="'+ val.name +'"></select></div>';
+		} else if(val.type == '5'){ // 多选按钮
+			str += '<div class="col-sm-7"><input class="inp" type="text" name="'+ val.name +'"/></div>';
+		} else { // 文件
+			str += '<div class="col-sm-7"><input class="fil" type="file" name="'+ val.name +'"/></div>';
+		}
+
+		if(val.family == '1'){ // 个人信息
+			personInfo += '<div class="form-group">'+ str +'</div>';
+		} else if(val.family == '2') { // 单位信息
+			unitInfo += '<div class="form-group">'+ str +'</div>';
+		} else { // 其他信息
+			otherInfo += '<div class="form-group">'+ str +'</div>';
+		}
+	}
+
+	if(!personInfo){
+		$('.person').css('display','none');
+	}
+	if(!unitInfo){
+		$('.unit').css('display','none');
+	}
+	if(!otherInfo){
+		$('.other').css('display','none');
+	}
+	$('.personInfo').append(personInfo);
+	$('.unitInfo').append(unitInfo);
+	$('.otherInfo').append(otherInfo);
+}
+</script>
+
+</html>

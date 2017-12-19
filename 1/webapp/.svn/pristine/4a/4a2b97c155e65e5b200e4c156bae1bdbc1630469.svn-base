@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title class="title">会前预热</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="../../css/common/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../../css/weixin/style.css">
+	<style type="text/css">
+		.test{
+			margin: 3%;
+		}
+	</style>
+</head>
+<body>
+	<script src="../../js/weixin/wxBackHeader.js"></script>
+	<div class="interList">
+	</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script type="text/javascript">
+var actId = '';
+$(function(){
+	loading();
+	$(".nav-title").html("会前预热");
+	actId = Request('actId');
+	$.myAjax({
+		url: basePath + "user/activity/issue/list.do",
+		data: {id: actId},
+		success: function(result){
+			$(".loading").remove();
+			var data = result.data.activityIssue;
+			var str = '';
+			for(var i = 0; i < data.length; i++){
+				str += '<div class="test">' + data[i].name + '</div>' + 
+						'<input type="hidden" value = "'+data[i].id+'"/>';
+			};
+			$(".interList").html(str);		
+		},
+		error: function(){
+			$(".loading").remove();
+			myConfirm("请求失败!");
+		}
+	});
+	$(document).on("click", ".test", function(){
+		var id = $(this).next().val();
+		window.location.href = "messageBoard.html?id=" + id + "&actId =" + actId;  
+	});
+});
+</script>
+</html>

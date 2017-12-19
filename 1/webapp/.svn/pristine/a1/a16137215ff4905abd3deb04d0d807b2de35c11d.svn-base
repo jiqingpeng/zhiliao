@@ -1,0 +1,67 @@
+body,html,input,a,dl,dt,dd,p,h1,h2,h3,h4,h5,h6{margin: 0;padding: 0;}
+ul,li{list-style:none;margin:0;padding:0;}
+select,input{outline: none;}
+body{
+	background-color: #f4f4f4;
+	font-size: 14px;
+	color: #5e5e5e;
+}
+a{
+	text-decoration: none;
+	color: #5e5e5e;
+}
+.clearfix:after{display:block;
+                content:'';
+                clear:both;
+}
+.clearfix{ zoom:1;}
+.fl{
+    float:left;
+}
+.fr{
+    float:right;
+}
+.hide{
+	display: none;
+}
+.white{
+	background-color: #ffffff;
+}
+.commenLeft{
+	margin-left: 8px;
+}
+.commenHeight{
+	margin-top: 10px;
+}
+
+/*导航样式strat*/
+.head{
+	height: 48px;
+	line-height: 48px;
+	background-color: #f36a1c;
+	color: #fff;
+	position: fixed;
+	top: 0;
+	z-index: 100;
+	width: 100%;
+	text-align: center;
+}
+.navDetail{
+	font-size: 18px;
+	font-weight: 500;
+}
+.head div{
+	display: inline-block;
+}
+.navImg{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 36px;
+}
+.head img{
+	width: 12px;
+	vertical-align: middle;
+}
+
+/*导航样式end*/

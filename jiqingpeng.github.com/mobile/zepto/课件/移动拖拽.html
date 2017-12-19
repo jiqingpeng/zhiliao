@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script src="js/zepto.min.js"></script>
+<script>
+	$(function(){
+		
+		var x=0;
+		var y=0;
+		$('div').on('touchstart',function(ev){
+			var disX=ev.targetTouches[0].clientX-x;
+			var disY=ev.targetTouches[0].clientY-y;
+			
+			$(document).on('touchmove',function(ev){
+				x=ev.targetTouches[0].clientX-disX;
+				y=ev.targetTouches[0].clientY-disY;
+				$('div').css('transform','translate('+x+'px,'+y+'px)');	
+			});
+			$(document).on('touchend',function(){
+				$(document).off('touchmove');
+				$(document).off('touchend');
+				//alert('完事了');
+			});	
+			
+			return false;
+		});
+	})
+</script>
+<style>
+	body{ font-size:100px;}
+	div{ width:100px; height:100px; background:red;}
+</style>
+</head>
+<body>
+
+	这是一段文字
+	<div></div>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

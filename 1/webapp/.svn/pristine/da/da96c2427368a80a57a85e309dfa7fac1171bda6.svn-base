@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>酒店预订</title>
+    <meta content="telephone=no" name="format-detection" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+	<link rel="stylesheet" href="../../css/common/bootstrap.css"/> 
+	<link rel="stylesheet" href="../../css/weixin/style.css"/>
+	<link rel="stylesheet" href="../../css/weixin/hotelDetail.css">
+	<style>
+	</style>
+</head>
+<body>   
+    <!-- <iframe name="head" class="m-head" marginwidth="0" marginheight="0" width="100%" height="50" src="header.html" frameborder="0"></iframe> -->
+
+    <script src="../../js/weixin/wxBackHeader.js"></script>
+
+	<div class="order-box">
+		<div class="hd">
+			<ul id="hotelList">
+			</ul>
+		</div>		 
+		<!-- <div style="height:40px;">&nbsp;
+		</div> -->
+	</div>
+	<!-- <iframe name="footer" class="m-foot" marginwidth="0" marginheight="0" width="100%" height="30" src="footer.html" frameborder="0"></iframe> -->
+
+	<!-- 提示模态框 -->
+	<div class="modal" tabindex="-1" role="dialog" id="cusmodal">
+		<div class="modal-dialog modal-sm" role="document">
+			<div class="modal-content">
+				<div class="modal-header">			 
+					<h4 class="modal-title">提示</h4>
+				</div>
+				<div class="modal-body">	  
+					<div style="width:90%;margin:auto">
+	                    <p>主办方未推荐酒店！</p>
+	                    <div style="margin-top:30px;">
+		                    <button type="button" class="btn btn-warning btn-sm okBtn">确 定</button>
+							<button type="button" class="btn btn-sm cancelBtn" style="margin-left:14px;">取 消</button>
+						</div>
+	                </div>
+				</div>		   
+			</div>
+		</div>
+	</div>
+
+	<script src="../../js/weixin/wxLoginModel.js"></script>
+</body>   
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/weixin/wxCommon.js"></script>
+<script>
+var actId = '';
+$(function(){
+	actId = Request('actId');
+	$(".nav-title").html("酒店列表");
+	loading();
+	
+	$.myAjax({
+		url: basePath + "index/activity.do",
+		data: {id: actId,type: '6'},
+		success: function(result) {
+			$(".loading").remove();
+
+			if(!result.status.url){ // 用户没登录，显示登录模态框
+				showLoginModel();
+			}
+			
+			var hotelList = result.data.hotel;
+			var hotelStr = '';
+			for(var i=0;i<hotelList.length;i++){
+				hotelStr += '<li class="oneHotel">'+
+								'<a href="orderHotel.html?resId='+hotelList[i].id+'&actId='+actId+' target="_blank">'+
+								'<div class="hotelImgcon">'+
+									'<img class="hotelImg" src="'+hotelList[i].imageUrl[0]+'"/>'+
+								'</div>'+
+								'<div class="hotelIntrocon">'+
+									'<div class="hotelName">'+hotelList[i].resName+'</div>'+
+									'<div class="hotelAddress">'+hotelList[i].address+','+hotelList[i].location+'</div>'+
+									'<div class="hotelLevel">'+hotelList[i].resGrade+'</div>'+
+								'</div>'+
+								'</a>'+
+							'</li>';
+			}
+			if(hotelStr){
+				$("#hotelList").html(hotelStr);
+			} else {
+				// 显示提示模态框
+				$('#cusmodal').modal({backdrop: 'static'}); // 方式点击屏幕消失
+				$("#cusmodal").modal("show");
+			}
+		},
+		error: function(result){
+			$(".loading").remove();
+			msgshow("请求失败！");
+		}
+	});
+
+	$(".okBtn, .cancelBtn").click(function(){
+		window.history.go(-1);
+	})
+});
+
+</script>
+</html>

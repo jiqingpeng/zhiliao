@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+	<link rel="stylesheet" href="../../css/weixin/style.css">
+	<link rel="stylesheet" href="../../css/common/bootstrap.min.css">
+	<title>订单详情</title>
+	<style>
+		body{
+			background:rgb(236,239,244);
+		}
+		.order-box .hd{
+			padding:0 5px;
+		}
+		.order-item{
+			width:100%;
+			margin-top:10px;
+			box-sizing: border-box;
+		}
+		.order-item p{
+			padding:0;
+			margin:0;
+		}
+		.order-item span{
+			padding:0;
+		}
+		.order-item .payStatus{
+			background: #fff;
+			padding:10px;
+		}
+		.order-item .payStatus .status{
+			height:30px;
+			line-height: 30px;
+			margin:0;
+			font-size:16px;
+		}
+		.order-item .payStatus .status .status-txt,.price{
+			padding:0;
+		}
+		.order-item .payStatus .txt{
+			height:26px;
+			line-height: 26px;
+			margin:0;
+		}
+		.order-item .payStatus .status .price{
+			text-align: right;
+		}
+		.order-item .message{
+			/*padding:10px;*/
+			background:#fff;
+			margin-top:10px;
+		}
+		.order-item .message .mess-tit{
+			padding:0 10px;
+			margin-top:10px;
+			height:40px;
+			font-size:14px;
+			padding:0;
+			background:#6480a3;
+			color:#fff;
+			border-radius:3px 3px 0 0;
+		}
+		.order-item .message .mess-tit .date{
+			padding-left:10px;
+		}
+		.order-item .message .mess-tit .date>span{
+			padding:0;
+			height:40px;
+			line-height: 40px;
+		}
+		.order-item .message .mess-tit .seat{
+			text-align: right;
+			padding-right:10px;
+			height:40px;
+			line-height:40px;
+		}
+		.order-item .message .mess-cont{
+			padding:10px;
+		}
+		.order-item .message .mess-cont .city{
+			height:50px;
+			line-height:50px;
+			font-size:18px;
+		}
+		.order-item .message .mess-cont .city .to-city{
+			text-align:right;
+		}
+		.order-item .message .mess-cont .time{
+			height:26px;
+			line-height: 26px;
+			
+		}
+		.order-item .message .mess-cont .time .run-time{
+			text-align: center;
+		}
+		.order-item .message .mess-cont .time .to-time,.form-time{
+			font-size:20px;
+		}
+		.order-item .message .mess-cont .time .to-time{
+			text-align: right;
+		}
+		.order-item .passengers .pass-tit{
+			height:46px;
+			line-height: 46px;
+			font-size:18px;
+			margin:4px 0;
+			background:#fff;
+			padding-left:10px;
+		} 
+		.order-item .passengers .pass-cont{
+			background:#fff;
+			color:#999;
+			padding:10px;
+			margin-top:10px;
+		}
+		.order-item .passengers .pass-cont .pass-mess,.pass-id,.ticket-status{
+			height: 28px;
+			line-height: 28px;
+			font-size:16px;
+		}
+		.order-item .passengers .pass-cont .ticket-status .ticket-txt a{
+			display: inline-block;
+			height:28px;
+		}
+		.order-item .passengers .pass-cont .ticket-status .cancel{
+			display: inline-block;
+			height:26px;
+			line-height: 26px;
+			text-align: center;
+			border:1px solid #ccc;
+			border-radius:4px;
+			color:#999;
+			float:right;
+			margin-left:10px;
+			padding:0 5px;
+		}
+		.order-item .passengers .pass-cont .ticket-status .ticket-txt .cancel-ticket{
+			display: none;
+		}
+		.order-item .passengers .pass-cont .passt-seat{
+			text-align:right;
+		}
+		.home-box{
+			position: fixed;
+			width:100%;
+			left:0;
+			bottom:0;
+		}
+		.home{
+			display: inline-block;
+			width:100%;
+			height:52px;
+			line-height: 52px;
+			font-size:20px;
+			text-align:center;
+			background:#ff5346;
+			color:#fff;
+			text-decoration: none;
+		}
+		.ticket-box{
+			width:100%;
+		}
+		.ticket-box .cancel{
+			display: inline-block;
+			height:52px;
+			line-height: 52px;
+			font-size:20px;
+			background:#fff;
+			color:#000;
+			text-decoration: none;
+			text-align:center;
+		}
+		
+		.ticket-box .pay{
+			display: inline-block;
+			height:52px;
+			line-height: 52px;
+			font-size:20px;
+			background:#ff5346;
+			color:#fff;
+			text-decoration: none;
+			text-align:center;
+		}
+	</style>
+</head>
+<body>
+	<iframe name="head" class="m-head" 
+		marginwidth="0" marginheight="0" width="100%" height="50" src="header.html" frameborder="0"></iframe> 
+	<div class="order-box">
+		<input type="hidden" id="id"/>
+		<div class="hd">
+			<div class="order-item">
+				<div class="payStatus">
+					<p class="status">
+						<span class="col-xs-6 status-txt"></span>
+						<span class="col-xs-6 price"></span>
+					</p>
+					<p class="txt"></p>
+				</div>
+				<div class="message">
+					<div class="mess-tit">
+						<p class="col-xs-6 date">
+							<span class="col-xs-6 trainNo"></span>
+							<span class="col-xs-6 trainDate"></span>
+							<!-- <span class="col-xs-4 trainWeek">周四</span> -->
+						</p>
+						<p class="col-xs-6 seat"></p>		
+					</div>
+					<div class="mess-cont">
+						<p class="city">
+							<span class="col-xs-6 form-city"></span>
+							<span class="col-xs-6 to-city"></span>
+						</p>
+						<p class="time">
+							<span class="col-xs-4 form-time"></span>
+							<span class="col-xs-4 run-time"></span>
+							<span class="col-xs-4 to-time"></span>
+						</p>
+					</div>
+				</div>
+				<div class="passengers">
+					<div class="pass-tit">乘客信息</div>
+					<!-- <div class="pass-cont">
+						<p class="pass-mess">
+							<span class="col-xs-6 pass-name">吉庆鹏</span>
+							<span class="col-xs-6 passt-seat">14车厢065号</span>
+						</p>
+						<p class="pass-id">130724199212241113</p>
+						<p class="ticket-status">
+							<span class="col-xs-6 ticket-txt">已退票</span>
+							<span class="col-xs-6 ticket-txt">
+								<a href="javascript:;" class="cancel">退票</a>
+							</span>
+							
+						</p>
+					</div> -->
+				</div>
+			</div>
+			<div class="ticket-box" style="display: none;">
+				<a href="javascript:;" class="col-xs-12 pay">支付</a>
+			</div>
+		</div>
+	</div>
+	<iframe name="footer" class="m-foot" marginwidth="0" marginheight="0" width="100%" src="footer.html" frameborder="0"></iframe>
+</body>
+<script type="text/javascript" src="../../js/jquery.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/user/userMain.js"></script>
+<script>
+	$(function(){
+		// 活动ID
+		var data=getUrlJson("ticketJson");
+		console.log(data)
+		var id = data.id;
+		var passId = $('').val();
+		$('#id').val(data.id);
+		$('.form-time').html(data.fTime);
+		$('.to-time').html(data.cTime);
+		$('.form-city').html(data.fCity);
+		$('.to-city').html(data.tCity);
+		$('.run-time').html(data.runTime.h+'时'+data.runTime.m+'分');
+		//页面初始化
+		init(id);
+		//退票
+		$(document).on('click','.cancel-ticket',function(){
+			var url = basePath+'tc/train/refundorder.do';
+			var passengerId = $(this).parents('.pass-cont').find('.pass-id').val();
+			console.log(passengerId);
+			$.myAjax({
+				url:url,
+				data:{id:id,passengerId:passengerId},
+				success:function(result){
+					console.log(result)
+					if(result.flag){
+						myAlert(result.msg);
+						$('.pass-tit').siblings().remove();
+						init(id);
+					}else{
+						myAlert(result.msg);
+					};
+				},
+				error:function(result){
+					myAlert(result.msg);
+				}
+			});
+		});
+		//取消订单
+		$(document).on('click','.cancel-order',function(){
+			var url=basePath+'tc/train/cancelorder.do';
+			var passengerId = $(this).parents('.pass-cont').find('.pass-id').val();
+			$.myAjax({
+				url: url,
+				data:{id:id,passengerId:passengerId},
+				success: function(result) {
+					console.log(result)
+					if(result.flag){
+						myAlert(result.msg);
+						$('.pass-tit').siblings().remove();
+						init(id);
+					}else{
+						myAlert(result.msg);
+					};
+				},
+				error: function() {
+					myAlert('请求失败');
+				}
+			});
+		});
+		//支付
+		$(document).on('click','.pay',function(){
+			var url=basePath+'tc/train/payurl.do';
+			$.myAjax({
+				url: url,
+				data:{id:id},
+				success: function(result) {
+					if (result.flag) {
+						window.location.href=result.url;
+					} else {
+						myAlert(result.msg);
+					};
+				},
+				error: function() {
+					myAlert('请求失败');
+				}
+			});
+		});
+	});
+	function init(id) {
+		var url = basePath + "user/trainorder/get.do";
+		$.myAjax({
+			url: url,
+			data:{id:id},
+			success:function(result){
+				console.log(result)
+				if(result.flag){
+					$('.price').html('￥'+result.data.orderPrice);
+					$('.seat').html(result.data.lyTrainPassengerList[0].seatClassName);
+					$('.trainNo').html(result.data.trainNo);
+					$('.trainDate').html(getSubstring(result.data.trainDate,4,2)+'-'+getSubstring(result.data.trainDate,6,4));
+					for(var i = 0; i<result.data.lyTrainPassengerList.length; i++){
+						var str =
+						'<div class="pass-cont">'+
+							'<input type="hidden" class="pass-id" value="'+result.data.lyTrainPassengerList[i].id+'"/>'+
+							'<p class="pass-mess">'+
+								'<span class="col-xs-6 pass-name">'+result.data.lyTrainPassengerList[i].passengerName+'</span>'+
+								'<span class="col-xs-6 passt-seat">'+result.data.lyTrainPassengerList[i].seatNo+'</span>'+
+							'</p>'+
+							'<p class="pass-id">'+plusXing(result.data.lyTrainPassengerList[i].idCard,1,1)+'</p>'+
+							'<p class="ticket-status">'+
+								'<span class="col-xs-6 ticket-txt">'+result.data.lyTrainPassengerList[i].ticketState+'</span>'+
+								'<span class="col-xs-6 ticket-txt">'+
+									'<a href="javascript:;" class="cancel cancel-ticket">退票</a>'+
+									'<a href="javascript:;" class="cancel cancel-order">取消订单</a>'+
+								'</span>'+
+							'</p>'+
+						'</div>';
+						$('.pass-tit').after(str);
+					};
+					//订单状态
+					if(result.data.orderState==2){
+						$('.status-txt').html('购票失败');
+						$('.txt').html('购票失败,如需购票请重新预订');
+					};
+					if(result.data.orderState==5){
+						$('.status-txt').html('订单已取消');
+						$('.txt').html('当前订单已取消,如需购票请重新预订');
+					};
+					if(result.data.orderState==6){
+						$('.status-txt').html('购票成功');
+						$('.txt').html('当前订单已成功,如需购票请重新预订');
+					};
+					if(result.data.orderState==7){
+						$('.status-txt').html('退票成功');
+						$('.txt').html('当前订单已退票,如需购票请重新预订');
+					};
+					if(result.data.orderState==8){
+						$('.status-txt').html('订单已过期');
+						$('.txt').html('当前订单已过期')
+					};
+					//支付状态
+					if(result.data.orderState==1||result.data.orderState==3||result.data.orderState==6&&result.data.payState==0){
+						$('.ticket-box').css('display','block');
+						$('.status-txt').html('订单已生成');
+						Timer(result.data.ctime);
+					};
+					//退票状态
+					if(result.data.payState==1&&result.data.orderState==6){
+						$('.cancel-ticket').css('display','block');
+					};
+				};
+			},
+			error:function(){
+				$(".loading").remove();
+				myAlert('请求失败');
+			}
+		});
+	};
+	//倒计时
+	function Timer(time){
+		var timer=null;
+		clearInterval(timer);
+		var timestamp = Date.parse(new Date());
+	    timestamp = timestamp / 1000;
+	    var i=(time/1000)+2700-timestamp;
+	    function show(){
+			var s=i;
+			var h=parseInt(s/3600);
+			s%=3600;
+			var m=parseInt(s/60);
+			s%=60;
+			s=parseInt(s);
+			var t =Dou(h)+':'+Dou(m)+':'+Dou(s);
+			$('.txt').html('当前订单已生成,请在'+t+'之前支付');
+			if(i<=0){
+				clearInterval(timer);
+			};
+			i--;
+		};
+		// show()
+		timer=setInterval(show,1000);
+	};
+	function Dou(n){
+	return n<10 ?'0'+n :''+n; 
+	};
+</script>
+</html>

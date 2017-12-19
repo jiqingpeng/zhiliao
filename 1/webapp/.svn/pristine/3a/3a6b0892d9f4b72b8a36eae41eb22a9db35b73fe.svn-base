@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>活动基本信息</title>
+<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+<link href="../../../css/common/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../../css/common/bootstrap-datetimepicker.min.css">
+<link href="../../../css/style.css" rel="stylesheet"/>
+<link href="../../../css/main.css" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../css/admin.css">
+</head>
+<body>
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<!-- 以下为内容部分，内容部分分为导航头和主体内容 -->
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="message.html">管理中心</a>
+		<a href="">-></a>
+		<a href="message.html">活动管理</a>
+		<a href="">-></a>
+		<a href="message.html">基本信息</a>
+	</div><!-- 内容部分导航头的class : con-nav (必须) -->
+	<div class="con-box" id="box"><!-- 内容部分主体内容的class : con-box (必须) -->
+		<!-- 以下为每个页面自己编写的部分 -->
+		<form id="detailform" class="form-horizontal">
+			<input type="reset" style="display:none;"/>
+			<input type="hidden" id="id" name="id"/>
+			<input type="hidden" id="type" name="type"/>
+			<div class="form-group">
+			    <label for="" class="col-sm-2 control-label"><span style="color: red">* </span>会议名称</label>
+			    <div class="col-sm-7">
+			      <input type="text" name="name" class="form-control conference" placeholder="请填写会议名称">
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label for="" class="col-sm-2 control-label">会议主题</label>
+			    <div class="col-sm-7">
+			      <input type="text" name="theme" class="form-control theme" placeholder="请填写会议主题">
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label for="" class="col-sm-2 control-label"><span style="color: red">* </span>会议时间</label>
+			    <div class="col-sm-3">
+			      <input type="text" size="18" name="stime" class="form-control sTime" placeholder="请输入开始时间">
+			    </div>
+			    <div class="col-sm-1">&nbsp&nbsp至</div>
+			    <div class="col-sm-3">
+			    	<input type="text" size="18" name="etime" class="form-control eTime" placeholder="请输入结束时间">
+			    </div>
+			</div>
+			<div class="form-group ">
+			    <label for="" class="col-sm-2 control-label labelTitle"><span style="color: red">* </span>组织机构</label>
+			    <div class="col-sm-2">
+			      	<select class="form-control organization" name="">
+			      	</select>
+			    </div>
+			    <div class="col-sm-5">
+			      	<input type="text" name="" class="form-control" placeholder="组织方名称">
+			    </div>
+			    <div class="plus col-sm-1"><button type="button" class="addButton btn btn-default" style="width: 30px;height: 30px;">+</button></div>
+			</div>
+			<div class="form-group" id="positioncon">
+			    <label class="col-sm-2 control-label"><span style="color: red">* </span>会议地点</label>
+			    <div class="col-sm-2">
+			    	<select class="prov form-control" name="province"></select>
+			    </div>
+			    <div class="col-sm-2">
+					<select class="city form-control" name="city"></select>
+				</div>
+				<div class="col-sm-3">
+					<input class="form-control" name="location" type="text" placeholder="会议具体地点" maxlength="26"/>
+				</div>
+			</div>
+			<div class="form-group">
+			    <label for="" class="col-sm-2 control-label">会议人数</label>
+			    <div class="col-sm-7">
+			      <input type="email" name="takepartNum" class="form-control people" placeholder="请输入会议人数"/>
+			    </div>
+			</div>
+			<div class="form-group industry">
+			    <label for="" class="col-sm-2 control-label">行业类别</label>
+			    <div class="col-sm-7">
+			      	<input type="text" name="type" class="form-control trade" placeholder="请选择行业类别"/>
+					<div class="append">添加</div>
+			    </div>
+			    <div class="category">
+			    	<a href="javascript: ;"></a>
+			    	<!-- <a href="javascript: ;">互联网</a>
+			    	<a href="javascript: ;">电子</a>
+			    	<a href="javascript: ;">建筑</a> -->
+			    </div>
+			</div>
+		    <div class="btncon">
+		      <button type="button" class="btn btn-default btn-warning preserve">保&nbsp存</button>
+		      <button type="button" class="btn btn-default" id="cancel">取&nbsp消</button>
+		    </div>
+		</form>
+
+	</div>     
+</div>
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/common/main.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/bootstrap-datetimepicker.min.js"></script>
+<script src="../../../js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../../../js/common/jquery.cityselect.js"></script>
+<script src="../../../js/admin/industry.js"></script>
+<script type="text/javascript">
+$(function(){
+	
+	$("#id").val(Request("id"));
+
+	$("#positioncon").citySelect();
+
+	// 获取左侧菜单列表数据(参数为请求地址)
+	initMenu('../../../js/data/administrator.json', '活动管理'); 
+	$(".sTime, .eTime").datetimepicker({
+        language: 'zh-CN',//显示中文
+        format: 'yyyy-mm-dd',//显示格式
+        minView: "month",//设置只显示到月份
+        initialDate: new Date(),//初始化当前日期
+        autoclose: true,//选中自动关闭
+        todayBtn: true//显示今日按钮
+    });
+
+	initPage();
+
+	//设置保存按钮点击事件
+	$('.preserve').on('click',function(){
+		var url = basePath + "admin/activity/save.do";
+		$.ajax({
+			url: url,
+			data: $("#detailform").serialize(),
+			type: "POST",
+			dataType: "json",
+			xhrFields: {
+				withCredentials: true
+			},
+			crossDomain: true,
+			success: function(result){
+				console.log(result);
+				if(result.flag){
+					myAlert("保存成功！");
+				}
+
+			},
+			error: function(){
+				console.log("请求失败");
+			}
+		})
+	})
+
+	//设置取消按钮点击事件
+	$('#cancel').click(function() {
+	    initPage();
+	});
+});
+
+// 页面初始化
+function initPage(){
+	var url = basePath + "admin/activity/get.do";
+	$.ajax({
+		url: url,
+		data: {id:$("#id").val()},
+		type: "POST",
+		dataType: "json",
+		xhrFields: {
+			withCredentials: true
+		},
+		crossDomain: true,
+		success: function(result){
+			console.log(result);
+			if(result.flag){
+				$("#type").val(result.data.activity.type);
+				if(result.data.activity.name){
+					$(".conference").val(result.data.activity.name);
+				}
+				if(result.data.activity.theme){
+					$(".theme").val(result.data.activity.theme)
+				};
+				if(result.data.activity.stime){
+					$(".sTime").val(result.data.activity.stime);
+				}
+				if(result.data.activity.etime){
+					$(".eTime").val(result.data.activity.etime);
+				}
+				if(result.data.activity.city){
+					$(".city").val(result.data.activity.city);
+				}
+				if(result.data.activity.area){
+					$(".area").val(result.data.activity.area);
+				}
+				if(result.data.activity.takepartNum){
+					$(".people").val(result.data.activity.takepartNum);
+				}
+				if(result.data.industy){
+					var industy = result.data.industy;
+					for(var i = 0; i <industy.length; i++){
+						var name = industy[i].name;
+						console.log(name);
+						$(".category").append("<a id='business' style='margin-left: 4px;'>" +name+"</a>");
+					}
+				}
+			}else{
+
+			}
+		},
+		error: function(){
+
+		}
+	})
+}
+</script>
+</html>

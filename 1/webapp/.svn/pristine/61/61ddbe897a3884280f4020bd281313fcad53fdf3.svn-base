@@ -1,0 +1,38 @@
+function userInit() {
+	// // 获取左侧菜单列表数据(参数为请求地址)
+	// initMenu('../../js/data/attend.json', '我的活动');
+	// $("#submenumark").css('display', 'none');
+	//首页
+	$(document).on('click', '.nav a', function() {
+		$(this).attr('href', '../index/index.html');
+	});
+	//注销
+	$(document).on('click', '#userinfo a', function() {
+		url = basePath + "login/out.do";
+		$.ajax({
+			url: url,
+			type: 'GET',
+			dataType: 'json',
+			xhrFields: {
+				withCredentials: true
+			},
+			crossDomain: true,
+			success: function(result) {
+				window.location.href = "../index/index.html";
+			},
+			error: function(result) {
+				alert(result.msg);
+			}
+		});
+	});
+	(function($) {
+		$.fn.mopsSelect = function(data) {
+			var innerstr = "";
+			$.each(data, function(i, val) {
+				innerstr += "<option value='" + val.value + "'>" + val.name + "</option>"
+			});
+			this.html(innerstr);
+		}
+	})(jQuery);
+
+}

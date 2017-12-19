@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>留言板</title>
+	<meta name="description" content="留言板" />
+    <meta content="telephone=no" name="format-detection" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+    <link rel="stylesheet" href="../../css/common/bootstrap.min.css" />  
+	<link rel="stylesheet" href="../../css/weixin/style.css" />
+	<style>
+		
+		.message-box{
+			/*border:1px solid red;*/
+			width:100%;
+			padding:0 20px;
+		}
+		.message-box .mess-head .mess-tit{
+			width:86%;
+		}
+		.message-box .mess-head .mess-icon{
+			width:30px;
+			padding:0;
+		}
+		.message-box .mess-head .mess-icon img{
+			width:30px;
+			height:30px;
+		}
+		.message-box .mess-head .mess-tit .mess-time{
+			
+		}
+		.message-box .mess-group{
+			margin-top:10px;
+		}
+		.message-box .tit-cont{
+			margin-left:14%;
+		}
+		.message-box .mess-foot .item{
+			padding:0;
+			float:right;
+		}
+		.message-box .mess-foot .item img{
+			/*border:1px solid red;*/
+			display: inline-block;
+			width:18px;
+			height:20px;
+			vertical-align: top;
+		}
+		
+		.message-box .mess-talk{
+			width:100%;
+			border-bottom:1px solid #ccc;
+			margin:10px 0;
+		}
+		.message-box .mess-talk .mess-txt{
+			width:100%;
+		}
+		.message-box .mess-talk .mess-txt img{
+			width:30px;
+			height:30px;
+			padding:0;
+		}
+		.message-box .mess-talk .mess-txt input{
+			height:30px;
+			padding:0;
+		}
+		.message-box .mess-foot .mess-time{
+			padding:0;
+		}
+		.mess-talk-group{
+			border-bottom:1px solid #ccc;
+		}
+		.mess-talk-group img{
+			width:30px;
+			height:30px;
+		}
+		.mess-talk-group .talk-txt{
+			width:86%;
+		}
+		.mess-talk-group .mess-foot .mess-time{
+			margin-left:14%;
+		}
+		.talk-btn{
+			display: inline-block;
+			width:64px;
+			height:20px;
+			background:#f60;
+			color:#fff;
+			text-align:center;
+			border-radius:2px;
+			float:right;
+			margin-top:5px;
+			margin-bottom:10px;
+		}
+		.message-box .mess-child{
+			
+			margin:10px;
+			background:#ccc;
+			margin-left:14%;
+		}
+	</style>
+</head>
+<body>
+	<div class="order-box"">
+		<div class="message-box">
+			<div class="mess-group">
+				<div class="mess-head clearfix">
+					<div class="mess-icon fl">
+						<img src="../../img/weixin/head-icon.png" alt="">
+					</div>
+					<div class="mess-tit fr">
+						<p class="mess-name">环球网</p>
+						<p class="mess-time">9:08</p>
+					</div>
+				</div>
+				<div class="mess-cont tit-cont">
+					在中国和东盟外长签署谅解备忘录，顺利通过南海行为框架文件，为男孩的稳定奠定了基础
+				</div>
+				<div class="mess-foot clearfix">
+					<a class="col-xs-2 fr item" href="javascript:;">
+						<img src="../../img/weixin/up.png" alt="up">
+						<span class="num">80</span>
+					</a>
+					<a class="col-xs-2 fr item" href="javascript:;">
+						<img src="../../img/weixin/talk.png" alt="talk">
+						<span class="num">89</span>
+					</a>	
+				</div>
+			</div>
+			<div class="mess-talk">
+				<p class="mess-txt clearfix">
+					<img class="col-xs-2" src="../../img/weixin/head-icon.png" alt="head-icon">
+					<input type="text" class="col-xs-10 fr">
+				</p>
+				<a class="talk-btn" href="javascript:;">评论</a>
+				<p class="clearfix"></p>
+			</div>
+			<div class="mess-talk-group">
+				<div class="clearfix">
+					<img class="fl" src="../../img/weixin/head-icon.png" alt="">
+					<div class="talk-txt fr">
+						<span class="mess-name">李老头：</span>
+						<span class="mess-cont">在中国和东盟外长签署谅解备忘录，顺利通过南海行为框架文件，为男孩的稳定奠定了基础在中国和东盟外长签署谅解备忘录，顺利通过南海行为框架文件，为男孩的稳定奠定了基础</span>
+					</div>
+				</div>
+				<div class="mess-foot clearfix">
+					<p class="clearfix">
+						<span class="mess-time col-xs-2 fl">9:20</span>
+						<a class="col-xs-2 fr item" href="javascript:;">
+							<img src="../../img/weixin/up.png" alt="up">
+							<span class="num">80</span>
+						</a>
+						<a class="col-xs-2 fr item" href="javascript:;">
+							
+							<span class="num">回复</span>
+						</a>
+					</p>
+					<div class="mess-talk-group mess-child">
+						<div class="clearfix">
+							<img class="fl" src="../../img/weixin/head-icon.png" alt="">
+							<div class="talk-txt fr">
+								<span class="mess-name">李老头：</span>
+								<span class="mess-cont">在中国和东盟外长签署谅解备忘录，顺利通过南海行为框架文件，为男孩的稳定奠定了基础在中国和东盟外长签署谅解备忘录，顺利通过南海行为框架文件，为男孩的稳定奠定了基础</span>
+							</div>
+						</div>
+						<div class="mess-foot clearfix">
+							<p class="clearfix">
+								<span class="mess-time col-xs-2 fl">9:20</span>
+								<a class="col-xs-3 fr item" href="javascript:;">
+									<img src="../../img/weixin/up.png" alt="up">
+									<span class="num">80</span>
+								</a>
+								<a class="col-xs-3 fr item" href="javascript:;">
+									
+									<span class="num">回复</span>
+								</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

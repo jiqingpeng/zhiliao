@@ -1,0 +1,8 @@
+var header = '<div class="nav-head">'+
+				'<span class="wx-back" style="display: inline-block;">'+
+					'<img style="vertical-align:top; width:24px; margin-top:8px;" src="../../img/weixin/backIcon.png">'+
+				'</span>'+
+				'<span class="nav-title" style="font-weight:bold;margin-left:26px; font-size: 16px; color: #fff;"></span>'+
+			'</div>';
+
+document.write(header);

@@ -1,0 +1,249 @@
+body{
+	background:#f1f1f1;
+}
+.air{
+	width:1142px;
+	// border:1px solid #ccc;
+	margin:0 auto;
+	margin-top:20px;
+	.airDeta{
+		border-bottom:1px solid #0066cc;
+		li{
+			// border-right:1px solid #ccc;
+			height:50px;
+			background: #fff;
+			margin-left:3px;
+		}
+		.arrow{
+			width:41px;
+			height:50px;
+			text-align: center;
+			line-height: 50px;
+		}
+		.nav{
+			width:147px;
+			text-align: center;
+			span{
+				display: inline-block;
+			}
+			.airDate{
+				margin-top:8px;
+				.week{
+					font-weight: bold;
+				}
+			}
+			.airPrice{
+				margin-top:4px;
+				.priceIcon{
+					font-size:12px;
+					vertical-align: top;
+				}
+				.price{
+					color:red;
+					font-size:19px;
+					margin-left:-6px;
+				}
+			}
+		}
+	};
+	.airMess{
+		width:1142px;
+		// border:1px solid red;
+		margin:0 auto;
+		.airMnav{
+			background:#fff;
+			margin:10px 0;
+			height:30px;
+			line-height: 30px;
+			.sTimet{
+				margin-left:235px;
+				width:56px;
+			}
+			.eTimet{
+				margin-left:20px;
+				width:56px;
+			}
+			.arrowt{
+				width:200px;
+			}
+			.airMesst{
+				margin-left:22px;
+				width:56px;
+			}
+			.onTimet{
+				margin-left:80px;
+				width:56px;
+			}
+			.pricet{
+				margin-left:140px;
+			}
+		}
+		.airMlist{
+			width:100%;
+			// border:1px solid #ccc;
+			li{
+				margin-top:5px;
+				padding:20px 10px;
+				background:#fff;
+			}
+			div{
+				// border:1px solid #ccc;
+				height:46px;
+				
+			}
+			.fight{
+				width:130px;
+				margin-right:154px;
+				.airCompany{
+					margin-left:20px;
+				}
+				.airType{
+					width:108px;
+					margin-top:10px;
+					margin-left:20px;
+					color:#999;
+					font-size:12px;
+					span{
+						border-bottom:1px dashed #999;
+					}
+				}
+			}
+			.startTime{
+				width:86px;
+				.time{
+					font-size:20px;
+					color:#4d4d4d;
+					font-weight: bold;
+					margin-left:28px;
+				}
+				.no{
+					margin-left:0;
+				}
+				.address{
+					font-size:12px;
+					margin-top:1px;
+					text-align: right;
+				}
+			}
+			.endTime{
+				width:86px;
+				.time{
+					font-size:20px;
+					color:#4d4d4d;
+					font-weight: bold;
+					margin-left:28px;
+				}
+				.no{
+					margin-left:0;
+				}
+				.address{
+					font-size:12px;
+					margin-top:1px;
+					
+				}
+			}
+			.bankArrow{
+				width:162px;
+				background:url(../../img/user/flight_arrow.png) 0 18px no-repeat;
+				margin-left:20px;
+				margin-right:20px;
+			}
+			.onTime{
+				width:65px;
+				color:#999;
+				margin-left:50px;
+				text-align: center;
+				.punctuality{
+					margin-bottom:4px;
+				}
+			}
+			.price{
+				width:260px;
+				margin-left:60px;
+				.icon{
+					font-size:12px;
+					vertical-align: top;
+				}
+				.num{
+					font-size:30px;
+					margin-left:-12px;
+					color:#ff6600;
+					font-weight: bold;
+				}
+				.word{
+					font-size:12px;
+					margin-left:-7px;
+				}
+				button{
+					width:64px;
+					height:26px;
+					background:#ff6600;
+					border:1px solid #ff6600;
+					color:#fff;
+					border-radius: 4px;
+					margin-left:10px;
+				}
+			}
+			.trainp{
+				p{
+					margin-top:5px;
+				}
+				.num{
+					font-size:20px;
+				}
+			}
+			.h120{
+				height:90px;
+			}
+		}
+	}
+}
+.hotel{
+	width:1142px;
+	border:1px solid #ccc;
+	margin:0 auto;
+	margin-top:20px;
+	.hotGroup{
+		height:100px;
+		background:#fff;
+		border:1px solid #666;
+		img{
+			width:100px;
+			height:100px;
+			border:1px solid #ccc;
+		}
+		.hotMess{
+			height:100%;
+			border:1px solid #ccc;
+			margin-left:20px;
+			p{
+				margin-top:12px;
+			}
+		}
+		.hotPrice{
+			height:100%;
+			border:1px solid #ccc;
+			margin-left:20px;
+			.evaluate{
+				p{
+					margin-top:12px;
+				}
+			}
+			.reserve{
+				p{
+					margin-top:12px;
+				}
+				button{
+					margin-top:20px;
+					width: 64px;
+				    height: 26px;
+				    background: #f60;
+				    border: 1px solid #f60;
+				    color: #fff;
+				    border-radius: 4px;
+				    margin-left: 10px;
+				}
+			}
+		}
+	}
+}

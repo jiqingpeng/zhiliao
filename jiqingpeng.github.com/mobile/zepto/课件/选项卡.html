@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script src="js/zepto.min.js"></script>
+<script>
+	$(function(){
+		$('input').click(function(){
+			$('input').removeClass('active');
+			//$('input').attr('class','');
+			$(this).addClass('active');
+			//$(this).attr('class','active');
+			
+			//alert($(this).index());
+			var index=$(this).index();
+			$('li').hide();
+			$('li').eq(index).show();
+				
+		});	
+	})
+</script>
+<style>
+	*{ padding:0; margin:0;  list-style:none;}
+	li{ width:200px; height:200px; background:red; font-size:50px; color:#FFF; text-align: center; line-height:200px; display:none;}
+	.show{ display:block;}
+	.active{ background:red; color:#FFF; font-size:20px;}
+</style>
+</head>
+<body>
+	<input type="button" class="active" value="按钮1" />
+    <input type="button" value="按钮2" />
+    <input type="button" value="按钮3" />
+    <ul>
+    	<li class="show">1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

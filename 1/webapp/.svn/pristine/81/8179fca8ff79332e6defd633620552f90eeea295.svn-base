@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>意见反馈</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+	<link rel="stylesheet" type="text/css" href="../../../css/app/style.css">
+</head>
+<style type="text/css">
+	.contain{
+		padding: 15px 10px;
+		background-color: #ffffff;
+		margin-top: 48px;
+	}
+	.content{
+		/*padding: 10px;*/
+	}
+	.textCon{
+		height: 200px;
+		border: none;
+		/*padding: 10px; */
+		border-radius: 5px;
+		width: 90%;
+		padding: 10px 5%;
+		margin: 0 auto;
+		overflow-x: hidden;
+	}
+	/*.textarea{
+		width: 100%;
+		height: 100%;
+	}*/
+	.reminder{
+		color: #f9752b;
+		font-size: 12px;
+		text-align: right;
+		margin-top: 10px;
+	}
+	.button{
+		margin-top: 10px;
+		text-align: center;
+	}
+	.submint{
+		width: 80%;
+		background-color: #f9752b;
+		border: 1px solid #f9752b;
+		height: 40px;
+		color: #fff;
+		border-radius: 5px;
+		margin-top: 20px;
+	}
+</style>
+<body>
+	<div>
+		<div class="head">
+			<div class="navImg">
+				<img src="../../../img/app/arrowLeft-icon.png">
+			</div>
+			<div class="navDetail">意见反馈</div>
+			
+		</div>
+		<div class="contain">
+			<div class="content">
+				<textarea class="textCon" autofocus maxlength="200">
+					
+				</textarea>
+			</div>
+			<div class="reminder">200字以内</div>
+			<div class="button">
+				<button class="submint">提交反馈</button>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".submint").on("click",function(){
+		var data = $(".textCon").val();
+		console.log(data);
+		// initPage(url,data);
+	})
+});
+function initPage(url,data){
+	$.myAjax({
+		url: url,
+		data: data,
+		success: function(result){
+			if(result.flag){
+				console.log(result);
+			}else{
+				myAlert(result.msg);
+			}
+		},
+		error: function(){
+			myConfirm("请求失败!");
+		}
+	})
+}
+</script>
+</html>

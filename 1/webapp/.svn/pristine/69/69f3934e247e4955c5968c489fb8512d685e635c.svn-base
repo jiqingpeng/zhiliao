@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>酒店预订</title>
+<meta content="telephone=no" name="format-detection" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="../../css/common/bootstrap.min.css"/>
+<link rel="stylesheet" href="../../css/common/bootstrap-datetimepicker.min.css" />
+<link rel="stylesheet" href="../../css/weixin/style.css"/>
+<link rel="stylesheet" href="../../css/weixin/hotelDetail.css">
+<style>
+	.price {
+		min-width: 60px;
+	}
+</style>
+</head>
+<body>   
+    <script src="../../js/weixin/wxBackHeader.js"></script>
+	<div class="order-box">
+		<div class="hd">	
+			<!-- <form id="hotelform" class="form-horizontal">	    -->
+				<input type="hidden" id="hotelId"/> <!-- 酒店在同程的ID -->
+				<div>
+					<img id="mainimg" style="height:200px;width:100%"/>			   
+				</div>
+				<div class="hoteltime">
+					<div class="col-xs-5">
+						<input type="text"  class="form-control datetime hstime"  style="background-color:#fff" id="stime" placeholder="入住时间"  readonly data-date-format="yyyy-mm-dd">
+					</div>
+					<div class="col-xs-5">
+						<input type="text"  class="form-control datetime estime"  style="background-color:#fff" id="etime" placeholder="离店时间"  readonly data-date-format="yyyy-mm-dd">
+					</div>
+					<div class="col-xs-2 hotelsearch">
+						<span class="hsearch">搜索</span>
+					</div>    	 
+				</div>
+				<div id="roomdiv">
+					数据加载中。。。。
+				</div>	
+			<!-- </form> -->
+		</div>		 
+		<!-- <div style="height:40px;">&nbsp;
+		</div> -->
+	</div>
+	<!-- 提示模态框 -->
+	<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" id="msgmodal">
+		<div class="modal-dialog modal-sm" role="document">
+			<div class="modal-content">
+				<div class="modal-header">			 
+					<h4 class="modal-title">提示</h4>
+				</div>
+				<div class="modal-body">
+					<p id="msg"></p>
+				</div>		   
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	<!-- <iframe name="footer" class="m-foot" marginwidth="0" marginheight="0" width="100%" height="30" src="footer.html" frameborder="0"></iframe> -->
+</body>   
+<script type="text/javascript" src="../../js/jquery.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap-datetimepicker.min.js"></script> 
+<script type="text/javascript" src="../../js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script type="text/javascript" src="../../js/common/common.js"></script>
+<script>
+var confid;
+var resId;  
+$(function(){
+	$(".nav-title").html("房间列表");
+	confid = Request('actId');
+	resId = Request('resId');
+	$('.datetime').datetimepicker({
+	    language:  'zh-CN',
+	    weekStart: 1,
+	    todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0
+	});	
+
+	$(".hstime").val(getNowFormatDate().substring(0,10));
+	$(".estime").val(getDayStr(getNowFormatDate().substring(0,10),1));
+	initPage();
+
+	// 按时间搜索
+	$(".hsearch").click(function(){
+		initPage('search');
+	});
+
+});	
+
+function initPage(str){
+	loading();
+	if(str) {
+		var hstime = $(".hstime").val();
+		var hetime = $(".estime").val();
+		var eTime = getDayStr(hstime,useDate(hstime,hetime)-1);
+		data = {"id":resId,"stime":hstime,"etime":eTime};
+	} else {
+		var data = {"id":resId,
+			"stime": getNowFormatDate().substring(0,10),
+			"etime": getNowFormatDate().substring(0,10)
+		};
+	} 
+	// console.log(data);
+	$.myAjax({
+		url: basePath + "tc/hotel/get.do",
+		data: data,
+		success: function(result) {
+			$(".loading").remove();
+			if(result.flag){
+				$("#mainimg").attr("src",result.data.hotel.lyHotelImgList[0].imageUrl);
+				initRoomList(result.data.hotelSale);
+				$("#hotelId").val(result.data.hotel.resId);
+			} else {
+				msgshow(result.msg);
+			}
+		},
+		error: function(result){
+			$(".loading").remove();
+			msgshow("请求失败！");
+		}
+	});
+}
+  
+function UrlSearch(){
+	var name,value; 
+	var str=location.href; //取得整个地址栏
+	var num=str.indexOf("?") 
+	str=str.substr(num+1); //取得所有参数   stringvar.substr(start [, length ]
+
+	var arr=str.split("&"); //各个参数放到数组里
+	for(var i=0;i < arr.length;i++){ 
+		num=arr[i].indexOf("="); 
+		if(num>0){ 
+			name=arr[i].substring(0,num);
+			value=arr[i].substr(num+1);
+			this[name]=value;
+		} 
+	} 
+} 
+
+// 初始化酒店房间
+function initRoomList(saleData){
+	Array.prototype.mopsUnique = function(){  // 自定义数组去重
+		var res = [];
+		var json = {};
+		for(var i = 0; i < this.length; i++){
+			if(!json[this[i].ProId]){
+				res.push(this[i]);
+				json[this[i].ProId] = 1;
+			}
+		}
+		return res;
+	}
+	
+	var saleRoom = [];  // 房型及房间的最终数据
+	var saleRoom = saleData.mopsUnique();
+
+	// 动态生成房间列表
+	var str = '';
+	for(var i=0;i<saleRoom.length;i++){
+		var roomval = saleRoom[i];
+		var upordown = 'triangle-up'; // 是否展开(默认第一个展开)
+		var showOrhide = 'hideRoomList';
+		if(i==0){
+			upordown = 'triangle-down';
+			showOrhide = 'showRoomList';
+		}
+		var roomKey = '';
+		var minPrice = 8888; // 最低价格
+
+		var room = ''; // 房间html字符串
+
+		var hasRoom = false; // 监测房型中是否有可售卖的房间
+		for(var j=0;j<roomval.roomList.length;j++){
+			var val = roomval.roomList[j];
+
+			if(val.ProSaleInfoDetails == ''|| val.ProSaleInfoDetails==null){
+				continue;
+			}
+			hasRoom = true;
+
+			if(!roomKey){
+				roomKey = getFirstKey(val.ProSaleInfoDetails);
+			}
+
+			if(minPrice>val.ProSaleInfoDetails[roomKey].DistributionSalePrice){
+				minPrice=val.ProSaleInfoDetails[roomKey].DistributionSalePrice;
+			}
+			room += '<div class="roomMatter">'+
+					'<div class="col-xs-7 roominfo">'+
+						'<p>'+val.PolicyName+'</p>'+
+						'<span>'+roomval.ResProProps.是否有窗+' 限时取消</span>'+
+					'</div>'+
+					'<div class="col-xs-2 pricecon">'+
+						'<span class="price">¥'+val.ProSaleInfoDetails[roomKey].DistributionSalePrice+'</span>'+
+					'</div>'+
+					'<div class="col-xs-3 predete">'+
+						'<a href="#">'+
+						'<input type="hidden" class="ProId" value="'+roomval.ProId+'">'+
+						'<input type="hidden" class="ProductUniqueId" value="'+val.ProductUniqueId+'">'+
+						'<span class="predetermine">订</span>'+
+						'<span class="hotelPay">到店付</span></a>'+
+					'</div>'+
+				'</div>';
+		}
+
+		if(!hasRoom){ // 如果该房型没有房间，则继续下一个（该房型不显示）
+			continue;
+		}
+		var roomIntro = ''; // 房间简介 如：大床(1.8米)|免费有线|最多可住2人|面积24㎡|楼层1-4层
+		roomIntro = roomval.ResProProps.床型+' '+ roomval.ResProProps.房间面积+'㎡|楼层'+roomval.RoomFloor+'层';
+		str += '<div class="roomDetail">'+
+				'<div class="row roomTitle">'+
+					'<div class="col-xs-4">'+
+						'<img class="roomImg" src="'+roomval.imageUrl+'">'+
+					'</div>'+
+					'<div class="roomTxt col-xs-8">'+
+						'<div class="roomIntroCon col-xs-7">'+
+							'<div class="roomType">'+roomval.ResProName+'</div>'+
+							'<div class="roomIntro">'+roomIntro+'</div>'+
+						'</div>'+
+						'<div class="roomPriceCon col-xs-5">'+
+							'<p class="roomPrice">'+
+								'<span class="orange">￥</span><span class="orange priceBig">'+minPrice+'</span>起'+
+							'<span class="'+upordown+'"></span></p>'+
+							'<p>共'+roomval.roomList.length+'个产品</p>'+
+						'</div>'+
+					'</div>'+
+				'</div>'+
+				'<div class="roomListCon '+showOrhide+'">'+
+					'<div class="roomList col-xs-12">'+ room +
+					'</div>'+
+				'</div>'+
+			'</div>';
+	}
+	
+	$("#roomdiv").html(str);
+
+	addlistener();
+}  
+
+// 获取JSON数据key值-> key数组
+function getFirstKey(jsonObj){
+	var jsonKey = [];
+	for(var item in jsonObj){ 
+        jsonKey.push(item);
+        break;
+    }
+    return jsonKey[0];
+}
+
+// 添加动态生成的点击监听事件
+function addlistener(){
+	var roomE = $(".roomTitle");
+	roomE.each(function(index){
+		$(this).click(function(){
+			if($(this).next().hasClass('hideRoomList')){
+				$(this).next().removeClass('hideRoomList');
+				$(this).find(".triangle").removeClass('triangle-up').addClass('triangle-down');
+			} else {
+				$(this).next().addClass('hideRoomList');
+				$(this).find(".triangle").removeClass('triangle-down').addClass('triangle-up');
+			}
+		});
+	});
+
+	// 房间预定
+	$(".predetermine, .hotelPay").click(function(){
+		var urlJson = {};
+		urlJson.ProId = $(this).prevAll(".ProId").val();
+		urlJson.ProductUniqueId = $(this).prevAll(".ProductUniqueId").val();
+		urlJson.ResId = resId;
+		urlJson.hotelId = $("#hotelId").val();
+
+		urlJson.stime = $(".hstime").val();
+		urlJson.etime = $(".estime").val();
+
+		$(this).parent().attr("href",'hotelReserve.html?actId='+confid+'&dataKey='+setUrlJson(urlJson));
+	});
+}
+
+function getDayStr(day,num){
+	var datestr = timeStamp(day) + 86400000*num;
+	return format(datestr);
+}
+
+// 获取时间字符串
+function add0(m){return m<10?'0'+m:m }
+function format(datastr) {
+	var time = new Date(datastr);
+	var y = time.getFullYear();
+	var m = time.getMonth()+1;
+	var d = time.getDate();
+	var h = time.getHours();
+	var mm = time.getMinutes();
+	var s = time.getSeconds();
+	// return y+'-'+add0(m)+'-'+add0(d)+' '+add0(h)+':'+add0(mm)+':'+add0(s);
+	return y+'-'+add0(m)+'-'+add0(d);
+}
+
+// 模态框信息提示
+function msgshow(msg){
+	$("#msg").html(msg);
+	$("#msgmodal").modal("show");
+	setTimeout('$("#msgmodal").modal("hide")',2500);
+}
+
+// 入住天数计算
+function useDate(stime,etime){
+	var st = timeStamp(stime),
+		et = timeStamp(etime);
+	return (et-st)/(1000*24*60*60);
+}
+
+</script>
+</html>

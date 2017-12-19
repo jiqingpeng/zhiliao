@@ -1,0 +1,24 @@
+var header = '<div id="header">'+	
+				'<span id="lineicon"></span>'+
+				'<span class="hotline">客服热线：010-82363670</span>'+
+				'<span id="userinfo">'+
+					'<span id="usertil">欢迎您</span>'+
+					'<span id="user">巩克春</span>'+
+					'<a href="#">注销<span id="usericon"></span></a>'+
+				'</span>'+
+			'</div>'+
+			'<div id="sysnav">'+
+				'<div id="logo"><img src="../../img/logoandname.png" alt="群英汇：一体化会议系统" /></div>'+
+				'<span class="nav">'+
+					'<a href="">首页</a>'+
+				'</span>'+
+			'</div>'+
+			'<div id="content">'+
+				'<div id="menu">'+
+					'<div id="pagefunction">超级管理员</div>'+
+					'<ul id="menulist"></ul>'+
+					'<div id="submenumark">&gt</div>'+
+				'</div>'+
+				'<div id="main-contant" class="main-contant">';
+
+document.write(header);

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>酒店预订</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="../../css/index/hotel.css">
+	<link rel="stylesheet" href="../../css/index/base.css">
+	<link rel="stylesheet" href="../../css/index/hotelReserve.css">
+
+</head>
+<body>
+	<div class="ReserHead">
+		<div class="ReserHeadCon">
+			<div class="ResHeadTitle">
+				<div class="ResHeaTitTour">主办方推荐酒店</div>
+				<div class="ResHeaIndent">
+					<span><a href="">登录</a></span>
+					<span><a href="">注册</a></span>
+					<span class="phone">4007-777-777</span>
+				</div>
+			</div>
+			<div class="ResHeadPay">
+				<img src="../../img/index/processB.png">
+			</div>
+		</div>
+	</div>
+	<div class="hotelReserve">
+		<div class="ReserContent clearfix">
+			<div class="ReserConLeft">
+				<div class="resConShow">
+					<img src="../../img/index/grogshop01.jpg">
+				</div>
+				<div class="resConDetail">
+					<div class="colorBlack fontSize">北京饭店</div>
+					<div class="colorDead">北京 东城区 东长安街333号</div>
+					<div class="resConDetDes">
+						<div class="colorBlack">A座高级标准房(内宾)(双早)</div>
+						<div>
+							<span class="spanWidth">床型:<span class="colorBlack">双床</span>
+							</span>
+							<span>面积:<span class="colorBlack">40平方米</span></span>
+						</div>
+						<div>
+							<span class="spanWidth">楼层:<span class="colorBlack">7-14层</span></span>
+							<span>早餐:<span class="colorBlack">双份</span></span>
+						</div>
+						<div>
+							<span class="spanWidth">加床:<span class="colorBlack">加床价RMB:415</span></span>
+							<span>窗户:<span class="colorBlack">有窗</span></span>
+						</div>
+						<div class="warm">
+							<div class="warmPrompt">温馨提示</div>
+							<div>1、预订每间房至少需要提供一位实际入住客人姓名。且入住时必须告知酒店订单上的名字，不能有错别字。</div>
+						</div>
+					</div>
+					<div class="resConDetPri">
+						<div>
+							<span class="indent">订单总额</span>
+							<span>---------------------------</span>
+							<span class="price">¥1274</span>
+						</div>								
+						<div class="write">同程将预收全部费用</div>
+						<br>
+					</div>
+				</div>
+			</div>
+			<div class="ReserConRight clearfix">
+				<div class="reserGrogInfo clearfix">
+					<div class="reserInfo clearfix">
+						<div class="reserInfoChar heightLeft">预订信息</div>
+						<div class="reserDetail heightRight">
+							<div class="reserInfoDet">
+								<span>入离日期&nbsp;&nbsp;&nbsp;&nbsp;<span class="detailDate">2017-6-23</span><input class="detailamend none" type="text">&nbsp;&nbsp;到&nbsp;&nbsp;<span class="detailDate">2017-6-24</span><input type="text" class="detailamend none"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+								<span>共1晚</span><span><a href="#" class="alterData">修改日期</a></span>
+							</div>
+							<div class="reserCount">
+								<span class="resRoomCon">房间数量</span>
+								<span class="resCouStyle active resCouSpan">1</span>
+								<span class="resCouSpan ">2</span>
+								<span class="resCouSpan">3</span>
+								<span class="resCouSpan">4</span>
+								<span class="resCouSpan">5</span>
+								<span class="resCouSpan">6</span>
+								<span class="resCouSpan">7</span>
+								<span class="resCouSpan">8</span>
+							</div>
+							<div class="reserTotal">
+								<span>房费总计&nbsp;&nbsp;<span class="resTolPrice">¥1274</span><span>
+								<span class="particulars"><a href="">明细</a></span></span>
+								<div class="particularsHide none">
+									<div>以下价格是,每日每间的房价</div>
+									<div class="particHideData">
+										<div class="particHideWeek">
+											<div>2017年6月20日</div>
+											<div>星期二</div>
+										</div>
+										<div class="particHidePrice">
+											<div class="price">¥245</div>
+											<div>无早</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<br>
+						</div>
+					</div>
+					<div class="checkInfo clearfix">
+						<div class="checkInfoLeft heightLeft">入住信息</div>
+						<div class="checkInfoRight heightRight">
+							<br><br>
+							<div class="compellation">
+								<span class="marginLeft">住客姓名:</span>&nbsp;&nbsp; <input type="" name="">
+							</div>
+							<br>
+							<div class="infoIntro"><span class="marginLeft">所需姓名需与入住时所持证件一致.</span><span class="regulation"><a href="">填写规则</a></span>
+								<div class="infoIntroHide none">请填写中文或英文姓名，英文姓名格式为zhang/sanfeng。</div>
+							</div>
+							<br>
+							<div class="cellPhone">
+							<span class="marginLeft">手机号码:</span>&nbsp;&nbsp; <input type="" name="">
+							&nbsp;&nbsp;预定成功后会向您发送短信通知
+							</div>
+						</div>	
+					</div>
+					<div class="invoiceInfo clearfix">
+						<div class="invoInfoLeft heightLeft">发票信息</div>
+						
+						<div class="invoInfoRight heightRight">
+							<br><br>
+							<div class="invoInfoRightCon marginLeft">
+							如需房费发票，请从酒店前台索取。如需保险发票，可向保险公司索取（保险公司联系信息会在投保后短信通知您）。若有其他开票需求，请您在下单后联系客服进行处理。
+							</div>
+						</div>
+					</div>
+					<div class="card clearfix">
+						<div class="cardLeft">信用卡信息</div>
+						<div class="cardRight">
+							<br><br>
+							<div class="marginLeft">
+								<div id="selCard">选择您的卡种</div>
+								<br>
+								<div>
+									<span class="spanCard"><input type="hidden" value="中国农业银行信用卡"></span>
+									<span class="spanCard chinaCard"><input type="hidden" value="中国银行信用卡"></span>
+									<span class="spanCard constructionCard"><input type="hidden" value="中国建设银行信用卡"></span>
+									<span class="spanCard brightenCard">
+										<input type="hidden" value="中国光大银行信用卡">
+									</span>
+									<br>
+									<span class="spanCard businessCard"><input type="hidden" value="兴业银行信用卡"></span>
+									<span class="spanCard CITICCard"><input type="hidden" value="中信银行信用卡"></span>
+									<span class="spanCard attractCrad"><input type="hidden" value="招商银行信用卡"></span>
+									<span class="spanCard livelihoodCard"><input type="hidden" value="中国民生银行信用卡"></span>
+									<br>
+									<span class="spanCard richCard"><input type="hidden" value="富滇银行"></span>
+									<span class="spanCard developmentCard"><input type="hidden" value="中国民生银行信用卡"></span>
+									<span class="spanCard hangzhouCard"><input type="hidden" value="杭州银行"></span>
+									<span class="spanCard IndustryCard"><input type="hidden" value="中国工商银行信用卡"></span>
+									<br>
+									<span class="spanCard ningboCard"><input type="hidden" value="宁波银行信用卡"></span>
+									<span class="spanCard dawkCard">
+										<input type="hidden" value="邮政储蓄银行信用卡">
+									</span>
+									<span class="spanCard shanghaiCard"><input type="hidden" value="上海银行信用卡"></span>
+									<span class="spanCard safetyCard">
+										<input type="hidden" value="平安银行信用卡">
+									</span>
+									<br>
+									<span class="spanCard SPDBCard">
+										<input type="hidden" value="浦发银行信用卡">
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="attention clearfix">
+						<div class="attentionLeft heightLeft">预订须知</div>
+						<div class="attentionRight clearfix heightRight">
+							<br><br>	
+							<div class="attentionDes"><span class="marginLeft">1、预订此产品，需预付房费</span><span id="totPrice">¥1274</span>，如订单不确认将全额退款至您的付款账户。该订单确认后不可被取消，若未入住将收取您全额房费<span id="reimburse">¥1274</span>
+							</div>
+							<br>	
+							<div class="attentionDes marginLeft"><span class="marginLeft">2、入住人需凭有效证件入住。</span></div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		<div class="immedPayment">
+				<a href="">点击支付</a>&nbsp;
+				<div class="immedPaymentDes"><span>支付总额：<span class="immedPaymentPrice">¥1274</span>(房费<span id="hintPrice">¥1274</span>)</span></div>
+		</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript" src="../../js/jquery.min.js"></script>
+<script type="text/javascript"></script>
+<script type="text/javascript">
+	$(function(){
+		$(".heightLeft").height($(".heightRight").height()-"40");
+		$(".alterData").on("click", function(){
+			$(".detailDate").toggleClass("none");
+			$(".detailamend").toggleClass("none");
+			if($(".alterData").text()=="修改日期"){
+				$(".alterData").text("确 定");
+			}else{
+				$(".alterData").text("修改日期");
+			}
+
+		})
+		$(".particulars").on("mouseover", function(){
+			$(".particularsHide").removeClass("none");
+		});
+		$(".particulars").on("mouseleave", function(){
+			$(".particularsHide").addClass("none");
+		});
+    	$(".regulation").on("mouseover", function (){
+    		$(".infoIntroHide").removeClass("none");
+    	});
+    	$(".regulation").on("mouseleave", function () {
+    		$(".infoIntroHide").addClass("none");
+    	})
+    	$(".resCouSpan").on("click", function () {
+    		$(this).addClass("active").siblings().removeClass("active")
+    		$(".resTolPrice").text("¥"+"1274"*$(this).text())
+    		$(".price").text("¥"+"1274"*$(this).text());
+    		$("#totPrice").text("¥"+"1274"*$(this).text());
+    		$(".immedPaymentPrice").text("¥"+"1274"*$(this).text());
+    		$("#reimburse").text("¥"+"1274"*$(this).text());
+    		$("#hintPrice").text("¥"+"1274"*$(this).text());
+    	})
+    	$(".spanCard").on("click", function(){
+    		$(this).addClass("redActive").siblings().removeClass("redActive");
+    		var content = "您已选择" + $(this).children().val()
+    		$("#selCard").text(content);
+    	})
+    	// $(".traSecRight .checkBox").on("click", function(){
+    	// 	$(".traSecHide").toggleClass("none");
+    	// 	$(this).toggleClass("borderChange");
+    	// 	$(".roomRate").toggleClass("none");
+    	// 	$(".cancel").toggleClass("none");
+    	// 	// $(".allRisksDes").toggleClass("none");
+    	// 	$(".traSecLeft").css("height",$(".traSecHide").height());
+    	// });
+    	// $(".invoInfoRight .checkBox").on("click", function(){
+    	// 	$(".invoiceHide").toggleClass("none");
+    	// }); 	
+	})
+</script>

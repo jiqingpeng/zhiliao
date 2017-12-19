@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>嘉宾介绍</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+	<link rel="stylesheet" type="text/css" href="../../../css/app/style.css">
+</head>
+<style type="text/css">
+	.contain{
+		margin-top: 48px;
+		padding: 10px;
+		color: #666666;
+		width: 100%;
+		box-sizing: border-box;
+	}
+	.guestBox{
+		width: 100%;
+	}
+	.guest{
+		background-color: #ffffff;
+		padding: 3%;
+		/*height: 200px;*/
+		/*border: 1px solid blue;*/
+		border-radius: 5px;
+		margin-bottom: 10px;
+		box-shadow: 1px 1px 1px -1.5px;
+	}
+	.intro_name{
+		/*height: 100%;*/
+		/*border-bottom: 1px dashed #cccccc;*/
+		/*padding-bottom: 3%;*/
+	}
+	.picture{
+		display: inline-block;
+		width: 60px;
+		height: 60px;
+		/*background-color: red;*/
+		vertical-align: top;
+		border-radius: 3px;
+		background-color: #fff;
+	}
+	.picture img{
+		width: 100%;
+		height: 100%;
+		border-radius: 4px;
+		/*height: 40px;*/
+	}
+	.detailBox{
+		margin-left: 3%;
+		display: inline-block;
+		vertical-align: top;
+		width: 74%;
+	}
+	.detail{
+		height: 14px;
+		line-height: 14px;
+		overflow: hidden;
+	}
+	.unit{
+		max-height: 32px;
+		line-height: 16px;
+		margin-top: 5px;
+		overflow: hidden;
+	}
+	.name{
+		margin-right: 10px;
+	}
+	.intro{
+		color: #666666;
+		margin-top: 10px;
+		text-indent: 2em;
+		font-size: 12px;
+	}
+	.describe{
+		font-size: 12px;
+	}
+</style>
+<body>
+	<div>
+		<div class="head">
+			<div class="navImg">
+				<img src="../../../img/app/arrowLeft-icon.png">
+			</div>
+			<div class="navDetail">嘉宾介绍</div>
+		</div>
+		<div class="guestBox">
+			<div class="contain">
+				<!-- <div class="guest">
+					<div class="intro_name">
+						<div class="picture"></div>
+						<div class="detailBox">
+							<div class="detail">
+								<span class="name">巩克春</span>
+								<span class="describe">前端开发工程师,兼职ui设计师</span>
+							</div>
+							<div class="unit">
+								<span class="describe">北京世有限司北京世有限司北京世有限司北京世有限司北京世有限司北京世有限司北京世有限司北京世有限司北京世有限司北京世有限司北京世有限司北京世有限司</span>
+							</div>
+						</div>	
+					</div>
+					<div class="intro">
+						北京世纪协达科世纪协达科技有限公司北京世纪协达科世纪协达科技有限公司北京世纪协达科世纪协达科技有限公司北京世纪协达科世纪协达科技有限公司北京世纪协达科世纪协达科技有限公司北京世纪协达科世纪协达科技有限公司北京世纪协达科世纪协达科技有限公司
+					</div>
+				</div> -->
+			</div>
+		</div>
+	</div>
+</body>
+<script src="../../../js/zepto.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<script type="text/javascript">
+$(function(){
+	myLoading();
+	initPage();
+});
+function initPage(){
+	var str = '';
+	$.myAjax({
+		url: basePath + "mt/user/activity/get.do",
+		data: {id:Request("actId"),type:"guest"},
+		success: function(result){
+			if(result.flag){
+				if(result.data.guest.length == 0){
+					myConfirm("主办方很懒，暂未设置嘉宾信息",function(){
+                        history.back(-1);
+                    },"nocancle");
+					return;
+				}
+				var name = '';
+				var data = result.data.guest;
+				for(var i = 0; i < data.length; i++){
+					if(data[i].image.length == 0){
+						data[i].image[0] = "../../../img/app/invaImg.png";
+					}
+					str += '<div class="guest">' +
+						'<div class="intro_name">' +
+							'<div class="picture">' +
+								'<img class="guestImg" src="'+ basePath + data[i].image[0] +'"/>' +
+							'</div>' +
+							'<div class="detailBox">' +
+								'<div class="detail">' +
+									'<span class="name">' + data[i].name + '</span>' +
+									'<span class="describe">' + data[i].duty + '</span>' +
+								'</div>' +
+								'<div class="unit">' +
+									'<span class="describe">' + data[i].unit + '</span>' +
+								'</div>' +
+							'</div>	' +
+						'</div>' +
+						'<div class="intro">' + data[i].introduction + '</div>' +
+					'</div>';
+				}
+			}else{
+				myConfirm(result.msg);
+			}
+			$(".contain").html(str);
+		},
+		error: function(){
+			myConfirm("请求失败!");
+		}
+	})
+}
+</script>
+</html>

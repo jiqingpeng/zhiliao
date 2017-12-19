@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>报名字段设置</title>
+<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+<link href="../../../css/common/bootstrap.min.css" rel="stylesheet" />
+<link href="../../../css/style.css" rel="stylesheet" />
+<link href="../../../css/main.css" rel="stylesheet" />
+<link href="../../../css/userfiled.css" rel="stylesheet"/>
+<style type="text/css">
+/* 自定义字段演示（临时） */
+.shownameInp, .typeSel, .isNeededSel {
+	height: 30px;
+	border-radius: 2px;
+	border: 1px solid #ccc;
+}
+.typeSel {
+	width: 130px;
+	margin-left: 56px;
+}
+.isNeededSel {
+	margin-left: 108px;
+	width: 128px;
+}
+.addopt {
+	position: absolute;
+    right: 230px;
+}
+.addoptsave {
+	margin-right: 10px;
+}
+</style>
+</head>
+<body>
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="basicInfo.html">后台管理</a>
+		<a href="">-&gt;</a>
+		<a href="basicInfo.html">活动管理</a>
+		<a href="">-&gt;</a>
+		<a href="userfiled.html">报名信息</a>
+	</div>
+	<div class="con-box">
+	<!-- 以下为每个页面自己编写的部分 -->
+
+		<!-- <div class="activname">《猴年河南南省病理技术研理技术研技术讨》 报名表</div> -->
+	<div id="subMenu"></div>
+    <div id="contentBody">
+	<form id="filedForm">
+		<input type="hidden" id="id"/>
+	    <div class="jcon person">
+	   		<div class="jconheader">
+	   			<span class="jcontil">
+	   				<span class="jconnum">1</span>个人信息
+	   			</span>
+	   		</div>
+	   		<ul class="jconeditdetail personInfo">
+				<!-- <li>
+					<span class="til"><label>姓名</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li> -->
+	   		</ul>
+	   		<div class="morefiled">
+	   			<div class="hidefiled perfiled">
+	   			</div>
+		   		<button type="button" class="addfieldbtn">+</button>
+			   		<!-- <span>查看更多字段</span> -->
+	   		</div>
+	    </div>
+	    <div class="jcon unit">
+	   		<div class="jconheader">
+	   			<span class="jcontil">
+	   				<span class="jconnum">2</span>单位信息
+	   			</span>
+	   		</div>
+	   		<ul class="jconeditdetail unitInfo">
+				<!-- <li>
+					<span class="til"><label>单位名称</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				 -->
+	   		</ul>
+	   		<div class="morefiled">
+	   			<div class="hidefiled unifiled">
+	   			</div>
+		   		<button type="button" class="addfieldbtn">+</button>
+	   		</div>
+	    </div>
+	    <div class="jcon other">
+	   		<div class="jconheader">
+	   			<span class="jcontil">
+	   				<span class="jconnum">3</span>其他信息
+	   			</span>
+	   		</div>
+	   		<ul class="jconeditdetail otherInfo">
+				<!-- <li>
+					<span class="til"><label>备注</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li> -->
+	   		</ul>
+	    </div>
+	    <div class="jcon joinbtn">
+	   		<button type="button" class="btn btn-warning saveFiled">保&nbsp存</button>
+	   		<button type="button" class="btn btn-default canclej">取&nbsp消</button>
+	   		<button class="btn btn-warning preview">
+	   			<a style="color: #fff;" href="../../index/previewFiled.html" target="_blank">预&nbsp览</a>
+	   		</button>
+	    </div>
+	</form>
+	</div>
+	</div>
+</div> 
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<!-- 引入项目中带有左侧菜单的公共js -->
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/main.js"></script>
+<script type="text/javascript">
+
+var addNum = 0; // 记录自定义添加的字段的个数
+
+$(function(){
+	// 获取左侧菜单列表数据(参数为请求地址)
+	initMenu('../../../js/data/administrator.json','活动管理');
+
+	setSubMenu('报名信息');
+
+	$("#id").val(sessionStorage.getItem('actId'));
+
+	$(".canclej").on("click", function(){
+		location.reload(); 
+	});
+	getData();
+
+	$(".morefiled span").click(function(){
+		if ($(this).html() == '收起') {
+			$(this).html('查看更多字段');
+			$(this).parent().prev().animate({'max-height':'485px','min-height':'100px','overflow':'hidden'},1500);
+		} else {
+			$(this).html('收起');
+			$(this).parent().prev().animate({'max-height':'9999px','min-height':'485px'},1500);
+		}
+	});
+	// 点击添加按钮
+	$(".addfieldbtn").click(function(){
+		// alert(1111);
+		$(this).prev().css('display','block').animate({height:"110px"},'slow');
+	});
+	// 选择字段
+	$(document).on('click','.onefiled',function(){
+		var diy = {};
+		diy.name = $(this).find(".name").val();
+		diy.showname = $(this).find(".showname").val();
+		diy.type = $(this).find(".type").val();
+		diy.family = $(this).find(".family").val();
+		diy.sqn = $(this).find(".sqn").val();
+		var str = createOne(diy);
+		$(this).parent().parent().prev().append(str);
+		$(this).removeClass('onefiled').css('background','#ddd');
+
+		// 上移下移操作
+		optionFun();
+	});
+
+	// 自定义添加字段
+	$(document).on('click','.onediy',function(){
+		var addstr = '<li>'+
+				'<input class="showname shownameInp til" name="showname"/>'+
+				'<select class="type typeSel" name="type">'+
+					'<option value="21">单行文本框</option>'+
+					'<option value="22">多行文本框</option>'+
+				'</select>'+
+				'<select class="isNeeded isNeededSel" name="isNeeded">'+
+					'<option value="1" selected>必填</option>'+
+					'<option value="2">选填</option>'+
+				'</select>'+
+				'<span class="addopt">'+
+					'<button type="button" class="btn btn-warning btn-xs addoptsave">确定</button>'+
+					'<button type="button" class="btn btn-xs cancleopt">取消</button>'+
+				'</span>'+
+			'</li>';
+		$(this).parent().parent().prev().append(addstr);
+	});
+	
+	// 确定添加字段
+	$(document).on('click','.addoptsave',function(){
+		
+		// val.name  val.sqn
+		var diy = {};
+		diy.isNeeded = $(this).parent().prev().val();
+		var showname = $(this).parent().prevAll(".showname").val();
+		if(showname == '' || showname == null){
+			myConfirm('请输入自定义字段名称！');
+			return false;
+		}
+		diy.showname = $(this).parent().prevAll(".showname").val();
+		diy.type = $(this).parent().prevAll(".type").val();
+		var family = $(this).parent().parent().parent();
+		if($(family).hasClass('personInfo')){
+			diy.family = '1';
+		} else if($(family).hasClass('unitInfo')){
+			diy.family = '2';
+		} else {
+			diy.family = '3';
+		}
+		diy.name = 'myFiled' + addNum;
+		diy.sqn = 100 + addNum;
+
+		addNum++;
+
+		$(this).parent().parent().parent().append(createOne(diy));
+		$(this).parent().parent().remove();
+		
+		// 上移下移操作
+		optionFun();
+
+	});
+	$(document).on('click','.cancleopt',function(){
+		$(this).parent().parent().remove();
+	});
+	
+	// 保存
+	$(".saveFiled").click(function(){
+		if($(".shownameInp").is("input")){
+			myConfirm('请填写完整自定义字段并确认！');
+			return false;
+		}
+		var aLi = $(".jconeditdetail li");
+		var checkLi = [];
+		var postData = '';
+		aLi.each(function(index){
+			if($(this).find(".must").is(':checked') || $(this).find(".optional").is(':checked')){
+				checkLi.push($(this));
+			}
+		});
+
+		for(var i=0; i<checkLi.length; i++){
+			var val = checkLi[i];
+			if(i == 0){
+				postData = 'activityId='+$(val).find(".activityId").val()+'&name='+$(val).find(".name").val()+
+						'&showname='+$(val).find(".showname").val()+'&type='+$(val).find(".type").val()+
+						'&family='+$(val).find(".family").val()+'&sqn='+$(val).find(".sqn").val()+
+						'&isNeeded='+$(val).find(".isNeeded").val();
+			} else {
+				postData += '&activityId='+$(val).find(".activityId").val()+'&name='+$(val).find(".name").val()+
+						'&showname='+$(val).find(".showname").val()+'&type='+$(val).find(".type").val()+
+						'&family='+$(val).find(".family").val()+'&sqn='+$(val).find(".sqn").val()+
+						'&isNeeded='+$(val).find(".isNeeded").val();
+			}
+		}
+		myConfirm('请仔细核对配置的字段,会议发布后配置的字段不可修改,确定保存？？',function(){
+			$.myAjax({
+				url : basePath + 'admin/activityregconfig/save.do',
+				data : postData,
+				success : function(result){
+					if(result.flag){
+						myAlert(result.msg);
+					} else {
+						myConfirm(result.msg);
+					}
+				},
+				error : function(result) {
+					myConfirm("请求失败!","slow");
+				}
+			});
+		});
+		
+	});
+
+});
+
+// 请求数据
+function getData(){
+	var allFiled = [];
+
+	var url = basePath + 'admin/activityregconfig/list.do';
+	$.myAjax({
+		url : url,
+		data : {activityId:'activityRegisterConfigDefaultTab'},
+		success : function(result){
+			if(result.flag){
+				allFiled = result.data.activityRegConfig;
+				$.myAjax({
+					url : url,
+					data : {activityId:$("#id").val()},
+					success : function(result){
+						initPage(result.data.activityRegConfig,allFiled);
+					},
+					error : function(result) {
+						myConfirm("请求失败!");
+					}
+				});
+			} else {
+				myAlert(result.msg);
+			}
+		},
+		error : function(result) {
+			myConfirm("请求失败！！");
+		}
+	});
+}
+// 初始化页面
+function initPage(usedfiled,allfiled){
+	var hasSet = false;
+	if(usedfiled.length > 0){ // 已设置过信息字段
+		hasSet = true;
+		var arrTemp = [];
+		var eq = false;
+		for(var i=0;i<allfiled.length;i++){
+			eq = false;
+			for(var j=0;j<usedfiled.length;j++){
+				if(allfiled[i].name == usedfiled[j].name){
+					allfiled[i].isNeeded = usedfiled[j].isNeeded;
+					allfiled[i].sqn = usedfiled[j].sqn;
+					eq = true;
+					break;
+				}
+			}
+			if(!eq){
+				arrTemp.push(allfiled[i]);
+			}
+		}
+		var maxSqn = 0;
+		for(var i=0;i<usedfiled.length;i++){
+			if(usedfiled[i].sqn > maxSqn){
+				maxSqn = usedfiled[i].sqn;
+			}
+		}
+		for(var i=0;i<arrTemp.length;i++){
+			arrTemp[i].sqn = maxSqn + i +1;
+			arrTemp[i].isNeeded = 3;
+		}
+		// var allfiled = usedfiled.concat(arrTemp);
+	} else {
+		var arrTemp = [];
+		var usedfiled = [];
+		for(var i=0;i<allfiled.length;i++){
+			var val = allfiled[i];
+			if((val.sqn > 0 && val.sqn < 4) || (val.sqn > 10 && val.sqn < 16)){
+				usedfiled.push(val);
+			} else {
+				arrTemp.push(val);
+			}
+		}
+	}
+	// 生成字段LIST
+	createList(usedfiled,arrTemp,hasSet);
+}
+
+// 生成字段LIST
+function createOne(val){
+	var isNeed = '<span class="filedopt">'+
+					'<input type="hidden" name="isNeeded" class="isNeeded" value="2"/>'+
+					'<input type="checkbox" class="must checkinp"/>必填'+
+					'<input type="checkbox" class="optional checkinp" checked/>选填'+
+					'<input type="checkbox" class="noneed checkinp"/>不需要'+
+				'</span>'+
+				'<span class="moveopt">'+
+					'<img src="../../../img/moveup.png" title="上移" class="moveup"/>'+
+					'<img src="../../../img/movedown.png" title="下移" class="movedown"/>'+
+				'</span>';
+
+		var str = '<li>'+
+				'<input type="hidden" class="activityId" name="activityId" value="'+ $("#id").val() +'">'+
+				'<input type="hidden" class="name" name="name" value="'+ val.name +'"/>'+
+				'<input type="hidden" class="showname" name="showname" value="'+ val.showname +'"/>'+
+				'<input type="hidden" class="type" name="type" value="'+ val.type +'"/>'+
+				'<input type="hidden" class="family" name="family" value="'+ val.family +'"/>'+
+				'<input type="hidden" class="sqn" name="sqn" value="'+ val.sqn +'"/>'+
+				'<span class="til"><label>'+ val.showname +'</label></span>';
+
+		var inpType = val.type.charAt(1); // 输入文本类型
+		
+		if(inpType == '1'){ // 单行文本
+			str += '<span class="type type-inp">单行文本框</span>'+ isNeed +'</li>';
+		} else if(inpType == '2'){ // 多行文本
+			str += '<span class="type type-inp">多行文本框</span>'+ isNeed +'</li>';
+		} else if(inpType == '3'){ // 单选按钮
+			str += '<span class="type type-inp">单选按钮</span>'+ isNeed +'</li>';
+		} else if(inpType == '4'){ // 下拉列表
+			str += '<span class="type type-inp">下拉列表</span>'+ isNeed +'</li>';
+		} else if(inpType == '5'){ // 多选按钮
+			str += '<span class="type type-inp">多选按钮</span>'+ isNeed +'</li>';
+		} else { // 文件
+			str += '<span class="type type-inp">文件/图片</span>'+ isNeed +'</li>';
+		}
+
+		return str;
+}
+// 生成字段LIST
+function createList(showfiled,hidefiled,hasSet){
+	// var allfiled = showfiled;
+	var personInfo = '',
+		unitInfo = '',
+		otherInfo = '';
+
+	for(var i=0; i<showfiled.length; i++){
+		var val = showfiled[i];
+		var str = '';
+		var isNeed = '';
+		if(val.isNeeded == '1'){ // 必填
+			isNeed = '<span class="filedopt">'+
+					'<input type="hidden" name="isNeeded" class="isNeeded" value="1"/>'+
+					'<input type="checkbox" class="must checkinp" checked/>必填'+
+					'<input type="checkbox" class="optional checkinp"/>选填'+
+					'<input type="checkbox" class="noneed checkinp"/>不需要'+
+				'</span>';
+		} else if(val.isNeeded == '2') { // 选填
+			isNeed = '<span class="filedopt">'+
+					'<input type="hidden" name="isNeeded" class="isNeeded" value="2"/>'+
+					'<input type="checkbox" class="must checkinp"/>必填'+
+					'<input type="checkbox" class="optional checkinp" checked/>选填'+
+					'<input type="checkbox" class="noneed checkinp"/>不需要'+
+				'</span>';
+		} else if(val.isNeeded == '3') { // 不需要
+			isNeed = '<span class="filedopt">'+
+					'<input type="hidden" name="isNeeded" class="isNeeded" value="3"/>'+
+					'<input type="checkbox" class="must checkinp"/>必填'+
+					'<input type="checkbox" class="optional checkinp"/>选填'+
+					'<input type="checkbox" class="noneed checkinp" checked/>不需要'+
+				'</span>';
+		}
+
+		isNeed = isNeed + '<span class="moveopt">'+
+					'<img src="../../../img/moveup.png" title="上移" class="moveup"/>'+
+					'<img src="../../../img/movedown.png" title="下移" class="movedown"/>'+
+				'</span>';
+
+		str = '<li>'+
+				'<input type="hidden" class="activityId" name="activityId" value="'+ $("#id").val() +'">'+
+				'<input type="hidden" class="name" name="name" value="'+ val.name +'"/>'+
+				'<input type="hidden" class="showname" name="showname" value="'+ val.showname +'"/>'+
+				'<input type="hidden" class="type" name="type" value="'+ val.type +'"/>'+
+				'<input type="hidden" class="family" name="family" value="'+ val.family +'"/>'+
+				'<input type="hidden" class="sqn" name="sqn" value="'+ val.sqn +'"/>'+
+				'<span class="til"><label>'+ val.showname +'</label></span>';
+
+		var inpType = val.type.charAt(1); // 输入文本类型
+		
+		if(inpType == '1'){ // 单行文本
+			str += '<span class="type type-inp">单行文本框</span>'+ isNeed +'</li>';
+		} else if(inpType == '2'){ // 多行文本
+			str += '<span class="type type-inp">多行文本框</span>'+ isNeed +'</li>';
+		} else if(inpType == '3'){ // 单选按钮
+			str += '<span class="type type-inp">单选按钮</span>'+ isNeed +'</li>';
+		} else if(inpType == '4'){ // 下拉列表
+			str += '<span class="type type-inp">下拉列表</span>'+ isNeed +'</li>';
+		} else if(inpType == '5'){ // 多选按钮
+			str += '<span class="type type-inp">多选按钮</span>'+ isNeed +'</li>';
+		} else { // 文件
+			str += '<span class="type type-inp">文件/图片</span>'+ isNeed +'</li>';
+		}
+
+		if(val.family == '1'){ // 个人信息
+			personInfo += str;
+		} else if(val.family == '2') { // 单位信息
+			unitInfo += str;
+		} else { // 其他信息
+			otherInfo += str;
+		}
+	}
+	if(!otherInfo){
+		$('.other').css('display','none');
+	}
+	$('.personInfo').append(personInfo);
+	$('.unitInfo').append(unitInfo);
+	$('.otherInfo').append(otherInfo);
+
+	if(!hasSet){ // 没设置过字段，可显示新增字段
+		var perstr = '';
+		var unistr = '';
+		for(var i=0;i<hidefiled.length;i++){
+			var val = hidefiled[i];
+			var str = '<span class="onefiled">'+
+					'<input type="hidden" class="name" value="'+val.name+'"/>'+
+	   				'<input type="hidden" class="showname" value="'+val.showname+'"/>'+
+	   				'<input type="hidden" class="isNeeded" value="2"/>'+
+	   				'<input type="hidden" class="type" value="'+val.type+'"/>'+
+	   				'<input type="hidden" class="family" value="'+val.family+'"/>'+
+	   				'<input type="hidden" class="sqn" value="'+val.sqn+'"/>'+val.showname+
+				'</span>';
+			if (val.family == '1') {
+				perstr += str;
+			} else if(val.family == '2'){
+				unistr += str;
+			}
+		}
+		perstr += '<span class="onediy">自定义</span>';
+		unistr += '<span class="onediy">自定义</span>';
+		$(".perfiled").html(perstr);
+		$(".unifiled").html(unistr);
+		
+	}
+
+	// 上移下移操作
+	optionFun();
+}
+// 上移下移操作
+function optionFun(){
+	(function(){
+		var aUp = $(".moveup");
+		aUp.each(function(index){
+			$(this).click(function(){
+				var parentE = $(this).parent().parent();
+				if($(parentE).prev().is('li')){
+					// 交换sqn值
+					var thisSqn = $(parentE).find(".sqn").val();
+					$(parentE).find(".sqn").val($(parentE).prev().find(".sqn").val());
+					$(parentE).prev().find(".sqn").val(thisSqn);
+					// 交换元素
+					var prevE = $(parentE).prev();
+					$(parentE).insertBefore($(prevE));
+				} else {
+					alert("已是第一个！");
+				}
+			});
+		});
+	})();
+	(function(){
+		var aUp = $(".movedown");
+		aUp.each(function(index){
+			$(this).click(function(){
+				var parentE = $(this).parent().parent();
+				if($(parentE).next().is('li')){
+					// 交换sqn值
+					var thisSqn = $(parentE).find(".sqn").val();
+					$(parentE).find(".sqn").val($(parentE).next().find(".sqn").val());
+					$(parentE).next().find(".sqn").val(thisSqn);
+					// 交换元素
+					var nextE = $(parentE).next();
+					$(nextE).insertBefore($(parentE));
+				} else {
+					alert("已是最后一个！");
+				}
+			});
+		});
+	})();
+
+	var aOptions = $(".filedopt");
+	aOptions.each(function(index){
+		var _this = this;
+		var flag = true;
+		$(this).children().click(function(){  // 点击不同的复选框，做不同操作
+			if($(this).is(':checked')){
+				$(this).attr('checked','checked')
+                $(this).siblings('input').removeAttr('checked');
+                if($(this).hasClass('must')){
+               		$(_this).parent().removeClass('notUse');
+					$(_this).parent().find('img').attr('disabled',false).css('cursor','pointer');
+					$(_this).parent().find('.type').css('color','#333');
+					$(this).prevAll('.isNeeded').val('1');
+                } else if($(this).hasClass('optional')){
+               		$(_this).parent().removeClass('notUse');
+					$(_this).parent().find('img').attr('disabled',false).css('cursor','pointer');
+					$(_this).parent().find('.type').css('color','#333');
+					$(this).prevAll('.isNeeded').val('2');
+                } else {
+               		$(_this).parent().attr('class','notUse');
+					$(_this).parent().find('.type').css('color','#999');
+					$(_this).parent().find('img').attr('disabled','disabled').css('cursor','not-allowed');
+					$(this).prevAll('.isNeeded').val('3');
+                }
+            } else { // 3个复选框都没选中，默认不需要
+            	$(this).prevAll('.isNeeded').val('3');
+            	if($(this).hasClass('noneed')){
+               		$(_this).parent().removeClass('notUse');
+					$(_this).parent().find('img').attr('disabled',false).css('cursor','pointer');
+					$(_this).parent().find('.type').css('color','#333');
+                }
+            }
+		});
+	});
+}
+</script>
+</html>

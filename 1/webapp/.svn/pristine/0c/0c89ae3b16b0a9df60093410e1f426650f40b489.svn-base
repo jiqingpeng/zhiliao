@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title class="title">演讲嘉宾服务信息采集表</title>
+<meta content="telephone=no" name="format-detection" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<style type="text/css">
+  body,h1,h2,h3,h4,h5,p,ul,form,input,textarea,select,button { margin:0; padding:0; }
+  li { list-style:none; }
+  a { text-decoration:none; }
+  img { border:none; vertical-align:top; }
+  input,textarea { outline:none; }
+  textarea { resize:none; overflow:auto; }
+  body { font-size:14px; font-family: "SimSun","宋体","Arial Narrow",HELVETICA; }
+  body {
+    background-color: #f2f2f2;
+    padding: 16px 16px;
+    color: #333;
+  }
+  .linkcon {
+    margin: 0 auto;
+  }
+  #linkForm {
+    background-color: #fff;
+    width: 100%;
+  }
+  .banner {
+    margin-bottom: 10px;
+  }
+  .banner img {
+    width: 100%;
+    max-height: 580px;
+  }
+  .messageCon {
+    border-top: 2px solid #c1c5c4;
+    padding: 6px 14px;
+  }
+  .must {
+    color: red;
+  }
+  .pbold {
+    font-weight: bold;
+  }
+  .perMsg, .trainMsg, .hotelMsg, .otherPerMsg, .otherMsg {
+    border-top: 2px dashed #ff7554;
+    margin-top: 10px;
+  }
+  p {
+    line-height: 22px;
+    margin-bottom: 8px;
+  }
+  ul {
+    margin-top: 10px;
+  }
+  li {
+    margin-top: 14px;
+  }
+  .blkTil {
+    margin: 10px 0;
+    display: inline-block;
+    font-weight: 600;
+  }
+  .hi {
+    font-weight: 600;
+    margin: 8px 0;
+    line-height: 20px;
+  }
+  .inp {
+    padding-left: 4px;
+    height: 28px;
+    border: 1px solid #ccc;
+    border-radius: 4px 4px;
+    width: 100%;
+  }
+  .dio {
+    width: 20px;
+    height: 20px;
+    margin-right: 6px;
+    margin-bottom: 4px;
+    position: relative;
+    top: 4px;
+  }
+  .area {
+    min-height: 64px;
+    line-height: 28px;
+    border: 1px solid #ccc;
+    border-radius: 4px 4px;
+    width: 100%;
+    margin-top: 6px;
+    padding: 4px 4px;
+  }
+  .imgcon img {
+    width: 100%;
+    margin-bottom: 4px;
+  }
+  .sub {
+    border-top: 2px solid #c1c5c4;
+    padding: 0 14px;
+    height: 60px;
+    line-height: 60px;
+    margin-top: 14px;
+  }
+  .subMsg {
+    height: 28px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 3px 3px;
+  }
+  .inscribe {
+    text-align: right;
+  }
+  .pppBackTrainL01, .pppGoTrainL01 {
+    margin-bottom: 6px;
+  }
+</style>
+</head>
+<body>
+<div class="linkcon">
+<form id="linkForm">
+  <div class="banner">
+    <img src="../../img/guestLink/ppp/banner.png"/>
+  </div>
+  <div style="padding: 0 14px;">
+    <h2>演讲嘉宾服务信息采集表:</h2>
+    <span class="blkTil">尊敬的演讲嘉宾:</span>
+    <p style="text-indent: 2em;">您好，感谢您应邀出席9月28日（周四）于北京友谊宾馆友谊宫举办的第二届中国PPP论坛。为确保您顺利出席，组委会将为您支付交通、住宿费用，并做好机票、酒店预订和接送机等服务工作。</p>
+    <p style="text-indent: 2em;">请您在收到本链接后尽快填写提交，以便我们及早统筹会议议程并为您安排住宿交通，<span class="pbold">请于</span><span class="must pbold">9月13日前</span><span class="pbold">回复为盼</span>。同时，我们会尽力从网络上为您收集<span class="pbold">个人照片</span>以编辑大会会刊，若您有更合适的个人照片，也可于<span class="must pbold">9月13日前</span>发送至tuppp@tsinghua.edu.cn 。</p>
+    <p style="text-indent: 2em;">您的个人信息我们会严格保密。感谢您的支持！</p>
+    <p class="inscribe">第二届中国PPP论坛筹委会</p>
+  </div>
+  <div class="messageCon">
+    <div class="perMsg">
+      <span class="blkTil">个人信息</span>
+      <ul>
+        <li>
+          <div class="hi">姓名<span class="must"> *</span></div>
+          <input class="inp chineseName" type="text" name="chineseName"/>
+        </li>
+        <li>
+          <div class="hi">本人手机<span class="must"> *</span></div>
+          <input class="inp mobile" type="text" name="mobile"/>
+        </li>
+        <li>
+          <div class="hi">本人邮箱<span class="must"> *</span></div>
+          <input class="inp email" type="text" name="email"/>
+        </li>
+        <!-- <li>
+          <div class="hi">或随员手机</div>
+          <input class="inp contactMobile" type="text" name="contactMobile"/>
+        </li> -->
+        <li>
+          <div class="hi">您的演讲题目是</div>
+          <input class="inp speechTopic" type="text" name="speechTopic"/>
+        </li>
+        <li>
+          <div class="hi">您演讲时是否播放ppt（若播放，请在9月20日前将ppt发至主办方邮箱tuppp@tsinghua.edu.cn）<span class="must"> *</span></div>
+          <input class="dio ppt" type="radio" name="ppt" value="是"/>是<br/>
+          <input class="dio ppt" type="radio" name="ppt" value="否"/>否
+        </li>
+        <li>
+          <div class="hi">您的主要职务是（用于会议议程介绍，建议三个职务以内）<span class="must"> *</span></div>
+          <textarea class="area duty" name="duty"></textarea>
+        </li>
+        <li>
+          <div class="hi">您的个人简介是（500字以内，用于大会会刊中的“嘉宾介绍”）<span class="must"> *</span></div>
+          <textarea class="area introduction" name="introduction" maxlength="500"></textarea>
+        </li>
+        <li>
+          <div class="hi">本次论坛将特设“夜话沙龙”环节，于19:30-21:30在两个分会场同步举行环保及交通行业“夜话沙龙”。您期望出席的是？<span class="must"> *</span></div>
+          <input class="dio salon" type="radio" name="salon" value="环保行业“夜话沙龙”" />环保行业“夜话沙龙”（友谊宫聚英厅）<br/>
+          <input class="dio salon" type="radio" name="salon" value="交通行业“夜话沙龙”" />交通行业“夜话沙龙”（嘉宾楼5号会议室）<br/>
+          <input class="dio salon" type="radio" name="salon" value="均不出席" />均不出席
+        </li>
+      </ul>
+    </div>
+    <div class="trainMsg">
+      <span class="blkTil">本人机票/火车预定</span>
+      <div class="imgcon"><img src="../../img/guestLink/ppp/train.png"></div>
+      <p>1.若您常驻地不在北京，组委会将为您购买往返北京的机票或火车票，您可以根据自己的实际情况选择是否接受这一服务。</p>
+      <p>2. <span class="must">机票舱位默认经济舱</span>，如有特殊要求，可在本页面最后一项备注。</p>
+      <p>3.组委会提供嘉宾的接送机/接送站服务。</p>
+      <ul>
+        <li>
+          <div class="hi">是否需要组委会为您购买往返北京的交通<span class="must"> *</span></div>
+          <input class="dio trainradio" type="radio" name="trainradio" value="是" />是<br/>
+          <input class="dio trainradio" type="radio" name="trainradio" value="否" />否
+        </li>
+        <li>
+          <div class="hi">需要为您购买的前往北京的班次为</div>
+          首选项(需写明日期+交通班次，填写示例：9月27日国航CA1207)
+          <input class="inp pppGoTrainF" name="pppGoTrainF"/>
+          若您的首选班次无法购买，您的备选班次为（建议填写两个备选项）
+          <input class="inp pppGoTrainL01" name="pppGoTrainL"/>
+          <input class="inp pppGoTrainL02" name="pppGoTrainL"/>
+        </li>
+        <li>
+          <div class="hi">需要为您购买的离开北京的返程班次为</div>
+          首选项(需写明日期+交通班次，填写示例：9月27日国航CA1207)
+          <input class="inp pppBackTrainF" name="pppBackTrainF"/>
+          若您的首选班次无法购买，您的备选班次为（建议填写两个备选项）
+          <input class="inp pppBackTrainL01" name="pppBackTrainL"/>
+          <input class="inp pppBackTrainL02" name="pppBackTrainL"/>
+        </li>
+        <li>
+          <div class="hi">如需组委会购票，您的身份证号为</div>
+          <input class="inp idCard" type="text" name="idCard"/>
+        </li>
+        <li>
+          <div class="hi">是否需要筹委会为您接送机/站<span class="must"> *</span></div>
+          <input class="dio isshuttle" type="radio" name="isshuttle" value="同时需要接和送"/>同时需要接和送<br/>
+          <input class="dio isshuttle" type="radio" name="isshuttle" value="不需要接和送"/>不需要接和送<br/>
+          <input class="dio isshuttle" type="radio" name="isshuttle" value="仅接"/>仅接<br/>
+          <input class="dio isshuttle" type="radio" name="isshuttle" value="仅送"/>仅送
+        </li>
+      </ul>
+    </div>
+    <div class="hotelMsg">
+      <span class="blkTil">本人酒店预定</span>
+      <div class="imgcon"><img src="../../img/guestLink/ppp/hotel.png"></div>
+      <p>若您常驻地不在北京，组委会将免费为您安排会议期间在北京友谊宾馆的住宿（北京市海淀区中关村南大街1号），您可以根据自己的实际情况选择是否接受这一服务。</p>
+      <ul>
+        <li>
+          <div class="hi">是否需要为您预定并支付酒店住宿<span class="must"> *</span></div>
+          <input class="dio reservation" type="radio" name="reservation" value="是" />是<br/>
+          <input class="dio reservation" type="radio" name="reservation" value="否" />否
+        </li>
+        <li>
+          <div class="hi">您的酒店住宿时间</div>
+          <input class="dio reservationT" type="checkbox" name="reservationT" value="9月27日"/>9月27日<br/>
+          <input class="dio reservationT" type="checkbox" name="reservationT" value="9月28日"/>9月28日
+        </li>
+      </ul>
+    </div>
+    <div class="otherPerMsg">
+      <span class="blkTil">随员信息</span>
+      <p>为保证会议期间人员安排，<span class="must">组委会建议最多一名随员</span> ，若您的随员需要预定住宿，组委会可帮助预定北京友谊宾馆房间，但<span class="must">原则上不支付随员的有关费用</span></p>
+      <ul>
+        <li>
+          <div class="hi">是否需要为随员代订酒店（<span class="must">随员住宿费需自己支付，单价500元</span>）<span class="must"> *</span></div>
+          <input class="dio otherPerRes" type="radio" name="otherPerRes" value="是" />是<br/>
+          <input class="dio otherPerRes" type="radio" name="otherPerRes" value="否" />否
+        </li>
+        <li>
+          <div class="hi">随员的酒店住宿时间</div>
+          <input class="dio otherPerResT" type="checkbox" name="otherPerResT" value="9月27日"/>9月27日<br/>
+          <input class="dio otherPerResT" type="checkbox" name="otherPerResT" value="9月28日"/>9月28日
+        </li>
+      </ul>
+    </div>
+    <div class="otherMsg">
+      <span class="blkTil">您是否有其他需要？</span><br/>
+      <textarea class="area others" name="others"></textarea>
+    </div>
+  </div>
+  <div class="sub">
+    <button type="button" class="subMsg">提&nbsp;交</button>
+  </div>
+  <input type="hidden" name="showField"/>
+</form>
+</div>
+</body>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+  $(".subMsg").click(function(){
+    var postData = '';
+    var otherThing = [];
+    var traffic = [];
+    var hotel = [];
+    if($(".chineseName").val()){
+      postData += 'chineseName='+$(".chineseName").val();
+    } else {
+      alert("请输入姓名!");
+      $(".chineseName").focus();
+      return;
+    }
+    if(!$(".mobile").val()){
+      alert('为方便联系，请填写您的手机号！');
+      $(".mobile").focus();
+      return;
+    }
+    if($(".mobile").val()){
+      if(!(/^1[34578]\d{9}$/.test($(".mobile").val()))){ 
+        alert("手机号格式不正确！"); 
+        $(".mobile").focus(); 
+        return false; 
+      };
+      postData += '&mobile='+$(".mobile").val();
+    }
+    // if($(".contactMobile").val()){
+    //   if(!(/^1[34578]\d{9}$/.test($(".contactMobile").val()))){ 
+    //     alert("手机号格式不正确！");
+    //     $(".contactMobile").focus();
+    //     return false; 
+    //   };
+    //   postData += '&contactMobile='+$(".contactMobile").val();
+    // }
+    if(!$(".email").val()){
+      alert('为方便联系，请填写您的邮箱！');
+      $(".email").focus();
+      return;
+    } else {
+      if(!/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test($(".email").val())){
+        alert('您输入的邮箱格式不正确!');
+        $(".email").focus();
+        return false;
+      }
+      postData += '&email='+$(".email").val();
+    }
+    if($(".speechTopic").val()){
+      postData += '&speechTopic='+$(".speechTopic").val();
+    }
+
+    if($(".ppt:checked").val()){
+      postData += '&ppt='+$(".ppt:checked").val();
+    } else {
+      alert("请选择演讲时是否播放ppt");
+      $(".ppt").focus();
+      return false;
+    }
+
+    if($(".duty").val()){
+      postData += '&duty='+$(".duty").val();
+    } else {
+      alert("为方便对您进行介绍，请填写您的主要职务！");
+      $(".duty").focus();
+      return false;
+    }
+
+    if($(".introduction").val()){
+      postData += '&introduction='+$(".introduction").val();
+    } else {
+      alert("为方便会刊介绍，请填写您的个人简介！");
+      $(".introduction").focus();
+      return false;
+    }
+
+    if($(".salon:checked").val()){
+      var salonJson = {
+        salon: $(".salon:checked").val()
+      }
+      otherThing.push(salonJson);
+    } else {
+      alert("请选择您要出席的“夜话沙龙”");
+      $(".salon").focus();
+      return false;
+    }
+
+    if($(".trainradio:checked").val()){
+      var trainJson = {
+        trainradio: $(".trainradio:checked").val()
+      }
+      otherThing.push(trainJson);
+    } else {
+      alert("请选择是否为您购买往返北京的交通");
+      $(".trainradio").focus();
+      return false;
+    }
+
+    var gof = {
+      pppGoTrainF: $(".pppGoTrainF").val()
+    }
+    traffic.push(gof);
+    var gol = {
+      pppGoTrainL: $(".pppGoTrainL01").val() +'，'+ $(".pppGoTrainL02").val()
+    }
+    traffic.push(gol);
+    var backf = {
+      pppBackTrainF: $(".pppBackTrainF").val()
+    }
+    traffic.push(backf);
+    var backl = {
+      pppBackTrainL: $(".pppBackTrainL01").val() +'，'+ $(".pppBackTrainL02").val()
+    }
+    traffic.push(backl);
+
+    if($(".trainradio:checked").val() == '是'){
+      if($(".idCard").val()){
+        if(!(/^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{2}$/.test($(".idCard").val()))&&!(/^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/.test($(".idCard").val()))){
+          alert("请输入正确的身份证号！");
+          $(".idCard").focus();
+          return false;
+        }
+      } else {
+        alert("如需组委会购票，请输入您的身份证号！");
+        $(".idCard").focus();
+        return false;
+      }
+    }
+    
+    var idCard = {
+      idCard: $(".idCard").val()
+    }
+    traffic.push(idCard);
+
+    if($(".isshuttle:checked").val()){
+      var isshuttle = {
+        isshuttle: $(".isshuttle:checked").val()
+      }
+      traffic.push(isshuttle);
+    } else {
+      alert("请选择是否接送机/接送站");
+      $(".isshuttle").focus();
+      return false;
+    }
+
+    if($(".reservation:checked").val()){
+      var reservation = {
+        reservation: $(".reservation:checked").val()
+      }
+      hotel.push(reservation);
+    } else {
+      alert("请选择是否为您预定并支付酒店");
+      $(".reservation").focus();
+      return false;
+    }
+    
+    if($(".reservation:checked").val() == "是"){
+      var chk_value =''; 
+      if($('input[name="reservationT"]:checked').length <= 0){
+        alert("请选择您的住宿时间");
+        $(".reservationT").focus();
+        return false;
+      }
+      $('input[name="reservationT"]:checked').each(function(){ 
+        chk_value += $(this).val(); 
+      }); 
+      var reservationT = {
+        reservationT: chk_value
+      }
+      hotel.push(reservationT);
+    }
+
+    if($(".otherPerRes:checked").val()){
+      var otherPerRes = {
+        otherPerRes: $(".otherPerRes:checked").val()
+      }
+      hotel.push(otherPerRes);
+    } else {
+      alert("请选择是否为随员预定并支付酒店");
+      $(".otherPerRes").focus();
+      return false;
+    }
+    
+    if($(".otherPerRes:checked").val() == "是"){
+      var ochk_value =''; 
+      if($('input[name="otherPerResT"]:checked').length <= 0){
+        alert("请选择随员的住宿时间");
+        $(".otherPerResT").focus();
+        return false;
+      }
+      $('input[name="otherPerResT"]:checked').each(function(){ 
+        ochk_value += $(this).val()+" "; 
+      }); 
+      var otherPerResT = {
+        otherPerResT: ochk_value
+      }
+      hotel.push(otherPerResT);
+    }
+
+    var others = {
+      others: $(".others").val()
+    }
+    otherThing.push(others);
+
+    var showField = [
+      {"showName": "姓名","name": "chineseName"},
+      {"showName": "本人手机","name": "mobile"},
+      {"showName": "本人邮箱","name": "email"},
+      // {"showName": "随员手机","name": "contactMobile"},
+      {"showName": "演讲题目","name": "speechTopic"},
+      {"showName": "是否播放PPT","name": "ppt"},
+      {"showName": "主要职务","name": "duty"},
+      {"showName": "简介","name": "introduction"},
+      {"showName": "夜话沙龙","name": "salon"},
+      {"showName": "是否购买往返交通","name": "trainradio"},
+      {"showName": "去程班次","name": "pppGoTrainF"},
+      {"showName": "去程备选班次","name": "pppGoTrainL"},
+      {"showName": "返程班次","name": "pppBackTrainF"},
+      {"showName": "返程备选班次","name": "pppBackTrainL"},
+      {"showName": "身份证号","name": "idCard"},
+      {"showName": "是否接机/接站","name": "isshuttle"},
+      {"showName": "是否预定酒店","name": "reservation"},
+      {"showName": "入住时间","name": "reservationT"},
+      {"showName": "是否代订随员酒店","name": "otherPerRes"},
+      {"showName": "随员入住时间","name": "otherPerResT"},
+      {"showName": "其他需求","name": "others"}
+    ];
+    showField = JSON.stringify(showField); 
+    otherThing = JSON.stringify(otherThing); 
+    hotel = JSON.stringify(hotel); 
+    traffic = JSON.stringify(traffic); 
+    postData += "&otherThing="+otherThing+"&hotel="+hotel+"&traffic="+traffic+"&showField="+showField+
+      "&orgId="+"bjsjxdkjyxgs"+"&activityId="+"62d8ee249cea48f9b822e8e0a8bb30fc";
+    // postData += "&otherThing="+otherThing+"&hotel="+hotel+"&traffic="+traffic+"&showField="+showField+
+    //   "&orgId="+"330df73bc20d4bfa9ea2ea59f209033f"+"&activityId="+"12bd1afba5dc4807a46400bf7c9c6486";
+    // 数据提交
+    // console.log(postData);
+    $.ajax({
+      url: "http://www.gconfs.net:3670/admin/activity/expert/nosignsave.do",
+      // url: "http://www.gconfs.com/admin/activity/expert/nosignsave.do",
+      data: postData,
+      type: 'post',
+      // xhrFields: { // 解决跨域session不一致问题，上线删除，只开发使用
+      //   withCredentials: true
+      // },
+      // crossDomain: true,
+      dataType: 'json',
+      success: function(result) {
+        if(result.flag){
+          //alert('提交成功！');
+          window.location.href = "http://www.gconfs.net:3670/page/weixin/pppGuestOk.html";
+        } else {
+          alert('提交失败，请刷新重试！');
+        }
+      },
+      error: function(result) {
+        alert('请求失败，请重试！');
+      }
+    })
+  });
+})
+</script>
+</html>

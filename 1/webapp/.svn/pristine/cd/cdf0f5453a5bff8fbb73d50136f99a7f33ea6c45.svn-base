@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>我</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+	<link rel="stylesheet" type="text/css" href="../../../css/app/base.css">
+	<link rel="stylesheet" type="text/css" href="../../../css/app/header-app.css">
+	<link rel="stylesheet" type="text/css" href="../../../css/app/myPage.css">
+	<style>
+		#save{
+			display: flex;
+			height: 60px;
+			justify-content: center;
+			align-items: center;
+		}
+		#save span{
+			width: 70px;
+			height: 32px;
+			line-height: 32px;
+			text-align: center;
+			margin:0 auto;
+			background:#f60;
+			color:#fff;
+			border-radius:4px;
+		}
+	</style>
+</head>
+<body>
+	<header class="app-header">
+		<div class="navImg">
+			<img src="../../../img/app/arrowLeft-icon.png">
+		</div>
+		<div class="navDetail">卡包</div>
+	</header>
+	<section class="my-page">
+		<input type="hidden" id="id">
+		<article>
+			<div class="page-list" data-type="bankName">
+				<p class="page-l">
+					<!-- <img src="../../../img/app/name.png" alt="name"> -->
+					<span>银行名称</span>
+				</p>
+				<p class="page-r">
+					<!-- <input class="bankName" type="text" placeholder="请设置银行名称"> -->
+					<select class="cardList">
+			    	</select>
+				</p>
+			</div>
+			<div class="page-list" data-type="cardNumber">
+				<p class="page-l">
+					<!-- <img src="../../../img/app/name.png" alt="name"> -->
+					<span>信用卡卡号</span>
+				</p>
+				<p class="page-r">
+					<input class="cardNumber" type="text" placeholder="请设置卡号">
+				</p>
+			</div>
+			<div class="page-list" data-type="cardValueDate">
+				<p class="page-l">
+					<!-- <img src="../../../img/app/nick.png" alt="nick"> -->
+					<span>有效期</span>
+				</p>
+				<p class="page-r">
+					<input class="cardValueDate" type="text" placeholder="例: 08/19">
+				</p>
+			</div>
+			<div class="page-list" data-type="cardUserName">
+				<p class="page-l">
+					<!-- <img src="../../../img/app/unit.png" alt="unit"> -->
+					<span>持卡人姓名</span>
+				</p>
+				<p class="page-r">
+					<input class="cardUserName" type="text" placeholder="请设置姓名">
+				</p>
+			</div>
+			<div class="page-list" data-type="mobile">
+				<p class="page-l">
+					<!-- <img src="../../../img/app/phone.png" alt="mobile"> -->
+					<span>手机号</span>
+				</p>
+				<p class="page-r">
+					<input class="mobile" type="text" placeholder="请设置手机号">
+				</p>
+			</div>
+			<div class="page-list" data-type="credentialNumber">
+				<p class="page-l">
+					<!-- <img src="../../../img/app/phone.png" alt="mobile"> -->
+					<span>身份证</span>
+				</p>
+				<p class="page-r">
+					<input class="credentialNumber" type="text" placeholder="请设置身份证号码">
+				</p>
+			</div>
+			<div id="save"><span>保 存</span></div>
+		</article>
+	</section>
+</body>
+<script src="../../../js/zepto.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<script src="../../../js/app/mtTool.js"></script>
+<script type="text/javascript">
+$(function(){
+	// type = null;
+	init();
+	$('#save span').on("click",function(){
+		var id = $("#id").val();
+		var sel = $('.cardList')[0];
+		var bankName = sel.options[sel.selectedIndex].text;
+		var bankId = $('.cardList').val();
+		var cardNumber = $('.cardNumber').val();
+		var cardValueDate = $('.cardValueDate').val();
+		var cardUserName = $('.cardUserName').val();
+		var mobile = $('.mobile').val();
+		var credentialNumber = $('.credentialNumber').val();
+		var data = {id:id,bankId:bankId,bankName:bankName,cardNumber:cardNumber,cardValueDate:cardValueDate,cardUserName:cardUserName,mobile:mobile,credentialNumber:credentialNumber,credentialName:1}
+		if(valit(data)){
+			save(data);
+		}
+	});
+	$('.cardList').on("change",function(){
+		 $('.credentialNumber').val('');
+		 $('.mobile').val('');
+	})
+});
+function init(){
+	$.myAjax({
+		url: basePath + "common/lycreditcard.do",
+		success:function(result){
+			if(result.flag){
+				$(".cardList").mySelect(result.data.lyCreditCard);
+				$.myAjax({
+					url: basePath + "user/card/package/list.do",
+					success:function(result){
+						if(result.flag){
+							if(result.data.cards.length){
+								var data = result.data.cards[0];
+								$("#id").val(result.data.cards[0].id)
+								if(data){
+									 $('.cardList').val(data.bankId);
+									 $('.cardNumber').val(data.cardNumber);
+									 $('.cardValueDate').val(data.cardValueDate);
+									 $('.cardUserName').val(data.cardUserName);
+									 $('.mobile').val(data.mobile);
+									 $('.credentialNumber').val(data.credentialNumber);
+								}
+							}
+						}else{
+							myConfirm(result.msg);
+						}
+					},
+					error:function(result){
+						myConfirm('请求失败');
+					}
+				})
+			}else{
+				myConfirm('请求失败');
+			}
+		},
+		error:function(result){
+			myConfirm('请求失败');
+		}
+	})	
+};
+
+function save(data){
+	var url = basePath + "user/card/package/save.do";
+	$.myAjax({
+		url:url,
+		data:data,
+		success:function(result){
+			console.log(result)
+			if(result.flag){
+				myConfirm('保存成功');
+				init();
+			}else{
+				myConfirm(result.msg);
+			}
+		},
+		error:function(result){
+			myConfirm('请求失败');
+		}
+	})
+};
+function myMess(message){
+	$("body").prepend('<div id="myMess"><div class="messBox"><span>'+message+'</span></div></div>');
+	$("#myMess").css({
+		"width":"100%",
+		"position":"fixed",
+		"display":"flex",
+		"justify-content":"center",
+		"align-items":"center",
+		"bottom":"1%",
+	})
+	$(".messBox").css({
+		"width":"100px",
+		"height":"30px",
+		"display":"flex",
+		"justify-content":"center",
+		"align-items":"center",
+		"background":"#ccc",
+		"border-radius":"10px",
+	})
+	setTimeout(function() {
+		$("#myMess").remove();
+	}, 3000);
+};
+function valit(data){
+	if (data.bankName == '' || data.bankName == null) {
+		myConfirm('银行名称不能为空');
+		return false;
+	};
+	if (data.cardNumber == '' || data.cardNumber == null) {
+		myConfirm('信用卡卡号不能为空');
+		return false;
+	}else{
+		if(!(/^\d+$/g.test(data.cardNumber))){ 
+        	myConfirm("信用卡格式不正确！");  
+        	return false; 
+        };
+	};
+	if (data.cardUserName == '' || data.cardUserName == null) {
+		myConfirm('持卡人姓名不能为空');
+		return false;
+	};
+	if (data.cardValueDate == '' || data.cardValueDate == null) {
+		myConfirm('有效期不能为空');
+		return false;
+	}else{
+		if(!(/^\d{2}(\-|\/|\.)\d{2}$/.test(data.cardValueDate))){ 
+        	myConfirm("信用卡格式不正确！");  
+        	return false; 
+        };
+	};
+	if (data.mobile == '' || data.mobile == null) {
+		myConfirm('手机号码不能为空');
+		return false;
+	};
+	if (data.credentialNumber == '' || data.credentialNumber == null) {
+		myConfirm('身份证不能为空');
+		return false;
+	}else{
+		if(!(/^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$/.test(data.credentialNumber)) && !(/^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/.test(data.credentialNumber))){ 
+        	myConfirm("身份证格式不正确,请重新输入！");  
+        	return false; 
+        };
+	};
+	return true;
+};
+</script>
+</html>

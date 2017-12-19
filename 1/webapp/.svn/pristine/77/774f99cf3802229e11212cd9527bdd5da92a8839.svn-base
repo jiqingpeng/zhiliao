@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>邀请函</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../../../css/app/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/app/style.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/app/invitation.css">
+</head>
+<body>
+    <div class="head">
+		<div class="navImg">
+			<img src="../../../img/app/arrowLeft-icon.png">
+		</div>
+		<div class="navDetail">邀请函</div>
+        <div class="share code">
+            <img  src="../../../img/app/share-icon.png">
+        </div>
+	</div>
+    <div class="inviImg">
+        <div class="themeName"></div>
+        <div class="themeLocation"></div>
+        <div class="themeTiem"></div>
+    </div>
+    <div class="navMenu">
+        <div class="menuImg"><img class="imgIcon" src="../../../img/app/menu-icon.png"></div>
+        <ul class="menuList hide">
+            <li class="menuList1">会议简介</li>
+            <li class="menuList2">组织机构</li>
+            <li class="menuList3">嘉宾介绍</li>
+            <li class="menuList4">活动日程</li>
+            <li class="menuApply menuList5">立即报名</li>
+        </ul>
+    </div>
+    <div class="contain">
+        <div class="meetFrist">
+            <div class="designation"></div>
+            <!-- <div class="theme">
+                <span class="themeTit flexOne">主题：</span>
+                <span class="themeCon flexFive"></span>
+            </div> -->
+            <div class="time conFlex">
+                <span class="timeTil flexOne">时间：</span>
+                <span class="timeCon flexFive">2017.10.17到2017.11.18</span>
+            </div>
+            <div class="address conFlex">
+                <span class="addressTil flexOne">地点：</span>
+                <span class="addressCon flexFive"></span>
+            </div>
+            <div class="bottomLine conFlex">
+                <div class="leftLine"></div>
+                <div class="middleCir"></div>
+                <div class="rightLine"></div>
+            </div>
+        </div>
+        <div class="meetintro distance">
+            <a class="skip" name="skip1"></a>
+            <div class="introTil">
+                <h4>会议简介</h4>
+                <div class="pachytene"></div><div class="vacancy"></div><div class="pachytene rightPachytene"></div>
+            </div>
+            <div class="intro">
+            </div>
+        </div>
+        <div class="meetInstitution distance">
+            <a class="skip" name="skip2"></a>
+            <div class="introTil">
+                <h4>组织机构</h4>
+                <div class="pachytene"></div><div class="vacancy"></div><div class="pachytene rightPachytene"></div>
+            </div>
+            <div class="institution">
+                <div>
+                    <div class="triangle-right triangleOne"></div><div class="triangle-right triangleTwo"></div><div class="institutionName"></div>
+                    <div class="instCon"></div>
+                    <div class="instCon"></div>
+                </div>
+            </div>
+        </div>
+        <div class="meetguest distance">
+            <a class="skip" name="skip3"></a>
+            <div class="introTil">
+                <h4>嘉宾介绍</h4>
+                <div class="pachytene"></div><div class="vacancy"></div><div class="pachytene rightPachytene"></div>
+            </div>
+            <div class="guestCon">
+                <div class="guestDetail distance">
+                    <div class="guestImg"><img src="../../../img/app/invitation.jpg"></div>
+                    <div class="guestMatter">
+                        <div class="guestName"></div>
+                        <div class="roll"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="meetSchedule distance">
+            <a class="skip" name="skip4"></a>
+            <div class="introTil">
+                <h4>活动日程</h4>
+                <div class="pachytene"></div><div class="vacancy"></div><div class="pachytene rightPachytene"></div>
+            </div>
+            <div class="scheduleCon">
+                <div class="triangle-right triangleOne"></div><div class="triangle-right triangleTwo"></div><div class="institutionName schTime">2017-10-23</div>
+                <div class="scheduleTime">
+                    <div class="schDetTime">08:45-09:00</div>
+                    <div class="schDetCon">
+                        <h4>回复欧式吊机费快乐健康V领就是</h4>
+                        <div class="schDetDistance">回复欧式吊机费快乐健康V领就是</div>
+                        <div class="schDetDistance">回复欧式吊机费快乐健康V领就是</div>
+                        <div class="schDetDistance">回复欧式吊机费快乐健康V领就是</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="meetApply distance">
+            <a class="skip" name="skip5"></a>
+            <a class="apply">立 即 报 名</a>
+            <div class="QRcode">
+                <img src="">
+            </div>
+            <div class="attention">微信扫一扫 关注更多</div>
+            <div class="hospitality">盛情特邀您出席</div>
+        </div>
+    </div>  
+</body>
+<script src="../../../js/zepto.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<script>
+var confdesc = '';//分享的详情
+var result = '';
+var id = Request("id");
+var back = Request("back");
+var status = 'null'; // 标识是否报名（未报名为 字符串-‘null’）
+
+try{
+    utilForJs.putValue('share','share');
+    var aaa = utilForJs.getValue('share');
+} catch(err){
+    $(".inviImg").css("margin-top", "0");
+    $(".head").css("display","none");
+}
+
+$(function(){
+    myLoading();
+    initPage();
+    $(".navImg").on("click", function(){
+        window.location.href = "../activity/meetDetail.html?id=" + id;
+    })
+    $(".menuImg").on("click", function(){
+        $(".menuList").toggleClass("hide");
+        $(".imgIcon").css("transform", "rotate(180deg)");
+    });
+    $(".menuList1").on("click", function(){
+        window.location = "#skip1";
+        $(".menuList").addClass("hide");
+    });
+    $(".menuList2").on("click", function(){
+        window.location = "#skip2";
+        $(".menuList").addClass("hide");
+    });
+    $(".menuList3").on("click", function(){
+        window.location = "#skip3";
+        $(".menuList").addClass("hide");
+    });
+    $(".menuList4").on("click", function(){
+        window.location = "#skip4";
+        $(".menuList").addClass("hide");
+    });
+    $(".menuList5").on("click", function(){
+        window.location = "#skip5";
+        $(".menuList").addClass("hide");
+    }); 
+    // 分享
+    $(".share").on("click", function(){
+        var title = $(".themeName").html();
+        var titleUrl = basePath + "page/app/activity/invitation.html?id="+id;
+        var text = confdesc;
+        var url = basePath + "page/app/activity/invitation.html?id="+id;
+        var comment = "";
+        var site = "群英汇会议服务平台";
+        var siteUrl = "http://www.gconfs.com/";
+        utilShare.showShare(title,titleUrl,text,url,comment,site,siteUrl);
+    });
+    $(".apply").on("click", function(){
+        if(status != 'null')return false;
+        var strHref = "../index/takepart.html";
+        var params = strHref + "?id="+ id;
+        $(this).attr("href", params);
+    });   
+});
+function initPage(){
+    var postData = {};
+    if(sessionStorage.getItem('token') && sessionStorage.getItem('isLogin') == "isLogin"){
+        // 如果有token并且是登录状态
+        postData = {id:id,type:"base,introduction,org,schedual,guest,status"};
+    } else {
+        postData = {id:id,type:"base,introduction,org,schedual,guest"};
+    }
+    $.myAjax({
+        url: basePath + "mt/user/activity/get.do",
+        data: postData,
+        success: function(result){
+            console.log(result)
+            if(result.flag){
+                if(result.data.base.state == 1 || result.data.base.state == 2){
+                    if(result.data.status != "null" && result.data.status != undefined){
+                        status = result.data.status;
+                        $(".apply").html("已报名");
+                    }      
+                } else { // 会议结束
+                    status = result.data.base.state;
+                    $(".apply").html("已结束");
+                }
+                getMessage(result);
+                getCode();
+            }else{
+                myConfirm(result.msg);
+            }
+        },
+        error: function(){
+            myConfirm("请求失败!");
+        }
+    }) 
+}
+function getMessage(result){
+    //邀请函主题及时间添加数据
+    var data = result.data.base;
+    $(".themeName").html(data.name);
+    $(".themeLocation").html(data.province + data.city )
+    $(".themeTiem").html(data.stime.substring(0,11) + ' ' + ' 到 ' +  ' ' + data.etime.substring(0,11))
+    $(".designation").html(data.name);
+    // $(".themeCon").html(data.name);
+    $(".timeCon").html(data.stime.substring(0,11) + ' ' + ' 到 ' +  ' ' + data.etime.substring(0,11));
+    $(".addressCon").html(data.province + data.city + data.location);
+
+    //会议简介添加数据
+    $(".intro").html(result.data.introduction.replace(/w:br/g,"br"));
+    if($('.intro').html() == ''){
+        $(".meetintro").html('')
+    }
+    //添加数据到组织机构
+    confdesc = '地点：'+data.province +'-'+ data.city+'\n时间：'+data.stime;
+    var str = '';
+    data = result.data.org;
+    for(var i=0;i<data.length;i++){
+        if(data[i].name == "主办单位"){
+            confdesc = '主办单位：'+data[i].value[0]+'\n'+confdesc;
+        } 
+    }
+    var string = '';
+    var con = '';
+    for(var i = 0; i < data.length; i++){
+        str = '';
+        str += '<div class="triangle-right triangleOne"></div><div class="triangle-right triangleTwo"></div><div class="institutionName">'+data[i].name+'</div>';
+        string = '';           
+        for(var j = 0; j < data[i].value.length; j++){
+            string += '<div class="instCon">'+data[i].value[j]+'</div>';
+        };
+        con += str + string;
+    }
+   $(".institution").html(con);
+   if($(".institution").html() == ''){
+        $(".meetSchedule").html('');
+   }
+   //添加数据到嘉宾介绍
+    str = '';
+    data = result.data.guest;
+    for(var i = 0; i < data.length; i++){
+        if(data[i].image.length == 0){
+            data[i].image[0] = "../../../img/app/invaImg.png";
+        };
+        str += '<div>' + 
+            '<div class="guestDetail distance">' +
+                    '<div class="guestImg">' +
+                        '<img src="'+ basePath + data[i].image[0]+'">' +
+                    '</div>'+
+                    '<div class="guestMatter">' +
+                        '<div class="guestName">' + data[i].name + '</div>' +
+                      '<div class="roll">' + data[i].duty + '</div>' +
+                    '</div>' +
+                '</div>'+
+            '</div>'
+    }
+    $(".guestCon").html(str);
+    if($(".guestCon").html() == ''){
+        $(".meetguest").html('')
+    }
+   //添加数据到活动日程
+    data = '';
+    string = '';
+    con = '';
+    for(var key in result.data.schedual){
+        var str = '<div class="triangle-right triangleOne"></div><div class="triangle-right triangleTwo"></div><div class="institutionName schTime">'+key+'</div>'
+        data = result.data.schedual[key];
+        string='';
+        for(var i = 0; i < data.length; i++){
+            string += '<div class="scheduleTime">' +
+                    '<div class="schDetTime">'+ data[i].time +'</div>' +
+                    '<div class="schDetCon">' +
+                        '<h4>'+ data[i].title +'</h4>' +
+                        '<div class="schDetDistance">'+data[i].content +'</div>' +
+                    '</div>' +
+                '</div>'
+            str += ''
+        }
+        con += '<div class="contain">' + str + string + '</div>'
+    }
+    $(".scheduleCon").html(con);
+    console.log($(".scheduleCon").html())
+    if($(".scheduleCon").html() == ''){
+        $(".meetSchedule").html('');
+    }
+    if($(".schDetCon h4").html() == ''){
+        $(".schDetCon .schDetDistance").css("margin-top", "0")
+    }
+}
+function getCode(){
+    $.myAjax({
+        url: basePath+"common/base64image.do",
+        data: {str: window.location.href},
+        success: function(result){
+            if(result.flag){
+                $(".QRcode img").attr("src", "data:image;base64," + result.data);
+            } else {
+                myConfirm(result.msg);
+            }
+        },
+        error: function(){
+            myConfirm("请求失败，请重试！");
+        }
+    })
+}
+</script>
+</html>

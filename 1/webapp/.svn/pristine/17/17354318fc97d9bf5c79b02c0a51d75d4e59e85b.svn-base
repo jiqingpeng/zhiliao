@@ -1,0 +1,52 @@
+// $(function(){
+// 	$('#userName').html(utilForJs.getUserLoginName());
+// 	$('#userPwd').html(utilForJs.getUserLoginPwd());
+// 	$('#userDateState').html(utilForJs.putValue('dataa','qweasd---111000'));
+// 	$('#userDate').html(utilForJs.getValue('dataa'));
+// 	$('#userDateDelState').html(utilForJs.delValue('dataa'));
+// 	$('#userDateDel').html(utilForJs.getValue('dataa'));
+// 	$('#locationData').html(utilForJs.getLocationData());
+// 	$('#lontitude').html(utilForJs.getLontitude());
+// 	$('#latitude').html(utilForJs.getLatitude());
+// });
+// var sss ;
+// function scanQRCode(){
+// 	document.getElementById('src').html
+// 	// 开始扫描二维码
+// 	  scanQrcode.scanQRCode();
+// }
+// // 二维码结果回调函数
+// function scanSuccess(val){
+// 	  $('#src').html(val);
+// }
+
+/**
+* 自动登录
+*/
+function autoLogin(){
+	var name = utilForJs.getUserLoginName();
+		pwd = utilForJs.getUserLoginPwd();
+	// 判断是否登录过
+	if(name && pwd){ // 登陆过，自动登录
+		if(sessionStorage.getItem('isLogin') != 'login'){
+			$.myAjax({
+				url: basePath + 'user/login/check.do',
+				data: {"mobile": name,"pwd":pwd},
+				success: function(result){
+					if(result.flag){
+						sessionStorage.setItem('isLogin',"login");
+					} else {
+						myConfirm(result.flag);
+					}
+				},
+				error: function(result){
+					myConfirm(result.msg);
+				}
+			})
+		}
+	} else { // 用户未登录过	
+		setTimeout(function(){
+			window.location.href = '../index/login.html';
+		},10);
+	}
+}

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>消息列表</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+	<link rel="stylesheet" type="text/css" href="../../../css/app/style.css">
+</head>
+<style type="text/css">
+	.signIn{
+		position: absolute;
+		top: -2px;
+		right: 12px;
+	}
+	.signIn img{
+		height: 36px;
+		width: 26px;
+	}
+	.distance{
+		padding:2%;
+	}
+	.contain{
+		border-radius: 5px;
+		background-color: #fff;
+		box-shadow: 0.5px 0.5px #ccc;
+		margin-top: 48px;
+		margin-bottom: 35px;
+	}
+	.list{
+		border-bottom: 1px solid #e2e2e2;
+		padding: 10px 7px;
+		position: relative;
+	}
+	.list img{
+		width: 24px;
+		margin-top: 13px;
+	}
+	.listDetail{
+		margin-left: 10px;
+		margin-top: 3px;
+		width: 65%;
+	}
+	.listIcon{
+		margin-left: 10px;
+	}
+	.listIcon img{
+		width: 12px;
+		margin-top: 6px;
+	}
+	.listImg, .listDetail, .listIcon{
+		float: left;
+	}
+	.listImg{
+		width: 48px;
+		height: 48px;
+		background-color: #fff4ee;
+		border-radius: 50px;
+		text-align: center;
+	}
+	.listIcon{
+		float: right;
+		margin-top: 8px;
+		margin-right: 15px;
+	}
+	.title{
+		font-weight: 600;
+		color: #5e5e5e;
+	}
+	.time{
+		margin-top: 4px;
+		font-size: 12px;
+	}
+	.circle{
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background-color: #f36a1c;
+		position: absolute;
+		top: 31px;
+		right: 38px;
+	}
+</style>
+<body>
+	<div>
+		<div class="head">
+			<div class="navDetail">消息列表</div>
+			<div class="signIn code">
+				<img  src="../../../img/app/code.png">
+			</div>
+		</div>
+		<div class="distance">
+			<div class="contain">
+			<div class="content">
+				<!-- <div class="list clearfix">
+					<div class="listImg">
+						<img src="../../../img/app/apply-icon.png">
+					</div>
+					<div class="listDetail">
+						<div class="title">2017中国屈原与楚辞交流大会</div>
+						<div class="time">2017/10/29</div>
+					</div>
+					<div class="listIcon">
+						<img src="../../../img/app/rightorgin-icon.png">
+					</div>
+				</div> -->
+			</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../../../js/zepto.js"></script>
+<script type="text/javascript" src="../../../js/app/mtCommon.js"></script>
+<script type="text/javascript" src="../../../js/app/mtTool.js"></script>
+<script type="text/javascript">
+$(function(){
+	myLoading();
+	initPage();
+	$(document).on("click",".list", function(){
+		var id = $(this).find("#id").val();
+		window.location.href = "newsDetail.html?actId=" + id;
+	});
+})
+function initPage(){
+	var redC = false;
+	var str = '';
+	$.myAjax({
+		url: basePath + "mt/user/message/list/activity.do",
+		success: function(result){
+			removeMyLoading();
+			if(result.flag){
+				if(result.data.messageList.length == 0){
+					myConfirm("暂无消息列表");
+					return;
+				}
+				for( var i = 0; i < result.data.messageList.length; i++){
+					str += '<div class="list clearfix">' +
+						'<input id="id" type="hidden" value ="'+ result.data.messageList[i].id +'"/>' +
+						'<div class="listImg">' +
+							'<img src="../../../img/app/apply-icon.png">' +
+						'</div>' +
+						'<div class="listDetail">' +
+							'<div class="title">' + result.data.messageList[i].name + '</div>' +
+							'<div class="time">' + result.data.messageList[i].stime + '</div>' +
+						'</div>' +
+						'<div class="listIcon">' +
+							'<img src="../../../img/app/rightorgin-icon.png">' +
+						'</div>';
+						if(result.data.messageList[i].state == 1){
+							str += '<div class="circle"></div>' + '</div>';
+							redC = true;
+						}else{
+							str += '</div>';
+						}	
+				}
+				getRed(redC);
+			}else{
+				myAlert(result.msg);
+			}
+			$(".content").html(str)
+		},
+		error: function(){
+			removeMyLoading();
+			myConfirm("请求失败!");
+		}
+	})
+}
+function getRed(str){
+	try{
+		utilNewMsg.newMsg(str);
+	} catch(err) {
+		console.log("PC端调试");
+	}	
+}
+</script>
+</html>

@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>活动列表</title>
+<link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+<link href="../../css/style.css" rel="stylesheet" />
+<link href="../../css/main.css" rel="stylesheet" />
+<!-- 引入项目中每个模块的独立样式 : xxx.css -->
+<link href="../../css/super.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- 引入页头 -->
+<script type="text/javascript" src="../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="activityList.html">活动列表</a>
+	</div>
+	<div class="con-box noSubMenu">
+		<!-- 以下为每个页面自己编写的部分 -->
+		<div class="activityList"> <!-- 建议用功能名为类名 -->
+			<ul class="actListCon">
+				
+			</ul>
+		</div>
+	</div>     
+</div> 
+
+<script type="text/javascript" src="../../js/common/footer.js"></script>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/common/main.js"></script>
+<script type="text/javascript">
+$(function(){
+	// 获取左侧菜单列表数据(参数为请求地址)
+	initMenu('../../js/data/superMenu.json','活动列表');
+	init();
+	$(document).on('click','.cancel-btn',function(){
+		var id = $(this).parent().find('.id').val();
+		var state = $(this).parent().find('.state').val();
+		console.log(id);
+		console.log(state);
+		$.myAjax({
+			url: basePath + 'super/activity/save.do',
+			data:{id:id,state:state},
+			success: function(result){
+				console.log(result);
+				if(result.flag){
+					$('.actListCon').html('');
+					init();
+				} else {
+					myAlert(result.msg);
+				};
+			},
+			error: function(){
+				myAlert("请求失败");
+			}
+		});
+	});
+	// 点击列表，跳转详情
+	$(document).on('click','.actType',function(){
+		$(this).attr('href','../index/detail.html?location='+$(this).prevAll(".id").val());
+	});	
+});
+function init(){
+		$.myAjax({
+			url: basePath + 'super/activity/list.do',
+			success: function(result){
+				console.log(result);
+				if(result.flag){
+					// 登录信息展示
+					loginInfo(result.status);
+					var data = result.data.activity;
+					var str = '';
+					for(var i=0; i<data.length; i++){
+						if(data[i].state==2){
+							str = 
+								'<li>'+
+									'<input type="hidden" class="id" value="'+ data[i].id +'"/>'+
+									'<input type="hidden" class="type" value="'+ data[i].type +'"/>'+
+									'<input type="hidden" class="state" value="'+ data[i].state +'"/>'+
+									'<span class="actstime">'+ data[i].stime.substring(0,11) +'</span>'+
+									'<span class="place">'+ data[i].province +'</span>'+
+									'<a target="_blank" class="actType" href="#">'+ data[i].name +'</a>'+
+									'<button class="cancel-btn" type="button">取消发布</button>'+
+								'</li>';
+							$('.actListCon').append(str);
+						}else{
+							str = 
+								'<li>'+
+									'<input type="hidden" class="id" value="'+ data[i].id +'"/>'+
+									'<input type="hidden" class="type" value="'+ data[i].type +'"/>'+
+									'<input type="hidden" class="state" value="'+ data[i].state +'"/>'+
+									'<span class="actstime">'+ data[i].stime.substring(0,11) +'</span>'+
+									'<span class="place">'+ data[i].province +'</span>'+
+									'<a target="_blank" class="actType" href="#">'+ data[i].name +'</a>'+
+									'<button class="cancel-btn no-tip" type="button">未发布</button>'+
+								'</li>';
+							$('.actListCon').append(str);
+							
+						};
+					};
+					$('.no-tip').css({
+						background:'#ccc',
+						border:'1px solid #ccc',
+						color:'#000',
+					});
+					$('.no-tip').attr('disabled','disabled');
+				} else {
+					myAlert(result.msg);
+				};
+			},
+			error: function(){
+				myAlert("请求失败");
+			}
+		});
+};
+</script>
+</html>
+

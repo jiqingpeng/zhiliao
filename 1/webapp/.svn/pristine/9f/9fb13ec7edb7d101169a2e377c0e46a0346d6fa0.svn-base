@@ -1,0 +1,108 @@
+body{
+	position: relative;
+}
+.search{
+	width:96%;
+	padding:0 2%;
+	position: fixed;
+	top:100px;
+	left:0;
+}
+.search .nav{
+	display: flex;
+	align-items: center;
+	margin:0 2%;
+}
+.search .nav span{
+	font-size:20px;
+}
+.search .nav .nav-tit{
+	flex:1;
+	text-align:center;
+	font-size:14px;
+	color:#f60;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border:1px solid #f60;
+	height:34px;
+}
+.search .nav .nav-ltit{
+	border-radius:20px 0 0 20px;
+}
+.search .nav .nav-rtit{
+	border-radius:0 20px 20px 0;
+}
+.search .nav .active{
+	background:#f60;
+	color:#fff;
+}
+.search .search-conent{
+	margin-top:10%;
+}
+.search .search-conent .search-list{
+	margin:4%;
+}
+.search-conent .search-list input{
+	border:none;
+	width:96%;
+	height:24px;
+	padding:10px 2%;
+	font-size:20px;
+	color:gray;
+	border-radius:4px;
+}
+.search .search-conent .search-btn{
+	display: flex;
+	background:#f60;
+	align-items: center;
+	justify-content: center;
+	height:40px;
+	color:#fff;	
+	font-size:20px;
+	border-radius:4px;
+	margin:6% 2% 0;
+}
+.search-conent .search-btn img{
+	width:25px;
+	height:25px;
+}
+.trainMask,.airPlanMask{
+	width:100%;
+	position: absolute;
+	left:0;
+	top:0;
+	z-index:100;
+	overflow-y: auto;
+	background:#fff;
+}
+.active{
+	display: none;
+}
+.city-box{
+	
+}
+.city-box .head{
+	margin-left:2%;
+}
+.city-box .city-list{
+	margin-left:8%;
+}
+.letter-list{
+	display: flex;
+	width:60px;
+	height:20px;
+	align-items:center;
+	justify-content: center;
+	border:1px solid red;
+}
+.city-box .city-list .city-name{
+	display: flex;
+	height:30px;
+	align-items: center;
+}
+.city-pos{
+	position:fixed;
+	right:0;
+	top:0;
+}

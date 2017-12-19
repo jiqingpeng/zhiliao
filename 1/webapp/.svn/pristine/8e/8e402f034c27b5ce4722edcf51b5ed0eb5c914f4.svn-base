@@ -1,0 +1,121 @@
+<%@ page language="java" import="java.util.*"
+	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="com.sjxd.gconfs.util.UtilLinux"%>
+<%@page import="com.sjxd.gconfs.util.Util"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>log</title>
+<link rel="shortcut icon" href="../../img/webicon.ico"
+	type="image/x-icon" />
+<link href="../../css/common/bootstrap.min.css" rel="stylesheet">
+<link href="../../css/common/bootstrap-table.min.css" rel="stylesheet">
+<link href="../../css/style.css" rel="stylesheet" />
+<link href="../../css/main.css" rel="stylesheet" />
+<style type="text/css">
+.name {
+	width: 90px;
+}
+
+.value {
+	width: 210px;
+}
+</style>
+</head>
+<body>
+	<span id="data" style="display: none"><%=Util.convJSONObject(UtilLinux.getLinuxSysInfo())%></span>
+	<!-- 引入页头 -->
+	<script type="text/javascript" src="../../js/common/header.js"></script>
+	<div class="mops-con">
+		<div class="con-nav">
+			<a href="log.jsp">系统信息</a>
+		</div>
+		<!-- 内容部分导航头的class : con-nav (必须) -->
+		<div class="con-box">
+			<!-- 内容部分主体内容的class : con-box (必须) -->
+			<!-- 以下为每个页面自己编写的部分 -->
+			<div id="subMenu">
+				<div id="subMenuBody">
+					<ul>
+						<a href="pcu.jsp"><li>在线用户列表</li></a>
+						<a href="log.jsp"><li>实时日志</li></a>
+						<a href="log.jsp"><li class="menuAct">系统信息</li></a>
+					</ul>
+				</div>
+			</div>
+			<div id="contentBody" class="mops-table" style="max-width: 1180px;">
+				<div id="show">
+					<div id="CPU"></div>
+					<div id="Mem"></div>
+					<div id="Swap"></div>
+					<div id="Os"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="../../js/common/footer.js"></script>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/bootstrap-table.min.js"></script>
+<script src="../../js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/common/main.js"></script>
+<script type="text/javascript">
+	$(function() {
+		var data = $.parseJSON($("#data").html());
+		var str = '';
+		var cpu = "";
+		var mem = "";
+		var os = "";
+		var swap = "";
+		for ( var i in data) {
+			if (i != "CPU" && i != "CPUList") {
+				str = '<button class="name btn btn-sm btn-default">' + i
+						+ '</button>'
+						+ '<button class="value btn btn-sm btn-default">'
+						+ data[i] + '</button><br>';
+			} else {
+				str = '<div style="display:block;"><button class="name btn btn-sm btn-default" style="vertical-align: top;">'
+						+ i
+						+ '</button>'
+						+ '<div style="display:inline-block;">';
+				for (var s = 0; s < data[i].length; s++) {
+					var x = data[i][s];
+					str += '<div style="float:left;width:300px;">';
+					for ( var k in x) {
+						str += '<button class="name btn btn-sm btn-default">'
+								+ k
+								+ '</button>'
+								+ '<button class="value btn btn-sm btn-default">'
+								+ x[k] + '</button>';
+					}
+					str += '</div>';
+				}
+				str += '</button></div></div>';
+			}
+			if (i.indexOf("Mem") >= 0) {
+				mem += str;
+				str = "";
+			}
+			if (i.indexOf("CPU") >= 0) {
+				cpu += str;
+				str = "";
+			}
+			if (i.indexOf("Swap") >= 0) {
+				swap += str;
+				str = "";
+			}
+			if (i.indexOf("Os") >= 0) {
+				os += str;
+				str = "";
+			}
+		}
+		$("#Mem").html(mem);
+		$("#CPU").html(cpu);
+		$("#Swap").html(swap);
+		$("#Os").html(os);
+	})
+</script>
+</html>

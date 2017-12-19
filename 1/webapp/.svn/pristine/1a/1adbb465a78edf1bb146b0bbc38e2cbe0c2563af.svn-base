@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>留言板</title>
+	<meta name="description" content="留言板" />
+    <meta content="telephone=no" name="format-detection" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+    <link rel="stylesheet" href="../../css/common/bootstrap.min.css" />  
+	<link rel="stylesheet" href="../../css/weixin/style.css" />
+	<style>
+		body{
+			position:relative;
+		}
+		.message-box{
+			/*border:1px solid red;*/
+			width:100%;
+			padding:0 20px;
+		}
+		.message-box .mess-head .mess-tit{
+			width:86%;
+		}
+		.message-box .mess-head .mess-icon{
+			width:30px;
+			padding:0;
+		}
+		.message-box .mess-head .mess-icon img{
+			width:30px;
+			height:30px;
+		}
+		.message-box .mess-head .mess-tit .mess-time{
+			
+		}
+		.message-box .mess-group{
+			margin:10px 0;
+			border-bottom:1px solid #ccc;
+		}
+		.message-box .tit-cont{
+			margin-left:14%;
+		}
+		.message-box .mess-foot{
+			margin:10px 0;
+		}
+		.message-box .mess-foot .item{
+			padding:0;
+			float:right;
+		}
+		.message-box .mess-foot .item img{
+			/*border:1px solid red;*/
+			display: inline-block;
+			width:18px;
+			height:20px;
+			vertical-align: top;
+		}
+		
+		.mess-talk{
+			width:100%;
+			position:fixed;
+			left:0;
+			bottom:0;
+			border-bottom:1px solid #ccc;
+			border:1px solid red;
+			display:none;
+		}
+		.mess-talk .mess-txt{
+			width:100%;
+		}
+		.mess-talk .mess-txt img{
+			width:30px;
+			height:30px;
+			padding:0;
+		}
+		.mess-talk .mess-txt input{
+			height:30px;
+			padding:0;
+		}
+		.message-box .mess-foot .mess-time{
+			padding:0;
+		}
+		.mess-talk-group{
+			border-bottom:1px solid #ccc;
+		}
+		.mess-talk-group img{
+			width:30px;
+			height:30px;
+		}
+		.mess-talk-group .talk-txt{
+			width:86%;
+		}
+		.mess-talk-group .mess-foot .mess-time{
+			margin-left:14%;
+		}
+		.talk-btn{
+			display: inline-block;
+			width:64px;
+			height:20px;
+			background:#f60;
+			color:#fff;
+			text-align:center;
+			border-radius:2px;
+			float:right;
+			margin-top:5px;
+			margin-bottom:10px;
+		}
+		.message-box .mess-child{
+			
+			margin:10px;
+			background:#ccc;
+			margin-left:14%;
+		}
+	</style>
+</head>
+<body>
+	<div class="order-box"">
+		<div class="message-box">
+			<div class="mess-group">
+				<div class="mess-head clearfix">
+					<div class="mess-icon fl">
+						<img src="../../img/weixin/head-icon.png" alt="">
+					</div>
+					<div class="mess-tit fr">
+						<p class="mess-name">环球网</p>
+						<p class="mess-time">9:08</p>
+					</div>
+				</div>
+				<div class="mess-cont tit-cont">
+					在中国和东盟外长签署谅解备忘录，顺利通过南海行为框架文件，为男孩的稳定奠定了基础
+				</div>
+				<div class="mess-foot clearfix">
+					<a class="col-xs-2 fr item" href="javascript:;">
+						<img src="../../img/weixin/up.png" alt="up">
+						<span class="num">80</span>
+					</a>
+					<a class="col-xs-2 fr item" href="javascript:;">
+						<img src="../../img/weixin/talk.png" alt="talk">
+						<span class="num">89</span>
+					</a>	
+				</div>
+			</div>
+			<div class="mess-talk-group">
+				<div class="clearfix">
+					<img class="fl" src="../../img/weixin/head-icon.png" alt="">
+					<div class="talk-txt fr">
+						<span class="mess-name">李老头：</span>
+						<span class="mess-cont">在中国和东盟外长签署谅解备忘录，顺利通过南海行为框架文件，为男孩的稳定奠定了基础在中国和东盟外长签署谅解备忘录，顺利通过南海行为框架文件，为男孩的稳定奠定了基础</span>
+					</div>
+				</div>
+				<div class="mess-foot clearfix">
+					<p class="clearfix">
+						<span class="mess-time col-xs-2 fl">9:20</span>
+						<!-- <a class="col-xs-2 fr item" href="javascript:;">
+							<img src="../../img/weixin/up.png" alt="up">
+							<span class="num">80</span>
+						</a> -->
+						<a class="col-xs-2 fr item" href="javascript:;">
+							
+							<span class="num">回复</span>
+						</a>
+					</p>
+					<div class="mess-talk-group mess-child">
+						<div class="clearfix">
+							<img class="fl" src="../../img/weixin/head-icon.png" alt="">
+							<div class="talk-txt fr">
+								<span class="mess-name">李老头：</span>
+								<span class="mess-cont">在中国和东盟外长签署谅解备忘录，顺利通过南海行为框架文件，为男孩的稳定奠定了基础在中国和东盟外长签署谅解备忘录，顺利通过南海行为框架文件，为男孩的稳定奠定了基础</span>
+							</div>
+						</div>
+						<div class="mess-foot clearfix">
+							<p class="clearfix">
+								<span class="mess-time col-xs-2 fl">9:20</span>
+								<!-- <a class="col-xs-3 fr item" href="javascript:;">
+									<img src="../../img/weixin/up.png" alt="up">
+									<span class="num">80</span>
+								</a> -->
+								<a class="col-xs-3 fr item" href="javascript:;">
+									
+									<span class="num">回复</span>
+								</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="mess-talk">
+		<p class="mess-txt clearfix">
+			<!-- <img class="col-xs-2" src="../../img/weixin/head-icon.png" alt="head-icon"> -->
+			<input type="text" class="col-xs-8 fl">
+			<a class="talk-btn fr" href="javascript:;">评论</a>
+		</p>
+		
+		<p class="clearfix"></p>
+	</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/common/main.js"></script>
+<script src="../../js/user/userMain.js"></script>
+<script>
+	$(function(){
+		init();
+		$(document).on('click','.item',function(){
+			$('.mess-talk').css('display','block');
+		});
+	})
+	function init(){
+		var url=basePath+'user/activity/issue/list.do';
+		var id='25812d45fc27441ebacb6f9e3fe70322';
+		// var url=basePath+'user/activity/issue/comment/list.do';
+		// var id='cff1f4ad2e6a416bab10ab11b74b186q';
+		var pageNum=1;
+		var pageSize=10;
+		$.myAjax({
+			url: url,
+			// data:{id:id,pageNum:pageNum,pageSize:pageSize},
+			data:{id:id},
+			success: function(result) {
+				console.log(result);
+				if (result.flag) {
+					for(var i = 0; i < result.data.activityIssue.length; i ++){
+						var str=
+						'<div class="message-box">'+
+							'<input type="hidden"/>'+
+							'<div class="mess-group">'+
+								'<div class="mess-cont tit-cont">'+
+									result.data.activityIssue[i].name+
+								'</div>'+
+								'<div class="mess-foot clearfix">'+
+									'<a class="col-xs-2 fr item" href="javascript:;">'+
+										'<img src="../../img/weixin/up.png" alt="up">'+
+										'<span class="num reply">'+result.data.activityIssue[i].thumbsUp+'</span>'+
+									'</a>'+
+									'<a class="col-xs-2 fr item" href="javascript:;">'+
+										'<img src="../../img/weixin/talk.png" alt="talk">'+
+										'<span class="num reply">'+result.data.activityIssue[i].totalComment+'</span>'+
+									'</a>'+	
+								'</div>'+
+							'</div>'+
+						'</div>';
+						$('.order-box').append(str);
+					}
+				} else {
+					myAlert(result.msg);
+				};
+			},
+			error: function() {
+				myAlert('请求失败');
+			}
+		});
+	}
+	function comment(){
+
+	}
+</script>
+</html>

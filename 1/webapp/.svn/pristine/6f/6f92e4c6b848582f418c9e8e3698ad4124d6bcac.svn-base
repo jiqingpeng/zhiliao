@@ -1,0 +1,27 @@
+[
+	{
+		"icon" : "../../img/icon/admin/actListIcon.png",
+		"name" : "活动列表",
+		"url" : "activityList.html"
+	},
+	{
+		"icon" : "../../img/icon/super/adminediticon.png",
+		"name" : "管理员配置",
+		"url" : "adminEdit.html"
+	},
+	{
+		"icon" : "../../img/icon/admin/personal.png",
+		"name" : "基本信息",
+		"url" : "information.html"
+	},
+	{
+		"icon" : "../../img/icon/super/safetyicon.png",
+		"name" : "修改密码",
+		"url" : "safety.html",
+		"unitHome":{
+					"icon" : "../../img/icon/super/societyhomeicon.png",
+					"name" : "单位主页",
+					"url" : "homepage.html"
+				}
+	}
+]

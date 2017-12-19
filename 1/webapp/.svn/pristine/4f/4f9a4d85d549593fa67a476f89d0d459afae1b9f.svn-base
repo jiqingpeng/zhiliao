@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="../../css/common/bootstrap.min.css">
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.list li, .detail li{
+			list-style: none;
+		}
+		.contain{
+			width: 1000px;
+			margin: 100px auto;
+		}
+		.list, .detail{
+			margin-top: 20px;
+		}
+		.hide{
+			display: none;
+		}
+		.back{
+			float: right;
+		}
+	</style>
+</head>
+<body>
+<div class="contain">
+	<button type="button" class="btn btn-warning switchover">按钮一</button>
+	<button type="button" class="btn btn-warning">按钮二</button>
+	<button type="button" class="btn btn-warning">按钮三</button>
+	<button type="button" class="btn btn-warning">按钮四</button>
+	<button type="button" class="btn btn-warning">按钮五</button>
+	<button type="button" class="btn btn-warning">按钮六</button>
+	<button type="button" class="btn btn-warning back hide">返回</button>
+	<ul class="list list-group">
+		<li class="list-group-item"><a class="skip" href="#">11111</a></li>
+		<li class="list-group-item"><a class="skip" href="#">11111</a></li>
+		<li class="list-group-item"><a class="skip" href="#">11111</a></li>
+		<li class="list-group-item"><a class="skip" href="#">11111</a></li>
+		<li class="list-group-item"><a class="skip" href="#">11111</a></li>
+		<li class="list-group-item"><a class="skip" href="#">11111</a></li>
+	</ul>
+	<ul class="detail list-group hide">
+		<li class="list-group-item">南京市南京市南京市南京市南京市</li>
+		<li class="list-group-item">南京市南京市南京市南京市南京市</li>
+		<li class="list-group-item">南京市南京市南京市南京市南京市</li>
+		<li class="list-group-item">南京市南京市南京市南京市南京市</li>
+		<li class="list-group-item">南京市南京市南京市南京市南京市</li>
+		<li class="list-group-item">南京市南京市南京市南京市南京市</li>
+		<li class="list-group-item">南京市南京市南京市南京市南京市</li>
+	</ul>
+</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$(".skip").on("click", function () {
+			$(".back").removeClass("hide");
+			$(".switchover").attr('disabled',true); 
+            $(this).parent().parent().addClass("hide");
+            $(".detail").removeClass("hide");
+        });
+        $(".back").on("click", function(){
+        	$(".switchover").attr('disabled',false); 
+        	$(this).siblings(".list").removeClass("hide");
+            $(".detail").addClass("hide");
+            $(".back").addClass("hide");
+        });
+	})
+</script>
+</html>

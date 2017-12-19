@@ -1,0 +1,776 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>报名表</title>
+	<link href="../../css/common/bootstrap.css" rel="stylesheet">
+	<link href="../../css/common/jquery-confirm.css" rel="stylesheet">
+	<link href="../../css/common/bootstrapValidator.min.css"/>
+	<link href="../../css/style.css" rel="stylesheet">
+	<link href="../../css/main.css" rel="stylesheet">
+	<link href="../../css/userfiled.css" rel="stylesheet">
+</head>
+<body>
+	<div id="header">
+		<span id="lineicon"></span>
+		<span class="hotline">客服热线：010-82363670</span>
+		<span class="notLogin userinfo">
+			<a href="#" class="userLogin">登录</a>
+			<a href="#" class="userRegiste">注册</a>
+		</span>
+		<span id="userinfo" class="none userinfo">
+			<span id="usertil">欢迎您</span>
+			<span id="user">巩克春</span>
+			<span class="userCenter"><a href="">用户中心</a></span>
+			<a href="#" class="logout">注销</a>
+		</span>
+	</div>
+	<div id="sysnav">
+		<div id="logo"><img src="../../img/logoandname.png" alt="群英汇：一体化会议系统" /></div>
+		<span class="nav">
+			<a href="index.html">首页</a>
+		</span>
+	</div>
+	<div class="prejoincon">
+	<form id="attendForm" class="attendForm">
+		<input type="hidden" name="userId"/>
+		<input type="hidden" name="activityId" id="activityId"/>
+		<div class="activname">群英汇活动报名表 报名表</div>
+	    <div class="jcon person">
+	   		<div class="jconheader">
+	   			<span class="jcontil">
+	   				<span class="jconnum">1</span>个人信息
+	   			</span>
+	   		</div>
+	   		<ul class="jcondetail personInfo form-horizontal">
+				<!-- <li>
+					<span class="til"><span class="red">* </span><label>姓名</label></span>
+					<input class="inp" type="text" name="name">
+				</li>
+				 -->
+	   		</ul>
+	    </div>
+	    <div class="jcon unit">
+	   		<div class="jconheader">
+	   			<span class="jcontil">
+	   				<span class="jconnum">2</span>单位信息
+	   			</span>
+	   		</div>
+	   		<ul class="jcondetail unitInfo form-horizontal">
+				<!-- <li>
+					<span class="til"><label>单位名称</label></span>
+					<input class="inp" type="text" name="name">
+				</li>
+				 -->
+				
+	   		</ul>
+	    </div>
+	    <div class="jcon other">
+	   		<div class="jconheader">
+	   			<span class="jcontil">
+	   				<span class="jconnum">3</span>其他信息
+	   			</span>
+	   		</div>
+	   		<ul class="jcondetail otherInfo form-horizontal">
+				<!-- <li>
+					<span class="til"><label>备注</label></span>
+					<input class="inp" type="text" name="phone">
+				</li> -->
+	   		</ul>
+	    </div>
+	    <div class="joinbtn btncon">
+	   		<button type="button" class="btn btn-warning joinok">保&nbsp存</button>
+	   		<!-- <button type="button" class="btn btn-default canclej">取&nbsp消</button> -->
+	    </div>
+	</form>
+	</div>
+	<div id="footer">
+		<div id="hytlink">
+			<span><a target="_blank" href="indepPage/about.html">关于我们</a></span>
+			<span><a target="_blank" href="indepPage/contant.html">联系我们</a></span>
+			<span><a target="_blank" href="indepPage/help.html">帮助中心</a></span>
+			<span><a href="#">网站声明</a></span>
+			<span><a target="_blank" href="indepPage/companyNews.html">公司新闻</a></span>
+		</div>
+		<p>未经gconfs.com同意，不得转发网站会议信息</p>
+		<p>京ICP备17018133号</p>
+	</div>
+	<div class="mask"></div> 
+	<div class="login_box">
+		<input class="user" type="text" placeholder="请输入账号(手机号)" maxlength="32">
+		<input class="password" type="password" placeholder="请输入密码" maxlength="32">
+		<!-- <p class="login_message">错误信息</p> -->
+		<a id="login"  class="login_btn">登&nbsp;录</a>
+		<p class="login_footer clearfix">
+			<!-- <a class="fl a" href="javascript:;" style="color:#252525; font-size:12px;">十天内免登录</a> -->
+			<a class="fl color_000 goRegister" style="color:#252525; font-size:12px;" >立即注册
+			</a>
+			<a class="fr color_000 forget" href="resetPwd.html" style="color:#252525; font-size:12px;" >忘记密码?
+			</a>
+		</p>
+	</div>
+	<div class="register">
+		<div class="reg_head">用户注册</div>
+		<form id="registerfm">
+			<table >
+				<tr>
+					<td class="m50 clearfix">
+						<label for="" class="fl">&nbsp手机号:</label>
+						<input class="wInput mobile fr" type="text" placeholder="请输入手机号" name="mobile" maxlength="32">
+					</td>
+				</tr>
+				<tr>
+					<td class="clearfix">
+						<label class="fl" for="">&nbsp&nbsp密码:</label>
+						<input class="pwdHide" type="hidden" name="pwd">
+						<input class="wInput userpwd pwdShow fr" type="password" placeholder="请输入密码" maxlength="32">
+					</td>
+				</tr>
+				<tr>
+					<td class="clearfix">
+						<label for="" class="fl">确认密码:</label>
+						<input class="wInput confpwd fr" type="password" placeholder="请再次输入密码" maxlength="32">
+					</td>
+				</tr>
+				<tr class="codeImg">
+					<td class="clearfix">
+						<input class="wInput fl regBox imgProv" type="text" name="code" placeholder="验证码" maxlength="32">
+						<img class="regImg fl" src="" alt="regImg">
+						<a class="fl regText" href="javascript:;">换一张</a>
+					</td>
+				</tr>
+				<tr>
+					<td class="clearfix">
+						<label class="fl" for="">&nbsp验证码:</label>
+						<input class="w50 fl" id="proving" type="text" placeholder="验证码" maxlength="32" disabled="disabled">
+						<button type="button" class="fr btn" id="code">免费获取验证码</button>
+					</td>
+				</tr>
+				<tr>
+					<td class="tc">
+						<input class="checkBox" type="checkbox">
+						<span>我已阅读且同意</span>
+						<a target="_blank" href="indepPage/regprocotol.html">《群英会协议》</a>
+					</td>
+				</tr>
+				<tr>
+					<td class="reg">
+						<button type="button" class="btn btndefult w50" id="regbtn" disabled="disabled">注册</button>
+						<a class="hasId" style="color:#252525; font-size:12px;">已有账号</a>
+					</td>
+				</tr>
+			</table>
+	    </form>
+	</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/bootstrapValidator.min.js"></script>
+<script src="../../js/jquery-confirm.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/common/main.js"></script>
+<script src="../../js/jQuery.md5.js"></script>
+<script type="text/javascript">
+$(function(){
+
+	var id = '';
+	if(Request('actId') && Request("actId").length == 32){
+		id = Request('actId');
+		logType=Request('logType');
+		$("#activityId").val(id);
+	} else if(sessionStorage.getItem('actId')) {
+		id = sessionStorage.getItem('actId');
+		$("#activityId").val(id);
+	}
+	getData();
+	
+	// 保存
+	$(".joinok").click(function(){
+		var bootValidator = $("#attendForm").data('bootstrapValidator');
+        bootValidator.validate();
+        if(bootValidator.isValid()){
+
+        	// 选择自定义的字段
+        	var aDiv = $(".isDiy");
+        	var str = '{';
+        	aDiv.each(function(index){
+        		var elem = $(this).children("div").children();
+        		if(index == 0){
+        			str += '"'+$(elem).attr("name")+'":"'+$(elem).val()+'"';
+        		} else {
+        			str += ',"'+$(elem).attr("name")+'":"'+$(elem).val()+'"';
+        		}
+        	});
+        	str += '}';
+        	var postData = $("#attendForm").serialize() + '&extendInformation='+str;
+			$.myAjax({
+				type : 'post',
+				url : basePath + 'user/userattend/save.do',
+				data : postData,
+				success : function(result){
+					if(result.flag){
+						myAlert(result.msg);
+						// window.location.href = 'detail.html?location='+$("#activityId").val();
+						window.location.href = basePath+'page/user/myActivity.html';
+					} else {
+						myConfirm(result.msg);
+					}
+				},
+				error : function(result) {
+					myConfirm("请求失败！！");
+				}
+			});
+		}
+	});
+
+	// $(".canclej").click(function(){
+	// 	getData();
+	// });
+	//登陆
+	$('.login_btn').on('click',function(){
+		var mobile = $('.user').val();
+		var pwd=$('.password').val();
+		var pwdMd5=$.md5($('.password').val());
+		login(mobile,pwd,pwdMd5);
+	})
+	$(document).keypress(function(e) {  
+			// 回车键事件  
+	        if(e.which == 13) {
+	        	var mobile = $('.user').val();
+				var pwd=$('.password').val();
+				var pwdMd5=$.md5($('.password').val());
+				login(mobile,pwd,pwdMd5);
+	        };	  
+		});
+	//注册
+	$('.goRegister').on('click',function(){
+		$('.register').css('display','block');
+		$('.login_box').css('display','none');
+	})
+	//已有账号
+	$('.hasId').on('click',function(){
+		$('.login_box').css('display','block');
+		$('.register').css('display','none');
+	})
+	//图形验证码显示
+	$('.confpwd').focus(function(){
+		var mobile=$('.mobile').val();
+		var userpwd = $('.userpwd').val();
+		if(mobile!=''&&userpwd!=''){
+			$('.codeImg').css('display','block');
+		};
+	});
+	//获取图形验证码
+	function getCode(){
+		var url=basePath+"verification/get.do";
+		$.myAjax({
+			url: url,
+			success:function(result){
+				$('.regImg').attr('src','data:image/png;base64,'+result.data);
+			}
+		});
+	};
+	getCode();
+	//注册验证
+	function validation1(){
+		var mobile = $('.mobile').val();
+		var userpwd = $('.userpwd').val();
+		var confpwd = $('.confpwd').val();
+		var imgProv= $('.imgProv').val();
+		var prov= $('#proving').val();
+		//手机号
+		if (mobile == null || mobile == '') {
+			myAlert('手机号不能为空!','slow');
+			return false;
+		}else{
+			if(!(/^1[34578]\d{9}$/.test(mobile))){ 
+	        	myAlert("手机号码有误，请重新输入！",'slow');  
+	        	return false; 
+	        };
+		};
+		//密码
+		if (userpwd == null || userpwd == '') {
+			myAlert('密码不能为空!','slow');
+			return false;
+		}else{
+			if(!(/^[a-zA-Z][a-zA-Z0-9_]{5,15}$/.test(userpwd))){ 
+	        	myAlert("密码是以英文字母开头，只能包含英文字母、数字、下划线，且长度为6~16位，请重新输入！",'slow');  
+	        	return false; 
+	        };
+		};
+		//确认密码
+		if (confpwd == null || confpwd == '') {
+			myAlert('确认密码不能为空!','slow');
+			return false;
+		}else{
+			if(userpwd != confpwd){ 
+	        	myAlert("两次填写密码不一致！",'slow');  
+	        	return false; 
+	        };
+		};
+		// if(prov1){
+		// 	prov1();
+		// };
+		//图形验证
+		if (imgProv == '' || imgProv == null) {
+			myAlert('图形验证码不能为空','slow');
+			return false;
+		};
+		//短信验证
+		if (prov == '' || prov == null) {
+			myAlert('短信验证码不能为空','slow');
+			return false;
+		}else{
+			if(!(/^\d{6}$/.test(prov))){
+				myAlert('请输入6位数字短信验证码','slow');
+				return false;
+			};
+		};
+		return true;
+	};
+	//短信验证
+	function validation(){
+			var mobile = $('.mobile').val();
+			var userpwd = $('.userpwd').val();
+			var confpwd = $('.confpwd').val();
+			var imgProv= $('.imgProv').val();
+			//验证手机号
+			if (mobile == null || mobile == '') {
+				myAlert('手机号不能为空!','slow');
+				return false;
+			}else{
+				if(!(/^1[34578]\d{9}$/.test(mobile))){ 
+		        	myAlert("手机号码有误，请重新输入！",'slow');  
+		        	return false; 
+		        };
+			};
+			//验证密码
+			if (userpwd == null || userpwd == '') {
+				myAlert('密码不能为空!','slow');
+				return false;
+			}else{
+				if(!(/^[a-zA-Z][a-zA-Z0-9_]{5,15}$/.test(userpwd))){ 
+		        	myAlert("密码是以英文字母开头，只能包含英文字母、数字、下划线，且长度为6~16位，请重新输入！",'slow');  
+		        	return false; 
+		        };
+			};
+			//验证确认密码
+			if (confpwd == null || confpwd == '') {
+				myAlert('确认密码不能为空!','slow');
+				return false;
+			}else{
+				if(userpwd != confpwd){ 
+		        	myAlert("两次填写密码不一致！",'slow');  
+		        	return false; 
+		        };
+			};
+			// if(prov1){
+			// 	prov1();
+			// };
+			//验证图形
+			//图形验证
+			if (imgProv == '' || imgProv == null) {
+				myAlert('图形验证码不能为空','slow');
+				return false;
+			}else{
+				if(!(/^\d{4}$/.test(imgProv))){
+					myAlert('请输入4位数字验证码','slow');
+					return false;
+				};
+			};
+			return true;
+	};
+	// 表单验证与提交
+	$('#regbtn').click(function() {
+		var mobile = $('.mobile').val();
+		var userpwd = $('.userpwd').val();
+		var confpwd = $('.confpwd').val();
+		var imgProv= $('.imgProv').val();
+		var unit = $('.unit').val();
+		var pwd=$.md5($('.pwdShow').val());
+		$('.pwdHide').val(pwd);
+		$('.imgProv').attr('name','');
+		$('#proving').attr('name','code');
+		//注册
+		if(validation1()){
+			var url=basePath+'user/regist/save.do';
+			$.myAjax({
+				url: url,
+				data: $('#registerfm').serialize(),
+				success: function (result) {
+					// console.log(result)
+					if(result.flag) {
+						myAlert("注册成功！",'slow');
+						$('.register').css('display','none');
+						$('.wrap').css('display','none');
+						var mobile = $('.mobile').val();
+						var pwd=$('.userpwd').val();
+						var pwdMd5=$.md5($('.userpwd').val());
+						login(mobile,pwd,pwdMd5);
+					} else {
+						myAlert("注册失败，" + result.msg,'slow');
+					};
+				},
+				error: function(result) {
+					myAlert("请求失败，请稍后再试！",'slow');
+				}
+			});
+		};
+	});
+    //获取短信验证
+    $('#code').click(function(){
+    	$('.imgProv').attr('name','code');
+		$('#proving').attr('name','');
+ 		if(validation()){
+    		//获取验证码
+			var url=basePath+"user/regist/check.do";
+    		var pwd=$.md5($('.pwdShow').val());
+    		$('.pwdHide').val(pwd);
+    		$.myAjax({
+					url: url,
+					data: $('#registerfm').serialize(),
+					success:function(result){
+						// console.log(result);
+						if(result.flag){
+							// console.log(result);
+							$('#proving').removeAttr('disabled');
+							//倒计时获取验证码
+				    		clearInterval(timer)
+					    	var i=60;
+					    	var timer=null;
+					    	function show(){
+								i--;
+								$('#code').html(i+'秒后获取');
+								$('#code').attr('disabled','disabled');
+								if(i<=0){
+									clearInterval(timer);
+									$('#code').html('免费获取验证码');
+									$('#code').removeAttr('disabled');
+								}
+							};
+							show();
+							timer=setInterval(show,1000);
+						}else{
+							myAlert(result.msg,'slow');
+						};
+					}
+			});
+    	};
+    });
+    //更换验证码
+	$('.regText').click(codeChange);
+    function codeChange(){
+    	$('.regBox').val('');
+		getCode();
+	};
+	//改变注册按钮状态
+	$('.checkBox').on('click',function(){
+		if($('.checkBox').is(':checked')){
+			$('#regbtn').removeAttr('disabled');
+		}else{
+			$('#regbtn').attr('disabled','disabled');
+		}
+	});
+});
+
+// 设置验证条件
+function setValidator(data){
+	if(data.length <= 0){
+		return false;
+	}
+
+	var Validator = {
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        }
+    };
+    var str = '';
+    for(var i=0; i<data.length; i++){
+    	var val = data[i];
+    	if( i == 0 ){
+    		if(val.isNeeded == '1'){ // 必填
+	    		str += '"'+val.name+'": {'+
+	                '"validators": {'+
+	                    '"notEmpty": {'+
+	                        '"message": "标星字段不能为空！"'+
+	                    '}'+
+	                '}}';
+	        }
+	        if(val.name == 'email'){
+	        	str += '"email": {'+
+	                '"validators": {'+
+	                    '"emailAddress": {'+
+	                        '"message": "请输入正确的邮箱地址！"'+
+	                    '}'+
+	                '}}';
+	        }
+	        // if(val.name == 'mobile'){
+	        // 	str += '"mobile": {'+
+	        //         '"validators": {'+
+	        //             '"regexp": {'+
+	        //             	'"regexp": "/^1[34578]\\\\d{9}$/",'+
+	        //                 '"message": "请输入正确的手机号码！"'+
+	        //             '}'+
+	        //         '}}';
+	        // }
+    	} else {
+    		if(val.isNeeded == '1'){ // 必填
+	    		str += ',"'+val.name+'": {'+
+	                '"validators": {'+
+	                    '"notEmpty": {'+
+	                        '"message": "标星字段不能为空！"'+
+	                    '}'+
+	                '}}';
+	        }
+	        if(val.name == 'email'){
+	        	str += ',"email": {'+
+	                '"validators": {'+
+	                    '"emailAddress": {'+
+	                        '"message": "请输入正确的邮箱地址！"'+
+	                    '}'+
+	                '}}';
+	        }
+	        // if(val.name == 'mobile'){
+	        // 	str += ',"mobile": {'+
+	        //         '"validators": {'+
+	        //             '"regexp": {'+
+	        //             	'"regexp": "/^1[34578]\\\\d{9}$/",'+
+	        //                 '"message": "请输入正确的手机号码！"'+
+	        //             '}'+
+	        //         '}}';
+	        // }
+    	}
+    	
+    }
+
+    if(str.substring(0,1) == ','){
+    	str = str.substring(1);
+    }
+    str = '{'+str+'}';
+    Validator.fields = $.parseJSON(str);
+    // console.log(Validator);
+    $("#attendForm").bootstrapValidator(Validator);
+}
+
+// 获取数据
+function getData(){
+	var url = basePath + 'admin/activityregconfig/list.do';
+	$.myAjax({
+		type : 'post',
+		url : url,
+		data : {activityId:$("#activityId").val(),type:1},
+		success : function(result){
+			// console.log(result);
+			if(result.flag){
+				$(".activname").html(result.data.activity.name+'&nbsp报名表');
+				if(result.status.url){  // 用户是登录状态
+					$(".notLogin").addClass('none');
+					$("#userinfo").removeClass('none');
+					$("#user").html(result.status.nick);
+					$(".userCenter a").attr('href',basePath + result.status.url);
+					initPage(result.data.activityRegConfig,'login');
+				} else {  // 用户是未登录状态
+					initPage(result.data.activityRegConfig);
+				};
+			};
+			//遮罩
+			if(!result.status.url){
+				$('.mask').css('display','block');
+				$('.login_box').css('display','block');
+			};
+		},
+		error : function(data) {
+			myAlert("请求失败！！");
+		}
+	});
+}
+
+function initPage(data,login){
+	if(data.length <= 0){
+		$(".joinbtn, .jcon").css('display','none');
+		var str = '<p id="marked">主办方尚未设置报名字段，如需参会，请联系主办方！</p>';
+		
+		$(".attendForm").append(str);
+		$("#marked").css({
+			"font-weight": "bold",
+			'margin': '60px 0 0 100px'
+		});
+		return false;
+	}
+	var personInfo = '',
+		unitInfo = '',
+		otherInfo = '';
+	for(var i=0; i<data.length; i++){
+		var val = data[i];
+		var str = '';
+		if(val.isNeeded == '1'){ // 必填
+			str += '<span class="col-sm-2 control-label"><span class="red">* </span><label>'+ val.showname +'</label></span>';
+		} else { // 选填
+			str += '<span class="control-label col-sm-2"><label>'+ val.showname +'</label></span>';
+		}
+
+		var inpType = val.type.charAt(1); // 输入文本类型
+		var diyStr = val.type.charAt(0); // 是否自定义 2-自定义字段
+		if(login){ // 如果用户登录
+			if(inpType == '1'){ // 单行文本
+				str += '<div class="col-sm-7"><input class="form-control" type="text" name="'+ val.name +'" value="'+val.value+'"/></div>';
+			} else if(inpType == '2'){ // 多行文本
+				str += '<div class="col-sm-7"><textarea class="form-control" name="'+ val.name +'" value="'+val.value+'"></textarea></div>';
+			} else if(inpType == '3'){ // 单选按钮
+				if(val.name == 'gender'){
+					if(val.value == '2'){
+						str += '<div class="col-sm-7">男<input class="radioinp form-control" type="radio" value="1" selected name="'+ val.name +'">女<input selected class="radioinp form-control" value="2" type="radio" name="'+ val.name +'"/></div>';
+					} else {
+						str += '<div class="col-sm-7">男<input selected class="radioinp form-control" type="radio" value="1" selected name="'+ val.name +'">女<input class="radioinp form-control" value="2" type="radio" name="'+ val.name +'"/></div>';
+					}
+				}
+			} else if(inpType == '4'){ // 下拉列表
+				str += '<div class="col-sm-7"><select class="sel form-control" value="'+val.value+'" name="'+ val.name +'"></select></div>';
+			} else if(inpType == '5'){ // 多选按钮
+				str += '<div class="col-sm-7"><input class="inp" type="text" name="'+ val.name +'"/></div>';
+			} else { // 文件
+				str += '<div class="col-sm-7"><input class="fil" type="file" name="'+ val.name +'"/></div>';
+			}
+		} else {
+			if(inpType == '1'){ // 单行文本
+				str += '<div class="col-sm-7"><input class="form-control" type="text" name="'+ val.name +'"/></div>';
+			} else if(inpType == '2'){ // 多行文本
+				str += '<div class="col-sm-7"><textarea class="form-control" name="'+ val.name +'"></textarea></div>';
+			} else if(inpType == '3'){ // 单选按钮
+				if(val.name == 'gender'){
+					str += '<div class="col-sm-7">男<input selected class="radioinp form-control" type="radio" value="1" selected name="'+ val.name +'">女<input class="radioinp form-control" value="2" type="radio" name="'+ val.name +'"/></div>';
+				}
+			} else if(inpType == '4'){ // 下拉列表
+				str += '<div class="col-sm-7"><select class="sel form-control" name="'+ val.name +'"></select></div>';
+			} else if(inpType == '5'){ // 多选按钮
+				str += '<div class="col-sm-7"><input class="inp" type="text" name="'+ val.name +'"/></div>';
+			} else { // 文件
+				str += '<div class="col-sm-7"><input class="fil" type="file" name="'+ val.name +'"/></div>';
+			}
+		}
+		
+		if(diyStr == '2'){
+			str = '<div class="form-group isDiy">'+ str +'</div>';
+		} else {
+			str = '<div class="form-group">'+ str +'</div>';
+		} 
+		if(val.family == '1'){ // 个人信息
+			personInfo += str;
+		} else if(val.family == '2') { // 单位信息
+			unitInfo += str;
+		} else { // 其他信息
+			otherInfo += str;
+		}
+	}
+
+	if(!personInfo){
+		$('.person').css('display','none');
+	}
+	if(!unitInfo){
+		$('.unit').css('display','none');
+	}
+	if(!otherInfo){
+		$('.other').css('display','none');
+	}
+	$('.personInfo').html(personInfo);
+	$('.unitInfo').html(unitInfo);
+	$('.otherInfo').html(otherInfo);
+
+	maskSize(); // 设置遮罩层
+
+	initDictData(); // 下拉列表类型的处理逻辑
+
+	setValidator(data);
+}
+
+//遮罩层大小
+function maskSize(){
+	var width = $("body").width() + "px";
+	var height = $("body").height() + "px";
+	$('.mask').css({
+		width:width,
+		height:height
+	})
+};
+
+// 下拉列表类型的处理逻辑
+function initDictData(){
+	$.myAjax({
+		url: basePath + 'common/nationparty.do',
+		success: function(result){
+			if(result.flag){
+				var selElem = $(".sel");
+				for(var i=0;i<selElem.length;i++){
+					if($(selElem[i]).attr("name") == 'idcardType'){
+						$(selElem[i]).mopsSelect(result.data.idType);
+					} else if($(selElem[i]).attr("name") == 'nation'){
+						$(selElem[i]).mopsSelect(result.data.national);
+					} else if($(selElem[i]).attr("name") == 'politics'){
+						$(selElem[i]).mopsSelect(result.data.party);
+					}
+				}
+			}
+		},
+		error: function(result){
+			myAlert('请求失败!','slow');
+		}
+	});
+}
+
+(function($) {
+	$.fn.mopsSelect = function(data) {
+		var innerstr = "";
+		$.each(data, function(i, val) {
+			innerstr += "<option value='" + val.value + "'>" + val.name + "</option>"
+		});
+		this.html(innerstr);
+	}
+})(jQuery);
+
+//登陆
+function login(mobile,pwd,pwdMd5){
+	url=basePath+"user/login/check.do";
+	// 验证手机号
+	if (mobile == null || mobile == '') {
+		myAlert('账号不能为空!','slow');
+		return false;
+	}else{
+		if(!(/^1[34578]\d{9}$/.test(mobile))){ 
+        	myAlert('账号格式不正确！','slow');  
+        	return false; 
+        };
+	};
+	// 验证密码
+	if (pwd == null || pwd == '') {
+		myAlert('密码不能为空!','slow');
+		return false;
+	};
+	$.myAjax({
+		url: url,
+		data: {
+			mobile: mobile,
+			pwd:pwdMd5 
+			// phone: '13633334444',
+			// pwd:'asd' 
+		},
+		success:function(result){
+			// console.log(result)
+			if(result.flag){
+				
+				$('.mask').css('display','none');
+				$('.login_box').css('display','none');
+				window.location.href=window.location;
+			}else{
+				// $('.login_message').css('display','block')
+				// $('.login_message').html(result.msg)
+				myAlert(result.msg,'slow');
+			};
+		}
+	});
+};
+</script>
+
+</html>

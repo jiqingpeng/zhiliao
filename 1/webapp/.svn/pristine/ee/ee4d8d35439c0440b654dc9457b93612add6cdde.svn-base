@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>嘉宾管理</title>
+<link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="../../../css/common/bootstrap.min.css">
+<link href="../../../css/style.css" rel="stylesheet" />
+<link href="../../../css/main.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../../css/admin.css">
+<!-- 引入项目中每个模块的独立样式 : xxx.css -->
+</head>
+<style type="text/css">
+	.invitePape{
+		position: relative;
+		width: 842px;
+		height: 595px;
+		border: 1px solid #ccc;
+		background: url("../../../img/invitation03.jpg") no-repeat;
+		background-size: 842px;
+	}
+	.inviteContent{
+		width: 304px;
+		height: 356px;
+		/*border: 1px solid #ccc;*/
+		position: absolute;
+		top: 154px;
+		left: 85px;
+		color: #ba914f;
+	}
+	.inviteReplenish{
+		width: 304px;
+		height: 322px;
+		/*border: 1px solid #ccc;*/
+		position: absolute;
+		top: 154px;
+		right: 85px;
+		color: #ba914f; 
+		padding-top: 34px;
+	}
+	.inivRepHei{
+		line-height: 25px;
+	}
+</style>
+<body>
+<!-- 引入页头 -->
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="guestsControl.html">嘉宾管理</a>
+		<a href="">-&gt;</a>
+		<a href="guestsInvitation.html">发送邀请函</a>
+	</div>
+	<div class="con-box">
+	<!-- 以下为每个页面自己编写的部分 -->
+		<div id="subMenu">
+	        <div id="subMenuBody">
+	            <ul>
+	                <a href="guestsControl.html"><li >嘉宾管理</li></a>
+					<a href="guestsActivity.html"><li>嘉宾日程</li></a>
+					<a href="guestsEleInvite.html"><li>电子邀请函</li></a>
+					<a href="guestsPapInvite.html"><li class="menuAct">纸质邀请函</li></a>
+					<a href="guestsWinTic.html"><li>纸质邀请函</li></a>
+	            </ul>
+	        </div>
+	    </div>
+	    <div id="contentBody" class="mops-table">
+	    	<div class="invitePape">
+	    		<div class="inviteContent">
+	    			<p class="inivteName">尊敬的先生和女士：</p>
+			　　			<p>
+							&nbsp;&nbsp;本届年会下午主题为新理念 新格局 新发展 
+							——“十三五”互联网金融创新与行业发展，将由中国互联网金融创新研究院与互联网金融千人会(IFC1000)联合承办.
+						</p>
+						<br>
+						<p>
+							&nbsp;&nbsp;届时将有包括金融首脑、监管部门领导，各国有商业银行、股份制商业银行、城市商业银行、农村商业银行，各证券公司、信托公司、金融租赁公司、财务公司以及各主要保险公司、中介机构的高层代表、专家学者和新闻记者等300多位嘉宾出席年会。
+						</p>
+						<br>
+						<p>
+							&nbsp;&nbsp;我们诚挚地邀请互联网金融行业有志之士作为嘉宾出席20XX金融时报年会(名额有限)，时间：12月18日13:30(签到13：00)。我们热切期待您能拨冗出席，感谢您的支持!
+						</p>
+	    		</div>
+	    		<div class="inviteReplenish">
+	    			<p class="inivRepHei">论坛议程:  13:00-13:30</p>
+	    			<p class="inivRepHei">嘉宾签到:  13:30—16:30</p>
+	    			<p class="inivRepHei">专题论坛：13:30—13:35
+	    				<br/>&nbsp;&nbsp;新理念 新格局 新发展
+					</p>
+					<p class="inivRepHei">主办致辞: 13:35—15:00</p>
+					<p class="inivRepHei">主题演讲: 15:05-16:30
+						<br/>&nbsp;&nbsp;互联网与金融创新
+						</p>
+					<p class="inivRepHei">主题演讲: 16:30-17:15
+						<br/>&nbsp;&nbsp;互联网与行业创新
+					</p>
+					<p class="inivRepHei">年会结束时间: 17:15</p>
+					<p class="inivRepHei">年会开始时间: 2017-12-18 13:30</p>
+					<P class="inivRepHei">地点: 北京金融街威斯汀酒店</P>
+	    		</div>
+	    	</div>
+		</div>    
+	</div> 
+</div>
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=FB6c98d828da5bf508fb357f9ee535ef"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/main.js"></script>
+<script type="text/javascript">
+	// 获取左侧菜单列表数据(参数为请求地址)
+	initMenu('../../../js/data/administrator.json','嘉宾管理');
+</script>
+</html>
+

@@ -1,0 +1,82 @@
+.box{
+	position:fixed;
+	top:48px;
+	bottom:0px;
+	overflow-y:auto;
+}
+.head{
+	height: 48px;
+	line-height: 48px;
+	background-color: #f36a1c;
+	color: #fff;
+	/*padding:0 10px;*/
+	position: fixed;
+	top: 0;
+	z-index: 100;
+	width: 100%;
+	text-align: center;
+}
+.head div{
+	display: inline-block;
+}
+.navImg{
+	position: absolute;
+	top: 0px;
+	left: 12px;
+}
+.head img{
+	width: 12px;
+	vertical-align: middle;
+}
+.org{
+	display: flex;
+}
+.head .arrow{
+	width:15px;
+	height:15px;
+}
+.box{
+	width:100%;
+}
+.org{
+	width:96%;
+	padding:0 2%;
+	display: flex;
+	flex-direction:column;
+}
+.org-unit{
+	width:96%;
+	padding:0 2%;
+	background:#fff;
+	border-radius:10px;
+	box-shadow:0px 2px 4px #e0dcdb; 
+	border-radius:10px;
+	margin-top:5px;
+}
+.org-unit .org-tit{
+	margin:10px 0;
+	display:flex;
+}
+.org-unit .org-tit .org-txt{
+	margin-left:10px;
+	font-size:16px;
+}
+.org-unit .org-tit .org-line{
+	width:5px;
+	border-radius:3px;
+	background:#f9752b;
+}
+.org-unit .org-name{
+	margin:10px 0;
+}
+.org-list{
+	margin-left:15px;
+}
+.org-instruction{
+	width:92%;
+	padding:0 3%;
+	font-size: 12px;
+	margin-top:20px;
+	color:#b4b4b4;
+	line-height: 24px;
+}

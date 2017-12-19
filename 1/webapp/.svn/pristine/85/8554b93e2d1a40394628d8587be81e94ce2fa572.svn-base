@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title class="title">嘉宾简介</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="../../css/common/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../../css/weixin/style.css">
+	<link rel="stylesheet" type="text/css" href="../../css/weixin/guest.css">
+</head>
+<body>
+	<script src="../../js/weixin/wxHeader.js"></script>
+	<div class="container">
+		<div class="gusetIntro">
+		</div>
+	</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script type="text/javascript">
+var actId = '';
+$(function(){
+	$(".nav-title").html("嘉宾介绍");
+	actId = Request('actId');
+	initPage();
+});
+function initPage(){
+	loading();
+	$.myAjax({
+		url: basePath + "index/activity.do",
+		data: {id: actId, type: '11'},
+		success: function(result){
+			$(".loading").remove();
+			console.log(result);
+			var str = '';
+			if(result.flag){
+				$(".title").html(result.data.activity.name);
+				var expert = result.data.expert;
+				//判断嘉宾介绍是否为空
+				if(expert.length == 0){
+					myAlert("暂无嘉宾介绍内容");
+					return;
+				}
+				for(var i = 0; i < expert.length; i++){
+					if(expert[i].duty == null || expert[i].duty == '' || expert[i].duty == undefined){
+						expert[i].duty = '';
+					}
+					// if(expert[i].unit == null || expert[i].unit == '' || expert[i].unit == undefined){
+					// 	expert[i].unit = '';
+					// }
+					str += '<div class="gusetIntro">' +
+								'<div class="content">' +
+									'<span class="name">' + expert[i].expertName + '</span>'+
+								'</div>' +
+								'<div class="company">' + expert[i].duty +'</div>' +
+							'</div>'
+				}
+				$(".container").html(str);
+
+			}else{
+				myAlert(result.msg, "slow");
+			}
+		},
+		error: function(){
+			$(".loading").remove();
+			myConfirm("请求失败!");
+		}
+	})
+}
+</script>
+</html>

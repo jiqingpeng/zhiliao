@@ -1,0 +1,45 @@
+ [{
+        "staffName": "张晓明",
+        "telephone": "158547854587",
+        "jurisdiction": "权限不足"
+    },{
+        "staffName": "杜宇",
+        "telephone": "15788545555",
+        "jurisdiction": "无"
+    },{
+        "staffName": "张思",
+        "telephone": "14855552454",
+        "jurisdiction": "无"
+    },{
+        "staffName": "王明",
+        "telephone": "16896545525",
+        "jurisdiction": "权限不足"
+    },{
+        "staffName": "赵思然",
+        "telephone": "16875445787",
+        "jurisdiction": "有权限"
+    },{
+        "staffName": "张作明",
+        "telephone": "15487896654",
+        "jurisdiction": "有权限"
+    },{
+        "staffName": "刘嘉明",
+        "telephone": "16854785562",
+        "jurisdiction": "有权限"
+    },{
+        "staffName": "张作明",
+        "telephone": "15487896654",
+        "jurisdiction": "有权限"
+    },{
+        "staffName": "张作明",
+        "telephone": "15487896654",
+        "jurisdiction": "有权限"
+    },{
+        "staffName": "张作明",
+        "telephone": "15487896654",
+        "jurisdiction": "有权限"
+    },{
+        "staffName": "张作明",
+        "telephone": "15487896654",
+        "jurisdiction": "有权限"
+    }]

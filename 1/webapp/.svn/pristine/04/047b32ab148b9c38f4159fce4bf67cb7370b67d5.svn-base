@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>管理员配置</title>
+<link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="../../css/common/bootstrap.min.css"/>
+<link rel="stylesheet" href="../../css/common/bootstrap-table.min.css"/>
+<link href="../../css/style.css" rel="stylesheet" />
+<link href="../../css/main.css" rel="stylesheet" />
+
+<link href="../../css/super.css" rel="stylesheet"/>
+</head>
+<body>
+<script type="text/javascript" src="../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="adminEdit.html">管理员配置</a>
+	</div>
+	<div class="con-box">
+		<!-- 以下为每个页面自己编写的部分 -->
+		<div class="adminEdit"> <!-- 建议用功能名为类名 -->
+			<table id="adminTab"></table>
+		</div>
+	</div>     
+</div> 
+
+
+<script type="text/javascript" src="../../js/common/footer.js"></script>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap-table.min.js"></script>
+<script src="../../js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../js/common/main.js"></script>
+<script type="text/javascript">
+$(function(){
+	// 获取左侧菜单列表数据(参数为请求地址)
+	initMenu('../../js/data/superMenu.data','管理员配置');
+	$("#submenumark").css('display','none');
+
+	var oTable = new TableInit();
+	    oTable.Init();
+});
+
+var TableInit = function () {
+    var oTableInit = new Object();
+    oTableInit.Init = function () {
+        $('#adminTab').bootstrapTable({
+        	url: '../../../js/data/schedule.json',
+            //method: 'get',                      //请求方式（*）
+            dataType: 'json',
+            dataLocale: 'zh-US',               //表格汉化
+            //toolbar: '#toolbar',                //工具按钮用哪个容器
+            striped: true,                      //是否显示行间隔色
+            cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+            pagination: true,                   //是否显示分页（*）
+            sortable: true,                     //是否启用排序
+            sortOrder: "desc",                   //排序方式
+            //searchable: true,
+            searchFormatter: false,
+            cellStyle: true,
+            checkbox : true,
+
+
+            //queryParams: oTableInit.queryParams,//传递参数（*）
+            sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
+            pageNumber:1,                       //初始化加载第一页，默认第一页
+            pageSize: 10,                       //每页的记录行数（*）
+            pageList: [10, 15, 20],        //可供选择的每页的行数（*）
+            //search: true,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
+            //strictSearch: false,
+            //showColumns: true,                  //是否显示所有的列
+            // showRefresh: true,                  //是否显示刷新按钮
+            //minimumCountColumns: 2,             //最少允许的列数
+            //clickToSelect: true,                //是否启用点击选中行
+            // height: 560,                        //行高，如果没有设置height属性，表格自动根据记录条数决定表格高度
+            //uniqueId: "ID",                     //每一行的唯一标识，一般为主键列
+            //showToggle:true,                    //是否显示详细视图和列表视图的切换按钮
+            //cardView: false,                    //是否显示详细视图
+            //detailView: false,                   //是否显示父子表
+            columns: [
+            {
+                checkbox: true
+            }, {
+                field: 'id',
+                title: '时间',
+                align: 'center',
+                width: 200,
+                sortable: true        //排序
+            }, {
+                field: 'name',
+                title: '地点',
+                align: 'center',
+                width: 200
+            }, {
+                field: 'price',
+                title: '会议事物/会议内容',
+                align: 'center',	                // width: 600
+            },{
+                field: 'option',
+                title: '操作',
+                width: 150,
+                align: 'center',
+                formatter: function(value,row,index){
+                  return "<button class='btn btn-xs ccc'>删除</button>&nbsp<button class='btn btn-xs btn-warning mod'>添加</button>";
+                },
+                events: {
+                        'click .ccc': function (e, value, row, index) {
+                            //删除操作
+                            // alert(row.id);
+                            $(this).parent().parent().remove("tr");
+                        },
+                        'click .mod': function (e, value, row, index) {
+                            //同步s
+                            // alert(row.CityName);
+				// 			douAlert(".btn", "是否跳转到新页面", function(){
+							// 	window.location.href="message.html";
+
+							// },function(){
+							// 	$('#alert_box').remove();
+							// });
+                        },
+                        'mouseover .ccc' :function(){
+                        	// $(this).parent().parent().css("backgroundColor", "red").siblings().css("backgroundColor","");
+                        }
+                    }
+            }]
+        });
+    };
+
+    $("table > tbody > tr").mouseover(function(){
+    	$(this).css("backgroundColor", "red");
+    })
+    //得到查询的参数
+    oTableInit.queryParams = function (params) {
+        var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+            limit: params.limit,   //页面大小
+            offset: params.offset,  //页码
+            departmentname: $("#txt_search_departmentname").val(),
+            statu: $("#txt_search_statu").val()
+        };
+        return temp;
+    };
+    return oTableInit;
+};
+
+</script>
+</html>
+

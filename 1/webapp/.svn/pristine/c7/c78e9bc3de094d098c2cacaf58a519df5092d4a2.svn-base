@@ -1,0 +1,161 @@
+
+.contains {
+  width: 1024px;
+  margin: 0 auto;
+  margin-top: 50px;
+  position: relative;
+}
+.contains .con_tit {
+  width: 1024px;
+  height: 46px;
+}
+.contains .con_tit a {
+  width: 144px;
+  height: 44px;
+}
+.contains .con_tit .contit_message {
+  height: 46px;
+  line-height: 46px;
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 2px;
+  margin-left: 30px;
+}
+.contains .con_box {
+  width: 1024px;
+}
+.contains .con_box .login_img {
+  width: 750px;
+  height: 541px;
+}
+.contains .con_box .login_img img {
+  width: 750px;
+  height: 541px;
+}
+.contains .con_box .login_box {
+  margin-top:134px;
+  width: 200px;
+  padding: 15px 35px;
+  background: #fff;
+  border: 1px solid #ddd;
+  display: none;
+}
+.contains .con_box .active{
+  display:block;
+}
+.contains .con_box .login_box .loginName{
+  width:100%;
+  text-align: center;
+}
+.contains .con_box .login_box input {
+  width: 196px;
+  height: 28px;
+  padding-left:4px;
+}
+.contains .con_box .login_box .user {
+  margin-top: 15px;
+}
+.contains .con_box .login_box .regCode {
+  margin-top: 15px;
+  display: none;
+}
+.contains .con_box .login_box .active{
+  display:block;
+}
+// .contains .con_box .login_box .active{
+//   display:none;
+// }
+.contains .con_box .login_box .regCode .regBox{
+  width:60px;
+}
+.contains .con_box .login_box .regCode .regImg{
+  width:60px;
+  height:32px;
+  margin-left:10px;
+}
+.contains .con_box .login_box .regCode .regText{
+  height:30px;
+  line-height: 30px;
+  font-size:12px;
+  margin-left:20px;
+  color:blue;
+  text-decoration: underline;
+}
+.contains .con_box .login_box .password {
+  margin-top: 15px;
+}
+.contains .con_box .login_box .login_btn {
+  margin-top: 15px;
+  display: inline-block;
+  width: 100%;
+  height: 32px;
+  line-height: 32px;
+  background: #f49120;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+}
+.contains .con_box .login_box .login_message {
+  width: 100%;
+  height: 28px;
+  line-height: 28px;
+  // border: 1px solid red;
+  color: red;
+  margin-top: 15px;
+  font-size: 12px;
+  display: none;
+}
+.contains .con_box .login_box .login_footer {
+  margin-top: 10px;
+}
+.contains .con_footer {
+  width: 1024px;
+  border-top: 1px solid #f49120;
+}
+.contains .con_footer .foot_link {
+  margin: 0 auto;
+  width: 500px;
+  margin-top: 2px;
+}
+.contains .con_footer .foot_link li {
+  margin: 10px 22px;
+}
+.contains .con_footer .foot_link li a {
+  font-size: 14px;
+  color: #252525;
+  text-decoration: none;
+}
+.contains .con_footer p {
+  width: 100%;
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 5px;
+}
+.contains .position_box {
+  position: absolute;
+  height: 200px;
+  right: -59px;
+  top: 50%;
+  margin-top: -188px;
+}
+.contains .position_box ul li{
+  background: #f49120;
+  border:1px solid #fff;
+}
+.contains .position_box ul .logbg{
+  background:#ff6600
+}
+.contains .position_box ul .logbg a{
+  color:#fff;
+}
+.contains .position_box ul li a {
+  display: block;
+  width: 24px;
+  padding: 10px 5px;
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+  line-height: 14px;
+}

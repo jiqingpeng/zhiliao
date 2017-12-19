@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+	<meta charset="UTF-8">
+	<title>会议列表</title>
+	<meta name="description" content="会议列表" />
+    <meta content="telephone=no" name="format-detection" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+    <link rel="stylesheet" href="../../css/common/bootstrap.min.css" />  
+	<link rel="stylesheet" href="../../css/weixin/style.css" />
+  </head>
+  <body>
+    <iframe name="head" class="m-head" 
+		marginwidth="0" marginheight="0" width="100%" height="50" src="header.html" frameborder="0"></iframe> 
+	<div class="order-box">	  
+	  <ul class="topic-list">
+	  </ul>
+	</div>
+	<div style="height:40px;">&nbsp;
+	</div>
+	<!-- <iframe name="footer" class="m-foot" 
+		marginwidth="0" marginheight="0" width="100%" src="footer.html" frameborder="0"></iframe>  -->
+</body>   
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>  
+<script src="../../js/common/common.js"></script>  
+<script>
+$(function(){	
+	loading();
+	var code = Request('code');
+	$.myAjax({
+		url: basePath + 'wx/wxlogin.do?code='+code,
+		success: function(result){				  
+			getConfList();
+		}
+	});	
+	
+});
+
+function getConfList(){
+	$.myAjax({
+	 	url: basePath + "index/search.do",
+	 	data: {type: '1'},   			 
+		success: function(result){
+			getTrainList(result.data.activity);
+	  	}
+	});
+}
+function getTrainList(confData){
+	var actList = confData;
+	$.myAjax({
+	 	url: basePath + "index/search.do",
+	 	data: {type: '3'},   			 
+		success: function(result){
+			$(".loading").remove();
+			if(result.flag){
+				if(result.data.activity){
+					actList = actList.concat(result.data.activity);
+				} 
+				initList(actList);
+			}
+	  	}
+	});
+}
+
+function initList(actList){
+	actList.sort(function(a,b){ // 排序方法待调整
+        return a.stime-b.stime;
+    });
+
+	for(var i=0;i<actList.length;i++){
+		var li = '<li class="a-topic">'+
+			'<a class="topic-tutor-link" href="actDetail.html?id='+actList[i].id+'">'+
+			'<p class="topic-title-txt">'+actList[i].name+'</p>'+
+			'<p>'+actList[i].stime+' <img src="../../img/weixin/icon-location.png"/> '+actList[i].city;
+		if(actList[i].signUp){
+			li += ' 已报名';
+		}
+		li += '</p>'+
+			'<hr style="margin-top:5px;margin-bottom:0px;border-top:1px solid #ddd;"/>'+'</a></li>';
+		$(".topic-list").append(li);
+	}
+}	 
+</script>
+</html>

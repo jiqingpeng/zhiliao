@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Swiper demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="swiper.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="invate.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="../../css/common/bootstrap.min.css"> -->
+    <!-- Demo styles -->
+    <!-- <link rel="stylesheet" href="animation.css"> -->
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    html,body{
+        height: auto;
+    }
+    .swiper-slide{
+        min-height: 732px;
+        border: 1px solid red;
+        box-sizing: border-box;
+        padding: 10px;
+    }
+    .swiper-container{
+        width: 100%;
+    }
+    .swiper-wrapper{
+        height: 100%;
+        width: 100%;
+    }
+    .swiper-slide{
+        width: 100%;
+    }
+</style>
+</head>
+<body>
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <!-- <div class="music">
+            <img class="musicbg" src="img/music.jpg" alt="musicbg">
+            <audio src="music/hlw.mp3" autoplay="autoplay" loop="loop"></audio>
+        </div> -->
+        <div class="swiper-wrapper">
+            <div class="swiper-slide first-screen">
+            <p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p>
+            </div>
+            <div class="swiper-slide secont-screen">
+                <p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p>
+            </div>
+            <div class="swiper-slide three-screen">
+                <p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p>
+            </div>
+            <div class="swiper-slide four-screen">
+                <div>
+                    <p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p>
+                </div>
+            </div>
+            <div class="swiper-slide five-screen">
+               <p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p><p>九分裤蓝色大海尽快发货健康路费当升科技好看好看房间省大会快乐积分可视电话框架和健康</p>
+            </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+</body>
+<script src="jquery.min.js"></script>
+<script src="swiper.min.js"></script>
+<script src="swiper.animate1.0.2.min.js"></script>
+<script>
+$(function(){
+    var mySwiper = new Swiper ('.swiper-container', {
+        autoHeight: true
+        // observer:true,
+
+        // onInit: function(swiper){
+        //     swiperAnimateCache(swiper);
+        //     swiperAnimate(swiper);
+        // }
+        // onTransitionEnd: function(swiper){
+        //     var index=swiper.activeIndex;
+        //     if(index==0){
+        //         $('.first-screen .bord').addClass('fullScreenZoom');
+        //         $('.first-screen .mess-tit').addClass('scale');
+        //         $('.first-screen .mess-item').addClass('scale');
+        //         $('.first-screen .mess-city').addClass('scale');
+        //         $('.first-screen .mess-time').addClass('scale');
+        //         $('.first-screen .mess-org').addClass('scale');
+        //     }else{
+        //         $('.first-screen .bord').removeClass('fullScreenZoom');
+        //         $('.first-screen .mess-tit').removeClass('scale');
+        //         $('.first-screen .mess-item').removeClass('scale');
+        //         $('.first-screen .mess-city').removeClass('scale');
+        //         $('.first-screen .mess-time').removeClass('scale');
+        //         $('.first-screen .mess-org').removeClass('scale');
+        //     }
+        //     if(index==1){
+        //         $($('.secont-screen .conent').find('div')[0]).addClass('towardsLeft');
+        //       $($('.secont-screen .conent').find('div')[1]).addClass('towardsLeftDelay');
+        //       $($('.secont-screen .conent').find('div')[2]).addClass('towardsLeftDelay6');
+        //       $($('.secont-screen .conent').find('div')[3]).addClass('towardsLeftDelay7');
+        //     }else{
+        //        $($('.secont-screen .conent').find('div')[0]).removeClass('towardsLeft');
+        //       $($('.secont-screen .conent').find('div')[1]).removeClass('towardsLeftDelay');  
+        //     }
+        //     if(index==2){
+        //         $('.three-screen .title').addClass('towardsLeft');
+              
+        //         $($('.three-screen').find('.guest')[1]).addClass('towardsLeft');
+        //         $('.three-screen').find('.guest').addClass('towardsRight');
+        //         $($('.three-screen').find('.guest')[1]).removeClass('towardsRight');
+        //     }else{
+        //         $('.three-screen .title').removeClass('towardsLeft');
+        //         $($('.three-screen').find('.guest')[1]).removeClass('towardsLeft');
+        //         $('.three-screen').find('.guest').removeClass('towardsRight');
+        //     }
+        //     if(index==3){
+        //         $('.four-screen .title').addClass('characterZoom');
+        //         $('.four-screen .content').addClass('towardsRight');
+        //     }else{
+        //         $('.four-screen .title').removeClass('characterZoom');
+        //         $('.four-screen .content').removeClass('towardsRight');
+        //     }
+        //     if(index==4){
+        //         $('.five-screen .title').addClass('towardsLeft');
+        //         $('.five-screen .content').addClass('towardsRight');
+        //     }else{
+        //         $('.five-screen .title').removeClass('towardsLeft');
+        //         $('.five-screen .content').removeClass('towardsRight');
+        //     }
+        // }
+    }); 
+    // $('musicbg').click(function(){
+     
+    //   // 转成成js对象
+    //   var audio=$('audio').get(0);
+     
+    //   //音频控制
+    //   if(audio.paused){
+    //     audio.play();
+    //     console.log(1)
+    //   }else{
+    //     audio.pause();
+    //     console.log(2)
+    //   }
+    // }) 
+});
+</script>
+</html>

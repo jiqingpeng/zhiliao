@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title class="title">联系我们</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="../../css/common/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../../css/weixin/style.css">
+	<!-- <style type="text/css">
+		.contact{
+			width: 100%;
+			padding: 20px 20px;
+		}
+		.fl{
+			float: left;
+		}
+		.left{
+			width: 30%;
+			text-align: right;
+			margin-right: 5%;
+		}
+		.right{
+			width: 65%;
+		}
+		.distance{
+			margin-bottom: 15px;
+		}
+		.code{
+			margin-left: 10%;
+			width: 60%;
+			height: 60%;
+		}
+		.code img{
+			width: 100%;
+			height: 100%;
+		}
+	</style> -->
+	<style type="text/css">
+		html,body{
+			height: 100%;
+			width: 100%;
+		}
+		.container{ 
+			width: 100%;
+			background-color: #f7f7f7;
+			height: 100%;
+			padding: 20px 10px;
+		}
+		.title{
+			height: 50px;
+			width: 100%;
+			line-height: 50px;
+			background-color: #ffffff;
+		}
+		.backdrop{
+			display: inline-block;
+			width: 22px;
+			height: 22px;
+			background-color: #d54544;
+			text-align: center;
+			line-height: 22px;
+			border-radius: 50%;
+			margin-left: 20px;
+		}
+		.backdrop img{
+			width: 14px;
+			margin-top: -1px;
+		}
+		.titleCon{
+			font-size: 18px;
+			margin-left: 15px;
+		}
+		.content{
+			width: 100%;
+			background-color: #ffffff;
+			padding: 10px 20px;
+			margin-bottom: 2px;
+		}
+		.contentImg{
+			line-height: 50px;
+			text-align: center;
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			background-color: #fe771d;
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.contentImg img{
+			width: 25px;
+			margin-top: -1px;
+		}
+		.contentDet{
+			width: 70%;
+			display: inline-block;
+			vertical-align: middle;
+			margin-left: 20px;
+		}
+		.headline{
+			font-size: 18px;
+			font-weight: 500;
+			margin-bottom: 5px;
+		}
+		.contentTop{
+			margin-top: 40px;
+		}
+		.email{
+			background-color: #4badf6;
+		}
+		.phone{
+			background-color: #ffbb1c;
+		}
+		.person{
+			background-color: #d64645;
+		}
+		.zipcode{
+			background-color: #82d255;
+		}
+		.code{
+			margin-top: 34px;
+			margin-left: 24px;
+		}
+		.meeting{
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.meetingCode{
+			margin-bottom: 16px;
+		}
+		.meetingTntro{
+			margin-left: 10px;
+		}
+		.platform{
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.platformCode{
+			margin-bottom: 10px;
+		}
+		.platformCode img{
+			vertical-align: middle;
+			display: inline-block;
+			width: 130px;
+			margin-left: 10px;
+		}
+		.platformIntro{
+			margin-left: 36px;
+		}
+	</style>
+</head>
+<body>
+	<!-- <script src="../../js/weixin/wxHeader.js"></script> -->
+	<div class="title">
+		<span class="backdrop"><img src="../../img/weixin/relation.png"></span>
+		<span class="titleCon">联系我们</span>
+	</div>
+	<div class="container">
+		<div class="content">
+			<div class="contentImg"><img src="../../img/weixin/location.png"></div>
+			<div class="contentDet">
+				<div class="headline">联系地址</div>
+				<div class="site contactAddress"></div>
+			</div>
+		</div>
+		<div class="content">
+			<div class="contentImg email"><img src="../../img/weixin/emailIcon.png"></div>
+			<div class="contentDet">
+				<div class="headline">联系邮箱</div>
+				<div class="site contactEmail"></div>
+			</div>
+		</div>
+		<div class="content">
+			<div class="contentImg phone"><img src="../../img/weixin/phoneIcon.png"></div>
+			<div class="contentDet">
+				<div class="headline">联系电话</div>
+				<div class="site contactPhone"></div>
+			</div>
+		</div>
+		<div class="content contentTop">
+			<div class="contentImg person"><img src="../../img/weixin/personIcon.png"></div>
+			<div class="contentDet">
+				<div class="headline">联系人</div>
+				<div class="site contactUser"></div>
+			</div>
+		</div>
+		<div class="content">
+			<div class="contentImg zipcode"><img src="../../img/weixin/zipcodeIcon.png"></div>
+			<div class="contentDet">
+				<div class="headline">联系邮编</div>
+				<div class="site contactZipcode">北京市海淀区创业广场</div>
+			</div>
+		</div>
+		<div class="code">
+			<div class="meeting">
+				<div class="meetingCode" id="qrcode">
+				<!-- <img src="../../img/index/publicvx.jpg"> -->
+				</div>
+				<div class="meetingTntro">会议二维码</div>
+			</div>
+			<div class="platform">
+				<div class="platformCode">
+					<img src="../../img/index/public.jpg">
+				</div>
+				<div class="platformIntro">平台二维码</div>
+			</div>
+		</div>
+	</div>
+	<!-- <iframe name="footer" class="m-foot" marginwidth="0" marginheight="0" width="100%" height="30" src="footer.html" frameborder="0"></iframe> --> 
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/common/qrcode.min.js"></script>
+<script type="text/javascript">
+	// $.myAjax({
+	// 	url: basePath + "wx/islogin.do",
+	// 	dataType: "text",
+	// 	success: function(data){
+	// 		if(data == "notlogin"){
+	// 			var url = "index/activity.do";
+	// 			loginState(url, 13);
+	// 		}else{
+	// 			var url = "user/activity/get.do";
+	// 			loginState(url, 1);
+	// 		}
+	// 	}
+	// });
+	var actId = '';
+	$(function(){
+		actId = Request('actId');
+		// $(".nav-title").html("联系我们");
+		var url = "index/activity.do";
+		init(url, 15);
+		//会议二维码
+		var qrcode = new QRCode(document.getElementById("qrcode"), {
+			width : 120,
+			height : 120
+		});
+		var urlData= basePath + "page/weixin/actDetail.html?id=" + actId;
+		qrcode.makeCode(urlData);
+	});
+	
+	//初始化页面
+	function init(url, type){
+		loading();
+		$.myAjax({
+			url: basePath + url,
+			data: {id: actId, type: type},
+			success: function(result){
+				$(".loading").remove();
+				console.log(result);
+				if(result.flag){
+					// $(".title").html(result.data.activity.name);
+					//判断内容是否为空
+					if((result.data.contactAddress == "") && (result.data.contactEmail == "")&& (result.data.contactPhone == "")&& (result.data.contactUser == "") && (result.data.contactZipcode == "")){
+						$(".contact").html("");
+						myAlert("暂无内容");
+						return;
+					};
+					//处理某一字段为空
+					if(result.data.contactAddress == ""){
+						$(".contactAddress").prev().html("");
+						$(".contactAddress").parent().parent().remove();
+					};
+					if(result.data.contactEmail == ""){
+						$(".contactEmail").parent().parent().remove();
+					};
+					if(result.data.contactPhone == ""){
+						$(".contactPhone").parent().parent().remove();
+					};
+					if(result.data.contactUser == ""){
+						$(".contactUser").parent().parent().remove();
+					};
+					if(result.data.contactZipcode == ""){
+						$(".contactZipcode").parent().parent().remove();
+					};
+					//页面赋值
+					$(".contactAddress").html(result.data.contactAddress);	
+					$(".contactEmail").html(result.data.contactEmail);	
+					$(".contactPhone").html(result.data.contactPhone);	
+					$(".contactUser").html(result.data.contactUser);	
+					$(".contactZipcode").html(result.data.contactZipcode);	
+				}else{
+					myAlert(result.msg, "slow");
+				}
+			},
+			error: function(){
+				$(".loading").remove();
+				myConfirm("请求失败!");
+			}
+		});
+	}
+</script>
+</html>

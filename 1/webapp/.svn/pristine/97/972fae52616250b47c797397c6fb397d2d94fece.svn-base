@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+	<title>organ</title>
+	<link rel="stylesheet" href="../../../css/app/base.css">
+	
+	<style>
+		.head{
+			height: 48px;
+			line-height: 48px;
+			background-color: #f36a1c;
+			color: #fff;
+			/*padding:0 10px;*/
+			position: fixed;
+			top: 0;
+			z-index: 100;
+			width: 100%;
+			text-align: center;
+		}
+		.head div{
+			display: inline-block;
+		}
+		.navImg{
+			position: absolute;
+			top: 0px;
+			left: 12px;
+			
+		}
+		.head img{
+			width: 12px;
+			vertical-align: middle;
+		}
+		.org{
+			margin-top:48px;
+			display: flex;
+		}
+		.head .arrow{
+			width:15px;
+			height:15px;
+		}
+		.org{
+			width:96%;
+			padding:0 2%;
+			display: flex;
+			flex-direction:column;
+		}
+		.org-unit{
+			width:96%;
+			padding:0 2%;
+			background:#fff;
+			border-radius:10px;
+			box-shadow:0px 1px 0.3px #e8e8e8; 
+			border-radius:10px;
+			margin-top:5px;
+		}
+		.org-unit .org-tit{
+			margin:10px 0;
+			display:flex;
+		}
+		.org-unit .org-tit .org-txt{
+			margin-left:10px;
+		}
+		.org-unit .org-tit .org-line{
+			width:5px;
+			border-radius:3px;
+			background:#f9752b;
+		}
+		.org-unit .org-name{
+			margin:10px 0;
+		}
+		.org-list{
+			margin-left:15px;
+		}
+		.org-instruction{
+			width:92%;
+			padding:0 3%;
+			font-size: 12px;
+			margin-top:20px;
+			color:#b4b4b4;
+			line-height: 24px;
+		}
+	</style>
+</head>
+<body>
+	
+	<header class="head">
+		<div class="navImg">
+			<img src="../../../img/app/arrowLeft-icon.png">
+		</div>
+		<div class="navDetail">组织机构</div>
+	</header>
+	<section class="org">
+		<article class="org-unit">
+			<header class="org-tit">
+				<span class="org-line"></span>
+				<span class="org-txt">主办单位</span>
+			</header>
+			<section class="org-list">
+				<div class="org-name">中国教育后勤协会</div>
+				<div class="org-name">中国教育后勤协会</div>
+				<div class="org-name">中国教育后勤协会</div>
+			</section>
+		</article>
+		<article class="org-unit">
+			<header class="org-tit">
+				<span class="org-line"></span>
+				<span class="org-txt">主办单位</span>
+			</header>
+			<section class="org-list">
+				<div class="org-name">中国教育后勤协会</div>
+				<div class="org-name">中国教育后勤协会</div>
+				<div class="org-name">中国教育后勤协会</div>
+			</section>
+		</article>
+	</section>
+	<section class="org-instruction">
+		说明：每场会议的组织机构的类型都不相同，如主办单位，协办单位，承办单位，指导单位规范行业秩序，健全各项管理自律性管理制度，制定并组织实施教育系统后勤管理服务行业准则，建立完善行业自律性管理约束机制，规范会员行为，协调会员关系，维护行业的和谐与稳定。
+	</section>
+</body>
+
+<script src="../../../js/zepto.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<!-- <script src="../../../js/app/mtTool.js"></script> -->
+<script src="../../../js/touch.js"></script>
+<script src="../../../js/weixin/iscroll.js"></script>
+<!-- <script src="../../../js/app/pullLoad.js"></script> -->
+<!-- <script src="../../../js/user/userMain.js"></script> -->
+<script>
+	
+	$(function(){
+	})
+	function login(){
+		var url = 'http://192.168.1.112:8080/user/login/check.do';
+		var data = {"mobile": '18201571705',"pwd":'b9a4d247f24b94857118b4e321bb48c5'}
+		console.log(data);
+		$.myAjax({
+			url: url,
+			data: data,
+			xhrFields: { // 解决跨域session不一致问题，上线删除，只开发使用
+			   withCredentials: true
+			},
+			crossDomain: true,
+			success: function(result){
+				if(result.flag == true){
+					
+				}else{
+					alert(result.msg);
+				}
+			},
+			error: function(){
+				alert("登录失败,请重新登录");
+			}
+		})
+	}
+</script>
+</html>
+

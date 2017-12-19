@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>会议日程</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="../../css/common/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../../css/weixin/style.css">
+	<style type="text/css">
+		.meetMatter{
+			width: 100%;
+			padding: 15px 20px;
+		}
+		.schedule{
+			width: 100%;
+		}
+		.meetSche{
+			width: 20%;
+			height: 30px;
+			line-height: 30px;
+			border-radius: 5px;
+			background-color: #f3940d;
+			text-align: center;
+			color: #fff;
+			margin: 15px 20px 0 40px;
+		}
+		.meetCon{
+			position: relative;
+		}
+		.meetIntro{
+			width: 30%;
+			float: left;
+			padding-top: 20px;
+			text-align: right;
+		}
+		.meetDetail{
+			position: relative;
+			float: left;
+			border-left: 1px solid #f3940d;
+			width: 65%;
+			padding: 20px 0 0 20px;
+			margin-left: 5%;
+		}
+		.dot{
+			width: 7px;
+			height: 7px;
+			border-radius: 50%;
+			background-color: #f3940d;
+			position: absolute;
+			top: 25px;
+			left: -4px;
+		}
+		.details{
+			margin-bottom: 5px;
+		}
+	</style>
+</head>
+<body>
+<iframe name="head" class="" marginwidth="0" marginheight="0" width="100%" height="58" src="header.html" frameborder="0"></iframe>
+	<div class="meetSche">会议日程</div>
+	<div class="meetMatter">
+		<!-- <div class="schedule clearfix">
+			<div class="meetCon">
+				<div class="meetIntro">9月13日</div>
+				<div class="meetDetail">
+					<div class="dot"></div>
+					<div class="details">食品与药监局实践创新防守打法</div>
+				</div>
+			</div>
+		</div>
+		<div class="schedule clearfix">
+			<div class="meetCon">
+				<div class="meetIntro">9月14日</div>
+				<div class="meetDetail">
+					<div class="dot"></div>
+					<div class="details">食品与药监局实践创新防守打fdsf fs第三方是否第三方第三方df dsf sf s ff 法</div>
+					<div class="details">食品与药监局实践创新防守打法</div>
+				</div>
+				
+			</div>
+		</div>
+		<div class="schedule clearfix">
+			<div class="meetCon">
+				<div class="meetIntro">9月14日</div>
+				<div class="meetDetail">
+					<div class="dot"></div>
+					<div class="details">食品与药监局实践创新防守打法</div>
+					<div class="details">食品与药监局实践创新防守打法</div>
+					<div class="details">食品与药监局实践创新防守打法</div>
+				</div>
+				
+			</div>
+		</div> -->
+	</div>
+	
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script type="text/javascript">
+	$.myAjax({
+		url: basePath + "wx/islogin.do",
+		dataType: "text",
+		success: function(data){
+			console.log(data)
+			if(data == "notlogin"){
+				var url = "index/activity.do";
+				loginState(url, 12);
+			}else{
+				var url = "user/activity/get.do";
+				loginState(url, 12);
+			}
+		}
+	});
+	
+	function loginState(url, type){
+		$.myAjax({
+			url: basePath + url,
+			data: {id: "53a4d39de4c94127bc64aef9c838394d", type: type},
+			success: function(result){
+				// console.log(result.data.schedual);
+				var schedual = result.data.schedual;
+				if(result.flag){
+					var obj = {};
+					var schedualData;
+					for(var i = 0; i < schedual.length; i++){
+						schedualData = schedual[i].stime.substring(0,10);
+						// console.log(schedualData);
+						if(obj[schedualData]){
+							obj[schedualData].push(schedual[i]);
+						}else{
+							obj[schedualData] = [schedual[i]];
+						}
+					}
+					// console.log(obj);
+					var str = '';
+					for(var o in obj){
+						console.log(o);
+						// console.log(obj);
+						var string = '';
+						for(var i = 0; i < obj[o].length; i++){
+							string += '<div class="dot"></div>' +
+							'<div class="details">' + obj[o][i].content + '</div>';
+							console.log(obj[o][i].content);
+						}
+						str += '<div class="schedule clearfix">' +
+							'<div class="meetCon">' +
+								'<div class="meetIntro">' + o + '</div>'+
+								'<div class="meetDetail">' + string + '</div>' +
+							'</div>' +
+						'</div>'
+					};
+					$(".meetMatter").html(str);
+				}
+			}
+		});
+	}
+</script>
+</html>

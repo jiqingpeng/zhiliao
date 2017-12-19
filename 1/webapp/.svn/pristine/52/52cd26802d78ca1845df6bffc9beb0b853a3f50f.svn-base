@@ -1,0 +1,77 @@
+//message页面js
+$(function(){
+	$(".append").on("mouseover",function(){
+		$(this).parent().next().show();	
+	});
+	$(".industry").on("mouseleave",function(){
+		$(this).children(".category").hide();
+	});
+	$(".category").children().each(function(){
+		$(this).on("click", function(){
+			var content = $(this).text()
+			var text = $(".vocation").val($(".vocation").val() + content + '-');
+			$(".vocation").html(text);
+		// $(".vocation").append('<div style="width:40px; height:30px; backgroundColor:#ccc;"><div class="first"></div><div class="two"></div><div class="three"></div></div>');
+		})
+	})
+	$(document).on('click','.addButton',function(e) {
+		$('<div class="form-group "><label for="" class="col-sm-2 control-label labelTitle"><span style="color: red"></span></label><div class="col-sm-2"><select class="form-control organization"><option selected>主办单位</option><option>承办单位</option><option>协办单位</option><option>支持单位</option><option>赞助单位</option><option>组织委员会</option><option>国际组织委员会</option><option>国家(地方)组织委员会</option><option>学术委员会</option><option>顾问委员会</option><option>专业会议组织者</option><option>目的地管理公司</option></select></div><div class="col-sm-1"></div><div class="col-sm-4"><input type="text" name="" class="form-control" id="inputEmail3" placeholder="组织方名称"></div><div class="plus col-sm-1"><button type="button" class="addButton btn btn-default" style="width: 30px ;height: 30px;">+</button><button type="button" class="removeButton btn btn-default" style="width: 30px;height: 30px; margin-left: 10px;"> -</button></div></div>').insertAfter($(this).parent().parent());
+	});
+	$(document).on('click','.removeButton',function(e) {
+		var current = $(this).parent().parent();
+		douAlert("确定删除吗? ", function(){
+			current.remove();
+			$("#alert_box").remove();
+		},function(){
+			$("#alert_box").remove();
+		})
+	});
+})
+
+
+//personal.html页面js
+$(".preserve").on("click", function(){
+	myAlert("已保存");
+})
+$(".edit").on("click", function(){
+	$(this).hide();
+	$(".save").show();
+	$(".cancel").show();
+});
+$(".cancel").on("click",function(){
+	$(".edit").show();
+	$(".save").hide();
+	$(this).hide();
+});
+$(".save").on("click", function(){
+	$(".edit").show();
+	$(".cancel").hide();
+	$(this).hide();
+	myAlert("已保存");
+});
+$(".perDetails").on("click", function(){
+	console.log(111)
+	$(".perDetailsForm").css("display", "block");
+	$(".secSettingsForm").css("display", "none")
+});
+
+
+$(".secSettings").on("click", function(){
+	$(".perDetails").removeClass("hasBgc")
+	$(".perDetailsForm").css("display", "none");
+	$(".secSettingsForm").css("display", "block")
+	$(".secSettings").addClass("hasBgc");
+	$(".secSettings a").css("color", "#fff");
+	$(".perDetails a").css("color", "#000");
+});
+$(".perDetails").on("click", function(){
+	$(".secSettings").removeClass("hasBgc")
+	$(".secSettingsForm").css("display", "none");
+	$(".perDetailsForm").css("display", "block")
+	$(".secSettings a").css("color", "#000");
+	$(".perDetails a").css("color", "#fff");
+	$(".perDetails").addClass("hasBgc");
+});
+$('.cancel').click(function() {
+	$("input[type=reset]").trigger("click")
+});

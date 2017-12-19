@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+	<title>Document</title>
+	<style>
+		.search{
+			width:96%;
+			padding:0 2%;
+			/*border:1px solid red;*/
+			margin-top:30%;
+		}
+		.search .nav{
+			display: flex;
+			align-items: center;
+		}
+		.search .nav .nav-tit{
+			flex:1;
+			text-align:center;
+			font-size:14px;
+			color:#f60;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border:1px solid #f60;
+			height:34px;
+		}
+		.search .nav .nav-ltit{
+			border-radius:20px 0 0 20px;
+		}
+		.search .nav .nav-rtit{
+			border-radius:0 20px 20px 0;
+		}
+		.search .nav .active{
+			background:#f60;
+			color:#fff;
+		}
+		.search .search-conent .search-list{
+			margin:10px;	
+		}
+		.search-conent .search-list input{
+			border:none;
+			width:100%;
+			height:34px;
+			font-size:20px;
+			color:gray;
+		}
+		.search .search-conent .search-btn{
+			display: flex;
+			margin:10px;
+			background:#f60;
+			align-items: center;
+			justify-content: center;
+			height:40px;
+			color:#fff;	
+			font-size:20px;
+			border-radius:4px;
+		}
+		.search-conent .search-btn img{
+			width:25px;
+			height:25px;
+		}
+		.mask{
+			width:100%;
+			border:1px solid red;
+			position: absolute;
+			left:0;
+			top:0;
+			z-index:99;
+			overflow-y: auto;
+			background:#fff;
+		}
+	</style>
+</head>
+<body>
+	<header></header>
+	<section>
+		<article class="search">
+			<header class="nav">
+				<div class="nav-tit nav-ltit active">
+					<span>火车票</span>
+				</div>
+				<div class="nav-tit nav-rtit">
+					<span>飞机票</span>
+				</div>
+			</header>
+			<section class="search-conent">
+				<div class="search-list">
+					<input type="text" placeholder="出发城市">
+				</div>
+				<div class="search-list">
+					<input type="text" placeholder="到达城市">
+				</div>
+				<div class="search-list">
+					<input type="text" placeholder="出发时间">
+				</div>
+				<div class="search-btn">
+					<img src="../../../img/app/reserve.png" alt="">
+					<div>搜索</div>
+				</div>
+			</section>
+		</article>
+	</section>
+	<section class="mask">
+		<section class="city-box">
+			<!-- <section class="">
+				<article>
+					<header class="head">
+						<a name="A"></a>
+						A
+					</header>
+					<ul>
+						<li class="city-list">
+							<a href="javascript:;">鞍山</a>
+							<input type="hidden">
+						</li>
+						<li class="city-list">
+							<a href="javascript:;">鞍山</a>
+							<input type="hidden">
+						</li>
+						<li class="city-list">
+							<a href="javascript:;">鞍山</a>
+							<input type="hidden">
+						</li>
+						<li class="city-list">
+							<a href="javascript:;">鞍山</a>
+							<input type="hidden">
+						</li>
+						<li class="city-list">
+							<a href="javascript:;">鞍山</a>
+							<input type="hidden">
+						</li>
+						<li class="city-list">
+							<a href="javascript:;">鞍山</a>
+							<input type="hidden">
+						</li>
+					</ul>
+				</article>
+			</section> -->
+		</section>
+		<!-- <section class="city-pos">
+			<article>
+				<ul>
+					<li>
+						<a href="#A">A</a>
+					</li>
+					<li>
+						<a href="#B">B</a>
+					</li>
+					<li>
+						<a href="#C">C</a>
+					</li>
+					<li>
+						<a href="#D">D</a>
+					</li>
+					<li>
+						<a href="#E">E</a>
+					</li>
+					<li>
+						<a href="#F">F</a>
+					</li>
+					<li>
+						<a href="#G">G</a>
+					</li>
+					<li>
+						<a href="#H">H</a>
+					</li>
+					<li>
+						<a href="#L">I</a>
+					</li>
+					<li>
+						<a href="#G">G</a>
+					</li>
+					<li>
+						<a href="#K">K</a>
+					</li>
+					<li>
+						<a href="#L">L</a>
+					</li>
+					<li>
+						<a href="#M">M</a>
+					</li>
+					<li>
+						<a href="#N">N</a>
+					</li>
+					<li>
+						<a href="#O">O</a>
+					</li>
+					<li>
+						<a href="#P">P</a>
+					</li>
+					<li>
+						<a href="#Q">Q</a>
+					</li>
+					<li>
+						<a href="#R">R</a>
+					</li>
+					<li>
+						<a href="#S">S</a>
+					</li>
+					<li>
+						<a href="#T">T</a>
+					</li>
+					<li>
+						<a href="#U">U</a>
+					</li>
+					<li>
+						<a href="#V">V</a>
+					</li>
+					<li>
+						<a href="#W">W</a>
+					</li>
+					<li>
+						<a href="#X">X</a>
+					</li>
+					<li>
+						<a href="#Z">z</a>
+					</li>
+					<li>
+						<a href="#Y">y</a>
+					</li>
+				</ul>
+			</article>
+		</section> -->
+	</section>	
+</body>
+<script src="../../../js/zepto.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<script src="../../../js/app/mtTool.js"></script>
+<script>
+	$(function(){
+		getDate();
+		var arr = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+		// var arr = ['A','B','C'];
+		function getDate(){
+				var url = 'http://192.168.1.112/mt/user/activity/get.do?id=f73ed0617d4a459490ec83a8cfc2eec5&type=train';
+				$.myAjax({
+					url: url,
+					success: function(result){
+						console.log(result)
+						if(result.flag){
+							var json=result.data.train.station;
+							var data=[];
+							var str='';
+							for(i=0;i<arr.length;i++){
+								str+=
+									'<article>'+
+										'<header class="head">'+
+											'<a name="A"></a>'+
+											'<span>'+
+												arr[i]+
+											'</span>'+
+										'</header>'+
+										'<ul class="city-list">';
+											
+								var sStr = ''; 
+								for(var j=0;j<json[arr[i]].length;j++){
+									sStr+=
+										'<li>'+
+												'<a href="javascript:;">'+json[arr[i]][j].name+'</a>'+
+												'<input type="hidden">'+
+										'</li>';
+								}
+								str = str + sStr + '</ul></article>';
+								console.log(str)
+							}
+						$('.city-box').append(str);
+							
+						}else{
+							console.log("请求失败");
+						}
+					},
+					error: function(result){
+
+					}
+				});
+		}
+	})
+</script>
+</html>

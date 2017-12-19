@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>我的论文</title>
+<!-- webicon.ico为页面icon -->
+<link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" type="text/css" href="../../css/common/bootstrap.min.css">
+<link href="../../css/style.css" rel="stylesheet" />
+<link href="../../css/main.css" rel="stylesheet" />
+<link href="../../css/user.css" rel="stylesheet"/>
+</head>
+<body>
+<script type="text/javascript" src="../../js/common/header.js"></script>
+<div class="activitylist mops-con"><!-- 内容部分的class : mops-con (必须) -->
+	<div class="con-nav">
+		<a href="activitylist.html">我的论文</a>
+	</div><!-- 内容部分导航头的class : con-nav (必须) -->
+	<div class="con-box"><!-- 内容部分主体内容的class : con-box (必须) -->
+		<form class="form-horizontal" method="post" enctype="multipart/form-data" action="../../user/paper/save.do">
+			<div class="form-group">
+			    <label for="" class="col-sm-2 control-label"><span style="color: red">* </span>标题</label>
+			    <div class="col-sm-7">
+			    <input type = "hidden" name="id" id="id">
+			     <input type = "hidden" name="activityId" id="activityId">
+			      <input type="text" name="title" id="title"class="form-control " placeholder="请输入标题" maxlength="64">
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label for="" class="col-sm-2 control-label"><span style="color: red">* </span>关键字</label>
+			    <div class="col-sm-7">
+			      <input type="text" name="keyword"  id="keyword" class="form-control " placeholder="请输入关键字" >
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label for="" class="col-sm-2 control-label"><span style="color: red">* </span>作者</label>
+			    <div class="col-sm-7">
+			      <input type="text" name="author"  id="author" class="form-control " placeholder="请输入作者" maxlength="64">
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label for="" class="col-sm-2 control-label"><span style="color: red">* </span>摘要</label>
+			    <div class="col-sm-7">
+			      <textarea name="digest" class="form-control "  id="digest" >
+			      </textarea>
+			    </div>			       
+			</div>			 
+			<div class="form-group">
+			    <label for="" class="col-sm-2 control-label"><span style="color: red">* </span>联系电话</label>
+			    <div class="col-sm-7">
+			      <input type="text" name="mobile" class="form-control " id="mobile"  placeholder="请输入联系电话" maxlength="32">
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label for="" class="col-sm-2 control-label"><span style="color: red">* </span>附件</label>
+			    <div class="col-sm-7">			      
+			      <input type="file" name="file" class="form-control ">
+			      <div id="paperUrl"></div>
+			    </div>
+			</div>
+			<div class="btncon">
+			    <label for="" class="col-sm-2 control-label">&nbsp;</label>
+			    <div class="col-sm-7">
+			      <button type="button" class="btn btn-default btn-warning preserve" onclick="save()">保&nbsp;存</button>
+			    </div>
+			</div>
+			 
+		</form>		 	
+	</div>     
+</div>
+<script type="text/javascript" src="../../js/common/footer.js"></script>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/common/jquery.form.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/common/main.js"></script>
+<script type="text/javascript">
+$(function(){
+	//获取左侧菜单列表数据(参数为请求地址)
+	// initMenu('common/menu.do','我的关注');
+	serialMenuAjax('common/menu.do','我的关注',null,initPage);
+	document.onselectstart=function(){return false;} 
+	$(document).on("click", ".focusContent", function(){
+		$(this).toggleClass("focusStyle");
+	});
+	$("#activityId").val(Request('location')); // 活动ID
+});
+function initPage(){
+	if($("#activityId").val() == ""){
+		myAlert("参数错误");
+		return;
+	}
+	$.getJSON("../../user/paper/get.do?activityId="+$("#activityId").val(),function(json){
+		if(json.flag){
+			$("#id").val(json.data.id);
+			$("#title").val(json.data.title);
+			$("#keyword").val(json.data.keyword);
+			$("#author").val(json.data.author);
+			$("#mobile").val(json.data.mobile);
+			$("#digest").val(json.data.digest);	
+			 
+			if(json.data.paperUrl != ""){
+				$("#paperUrl").html("<a href='../../"+json.data.paperUrl+"'>论文下载</a>");
+			}
+		}
+	});	 
+}
+
+function save(){
+	$("form").ajaxSubmit({
+		dataType:'json',
+		success:function(json){
+			if(json.flag)
+				myAlert("保存成功");
+		}}
+	);
+	
+}
+</script>
+</html>

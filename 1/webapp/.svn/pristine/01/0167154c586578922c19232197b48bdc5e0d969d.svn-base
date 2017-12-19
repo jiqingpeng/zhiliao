@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8"/>
+	<meta content="text/html"/>
+	<title>群英汇注册协议</title>
+	<meta content="telephone=no" name="format-detection" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" />
+	<link rel="stylesheet" type="text/css" href="../../../css/app/style.css"> 
+	<style type="text/css">
+		.contain{
+			margin-top: 48px;
+			padding: 10px;
+			background-color: #ffffff;
+		}
+	</style>
+</head>
+<body>
+	<div class="head">
+			<div class="navImg">
+				<img src="../../../img/app/arrowLeft-icon.png">
+			</div>
+			<div class="navDetail">群英汇注册协议</div>
+		</div>
+	<div class="contain">
+		<div class="indepcontent">
+			<h2>用户注册协议</h2>
+		<div>
+		<div>
+			在您注册成为本网站的用户之前，请您认真阅读用户注册协议。您必须完全同意以下所有条款，方能成为本网站的用户。
+		</div>
+ 		<div>
+ 			<h4>第一条 用户服务条款的确认和接纳</h4>
+			<p>
+				“本网站”在线服务涉及的本网站在线产品的所有权以及相关软件的知识产权归本网站所有。本服务条款的效力范围及于本网站的一切产品和服务，用户在享受本网站任何单项服务时，应当受本服务条款的约束。用户通过进入注册程序并点击“我接受”按钮，即表示用户与本网站已达成协议，自愿接受本服务条款的所有内容。
+			</p> 
+			<p>
+				当用户使用本网站各单项服务时，用户的使用行为视为其对该单项服务的服务条款以及本网站在该单项服务中发出的各类公告表示同意。
+			</p>
+			
+		</div>
+</body>
+</html>

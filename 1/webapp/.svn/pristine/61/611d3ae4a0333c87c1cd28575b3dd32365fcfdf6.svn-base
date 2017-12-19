@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>网络自动检索信息列表</title>
+<link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+<link href="../../../css/style.css" rel="stylesheet" />
+<link href="../../../css/main.css" rel="stylesheet" />
+<!-- 引入项目中每个模块的独立样式 : xxx.css -->
+<link href="../../../css/super.css" rel="stylesheet"/>
+<link href="../../../css/common/bootstrap-table.min.css" rel="stylesheet">
+</head>
+<body>
+<!-- 引入页头 -->
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con">
+    <div class="con-nav">
+        <a href="spiderconfig.html">检索列表</a>        
+    </div><!-- 内容部分导航头的class : con-nav (必须) -->
+    <div class="con-box"><!-- 内容部分主体内容的class : con-box (必须) -->
+        <!-- 以下为每个页面自己编写的部分 -->
+        <form id="detailform">            
+            <table id="texttable">
+            </table>
+        </form>                
+    </div>     
+</div>
+
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/common/main.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/bootstrap-table.min.js"></script>
+<script type="text/javascript">
+$(function(){	 
+    var oTable = new TableInit();
+    oTable.Init(); 
+});
+
+//配置
+var TableInit = function () {
+    var oTableInit = new Object();
+    //初始化Table
+    oTableInit.Init = function () {
+        $('#texttable').bootstrapTable({
+            url: "../../mng/spiderresult/list.do",    //请求后台的URL（*）            
+            dataType: 'json',
+            dataLocale: 'zh-US',               //表格汉化
+            toolbar: '#toolbar',                //工具按钮用哪个容器
+            striped: true,                      //是否显示行间隔色
+            cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+            pagination:false,                   //是否显示分页（*）
+            sortable: false,                     //是否启用排序
+            sortOrder: "asc",                   //排序方式
+            //queryParams: oTableInit.queryParams,//传递参数（*）
+            sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
+            pageNumber:1,                       //初始化加载第一页，默认第一页
+            pageSize: 10,                       //每页的记录行数（*）
+            pageList: [10, 15, 20],        //可供选择的每页的行数（*）           
+            strictSearch: false,
+            showColumns: false,                  //是否显示所有的列
+            showRefresh: false,                  //是否显示刷新按钮          
+            showToggle:false,                    //是否显示详细视图和列表视图的切换按钮
+            cardView: false,                    //是否显示详细视图
+            detailView: false,                   //是否显示父子表
+            columns: [{
+                        field: 'name',
+                        title: '名称',
+                        valign: 'middle',
+                        align: 'center',
+                        width: '150',
+                    },
+                    {
+                        field: 'url',
+                        title: '网址',
+                        align: 'center',
+                        height: '500',
+                        valign: 'middle',
+                        align: 'center'                         
+                         
+                    }, 
+                    {
+                        field: 'keyword',
+                        title: '关键字',
+                        // width:  300,
+                        align: 'center',
+                        valign: 'middle'
+                    }]
+         });
+    };     
+    return oTableInit;
+};
+ 
+ 
+</script>
+</html>
+

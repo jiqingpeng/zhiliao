@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>登录</title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<meta content="telephone=no" name="format-detection" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="../../../css/app/style.css"> 
+	
+</head>
+<style type="text/css">
+body{
+	background-color: #fff;
+}
+input{
+	border-left:0px;
+	border-top:0px;
+	border-right:0px;
+	border-bottom:0px; 
+	outline:none;
+}
+
+/*顶部图片*/
+.img img{
+	width: 100%;
+}
+/**/
+
+/**/
+.content{
+	padding: 8%;
+}
+.ContentUser, .Contentpwd{
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 5px;
+}
+.Contentpwd{
+	margin-top: 20px;
+}
+.ContentUser img, .Contentpwd img{
+	width: 14px;
+	vertical-align: middle;
+}
+.username, .cryptogram{
+	margin-left: 5px;
+	font-weight: 600;
+}
+
+.clickBUtton{
+	margin-top: 40px;
+}
+
+#login{
+	width: 100%;
+	background-color: #f9752b;
+	border: 1px solid #f9752b;
+	height: 40px;
+	border-radius: 50px;
+	color: #fff;
+}
+.button a{
+	text-decoration: none;
+}
+.skipLink{
+	margin-top: 10px;
+}
+.skipLink a{
+	color: #7a7a7a;
+	float: left;
+}
+.skipLink .register{
+	float: right;
+}
+
+</style>
+<body>
+	<div class="contain">
+		<div class="img">
+			<img src="../../../img/app/login.png">
+		</div>
+		<div class="content">
+			<div class="ContentUser">
+				<span class="image"><img src="../../../img/app/user-icon.png"></span>
+				<span class="username">用户名&nbsp;:</span>
+				<input type="text" class="user" name="mobile"/>
+			</div>
+			<div class="Contentpwd">
+				<span><img src="../../../img/app/password-icon.png"></span>
+				<span class="cryptogram ">密码&nbsp;:</span>
+				<input type="password" class="password" name="pwd"/>
+			</div>
+			<div class="clickBUtton">
+				<div >
+					<button id="login">登录</button>
+				</div>
+				<div class="skipLink">
+					<a href="forget.html" class="forget">忘记密码?</a>
+					<a href="register.html" class="register">立即注册</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="../../../js/zepto.js"></script>
+<script src="../../../js/zepto.md5.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#login").on("click",function(e){	
+			var mobile = $(".user").val();
+			var password = $(".password").val();
+			if(!verify(mobile,password)) {
+				return false;
+			}
+			$.myAjax({
+				url: basePath + 'user/login/check.do',
+				data: {"mobile": mobile,"pwd": $.md5(password)},
+				success: function(result){
+					if(result.flag){
+						// 登录成功，存储数据到本地
+						utilForJs.putUserLoginName(mobile);
+						utilForJs.putUserLoginPwd($.md5(password));
+						sessionStorage.setItem('isLogin',"login");  // 记录登录状态
+						history.go(-(history.length - 1));
+					} else {
+						myConfirm(result.msg);
+					}
+				},
+				error: function(result){
+					myConfirm(result.msg);
+				}
+			})
+		})
+	});
+
+	//登录信息验证
+	function verify(mobile,password){
+		if (mobile == null || mobile == '') {
+			$(".user").focus();
+			myConfirm('请输入手机号！');
+			return false;
+		} else if(!(/^1[34578]\d{9}$/.test(mobile))){
+			$(".user").focus(); 
+			myConfirm("手机号码有误，请重新输入！");  
+			return false;
+		};
+		if(password == '' || password ==null){
+			alert("请输入密码");
+			$(".password").focus();
+			return false;
+		}
+		return true;
+	}
+</script>
+</html>

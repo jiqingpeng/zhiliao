@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+	<meta charset="UTF-8">
+	<title>忘记密码</title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+    <meta content="telephone=no" name="format-detection" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+    <link rel="stylesheet" href="css/bootstrap.css" />  
+	<link rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" href="css/less.css" />
+  </head>
+  <body>     
+    <div>
+        <div class="m-bar">             
+            <a href="" class="logo-m"><img src="images/logo.png" alt=""></a>
+        </div>            
+    </div>   	 
+    <div id="bd">
+        <div class="container">
+            <form method="post" id="userform">                		
+				<div class="sign-box">   				    
+					<ul class="form-box">					    
+					    <li><div class="inp-label">手机号码：</div><div class="inp-box"><input class="inp inp-text required1" type="text" name="phone" id="mobile" maxlength="15" onblur="vmobile()"><input class="inner-btn font-bk" style="right:-90px" type="button" value="获取验证码" onclick="getvcode('../../user/safe/forget/verification.do')" id="vcodebtn"></div>
+				        </li>
+						<li><div class="tip-hint inp-box" id="mobilehint"></div><div class="inp-label">图形验证：</div><div class="inp-box"><input class="inp inp-text required1" type="text" id="code" maxlength="15"><img class="inner-btn" style="right:-90px;width:90px"  id="imgcode" onclick="chgcode()""/></div>
+				        </li>
+						<li><div class="inp-label">用户密码：</div><div class="inp-box"><input class="inp inp-text required1" type="password" id="pass" onblur="vpass()" maxlength="30"></div><span><i>*</i>  </span></li>
+				        <li><div class="inp-label">确认密码：</div><div class="inp-box"><input class="inp inp-text required1" type="password" id="pass1" onblur="vpass()" maxlength="30"></div><span><i>*</i>  </span></li>
+						<li><div class="tip-hint inp-box" id="passhint"></div><div class="inp-label">验证码：</div><div class="inp-box"><input class="inp inp-text required1" type="text" name="code" id="vcode" maxlength="8"></div><span><i>*</i>  </span></li>
+					</ul> 			
+					<input type="button" class="sub" style="float:right" value="确定" onclick="chgpwd()">				   
+					<input type="button" class="sub" style="float:right;margin-right:10px" value="返回" onclick="goback()">
+
+				</div>				 
+			  </form>			   
+		    </div>
+        </div>
+    </div>	 
+	<div style="clear:both"></div>
+	<div id="footer" style="position:fixed;bottom:0px;width:100%">
+	  <div class="con" style="text-align:center">		 
+		Copyright @2016    京ICP备17018133号
+	  </div>
+    </div>
+	<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" id="msgmodal">
+	  <div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">			 
+			<h4 class="modal-title">提示</h4>
+		  </div>
+		  <div class="modal-body">
+			<p id="msg"></p>
+		  </div>		   
+		</div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+  </body>    
+  <script type="text/javascript" src="js/jquery.js"></script>  
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>   
+  <script type="text/javascript" src="js/jquery.md5.js"></script>
+  <script type="text/javascript" src="js/pub.js"></script>
+  <script type="text/javascript" src="js/reguser.js"></script>
+  <script>
+    var request;
+	var confid;	
+	$(function(){
+		 request=new UrlSearch(); //实例化
+		 confid = request.id;
+		 chgcode();
+	});
+    function msgshow(msg){
+		$("#msg").html(msg);
+		$("#msgmodal").modal("show");
+		setTimeout('$("#msgmodal").modal("hide")',3000);
+	}
+    
+	function validate(){
+		var validated = vmobile();
+		if(validated)
+		    validated = vpass();
+		if(validated){
+			if($("#vcode").val() != "" && (/^\d{6}$/.test($("#vcode").val())))
+			  validated = true;
+			else{
+			  msgshow("验证码格式错误");
+			  validated = false;
+			}
+		}
+		return validated;
+	}
+
+
+	function chgpwd(){
+        if(validate()){
+			var param = {			 
+			 mobile:$("#mobile").val(),
+			 pwd:$.md5($("#pass").val()),
+			 code:$("#vcode").val()
+		   };
+		   $.post("../../user/safe/forget.do",param,function(json){
+			   if(json.flag == false)
+			     msgshow(json.msg);
+			   else if(json.flag == true){
+				 msgshow(json.msg);
+				 if(typeof(confid) == "string")
+    				 setTimeout('window.location.href="login.html?id='+confid+'"',3000);
+				 else
+				     setTimeout('window.location.href="login.html"',3000);
+			   }
+		   },'json')
+		}
+	 }
+
+	 
+  </script>   
+</html>

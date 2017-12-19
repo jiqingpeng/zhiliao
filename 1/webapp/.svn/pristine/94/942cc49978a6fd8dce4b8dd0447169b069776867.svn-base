@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>我的积分</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+	<link rel="stylesheet" type="text/css" href="../../../css/app/base.css">
+	<link rel="stylesheet" type="text/css" href="../../../css/app/header-app.css">
+	<link rel="stylesheet" type="text/css" href="../../../css/app/myPage.css">
+	<style>
+		#save{
+			display: flex;
+			height: 60px;
+			justify-content: center;
+			align-items: center;
+		}
+		#save span{
+			width: 70px;
+			height: 32px;
+			line-height: 32px;
+			text-align: center;
+			margin:0 auto;
+			background:#f60;
+			color:#fff;
+			border-radius:4px;
+		}
+		.navR{
+			position:absolute;
+			top:0;
+			right:5%;
+		}
+		
+	</style>
+</head>
+<body>
+	<header class="app-header">
+		<div class="navImg">
+			<img src="../../../img/app/arrowLeft-icon.png">
+		</div>
+		<div class="navDetail">群英汇积分</div>
+	</header>
+	<section class="my-page">
+		<input type="hidden" id="id">
+		<article>
+			<div class="inte-list" >
+				<div class="inte-tit">
+					一、什么是群英汇积分
+				</div>
+				<div class="inte-cont">
+					<p class="inte-item">群英汇积分专属群英汇，用于参会用户参与平台活动的激励，参会用户可凭积分兑换各种商品，参与各种积分活动等。</p>
+				</div>
+			</div>
+			
+			<div class="inte-list" >
+				<div class="inte-tit">
+					二、如何获取群英汇积分？
+				</div>
+				<div class="inte-cont">
+					<p>群英汇积分有以下几种获得方法：</p>
+					<p class="inte-item">
+						<p>1、注册行为</p>
+						<p>注册为群英汇参会用户可获得初始积分。</p>
+					</p>
+					<p class="inte-item">
+						<p>2、每日活跃</p>
+						<p>APP/微信服务号每日上线活跃可获得积分。</p>
+					</p>
+					<p class="inte-item">
+						<p>3、下载关注</p>
+						<p>下载APP或关注微信公众号“群英汇会议服务平台”，可获得一定奖励积分。</p>
+					</p>
+					<p class="inte-item">
+						<p>4、完善资料</p>
+						<p>注册为群英汇参会用户可获得初始积分。</p>
+					</p>
+					<p class="inte-item">
+						<p>5、参会</p>
+						<p>报名一场会议、会议缴费、会议推荐，可获取一定积分。</p>
+					</p>
+					<p class="inte-item">
+						<p>6、预定行程</p>
+						<p>酒店预定、购买机票高铁票，既方便主办方确认您的参会行程，也可获得丰厚的积分奖励。</p>
+					</p>
+				</div>
+			</div>
+			<div class="inte-list" >
+				<div class="inte-tit">
+					三、如何使用群英汇积分？
+				</div>
+				<div class="inte-cont">
+					<p class="inte-item">
+						<p>1、提问和留言</p>
+						<p>参会用户向主办方提问或问询相关事宜，参会用户可以向嘉宾留言，这两种行为需要消耗一定积分。</p>
+					</p>
+					<p class="inte-item">2.兑换购物券或其他方式</p>
+				</div>
+			</div>
+			<div class="inte-list" >
+				<div class="inte-tit">
+					四、其他积分规则
+				</div>
+				<div class="inte-cont">
+					<p class="inte-item">
+						<p>1、违约行为扣分</p>
+						<p>参会报名后并未实际到场签到，会扣减一定积分作为惩罚。</p>
+					</p>
+					<p class="inte-item">
+						<p>2、积分规有效期</p>
+						<p>积分有效期为两年，但当积分达到1000积分时，将享受永久积分政策，即当前可使用的以及后新积累的积分将不再过期。</p>
+					</p>
+				</div>
+			</div>
+		</article>
+	</section>
+</body>
+<script src="../../../js/zepto.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<script src="../../../js/app/mtTool.js"></script>
+<!-- <script src="../../../js/user/userMain.js"></script> -->
+<script type="text/javascript">
+// $(function(){
+// 	// type = null;
+// 	init();
+// 	$('#save span').on("click",function(){
+// 		var id = $("#id").val();
+// 		var sel = $('.cardList')[0];
+// 		var bankName = sel.options[sel.selectedIndex].text;
+// 		var bankId = $('.cardList').val();
+// 		var cardNumber = $('.cardNumber').val();
+// 		var cardValueDate = $('.cardValueDate').val();
+// 		var cardUserName = $('.cardUserName').val();
+// 		var mobile = $('.mobile').val();
+// 		var credentialNumber = $('.credentialNumber').val();
+// 		var data = {id:id,bankId:bankId,bankName:bankName,cardNumber:cardNumber,cardValueDate:cardValueDate,cardUserName:cardUserName,mobile:mobile,credentialNumber:credentialNumber,credentialName:1}
+// 		if(valit(data)){
+// 			save(data);
+// 		}
+// 	});
+// 	$('.cardList').on("change",function(){
+// 		 $('.credentialNumber').val('');
+// 		 $('.mobile').val('');
+// 		 $('.cardNumber').val('');
+// 	});
+// });
+// function init(){
+// 	$.myAjax({
+// 		url: basePath + "common/lycreditcard.do",
+// 		success:function(result){
+// 			if(result.flag){
+// 				$(".cardList").mySelect(result.data.lyCreditCard);
+// 				$.myAjax({
+// 					url: basePath + "user/card/package/list.do",
+// 					success:function(result){
+// 						if(result.flag){
+// 							if(result.data.cards.length){
+// 								var data = result.data.cards[0];
+// 								$("#id").val(result.data.cards[0].id)
+// 								if(data){
+// 									 $('.cardList').val(data.bankId);
+// 									 // $('.cardNumber').val(plusXing(data.cardNumber,3,3));
+// 									 $('.cardNumber').val(data.cardNumber);
+// 									 $('.cardValueDate').val(data.cardValueDate);
+// 									 $('.cardUserName').val(data.cardUserName);
+// 									 $('.mobile').val(data.mobile);
+// 									 $('.credentialNumber').val(data.credentialNumber);
+// 								}
+// 							}
+// 						}else{
+// 							myConfirm(result.msg);
+// 						}
+// 					},
+// 					error:function(result){
+// 						myConfirm('请求失败');
+// 					}
+// 				})
+// 			}else{
+// 				myConfirm('请求失败');
+// 			}
+// 		},
+// 		error:function(result){
+// 			myConfirm('请求失败');
+// 		}
+// 	})	
+// };
+// function save(data){
+// 	var url = basePath + "user/card/package/save.do";
+// 	$.myAjax({
+// 		url:url,
+// 		data:data,
+// 		success:function(result){
+// 			console.log(result)
+// 			if(result.flag){
+// 				myConfirm('保存成功');
+// 				init();
+// 			}else{
+// 				myConfirm(result.msg);
+// 			}
+// 		},
+// 		error:function(result){
+// 			myConfirm('请求失败');
+// 		}
+// 	})
+// };
+// function myMess(message){
+// 	$("body").prepend('<div id="myMess"><div class="messBox"><span>'+message+'</span></div></div>');
+// 	$("#myMess").css({
+// 		"width":"100%",
+// 		"position":"fixed",
+// 		"display":"flex",
+// 		"justify-content":"center",
+// 		"align-items":"center",
+// 		"bottom":"1%",
+// 	})
+// 	$(".messBox").css({
+// 		"width":"100px",
+// 		"height":"30px",
+// 		"display":"flex",
+// 		"justify-content":"center",
+// 		"align-items":"center",
+// 		"background":"#ccc",
+// 		"border-radius":"10px",
+// 	})
+// 	setTimeout(function() {
+// 		$("#myMess").remove();
+// 	}, 3000);
+// };
+// function valit(data){
+// 	if (data.bankName == '' || data.bankName == null) {
+// 		myConfirm('银行名称不能为空');
+// 		return false;
+// 	};
+// 	if (data.cardNumber == '' || data.cardNumber == null) {
+// 		myConfirm('信用卡卡号不能为空');
+// 		return false;
+// 	}else{
+// 		if(!(/^\d+$/g.test(data.cardNumber))){ 
+//         	myConfirm("信用卡格式不正确！");  
+//         	return false; 
+//         };
+// 	};
+// 	if (data.cardUserName == '' || data.cardUserName == null) {
+// 		myConfirm('持卡人姓名不能为空');
+// 		return false;
+// 	};
+// 	if (data.cardValueDate == '' || data.cardValueDate == null) {
+// 		myConfirm('有效期不能为空');
+// 		return false;
+// 	}else{
+// 		if(!(/^\d{2}(\-|\/|\.)\d{2}$/.test(data.cardValueDate))){ 
+//         	myConfirm("信用卡格式不正确！");  
+//         	return false; 
+//         };
+// 	};
+// 	if (data.mobile == '' || data.mobile == null) {
+// 		myConfirm('手机号码不能为空');
+// 		return false;
+// 	};
+// 	if (data.credentialNumber == '' || data.credentialNumber == null) {
+// 		myConfirm('身份证不能为空');
+// 		return false;
+// 	}else{
+// 		if(!(/^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$/.test(data.credentialNumber)) && !(/^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/.test(data.credentialNumber))){ 
+//         	myConfirm("身份证格式不正确,请重新输入！");  
+//         	return false; 
+//         };
+// 	};
+// 	return true;
+// };
+</script>
+</html>

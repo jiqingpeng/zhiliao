@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>酒店预订</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="../../css/index/hotel.css">
+	<link rel="stylesheet" href="../../css/index/base.css">
+	<link rel="stylesheet" href="../../css/index/hotelReserve.css">
+
+</head>
+<body>
+	<div class="hotelReserve">
+		<div class="ReserHead">
+			<div class="ResHeadTitle">
+				<div class="ResHeaTitTour">主办方推荐酒店</div>
+				<div class="ResHeaIndent">
+					<span><a href="">登录</a></span>
+					<span><a href="">注册</a></span>
+					<span class="phone">407-777-777</span>
+				</div>
+			</div>
+			<div class="ResHeadPay">
+				<span class="ResHeadPayFrist">订单填写</span>
+				<span>-------------------------------------------------------</span>
+				<span>订单支付</span>
+				<span>-------------------------------------------------------</span>
+				<span>订单完成</span>
+			</div>
+		</div>
+		<div class="ReserContent clearfix">
+			<div class="ReserConLeft">
+				<div class="resConShow">
+					<img src="../../img/index/grogshop01.jpg">
+				</div>
+				<div class="resConDetail">
+					<div class="colorBlack">北京饭店</div>
+					<div>北京 东城区 东长安街333号</div>
+					<div class="resConDetDes">
+						<div class="colorBlack">A座高级标准房(内宾)(双早)</div>
+						<div>
+							<span class="spanWidth">床型:<span class="colorBlack">双床</span>
+							</span>
+							<span>面积:<span class="colorBlack">40平方米</span></span>
+
+						</div>
+						<div>
+							<span class="spanWidth">楼层:<span class="colorBlack">7-14层</span></span>
+							<span>早餐:<span class="colorBlack">双份</span></span>
+						</div>
+						<div>
+							<span class="spanWidth">加床:<span class="colorBlack">加床价RMB:415</span></span>
+							<span>窗户:<span class="colorBlack">有窗</span></span>
+						</div>
+					</div>
+					<div class="resConDetPri">
+						<div class="roomRate none">
+						<br>
+							<span>房费</span>
+							<span>-----------------------------------</span>
+							<span>¥1274</span>
+						</div>
+						<div class="cancel none">
+							<span>取消无忧费</span>
+							<span>-------------------------------</span>
+							<span>¥13</span>
+						</div>
+						<div>
+							<span class="indent">订单总额</span>
+							<span>---------------------------</span>
+							<span class="price">¥1274</span>
+						</div>								
+						<div class="write">同程将预收全部费用</div>
+						<br>
+					</div>
+				</div>
+			</div>
+			<div class="ReserConRight clearfix">
+				<div class="reserGrogInfo clearfix">
+					<div class="reserInfo">
+						<div class="reserInfoChar">预订信息</div>
+						<div class="reserDetail">
+							<div class="reserInfoDet">
+								<span>入离日期&nbsp;&nbsp;<span class="detailDate">2017-6-23</span><input class="detailamend none" type="text">&nbsp;到&nbsp;<span class="detailDate">2017-6-24</span><input type="text" class="detailamend none"></span>&nbsp;&nbsp;
+								<span>共1晚</span><span><a href="#" class="alterData">修改日期</a></span>
+							</div>
+							<div class="reserCount">
+								<span class="resRoomCon">房间数量</span>
+								<span class="resCouStyle resCouSpan">1</span>
+								<span class="resCouSpan">2</span>
+								<span class="resCouSpan">3</span>
+								<span class="resCouSpan">4</span>
+								<span class="resCouSpan">5</span>
+								<span class="resCouSpan">6</span>
+								<span class="resCouSpan">7</span>
+								<span class="resCouSpan">8</span>
+							</div>
+							<div class="reserTotal">
+								<span>房费总计&nbsp;&nbsp;<span class="resTolPrice">¥1274</span><span>
+								<span class="particulars"><a href="">明细</a></span></span>
+								<div class="particularsHide none">
+									<div>以下价格是,每日每间的房价</div>
+									<div class="particHideData">
+										<div class="particHideWeek">
+											<div>2017年6月20日</div>
+											<div>星期二</div>
+										</div>
+										<div class="particHidePrice">
+											<div class="price">¥245</div>
+											<div>无早</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="checkInfo clearfix">
+						<div class="checkInfoLeft">入住信息</div>
+						<div class="checkInfoRight">
+							<div class="compellation">
+							<br><br>
+								&nbsp;&nbsp;&nbsp;住客姓名:&nbsp;&nbsp; <input type="" name="">
+							</div>
+							<br>
+							<div class="infoIntro">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所需姓名需与入住时所持证件一致.<span class="regulation"><a href="">填写规则</a></span>
+								<div class="infoIntroHide none">请填写中文或英文姓名，英文姓名格式为zhang/sanfeng。</div>
+							</div>
+							<br>
+							<div class="cellPhone">
+								&nbsp;&nbsp;&nbsp;手机号码:&nbsp;&nbsp; <input type="" name="">
+								预定成功后会向您发送短信通知
+							</div>
+						</div>	
+					</div>
+					<!-- <div class="travelSecurity clearfix">
+						<div class="traSecLeft">出行保障</div>
+						<div class="traSecRight">
+							<div><br><span class="checkBox"></span><span class="allRisks">&nbsp;取消无忧险</span><span class="allRisksPrice">&nbsp;¥13</span>
+							</div>
+							<div class="allRisksDes">为了避免您行程变更和订单无法取消带来的损失，强烈建议您购买取消险，在理赔范围内最高可获得¥220的房费赔偿。</div>
+						</div>
+						<div class="traSecHide none">
+							<div>已为您投保 ¥13，因约定的客观原因无法入住时，最高可赔偿¥220。</div>
+							<div class="traSecHideClause">
+								<div class="traClauseFirst">您已阅读并充分理解保障条款，同意并购买 《同程酒店取消险》</div>
+								<div>投保人: <input type="text"> &nbsp;所填姓名需与有效证件保持一致</div>
+							</div>
+						</div>
+					</div> -->
+					<div class="invoiceInfo clearfix">
+						<div class="invoInfoLeft">发票信息</div>
+						<!-- <div class="invoInfoRight clearfix">
+							<div><br><br><span class="checkBox"></span><span class="invoice">&nbsp;需要发票</span><span class="invoiceDes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可开具电子发票、纸质发票、增值税专用发票；订单成交3个月内可补开发票。</span></div>
+						</div> -->
+						<div class="invoInfoRight">
+							<div class="invoInfoRightCon">
+							如需房费发票，请从酒店前台索取。如需保险发票，可向保险公司索取（保险公司联系信息会在投保后短信通知您）。若有其他开票需求，请您在下单后联系客服进行处理。
+							</div>
+						</div>
+						
+						<!-- <div class="invoiceHide none">
+							<div class="invoiceHideTit">
+								<span class="eleInvoice">
+									<input type="radio" name="invoice" checked="checked">普通电子发票
+								</span>
+								<span class="eleInvoice">
+									<input type="radio" name="invoice">普通纸质发票
+								</span>
+								<span class="eleInvoice">
+									<input type="radio" name="invoice">增值税专用发票发票
+								</span>
+							</div>
+							<div class="invoHideContent">
+								<div>
+									<span>抬头类型</span>
+									<span>公司</span>
+									<span>个人</span>
+								</div>
+								<div class="invoiceTitle">
+									<span>发票抬头</span>
+									<input type="" name="">
+								</div>
+								<div>
+									<span>纳税人识别号</span>
+									<input type="" name="">由15位,18位或20位组成
+								</div>
+								<div>
+									<span>手机号</span>通过短信发送电子发票
+									<input type="" name="">
+								</div>
+								<div>
+									<span>电子邮箱</span>
+									<input type="" name="">
+								</div>
+								<div>
+									<span>发票内容</span>
+									<span>代订房费</span>
+									<span></span>发票注明酒店入住日期
+								</div>
+							</div>
+							<div class="invoiceHideDes">电子发票是税务局认可的有效凭证，其法律效力、基本用途及使用规定同纸质发票。本发票由同程旅游开具，代订房费发票(发票金额为实付房费,不包含保险费、红包、立减等部分) 和取消险电子发票 预计在您离店后的1个工作日内发送至您的手机或电子邮箱，可自行下载打印。</div>
+						</div> -->
+					</div>
+					<div class="attention clearfix">
+						<div class="attentionLeft">预订须知</div>
+						<div class="attentionRight clearfix">
+						<br>	
+							<div class="attentionDes">&nbsp;&nbsp;1、预订此产品，需预付房费<span id="totPrice">¥1274</span>，如订单不确认将全额退款至您的付款账户。该订单确认后不可被取消，若未入住将收取您全额房费<span id="reimburse">¥1274</span>
+							</div>
+							<br>	
+							<div class="attentionDes">&nbsp;&nbsp;2、入住人需凭有效证件入住。</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="immedPayment">
+				<a href="">点击支付</a>&nbsp;
+				<div class="immedPaymentDes"><span>支付总额：<span class="immedPaymentPrice">¥1274</span>(房费<span id="hintPrice">¥1274</span>)</span></div>
+		</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript" src="../../js/jquery.min.js"></script>
+<script type="text/javascript"></script>
+<script type="text/javascript">
+	$(function(){
+		$(".alterData").on("click", function(){
+			$(".detailDate").toggleClass("none");
+			$(".detailamend").toggleClass("none");
+			if($(".alterData").text()=="修改日期"){
+				$(".alterData").text("确 定");
+			}else{
+				$(".alterData").text("修改日期");
+			}
+
+		})
+		$(".particulars").on("mouseover", function(){
+			$(".particularsHide").removeClass("none");
+		});
+		$(".particulars").on("mouseleave", function(){
+			$(".particularsHide").addClass("none");
+		});
+    	$(".regulation").on("mouseover", function (){
+    		$(".infoIntroHide").removeClass("none");
+    	});
+    	$(".regulation").on("mouseleave", function () {
+    		$(".infoIntroHide").addClass("none");
+    	})
+    	$(".resCouSpan").on("click", function () {
+    		$(this).addClass("resCouStyle").siblings().removeClass("resCouStyle")
+    		$(".resTolPrice").text("¥"+"1274"*$(this).text())
+    		$(".price").text("¥"+"1274"*$(this).text());
+    		$("#totPrice").text("¥"+"1274"*$(this).text());
+    		$(".immedPaymentPrice").text("¥"+"1274"*$(this).text());
+    		$("#reimburse").text("¥"+"1274"*$(this).text());
+    		$("#hintPrice").text("¥"+"1274"*$(this).text());
+    	})
+    	// $(".traSecRight .checkBox").on("click", function(){
+    	// 	$(".traSecHide").toggleClass("none");
+    	// 	$(this).toggleClass("borderChange");
+    	// 	$(".roomRate").toggleClass("none");
+    	// 	$(".cancel").toggleClass("none");
+    	// 	// $(".allRisksDes").toggleClass("none");
+    	// 	$(".traSecLeft").css("height",$(".traSecHide").height());
+    	// });
+    	// $(".invoInfoRight .checkBox").on("click", function(){
+    	// 	$(".invoiceHide").toggleClass("none");
+    	// }); 	
+	})
+</script>

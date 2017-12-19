@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title class="title">议题列表</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="../../css/common/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../../css/weixin/style.css">
+	<style type="text/css">
+		.conList{
+			width:100%;
+			background-color: #fff;
+			border-radius: 6px;
+			margin-bottom:15px;
+			border-bottom:1px solid #fff;
+		}
+		.test{
+			margin:13px 0px;
+			margin-left:15px;
+			margin-right:10px;
+			font-size:16px;
+			color:#000;
+		}
+		.comment{
+			display: inline-block;
+			/*margin-bottom: 20px;*/
+			margin-right: 30px;
+		}
+		.testTil{
+			color: #888;
+			margin-left:15px;
+			margin-bottom:10px;
+
+		}
+		.testTil img{
+			/*width: 15px;*/
+			margin-right: 5px;
+		}
+		.comment img{
+			margin-top: -1px;
+			width:24px;
+			height:20px;
+		}
+		.like img{
+			/*background-color: #5fc500;*/
+			width:24px;
+			height:20px;
+		}
+		.partDiscuss{
+			float: right;
+		}
+	</style>
+</head>
+<body>
+	<script src="../../js/weixin/wxBackHeader.js"></script>
+	<div class="interList">
+		<!-- <div class="conList">
+			<div class="test"></div>
+			<div class="testTil"> 
+				<span class="comment"><img src="../../img/weixin/comment.png"></span>
+				<span><img src="../../img/weixin/like.png"></span>
+			</div>
+		</div> -->
+	</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script type="text/javascript">
+var actId = '';
+var id = '';
+$(function(){
+	loading();
+
+	$(".nav-title").html("议题列表");
+	var value = Request("value");
+	if(Request("value") == 1){
+		initPage(1);
+		// $(document).on("touchend", ".conList", function(event){
+		// 	id = $(this).find("input").val();
+		// 	window.location.href = "messPrevBoard.html?id=" + id; 
+		// });
+	}
+	if(Request("value") == 2){
+		initPage(2);
+	}
+	
+	// $(document).on("click", ".like", function(){
+	// 	$.myAjax({
+	// 		url: basePath + "user/activity/issue/laud.do",
+	// 		data: {id: id} ,
+	// 		success: function(result){
+	// 			console.log(result);
+	// 		},
+	// 		error: function(){
+	// 			myConfirm("请求失败!");
+	// 		}
+	// 	})
+	// 	return false;
+	// })
+});
+function initPage(field){
+	actId = Request('actId');
+	$.myAjax({
+		url: basePath + "user/activity/issue/list.do",
+		data: {id: actId,field: field},
+		success: function(result){
+			$(".loading").remove();
+			if(result.flag){
+				// console.log(result)
+				var data = result.data.activityIssue;
+				if(data == null || data.length == 0){
+					myConfirm("暂无议题!");
+					$(".interList").css("display", "none");
+					return;
+				};				
+				var str = '';
+				for(var i = 0; i < data.length; i++){
+					if(data[i].thumbsUp < 0){
+						data[i].thumbsUp = 0;
+					};
+					if(data[i].totalComment < 0){
+						data[i].totalComment = 0;
+					};
+					str += '<div class="conList" onclick="issueClick(this)">' +
+							'<img src="../../img/weixin/issuelogo.png"/>'+
+							'<div class="test">' + data[i].name + '</div>' +
+								'<input type="hidden" value="'+ data[i].id + '"/>' +
+								'<div class="testTil">'  +
+									'<span class="comment">' + 
+										'<img src="../../img/weixin/comment.png">' +
+											data[i].totalComment +
+									'</span>' +
+									'<span class="like">' + 
+										'<img src="../../img/weixin/like.png">' + 
+											data[i].thumbsUp +
+									'</span>' +
+								'</div>' +
+							'</div>' +
+						'</div>';
+				};
+				$(".interList").html(str);
+			}else{
+				myAlert(result.msg, "slow");
+			}			
+		},
+		error: function(){
+			$(".loading").remove();
+			myAlert("请求失败!");
+		}
+	});
+}
+
+function issueClick(elem){
+	if(Request("value") == 1){
+		id = $(elem).find("input").val();
+		window.location.href = "messPrevBoard.html?id=" + id; 
+	}
+	if(Request("value") == 2){
+		id = $(elem).find("input").val();
+		window.location.href = "isMessBoard.html?id=" + id; 
+	}
+}
+</script>
+</html>

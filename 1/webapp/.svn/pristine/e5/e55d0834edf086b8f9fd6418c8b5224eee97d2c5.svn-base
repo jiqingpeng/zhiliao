@@ -1,0 +1,21 @@
+<html>
+<head>
+<meta charset="UTF-8">
+  <style>
+    a{
+	  color:#fff;
+	  text-decoration: none;
+	}
+  </style>
+</head>
+<body>
+<div>
+  <table width="100%" height="100%" style="color:#fff">
+	<tr>
+		<td width="50%" align="center" style="border-right:1px solid #eee"><a href="../mobile/conflist.html" target="_parent">全部会议</a></td>
+		<td width="50%" align="center"><a href="../mobile/myconf.html" target="_parent">我的会议</a></td>		 
+	</tr>
+  </table>	   
+</div>
+</body>
+</html>

@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>留言板</title>
+	<meta name="description" content="留言板" />
+    <meta content="telephone=no" name="format-detection" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+    <link rel="stylesheet" href="../../css/common/bootstrap.min.css" />  
+	<link rel="stylesheet" href="../../css/weixin/style.css" />
+	<style>
+		body{
+			position:relative;
+		}
+		.message-box{
+			/*border:1px solid red;*/
+			width:100%;
+			padding:0 20px;
+		}
+		.message-box .mess-head .mess-tit{
+			width:86%;
+		}
+		.message-box .mess-head .mess-icon{
+			width:30px;
+			padding:0;
+		}
+		.message-box .mess-head .mess-icon img{
+			width:30px;
+			height:30px;
+		}
+		.message-box .mess-head .mess-tit .mess-time{
+			
+		}
+		.message-box .mess-group{
+			margin:10px 0;
+			border-bottom:1px solid #ccc;
+		}
+		.message-box .tit-cont{
+			margin-left:14%;
+		}
+		.message-box .mess-foot{
+			padding:10px 0;
+		}
+		.message-box .mess-foot .item{
+			padding:0;
+			float:right;
+		}
+		.message-box .mess-foot .item img{
+			/*border:1px solid red;*/
+			display: inline-block;
+			width:18px;
+			height:20px;
+			vertical-align: top;
+		}
+		
+		.mess-talk{
+			width:100%;
+			position:fixed;
+			left:0;
+			bottom:0;
+			border-bottom:1px solid #ccc;
+			border:1px solid red;
+			display:none;
+		}
+		.mess-talk .mess-txt{
+			width:100%;
+		}
+		.mess-talk .mess-txt img{
+			width:30px;
+			height:30px;
+			padding:0;
+		}
+		.mess-talk .mess-txt input{
+			height:30px;
+			padding:0;
+		}
+		.message-box .mess-foot .mess-time{
+			padding:0;
+		}
+		.mess-talk-group{
+			border-bottom:1px solid #ccc;
+		}
+		.mess-talk-group img{
+			width:30px;
+			height:30px;
+		}
+		.mess-talk-group .talk-txt{
+			width:86%;
+			/*overflow:hidden;*/
+		}
+		/*.mess-talk-group .talk-txt .mess-cont{
+			width:86%;
+		}*/
+		.mess-talk-group .mess-foot .mess-time{
+			margin-left:14%;
+		}
+		.talk-btn{
+			display: inline-block;
+			width:64px;
+			height:20px;
+			background:#f60;
+			color:#fff;
+			text-align:center;
+			border-radius:2px;
+			float:right;
+			margin-top:5px;
+			margin-bottom:10px;
+		}
+		.message-box .mess-child{
+			width:86%;
+			/*margin:10px;*/
+			background:#ccc;
+			margin-left:14%;
+		}
+		.message-box .mess-child .second{
+			display:none;
+		}
+		.message-box .mess-child .child-floorw{
+			width:98%;
+			padding:2%;
+		}
+		.message-box .mess-child .child-floorw .talk-txt{
+			width:86%;
+			word-wrap:break-word ;
+		}
+		.message-box .mess-child .mess-foot{
+			border-bottom:1px solid #fff;
+		}
+	</style>
+	<!-- <script src="../../js/weixin/iscroll.js"></script>
+	<script>
+		var myscroll;
+		function loaded(){
+			myscroll=new iScroll("wrapper",{
+				topOffset:50,
+				onscrollEnd:init()
+			});
+		}
+		window.addEventListener("DomcontentLoaded",loaded,false)
+	</script> -->
+</head>
+<body>
+	<!-- <p id="show" style="display: none;"></p> -->
+	<div class="header"></div> 
+	<div id="wrapper">
+		<div id="scroller">
+		 	<div id="pullDown">
+		    	<span class="pullDownIcon"></span><span class="pullDownLabel">下拉刷新...</span>
+		    </div>
+			<ul id="thelist">
+			    
+			</ul>
+			<div id="pullUp">
+			    <span class="pullUpIcon"></span><span class="pullUpLabel">上拉加载更多...</span>
+			</div>
+		</div>
+ 	</div>
+	
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/common/main.js"></script>
+<script src="../../js/user/userMain.js"></script>
+<!-- <script src="../../js/weixin/zepto.js"></script> -->
+<!-- <script src="../../js/weixin/touch.js"></script>
+<script src="../../js/weixin/fx.js"></script> -->
+<!-- <script src="../../js/weixin/dropload.min.js"></script> -->
+<script src="../../js/weixin/iscroll.js"></script>
+
+
+<script>
+	$(function(){
+		var myScroll,
+		pullDownEl, pullDownOffset,
+		pullUpEl, pullUpOffset,
+		generatedCount = 0;
+		init(1,2)
+		$(document).on('click','.first-comment',function(){
+			$('.statu').val(0);
+		});
+		$(document).on('click','.comment',function(){
+			var str=$(this).prev().val();
+			$('.activity-issueComment-id').val(str);
+			$('.mess-talk').css('display','block');
+		});
+		$(document).on('click','.page-more',function(){
+			$(this).parent().prev().css('display','block');
+			$(this).css('display','none');
+		});
+		$('.talk-btn').on('click',function(){
+			var statu=$('.statu').val();
+			comment(statu);
+		})
+		$(document).on('click','.thumbsUp',function(){
+			var type =$(this).prev().val();
+			if(type){
+				thumbsUp(3);
+			}else{
+				thumbsUp(1);
+			};
+		});
+		// $.board();
+	})
+	function init(num,size){
+		// var url=basePath+'user/activity/issue/list.do';
+		// var id='25812d45fc27441ebacb6f9e3fe70322';
+		var url=basePath+'user/activity/issue/comment/list.do';
+		var id='cff1f4ad2e6a416bab10ab11b74b186q';
+		var pageNum=num;
+		var pageSize=size;
+		var field=2;
+		$.myAjax({
+			url: url,
+			async: false,
+			data:{id:id,field:field,pageNum:pageNum,pageSize:pageSize},
+			// data:{id:id},
+			success: function(result) {
+				console.log(result);
+				if (result.flag) {
+					var data=result.data;
+					var str=
+					'<div class="message-box">'+
+						'<input id="id" type="hidden"/>'+
+						'<div class="mess-group">'+
+							'<div class="mess-cont tit-cont">'+
+								 data.issue.name+
+							'</div>'+
+							'<div class="mess-foot clearfix">'+
+								'<input type="hidden" value="'+data.issue.click+'"/>'+
+								'<a class="col-xs-2 fr item thumbsUp" href="javascript:;">'+
+									'<img src="../../img/weixin/up.png" alt="up">'+
+									'<span class="num">'+ data.issue.thumbsUp+'</span>'+
+								'</a>'+
+								'<input type="hidden" value="'+data.issue.id+'"/>'+
+								'<a class="col-xs-2 fr item comment first-comment" href="javascript:;">'+
+									'<img src="../../img/weixin/talk.png" alt="talk">'+
+									'<span class="num">'+ data.issue.totalComment+'</span>'+
+								'</a>'+	
+							'</div>'+
+						'</div>'+
+						// '<div class="mess-talk-group floor-list" id="thelist">'+
+						// '</div>'+
+					'</div>';
+					$('.header').append(str);
+					$('#id').val(result.data.issue.id);
+					//楼层
+					for(var i=0;i< data.issueComment.length;i++){
+						var str=
+						'<div class="clearfix floor">'+
+								'<img class="fl" src="../../img/weixin/head-icon.png" alt="">'+
+								'<div class="talk-txt fr">'+
+									'<p>'+result.data.issueComment[i].floor+'楼</p>'+
+									'<p>'+
+										'<span class="mess-name">'+result.data.issueComment[i].nick+'：</span>'+
+										'<span class="mess-cont">'+
+											result.data.issueComment[i].content+
+										'</span>'+
+									'</p>'+
+								'</div>'+
+								'<div class="mess-foot clearfix">'+
+									'<p class="clearfix">'+
+										'<span class="mess-time col-xs-5 fl">'+result.data.issueComment[i].ctime+'</span>'+
+										'<input type="hidden" value="'+result.data.issueComment[i].id+'"/>'+
+										'<a class="col-xs-2 fr item comment" href="javascript:;">'+
+											'<span class="num">回复</span>'+
+										'</a>'+
+									'</p>'+
+									'<div class="mess-talk-group mess-child child-floor">'+
+											'<div class="first"></div>'+
+											'<div class="second"></div>'+
+									'</div>'+
+								'</div>'+
+						'</div>';
+						$('#thelist').append(str);
+						var commentVal = data.issueComment[i].activityIssueCommentList;
+						if(commentVal){
+							if(commentVal.length<2){
+								for(var j=0;j<commentVal.length;j++){
+									var str=
+									'<div class="clearfix child-floorw">'+
+										'<img class="fl" src="../../img/weixin/head-icon.png" alt="">'+
+										'<div class="talk-txt fr">'+
+											commentVal[j].nick+commentVal[j].content+
+										'</div>'+
+									'</div>'+
+									'<div class="mess-foot clearfix">'+
+										'<p class="clearfix">'+
+											'<span class="mess-time col-xs-6 fl">'+result.data.issueComment[i].ctime+'</span>'+
+											'<input type="hidden" value="'+commentVal[j].id+'"/>'+
+											'<a class="col-xs-3 fr item comment" href="javascript:;">'+
+												'<span class="num">回复</span>'+
+											'</a>'+
+										'</p>'+
+									'</div>';
+									
+									$($('.floor')[$('.floor').length-1]).find('.child-floor').append(str);
+								};
+							}else{
+								for(var j=0;j<2;j++){
+									var str=
+									'<div class="clearfix child-floorw">'+
+										'<img class="fl" src="../../img/weixin/head-icon.png" alt="">'+
+										'<div class="talk-txt fr">'+
+											commentVal[j].nick+commentVal[j].content+
+										'</div>'+
+									'</div>'+
+									'<div class="mess-foot clearfix">'+
+										'<p class="clearfix">'+
+											'<span class="mess-time col-xs-6 fl">'+result.data.issueComment[i].ctime+'</span>'+
+											'<input type="hidden" value="'+commentVal[j].id+'"/>'+
+											'<a class="col-xs-3 fr item comment" href="javascript:;">'+
+												'<span class="num">回复</span>'+
+											'</a>'+
+										'</p>'+
+									'</div>';
+									
+									$($('.floor')[$('.floor').length-1]).find('.child-floor .first').append(str);
+								};
+								for(var j=2;j<commentVal.length;j++){
+									var str=
+									'<div class="clearfix child-floorw">'+
+										'<img class="fl" src="../../img/weixin/head-icon.png" alt="">'+
+										'<div class="talk-txt fr">'+
+											commentVal[j].nick+commentVal[j].content+
+										'</div>'+
+									'</div>'+
+									'<div class="mess-foot clearfix">'+
+										'<p class="clearfix">'+
+											'<span class="mess-time col-xs-6 fl">'+result.data.issueComment[i].ctime+'</span>'+
+											'<input type="hidden" value="'+commentVal[j].id+'"/>'+
+											'<a class="col-xs-3 fr item comment" href="javascript:;">'+
+												'<span class="num">回复</span>'+
+											'</a>'+
+										'</p>'+
+									'</div>';
+									$($('.floor')[$('.floor').length-1]).find('.child-floor .second').append(str);
+								}
+								var str = 
+								'<div>'+
+									'<a class="page-more" href="javascript:;">'+
+										'共'+commentVal.length+'条回复'+
+									'</a>'+
+								'</div>';
+								$($('.floor')[$('.floor').length-1]).find('.child-floor').append(str);
+							};
+						};
+						
+					};
+					myScroll.refresh();
+				} else {
+					myAlert(result.msg);
+				};
+			},
+			error: function() {
+				myAlert('请求失败');
+			}
+		});
+	}
+	function add(num,size){
+		// var url=basePath+'user/activity/issue/list.do';
+		// var id='25812d45fc27441ebacb6f9e3fe70322';
+		var url=basePath+'user/activity/issue/comment/list.do';
+		var id='cff1f4ad2e6a416bab10ab11b74b186q';
+		var pageNum=num;
+		var pageSize=size;
+		var field=2;
+		$.myAjax({
+			url: url,
+			async: false,
+			data:{id:id,field:field,pageNum:pageNum,pageSize:pageSize},
+			// data:{id:id},
+			success: function(result) {
+				console.log(result);
+				if (result.flag) {
+					var data=result.data;
+					$('#id').val(result.data.issue.id);
+					//楼层
+					for(var i=0;i< data.issueComment.length;i++){
+						var str=
+						'<div class="clearfix floor">'+
+								'<img class="fl" src="../../img/weixin/head-icon.png" alt="">'+
+								'<div class="talk-txt fr">'+
+									'<p>'+result.data.issueComment[i].floor+'楼</p>'+
+									'<p>'+
+										'<span class="mess-name">'+result.data.issueComment[i].nick+'：</span>'+
+										'<span class="mess-cont">'+
+											result.data.issueComment[i].content+
+										'</span>'+
+									'</p>'+
+								'</div>'+
+								'<div class="mess-foot clearfix">'+
+									'<p class="clearfix">'+
+										'<span class="mess-time col-xs-5 fl">'+result.data.issueComment[i].ctime+'</span>'+
+										'<input type="hidden" value="'+result.data.issueComment[i].id+'"/>'+
+										'<a class="col-xs-2 fr item comment" href="javascript:;">'+
+											'<span class="num">回复</span>'+
+										'</a>'+
+									'</p>'+
+									'<div class="mess-talk-group mess-child child-floor">'+
+											'<div class="first"></div>'+
+											'<div class="second"></div>'+
+									'</div>'+
+								'</div>'+
+						'</div>';
+						$('.floor-list').append(str);
+						var commentVal = data.issueComment[i].activityIssueCommentList;
+						if(commentVal){
+							if(commentVal.length<2){
+								for(var j=0;j<commentVal.length;j++){
+									var str=
+									'<div class="clearfix child-floorw">'+
+										'<img class="fl" src="../../img/weixin/head-icon.png" alt="">'+
+										'<div class="talk-txt fr">'+
+											commentVal[j].nick+commentVal[j].content+
+										'</div>'+
+									'</div>'+
+									'<div class="mess-foot clearfix">'+
+										'<p class="clearfix">'+
+											'<span class="mess-time col-xs-6 fl">'+result.data.issueComment[i].ctime+'</span>'+
+											'<input type="hidden" value="'+commentVal[j].id+'"/>'+
+											'<a class="col-xs-3 fr item comment" href="javascript:;">'+
+												'<span class="num">回复</span>'+
+											'</a>'+
+										'</p>'+
+									'</div>';
+									
+									$($('.floor')[$('.floor').length-1]).find('.child-floor').append(str);
+								};
+							}else{
+								for(var j=0;j<2;j++){
+									var str=
+									'<div class="clearfix child-floorw">'+
+										'<img class="fl" src="../../img/weixin/head-icon.png" alt="">'+
+										'<div class="talk-txt fr">'+
+											commentVal[j].nick+commentVal[j].content+
+										'</div>'+
+									'</div>'+
+									'<div class="mess-foot clearfix">'+
+										'<p class="clearfix">'+
+											'<span class="mess-time col-xs-6 fl">'+result.data.issueComment[i].ctime+'</span>'+
+											'<input type="hidden" value="'+commentVal[j].id+'"/>'+
+											'<a class="col-xs-3 fr item comment" href="javascript:;">'+
+												'<span class="num">回复</span>'+
+											'</a>'+
+										'</p>'+
+									'</div>';
+									
+									$($('.floor')[$('.floor').length-1]).find('.child-floor .first').append(str);
+								};
+								for(var j=2;j<commentVal.length;j++){
+									var str=
+									'<div class="clearfix child-floorw">'+
+										'<img class="fl" src="../../img/weixin/head-icon.png" alt="">'+
+										'<div class="talk-txt fr">'+
+											commentVal[j].nick+commentVal[j].content+
+										'</div>'+
+									'</div>'+
+									'<div class="mess-foot clearfix">'+
+										'<p class="clearfix">'+
+											'<span class="mess-time col-xs-6 fl">'+result.data.issueComment[i].ctime+'</span>'+
+											'<input type="hidden" value="'+commentVal[j].id+'"/>'+
+											'<a class="col-xs-3 fr item comment" href="javascript:;">'+
+												'<span class="num">回复</span>'+
+											'</a>'+
+										'</p>'+
+									'</div>';
+									$($('.floor')[$('.floor').length-1]).find('.child-floor .second').append(str);
+								}
+								var str = 
+								'<div>'+
+									'<a class="page-more" href="javascript:;">'+
+										'共'+commentVal.length+'条回复'+
+									'</a>'+
+								'</div>';
+								$($('.floor')[$('.floor').length-1]).find('.child-floor').append(str);
+							};
+						};
+					};
+					refreshScrollBar();
+				} else {
+					myAlert(result.msg);
+				};
+			},
+			error: function() {
+				myAlert('请求失败');
+			}
+		});
+	}
+	function comment(statu){
+		var url=basePath+'user/activity/issue/comment/save.do';
+		var activityIssueId=$('#id').val();
+		var activityIssueCommentId=$('.activity-issueComment-id').val();
+		var content=$('.comment-cont').val();
+		console.log(statu)
+		if(statu==1){
+			console.log(2)
+			var data={activityIssueId:activityIssueId,activityIssueCommentId:activityIssueCommentId,content:content,type:3};
+		}else{
+			var data={activityIssueId:activityIssueId,content:content,type:3};
+			console.log(3)
+		};
+		$.myAjax({
+			url:url,
+			data:data,
+			success:function(result){
+				console.log(result)
+				if(result.flag){
+					$('.order-box').html('');
+					init(1,2)
+				}else{
+					myAlert(result.msg);
+				}
+			},
+			error:function(reslut){
+				myAlert(result.msg);
+			}
+		})
+	}
+	function thumbsUp(type){
+		var url=basePath+'user/activity/issue/laud.do';
+		var id=$('#id').val();
+		$.myAjax({
+			url:url,
+			data:{id:id,type:type},
+			success:function(result){
+				console.log(result)
+				if(result.flag){
+					$('.order-box').html('');
+					init();
+				}else{
+					myAlert(result.msg);
+				}
+			},
+			error:function(reslut){
+				myAlert(result.msg);
+			}
+		})
+	}
+	function pullDownAction () {
+		 setTimeout(function () { // <-- Simulate network congestion, remove setTimeout from production!
+		  var el, li, i;
+		  el = document.getElementById('thelist');
+		 
+		  for (i=0; i<3; i++) {
+		   li = document.createElement('li');
+		   li.innerText = '添加三冰 ' + (++generatedCount);
+		   el.insertBefore(li, el.childNodes[0]);
+		  }
+		 
+		  myScroll.refresh();  //数据加载完成后，调用界面更新方法 Remember to refresh when contents are loaded (ie: on ajax completion)
+		 }, 1000); // <-- Simulate network congestion, remove setTimeout from production!
+	}
+	function pullUpAction () {
+	   setTimeout(function () { // <-- Simulate network congestion, remove setTimeout from production!
+	    var el, li, i;
+	    el = document.getElementById('thelist');
+	   
+	    for (i=0; i<3; i++) {
+	     li = document.createElement('li');
+	     li.innerText = '添加三冰 ' 
+	     el.appendChild(li, el.childNodes[0]);
+	    }
+	 
+	    myScroll.refresh();  // 数据加载完成后，调用界面更新方法 Remember to refresh when contents are loaded (ie: on ajax completion)
+	   }, 1000); // <-- Simulate network congestion, remove setTimeout from production!
+	}
+	function loaded() {
+		pullDownEl = document.getElementById('pullDown');
+		pullDownOffset = pullDownEl.offsetHeight;
+		pullUpEl = document.getElementById('pullUp'); 
+		pullUpOffset = pullUpEl.offsetHeight;
+ 		myScroll = new iScroll('wrapper', {
+			  scrollbarClass: 'myScrollbar', /* 重要样式 */
+			  useTransition: false, /* 此属性不知用意，本人从true改为false */
+			  topOffset: pullDownOffset,
+			  onRefresh: function () {
+				   if (pullDownEl.className.match('loading')) {
+					    pullDownEl.className = '';
+					    pullDownEl.querySelector('.pullDownLabel').innerHTML = '下拉刷新...';
+				   } else if (pullUpEl.className.match('loading')) {
+					    pullUpEl.className = '';
+					    pullUpEl.querySelector('.pullUpLabel').innerHTML = '上拉加载更多...';
+				   }
+			  },
+			  onScrollMove: function () {
+				   if (this.y > 5 && !pullDownEl.className.match('flip')) {
+					    pullDownEl.className = 'flip';
+					    pullDownEl.querySelector('.pullDownLabel').innerHTML = '松手开始更新...';
+					    this.minScrollY = 0;
+				   } else if (this.y < 5 && pullDownEl.className.match('flip')) {
+					    pullDownEl.className = '';
+					    pullDownEl.querySelector('.pullDownLabel').innerHTML = '下拉刷新...';
+					    this.minScrollY = -pullDownOffset;
+				   } else if (this.y < (this.maxScrollY - 5) && !pullUpEl.className.match('flip')) {
+					    pullUpEl.className = 'flip';
+					    pullUpEl.querySelector('.pullUpLabel').innerHTML = '松手开始更新...';
+					    this.maxScrollY = this.maxScrollY;
+				   } else if (this.y > (this.maxScrollY + 5) && pullUpEl.className.match('flip')) {
+					    pullUpEl.className = '';
+					    pullUpEl.querySelector('.pullUpLabel').innerHTML = '上拉加载更多...';
+					    this.maxScrollY = pullUpOffset;
+				   }
+			  },
+			  onScrollEnd: function () {
+				   if (pullDownEl.className.match('flip')) {
+					    pullDownEl.className = 'loading';
+					    pullDownEl.querySelector('.pullDownLabel').innerHTML = '加载中...';    
+					    pullDownAction(); // Execute custom function (ajax call?)
+				   } else if (pullUpEl.className.match('flip')) {
+					    pullUpEl.className = 'loading';
+					    pullUpEl.querySelector('.pullUpLabel').innerHTML = '加载中...';    
+					    pullUpAction(); // Execute custom function (ajax call?)
+				   };
+			  }
+		});
+		setTimeout(function () { document.getElementById('wrapper').style.left = '0'; }, 800);
+};
+ 
+//初始化绑定iScroll控件 
+document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+document.addEventListener('DOMContentLoaded', loaded, false);
+</script>
+<!-- <script type="text/javascript">
+
+	var myScroll,
+		pullDownEl, 
+		pullDownOffset,
+		pullUpEl, 
+		pullUpOffset,
+		generatedCount = 0;
+
+	function pullDownAction () {
+		// location.reload();
+		setTimeout(function () {	// <-- Simulate network congestion, remove setTimeout from production!
+			var el, li, i;
+			el = document.getElementById('thelist');
+
+			for (i=0; i<5; i++) {
+				li = document.createElement('li');
+				li.innerText = 'Generated row ' + (++generatedCount);
+				el.insertBefore(li, el.childNodes[0]);
+			}
+			document.getElementById("pullUp").style.display="";
+			myScroll.refresh();
+		}, 1000);
+	}
+	var n=1;
+	function pullUpAction () {
+		n++;
+		setTimeout(function () {
+			add(n,2)
+			// var el, li, i;
+			// el = document.getElementById('thelist');
+
+			// for (i=0; i<10; i++) {
+			// 	li = document.createElement('li');
+			// 	li.innerText = 'Generated row ' + (++generatedCount);
+			// 	el.appendChild(li, el.childNodes[0]);
+			// }
+			myScroll.refresh();
+		}, 1000);
+	}
+	function refreshScrollBar() {
+	        console.log("刷新滚动条");
+	        setTimeout(function() { // <-- Simulate network congestion, remove setTimeout from production!
+	            myScroll.refresh(); // Remember to refresh when contents are loaded (ie: on ajax completion)
+	        }, 1000); // <-- Simulate network congestion, remove setTimeout from production!
+	    }
+	function loaded() {
+		pullDownEl = document.getElementById('pullDown');
+		pullDownOffset = pullDownEl.offsetHeight;
+		pullUpEl = document.getElementById('pullUp');	
+		pullUpOffset = 10;
+		//pullUpOffset = pullUpEl.offsetHeight;
+		myScroll = new iScroll('wrapper', {
+			useTransition: true,
+			topOffset: pullDownOffset,
+			onRefresh: function () {
+				//that.maxScrollY = that.wrapperH - that.scrollerH + that.minScrollY;
+				//that.minScrollY = -that.options.topOffset || 0;
+				//alert(this.wrapperH);
+				//alert(this.scrollerH);
+				if (pullDownEl.className.match('loading')) {
+					pullDownEl.className = '';
+					pullDownEl.querySelector('.pullDownLabel').innerHTML = '下拉刷新...';}
+				if (pullUpEl.className.match('loading')) {
+					pullUpEl.className = '';
+					pullUpEl.querySelector('.pullUpLabel').innerHTML = '加载更多...';
+				}
+				
+				document.getElementById("pullUp").style.display="none";
+				document.getElementById("show").innerHTML="onRefresh: up["+pullUpEl.className+"],down["+pullDownEl.className+"],Y["+this.y+"],maxScrollY["+this.maxScrollY+"],minScrollY["+this.minScrollY+"],scrollerH["+this.scrollerH+"],wrapperH["+this.wrapperH+"]";
+			},
+			onScrollMove: function () {
+				document.getElementById("show").innerHTML="onScrollMove: up["+pullUpEl.className+"],down["+pullDownEl.className+"],Y["+this.y+"],maxScrollY["+this.maxScrollY+"],minScrollY["+this.minScrollY+"],scrollerH["+this.scrollerH+"],wrapperH["+this.wrapperH+"]";
+				if (this.y > 0) {
+					pullDownEl.className = 'flip';
+					pullDownEl.querySelector('.pullDownLabel').innerHTML = '刷新...';
+					this.minScrollY = 0;
+				}
+				if (this.y < 0 && pullDownEl.className.match('flip')) {
+					pullDownEl.className = '';
+					pullDownEl.querySelector('.pullDownLabel').innerHTML = '下拉刷新...';
+					this.minScrollY = -pullDownOffset;
+				}
+				
+				if ( this.scrollerH < this.wrapperH && this.y < (this.minScrollY-pullUpOffset) || this.scrollerH > this.wrapperH && this.y < (this.maxScrollY - pullUpOffset) ) {
+					document.getElementById("pullUp").style.display="";
+					pullUpEl.className = 'flip';
+					pullUpEl.querySelector('.pullUpLabel').innerHTML = '刷新...';
+				} 
+				 if (this.scrollerH < this.wrapperH && this.y > (this.minScrollY-pullUpOffset) && pullUpEl.className.match('flip') || this.scrollerH > this.wrapperH && this.y > (this.maxScrollY - pullUpOffset) && pullUpEl.className.match('flip')) {
+					document.getElementById("pullUp").style.display="none";
+					pullUpEl.className = '';
+					pullUpEl.querySelector('.pullUpLabel').innerHTML = '加载更多...';
+				}
+			},
+			onScrollEnd: function () {
+				document.getElementById("show").innerHTML="onScrollEnd: up["+pullUpEl.className+"],down["+pullDownEl.className+"],Y["+this.y+"],maxScrollY["+this.maxScrollY+"],minScrollY["+this.minScrollY+"],scrollerH["+this.scrollerH+"],wrapperH["+this.wrapperH+"]";
+				if (pullDownEl.className.match('flip')) {
+					pullDownEl.className = 'loading';
+					pullDownEl.querySelector('.pullDownLabel').innerHTML = 'Loading...';				
+					pullDownAction();	// Execute custom function (ajax call?)
+				} 
+				 if (pullUpEl.className.match('flip')) {
+					pullUpEl.className = 'loading';
+					pullUpEl.querySelector('.pullUpLabel').innerHTML = 'Loading...';		
+					pullUpAction();	// Execute custom function (ajax call?)
+				}
+				myScroll.refresh();
+				console.log()
+			}
+
+		});
+		
+		//setTimeout(function () { document.getElementById('wrapper').style.left = '0'; }, 800);
+	}
+
+	document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+	// document.addEventListener("load",function () { setTimeout(loaded, 200)},false);
+	document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
+</script> -->
+<!-- <script>
+	
+        var myScroll,
+            pullDownEl,
+            pullDownOffset,
+            pullUpEl,
+            pullUpOffset;
+
+        //todo 自己定义的变量
+        var userDataSum, //存储数据的变量
+            addNum = 0,
+            stepLength = 3, //每次加载的步长
+            sumL = 0; //数据的长度
+        /**
+         *  刷新滚动区域的滚动条的位置（此方法在添加数据后调用）
+         **/
+        function refreshScrollBar() {
+            console.log("刷新滚动条");
+            setTimeout(function() { // <-- Simulate network congestion, remove setTimeout from production!
+                myScroll.refresh(); // Remember to refresh when contents are loaded (ie: on ajax completion)
+            }, 1000); // <-- Simulate network congestion, remove setTimeout from production!
+        }
+
+        function pullDownAction() {
+            console.log("下拉");
+            //alert('pullDown')
+            setTimeout(function() {
+                (function reloadPage() {
+                    if (GetQueryString("_rf")) {
+                        window.location.href = window.location.href.replace(GetQueryString("_rf"), Math.random());
+                    } else {
+                        window.location.href = window.location.href + (window.location.href.indexOf("?") > -1 ? "&" : "?") + "_rf=" + Math.random();
+                    }
+                })();
+                myScroll.refresh();
+                console.log($("#thelist").height())
+            }, 1000);
+        }
+        //初始化数据
+        function pullUpAction() {
+            console.log("上拉");
+            setTimeout(function() { // <-- Simulate network congestion, remove setTimeout from production!
+                //TODO 上拉添加数据
+                // add(userDataSum);
+                add(1,2)
+                console.log($("#thelist").height())
+                myScroll.refresh(); // Remember to refresh when contents are loaded (ie: on ajax completion)
+            }, 1000); // <-- Simulate network congestion, remove setTimeout from production!
+        }
+
+        function loaded() {
+            pullDownEl = document.getElementById('pullDown');
+            pullDownOffset = pullDownEl.offsetHeight;
+            pullUpEl = document.getElementById('pullUp');
+            pullUpOffset = pullUpEl.offsetHeight;
+            myScroll = new iScroll('wrapper', {
+                useTransition: true,
+                topOffset: pullDownOffset,
+                onRefresh: function() {
+                    if (pullDownEl.className.match('loading')) {
+                        pullDownEl.className = '';
+                        pullDownEl.querySelector('.pullDownLabel').innerHTML = '下拉刷新...';
+                    } else if (pullUpEl.className.match('loading')) {
+                        pullUpEl.className = '';
+                        pullUpEl.querySelector('.pullUpLabel').innerHTML = '上拉加载更多...';
+                    }
+                },
+                onScrollMove: function() {
+                    if (this.y > 5 && !pullDownEl.className.match('flip')) {
+                        pullDownEl.className = 'flip';
+                        pullDownEl.querySelector('.pullDownLabel').innerHTML = 'Release to refresh...';
+                        this.minScrollY = 0;
+                    } else if (this.y < 5 && pullDownEl.className.match('flip')) {
+                        pullDownEl.className = '';
+                        pullDownEl.querySelector('.pullDownLabel').innerHTML = '下拉刷新...';
+                        this.minScrollY = -pullDownOffset;
+                    } else if (this.y < (this.maxScrollY - 5) && !pullUpEl.className.match('flip')) {
+                        pullUpEl.className = 'flip';
+                        pullUpEl.querySelector('.pullUpLabel').innerHTML = 'Release to refresh...';
+                        this.maxScrollY = this.maxScrollY;
+                    } else if (this.y > (this.maxScrollY + 5) && pullUpEl.className.match('flip')) {
+                        pullUpEl.className = '';
+                        pullUpEl.querySelector('.pullUpLabel').innerHTML = '上拉加载更多...';
+                        this.maxScrollY = pullUpOffset;
+                    }
+                },
+                onScrollEnd: function() {
+                    console.log(1)
+                    if (pullDownEl.className.match('flip')) {
+                        pullDownEl.className = 'loading';
+                        pullDownEl.querySelector('.pullDownLabel').innerHTML = 'Loading...';
+
+                        refreshScrollBar();
+                        pullDownAction(); // Execute custom function (ajax call?)
+                    } else if (pullUpEl.className.match('flip')) {
+                        pullUpEl.className = 'loading';
+                        pullUpEl.querySelector('.pullUpLabel').innerHTML = 'Loading...';
+                         pullUpAction();
+                        if (addNum < sumL) {
+                            // pullUpAction(); // Execute custom function (ajax call?)
+
+                        } else {
+                            pullUpEl.querySelector('.pullUpLabel').innerHTML = '数据已全部加载完毕';
+                            pullUpEl.querySelector('.pullUpLabel').innerHTML = "数据已全部加载完毕！";
+                        }
+                    }
+                }
+            });
+            refreshScrollBar();
+            setTimeout(function() {
+                document.getElementById('wrapper').style.left = '0';
+            }, 800);
+            console.log($("#thelist").height());
+        }
+        document.addEventListener('touchmove', function(e) {
+            e.preventDefault();
+        }, false);
+
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(loaded, 200);
+        }, false);
+
+        // function GetQueryString(name) {
+        //     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        //     var r = window.location.search.substr(1).match(reg);
+        //     return (r != null && r.length >= 2) ? decodeURI(r[2]) : null;
+        // }
+        // user(0, 100);
+
+        function user(num, size) {
+            var url = basePath + 'user/activity/issue/comment/list.do';
+            var id = 'cff1f4ad2e6a416bab10ab11b74b186q';
+            var pageNum = num;
+            var pageSize = size;
+            var field = 2;
+            $.ajax({
+                url: url,
+                data: {
+                    id: id,
+                    pageNum: pageNum,
+                    pageSize: pageSize,
+                    field: field
+                },
+                dataType: "json",
+                success: function(result) {
+                    console.log(result)
+                    var data = result.data;
+                    var str =
+                        '<div class="message-box">' +
+                        '<input id="id" type="hidden"/>' +
+                        '<div class="mess-group">' +
+                        '<div class="mess-cont tit-cont">' +
+                        data.issue.name +
+                        '</div>' +
+                        '<div class="mess-foot clearfix">' +
+                        '<input type="hidden" value="' + data.issue.click + '"/>' +
+                        '<a class="col-xs-2 fr item thumbsUp" href="javascript:;">' +
+                        '<img src="../../img/weixin/up.png" alt="up">' +
+                        '<span class="num">' + data.issue.thumbsUp + '</span>' +
+                        '</a>' +
+                        '<input type="hidden" value="' + data.issue.id + '"/>' +
+                        '<a class="col-xs-2 fr item comment first-comment" href="javascript:;">' +
+                        '<img src="../../img/weixin/talk.png" alt="talk">' +
+                        '<span class="num">' + data.issue.totalComment + '</span>' +
+                        '</a>' +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="mess-talk-group floor-list">' +
+                        '</div>' +
+                        '</div>';
+                    $('.order-box').append(str);
+                    $('#id').val(result.data.issue.id);
+                    userDataSum = result;
+                    // console.log(userDataSum.body.totalNum);
+                    add(userDataSum)
+                }
+            })
+        }
+
+        // function add(result) {
+        //     console.log(result)
+        //     sumL = result.data.issueComment.length;
+        //     //总的长度减去已加载的长度是否小于每次加载的长度
+        //     if ((sumL - addNum) < stepLength) {
+        //         stepLength = sumL % stepLength;
+        //     }
+        //     //每次加载的步长长度
+        //     addNum += stepLength;
+        //     if (addNum >= sumL) {
+        //         addNum = sumL;
+        //     }
+        //     var el, litext = "",
+        //         i;
+        //     el = el = $('.floor-list');
+
+        //     for (i = addNum - stepLength; i < addNum; i++) {
+
+        //         litext +=
+        //             '<div class="clearfix floor">' +
+        //             '<img class="fl" src="../../img/weixin/head-icon.png" alt="">' +
+        //             '<div class="talk-txt fr">' +
+        //             '<span class="mess-name">' + result.data.issueComment[i].nick + '：</span>' +
+        //             '<span class="mess-cont">' +
+        //             result.data.issueComment[i].content +
+        //             '</span>' +
+        //             '</div>' +
+        //             '<div class="mess-foot clearfix">' +
+        //             '<p class="clearfix">' +
+        //             '<span class="mess-time col-xs-5 fl">' + result.data.issueComment[i].ctime + '</span>' +
+        //             '<input type="hidden" value="' + result.data.issueComment[i].id + '"/>' +
+        //             '<a class="col-xs-2 fr item comment" href="javascript:;">' +
+        //             '<span class="num">回复</span>' +
+        //             '</a>' +
+        //             '</p>' +
+        //             '<div class="mess-talk-group mess-child child-floor">' +
+        //             '</div>' +
+        //             '</div>' +
+        //             '</div>';
+        //     }
+        //     //添加进详情列别里面
+        //     el.append(litext);
+
+
+        //     //TODO 首次添加数据以后调用（刷新滚动条高度）
+        //     refreshScrollBar();
+        // }
+
+</script> -->
+</html>

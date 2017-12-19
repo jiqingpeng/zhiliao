@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>详情</title>
+	<link rel="stylesheet" href="../../css/index/base.css">
+	<link rel="stylesheet" href="../../css/index/public.css">
+	<link rel="stylesheet" href="../../css/index/detail.css">
+</head>
+<body>
+	<div class="head">
+		<div class="clearfix hnav">
+			<ul class="fl">
+				<li class="fl"><a href="index.html">首页</a></li>
+				<!-- <li class="fl"><a href="detail.html">解决方案</a></li>
+				<li class="fl"><a href="second.html">合作单位</a></li>
+				<li class="fl"><a href="cation.html">关于我们</a></li> -->
+			</ul>
+			<ul class="fr">
+				<li class="fl"><a id="user_center" href="../user/activityList.html"></a></li>
+				<li class="fl"><a id="user_name" href="javascript:;"></a></li>
+				<li class="fl"><a id="login_out" href="javascript:;"></a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="contain">
+		<input type="hidden" id="id"/> <!-- 活动id -->
+		<div class="bannimg">
+			<a class="fl" href="index.html"><img class="logol" src="../../img/index/logoandname.png" alt="logoname"></a>
+			<img class="logor fr" src="../../img/index/homenav.png" alt="homenav">
+		</div>
+		<h3 class="clearfix">
+			<a href="index.html" class="fl">首页</a>
+			<a href="javascript:;" class="fl">&gt;全部活动</a>
+			<a class="detail" href="" class="fl">&gt;活动详情</a>
+		</h3>
+		<div class="wrap clearfix">
+			<div class="wrap-l fl">
+				<div class="group">
+					<h4>
+						<img src="../../img/index/small_black.jpg" alt="icon">
+						会议时间
+					</h4>
+					<div class="item" id="mess_time">
+						<!-- <div>
+							<p>会议日期</p>
+							<p>2015/10/5</p>
+						</div>
+						<div>
+							<p>征文投稿截止日期:</p>
+							<p>2015/10/5</p>
+						</div>
+						<div>
+							<p>现场报道日期</p>
+							<p>2015/10/5</p>
+						</div> -->
+					</div>
+				</div>
+				<div class="group">
+					<h4>
+						<img src="../../img/index/small_black.jpg" alt="icon">
+						会议地点
+					</h4>
+					<div class="item" id="mess_address">
+						<!-- <div>
+							<p>城市</p>
+							<p>北京市</p>
+						</div>
+						<div>
+							<p>地址</p>
+							<p>北京市海淀区六道口静淑苑路创业广场101室</p>
+						</div> -->
+					</div>
+				</div>
+				<div class="posBox">
+					<div class="group mess_issue">
+						<h4>
+							<img src="../../img/index/small_black.jpg" alt="icon">
+							会议议题
+						</h4>
+						<div class="item">
+							<div>
+								<!-- <p>会议议题</p> -->
+								<p id="mess_issue"></p>
+							</div>
+						</div>
+					</div>
+					<div class="mess_issue2"></div>
+				</div>
+				<div class="group">
+					<h4>
+						<img src="../../img/index/small_black.jpg" alt="icon">
+						组织机构
+					</h4>
+					<div class="item orginfo">
+						<div>
+							<p>主办方：</p>
+							<ul id="activityOrginfoList">
+								<!-- <li></li> -->
+							</ul>
+							<!-- <p>中华医学会血液分学会</p>
+							<p>中华医学会血液分学会</p> -->
+						</div>
+						
+					</div>
+				</div>
+				<div class="group">
+					<h4>
+						<img src="../../img/index/small_black.jpg" alt="icon">
+						动态信息
+					</h4>
+					<div class="item">
+						<div class="news">
+							<!-- <p><a href="">第一条信息</a></p>
+							<p><a href="">第一条信息</a></p>
+							<p><a href="">第一条信息</a></p>
+							<p><a href="">第一条信息</a></p> -->
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<div class="wrap-c fl">
+				<div class="bann" id="banner">
+					<ul class="img">
+			    		<!-- <li><a href=""></a><img class="img1" src="" alt="第1张图片"></a></li>
+			    		<li><a href=""><img class="img2" src="" alt="第2张图片"></a></li>
+			    		<li><a href=""><img class="img3" src="" alt="第3张图片"></a></li> -->
+			    	</ul>
+  					<ul class="num"></ul>
+					<div class="btn">
+						<span class="prev"><</span>
+						<span class="next">></span>
+					</div>
+				</div>
+				<!-- <img class="bann detailImg" src="" alt="show"> -->
+				<h4>
+					<img src="../../img/index/small_black.jpg" alt="icon">
+					会议简介
+				</h4>
+				<div class="message" id="introduction">
+					<!-- <p>两年一度的全国营养科学大会是中国营养学会的重点学术活动，是营养界的科学盛会，也是分享国内外营养学领域的最新研究进展，展示我国营养学及公共卫生领域最新研究成果、推动学科全面发展的一个重要平台。</p>
+					<p>在2016年8月在全国卫生与健康大会上,习近平主席强调把人民健康放在优先发展战略地位，努力全方位全周期保障人民健康。健康中国，营养要先行，当前，营养学科作为生命科学领域的重要分支，其学科内涵不断拓宽，在多学科交叉研究、健康促进和疾病康复中的作用日益凸显，其受到的关注和重视程度前所未有，迎来新的发展机遇。本次会议将从就营养科学技术理论和创新、营养与食品科学基础理论研究与技术应用，以及相关产业发展等领域的重点、热点、难点问题进行广泛而深入的交流。</p>
+					<p>会议将邀请国内外著名专家作专题报告和讲座，并开展论文交流、学术报告与讨论、知名专家与一线科技工作者板报交流和口头报告等形式多样、内容丰富的学术活动，将更多的营养科研成果落地生根，实现技术转化。</p>
+					<p>会议同期将举行“2017年全民营养周启动仪式”。欢迎各省组织参与，欢迎各位会员单位、大专院校、研究机构、医疗机构以及从事营养相关工作的管理人员、业务骨干和科研人员参加会议。</p> -->
+				</div>
+			</div>
+			<div class="wrap-r fr">
+				<div class="group">
+					<h4 class="clearfix">
+						<span class="fl"><img src="../../img/index/small_black.jpg" alt="icon">已报名人数</span>
+						<span class="fr" id="totalAttend"></span>	
+					</h4>
+					<div class="item">
+						<div class="h60">
+							<p class="sign">
+								<a href="javascript:;">我要关注</a>
+							</p>
+							<p class="sign">
+								<a class="enroll" href="#">立即报名</a>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="group">
+					<h4>
+						<img src="../../img/index/small_black.jpg" alt="icon">
+						会议位置
+					</h4>
+					<div class="item">
+						<div>
+							<img src="../../img/user/map.jpg" alt="flow">
+						</div>
+						
+					</div>
+				</div>
+				<div class="group contact">
+					<h4>
+						<img src="../../img/index/small_black.jpg" alt="icon">
+						联系我们
+					</h4>
+					<div class="item">
+						<!-- <div class="tit">
+							择财汇中科技有限公司
+						</div> -->
+						<ul id="contact_our">
+							<!-- <li id="contactPhone">电话: 010-85158148</li>
+							<li>&nbsp&nbsp&nbsp15068965582</li>
+							<li id="contactEmail">邮箱: 124324@qq.com</li>
+							<li>&nbsp&nbsp&nbsp15068965582@qq.com</li> -->
+						</ul>
+					</div>
+					<div class="code" id="qrcode" src="" alt="code">
+					</div>
+					<img class="code" src="../../img/index/publicvx.jpg" alt="code">
+				</div>
+			</div>
+		</div>
+		<!-- 嘉宾 -->
+		<!-- <div class="person">
+			<h4>嘉宾</h4>
+			<div></div>
+		</div> -->
+	</div>
+	<div class="foot">
+			<ul class="f-list clearfix">
+				<!-- <li class="fl tell no">
+				</li> -->
+				<li class="fl">
+					<ul class="foot-message">
+						<li class="font24"><a href="#">关于我们</a></li>
+						<li><a href="#">关于群英会</a></li>
+						<li><a href="#">加入我们</a></li>
+						<li><a href="#">免责申明</a></li>
+					</ul>
+				</li>
+				<li class="fl">
+					<ul class="foot-message">
+						<li class="font24"><a href="#">联系我们</a></li>
+						<li><a href="#">电话</a></li>
+						<li><a href="#">官方微信</a></li>
+						<li><a href="#">新浪微博</a></li>
+					</ul>
+				</li>
+				<li class="fl">
+					<ul class="foot-message">
+						<li class="font24"><a href="#">新闻中心</a></li>
+						<li><a href="#">公司新闻</a></li>
+						<li><a href="#">合作伙伴</a></li>
+						<li><a href="#">知名客户</a></li>
+					</ul>
+				</li>
+				<li class="fl">
+					<ul class="foot-message">
+						<li class="font24"><a href="#">合作</a></li>
+						<li><a href="#">主办方合作</a></li>
+						<li><a href="#">媒体合作</a></li>
+						<li><a href="#">资助合作</a></li>
+					</ul>
+				</li>
+				
+				<li class="fl font24 la"><a href="#">公司新闻</a></li>
+			</ul>
+			<p class="p1">未经gconfs.com同意不得转发网站会议信息</p>
+			<p class="p2">京ICP备1708133号</p>
+	</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/common/qrcode.min.js"></script>
+<script>
+	$(function(){
+		//init获取页面信息和登陆状态
+		var url=basePath+"index/activity.do";
+		//截取ID
+		var id = '';
+		if(Request('location')){
+			id = Request('location');
+			$("#id").val(id);
+		} else if(sessionStorage.getItem('actId')) {
+			id = sessionStorage.getItem('actId');
+			$("#id").val(id);
+		}
+		$.ajax({
+			url: url,
+			type: 'GET',
+			data:{id:id},
+			// data:{id:'9c2d2f6a84e84ee882b73d66a7b8a7f6'},
+			dataType: 'json',
+			xhrFields: {
+       			withCredentials: true
+    		},
+    		crossDomain: true,
+			success:function(result){
+				console.log(result);
+				if(result.flag){
+					//时间截取
+					var stime=result.data.activity.stime.substr(0,11);
+					var paperEtime=result.data.activity.paperEtime.substr(0,11);
+					var signupStime=result.data.activity.signupStime.substr(0,11);
+					var signupEtime=result.data.activity.signupEtime.substr(0,11);
+					//会议时间
+					$('#mess_time').append('<div><p class="bold">会议日期</p><p class="color_ccc">&nbsp'+stime+'</p></div><div><p class="bold">征文投稿截止日期</p><p>&nbsp'+paperEtime+'</p></div><div><p class="bold">现场报道日期</p><p>&nbsp'+signupStime+'至'+signupEtime+'</p></div>');	
+					//会议地点
+					$('#mess_address').append('<div><p class="bold">城市</p><p>&nbsp'+result.data.activity.city+'</p></div><div><p class="bold">地址</p><p>&nbsp'+result.data.activity.contactAddress+'</p></div>');
+					//动态信息
+					for(var i=0;i<result.data.news.length;i++){
+						$('.news').append('<p><a href="">'+result.data.news[i].title+'</a></p>');
+					};
+					//获取str个数
+					function getByteLen(val) {
+				      var len = 0;
+				      for (var i = 0; i < val.length; i++) {
+				        var a = val.charAt(i);
+				        if (a.match(/[^\x00-\xff]/ig) != null) {
+				          len += 2;
+				        }
+				        else {
+				          len += 1;
+				        }
+				      }
+				      return len;
+	    			};
+	    			//会议议题
+	    			function subStr(id1,id2,id3){
+		    			if(getByteLen(result.data.activity.issue)>40){
+		    				var str=result.data.activity.issue.substr(0,40)+'...';
+			    			$(id1).html(str);
+			    			$(id2).on('mouseover',function(){
+								$(this).css({
+									'position':'absolute',
+									'left':0,
+									'top':0,
+									'background':'#fff',
+									'z-index':'1'
+								});
+								$(id1).html(result.data.activity.issue)
+								$(id3).css('display','block')
+							})
+							$(id2).on('mouseout',function(){
+								$(this).css({
+									'position':'relative',
+									'left':'0',
+									'top':'0',
+									'background':'#fff',
+									'z-index':'0'
+								});
+								$(id1).html(str)
+								$(id3).css('display','none');
+							})
+		    			}else{
+		    				$(id1).html(result.data.activity.issue);
+		    			}
+	    			};
+	    			subStr('#mess_issue',".mess_issue",".mess_issue2");
+	    			//报名人数
+					$('#totalAttend').html(result.data.activity.totalAttend);
+					//会议简介
+					$('#introduction').html(result.data.activity.introduction);
+					//组织机构
+					for(var i=0;i<result.data.activity.activityOrginfoList.lenght;i++){
+						$('.news').append('<p><a href="javascript:;">'+result.data.activity.activityOrginfoList[i].name+'</a></p>');
+					};
+					//联系方式
+					var str='<li id="contactPhone">&nbsp联系人:&nbsp'+result.data.activity.contactUser+'</li><li id="contactPhone">联系电话:&nbsp'+result.data.activity.contactPhone+'</li><li id="contactEmail">联系邮箱:&nbsp'+result.data.activity.contactEmail+'m</li><li id="contactEmail">联系地址:&nbsp'+result.data.activity.contactAddress+'</li>';
+					$('#contact_our').append(str);
+					//会议图片
+					for(var i=0;i<result.data.imageUrl.length;i++){
+						$('#banner .img').append('<li><a href=""></a><img class="img1" src="'+basePath+result.data.imageUrl[i]+'" alt="第'+i+1+'张图片"></a></li>');
+					};
+					pictureShow('#banner',{
+				      autoplay:true,
+				      mousehover:true,
+				      round:true
+    				});
+					// $('.img1').attr('src',basePath+result.data.imageUrl[0]);
+					// $('.img2').attr('src',basePath+result.data.imageUrl[1]);
+					// $('.img3').attr('src',basePath+result.data.imageUrl[2]);
+					
+					// 获取用户登陆状态信息
+					if(result.data.user){
+						$('#user_name').html(result.data.user.name);
+						$('#user_center').html('用户中心');
+						$('#login_out').html('注销');
+					};
+				}else{
+					alert(result.msg)
+				};
+			},
+			error:function(){
+				alert("请求失败");
+			}
+		});
+		// 报名
+		$(".enroll").on('click',function(){
+			var url = basePath+'index/status.do';
+			$.ajax({
+				url: url,
+				type: 'GET',
+				data:{id:id},
+				// data:{id:'9c2d2f6a84e84ee882b73d66a7b8a7f6'},
+				dataType: 'json',
+				xhrFields: {
+	       			withCredentials: true
+	    		},
+	    		crossDomain: true,
+				success:function(result){
+					if(result.flag){
+						if(result.data.user){
+							window.location.href = 'previewFiled.html?actId='+$("#id").val();
+						}else{
+							window.location.href = '../index/login.html';
+						};
+					}else{
+						alert(result.msg)
+					};
+				},
+				error:function(){
+					alert("请求失败")
+				}
+			});
+		});
+		//注销
+		$('#login_out').click(function(){
+			var url=basePath+"login/out.do";
+			$.ajax({
+				url: url,
+				type: 'GET',
+				dataType: 'json',
+				xhrFields: {
+           			withCredentials: true
+        		},
+        		crossDomain: true,
+				success:function(result){
+					if(result.flag){
+						window.location.href='index.html';
+					}else{
+						alert(result.msg)
+					};
+				},
+				error:function(){
+					alert("请求失败");
+				}
+			});
+		});
+		//二维码
+		var qrcode = new QRCode(document.getElementById("qrcode"), {
+			width : 100,
+			height : 100
+		});
+		var url=window.location;
+		qrcode.makeCode(window.location);
+		//tupian
+		function pictureShow(id,options){
+	        var i=0;
+	        var timer=null;
+	        var options=options||{};
+	        var scrollAuto=false;
+	        
+	        for (var j = 0; j < $(id+' .img li').length; j++) {  //创建圆点
+	          $(id+' .num').append('<li></li>')
+	        }
+	        $(id+' .num li').first().addClass(id+' active'); //给第一个圆点添加样式
+	      
+	        var firstimg=$(id+' .img li').first().clone(); //复制第一张图片
+	        $(id+' .img').append(firstimg).width($(id+' .img li').length*($(id+' .img img').width())); //将第一张图片放到最后一张图片后，设置ul的宽度为图片张数*图片宽度
+	      
+	      
+	        // 下一个按钮
+	        $(id+' .next').click(function(){
+	          i++;
+	          if (i==$(id+' .img li').length) {
+	            i=1; //这里不是i=0
+	            $(id+' .img').css({left:0}); //保证无缝轮播，设置left值
+	          };
+	      
+	          $(id+' .img').stop().animate({left:-i*560},300);
+	          if (i==$(id+' .img li').length-1) {   //设置小圆点指示
+	            $(id+' .num li').eq(0).addClass(id+' active').siblings().removeClass(id+' active');
+	          }else{
+	            $(id+' .num li').eq(i).addClass(id+' active').siblings().removeClass(id+' active');
+	          }
+	            
+	        })
+	      
+	        // 上一个按钮
+	        $(id+' .prev').click(function(){
+	          i--;
+	          if (i==-1) {
+	            i=$(id+' .img li').length-2;
+	            $(id+' .img').css({left:-($(id+' .img li').length-1)*560});
+	          }
+	          $(id+' .img').stop().animate({left:-i*560},300);
+	          $(id+' .num li').eq(i).addClass(id+' active').siblings().removeClass(id+' active');
+	        })
+	      
+	        //设置按钮的显示和隐藏
+	        function buttonShow(){
+	            $(id).hover(function(){
+	              $(id+' .btn').show();
+	            },function(){
+	              $(id+' .btn').hide();
+	            })
+	        }
+	        if(options.buttonShow){
+	            buttonShow();
+	        }
+	        //鼠标划入圆点
+	        function round(){
+	            $(id+' .num li').mouseover(function(){
+	            var _index=$(this).index();
+	            $(id+' .img').stop().animate({left:-_index*560},150);
+	            $(id+' .num li').eq(_index).addClass(id+' active').siblings().removeClass(id+' active');
+	            })
+	        }
+	        if(options.round){
+	          round();
+	        }
+	        //定时器自动播放
+	        function autoplay(){
+	          timer=setInterval(show,2000)
+	        }
+	        if(options.autoplay){
+	          autoplay();
+	        }
+	        //鼠标移入，暂停自动播放，移出，开始自动播放
+	        function mousehover(){
+	            $(id).hover(function(){ 
+	              clearInterval(timer);
+	            },function(){
+	              timer=setInterval(show,2000)
+	            })
+	        }
+	        if(options.mousehover){
+	          mousehover();
+	        }
+	        //图片滚动
+	        function show(){
+	          i++;
+	          if (i==$(id+' .img li').length) {
+	            i=1;
+	            $(id+' .img').css({left:0});
+	          };
+	      
+	      	  $(id+' .img').stop().animate({left:-i*560},300);
+	          if (i==$(id+' .img li').length-1) { 
+	            $(id+' .num li').eq(0).addClass(id+' active').siblings().removeClass(id+' active');
+	          }else{
+	            $(id+' .num li').eq(i).addClass(id+' active').siblings().removeClass(id+' active');
+	          }
+	        }
+    	};
+    	
+    	//页面链接
+		$('.detail').click(function(){
+			$(this).attr('href',window.location);
+		});
+	})
+</script>
+</html>

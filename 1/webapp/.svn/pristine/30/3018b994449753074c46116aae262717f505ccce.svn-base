@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title class="title">参会报名</title>
+</head>
+<body>
+<script> 
+(function(){
+	location.replace("index/takepart.html?id="+Request('actId'));
+	return false;
+})();
+function Request(name) {
+	if (new RegExp("(^|&)" + name + "=([^&]*)").exec(window.location.search.substr(1))) {
+		return RegExp.$2;
+	}
+	return null;
+}
+</script>
+</body>
+</html>

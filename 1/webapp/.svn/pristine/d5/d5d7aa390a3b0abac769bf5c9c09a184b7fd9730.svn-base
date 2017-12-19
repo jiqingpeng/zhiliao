@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title class="title">互动交流</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="../../css/common/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../../css/weixin/style.css">
+	<style type="text/css">
+		.img{
+			width: 100%;
+		}
+		.img img{
+			width: 100%;
+		}
+		.circle{
+			width: 100px;
+			height: 100px;
+			background-color: #d94500;
+			margin: 20% auto;
+			border-radius: 50%;
+			line-height: 100px;
+			text-align: center;
+			color: #fff;
+			font-size: 16px;
+		}
+		.curCircle{
+			background-color: #247142;
+		}
+	</style>
+</head>
+<body>
+	<script src="../../js/weixin/wxHeader.js"></script>
+	<div class="img">
+		<img src="../../img/weixin/interAction.png">
+	</div>
+	<div class="circle">会前预热</div>
+	<input type="hidden" value="1">
+	<div class="circle curCircle">现场提问</div>
+	<input type="hidden" value="2">
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".nav-title").html("互动交流");
+	var actId = Request('actId');
+	$(".circle").on("click", function(){
+		var value = $(this).next().val();
+		console.log(value);
+		window.location.href = "interactList.html?actId=" + actId +"&value=" + value;
+	});
+})
+</script>
+</html>

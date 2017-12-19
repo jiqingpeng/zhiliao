@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+	<title>Document</title>
+	<link rel="stylesheet" href="../../../css/app/base.css">
+	<link rel="stylesheet" href="../../../css/app/datepicker.min.css">
+	<link rel="stylesheet" href="../../../css/app/header-app.css">
+	<style>
+		.search{
+			width:96%;
+			padding:0 2%;
+			margin-top:30%;
+		}
+		.search .nav{
+			display: flex;
+			align-items: center;
+			margin:0 2%;
+		}
+		.search .nav span{
+			font-size:20px;
+		}
+		.search .nav .nav-tit{
+			flex:1;
+			text-align:center;
+			font-size:14px;
+			color:#f60;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border:1px solid #f60;
+			height:34px;
+		}
+		.search .nav .nav-ltit{
+			border-radius:20px 0 0 20px;
+		}
+		.search .nav .nav-rtit{
+			border-radius:0 20px 20px 0;
+		}
+		.search .nav .active{
+			background:#f60;
+			color:#fff;
+		}
+		.search .search-conent{
+			margin-top:10%;
+		}
+		.search .search-conent .search-list{
+			margin:4%;
+		}
+		.search-conent .search-list input{
+			border:none;
+			width:96%;
+			height:24px;
+			padding:10px 2%;
+			font-size:20px;
+			color:gray;
+			border-radius:4px;
+		}
+		.search .search-conent .search-btn{
+			display: flex;
+			background:#f60;
+			align-items: center;
+			justify-content: center;
+			height:40px;
+			color:#fff;	
+			font-size:20px;
+			border-radius:4px;
+			margin:6% 2% 0;
+		}
+		.search-conent .search-btn img{
+			width:25px;
+			height:25px;
+		}
+		.trainMask,.airPlanMask{
+			width:100%;
+			position: absolute;
+			left:0;
+			top:0;
+			z-index:100;
+			overflow-y: auto;
+			background:#fff;
+		}
+		.active{
+			display: none;
+		}
+		.city-box{
+			
+		}
+		.city-box .head{
+			margin-left:2%;
+		}
+		.city-box .city-list{
+			margin-left:8%;
+		}
+		.city-box .city-list .city-name{
+			display: flex;
+			height:30px;
+			align-items: center;
+		}
+		.city-pos{
+			position:fixed;
+			right:4%;
+			top:0;
+		}
+	</style>
+</head>
+<body>
+	<header class="app-header">
+		<div class="navImg">
+			<img src="../../../img/app/arrowLeft-icon.png">
+		</div>
+		<div class="navDetail">火车飞机</div>
+	</header>
+	<section>
+		<article class="search">
+			<header class="nav">
+				<div class="nav-tit nav-ltit train active">
+					<span>火车票</span>
+				</div>
+				<div class="nav-tit nav-rtit airplan">
+					<span>飞机票</span>
+				</div>
+			</header>
+			<section class="search-conent">
+				<div class="search-list">
+					<input class="formCity" type="text" placeholder="出发城市" value="" readonly="readonly">
+					<input class="formCode" type="hidden">
+				</div>
+				<div class="search-list">
+					<input class="toCity" type="text" placeholder="到达城市" value="" readonly="readonly">
+					<input class="toCode" type="hidden">
+				</div>
+				<div class="search-list">
+					<input id="date" class="time" type="text" placeholder="出发时间" readonly="readonly">
+					<input type="hidden">
+				</div>
+				<div class="search-btn">
+					<img src="../../../img/app/reserve.png" alt="">
+					<div>搜索</div>
+				</div>
+			</section>
+		</article>
+	</section>
+	<section class="trainMask active">
+		<section class="city-box">
+			
+		</section>
+		<section class="city-pos">
+			<article>
+				<ul class="city-right">
+					
+				</ul>
+			</article>
+		</section>
+	</section>
+	<section class="airPlanMask active">
+		<section class="city-box">
+			
+		</section>
+		<section class="city-pos">
+			<article>
+				<ul class="city-right">
+					
+				</ul>
+			</article>
+		</section>
+	</section>	
+</body>
+<script src="../../../js/zepto.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<script src="../../../js/app/mtTool.js"></script>
+<script src="../../../js/app/datepicker.min.js"></script>
+<script src="../../../js/user/userMain.js"></script>
+<script>
+	$(function(){
+		init();
+		//火车飞机分类
+		var type="train"
+		$('.train').on('click',function(){
+			type="train";
+		});
+		$('.airplan').on('click',function(){
+			type="airplan";
+		});
+		$('.train').on('click',function(){
+			type="train";
+			$(this).addClass('active');
+			$('.airplan').removeClass('active');
+			console.log(type)
+		});
+		$('.airplan').on('click',function(){
+			$(this).addClass('active');
+			$('.train').removeClass('active');
+			console.log(type)
+		});
+		//城市二级关联
+		var cityState=0;
+		$('.formCity').on('click',function(){
+			
+			cityState=1;
+			if("train"==type){
+				$('.trainMask').removeClass('active')
+			}else{
+				$('.airPlanMask').removeClass('active')
+			};
+		});
+		$('.toCity').on('click',function(){
+			
+			cityState=0;
+			if("train"==type){
+				$('.trainMask').removeClass('active')
+			}else{
+				$('.airPlanMask').removeClass('active')
+			};
+		});
+		$(document).on('click','.city',function(){
+			var city = $(this).find('.city-name').html();
+			var code = $(this).find('.city-code').val();
+			if(cityState){
+				$('.formCity').val(city);
+				$('.formCode').val(code);
+			}else{
+				$('.toCity').val(city);
+				$('.toCode').val(code);
+			};
+			$('.trainMask').addClass('active');
+			$('.airPlanMask').addClass('active');
+		});
+		//搜索
+		$('.search-btn').on('click',function(){
+			var formC= $('.formCode').val();
+			var toC = $('.toCode').val();
+			var formT= $('#date').val();
+			if("train"==type){
+				var url = "trainList.html?startdatetime="+formT+"&startname="+formC+"&arrivename="+toC+"&actId="+"1e151ef6294a46e6bcc0d8c27651a9b3";
+				window.location.href=url;
+			}else{
+				var url = "https://m.ly.com/flightnew/"+formC+"_"+toC+".html?refid=9368888&";	
+				url += "&flyofftime=" + formT+ "&showwxpaytitle=1";
+				window.location.href=url;
+			};
+		});
+		var arr = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+		// var arr = ['A','B','C'];
+		function getCity(){
+			var url = 'http://192.168.1.112/mt/user/activity/get.do?id=1e151ef6294a46e6bcc0d8c27651a9b3&type=train';
+			$.myAjax({
+				url: url,
+				success: function(result){
+					if(result.flag){
+						var json=result.data.train.station;
+						var data=[];
+						var str='';
+						var city='';
+						for(i=0;i<arr.length;i++){
+							str+=
+								'<article class="city-box">'+
+									'<header class="head">'+
+										'<a name="'+arr[i]+'"></a>'+
+										'<span>'+
+											arr[i]+
+										'</span>'+
+									'</header>'+
+									'<ul class="city-list">';
+							var sStr = '';
+							city+='<li><a href="#'+arr[i]+'1">'+arr[i]+'</a></li>';
+
+							for(var j=0;j<json[arr[i]].length;j++){
+								sStr+=
+									'<li class="city">'+
+											'<a class="city-name" href="javascript:;">'+json[arr[i]][j].name+'</a>'+
+											'<input class="city-code" type="hidden" value="'+json[arr[i]][j].code+'">'+
+									'</li>';
+							}
+							str = str + sStr + '</ul></article>';
+						}
+					$('.city-right').append(city);
+					$('.trainMask .city-box').append(str);
+					var url = 'http://192.168.1.112/mt/user/activity/get.do?id=1e151ef6294a46e6bcc0d8c27651a9b3&type=airplan';
+					$.myAjax({
+						url: url,
+						success: function(result){
+
+							if(result.flag){
+								var arr = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+								var json=result.data.airplan.station;
+								var data=[];
+								var str='';
+								for(i=0;i<arr.length;i++){
+									str+=
+										'<article class="city-box">'+
+											'<header class="head">'+
+												'<a name="'+arr[i]+'1"></a>'+
+												'<span>'+
+													arr[i]+
+												'</span>'+
+											'</header>'+
+											'<ul class="city-list">';
+												
+									var sStr = '';
+									 
+									for(var j=0;j<json[arr[i]].length;j++){
+										sStr+=
+											'<li class="city">'+
+													'<a class="city-name" href="javascript:;">'+json[arr[i]][j].name+'</a>'+
+													'<input class="city-code" type="hidden" value="'+json[arr[i]][j].code+'">'+
+											'</li>';
+									}
+									str = str + sStr + '</ul></article>';
+									
+								};
+							$('.airPlanMask .city-box').append(str);
+								
+							}else{
+								console.log("请求失败");
+							};
+						},
+						error: function(result){
+
+						}
+					});	
+					}else{
+						console.log("请求失败");
+					}
+				},
+				error: function(result){
+
+				}
+			});
+		};
+		function init(){
+			getCity();
+			getDate();
+		};
+		function getDate(){
+			var _date = document.getElementById('date');
+			var datePicker = new DatePicker({
+				confirmCbk: function(data) {
+		            _date.value = data.year + '-' + data.month + '-' + data.day;
+				}
+			});
+
+		    _date.onfocus = function(e) {
+		    	_date.blur();
+				datePicker.open();
+		    };
+		};
+	})
+</script>
+</html>

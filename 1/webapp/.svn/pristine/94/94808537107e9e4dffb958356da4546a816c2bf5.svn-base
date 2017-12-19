@@ -1,0 +1,424 @@
+body{
+	background-color: #f1f1f1;
+}
+.hotelReserve{
+	width: 1200px;
+	margin: 0 auto;
+}
+.hotelReserve .ReserHead{
+	height: 144px;
+	background-color: #ffffff;
+}
+.ReserHead .ResHeadTitle{
+	width: 100%;
+	height: 88px;
+	line-height: 88px;
+	text-align: center;
+}
+.ResHeadTitle .ResHeaTitTour{
+	width: 235px;
+	color: #ed710c;
+	font-size: 20px;
+	font-weight: 700;
+	float: left;
+}
+.ResHeadTitle .ResHeaIndent{
+	width: 224px;
+	float: right;
+}
+.ResHeadTitle .ResHeaIndent span a{
+	font-size: 12px;
+}
+.ResHeadTitle .ResHeaIndent .phone{
+	font-size: 12px;
+	width: 114px;
+	color: red;
+	border-left: 1px solid #ccc;
+	padding-left: 10px;
+	margin-left: 20px;
+}
+.ReserHead .ResHeadPay{
+	padding-left: 140px;
+	font-size: 12px;
+	color: #ccc;
+}
+.ResHeadPay .ResHeadPayFrist{
+	color: red;
+}
+.hotelReserve .ReserContent{
+	/*height: 862px;*/
+	width: 100%;
+	padding-top: 20px;
+	background-color: #f1f1f1;
+
+}
+.ReserContent .ReserConLeft{
+	width: 302px;
+	height: 440px;
+	float: left;
+}
+.ReserConLeft .resConShow{
+	width: 302px;
+	height: 192px;
+}
+.resConShow img{
+	width: 302px;
+	height: 192px;
+}
+.ReserContent .resConDetail{
+	padding-left: 10px;
+	padding-top: 20px;
+	width: 292px;
+	color: #999999;
+	font-size: 12px;
+	height: 160px;
+	background-color: #fff;
+
+}
+
+.ReserContent .resConDetDes{
+	height: 114px;
+}
+.resConDetDes .colorBlack{
+	margin-top: 20px;
+}
+.resConDetail .resConDetPri{
+	margin-left: -10px;
+	margin-top: -20px;
+	min-height: 77px;
+	background-color: #fff7dc;
+}
+.colorBlack{
+	color: #000;
+}
+.spanWidth{
+	display: inline-block;
+	width: 185px;
+}
+
+.resConDetPri .indent{
+	display: inline-block;
+	padding-top: 10px;
+	color: #000;
+	font-size: 16px;
+	line-height: 20px;
+	margin-left: 10px;
+}
+.resConDetPri .price{
+	font-size: 16px;
+	color: red;
+}
+.resConDetPri .roomRate{
+	margin-left: 10px;
+}
+.resConDetPri .write{
+	margin-left: 179px;
+}
+.resConDetPri .cancel{
+	margin-left: 10px;
+}
+.ReserConRight{
+	float: right;
+}
+.ReserConRight .reserGrogInfo{
+	background-color: #ffffff;
+	width: 882px;
+	min-height: 520px;
+}
+.reserGrogInfo .reserInfo{
+	height: 215px;
+	border-bottom: 1px solid #ccc; 
+}
+.reserInfo .reserInfoChar{
+	padding-top: 40px;
+	padding-left: 30px;
+	float: left;
+	width: 80px;
+	height: 175px;
+	background-color: #fafafa;
+}
+.reserInfo .reserDetail{
+	float: left;
+	font-size: 12px;
+}
+.reserDetail .reserInfoDet{
+	margin-left: 40px;
+	margin-top: 40px;
+}
+.reserInfoDet  .alterData{
+	display: inline-block;
+	width: 80px;
+	height: 28px;
+	margin-left: 40px;
+	border: 1px solid #ccc;
+	line-height: 28px;
+	text-align: center;
+	color: #0586c8;
+}
+.reserInfoDet  .alterData:hover{
+	color: #f60;
+	border: 1px solid #f60;
+}
+.reserInfoDet .detailDate{
+	font-size: 14px;
+}
+.reserDetail input{
+	width: 139px;
+	height: 22px;
+}
+.reserDetail .reserCount{
+	margin-top: 20px;
+	margin-left: 40px;
+}
+.reserCount .resCouSpan{
+	display: inline-block;
+	width: 50px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	border: 1px solid #ccc;
+	cursor: pointer;
+}
+.reserCount .resRoomCon{
+	margin-right: 21px;
+}
+.reserCount .resCouStyle{
+	border: 1px solid red;
+}
+.reserDetail .reserTotal{
+	margin-top: 20px;
+	margin-left: 40px;
+	position: relative;
+}
+.reserTotal .resTolPrice{
+	color: red;
+	font-size: 18px;
+}
+.reserTotal .particulars a{
+	color: #5ec1ff;
+}
+.reserTotal .particularsHide{
+	box-shadow: 0 0 30px rgba(0,0,0,0.2);
+	z-index: 100;
+	position: absolute;
+	width: 166px;
+	height: 180px;
+	background-color: #ffffff;
+	padding-left: 22px;
+	padding-top: 20px;
+	top: 30px;
+	left: 100px;
+}
+.particularsHide .particHideData{
+	margin-top: 10px;
+	text-align: center;
+	line-height: 30px;
+	width: 106px;
+	height: 130px;
+	border: 1px solid #ccc;
+}
+.particHideData .particHideWeek{
+	height: 60px;
+	background-color: #f0f0f0;
+}
+.particHidePrice .price{
+	color: red;
+}
+.checkInfo{
+	height: 178px;
+	border-bottom: 1px solid #ccc;
+}
+.checkInfo .checkInfoLeft{
+	height: 138px;
+	padding-left: 30px;
+	padding-top: 40px;
+	float: left;
+	width: 80px;
+	float: left;
+	background-color: #fafafa;
+}
+.checkInfoRight{
+	font-size: 12px;
+}
+.checkInfoRight input{
+	width: 139px;
+	height: 22px;
+}
+.infoIntro{
+	position: relative;
+}
+.infoIntro .regulation a{
+	color: #5ec1ff;
+}
+.infoIntro .infoIntroHide{
+	height: 42px;
+	position: absolute;
+    border: 1px solid #fff;
+    top: 24px;
+    left: 419px;
+    background: #fff;
+    box-shadow: 0 0 30px rgba(0,0,0,0.2);
+    z-index: 999;
+    line-height: 40px;
+    padding: 0 15px;
+    color: #333;
+}
+.travelSecurity{
+	min-height: 97px;
+	border-bottom: 1px solid #ccc;
+}
+.travelSecurity .traSecLeft{
+	height: 100%;
+	padding-top: 40px;
+	height: 57px;
+	float: left;
+	width: 80px;
+	padding-left: 30px; 
+	background-color: #fafafa;
+}
+.travelSecurity .traSecRight{
+	float: left;
+	font-size: 12px;
+}
+.traSecRight .checkBox{
+	display: inline-block;
+	cursor: pointer;
+	margin-left: 36px;
+	width: 8px;
+	height: 8px;
+	border: 1px solid #ccc;
+}
+.traSecRight .allRisks{
+	font-weight: 700;
+}
+.traSecRight .allRisksPrice{
+	color: red;
+	font-size: 14px;
+}
+.traSecRight .allRisksDes{
+	margin-left: 58px;
+	color: #999999;
+}
+
+.invoiceInfo{
+	min-height: 97px;
+	border-bottom: 1px solid #ccc;
+}
+.invoiceInfo .invoInfoLeft{
+	padding-top: 40px;
+	height: 57px;
+	float: left;
+	width: 80px;
+	padding-left: 30px; 
+	background-color: #fafafa;
+}
+.invoiceInfo .invoInfoRight{
+	float: right;
+	font-size: 12px;
+	width: 772px;
+}
+.invoInfoRight .invoInfoRightCon{
+	width: 672px;
+	margin: 25px auto;
+}
+/*.invoInfoRight .checkBox{
+	display: inline-block;
+	cursor: pointer;
+	margin-left: 36px;
+	width: 8px;
+	height: 8px;
+	border: 1px solid #ccc;
+}*/
+/*.invoInfoRight .invoiceDes{
+	color: #999999;
+}
+.invoInfoRight .allRisksDes{
+	margin-left: 58px;
+	color: #999999;
+}*/
+.attention{
+	height: 137px;
+	border-bottom: 1px solid #ccc;
+}
+.attention .attentionLeft{
+	width: 80px;
+	padding-left: 30px;
+	padding-top: 40px;
+	height: 97px;
+	background-color: #fafafa;
+	float: left;
+}
+.attention .attentionRight {
+	font-size: 12px;
+}
+.hotelReserve .immedPayment a{
+	display: inline-block;
+	width: 190px;
+	height: 44px;
+	font-size: 18px;
+	text-align: center;
+	line-height: 44px;
+	background-color: #ff7800;
+	color: #fff;
+	font-weight: 500;
+	margin-top: 30px;
+	margin-left: 478px;
+}
+.immedPayment .immedPaymentDes{
+	display: inline-block;
+	font-size: 12px;
+	color: #666666;
+}
+.immedPayment .immedPaymentDes .immedPaymentPrice{
+	color: #ff7800;
+}
+.traSecHide{
+	font-size: 12px;
+	width: 600px;
+	padding-left: 50px;
+	min-height: 100px;
+	background-color: #fff;
+	margin-left: 110px;
+}
+.traSecHide .traSecHideClause{
+	background-color: #f6f8fc;
+	padding-left: 104px;
+	padding-top: 20px;
+	width: 584px;
+	height: 69px;
+}
+.traSecHideClause .traClauseFirst{
+	margin-bottom: 10px;
+}
+.borderChange{
+	display: inline-block;
+	border: 1px solid red !important;
+}
+.invoiceHide{
+	width: 688px;
+	height: 392px;
+	border: 1px solid #ccc;
+	margin-left: 147px;
+	float: left;
+}
+
+.invoiceHide .eleInvoice{
+	display: inline-block;
+	padding: 0 15px;
+	/*width: 132px;*/
+	height: 32PX;
+	line-height: 32px;
+	text-align: center;
+	background-color: #f5f5f5;
+}
+.invoiceHide .invoHideContent{
+	margin-left: 60px;
+	margin-top: 30px;
+}
+.invoHideContent .invoiceTitle{
+	margin-top: 10px; 
+}
+.invoiceHide .invoiceHideDes{
+	margin-left: 60px;
+	margin-top: 30px;
+}

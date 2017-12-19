@@ -1,0 +1,2344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>机票</title>
+	<link rel="stylesheet" href="base.css">
+	<link rel="stylesheet" href="air.css">
+</head>
+<body>
+	<div class="wrap clearfix">
+		<div class="wrapl fl">
+			<div class="traffic clearfix">
+		    	<div class="trafficBox fl">
+		    		<div class="traHead">国内机票搜索</div>
+		    		<ul class="clearfix traType">
+		    			<!-- <li class="fl active">单程</li>
+		    			<li class="fl">往返</li>
+		    			<li class="fl">连程</li> -->
+		    		</ul>
+		    		<ul class="traBody">
+		    			<li>
+		    				<span>出发城市</span>
+		    				<input type="text"/>
+		    			</li>
+		    			<li>
+		    				<span>到大城市</span>
+		    				<input type="text"/>
+		    			</li>
+		    			<li>
+		    				<span>出发日期</span>
+		    				<input type="text"/>
+		    			</li>
+		    			<li>
+		    				<span>到达日期</span>
+		    				<input type="text"/>
+		    			</li>
+		    		</ul>
+		    		<button type=button"">搜&nbsp索</button>
+		    	</div>
+			</div>
+		</div>
+		<div class="wrapr fr">
+			<div class="timeMess clearfix">
+				<div class="fl tmAddress">北京——>上海(6月13日周二)</div>
+				<div class="fr tmInfo">对50加航空公司、代理商的798个报价只能筛选后的最优结果</div>
+			</div>
+			<!-- <ul class="airDeta clearfix">
+				<li class="fl arrow"><</li>
+				<li class="fl nav">
+					<div class="airDate">
+						<span>06-02</span>
+						<span class="week">周五</span>
+					</div>
+					<div class="airPrice">
+						<span class="priceIcon">￥</span>
+						<span class="price">886</span>
+					</div>
+				</li>
+				<li class="fl nav">
+					<div class="airDate">
+						<span>06-02</span>
+						<span class="week">周五</span>
+					</div>
+					<div class="airPrice">
+						<span class="priceIcon">￥</span>
+						<span class="price">886</span>
+					</div>
+				</li>
+				<li class="fl nav">
+					<div class="airDate">
+						<span>06-02</span>
+						<span class="week">周五</span>
+					</div>
+					<div class="airPrice">
+						<span class="priceIcon">￥</span>
+						<span class="price">886</span>
+					</div>
+				</li>
+				<li class="fl nav">
+					<div class="airDate">
+						<span>06-02</span>
+						<span class="week">周五</span>
+					</div>
+					<div class="airPrice">
+						<span class="priceIcon">￥</span>
+						<span class="price">886</span>
+					</div>
+				</li>
+				<li class="fl nav">
+					<div class="airDate">
+						<span>06-02</span>
+						<span class="week">周五</span>
+					</div>
+					<div class="airPrice">
+						<span class="priceIcon">￥</span>
+						<span class="price">886</span>
+					</div>
+				</li>
+				<li class="fl nav">
+					<div class="airDate">
+						<span>06-02</span>
+						<span class="week">周五</span>
+					</div>
+					<div class="airPrice">
+						<span class="priceIcon">￥</span>
+						<span class="price">886</span>
+					</div>
+				</li>
+				<li class="fl nav">
+					<div class="airDate">
+						<span>06-02</span>
+						<span class="week">周五</span>
+					</div>
+					<div class="airPrice">
+						<span class="priceIcon">￥</span>
+						<span class="price">886</span>
+					</div>
+				</li>
+				<li class="fl arrow">></li>
+			</ul> -->
+			<ul class="screening clearfix">
+				<li class="fl scree">筛选</li>
+				<li class="fl seleBox">起飞时段</li>
+				<li class="fl seleBox">航空公司</li>
+				<li class="fl seleBox">机型</li>
+				<li class="fl seleBox">起飞机场</li>
+				<li class="fl seleBox">抵达机场</li>
+				<li class="fl sort">排序</li>
+				<li class="fl"><a class="up" href="javascript:;">起飞时间</a></li>
+				<li class="fl"><a class="scrPrice" href="javascript:;">价格</a></li>
+			</ul>
+			<div class="flistBox flistBoxat">
+				<table class="fSize12 flistInfo">
+					<tbody>
+						<tr class="theFlight">
+							<td width="160">
+								<div class="air">
+									<span class="airLogo"></span>
+									东方航空MU5112
+								</div>
+								<div class="airType">
+									机型
+									<a class="airNum" href="javascript:;">773(大)</a>
+								</div>
+							</td>
+							<td width="106" align="right">
+								<div class="fSize24">13:00</div>
+								<div class="airAddress">北京首都机场T2</div>
+							</td>
+							<td width="75" align="center">
+								<div class="arrow"></div>
+							</td>
+							<td width="108" align="left">
+								<div class="fSize24">15:15</div>
+								<div class="airAddress">上海虹桥机场T2</div>
+							</td>
+							<td width="100">
+								<div class="c666">折扣:9.9折</div>
+								<div class="c666">餐食:有</div>
+							</td>
+							<td width="65">
+								<div class="c999">税费</div>
+								<div class="c999">￥50</div>
+							</td>
+							<td width="87">
+								<div class="clearfix">
+									<span class="fl c999">最高返</span>
+									<span class="fl cf60">￥40</span>
+								</div>
+							</td>
+							<td width="96">
+								<div class="cf60">
+									<span class="fSzie16">
+										￥
+										<em class="fSzie16 airPrice">1230</em>
+									</span>
+								</div>
+							</td>
+							<td>
+								<a class="more" href="javascript:;">
+									<div class="btn">选择</div>
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="moreFligh active">
+					<table class="fSize12 flistInfo">
+						<tbody>
+							<tr class="airNum0">
+								<td class="proArea">
+									<div class="fTitle"></div>
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									9.9折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot"></span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+							<tr class="titBorder">
+								<td colspan="15"></td>
+							</tr>
+							<tr class="airNum0">
+								<td class="proArea">
+									<div class="fTitle titbg2"></div>
+									<div class="text">报销方便</div>
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										全折
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									9.9折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot"></span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+							<tr class="airNum0">
+								<td class="proArea">
+									
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										高端
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									全折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot"></span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+							<tr class="airNum0">
+								<td class="proArea">
+									
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									全折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot">(去程)</span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+							<tr class="titBorder">
+								<td colspan="15"></td>
+							</tr>
+							<tr class="airNum0">
+								<td class="proArea">
+									<div class="fTitle titbg3"></div>
+									<div class="text">往返优惠</div>
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									全折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot">(去程)</span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="flistBox flistBoxat">
+				<table class="fSize12 flistInfo">
+					<tbody>
+						<tr class="theFlight">
+							<td width="160">
+								<div class="air">
+									<span class="airLogo"></span>
+									东方航空MU5112
+								</div>
+								<div class="airType">
+									机型
+									<a class="airNum" href="javascript:;">773(大)</a>
+								</div>
+							</td>
+							<td width="106" align="right">
+								<div class="fSize24">13:00</div>
+								<div class="airAddress">北京首都机场T2</div>
+							</td>
+							<td width="75" align="center">
+								<div class="arrow"></div>
+							</td>
+							<td width="108" align="left">
+								<div class="fSize24">15:15</div>
+								<div class="airAddress">上海虹桥机场T2</div>
+							</td>
+							<td width="100">
+								<div class="c666">折扣:9.9折</div>
+								<div class="c666">餐食:有</div>
+							</td>
+							<td width="65">
+								<div class="c999">税费</div>
+								<div class="c999">￥50</div>
+							</td>
+							<td width="87">
+								<div class="clearfix">
+									<span class="fl c999">最高返</span>
+									<span class="fl cf60">￥40</span>
+								</div>
+							</td>
+							<td width="96">
+								<div class="cf60">
+									<span class="fSzie16">
+										￥
+										<em class="fSzie16 airPrice">1230</em>
+									</span>
+								</div>
+							</td>
+							<td>
+								<a class="more" href="javascript:;">
+									<div class="btn">选择</div>
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="moreFligh active">
+					<table class="fSize12 flistInfo">
+						<tbody>
+							<tr class="airNum0">
+								<td class="proArea">
+									<div class="fTitle"></div>
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									9.9折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot"></span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+							<tr class="titBorder">
+								<td colspan="15"></td>
+							</tr>
+							<tr class="airNum0">
+								<td class="proArea">
+									<div class="fTitle titbg2"></div>
+									<div class="text">报销方便</div>
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										全折
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									9.9折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot"></span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+							<tr class="airNum0">
+								<td class="proArea">
+									
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										高端
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									全折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot"></span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+							<tr class="airNum0">
+								<td class="proArea">
+									
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									全折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot">(去程)</span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+							<tr class="titBorder">
+								<td colspan="15"></td>
+							</tr>
+							<tr class="airNum0">
+								<td class="proArea">
+									<div class="fTitle titbg3"></div>
+									<div class="text">往返优惠</div>
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									全折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot">(去程)</span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="flistBox flistBoxat">
+				<table class="fSize12 flistInfo">
+					<tbody>
+						<tr class="theFlight">
+							<td width="160">
+								<div class="air">
+									<span class="airLogo"></span>
+									东方航空MU5112
+								</div>
+								<div class="airType">
+									机型
+									<a class="airNum" href="javascript:;">773(大)</a>
+								</div>
+							</td>
+							<td width="106" align="right">
+								<div class="fSize24">13:00</div>
+								<div class="airAddress">北京首都机场T2</div>
+							</td>
+							<td width="75" align="center">
+								<div class="arrow"></div>
+							</td>
+							<td width="108" align="left">
+								<div class="fSize24">15:15</div>
+								<div class="airAddress">上海虹桥机场T2</div>
+							</td>
+							<td width="100">
+								<div class="c666">折扣:9.9折</div>
+								<div class="c666">餐食:有</div>
+							</td>
+							<td width="65">
+								<div class="c999">税费</div>
+								<div class="c999">￥50</div>
+							</td>
+							<td width="87">
+								<div class="clearfix">
+									<span class="fl c999">最高返</span>
+									<span class="fl cf60">￥40</span>
+								</div>
+							</td>
+							<td width="96">
+								<div class="cf60">
+									<span class="fSzie16">
+										￥
+										<em class="fSzie16 airPrice">1230</em>
+									</span>
+								</div>
+							</td>
+							<td>
+								<a class="more" href="javascript:;">
+									<div class="btn">选择</div>
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="moreFligh active">
+					<table class="fSize12 flistInfo">
+						<tbody>
+							<tr class="airNum0">
+								<td class="proArea">
+									<div class="fTitle"></div>
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									9.9折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot"></span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+							<tr class="titBorder">
+								<td colspan="15"></td>
+							</tr>
+							<tr class="airNum0">
+								<td class="proArea">
+									<div class="fTitle titbg2"></div>
+									<div class="text">报销方便</div>
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										全折
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									9.9折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot"></span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+							<tr class="airNum0">
+								<td class="proArea">
+									
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										高端
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									全折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot"></span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+							<tr class="airNum0">
+								<td class="proArea">
+									
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									全折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot">(去程)</span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+							<tr class="titBorder">
+								<td colspan="15"></td>
+							</tr>
+							<tr class="airNum0">
+								<td class="proArea">
+									<div class="fTitle titbg3"></div>
+									<div class="text">往返优惠</div>
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									全折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot">(去程)</span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="flistBox flistBoxat">
+				<table class="fSize12 flistInfo">
+					<tbody>
+						<tr class="theFlight">
+							<td width="160">
+								<div class="air">
+									<span class="airLogo"></span>
+									东方航空MU5112
+								</div>
+								<div class="airType">
+									机型
+									<a class="airNum" href="javascript:;">773(大)</a>
+								</div>
+							</td>
+							<td width="106" align="right">
+								<div class="fSize24">13:00</div>
+								<div class="airAddress">北京首都机场T2</div>
+							</td>
+							<td width="75" align="center">
+								<div class="arrow"></div>
+							</td>
+							<td width="108" align="left">
+								<div class="fSize24">15:15</div>
+								<div class="airAddress">上海虹桥机场T2</div>
+							</td>
+							<td width="100">
+								<div class="c666">折扣:9.9折</div>
+								<div class="c666">餐食:有</div>
+							</td>
+							<td width="65">
+								<div class="c999">税费</div>
+								<div class="c999">￥50</div>
+							</td>
+							<td width="87">
+								<div class="clearfix">
+									<span class="fl c999">最高返</span>
+									<span class="fl cf60">￥40</span>
+								</div>
+							</td>
+							<td width="96">
+								<div class="cf60">
+									<span class="fSzie16">
+										￥
+										<em class="fSzie16 airPrice">1230</em>
+									</span>
+								</div>
+							</td>
+							<td>
+								<a class="more" href="javascript:;">
+									<div class="btn">选择</div>
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="moreFligh active">
+					<table class="fSize12 flistInfo">
+						<tbody>
+							<tr class="airNum0">
+								<td class="proArea">
+									<div class="fTitle"></div>
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									9.9折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot"></span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+							<tr class="titBorder">
+								<td colspan="15"></td>
+							</tr>
+							<tr class="airNum0">
+								<td class="proArea">
+									<div class="fTitle titbg2"></div>
+									<div class="text">报销方便</div>
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										全折
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									9.9折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot"></span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+							<tr class="airNum0">
+								<td class="proArea">
+									
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										高端
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									全折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot"></span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+							<tr class="airNum0">
+								<td class="proArea">
+									
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									全折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot">(去程)</span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+							<tr class="titBorder">
+								<td colspan="15"></td>
+							</tr>
+							<tr class="airNum0">
+								<td class="proArea">
+									<div class="fTitle titbg3"></div>
+									<div class="text">往返优惠</div>
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									全折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot">(去程)</span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="flistBox flistBoxat">
+				<table class="fSize12 flistInfo">
+					<tbody>
+						<tr class="theFlight">
+							<td width="160">
+								<div class="air">
+									<span class="airLogo"></span>
+									东方航空MU5112
+								</div>
+								<div class="airType">
+									机型
+									<a class="airNum" href="javascript:;">773(大)</a>
+								</div>
+							</td>
+							<td width="106" align="right">
+								<div class="fSize24">13:00</div>
+								<div class="airAddress">北京首都机场T2</div>
+							</td>
+							<td width="75" align="center">
+								<div class="arrow"></div>
+							</td>
+							<td width="108" align="left">
+								<div class="fSize24">15:15</div>
+								<div class="airAddress">上海虹桥机场T2</div>
+							</td>
+							<td width="100">
+								<div class="c666">折扣:9.9折</div>
+								<div class="c666">餐食:有</div>
+							</td>
+							<td width="65">
+								<div class="c999">税费</div>
+								<div class="c999">￥50</div>
+							</td>
+							<td width="87">
+								<div class="clearfix">
+									<span class="fl c999">最高返</span>
+									<span class="fl cf60">￥40</span>
+								</div>
+							</td>
+							<td width="96">
+								<div class="cf60">
+									<span class="fSzie16">
+										￥
+										<em class="fSzie16 airPrice">1230</em>
+									</span>
+								</div>
+							</td>
+							<td>
+								<a class="more" href="javascript:;">
+									<div class="btn">选择</div>
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="moreFligh active">
+					<table class="fSize12 flistInfo">
+						<tbody>
+							<tr class="airNum0">
+								<td class="proArea">
+									<div class="fTitle"></div>
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									9.9折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot"></span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+							<tr class="titBorder">
+								<td colspan="15"></td>
+							</tr>
+							<tr class="airNum0">
+								<td class="proArea">
+									<div class="fTitle titbg2"></div>
+									<div class="text">报销方便</div>
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										全折
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									9.9折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot"></span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+							<tr class="airNum0">
+								<td class="proArea">
+									
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										高端
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									全折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot"></span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+							<tr class="airNum0">
+								<td class="proArea">
+									
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									全折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot">(去程)</span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+							<tr class="titBorder">
+								<td colspan="15"></td>
+							</tr>
+							<tr class="airNum0">
+								<td class="proArea">
+									<div class="fTitle titbg3"></div>
+									<div class="text">往返优惠</div>
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									全折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot">(去程)</span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="flistBox flistBoxat">
+				<table class="fSize12 flistInfo">
+					<tbody>
+						<tr class="theFlight">
+							<td width="160">
+								<div class="air">
+									<span class="airLogo"></span>
+									东方航空MU5112
+								</div>
+								<div class="airType">
+									机型
+									<a class="airNum" href="javascript:;">773(大)</a>
+								</div>
+							</td>
+							<td width="106" align="right">
+								<div class="fSize24">13:00</div>
+								<div class="airAddress">北京首都机场T2</div>
+							</td>
+							<td width="75" align="center">
+								<div class="arrow"></div>
+							</td>
+							<td width="108" align="left">
+								<div class="fSize24">15:15</div>
+								<div class="airAddress">上海虹桥机场T2</div>
+							</td>
+							<td width="100">
+								<div class="c666">折扣:9.9折</div>
+								<div class="c666">餐食:有</div>
+							</td>
+							<td width="65">
+								<div class="c999">税费</div>
+								<div class="c999">￥50</div>
+							</td>
+							<td width="87">
+								<div class="clearfix">
+									<span class="fl c999">最高返</span>
+									<span class="fl cf60">￥40</span>
+								</div>
+							</td>
+							<td width="96">
+								<div class="cf60">
+									<span class="fSzie16">
+										￥
+										<em class="fSzie16 airPrice">1230</em>
+									</span>
+								</div>
+							</td>
+							<td>
+								<a class="more" href="javascript:;">
+									<div class="btn">选择</div>
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="moreFligh active">
+					<table class="fSize12 flistInfo">
+						<tbody>
+							<tr class="airNum0">
+								<td class="proArea">
+									<div class="fTitle"></div>
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									9.9折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot"></span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+							<tr class="titBorder">
+								<td colspan="15"></td>
+							</tr>
+							<tr class="airNum0">
+								<td class="proArea">
+									<div class="fTitle titbg2"></div>
+									<div class="text">报销方便</div>
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										全折
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									9.9折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot"></span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+							<tr class="airNum0">
+								<td class="proArea">
+									
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										高端
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									全折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot"></span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+							<tr class="airNum0">
+								<td class="proArea">
+									
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									全折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot">(去程)</span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+							<tr class="titBorder">
+								<td colspan="15"></td>
+							</tr>
+							<tr class="airNum0">
+								<td class="proArea">
+									<div class="fTitle titbg3"></div>
+									<div class="text">往返优惠</div>
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									全折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot">(去程)</span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="flistBox flistBoxat">
+				<table class="fSize12 flistInfo">
+					<tbody>
+						<tr class="theFlight">
+							<td width="160">
+								<div class="air">
+									<span class="airLogo"></span>
+									东方航空MU5112
+								</div>
+								<div class="airType">
+									机型
+									<a class="airNum" href="javascript:;">773(大)</a>
+								</div>
+							</td>
+							<td width="106" align="right">
+								<div class="fSize24">13:00</div>
+								<div class="airAddress">北京首都机场T2</div>
+							</td>
+							<td width="75" align="center">
+								<div class="arrow"></div>
+							</td>
+							<td width="108" align="left">
+								<div class="fSize24">15:15</div>
+								<div class="airAddress">上海虹桥机场T2</div>
+							</td>
+							<td width="100">
+								<div class="c666">折扣:9.9折</div>
+								<div class="c666">餐食:有</div>
+							</td>
+							<td width="65">
+								<div class="c999">税费</div>
+								<div class="c999">￥50</div>
+							</td>
+							<td width="87">
+								<div class="clearfix">
+									<span class="fl c999">最高返</span>
+									<span class="fl cf60">￥40</span>
+								</div>
+							</td>
+							<td width="96">
+								<div class="cf60">
+									<span class="fSzie16">
+										￥
+										<em class="fSzie16 airPrice">1230</em>
+									</span>
+								</div>
+							</td>
+							<td>
+								<a class="more" href="javascript:;">
+									<div class="btn">选择</div>
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="moreFligh active">
+					<table class="fSize12 flistInfo">
+						<tbody>
+							<tr class="airNum0">
+								<td class="proArea">
+									<div class="fTitle"></div>
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									9.9折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot"></span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+							<tr class="titBorder">
+								<td colspan="15"></td>
+							</tr>
+							<tr class="airNum0">
+								<td class="proArea">
+									<div class="fTitle titbg2"></div>
+									<div class="text">报销方便</div>
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										全折
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									9.9折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot"></span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+							<tr class="airNum0">
+								<td class="proArea">
+									
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										高端
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									全折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot"></span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+							<tr class="airNum0">
+								<td class="proArea">
+									
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									全折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot">(去程)</span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+							<tr class="titBorder">
+								<td colspan="15"></td>
+							</tr>
+							<tr class="airNum0">
+								<td class="proArea">
+									<div class="fTitle titbg3"></div>
+									<div class="text">往返优惠</div>
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									全折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot">(去程)</span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="flistBox flistBoxat">
+				<table class="fSize12 flistInfo">
+					<tbody>
+						<tr class="theFlight">
+							<td width="160">
+								<div class="air">
+									<span class="airLogo"></span>
+									东方航空MU5112
+								</div>
+								<div class="airType">
+									机型
+									<a class="airNum" href="javascript:;">773(大)</a>
+								</div>
+							</td>
+							<td width="106" align="right">
+								<div class="fSize24">13:00</div>
+								<div class="airAddress">北京首都机场T2</div>
+							</td>
+							<td width="75" align="center">
+								<div class="arrow"></div>
+							</td>
+							<td width="108" align="left">
+								<div class="fSize24">15:15</div>
+								<div class="airAddress">上海虹桥机场T2</div>
+							</td>
+							<td width="100">
+								<div class="c666">折扣:9.9折</div>
+								<div class="c666">餐食:有</div>
+							</td>
+							<td width="65">
+								<div class="c999">税费</div>
+								<div class="c999">￥50</div>
+							</td>
+							<td width="87">
+								<div class="clearfix">
+									<span class="fl c999">最高返</span>
+									<span class="fl cf60">￥40</span>
+								</div>
+							</td>
+							<td width="96">
+								<div class="cf60">
+									<span class="fSzie16">
+										￥
+										<em class="fSzie16 airPrice">1230</em>
+									</span>
+								</div>
+							</td>
+							<td>
+								<a class="more" href="javascript:;">
+									<div class="btn">选择</div>
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="moreFligh active">
+					<table class="fSize12 flistInfo">
+						<tbody>
+							<tr class="airNum0">
+								<td class="proArea">
+									<div class="fTitle"></div>
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									9.9折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot"></span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+							<tr class="titBorder">
+								<td colspan="15"></td>
+							</tr>
+							<tr class="airNum0">
+								<td class="proArea">
+									<div class="fTitle titbg2"></div>
+									<div class="text">报销方便</div>
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										全折
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									9.9折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot"></span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+							<tr class="airNum0">
+								<td class="proArea">
+									
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										高端
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									全折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot"></span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+							<tr class="airNum0">
+								<td class="proArea">
+									
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									全折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot">(去程)</span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+							<tr class="titBorder">
+								<td colspan="15"></td>
+							</tr>
+							<tr class="airNum0">
+								<td class="proArea">
+									<div class="fTitle titbg3"></div>
+									<div class="text">往返优惠</div>
+								</td>
+								<td class="space">
+									<div class="morehidden110">
+										<a href="javascript:;">
+										
+										<span>经济舱</span>
+										</a>
+									</div>
+								</td>
+								<td width="73">
+									<a href="javascript:;">退改签</a>
+								</td>
+								<td class="c999" width="85" align="right">
+									全折
+								</td>
+								<td width="80"></td>
+								<td width="80">
+									<div class="money clearfix">
+										<em class="fl ml5">红包￥</em>
+										<em class="fl">10</em>
+									</div>
+								</td>
+								<td width="70" class="pl10 cf60">
+									<span class="mlMoney clearfix">
+										<em clss="fl">￥</em>
+										<em class="fr fSize20">1230</em>
+									</span>
+								</td>
+								<td width="48">
+									<span class="foot">(去程)</span>
+								</td>
+								<td>
+									<a class="link" href="javascript:;">预订</a>
+								</td>
+								<td class="c800" valign="center">
+									仅剩2张
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="jquery.min.js"></script>
+<script>
+	$(function(){
+		$('.btn').on('click',function(){
+			$(this).parents('.flistBox').toggleClass('flistBoxato');
+			$(this).parents('.flistBox').find('.moreFligh').toggleClass('active');
+		})
+	})
+</script>
+</html>

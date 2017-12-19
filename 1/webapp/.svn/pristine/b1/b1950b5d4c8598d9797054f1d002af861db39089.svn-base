@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>报名信息</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+	<link rel="stylesheet" type="text/css" href="../../../css/app/style.css">
+</head>
+<body>
+	<div class="head">
+		<div class="navImg">
+			<img src="../../../img/app/arrowLeft-icon.png">
+		</div>
+		<div class="navDetail">报名信息</div>
+	</div>
+</body>
+<script type="text/javascript" src="../../../js/zepto.js"></script>
+<script type="text/javascript" src="../../../js/app/mtCommon.js"></script>
+</html>

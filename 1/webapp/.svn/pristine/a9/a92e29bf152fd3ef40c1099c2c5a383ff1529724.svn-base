@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>交通住宿</title>
+	<link href="../../css/style.css" rel="stylesheet" />
+	<link rel="stylesheet" href="reserVation.css">
+</head>
+<body>
+	<div class="airDeta">
+		<ul>
+			<li class="fl">
+				<div>
+					<span>06-02</span>
+					<span>周五</span>
+				</div>
+				<div>
+					<span>￥</span>
+					<span>884</span>
+				</div>
+			</li>
+			<li class="fl"></li>
+			<li class="fl"></li>
+			<li class="fl"></li>
+			<li class="fl"></li>
+		</ul>
+	</div>
+	<div></div>
+	<div></div>
+	
+	
+</body>
+</html>

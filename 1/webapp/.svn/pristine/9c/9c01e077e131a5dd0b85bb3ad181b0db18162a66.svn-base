@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8"/>
+	<meta content="text/html"/>
+	<title>公司新闻</title>
+	<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+	<link rel="stylesheet" href="../../../css/index/base.css">
+	<link rel="stylesheet" href="../../../css/index/public.css">
+	<link rel="stylesheet" href="../../../css/index/indepPage.css">
+</head>
+<body>
+	<div class="head">
+		<div class="clearfix hnav">
+			<ul class="fl">
+				<li class="fl">
+					<a href="../index.html">
+						<img class="imgTitle" src="../../../img/index/logo.png">
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="contain">
+		<div class="bannimg">
+			<!-- <a class="fl" href="../index.html">
+				<img class="logol" src="../../../img/index/logoandname.png" alt="logoname">
+			</a> -->
+			<img class="logor fr" src="../../../img/banner.png" alt="homenav">
+		</div>
+		<div class="indepcontent">
+			<h2 class="abouthead">首次“群英汇”高级管理员培训研讨会今天在北京召开</h2>
+			<p class="aboutcon">7月14日，盛夏的北京骄阳似火。由“群英汇”会议平台主办的“群英汇”高级管理员培训研讨会”首期培训在清华学研大厦正式启动。来自清华校友总会、中国建设会计学会、中国保险学会、中国软件行业协会、中国灾害防御协会、中善公益促进中心、中国石油流通协会等单位的平台高级管理员参加了培训交流。
+			</p>
+			<p class="aboutcon">“群英汇”会议平台的会务部和研发部的工作人员首先和大家一起做用户体验研讨和平台应用规则解读，并就学会协会网站需求进行了交流；随后，“群英汇”会议平台朱总主持了平台培训使用研讨。他首先向大家介绍了“群英汇”会议平台的发展目标、理念与愿景，表达了“群英汇”会议平台与合作伙伴一起建立跨界融合、协调发展的高端平台，整合国家级学会协会资源，打造会议产业生态圈，推动品牌协会和品牌会议建设的宗旨和决心。 随后，与大家一起对平台管理机制、培训机制、培训模式和功能需求等展开了广泛交流。培训过程中，互动交流十分活跃。
+			</p>
+			<p style="width: 600px; margin: 0 auto;"><img style="width: 600px;" src="../../../img/companyNews.png"></p>
+			<p class="aboutcon">午间，来自国家一级学会协会的领导与“群英汇”干部继续在一起相互探讨交流，既增进了彼此的情谊，又加深了对诸多合作机会的理解；同时对国家级学会协会在“群英汇”会议平台的支持下，协调发展、合作共赢充满了憧憬和信心。
+			</p>
+			<p class="aboutcon">对于“群英汇”会议平台二期的正式上线，群英汇的会员们予以高度的支持与赞誉，纷纷表示这是提高中国会议产业信息化水平的良好契机，也是国家级学会协会转型发展的强大助力。
+			</p>
+		</div>
+	</div>
+	<div class="foot">
+			<ul class="f-list clearfix">
+				<li class="fl"><a href="about.html">关于我们</a></li>
+				<li class="fl"><a href="contant.html">联系我们</a></li>
+				<li class="fl"><a href="help.html">帮助中心</a></li>
+				<li class="fl"><a href="javascript:;">会务商加盟</a></li>
+				<li class="fl"><a href="javascript:;">会展商加盟</a></li>
+				<li class="fl"><a href="javascript:;">媒体加盟</a></li>
+				<li class="fl"><a href="javascript:;">场馆加盟</a></li>
+				<li class="fl"><a href="javascript:;">旅游合作</a></li>
+				<li class="fl"><a href="companyNews.html">公司新闻</a></li>
+			</ul>
+			<p class="p1">未经gconfs.com同意不得转发网站会议信息</p>
+			<p class="p2">京ICP备1708133号</p>
+	</div>
+</body>
+</html>

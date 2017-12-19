@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="description" content="群英汇-站点监控-报表系统">
+<meta name="robots" content="none" />
+<meta name="author" content="yfb-zyl" />
+<title>MonitorInformation</title>
+<link rel="shortcut icon" href="../../img/webicon.ico"
+	type="image/x-icon" />
+<link href="../../css/common/bootstrap.min.css" rel="stylesheet">
+<link href="../../css/common/bootstrap-table.min.css" rel="stylesheet">
+<link href="../../css/mng/font-awesome.min.css" rel="stylesheet">
+<style type="text/css">
+em {
+	font-style: normal;
+}
+
+ul, li {
+	list-style: none;
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+img {
+	border: none;
+	vertical-align: top;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+input, textarea {
+	outline: none;
+}
+
+textarea {
+	resize: none;
+	overflow: auto;
+}
+
+/* end reset */
+
+/* 公共样式 */
+a, a:visited {
+	text-decoration: none;
+	color: #122e67;
+}
+
+a:hover, a:focus {
+	color: #ff8400;
+	text-decoration: none;
+}
+
+.clearfix:after {
+	display: block;
+	content: '';
+	clear: both;
+}
+
+.clearfix {
+	zoom: 1;
+}
+
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+
+.inlblk {
+	display: inline-block;
+}
+
+.con-nav a, .con-nav a:visited {
+	color: #333;
+	font-size: 14px;
+}
+
+.con-nav a:hover, .con-nav a:focus {
+	color: #2095F2;
+}
+
+.none {
+	display: none;
+}
+/*鼠标小手显示*/
+.cursor {
+	cursor: pointer;
+}
+/* end 公共样式 */
+</style>
+<style type="text/css">
+/* 页头、页脚 基本样式 */
+body, #body {
+	position: absolute;
+	height: auto;
+	background: #fff;
+	min-width: 1364px;
+	width: 100%;
+	margin: 0 auto;
+	padding: 0px;
+	font-size: 14px;
+	font-family: "SimSun", "宋体", "Arial Narrow", HELVETICA;
+	font-size: 14px;
+	min-height: 894px;
+	height: 100%;
+	display: block;
+	padding-bottom: 36px; /*重要！给footer预留的空间*/
+}
+
+#headerDiv {
+	height: 48px;
+	margin: 0 auto;
+}
+
+#logo {
+	margin: 2px 28px 0 20px;
+	cursor: pointer;
+}
+
+.head-tab-li {
+	width: 120px;
+	text-align: center;
+	overflow: hidden;
+	display: inline-block;
+	overflow: hidden;
+	height: 48px;
+	padding: 0;
+}
+
+.nav>li>a:hover {
+	background-color: #ee7100;
+	color: #fff;
+}
+
+#contentDiv {
+	position: absolute;
+	padding: 10px 10px 0 10px;
+	margin: 0 auto;
+	color: inherit;
+	background-color: #fff;
+	width: 100%;
+	min-width: 1344px;
+	min-height: 798px;
+	display: block;
+}
+
+#footerDiv {
+	text-align: center;
+	height: 36px;
+	min-width: 1344px;
+	width: 100%;
+	padding: 4px 0 0 0;
+	margin: 4px 0 4px;
+	border-top: 1px solid #ff6100;
+	color: #aaa;
+	display: block;
+	position: absolute;
+	bottom: 0; /* 关键 */
+	left: 0; /*IE下一定要记得 */
+}
+
+#headerDiv .active a {
+	background-color: #ff6100;
+}
+
+#headerDiv  a {
+	height: 100%;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+#contentDiv .tab-pane {
+	height: 100%;
+	min-height: 798px;
+	margin: auto;
+	border: 0px;
+}
+
+.carousel {
+	min-height: 342px;
+	height: 100%;
+}
+
+#contentDiv .contentDiv-avg {
+	position: relative;
+	float: left;
+	width: 33%;
+	min-width: 432px;
+	display: block;
+	min-height: 798px;
+	margin: 0 2px 0 2px;
+	border: 0px;
+}
+
+.carousel-control {
+	width: 30px;
+}
+</style>
+<style type="text/css">
+.panel, .list-group, .panel-body, .panel-heading, .list-group-item {
+	margin: auto;
+}
+
+.panel {
+	position: relative;
+	height: 398px;
+	overflow: hidden;
+	width: 100%;
+	display: block;
+	border: 0px;
+	-webkit-box-shadow: 0 0 0 #fff;
+	box-shadow: 0 0 0 #fff;
+	padding: 0 0 16px 0;
+}
+
+.panel-body {
+	display: inline-block;
+	overflow: hidden;
+	min-width: 424px;
+	width: 100%;
+	height: 340px;
+	margin: auto;
+	position: relative;
+	border: 0px;
+	padding: 0;
+}
+
+.list-group {
+	margin: 0 0 4px 0;
+}
+
+.panel-default {
+	border: none;
+}
+
+.badge {
+	float: right;
+}
+
+.scroll-list {
+	position: relative;
+	overflow: hidden;
+	min-width: 424px;
+	width: 100%;
+	margin: auto;
+	padding: 0;
+	overflow: hidden;
+}
+
+.scroll-list li, .scroll-list li a {
+	max-height: 20px;
+	line-height: 20px;
+	width: 100%;
+	overflow: hidden;
+	padding: 0;
+	display: block;
+}
+
+.scroll-list .pcu-nick, .scroll-list .pcu-type {
+	min-width: 38px;
+	width: 10.7%;
+}
+
+.scroll-list .pcu-unit {
+	min-width: 110px;
+	width: 27.5%;
+}
+
+.scroll-list .pcu-address {
+	min-width: 70px;
+	width: 21%;
+}
+
+.scroll-list .pcu-utime {
+	min-width: 98px;
+	width: 21.3%;
+}
+
+.scroll-list .pcu-nick, .scroll-list .pcu-type, .scroll-list .pcu-unit,
+	.scroll-list  .pcu-address, .scroll-list .pcu-utime {
+	margin: auto;
+	padding: 0;
+	text-align: center;
+	height: 20px;
+	overflow: hidden;
+	line-height: 20px;
+	display: inline-block;
+}
+
+.well {
+	background-color: #fff;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	display: block;
+	border: none;
+	margin: auto;
+	padding: 0 0 0 14px;
+	overflow: hidden;
+	position: relative;
+}
+</style>
+<style type="text/css">
+#carousel-example-generic .carousel-inner .item {
+	min-height: 382px;
+	min-width: 442px;
+	width: 100%;
+}
+
+.modal-body {
+	padding: 0;
+	display: block;
+}
+
+#user-act-list, #user-map-list, #act-life-list, #user-html-list,
+	#sys-info-list, #user-month-list {
+	margin: auto;
+	padding: 10px;
+	height: 100%;
+	width: 100%;
+}
+
+.carousel-caption {
+	margin: auto;
+	padding: 0;
+	bottom: 0;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+</style>
+<style type="text/css">
+.activity-echart-list {
+	position: relative;
+	min-width: 424px;
+	width: 100%;
+	margin: 2px 0 0 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+.activity-echart-list li a {
+	height: 20px;
+	line-height: 20px;
+	width: 100%;
+	overflow: hidden;
+	padding: 0;
+	display: inline-block;
+}
+
+.activity-echart-list li {
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	padding: 0;
+	display: block;
+	width: 100%;
+}
+
+.activity-process-echart {
+	position: absolute;
+	margin: 0 auto;
+	padding: 0;
+	min-width: 442px;
+	height: 340px;
+	width: 100%;
+}
+
+.collapse-content {
+	position: absolute;
+	min-width: 442px;
+	height: 340px;
+	width: 100%;
+	padding: 0;
+	display: block;
+}
+
+.collapse-title {
+	position: relative;
+	overflow: hidden;
+	display: block;
+	height: 100px;
+	min-width: 420px;
+	margin: 0 14px 0 14px;
+}
+
+.collapse-title .collapse-title-avg {
+	position: relative;
+	overflow: hidden;
+	display: block;
+	float: left;
+	height: 100%;
+	width: 50%;
+}
+
+.collapse-title .collapse-title-avg .list-group {
+	position: relative;
+	overflow: hidden;
+	display: block;
+	height: 100%;
+	width: 100%;
+}
+
+.collapse-title .collapse-title-avg .list-group li {
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+	height: 20px;
+	line-height: 20px;
+	border: 0 solid;
+}
+
+.collapse-title .collapse-title-avg .list-group li span {
+	display: inline-block;
+}
+
+i {
+	color: #ff6100;
+}
+
+#company .badge {
+	background-color: #ff6100;
+	cursor: pointer;
+}
+
+#collapse-act-echart {
+	position: relative;
+	height: 240px;
+	min-width: 442px;
+	width: 100%;
+	display: block;
+}
+
+.collapse-echart {
+	position: relative;
+	height: 230px;
+	width: 460px !important;
+	display: block;
+}
+
+.company-employ-list, .company-client-list {
+	display: block;
+	padding: 8px 0 0 0;
+}
+
+.company-employ-list .employ-nick, .company-client-list .client-nick {
+	min-width: 45px;
+	width: 10.7%;
+}
+
+.company-employ-list .employ-activity, .company-client-list .client-activity
+	{
+	min-width: 165px;
+	width: 40.2%;
+}
+
+.company-employ-list  .employ-address, .company-client-list  .client-address
+	{
+	min-width: 98px;
+	width: 23%;
+}
+
+.company-employ-list .employ-utime, .company-client-list .client-utime {
+	min-width: 98px;
+	width: 22.8%;
+}
+
+.company-employ-list li, .company-employ-list a, .company-employ-list .employ-nick,
+	.company-employ-list .employ-activity, .company-employ-list  .employ-address,
+	.company-employ-list .employ-utime, .company-client-list li,
+	.company-client-list a, .company-client-list .client-nick,
+	.company-client-list .client-activity, .company-client-list  .client-address,
+	.company-client-list .client-utime {
+	margin: auto;
+	padding: 0;
+	text-align: left;
+	height: 20px;
+	overflow: hidden;
+	line-height: 20px;
+	display: inline-block;
+}
+</style>
+<!-- 系统 -->
+<style type="text/css">
+#system .panel {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	display: block;
+	overflow: auto;
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+}
+
+#realTimeLog {
+	position: relative;
+	width: 100%;
+	height: 756px;
+	display: block;
+	overflow: auto;
+}
+
+#realTimeLog div {
+	display: inline-block;
+}
+
+#system .date {
+	color: blue;
+	font-weight: bold;
+}
+
+#system .ip {
+	color: red;
+	font-weight: bold;
+}
+
+#system .url {
+	color: blue;
+	font-weight: bold;
+}
+
+#system .param {
+	color: green;
+	font-weight: bold;
+}
+
+#system .dropdown-menu {
+	width: 384px;
+	padding: 0px;
+	min-width: auto;
+	z-index: auto;
+}
+</style>
+</head>
+<body>
+	<div id="body">
+		<div id="headerDiv" class="page-header">
+			<!-- 顶层tab ul -->
+			<ul class="nav nav-tabs" role="tablist" data-trigger="tab">
+				<li id="logo" class=""><img src="/img/logoandname.png"
+					title="群英汇：一体化会议系统" /></li>
+				<li role="presentation" class="head-tab-li disabled" title="欢迎页面"
+					data-toggle="modal"><a id="home-btn" class="disabled"
+					href="#home" role="tab" data-toggle="tab" aria-controls="home">Home</a></li>
+				<li role="presentation" class="head-tab-li disabled" title="用户页"><a
+					id="user-btn" class="disabled" href="#user" aria-controls="profile"
+					role="tab" data-toggle="tab">User</a></li>
+				<li role="presentation" class="head-tab-li disabled" title="活动页"><a
+					id="activity-btn" class="disabled" href="#activity"
+					aria-controls="activity" role="tab" data-toggle="tab">Activity</a></li>
+				<li role="presentation" class="head-tab-li" title="系统监控"><a
+					id="system-btn" class="" href="#system" aria-controls="settings"
+					role="tab" data-toggle="tab">System</a></li>
+				<li role="presentation" class="head-tab-li active" title="后台监控"><a
+					id="company-btn" class="" href="#company" aria-controls="settings"
+					role="tab" data-toggle="tab">Company</a></li>
+			</ul>
+			<!-- 顶层tab ul end -->
+		</div>
+		<div id="contentDiv" class="tab-content">
+			<!-- home -->
+			<div role="tabpanel" class="tab-pane" id="home">
+				<!-- home-1 -->
+				<div class="contentDiv-avg">
+					<!-- home-1-1 -->
+					<div class="panel panel-default">
+						<div class="carousel-caption" id="user-map-list"></div>
+					</div>
+					<!-- home-1-2 -->
+					<div class="panel panel-default">
+						<div class="carousel-caption" id="act-life-list"></div>
+					</div>
+				</div>
+				<!-- home-2 -->
+				<div class="contentDiv-avg">
+					<!-- home-2-1 -->
+					<div class="panel panel-default">
+						<div class="carousel-caption" id="user-act-list"></div>
+					</div>
+					<!-- home-2-2 -->
+					<div class="panel panel-default">
+						<div class="carousel-caption" id="user-html-list"></div>
+					</div>
+				</div>
+				<!-- home-3 -->
+				<div class="contentDiv-avg">
+					<!-- home-3-1 -->
+					<div class="panel panel-default">
+						<div class="carousel-caption" id="user-month-list"></div>
+					</div>
+					<!-- home-3-2 -->
+					<div class="panel panel-default">
+						<div class="carousel-caption" id="sys-info-list"></div>
+					</div>
+				</div>
+			</div>
+			<!-- user -->
+			<div role="tabpanel" class="tab-pane" id="user">
+				<!-- user-1 -->
+				<div class="contentDiv-avg">
+					<!-- user-1-1 -->
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							在线用户<span class="badge">14</span>
+						</div>
+						<div class="panel-body ">
+							<div class="well ">
+								<ul id="user-scroll-list" class="scroll-list">
+									<li><a class=""> <span class="pcu-nick">李文俊</span> <span
+											class="pcu-type">超级管理员</span> <span class="pcu-unit">北京世纪协达科技有限公司</span>
+											<span class="pcu-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="pcu-utime">09月01日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="pcu-nick">李文俊</span> <span
+											class="pcu-type">超级管理员</span> <span class="pcu-unit">北京世纪协达科技有限公司</span>
+											<span class="pcu-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="pcu-utime">09月02日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="pcu-nick">李文俊</span> <span
+											class="pcu-type">超级管理员</span> <span class="pcu-unit">北京世纪协达科技有限公司</span>
+											<span class="pcu-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="pcu-utime">09月03日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="pcu-nick">李文俊</span> <span
+											class="pcu-type">超级管理员</span> <span class="pcu-unit">北京世纪协达科技有限公司</span>
+											<span class="pcu-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="pcu-utime">09月04日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="pcu-nick">李文俊</span> <span
+											class="pcu-type">超级管理员</span> <span class="pcu-unit">北京世纪协达科技有限公司</span>
+											<span class="pcu-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="pcu-utime">09月05日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="pcu-nick">李文俊</span> <span
+											class="pcu-type">超级管理员</span> <span class="pcu-unit">北京世纪协达科技有限公司</span>
+											<span class="pcu-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="pcu-utime">09月06日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="pcu-nick">李文俊</span> <span
+											class="pcu-type">超级管理员</span> <span class="pcu-unit">北京世纪协达科技有限公司</span>
+											<span class="pcu-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="pcu-utime">09月07日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="pcu-nick">李文俊</span> <span
+											class="pcu-type">超级管理员</span> <span class="pcu-unit">北京世纪协达科技有限公司</span>
+											<span class="pcu-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="pcu-utime">09月08日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="pcu-nick">李文俊</span> <span
+											class="pcu-type">超级管理员</span> <span class="pcu-unit">北京世纪协达科技有限公司</span>
+											<span class="pcu-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="pcu-utime">09月09日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="pcu-nick">李文俊</span> <span
+											class="pcu-type">超级管理员</span> <span class="pcu-unit">北京世纪协达科技有限公司</span>
+											<span class="pcu-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="pcu-utime">09月10日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="pcu-nick">李文俊</span> <span
+											class="pcu-type">超级管理员</span> <span class="pcu-unit">北京世纪协达科技有限公司</span>
+											<span class="pcu-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="pcu-utime">09月11日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="pcu-nick">李文俊</span> <span
+											class="pcu-type">超级管理员</span> <span class="pcu-unit">北京世纪协达科技有限公司</span>
+											<span class="pcu-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="pcu-utime">09月12日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="pcu-nick">李文俊</span> <span
+											class="pcu-type">超级管理员</span> <span class="pcu-unit">北京世纪协达科技有限公司</span>
+											<span class="pcu-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="pcu-utime">09月13日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="pcu-nick">李文俊</span> <span
+											class="pcu-type">超级管理员</span> <span class="pcu-unit">北京世纪协达科技有限公司</span>
+											<span class="pcu-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="pcu-utime">09月14日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="pcu-nick">李文俊</span> <span
+											class="pcu-type">超级管理员</span> <span class="pcu-unit">北京世纪协达科技有限公司</span>
+											<span class="pcu-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="pcu-utime">09月15日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="pcu-nick">李文俊</span> <span
+											class="pcu-type">超级管理员</span> <span class="pcu-unit">北京世纪协达科技有限公司</span>
+											<span class="pcu-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="pcu-utime">09月16日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="pcu-nick">李文俊</span> <span
+											class="pcu-type">超级管理员</span> <span class="pcu-unit">北京世纪协达科技有限公司</span>
+											<span class="pcu-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="pcu-utime">09月17日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="pcu-nick">李文俊</span> <span
+											class="pcu-type">超级管理员</span> <span class="pcu-unit">北京世纪协达科技有限公司</span>
+											<span class="pcu-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="pcu-utime">09月18日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="pcu-nick">李文俊</span> <span
+											class="pcu-type">超级管理员</span> <span class="pcu-unit">北京世纪协达科技有限公司</span>
+											<span class="pcu-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="pcu-utime">09月19日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="pcu-nick">李文俊</span> <span
+											class="pcu-type">超级管理员</span> <span class="pcu-unit">北京世纪协达科技有限公司</span>
+											<span class="pcu-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="pcu-utime">09月20日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="pcu-nick">李文俊</span> <span
+											class="pcu-type">超级管理员</span> <span class="pcu-unit">北京世纪协达科技有限公司</span>
+											<span class="pcu-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="pcu-utime">09月21日 11:56</span>
+									</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- user-1-2 -->
+					<div class="panel panel-default"></div>
+				</div>
+				<!-- user-2 -->
+				<div class="contentDiv-avg">
+					<!-- user-2-1 -->
+					<div class="panel panel-default"></div>
+					<!-- user-2-2 -->
+					<div class="panel panel-default"></div>
+				</div>
+				<!-- user-3 -->
+				<div class="contentDiv-avg">
+					<!-- user-3-1 -->
+					<div class="panel panel-default"></div>
+					<!-- user-3-2 -->
+					<div class="panel panel-default"></div>
+				</div>
+			</div>
+			<!-- activity -->
+			<div role="tabpanel" class="tab-pane" id="activity">
+				<!-- activity-1 -->
+				<div class="contentDiv-avg">
+					<!-- activity-1-1 -->
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							热门活动<span class="badge">14</span>
+						</div>
+						<div class="panel-body ">
+							<div class="well ">
+								<ul id="activity-scroll-list" class="scroll-list">
+									<li><a class="">自行车钱钱钱钱钱钱钱钱钱钱钱钱钱钱钱钱滴答滴答滴答滴答滴答滴答滴答滴答滴答</a></li>
+									<li><a class="">吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱</a></li>
+									<li><a class="">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊死死死死死死死</a></li>
+									<li><a class="">自行车钱钱钱钱钱钱钱钱钱钱钱钱钱钱钱钱滴答滴答滴答滴答滴答滴答滴答滴答滴答</a></li>
+									<li><a class="">吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱</a></li>
+									<li><a class="">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊死死死死死死死</a></li>
+									<li><a class="">自行车钱钱钱钱钱钱钱钱钱钱钱钱钱钱钱钱滴答滴答滴答滴答滴答滴答滴答滴答滴答</a></li>
+									<li><a class="">吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱</a></li>
+									<li><a class="">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊死死死死死死死</a></li>
+									<li><a class="">自行车钱钱钱钱钱钱钱钱钱钱钱钱钱钱钱钱滴答滴答滴答滴答滴答滴答滴答滴答滴答</a></li>
+									<li><a class="">吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱</a></li>
+									<li><a class="">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊死死死死死死死</a></li>
+									<li><a class="">自行车钱钱钱钱钱钱钱钱钱钱钱钱钱钱钱钱滴答滴答滴答滴答滴答滴答滴答滴答滴答</a></li>
+									<li><a class="">吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱</a></li>
+									<li><a class="">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊死死死死死死死</a></li>
+									<li><a class="">自行车钱钱钱钱钱钱钱钱钱钱钱钱钱钱钱钱滴答滴答滴答滴答滴答滴答滴答滴答滴答</a></li>
+									<li><a class="">吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱</a></li>
+									<li><a class="">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊死死死死死死死</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- activity-1-2 -->
+					<div class="panel panel-default"></div>
+				</div>
+				<!-- activity-2 -->
+				<div class="contentDiv-avg">
+					<!-- activity-2-1 -->
+					<div class="panel panel-default"></div>
+					<!-- activity-2-2 -->
+					<div class="panel panel-default"></div>
+				</div>
+				<!-- activity-3 -->
+				<div class="contentDiv-avg">
+					<!-- activity-3-1 -->
+					<div class="panel panel-default"></div>
+					<!-- activity-3-2 -->
+					<div class="panel panel-default"></div>
+				</div>
+			</div>
+			<!-- system -->
+			<div role="tabpanel" class="tab-pane" id="system">
+				<!-- system-1 -->
+				<div class="contentDiv-avg">
+					<!-- system-1-1 -->
+					<div class="panel panel-default">system</div>
+					<!-- system-1-2 -->
+					<div class="panel panel-default"></div>
+				</div>
+				<!-- system-2 -->
+				<div class="contentDiv-avg">
+					<!-- system-2-1 -->
+					<div class="panel panel-default"></div>
+					<!-- system-2-2 -->
+					<div class="panel panel-default">
+						<div></div>
+					</div>
+				</div>
+				<!-- system-3 -->
+				<div class="contentDiv-avg">
+					<!-- system-3-1 
+					<div class="panel panel-default"></div>
+					<!-- system-3-2 -->
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<i class="glyphicon glyphicon-blackboard"></i> 实时日志<a href=""
+								class="badge"></a>
+						</div>
+						<div class="panel-body " id="realTimeLog"></div>
+					</div>
+				</div>
+			</div>
+			<!-- company -->
+			<div role="tabpanel" class="tab-pane active" id="company">
+				<!-- company-1 -->
+				<div class="contentDiv-avg">
+					<!-- company-1-1 -->
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<i class="glyphicon glyphicon-blackboard"></i> 最近活动<a
+								href="/page/index/cation.html?type=1&trade=0" target="_block"
+								class="badge"></a>
+						</div>
+						<div class="panel-body ">
+							<div class="well ">
+								<ul class="activity-echart-list scroll-list">
+									<li><a class="activity-echart-first"
+										data-toggle="collapse" href=".activity-process-echart"></a></li>
+									<li><a data-toggle="collapse"
+										href=".activity-process-echart"></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- company-1-2 -->
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<i class="glyphicon glyphicon-stats"></i> 活动进程 <a
+								href="/page/index/detail.html" class="badge" target="_black"
+								title="活动详细信息">详情</a>
+						</div>
+						<div class="panel-body ">
+							<div class="collapse activity-process-echart in">
+								<div class="well collapse-content">
+									<div class="collapse-title">
+										<div class="collapse-title-avg">
+											<ul class="list-group">
+												<li class="list-group-item"><i class="icon-desktop"></i><span></span></li>
+												<li class="list-group-item"><i class="icon-comments"></i><span></span></li>
+												<li class="list-group-item"><i
+													class="glyphicon glyphicon-erase"></i><span></span></li>
+												<li class="list-group-item"><i
+													class="glyphicon glyphicon-apple"></i><span></span></li>
+												<li class="list-group-item"><i
+													class="glyphicon glyphicon-import"></i><span></span></li>
+											</ul>
+										</div>
+										<div class="collapse-title-avg">
+											<ul class="list-group">
+												<li class="list-group-item"><i
+													class="glyphicon glyphicon-map-marker"></i><span></span></li>
+												<li class="list-group-item"><i
+													class="glyphicon glyphicon-time"></i><span></span></li>
+												<li class="list-group-item"></li>
+												<li class="list-group-item"></li>
+												<li class="list-group-item"></li>
+											</ul>
+										</div>
+									</div>
+									<div id="collapse-act-echart" class="collapse-echart"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- company-2 -->
+				<div class="contentDiv-avg">
+					<!-- company-2-1 -->
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<i class="icon-group"></i> 活跃职员<span class="badge">14</span>
+						</div>
+						<div class="panel-body ">
+							<div class="well ">
+								<ul class="company-employ-list">
+									<li><a class=""> <span class="employ-nick">李文俊</span><span
+											class="employ-activity">中国招商引资大会.城市园区研讨会</span> <span
+											class="employ-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="employ-utime">09月01日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="employ-nick">李文俊</span><span
+											class="employ-activity">2017北京国际设计周“凝创空间”分会场</span> <span
+											class="employ-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="employ-utime">09月02日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="employ-nick">李文俊</span><span
+											class="employ-activity">中国招商引资大会.城市园区研讨会</span> <span
+											class="employ-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="employ-utime">09月03日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="employ-nick">李文俊</span><span
+											class="employ-activity">2017北京国际设计周“凝创空间”分会场</span> <span
+											class="employ-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="employ-utime">09月04日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="employ-nick">李文俊</span><span
+											class="employ-activity">2017北京国际设计周“凝创空间”分会场</span> <span
+											class="employ-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="employ-utime">09月05日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="employ-nick">李文俊</span><span
+											class="employ-activity">北京世纪协达科技有限公司</span> <span
+											class="employ-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="employ-utime">09月06日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="employ-nick">李文俊</span><span
+											class="employ-activity">中国招商引资大会.城市园区研讨会</span> <span
+											class="employ-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="employ-utime">09月07日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="employ-nick">李文俊</span><span
+											class="employ-activity">中国招商引资大会.城市园区研讨会</span> <span
+											class="employ-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="employ-utime">09月08日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="employ-nick">李文俊</span><span
+											class="employ-activity">中国招商引资大会.城市园区研讨会</span> <span
+											class="employ-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="employ-utime">09月09日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="employ-nick">李文俊</span><span
+											class="employ-activity">北京世纪协达科技有限公司</span> <span
+											class="employ-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="employ-utime">09月10日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="employ-nick">李文俊</span><span
+											class="employ-activity">北京世纪协达科技有限公司</span> <span
+											class="employ-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="employ-utime">09月11日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="employ-nick">李文俊</span><span
+											class="employ-activity">北京世纪协达科技有限公司</span> <span
+											class="employ-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="employ-utime">09月12日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="employ-nick">李文俊</span><span
+											class="employ-activity">北京世纪协达科技有限公司</span> <span
+											class="employ-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="employ-utime">09月13日 11:56</span>
+									</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- company-2-2 -->
+					<div class="panel panel-default">company</div>
+				</div>
+				<!-- company-3 -->
+				<div class="contentDiv-avg">
+					<!-- company-3-1 -->
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<i class="icon-sitemap"></i> 活跃学会<span class="badge">14</span>
+						</div>
+						<div class="panel-body ">
+							<div class="well ">
+								<ul class="company-client-list">
+									<li><a class=""> <span class="client-nick">李文俊</span><span
+											class="client-activity">中国招商引资大会.城市园区研讨会</span> <span
+											class="client-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="client-utime">09月01日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="client-nick">李文俊</span><span
+											class="client-activity">2017北京国际设计周“凝创空间”分会场</span> <span
+											class="client-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="client-utime">09月02日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="client-nick">李文俊</span><span
+											class="client-activity">中国招商引资大会.城市园区研讨会</span> <span
+											class="client-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="client-utime">09月03日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="client-nick">李文俊</span><span
+											class="client-activity">2017北京国际设计周“凝创空间”分会场</span> <span
+											class="client-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="client-utime">09月04日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="client-nick">李文俊</span><span
+											class="client-activity">2017北京国际设计周“凝创空间”分会场</span> <span
+											class="client-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="client-utime">09月05日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="client-nick">李文俊</span><span
+											class="client-activity">北京世纪协达科技有限公司</span> <span
+											class="client-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="client-utime">09月06日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="client-nick">李文俊</span><span
+											class="client-activity">中国招商引资大会.城市园区研讨会</span> <span
+											class="client-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="client-utime">09月07日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="client-nick">李文俊</span><span
+											class="client-activity">中国招商引资大会.城市园区研讨会</span> <span
+											class="client-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="client-utime">09月08日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="client-nick">李文俊</span><span
+											class="client-activity">中国招商引资大会.城市园区研讨会</span> <span
+											class="client-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="client-utime">09月09日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="client-nick">李文俊</span><span
+											class="client-activity">北京世纪协达科技有限公司</span> <span
+											class="client-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="client-utime">09月10日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="client-nick">李文俊</span><span
+											class="client-activity">北京世纪协达科技有限公司</span> <span
+											class="client-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="client-utime">09月11日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="client-nick">李文俊</span><span
+											class="client-activity">北京世纪协达科技有限公司</span> <span
+											class="client-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="client-utime">09月12日 11:56</span>
+									</a></li>
+									<li><a class=""> <span class="client-nick">李文俊</span><span
+											class="client-activity">北京世纪协达科技有限公司</span> <span
+											class="client-address">北京市海淀区静淑苑2创业广场</span> <span
+											class="client-utime">09月13日 11:56</span>
+									</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- company-3-2 -->
+					<div class="panel panel-default">company</div>
+				</div>
+			</div>
+		</div>
+		<div id="footerDiv" class="page-header">
+			<p>京ICP备17018133号</p>
+		</div>
+	</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/bootstrap-table.min.js"></script>
+<script src="../../js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../js/mng/sockjs.min.js"></script>
+<script src="../../js/mng/reconnecting-websocket.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/mng/mng.js"></script>
+<script src="../../js/mng/echarts.js"></script>
+<script src="../../js/mng/china.js"></script>
+<script src="../../js/mng/mng.home.js"></script>
+<script src="../../js/mng/mng.system.js"></script>
+<script src="../../js/mng/mng.company.js"></script>
+<script type="text/javascript">
+	$(function() {
+		if ($("#home").css("display") != "none") {
+			init();
+		}
+		if ($("#user").css("display") != "none") {
+		}
+		if ($("#activity").css("display") != "none") {
+		}
+		if ($("#system").css("display") != "none") {
+		}
+		if ($("#company").css("display") != "none") {
+			companyInit();
+		}
+	});
+</script>
+<script type="text/javascript">
+	function send() {
+		//var value = $("#msg").val();
+		//ws.send(value);
+	}
+</script>
+</html>

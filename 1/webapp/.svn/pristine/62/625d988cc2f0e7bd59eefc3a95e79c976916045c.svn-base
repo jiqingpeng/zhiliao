@@ -1,0 +1,365 @@
+/*调用类名实现相应的效果*/
+/*全屏缩放效果*/
+@keyframes fullScreenZoom{
+	0%{
+		transform: scale(0.1,0.1);
+		opacity: 0;
+	}
+	100%{
+		transform: scale(1.2,1.2);
+		opacity: 1;
+	}
+}
+@-webkit-keyframes fullScreenZoom{
+	0%{
+		-webkit-transform: scale(0.1,0.1);
+		opacity: 0;
+	}
+	100%{
+		-webkit-transform: scale(1.2,1.2);
+		opacity: 1;
+	}
+}
+@-moz-keyframes fullScreenZoom{
+	0%{
+		-moz-transform: scale(0.1,0.1);
+		opacity: 0;
+	}
+	100%{
+		-moz-transform: scale(1.2,1.2);
+		opacity: 1;
+	}
+}
+.fullScreenZoom{
+	animation: fullScreenZoom 2s;
+	-webkit-animation: fullScreenZoom 2s;
+	-moz-animation: fullScreenZoom 2s;
+	animation-fill-mode: forwards;
+}
+
+/*文字放大效果延时0.5s*/
+@keyframes characterZoom{
+	0%{
+		transform: scale(0.1,0.1);
+		opacity: 0;
+	}
+	25%{
+		transform: scale(0.7,0.7);
+		opacity: 1;
+	}
+	100%{
+		transform: scale(1,1);
+		opacity: 1;
+	}
+}
+@-webkit-keyframes characterZoom{
+	0%{
+		-webkit-transform: scale(0.1,0.1);
+		opacity: 0;
+	}
+	25%{
+		-webkit-transform: scale(0.7,0.7);
+		opacity: 1;
+	}
+	100%{
+		-webkit-transform: scale(1,1);
+		opacity: 1;
+	}
+}
+@-moz-keyframes characterZoom{
+	0%{
+		-moz-transform: scale(0.1,0.1);
+		opacity: 0;
+	}
+	25%{
+		-moz-transform: scale(0.7,0.7);
+		opacity: 1;
+	}
+	100%{
+		-moz-transform: scale(1,1);
+		opacity: 1;
+	}
+}
+.characterZoom {
+	animation: characterZoom 2s 0.5s;
+	-webkit-animation: characterZoom 2s 0.5s;
+	-moz-animation: characterZoom 2s 0.5s;
+	animation-fill-mode: forwards;
+}
+
+/*文字放大延时1.5s*/
+
+@keyframes characterTitle{
+	0%{
+		transform: scale(0.1,0.1);
+		opacity: 0;
+	}
+	25%{
+		transform: scale(0.7,0.7);
+		opacity: 1;
+	}
+	100%{
+		transform: scale(1,1);
+		opacity: 1;
+	}
+}
+@-webkit-keyframes characterTitle{
+	0%{
+		-webkit-transform: scale(0.1,0.1);
+		opacity: 0;
+	}
+	25%{
+		-webkit-transform: scale(0.7,0.7);
+		opacity: 1;
+	}
+	100%{
+		-webkit-transform: scale(1,1);
+		opacity: 1;
+	}
+}
+@-moz-keyframes characterTitle{
+	0%{
+		-moz-transform: scale(0.1,0.1);
+		opacity: 1;
+	}
+	25%{
+		-moz-transform: scale(0.7,0.7);
+		opacity: 1;
+	}
+	100%{
+		-moz-transform: scale(1,1);
+		opacity: 1;
+	}
+}
+.characterTitle {
+	animation: characterTitle 2s 1.5s;
+	-webkit-animation: characterTitle 2s 1.5s;
+	-moz-animation: characterTitle 2s 1.5s;
+	animation-fill-mode: forwards;
+}
+
+/*从右向左移动无延时*/
+@keyframes towardsLeft{
+	0%{
+		left: 2000px;
+		opacity: 0;
+	}
+	100%{
+		left: 0;
+		opacity: 1;
+	}
+}
+@-webkit-keyframes towardsLeft{
+	0%{
+		left: 2000px;
+		opacity: 0;
+	}
+	100%{
+		left: 0;
+		opacity: 1;
+	}
+}
+@-moz-keyframes towardsLeft{
+	0%{
+		left: 2000px;
+		opacity: 0opacity: 1;;
+	}
+	100%{
+		left: 0;
+		opacity: 1;
+	}
+}
+.towardsLeft{
+	animation: towardsLeft 2s;
+	-webkit-animation: towardsLeft 2s;
+	-moz-animation: towardsLeft 2s;
+	animation-fill-mode: forwards;
+}
+.left{
+	animation: left 2s;
+}
+@keyframes left{
+	0%{
+		left: 2000px;
+		opacity: 0;
+	}
+	100%{
+		left: 0;
+		opacity: 1;
+	}
+}
+/*从右向左移动有延时*/
+@keyframes towardsLeftDelay{
+	0%{
+		left: 2000px;
+		opacity: 0;
+	}
+	100%{
+		left: 0;
+		opacity: 1;
+	}
+}
+@-webkit-keyframes towardsLeftDelay{
+	0%{
+		left: 2000px;
+		opacity: 0;
+	}
+	100%{
+		left: 0;
+		opacity: 1;
+	}
+}
+@-moz-keyframes towardsLeftDelay{
+	0%{
+		left: 2000px;
+		opacity: 0;
+	}
+	100%{
+		left: 0;
+		opacity: 1;
+	}
+}
+.towardsLeftDelay{
+	animation: towardsLeftDelay 2s 0.5s;
+	-webkit-animation: towardsLeftDelay 2s 0.5s;
+	-moz-animation: towardsLeftDelay 2s 0.5s;
+	animation-fill-mode: forwards;
+}
+
+/*从左向右移动无延时*/
+@keyframes towardsRight{
+	0%{
+		left: -2000px;
+		opacity: 0;
+	}
+	100%{
+		left: 0;
+		opacity: 1;
+	}
+}
+@-webkit-keyframes towardsRight{
+	0%{
+		left: -2000px;
+		opacity: 0;
+	}
+	100%{
+		left: 0;
+		opacity: 1;
+	}
+}
+@-moz-keyframes towardsRight{
+	0%{
+		left: -2000px;
+		opacity: 0;
+	}
+	100%{
+		left: 0;
+		opacity: 1;
+	}
+}
+.towardsRight{
+	animation: towardsRight 2s;
+	-webkit-animation: towardsRight 2s;
+	-moz-animation: towardsRight 2s;
+	animation-fill-mode: forwards;
+}
+
+/*从左向右移动有延时*/
+@keyframes towardsRightDelay{
+	0%{
+		left: -2000px;
+		opacity: 0;
+	}
+	100%{
+		left: 0;
+		opacity: 1;
+	}
+}
+@-webkit-keyframes towardsRightDelay{
+	0%{
+		left: -2000px;
+		opacity: 0;
+	}
+	100%{
+		left: 0;
+		opacity: 1;
+	}
+}
+@-moz-keyframes towardsRightDelay{
+	0%{
+		left: -2000px;
+		opacity: 0;
+	}
+	100%{
+		left: 0;
+		opacity: 1;
+	}
+}
+.towardsRightDelay{
+	animation: towardsRightDelay 2s 0.5s;
+	-webkit-animation: towardsRightDelay 2s 0.5s;
+	-moz-animation: towardsRightDelay 2s 0.5s;
+	animation-fill-mode: forwards;
+}
+
+/*文字缩小放大延时1.5s*/
+@keyframes scale{
+	0%{
+		transform: scale(0.1, 0.1); 
+		opacity: 0;
+	}
+	70%{
+		transform: scale(1.2, 1.2);
+		opacity: 1;
+	}
+	90%{
+		transform: scale(0.7, 0.7);
+		opacity: 1;
+	}
+	100%{
+		transform: scale(1, 1);
+		opacity: 1;
+	}
+}
+@-webkit-keyframes scale{
+	0%{
+		-webkit-transform: scale(0.1, 0.1); 
+		opacity: 0;
+	}
+	70%{
+		-webkit-transform: scale(1.2, 1.2);
+		opacity: 1;
+	}
+	90%{
+		-webkit-transform: scale(0.7, 0.7);
+		opacity: 1;
+	}
+	100%{
+		-webkit-transform: scale(1, 1);
+		opacity: 1;
+	}
+}
+@-moz-keyframes scale{
+	0%{
+		-moz-transform: scale(0.1, 0.1); 
+		opacity: 0;
+	}
+	70%{
+		-moz-transform: scale(1.2, 1.2);
+		opacity: 1;
+	}
+	90%{
+		-moz-transform: scale(0.7, 0.7);
+		opacity: 1;
+	}
+	100%{
+		-moz-transform: scale(1, 1);
+		opacity: 1;
+	}
+}
+.scale{
+	animation: scale 1.4s 1.5s;
+	-webkit-animation: scale 1.4s 1.5s;
+	-moz-animation: scale 1.4s 1.5s;
+	animation-fill-mode: forwards;
+}

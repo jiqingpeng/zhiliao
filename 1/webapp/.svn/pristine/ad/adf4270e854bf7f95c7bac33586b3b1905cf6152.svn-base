@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<!-- <meta charset="UTF-8"> -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>签到配置</title>
+<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="../../../css/common/bootstrap.css">
+<link rel="stylesheet" href="../../../css/common/bootstrap-table.min.css">
+<link href="../../../css/style.css" rel="stylesheet" />
+<link href="../../../css/main.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../../css/admin.css">
+<style type="text/css">
+.code{
+	margin-top: 40px;
+}
+.conferenceCode, .signCode, .platformCode{
+	float: left;
+	margin-right: 20px;
+	text-align: center;
+}
+.cancelButton{
+	margin: 40px 248px;
+}
+.writeIntro{
+	margin-top: 15px; 
+}
+.redColor{
+	color: red;
+}
+.writeTitle{
+	width: 590px;
+}
+</style>
+</head>      
+<body>
+<!-- 引入页头 -->
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="basicInfo.html">管理中心</a>
+		<a href="">-&gt;</a> 
+		<a href="basicInfo.html">会议管理</a>
+		<a href="">-&gt;</a>
+		<a href="actSign.html">签到配置</a>
+	</div>
+	<div class="con-box" id="box">
+		<div id="subMenu">
+		</div>
+		<div id="contentBody" class="mops-table">
+			<div>
+				<span>移动端报名链接地址：</span>
+				<span>www.gconfs.com</span>
+			</div>
+			<div>
+				<span>移动端会议链接地址：</span>
+				<span>www.gconfs.com</span>
+			</div>
+			<div class="code clearfix">
+				<!-- 会议二维码 -->
+				<div class="conferenceCode">
+					<div id="qr_confer" class="none"></div>
+					<div id="imgConfer"></div>
+					<div class="writeIntro">会议二维码</div>
+				</div>
+				<!-- 签到二维码 -->
+				<div class="signCode">
+					<div id="qr_sign" class="none"></div>
+					<div id="imgSign"></div>
+					<div class="writeIntro">签到二维码</div>
+				</div>
+				<!-- 群英汇平台二维码 -->
+				<div class="platformCode">
+					<div id="qr_platform" class="none"></div>
+					<div id="imgPlatform"></div>
+					<div class="writeIntro">群英汇平台二维码</div>
+				</div>
+			</div>
+			<div class="cancelButton">
+		      	<button type="button" class="btn btn-warning signCancel">关闭报名</button>
+		    </div>
+		    <div class="writeTitle">
+		    	<div>
+			    	<span class="redColor">*操作说明：</span>
+			    	<span>如果您的参会报名用户已达上限，可通过此操作：“关闭报名入口”；报名入口关闭后参会用户将无法再报名（请谨慎操作）；同时您也可能通过操作：“开启报名入口”，重新开启报名入口；</span>
+		    	</div>
+		    	<div>
+		    		<span class="redColor">*备注：</span>
+		    		<span>会议结束后，报名入口将自动关闭，已结束的会议报名入口无法开启</span>
+		    	</div>
+		    </div>
+		</div>	 
+	</div>
+</div>
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/jquery.qrcode.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/main.js"></script>               
+<script type="text/javascript">
+// $(function(){
+// 	// 获取左侧菜单列表数据(参数为请求地址)
+// 	serialMenuAjax('admin/activity/menu.do', '会议管理', sessionStorage.getItem('actId'),initPage);
+// 	// 设置页面二级菜单
+// 	setSubMenu('签到配置');
+// })
+$(document).ready(function(){
+    createQr("#qr_confer", "#imgConfer", window.location.href);
+    createQr("#qr_sign", "#imgSign", window.location.href);
+    createQr("#qr_platform", "#imgPlatform", window.location.href);
+});
+// 生成二维码
+function createQr(params1, params2, text){
+    document.createElement('canvas').getContext('2d');
+    var valText = text;
+    // 采用正则表达式判断输入的内容是否是中文
+    $(params1).qrcode({render:"canvas",height:180, width:180,correctLevel:0,text:valText});
+    //获取网页中的canvas对象
+    var mycanvas1=document.getElementsByTagName('canvas')[0];
+    //将转换后的img标签插入到html中
+    var img = convertCanvasToImage(mycanvas1);
+    $(params2).append(img);//imgDiv表示你要插入的容器id
+}
+//从canvas中提取图片image
+function convertCanvasToImage(canvas) {
+    //新Image对象，可以理解为DOM
+    var image = new Image();
+    // canvas.toDataURL 返回的是一串Base64编码的URL
+    // 指定格式PNG
+    image.src = canvas.toDataURL("image/png");
+    return image;
+}
+</script> 
+</html>

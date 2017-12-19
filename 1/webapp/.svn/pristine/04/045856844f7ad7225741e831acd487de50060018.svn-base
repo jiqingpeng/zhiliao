@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>我</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+	<link rel="stylesheet" type="text/css" href="../../../css/app/base.css">
+	<link rel="stylesheet" type="text/css" href="../../../css/app/header-app.css">
+	<link rel="stylesheet" type="text/css" href="../../../css/app/myPage.css">
+</head>
+<body>
+	<header class="app-header">
+		<div class="navImg">
+			<img src="../../../img/app/arrowLeft-icon.png">
+		</div>
+		<div class="navDetail">卡包</div>
+	</header>
+	<section class="my-page">
+		<input type="hidden" id="id">
+		<article>
+			<div class="page-list" data-type="unitName">
+				<p class="page-l">
+					<img src="../../../img/app/name.png" alt="name">
+					<span>开票单位名称</span>
+				</p>
+				<p class="page-r">
+					<input class="unit_name" type="text" placeholder="请设置开票单位名称">
+				</p>
+			</div>
+			<div class="page-list" data-type="taxpayerIdentificationNumber">
+				<p class="page-l">
+					<img src="../../../img/app/name.png" alt="name">
+					<span>纳税人识别号</span>
+				</p>
+				<p class="page-r">
+					<input class="taxpayer_identification_number" type="text" placeholder="请设置纳税人识别号">
+				</p>
+			</div>
+			<div class="page-list" data-type="address">
+				<p class="page-l">
+					<img src="../../../img/app/nick.png" alt="nick">
+					<span>地址</span>
+				</p>
+				<p class="page-r">
+					<input class="address" type="text" placeholder="请设置地址">
+				</p>
+			</div>
+			<div class="page-list" data-type="telephone">
+				<p class="page-l">
+					<img src="../../../img/app/unit.png" alt="unit">
+					<span>电话</span>
+				</p>
+				<p class="page-r">
+					<input class="telephone" type="text" placeholder="请设置电话">
+				</p>
+			</div>
+			<div class="page-list" data-type="nameOfAccountBank">
+				<p class="page-l">
+					<img src="../../../img/app/phone.png" alt="mobile">
+					<span>开户行名称</span>
+				</p>
+				<p class="page-r">
+					<input class="name_of_account_bank" type="text" placeholder="请设置开户行">
+				</p>
+			</div>
+			<div class="page-list" data-type="numberOfAccountBank">
+				<p class="page-l">
+					<img src="../../../img/app/phone.png" alt="mobile">
+					<span>开户行账号</span>
+				</p>
+				<p class="page-r">
+					<input class="number_of_account_bank" type="text" placeholder="请设置开户行账号">
+				</p>
+			</div>
+		</article>
+	</section>
+</body>
+<script src="../../../js/zepto.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<script src="../../../js/app/mtTool.js"></script>
+<script type="text/javascript">
+	$(function(){
+		type = null;
+		var id = $("#id").val();
+ 		init();
+		$('.page-list').on('click',function(){
+			type = this.dataset.type;
+			var txt = $(this).find('.page-l span').html();
+			var val = $(this).find('.page-r input').val();
+			var data={txt:txt,val:val,YES:save}
+			myConf(data);
+		});
+		// $($('.page-list')[0]).off();
+		function myConf(data) {
+			$("body").prepend('<div id="masking"></div><div class="alert_box"><div class="abox_tit">aaa</div><input class="abox_mess"/><div class="abox_foot"><button class="yes">确&nbsp定</button><button class="no">取&nbsp消</button></div></div>');
+			$("#masking").css({
+				"position": "fixed",
+				"width": "100%",
+				"height": "100%",
+				"background": "#000",
+				"z-index": "3001",
+				"filter": "alpha(Opacity=40)",
+				"-moz-opacity": "0.4",
+				"opacity": "0.4"
+			});
+			$(".alert_box").css({
+				"position": "fixed",
+				'left': '12%',
+				'top': '42%',
+				"border": "1px solid #ddd",
+				"border-radius": "4px 4px",
+				"width": "66%",
+				"padding":"0 5%",
+				"min-height": "80px",
+				"background": "#fff",
+				"z-index": "3002",
+			});
+			$(".abox_tit").css({
+				"width":"100%",
+				"height": "40px",
+				"line-height": "40px",
+			});
+			$(".abox_mess").css({
+				"width":"100%",
+				"height": "30px",
+				"border":"none",
+				"border-bottom":"1px solid #f60",
+				"outline":"none"
+			});
+			$(".abox_foot").css({
+				"border-top": "1px solid #ddd",
+				"height": "56",
+				"width": "100%",
+				"line-height": "56px",
+				"text-align": "right"
+			});
+			$(".abox_foot button").css({
+				"width": "15%",
+				"margin-right": "10px",
+				"color": "#fc742a",
+				"border": "none",
+				"background": "none"
+			});
+			$('.alert_box').css('display', 'block')
+			$('.alert_box .abox_tit').html('修改'+data.txt);
+			$('.alert_box .abox_mess').val(data.val);
+			$('.alert_box .abox_mess').focus();
+			// 点击确定
+			if (!!data.YES) {
+				$('.yes').on('click', function() {
+					var val = $('.alert_box .abox_mess').val();
+					console.log(val)
+					if(valit(val)){
+						// console.log(1)
+						data.YES();
+					};
+					$("#masking").remove();
+					$(this).parent().parent().remove();
+				});
+			} else {
+				$('.yes').on('click', function() {
+					$("#masking").remove();
+					$(this).parent().parent().remove();
+					return true;
+				});
+			}
+			// 点击取消
+			if (!!data.NO) {
+				$('.no').on('click', function() {
+					data.NO();
+					$("#masking").remove();
+					$(this).parent().parent().remove();
+				});
+			} else {
+				$('.no').on('click', function() {
+					$("#masking").remove();
+					$(this).parent().parent().remove();
+					return false;
+				});
+			}
+		};
+		function init(){
+			var url = basePath + "user/invoice/list.do";
+			$.myAjax({
+				url:url,
+				// data:{id:id},
+				success:function(result){
+					console.log(result)
+					if(result.flag){
+						if(result.data.invoice.length){
+							var data = result.data.invoice[0];
+							$("#id").val(result.data.invoice[0].id)
+							if(data.unitName){
+								 $('.unit_name').val(data.unitName);
+								 $('.unit_name').removeClass('gray')
+							};
+							if(data.taxpayerIdentificationNumber){
+								$('.taxpayer_identification_number').val(data.taxpayerIdentificationNumber);
+								$('.taxpayer_identification_number').removeClass('gray')
+							};
+							if(data.address){
+								 $('.address').val(data.address);
+								 $('.address').removeClass('gray')
+							};
+							if(data.telephone){
+								 $('.telephone').val(data.telephone);
+								 $('.telephone').removeClass('gray')
+							};
+							if(data.nameOfAccountBank){
+								 $('.name_of_account_bank').val(data.nameOfAccountBank);
+								 $('.name_of_account_bank').removeClass('gray')
+							};
+							if(data.numberOfAccountBank){
+								 $('.number_of_account_bank').val(data.numberOfAccountBank);
+								 $('.number_of_account_bank').removeClass('gray')
+							};
+						}
+						
+					}else{
+						myAlert('请求失败')
+					}
+				},
+				error:function(result){
+					myConfirm('请求失败')
+				}
+			})
+		};
+		function save(){
+			console.log(1)
+			var url = basePath + "user/invoice/save.do";
+			var content = $('.abox_mess').val();
+			var id = $("#id").val();
+			var data = '{"'+type+'":"'+content+'"}';
+			data = $.parseJSON(data);
+			data.id=id
+			console.log(data)
+			$.myAjax({
+				url:url,
+				data:data,
+				success:function(result){
+					if(result.flag){
+						init()
+					}else{
+						myAlert('请求失败')
+					}
+				},
+				error:function(result){
+					myConfirm('请求失败')
+				}
+			})
+		};
+		function myMess(message){
+			$("body").prepend('<div id="myMess"><div class="messBox"><span>'+message+'</span></div></div>');
+			$("#myMess").css({
+				"width":"100%",
+				"position":"fixed",
+				"display":"flex",
+				"justify-content":"center",
+				"align-items":"center",
+				"bottom":"1%",
+			})
+			$(".messBox").css({
+				"width":"100px",
+				"height":"30px",
+				"display":"flex",
+				"justify-content":"center",
+				"align-items":"center",
+				"background":"#ccc",
+				"border-radius":"10px",
+			})
+			setTimeout(function() {
+				$("#myMess").remove();
+			}, 3000);
+		};
+		function valit(val){
+			if(!val){
+				myMess("请填入信息")
+				return false;
+			};
+			return true;
+		};
+});
+</script>
+</html>

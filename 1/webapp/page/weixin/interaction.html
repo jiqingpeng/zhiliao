@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title class="title">互动交流</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="../../css/common/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../../css/weixin/style.css">
+	<link rel="stylesheet" type="text/css" href="../../css/weixin/wxMessBoard.css">
+	<style type="text/css">
+		body {
+			background-color: #fff;
+		}
+		.img{
+			width: 100%;
+		}
+		.img img{
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+	<!-- <script src="../../js/weixin/wxHeader.js"></script> -->
+	<div class="img">
+		<img src="../../img/weixin/interAction.jpg">
+	</div>
+	<div class="interactionTil">
+		<span class="intIcon">
+			<img src="../../img/weixin/interactIcon.png"/>
+		</span>
+		<span class="intTitle">互动交流</span>
+	</div>
+	<div class="optCon">
+		<div class="topcon">
+			<div class="huiqian">
+				<img src="../../img/weixin/huiqian.png"/>
+			</div>
+			<div class="circle">
+				<input type="hidden" value="1">
+				<div>会前讨论</div>
+			</div>
+		</div>
+		<div class="bottomcon">
+			<div class="circle curCircle">
+				<input type="hidden" value="2">
+				<div>现场讨论</div>
+			</div>
+			<div class="huizhong">
+				<img src="../../img/weixin/xianchang.png"/>
+			</div>
+		</div>
+	</div>
+	<script src="../../js/weixin/wxLoginModel.js"></script>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/weixin/wxCommon.js"></script>
+<script type="text/javascript">
+var actId = '';
+var take = 'no';
+$(function(){
+	$(".nav-title").html("互动交流");
+	actId = Request('actId');
+	initPage();
+	$(".circle").on("click", function(){
+		var value = $(this).find("input").val();
+		if(take == 'no'){ // 没报名 
+			if(value == 1){
+				window.location.href = "interactList.html?actId=" + actId +"&value=" + value;
+			} else {
+				myConfirm("报名参加后才可提问，立即报名？",function(){
+					window.location.href = "actDetail.html?id="+actId;
+				});
+			}
+		} else {
+			window.location.href = "interactList.html?actId=" + actId +"&value=" + value;
+		}
+	});
+})
+
+function initPage(){ // 登录后，用来判断是否参会
+	$.myAjax({
+		url: basePath + 'index/activity.do',
+		data: {id: actId, type: '4'},
+		success: function(result){
+			if(result.flag){
+				if(!result.status.url){ // 用户没登录，显示登录模态框
+					showLoginModel();
+					return;
+				}
+				if(result.data.activity.signUp){  // 判断是否报名
+					take = "yes";
+				} else {
+					take = "no";
+				}
+			}
+		}
+	});
+}
+</script>
+</html>

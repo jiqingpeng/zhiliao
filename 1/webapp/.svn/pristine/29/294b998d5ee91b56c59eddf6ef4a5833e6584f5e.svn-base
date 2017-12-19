@@ -1,0 +1,147 @@
+@charset "utf-8";
+
+.mops-con {
+	
+}
+.inlblk {
+	display: inline-block;
+}
+.con-nav {
+    font-size:18px;
+	color:#333;
+	height: 45px;
+	line-height: 45px;
+	border-bottom:1px #c9924b solid; 
+	margin-bottom: 20px;
+	padding-left: 14px;
+}
+.searchcon {
+	height: 54px;
+}
+.searchcon img {
+	width: 22px;
+	height: 24px;
+	position: relative;
+	left: -32px;
+	top: 4px;
+}
+.searchcon input {
+	width: 50%;
+	height: 30px;
+	border: 1px solid #ddd;
+	padding-left: 4px;
+	margin-left: 20%;
+}
+.searchcon a {
+	height: 30px;
+	line-height: 30px;
+	width: 64px;
+	text-align: center;
+	border: none;
+	position: relative;
+	left: -32px;
+	background-color: #eee; 
+}
+.con-box {
+	margin-left: 3%;
+}
+.actcon {
+	width: 100%;
+	height: 98%;
+	min-height: 560px;
+}
+.acts {
+	width: 49%;
+	height: 260px;
+	margin: 6px 0 12px 0;
+	display: inline-block;
+	border: 1px solid #ddd;
+	border-radius: 6px 6px 0 0;
+}
+
+.acttil {
+	height: 26px;
+	width: 100%;
+	background: #f4f4f4;
+	border-bottom: 1px solid #ddd;
+	font-size: 14px;
+	color: #333;
+	line-height: 26px;
+}
+.acttil > span {
+	margin-left: 14px;
+}
+.acttil > a {
+	float: right;
+	margin: auto 14px;
+	font-size: 12px;
+	color: #122e67;
+}
+.acttil > a:hover {
+	color: #ff8400;
+}
+.acts > ul {
+	margin: 14px 12px;
+	padding-left: 8px;
+	line-height: 26px;
+	font-size: 14px;
+	color: #333;
+}
+.acts > li {
+	white-space:nowrap;
+	overflow:hidden; 
+	text-overflow:ellipsis;
+}
+.actcon li a {
+	color: #122e67;
+}
+.actcon li a:hover {
+	color: #ff8400;
+}
+.actdetail {
+	padding-top: 14px;
+	min-height: 540px;
+}
+.actdetail li {
+	list-style: none;
+	height: 66px;
+	padding: 0 14px 0 14px;
+	margin-top: 10px;
+}
+.actname {
+	height: 24px;
+	
+}
+.actname a {
+	color: #0000cc;
+	font-size: 16px;
+	text-decoration: underline;
+}
+.actinfo {
+	max-width: 868px;
+	height: 42px;
+	line-height: 20px;
+	overflow: hidden;
+}
+
+/* 我的活动部分 */
+.myActdetail li {
+	white-space:nowrap;
+	overflow:hidden; 
+	text-overflow:ellipsis;
+	list-style: none;
+	height: 38px;
+	line-height: 38px;
+}
+.time, .place {
+	font-size: 14px;
+	margin-right: 12px;
+	display: inline-block;
+	height: 22px;
+	padding-right: 12px;
+	border-right: 2px solid #ccc;
+	line-height: 22px;
+	color: #122e67;
+}
+/* 我的活动部分-end */
+

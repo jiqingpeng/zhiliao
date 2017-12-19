@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>活动基本信息</title>
+	<!--[if lte IE 9]>
+		<script src="../../../js/respond.min.js"></script>
+		<script src="../../../js/html5.js"></script>
+	<![endif]-->
+	<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+	<link href="../../../css/common/bootstrap.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="../../../css/common/bootstrap.css">
+	<link rel="stylesheet" href="../../../css/common/bootstrap-table.min.css">
+	<link rel="stylesheet" href="../../../css/common/bootstrap-datetimepicker.min.css">
+	<link rel="stylesheet" href="../../../css/common/bootstrapValidator.min.css"/>
+	<link rel="stylesheet" href="../../../js/ueditor/themes/default/css/ueditor.css">
+	<link href="../../../css/style.css" rel="stylesheet"/>
+	<link href="../../../css/main.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="../../../css/admin.css">
+	<style>
+		.sTime, .eTime{
+			background-color: #fff !important;
+		}
+		.orgType option{
+			display: none;
+		}
+		.orgType .optionTitle{
+			display: block;
+		}
+	</style>
+</head>
+<body>	
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<!-- 以下为内容部分，内容部分分为导航头和主体内容 -->
+<!-- <div class="loading" style="width: 1600px; height: 600px; margin:0 auto;z-index: 1000; position: relative; background-color: red;">loading&nbsp;<img src="../../../img/loading.gif" style="verticalAlign:middle;"></div> -->
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="basicInfo.html">管理中心</a>
+		<a href="">-&gt;</a>
+		<a href="basicInfo.html">活动管理</a>
+		<a href="">-&gt;</a>
+		<a href="basicInfo.html">基本信息</a>
+	</div><!-- 内容部分导航头的class : con-nav (必须) -->
+	<!-- <div class="load" style="width: 300px; height: 30px; margin: 20px auto;"></div> -->
+	<div class="con-box" id="box"><!-- 内容部分主体内容的class : con-box (必须) -->
+		<!-- 以下为每个页面自己编写的部分 -->
+		
+		<div id="subMenu">
+			<!-- <div id="subMenuBody">
+				<ul>
+					<a href="basicInfo.html"><li class="menuAct">基本信息</li></a>
+					<a href="intro.html"><li>活动简介</li></a>
+					<a href="contact.html"><li>联系方式</li></a>
+					<a href="schedule.html"><li>活动日程</li></a>
+					<a href="proce.html"><li>活动流程</li></a>
+					<a href="../../index/detail.html"><li>活动预览</li></a>
+					<a href="userfiled.html"><li>报名信息</li></a>
+					<a href="../../index/previewFiled.html"><li>报名预览</li></a>
+				</ul>
+			</div> -->
+		</div>
+		<div id="contentBody" class="mops-form">
+		<form id="detailform" class="form-horizontal">
+			<input type="hidden" id="id" name="id"/>
+			<input type="hidden" id="type" name="type"/>
+			<input type="hidden" name="choice" value="1"/>
+			<div class="form-group">
+			    <label for="" class="col-sm-2 control-label"><span style="color: red">* </span>会议名称</label>
+			    <div class="col-sm-7">
+			      <input type="text" name="name" class="form-control conference" placeholder="请填写会议名称">
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label for="" class="col-sm-2 control-label">会议主题</label>
+			    <div class="col-sm-7">
+			      <input type="text" name="theme" class="form-control theme" placeholder="请填写会议主题">
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label for="" class="col-sm-2 control-label"><span style="color: red">* </span>会议时间</label>
+			    <div class="col-sm-3">
+					<input type="hidden" name="stime" class="startTime"/>
+			        <input type="text" size="18" class="form-control sTime" placeholder="请输入开始时间" readonly="readonly">
+			    </div>
+			    <div class="col-sm-1">&nbsp;&nbsp;至</div>
+			    <div class="col-sm-3">
+			    	<input type="hidden" name="etime" class="endTime"/>
+			    	<input type="text" size="18" class="form-control eTime" placeholder="请输入结束时间" readonly="readonly">
+			    </div>
+			</div>
+			<div class="form-group orgdiv">
+			    <label for="" class="col-sm-2 control-label labelTitle">
+			    	<span style="color: red">* </span>组织机构
+			    </label>
+			    <div class="col-sm-2">
+			      	<select name="selectTitle" class="form-control orgType">
+			      		<option value="0">请选择</option>
+			      	</select>
+			    </div>
+			    <div class="col-sm-5">
+			      	<input type="text" class="form-control orgName" name="selectContent" placeholder="组织方名称">
+			    </div>
+			    <div class="plus col-sm-2">
+			    	<button type="button" class="addButton btn btn-default" style="width: 30px;height: 30px;">+</button>
+			    </div>
+			</div>
+			<!-- 组织机构模板 -->
+			<div class="form-group orgModel" style="display: none;">
+			    <label for="" class="col-sm-2 control-label labelTitle"></label>
+			    <div class="col-sm-2">
+			      	<select class="form-control orgType">
+			      		<option value="0">请选择</option>
+			      	</select>
+			    </div>
+			    <div class="col-sm-5">
+			      	<input type="text" class="form-control orgName" placeholder="组织方名称">
+			    </div>
+			    <div class="plus col-sm-2">
+			    	<button type="button" class="addButton btn btn-default" style="width: 30px;height: 30px;">+</button>
+			    	<button type="button" class="removeButton btn btn-default" style="width: 30px;height: 30px; margin-left: 10px;">-</button>
+			    </div>
+			</div>
+			<div class="form-group" id="positioncon">
+			    <label class="col-sm-2 control-label"><span style="color: red">* </span>会议地点</label>
+			    <div class="col-sm-2">
+			    	<select class="prov form-control cxselect" name="province" disabled="disabled" name="provFrist"></select>
+			    </div>
+			    <div class="col-sm-2">
+					<select class="city  form-control cxselect" name="city" disabled="disabled"></select>
+				</div>
+				<div class="col-sm-3">
+					<select class="area form-control cxselect" name="area" disabled="disabled"></select>
+				</div>
+			</div>
+			<div class="form-group">
+			    <label for="" class="col-sm-2 control-label"></label>
+			    <div class="col-sm-7">
+					<div class="input-group">
+						<input type="text" name="location" class="form-control location" placeholder="请输入会议具体地点"/>
+						<a tabindex="0" class="input-group-addon btn btn-lg btn-danger popover-show" id="locationMap" data-toggle="popover" data-container="body" data-trigger="focus">地图位置</a>
+						<input type="hidden" name="longtitude" id="longtitude">
+						<input type="hidden" name="latitude" id="latitude">
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+			    <label for="" class="col-sm-2 control-label">会议人数</label>
+			    <div class="col-sm-7">
+			      	<input type="text" name="takepartNum" class="form-control takepartNum" placeholder="请输入会议人数"/>
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label for="" class="col-sm-2 control-label">预置报名人数</label>
+			    <div class="col-sm-7">
+			      	<input type="text" name="initNum" class="form-control initNum" placeholder="请输入预置报名人数"/>
+			    </div>
+			</div>
+			<div class="form-group industry">
+				<label for="" class="col-sm-2 control-label">行业类别</label>          
+				<div class="col-sm-7">
+					<div class="input-group">
+						<input type="hidden" name="trade" class="industryType"/>
+						<div type="text" class="form-control trade" placeholder="请选择行业类别" style="border-radius: 5px 0 0 5px;"></div>
+						<a tabindex="0" class="input-group-addon btn btn-lg btn-danger" id="example" role="button" data-toggle="popover" data-container="body" data-title="添加行业类别" data-trigger="focus">添加</a>
+					</div>
+				</div>
+				<div class="category">
+					<!-- <a href="javascript: ;"></a>
+                    <a href="javascript: ;">互联网</a>
+                    <a href="javascript: ;">电子</a>
+                    <a href="javascript: ;">建筑</a> -->
+                </div>
+            </div>
+            <div class="form-group">
+			    <label for="" class="col-sm-2 control-label">活动议题</label>
+			    <div class="col-sm-7">
+			       <textarea id="topiceditor" name="issue"></textarea>
+			    </div>
+			</div>
+		    <div class="btncon">
+		      <button type="button" class="btn btn-default btn-warning preserve">保&nbsp;存</button>
+		      <button type="button" class="btn btn-default" id="cancel">取&nbsp;消</button>
+		    </div>
+		</form>
+		</div>
+		
+	</div>     
+</div>
+
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/ueditor/ueditor.config.js"></script>
+<script src="../../../js/ueditor/ueditor.all.js"></script>
+<script src="../../../js/bootstrap-table.min.js"></script>
+<script src="../../../js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../../js/bootstrap-datetimepicker.min.js"></script>
+<script src="../../../js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../../../js/common/jquery.cxselect.min.js"></script>
+<script src="../../../js/bootstrapValidator.min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=FB6c98d828da5bf508fb357f9ee535ef"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/main.js"></script>
+<script src="../../../js/admin/userGovern.js"></script>
+<script type="text/javascript">
+
+var orgdict = ''; // 组织机构字典表
+// 实例化编辑器
+var editor = UE.getEditor('topiceditor',{
+	toolbars:[[
+            'removeformat', //清除格式
+            'cleardoc', //清空文档
+            'imagenone', //默认
+            'autotypeset', //自动排版
+            'insertorderedlist', //有序列表
+        ]],
+	autoHeightEnabled: true,
+	autoFloatEnabled: true,
+	maximumWords: 350,
+	elementPathEnabled : false
+})
+
+$(function(){
+	loading();
+	// 获取左侧菜单列表数据(参数为请求地址)
+	initMenu('../../../js/data/administrator.json', '活动管理'); 
+	// $("#box").hide();
+	// 设置页面二级菜单
+	setSubMenu('基本信息');
+
+	// 获取ID值
+	if(Request("id") && Request("id").length == 32){ // 链接地址中id有值，且值正确
+		sessionStorage.setItem('actId',Request("id"));
+	}
+	$("#id").val(sessionStorage.getItem('actId'));
+	
+	// 初始化页面	
+	initPage();
+
+	// 初始化城市插件
+	// $.cxSelect.defaults.url = '../../../js/common/cityData.min.json';
+	$('#positioncon').cxSelect({
+		url: '../../../js/common/cityData.min.json',
+		selects: ['prov', 'city', 'area']
+	});
+	
+	$(".sTime, .eTime").datetimepicker({
+        language: 'zh-CN',//显示中文
+        format: 'yyyy-mm-dd hh:ii:00',//显示格式
+        minView: 0,//设置显示到秒
+        initialDate: new Date(),//初始化当前日期
+        autoclose: true,//选中自动关闭
+        todayBtn: true//显示今日按钮
+    });
+
+	// 点击添加组织机构
+	$(document).on('click','.addButton',function() {
+		var orgInp = $(".orgName");
+		orgInp.length = orgInp.length - 1; // 删除最后一个（隐藏的元素）
+		for(var i=0;i<orgInp.length;i++){
+			if($(orgInp[i]).val()=='' || $(orgInp[i]).val()==null){
+				myConfirm("组织方名称不能为空！");
+				return false;
+			}
+		}
+		var modelElem = '<div class="form-group orgdiv">' + $('.orgModel').html() + '</div>';
+		$(this).parent().parent().after(modelElem);
+	});
+
+	//删除组织机构
+	$(document).on('click', '.removeButton', function(){
+		var _this = $(this);
+		myConfirm("确定删除", function(){
+			_this.parent().parent().remove();
+		})
+	})
+	//设置保存按钮点击事件
+	$('.preserve').on('click',function(){
+		if(!$("#latitude").val()){
+			myAlert("请选择会议地址在地图上的位置");
+		}
+		$(".startTime").val(timeStamp($(".sTime").val()));
+		$(".endTime").val(timeStamp($(".eTime").val()));
+		
+		// 设置组织机构部分input的name值，使之合乎后台存储规范
+		setOrgname();
+
+		$(".industryType").val(getTrade());
+
+		var bootValidator = $("#detailform").data('bootstrapValidator');
+        	bootValidator.validate();
+        	var sContent = $(".sTime").val();
+	    	var eContent = $(".eTime").val();
+        	if(bootValidator.isValid()){
+        		if(getNowFormatDate()<sContent){	
+        			if(eContent>sContent){
+        				// console.log($("#detailform").serialize());
+        				// return false;
+						var url = basePath + "admin/activity/save.do";
+						$.myAjax({
+							url: url,
+							data: $("#detailform").serialize(),
+							success: function(result){
+								//console.log(result);
+								if(result.flag){
+									myAlert(result.msg);
+								}else{
+									myConfirm(result.msg);
+								}
+							},
+							error: function(){
+								myAlert("请求失败!","slow");
+							}
+						})
+					}else{
+						myConfirm("结束时间不能早于开始时间");
+					}
+				}else{
+					myConfirm("开始时间不能早于当前时间");
+				}
+			}
+	})
+
+	//设置取消按钮点击事件
+	$('#cancel').click(function() {
+	    initPage();
+	    $('#detailform').data('bootstrapValidator').resetForm(true);
+	});
+});
+
+function getTrade(){
+	var values = $(".indusVal");
+	var str = '';
+	values.each(function(index){
+		str += $(this).val() + ',';
+	});
+	return str;
+}
+
+
+$(function () {   // 地图操作
+	var str = '<div id="allmap" style="height:450px;width:450px;"></div>'+
+			'<div style=" margin-top: 15px; width: 450px; height: 45px">' +
+			'<button type="button" class="btn btn-default btn-warning determine">确定</button>' +
+			'<span style="display: inline-block; width: 50px;"></span>' + 
+			'<button type="button" class="btn btn-default abolish">取消</button></div>';
+	$("#locationMap").popover({
+		title: '请选择会议地址在地图上的位置',
+		html: true,
+		placement: "left",
+		content: str
+	});
+
+	$("#locationMap").on('shown.bs.popover', function () {
+        initMap();
+    });
+    $(document).on("click", ".abolish", function(e){
+
+    })
+});
+
+//百度地图api接口
+function initMap(){
+	// 百度地图API功能
+	var map = new BMap.Map("allmap");    // 创建Map实例
+	var myCity = new BMap.LocalCity();
+	var marker='';
+	var  longtitude = $("#longtitude").val();
+	var  latitude = $("#latitude").val();
+	if(longtitude && latitude){
+		map.centerAndZoom(new BMap.Point(longtitude, latitude), 18);
+	} else {
+		map.centerAndZoom(new BMap.Point(116.404, 39.915), 12); // 初始化地图,设置中心点坐标和地图级别
+	}
+	map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
+	map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+	marker = new BMap.Marker(new BMap.Point(longtitude, latitude)); // 创建标注
+	map.addOverlay(marker); // 将标注添加到地图中
+	
+	//单击获取点击的经纬度
+	map.addEventListener("click",function(e){
+		map.clearOverlays();  //清除所有覆盖物
+		marker = new BMap.Marker(new BMap.Point(e.point.lng,e.point.lat));//创建新的覆盖物
+		marker.enableDragging(); //允许拖动
+		map.addOverlay(marker);	 //增加覆盖物
+		marker.setAnimation(BMAP_ANIMATION_BOUNCE);//图标跳动
+		//alert(e.point.lng+','+e.point.lat);
+		$(document).on("click", ".determine", function(){
+    		$("#longtitude").attr("value", e.point.lng);
+    		$("#latitude").attr("value", e.point.lat);
+    	})
+	});
+}
+
+// 页面初始化
+function initPage(){
+	var url = basePath + "admin/activity/get.do";
+	$.myAjax({
+		url: url,
+		data: {id:$("#id").val()},
+		success: function(result){
+			// $(document.body).remove($(".loading"));
+			// $("#box").show(); 
+			//console.log(result);
+			if(result.flag){
+				$(".loading").remove();
+				orgdict = result.data.orgdict; // 组织机构字典表			
+				var activity = result.data.activity;
+				$("#type").val(activity.type);
+				$(".conference").val(activity.name);
+				$(".theme").val(activity.theme);
+				$(".sTime").val(activity.stime);
+				$(".eTime").val(activity.etime);
+				// 初始化组织机构
+				initOrg(activity.activityOrginfoList);
+
+				if(activity.province){
+					$(".prov").val(activity.province);
+					$(".prov").trigger("change");
+				}
+				if(activity.city){
+					$(".city").val(activity.city);
+					$(".city").trigger("change");
+				}
+				if(activity.area){
+					$(".area").val(activity.area);
+				}
+				$(".location").val(activity.location);
+				$(".takepartNum").val(activity.takepartNum);
+				$(".initNum").val(activity.initNum);
+				$("#longtitude").val(activity.longtitude);
+				$("#latitude").val(activity.latitude);
+				if(activity.tradeValue){
+					initTrade(activity.tradeValue,activity.trade);
+				}
+				
+				if(result.data.industydict){
+					var str = "";
+					var industydict = result.data.industydict;
+					for(var i = 0; i <industydict.length; i++){
+						var name = industydict[i].name;
+						str += '<a class="business" style="cursor: pointer"><input type="hidden" value="'+industydict[i].value+'"/>'+name+'</a>'
+					}
+					//console.log(str);
+					$("#example").popover({
+						html: true,
+						content: str
+					});
+				}
+
+				editor.ready( function() { // 富文本实例化完成
+		           editor.setContent(activity.issue);
+		       	});
+			}else{
+				myConfirm(result.msg);
+			}
+		},
+		error: function(){
+			myAlert("请求失败","slow");
+		}
+	})   
+}
+
+function initTrade(text,value){
+	var aText = [];
+	var aValue = [];
+	aText = text.split(',');
+	aText.pop();
+	aValue = value.split(',');
+	aValue.pop();
+	var str = '';
+	for(var i=0;i<aText.length;i++){
+		str += '<span class="SingleSpan">'+ 
+		aText[i]+
+		'<input type="hidden" value="'+ aValue[i] +'" class="indusVal"/>'+
+		'<input type="button" value="-" class="delIndustry"/></span>';
+	}
+
+	$(".trade").html(str);
+}
+
+// 初始化组织机构
+function initOrg(data){
+
+	var aOrg = $('.orgdiv');
+	var len = aOrg.length;
+	for(var i=0;i<len;i++){
+		if(i>0){
+			$(aOrg[i]).remove();
+		}
+	}
+
+	var optStr = '';
+	for(var i = 0; i<orgdict.length; i++){
+		optStr += '<option class="optionTitle" value="'+ orgdict[i].value +'">' + orgdict[i].name + '<option/>';
+	};
+	$(".orgType").append(optStr);
+
+	var modelElem = '<div class="form-group orgdiv">' + $('.orgModel').html() + '</div>';
+	for(var i=0;i<data.length;i++){
+		if(i == 0){
+			$('.orgModel').prev().find(".orgType").val(data[i].type);
+			$('.orgModel').prev().find(".orgName").val(data[i].name);
+		} else {
+			$('.orgModel').before(modelElem);
+			$('.orgModel').prev().find(".orgType").val(data[i].type);
+			$('.orgModel').prev().find(".orgName").val(data[i].name);
+		}
+	}
+}
+
+// 设置组织机构部分input的name值，使之合乎后台存储规范
+function setOrgname() {
+	// 会议ID
+	var orgType = $(".orgType");
+	var orgName = $(".orgName");
+	orgType.length = orgType.length - 1;
+	orgName.length = orgName.length - 1;
+	
+	orgType.each(function(index){
+		$(this).attr('name','activityOrginfoList['+ index + '].type');
+	});
+	orgName.each(function(index){
+		$(this).attr('name','activityOrginfoList['+ index + '].name');
+	});
+}
+
+$("#detailform").bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            name: {
+                validators: {
+                    notEmpty: {
+                        message: '会议名称不能为空！'
+                    }
+                }
+            },
+            selectTitle: {
+                validators: {
+                    notEmpty: {
+                        message: '组织机构不能为空！'
+                    }
+                }
+            },
+            selectContent: {
+                validators: {
+                    notEmpty: {
+                        message: '组织方名称不能为空！'
+                    }
+                }
+            },
+            provFrist: {
+                validators: {
+                    notEmpty: {
+                        message: '会议地点不能为空'
+                    }
+                }
+            },
+            takepartNum: {
+                validators: {
+                    regexp: {
+                        regexp:  /^\d+$/ ,
+                        message: '会议人数只能是阿拉伯数字'
+                    }
+                }
+            },
+            initNum: {
+                validators: {
+                    regexp: {
+                        regexp:  /^\d+$/ ,
+                        message: '预置报名人数只能是阿拉伯数字'
+                    }
+                }
+            }
+        }
+});
+
+</script>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>分类</title>
+	<link rel="stylesheet" href="../../css/index/base.css">
+	<link rel="stylesheet" href="../../css/index/public.css">
+	<link rel="stylesheet" href="../../css/index/cation.css">
+
+</head>
+
+<body>
+	<div class="head">
+		<div class="clearfix hnav">
+			<ul class="fl">
+				<li class="fl"><a href="index.html">首页</a></li>
+				<!-- <li class="fl"><a href="detail.html">解决方案</a></li>
+				<li class="fl"><a href="second.html">合作单位</a></li>
+				<li class="fl"><a href="cation.html">关于我们</a></li> -->
+			</ul>
+			<ul class="fr">
+				<li class="fl"><a id="user_center" href="../user/activitylist.html"></a></li>
+				<li class="fl"><a id="user_name" href="javascript:;"></a></li>
+				<li class="fl"><a id="login_out" href="javascript:;"></a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="contain">
+		<div class="bannimg clearfix">
+			<a href="#" class="fl"><img class="logol" src="../../img/index/logoandname.png" alt="logoname"></a>
+			<img class="logor fr" src="../../img/index/homenav.png" alt="homenav">
+		</div>
+		<h3 class="clearfix">
+			<a href="index.html" class="fl">首页</a>
+			<a href="javascript:;" class="fl">&gt全部活动</a>
+			<a href="cation.html" class="fl">&gt分类信息</a>
+		</h3>
+		<div class="cation_box clearfix">
+			<div class="cation_mess fl">
+				<div class="hlist clearfix">
+					<a class="fl afirst" href="javascript:;">行业分类:</a>
+					<ul class="fl hlist_message">
+						<!-- <li class="fl"><a href="javascript:;">旅游餐饮</a></li>
+						<li class="fl"><a href="javascript:;">机械制造</a></li>
+						<li class="fl"><a href="javascript:;">工业工艺</a></li>
+						<li class="fl"><a href="javascript:;">通信/IT</a></li>
+						<li class="fl"><a class="org" href="javascript:;">医疗保险</a></li>
+						<li class="fl"><a href="javascript:;">电子电器</a></li>
+						<li class="fl"><a href="javascript:;">仪器仪表</a></li>
+						<li class="fl"><a href="javascript:;">金融保险</a></li>
+						<li class="fl"><a href="javascript:;">交通运输</a></li>
+						<li class="fl"><a href="javascript:;">文化体育传媒</a></li>
+						<li class="fl"><a href="javascript:;">科研</a></li>
+						<li class="fl"><a href="javascript:;">农林牧渔</a></li>
+						<li class="fl"><a href="javascript:;">会议会展</a></li>
+						<li class="fl"><a href="javascript:;">环保公益</a></li>
+						<li class="fl"><a href="javascript:;">贸易</a></li>
+						<li class="fl"><a href="javascript:;">法律</a></li>
+						<li class="fl"><a href="javascript:;">教育培训</a></li>
+						<li class="fl"><a href="javascript:;">能源矿产建筑</a></li>
+						<li class="fl"><a href="javascript:;">其他</a></li> -->
+					</ul>
+				</div>
+				<ul class="actdetail">
+					<!-- <li class="clearfix">
+						<span class="time fl">2017-05-12</span>
+						<a href="#" class="fl mess">猴年河南南省病理技术研理技术研讨会河南省病理猴年河南南病理南病理
+						</a>
+						<span class="place" class="fl">北京市</span>
+					</li>
+					<li class="clearfix">
+						<span class="time fl">2017-05-12</span>
+						<a href="#" class="fl mess">深圳滑坡案45人获刑 城管局原局长被判20年
+						</a>
+						<span class="place" class="fl">安徽洛阳</span>
+					</li>
+					<li class="clearfix">
+						<span class="time fl">2017-05-12</span>
+						<a href="#" class="fl mess">习近平总书记赠给你的《青年成长指南》习近平总书记赠给你的《青年成长指南》
+						</a>
+						<span class="place" class="fl">河北石家庄</span>
+					</li>
+					<li class="clearfix">
+						<span class="time fl">2017-05-12</span>
+						<a href="#" class="fl mess">战斗民族的客机！冲开特浓大雾降落首都机场
+						</a>
+						<span class="place" class="fl">雄安新区</span>
+					</li>
+					<li class="clearfix">
+						<span class="time fl">2017-05-12</span>
+						<a href="#" class="fl mess">猴年河南南省病理技术研理技术研讨会河南省病理猴年河南南病理南病理
+						</a>
+						<span class="place" class="fl">北京市</span>
+					</li>
+					<li class="clearfix">
+						<span class="time fl">2017-05-12</span>
+						<a href="#" class="fl mess">深圳滑坡案45人获刑 城管局原局长被判20年
+						</a>
+						<span class="place" class="fl">安徽洛阳</span>
+					</li>
+					<li class="clearfix">
+						<span class="time fl">2017-05-12</span>
+						<a href="#" class="fl mess">习近平总书记赠给你的《青年成长指南》习近平总书记赠给你的《青年成长指南》
+						</a>
+						<span class="place" class="fl">河北石家庄</span>
+					</li>
+					<li class="clearfix">
+						<span class="time fl">2017-05-12</span>
+						<a href="#" class="fl mess">战斗民族的客机！冲开特浓大雾降落首都机场
+						</a>
+						<span class="place" class="fl">雄安新区</span>
+					</li>
+					<li class="clearfix">
+						<span class="time fl">2017-05-12</span>
+						<a href="#" class="fl mess">猴年河南南省病理技术研理技术研讨会河南省病理猴年河南南病理南病理
+						</a>
+						<span class="place" class="fl">北京市</span>
+					</li>
+					<li class="clearfix">
+						<span class="time fl">2017-05-12</span>
+						<a href="#" class="fl mess">猴年河南南省病理技术研理技术研讨会河南省病理猴年河南南病理南病理
+						</a>
+						<span class="place" class="fl">北京市</span>
+					</li> -->
+				</ul>
+				<div class="page">
+					<ul class="pcen clearfix">
+						<li class="fl">共1930条</li>
+						<li class="fl"><a class="first_page" href="#">首页</a></li>
+						<li class="fl border"><a class="prev" href="#">上一页</a></li>
+						<li class="fl">
+							<ul class="clearfix pageList">
+								<li class="fl org"><a href="#" class="org">1</a></li>
+								<li class="fl"><a href="#">2</a></li>
+								<li class="fl"><a href="#">3</a></li>
+								<li class="fl"><a href="#">4</a></li>
+								<li class="fl"><a href="#">5</a></li>
+								<li class="fl"><a href="#">6</a></li>
+								<li class="fl"><a href="#">7</a></li>
+								<li class="fl"><a href="#">8</a></li>
+								<li class="fl"><a href="#">9</a></li>
+							</ul>
+						</li>
+						<li class="fl border"><a class="next" href="#">下一页</a></li>
+						<li class="fl"><a class="last_page" href="#">尾页</a></li>
+						<li class="fl">10条/页</li>
+						<li class="fl">转到第<input class="kup" type="text" value="1">页</li>
+					</ul>
+				</div>
+			</div>
+			<div class="cation_banner fr">
+				<img src="../../img/index/conpany.jpg" alt="cation_img">
+			</div>
+		</div>
+	</div>
+	<div class="foot clearfix">
+			<ul class="f-list clearfix">
+				<!-- <li class="fl tell no">
+				</li> -->
+				<li class="fl">
+					<ul class="foot-message">
+						<li class="font24"><a href="#">关于我们</a></li>
+						<li><a href="#">关于群英会</a></li>
+						<li><a href="#">加入我们</a></li>
+						<li><a href="#">免责申明</a></li>
+					</ul>
+				</li>
+				<li class="fl">
+					<ul class="foot-message">
+						<li class="font24"><a href="#">联系我们</a></li>
+						<li><a href="#">电话</a></li>
+						<li><a href="#">官方微信</a></li>
+						<li><a href="#">新浪微博</a></li>
+					</ul>
+				</li>
+				<li class="fl">
+					<ul class="foot-message">
+						<li class="font24"><a href="#">新闻中心</a></li>
+						<li><a href="#">公司新闻</a></li>
+						<li><a href="#">合作伙伴</a></li>
+						<li><a href="#">知名客户</a></li>
+					</ul>
+				</li>
+				<li class="fl">
+					<ul class="foot-message">
+						<li class="font24"><a href="#">合作</a></li>
+						<li><a href="#">主办方合作</a></li>
+						<li><a href="#">媒体合作</a></li>
+						<li><a href="#">资助合作</a></li>
+					</ul>
+				</li>
+				
+				<li class="fl font24 la"><a href="#">公司新闻</a></li>
+			</ul>
+			<p class="p1">未经gconfs.com同意不得转发网站会议信息</p>
+			<p class="p2">京ICP备1708133号</p>
+	</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script>
+	$(function(){
+		//init获取页面信息和登陆状态
+		var url=basePath+"index/search.do";
+		var type=Request('type');
+		var trade=Request('trade');
+		console.log(trade)
+		//分页数据
+		var pageData=[];
+		//分页
+		function pageShow(){  
+		    var Count = pageData.length;//记录条数  
+		    var PageSize=10;//设置每页示数目  
+		    var PageCount=Math.ceil(Count/PageSize);//计算总页数  
+		    var currentPage =1;//当前页，默认为1。
+		    var selectPage=currentPage;
+		    console.log(selectPage)  
+		    //默认显示
+		    for(i=(currentPage-1)*PageSize;i<PageSize*currentPage;i++){    
+		        $('.actdetail').append(pageData[i]);  
+		    }
+		    $('.pageList li a').eq(currentPage-1).addClass('org'); 
+		    //显示选择页的内容  
+		    $('.pageList li a').on('click',function(){  
+		        selectPage=($(this).parent().index()+1);
+		        page();  
+		    });
+		    //每页
+		    function page(){
+		    	console.log(selectPage)
+		        $('.pageList li a').removeClass('org');  
+		        $('.pageList li a').eq(selectPage-1).addClass('org'); 
+		        $('.actdetail').html('');
+		        for(i=(selectPage-1)*PageSize;i<PageSize*selectPage;i++){  
+		            $('.actdetail').append(pageData[i]);  
+		        };
+		    }
+		    //上一页
+		    $('.prev').click(function(){
+		    	selectPage--;
+		    	if(selectPage<1){
+		    		alert('已到首页');
+		    		firstpage();
+		    	}
+		    	page();
+		    });
+		    //下一页 
+		    $('.next').click(function(){
+		    	selectPage++;
+		    	if(selectPage>9){
+		    		alert('已到尾页');
+		    		lastpage();
+		    	};
+		    	page();
+		    });
+		    //首页
+		    $('.first_page').click(firstpage)
+		    function firstpage(){
+			        selectPage=1;
+			        console.log(selectPage);
+			        page();
+			}
+		    //尾页
+		    $('.last_page').click(lastpage)
+		    function lastpage(){
+		        selectPage=$('.pageList li').length;
+		        console.log(selectPage);
+		        page();
+		    }
+		    //键盘选择页面
+			$(document).keypress(function(e) {  
+				// 回车键事件  
+		        if(e.which == 13) {
+		        	if($('.kup').val()>10){
+		        		alert('最大页数为10')
+
+		        	}else if($('.kup').val()<1){
+		        		alert('最小页数为1')
+		        	}
+		        	else{
+		        		$('.actdetail').html('');
+			        	selectPage=currentPage=$('.kup').val();
+						console.log(selectPage);
+						page();
+					} 
+		        }	  
+			});
+		};
+		$.ajax({
+			url: url,
+			data:{'type':type,'trade':trade},
+			type: 'GET',
+			dataType: 'json',
+			xhrFields: {
+       			withCredentials: true
+    		},
+    		crossDomain: true,
+			success:function(result){
+				console.log(result)
+				//行业类型
+				for(var i=0;i<result.data.industy.length;i++){
+					$('.hlist_message').append('<li class="fl"><input type="hidden" value="'+result.data.industy[i].value+'"><a class="on_cat" href="#">'+result.data.industy[i].name+'</a></li>');
+				};
+				//行业分类信息
+				for(var i=0;i<result.data.activity.length;i++){
+					var stime= result.data.activity[i].stime.substr(0,11); 
+				    var str='<li class="clearfix"><input type="hidden" value="'+result.data.activity[i].id+'"/><span class="time fl">'+stime+'</span><a href="#" class="fl mess on_mess">'+result.data.activity[i].name+'</a><span class="place" class="fl">'+result.data.activity[i].city+'</span></li>';
+				    pageData.push(str);  
+				};
+				console.log(pageData.length)
+				//分页
+				pageShow();
+				//用户登陆状态信息
+				if(result.data.user){
+					$('#user_name').html(result.data.user.name);
+					$('#user_center').html('用户中心');
+					$('#login_out').html('注销');
+				}
+			}
+		});
+		//跳活动详情
+		$(document).on('click','.on_mess',function(){
+			window.location.href='detail.html?location='+$(this).prev().prev().val();
+		});
+		//行情分类
+		$(document).on('click','.on_cat',function(){
+			trade=$(this).prev().val();
+			console.log(trade)
+			$.ajax({
+				url: url,
+				data:{'type':type,'trade':trade},
+				type: 'GET',
+				dataType: 'json',
+				xhrFields: {
+	       			withCredentials: true
+	    		},
+	    		crossDomain: true,
+				success:function(result){
+					console.log(result)
+					$('.actdetail').html('');
+					//行业分类信息
+					pageData=[]; 
+					for(var i=0;i<result.data.activity.length;i++){
+						var stime= result.data.activity[i].stime.substr(0,11); 
+					    var str='<li class="clearfix"><input type="hidden" value="'+result.data.activity[i].id+'"/><span class="time fl">'+stime+'</span><a href="#" class="fl mess on_mess">'+result.data.activity[i].name+'</a><span class="place" class="fl">'+result.data.activity[i].city+'</span></li>';
+					    pageData.push(str);  
+					};
+					console.log(pageData.length)
+					//分页
+					pageShow();
+				},
+				error:function(){
+					alert('请求失败')
+				}
+			});
+		});
+		//注销
+		$('#login_out').click(function(){
+			url=basePath+"login/out.do"
+			url: url,
+			$.ajax({
+				url: url,
+				type: 'GET',
+				dataType: 'json',
+				xhrFields: {
+           			withCredentials: true
+        		},
+        		crossDomain: true,
+				success:function(data){
+					console.log(data.url)
+					window.location.href='index.html'
+				}
+			})
+		});
+		//
+	})
+</script>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title class="title">特邀嘉宾参会回执</title>
+<meta content="telephone=no" name="format-detection" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<style type="text/css">
+  body,h1,h2,h3,h4,h5,p,ul,form,input,textarea,select,button { margin:0; padding:0; }
+  li { list-style:none; }
+  a { text-decoration:none; }
+  img { border:none; vertical-align:top; }
+  input,textarea { outline:none; }
+  textarea { resize:none; overflow:auto; }
+  body { font-size:14px; font-family: "SimSun","宋体","Arial Narrow",HELVETICA; }
+  body {
+    background-color: #fff;
+    color: #333;
+  }
+	.til {
+		height: 48px;
+		color: #fff;
+		line-height: 48px;
+		font-size: 18px;
+		background-color: #21292b;
+		padding-left: 8px;
+	}
+  .pppokcon {
+    width: 100%;
+    margin-top: 80px;
+    margin-bottom: 30px;
+  }
+  .pppOk {
+    height: 60px;
+    width: 60px;
+    margin: 0 auto;
+    display: block;
+  }
+  .isSub {
+    height: 38px;
+    line-height: 38px;
+    color: #333;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+  }
+  .huizhi {
+    height: 28px;
+    line-height: 28px;
+    color: #333;
+    font-size: 16px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="linkcon">
+	<div class="til">参会回执提交成功</div>
+	<div class="pppokcon">
+		<img class="pppOk" src="../../img/guestLink/ppp/pppOk.png"/>
+	</div>
+  <div>
+    <div class="isSub">参会回执已提交</div>
+    <div class="huizhi">我们将根据回执顺序及时发送参会确认函！</div>
+  </div>
+</div>
+</body>
+</script>
+</html>

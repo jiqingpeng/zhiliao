@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>注册</title>
+	<link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+	<link rel="stylesheet" href="../../css/index/base.css">
+	<link rel="stylesheet" href="../../css/style.css">
+	<link rel="stylesheet" href="../../css/index/login.css">
+	<link rel="stylesheet" href="../../css/common/bootstrap.min.css">
+	<style>
+		.register{
+			border:1px solid #ddd;
+			width:272px;
+			margin-top:76px;
+			min-height: 362px;
+		}
+		.register .reg_head{
+			width:272px;
+			height:48px;
+			line-height:48px;
+			background: #ff6100;
+			text-align:center;
+			color:#fff;
+		}
+		.register form{
+			width:252px;
+			margin-left:14px;
+			font-size:12px;
+		}
+		.register form table td{
+			width:240px;
+			display:inline-block;
+			height:26px;
+			line-height:26px;
+			margin-top:16px;
+			position: relative;
+			/*border:1px solid red;*/
+		}
+		.register form table #proving{
+			width:52px;
+			margin-left:20px;
+		}
+		.register form table #regbtn{
+			width:100%;
+			background-color: #ff6100;
+			border-radius: 5px;
+			height: 40px;
+			line-height: 40px;
+			margin-bottom: 20px;
+		}
+		.register form table .reg{
+			text-align: center;
+			margin:10px 0;
+		}
+		.tc{
+			text-align: center;
+		}
+		.mc{
+			margin:0 auto;
+		}
+		.register form table .m50{
+			margin-top:30px;
+		}
+		.register form .wInput{
+			width:164px;
+		}
+		input{
+			display:inline-block;
+			padding-left:20px;
+			height:24px;
+		}
+		.register form .btn{
+			width:104px;
+			text-align: center;
+			border:none;
+			background:#ff6100;
+			color:#fff;
+			border-radius: 2px;
+			padding:3px;
+			margin-left:5px;
+		}
+		/*.register form .btn:hover{
+			cursor:pointer;
+		}*/
+		.register form #code{
+			
+			margin-top:-2px;
+		}
+		.register form .regImg{
+			width:60px;
+			height:24px;
+			margin-left:5px;
+		}
+		.register form .codeImg{
+			display: none;
+		}
+		.register form .regText{
+			height:28px;
+			line-height: 28px;
+			margin-left:5px;
+			color:blue;
+			text-decoration: underline;
+		}
+		.register form .regBox{
+			width:50px;
+			margin-left:76px;
+		}
+		.register form .checkBox{
+			width:14px;
+			height:14px;
+			position:absolute;
+			left:16px;
+			top:2px;
+		}
+		.register form span,a{
+			display: inline-block;
+		}
+		.register form .active{
+			display:none;
+		}
+		td .hasId {
+			position: absolute;
+			right: -5px;
+			top: -5px;
+			color: #ff6100;
+		}
+		table tr td{
+			position: relative;
+		}
+		.commentImg{
+			width: 18px;
+			height: 24px;
+			background: url(../../img/index/mobile.png) no-repeat;
+			background-size: 9px;
+			position: absolute;
+			top: 5px;
+			left: 83px;
+		}
+		.pwdImg{
+			background: url(../../img/index/pwd.png) no-repeat;
+			background-size: 10px;
+		}
+		.affirmImg{
+			background: url(../../img/index/verify.png) no-repeat;
+			background-size: 12px;
+			top: 7px;
+		}
+		.codeImg .imgProv{
+			padding-left: 4px;
+		}
+	</style>
+</head>
+<body>
+	<div class="contains">
+		<div class="con_tit">
+			<a href="index.html">
+				<img src="../../img/index/logoandname.png" alt="login">
+			</a>
+		</div>
+		<div class="con_box clearfix">
+			<div class=" login_img fl">
+				<img class="" src="../../img/index/loginimg.png" alt="login_img">
+			</div>
+			<div class="register fl">
+				<div class="reg_head">用户注册</div>
+					<form id="registerfm">
+						<table>
+							<tr>
+								<td class="m50 clearfix">
+									<div class="commentImg"></div>
+									<label for="" class="fl">&nbsp&nbsp&nbsp&nbsp手机号:</label>
+									<input class="wInput mobile fr" type="text" placeholder="请输入手机号" name="mobile" maxlength="32">
+								</td>
+							</tr>
+							<tr>
+								<td class="clearfix">
+									<div class="commentImg pwdImg"></div>
+									<label class="fl" for="">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp密码:</label>
+									<input class="pwdHide" type="hidden" name="pwd">
+									<input class="wInput userpwd pwdShow fr" type="password" placeholder="请输入密码" maxlength="32">
+								</td>
+							</tr>
+							<tr>
+								<td class="clearfix">
+									<div class="commentImg affirmImg"></div>
+									<label for="" class="fl">确认密码:</label>
+									<input class="wInput confpwd fr" type="password" placeholder="请再次输入密码" maxlength="32">
+								</td>
+							</tr>
+							<tr class="codeImg">
+								<td class="clearfix">
+									<input class="wInput fl regBox imgProv" type="text" name="code" placeholder="验证码" maxlength="32">
+									<img class="regImg fl" src="" alt="regImg">
+									<a class="fl regText" href="javascript:;">换一张</a>
+								</td>
+							</tr>
+							<tr>
+								<td class="clearfix">
+									<label class="fl" for="">&nbsp&nbsp&nbsp&nbsp&nbsp验证码:</label>
+									<input style="padding-left: 6px;" class="w50 fl" id="proving" type="text" placeholder="验证码" maxlength="32" disabled="disabled">
+									<button type="button" class="fr btn" id="code">免费获取验证码</button>
+								</td>
+							</tr>
+							<tr>
+								<td class="tc">
+									<input class="checkBox" type="checkbox">
+									<span>我已阅读且同意</span>
+									<a href="indepPage/regprocotol.html">《群英会协议》</a>
+								</td>
+							</tr>
+							<tr>
+								<td class="reg">
+									<button type="button" class="btn w50" id="regbtn" disabled="disabled">注册</button>
+								</td>
+								<td><a href="login.html" class="hasId">已有账号</a></td>
+							</tr>
+						</table>
+				    </form>
+			</div>
+		</div>
+		<div class="con_footer">
+			<ul class="clearfix foot_link">
+				<li class="fl">
+					<a href="indepPage/about.html" target="_blank">关于我们</a>
+				</li>
+				<li class="fl">
+					<a href="indepPage/contant.html" target="_blank">联系我们</a>
+				</li>
+				<li class="fl">
+					<a href="indepPage/help.html" target="_blank">帮助中心</a>
+				</li>
+				<li class="fl">
+					<a href="indepPage/declare.html" target="_blank">网站声明</a>
+				</li>
+				<li class="fl">
+					<a href="indepPage/companyNews.html" target="_blank">公司新闻</a>
+				</li>
+			</ul>
+			<p>未经gconfs.com同意，不得转发网站会议信息</p>
+			<p>京ICP备17018133号</p>
+		</div>
+	</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/jQuery.md5.js"></script>
+<script>
+	$(function(){
+		//图形验证码显示
+		$('.confpwd').focus(function(){
+			var mobile=$('.mobile').val();
+			var userpwd = $('.userpwd').val();
+			if(mobile!=''&&userpwd!=''){
+				$('.codeImg').css('display','block');
+			};
+		});
+		//获取图形验证码
+		function getCode(){
+			var url=basePath+"verification/get.do";
+			$.myAjax({
+				url: url,
+				success:function(result){
+					$('.regImg').attr('src','data:image/png;base64,'+result.data);
+				}
+			});
+		};
+		getCode();
+		//验证
+		var prov=function(){
+			var prov = $('#proving').val();
+			if (prov == '' || prov == null) {
+				alert('短信验证码不能为空');
+				return false;
+			};
+		};
+		function validation(){
+			var mobile = $('.mobile').val();
+			var userpwd = $('.userpwd').val();
+			var confpwd = $('.confpwd').val();
+			var imgProv= $('.imgProv').val();
+			//验证手机号
+			if (mobile == null || mobile == '') {
+				myAlert('手机号不能为空!','slow');
+				return false;
+			}else{
+				if(!(/^1[34578]\d{9}$/.test(mobile))){ 
+		        	myAlert("手机号码有误，请重新输入！",'slow');  
+		        	return false; 
+		        };
+			};
+			//验证密码
+			if (userpwd == null || userpwd == '') {
+				myAlert('密码不能为空!','slow');
+				return false;
+			}else{
+				if(!(/^[a-zA-Z][a-zA-Z0-9_]{5,15}$/.test(userpwd))){ 
+		        	myAlert("密码是以英文字母开头，只能包含英文字母、数字、下划线，且长度为6~16位，请重新输入！",'slow');  
+		        	return false; 
+		        };
+			};
+			//验证确认密码
+			if (confpwd == null || confpwd == '') {
+				myAlert('确认密码不能为空!','slow');
+				return false;
+			}else{
+				if(userpwd != confpwd){ 
+		        	myAlert("两次填写密码不一致！",'slow');  
+		        	return false; 
+		        };
+			};
+			// if(prov1){
+			// 	prov1();
+			// };
+			//验证图形
+			//图形验证
+			if (imgProv == '' || imgProv == null) {
+				myAlert('图形验证码不能为空','slow');
+				return false;
+			}else{
+				if(!(/^\d{4}$/.test(imgProv))){
+					myAlert('请输入4位数字验证码','slow');
+					return false;
+				};
+			};
+			return true;
+		};
+		function validation1(){
+			var mobile = $('.mobile').val();
+			var userpwd = $('.userpwd').val();
+			var confpwd = $('.confpwd').val();
+			var imgProv= $('.imgProv').val();
+			var prov= $('#proving').val();
+			//手机号
+			if (mobile == null || mobile == '') {
+				myAlert('手机号不能为空!','slow');
+				return false;
+			}else{
+				if(!(/^1[34578]\d{9}$/.test(mobile))){ 
+		        	myAlert("手机号码有误，请重新输入！",'slow');  
+		        	return false; 
+		        };
+			};
+			//密码
+			if (userpwd == null || userpwd == '') {
+				myAlert('密码不能为空!','slow');
+				return false;
+			}else{
+				if(!(/^[a-zA-Z][a-zA-Z0-9_]{5,15}$/.test(userpwd))){ 
+		        	myAlert("密码是以英文字母开头，只能包含英文字母、数字、下划线，且长度为6~16位，请重新输入！",'slow');  
+		        	return false; 
+		        };
+			};
+			//确认密码
+			if (confpwd == null || confpwd == '') {
+				myAlert('确认密码不能为空!','slow');
+				return false;
+			}else{
+				if(userpwd != confpwd){ 
+		        	myAlert("两次填写密码不一致！",'slow');  
+		        	return false; 
+		        };
+			};
+			// if(prov1){
+			// 	prov1();
+			// };
+			//图形验证
+			if (imgProv == '' || imgProv == null) {
+				myAlert('图形验证码不能为空','slow');
+				return false;
+			};
+			//短信验证
+			if (prov == '' || prov == null) {
+				myAlert('短信验证码不能为空','slow');
+				return false;
+			}else{
+				if(!(/^\d{6}$/.test(prov))){
+					myAlert('请输入6位数字短信验证码','slow');
+					return false;
+				};
+			};
+			return true;
+		};
+		// 表单验证与提交
+		$('#regbtn').click(function() {
+			var mobile = $('.mobile').val();
+			var userpwd = $('.userpwd').val();
+			var confpwd = $('.confpwd').val();
+			var imgProv= $('.imgProv').val();
+			var unit = $('.unit').val();
+			var pwd=$.md5($('.pwdShow').val());
+			$('.pwdHide').val(pwd);
+			$('.imgProv').attr('name','');
+			$('#proving').attr('name','code');
+			//注册
+			if(validation1()){
+				var url=basePath+'user/regist/save.do';
+				$.myAjax({
+					url: url,
+					data: $('#registerfm').serialize(),
+					success: function (result) {
+						console.log(result)
+						if(result.flag) {
+							myAlert('注册成功','slow');
+							downTime(url, 3000);
+							function url(){
+								window.location.href = basePath;
+							};
+						} else {
+							myAlert("注册失败，" + result.msg,'slow');
+						};
+					},
+					error: function(result) {
+						myAlert("请求失败，请稍后再试！",'slow');
+					}
+				});
+			};
+		});
+	    //获取短信验证
+	    $('#code').click(function(){
+	    	$('.imgProv').attr('name','code');
+			$('#proving').attr('name','');
+	 		if(validation()){
+	    		//获取验证码
+				var url=basePath+"user/regist/check.do";
+	    		var pwd=$.md5($('.pwdShow').val());
+	    		$('.pwdHide').val(pwd);
+	    		$.myAjax({
+						url: url,
+						data: $('#registerfm').serialize(),
+						success:function(result){
+							console.log(result);
+							if(result.flag){
+								console.log(result);
+								$('#proving').removeAttr('disabled');
+								//倒计时获取验证码
+					    		clearInterval(timer)
+						    	var i=60;
+						    	var timer=null;
+						    	function show(){
+									i--;
+									$('#code').html(i+'秒后获取');
+									$('#code').attr('disabled','disabled');
+									if(i<=0){
+										clearInterval(timer);
+										$('#code').html('免费获取验证码');
+										$('#code').removeAttr('disabled');
+									}
+								};
+								show();
+								timer=setInterval(show,1000);
+							}else{
+								myAlert(result.msg,'slow');
+							};
+						}
+				});
+	    	};
+	    });
+	    //更换验证码
+		$('.regText').click(codeChange);
+	    function codeChange(){
+	    	$('.regBox').val('');
+			getCode();
+		};
+		//改变注册按钮状态
+		$('.checkBox').on('click',function(){
+			if($('.checkBox').is(':checked')){
+				$('#regbtn').removeAttr('disabled');
+			}else{
+				$('#regbtn').attr('disabled','disabled');
+			}
+		});
+		
+	})
+</script>
+</html>

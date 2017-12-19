@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>注册活动</title>
+<!-- webicon.ico为页面icon -->
+<link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+<link href="../../css/common/bootstrap.min.css" rel="stylesheet" />
+<link href="../../css/style.css" rel="stylesheet" />
+<link href="../../css/main.css" rel="stylesheet" />
+<style>
+	.btncon a{
+		color: #fff;
+	}
+	.content{
+		color: red;
+	}
+	label{
+		font-weight: 100;
+	}
+	.essay{
+		font-weight: 700;
+		font-size: 16px;
+		margin: 20px 0 10px 0;
+	}
+	.meeting{
+		display: inline-block;
+		font-weight: 700;
+		height: 40px;
+		line-height: 40px;
+	}
+	.templateTil{
+		cursor: pointer;
+		margin-top: -1px;
+		width: 100%;
+		background-color: #327ab7; 
+		text-align: center;
+	}
+	.template{
+		/*position: relative;*/
+		width: 180px;
+		margin-top: -1px;
+		margin-left: -1px;
+		/*height: 248px;*/
+		border: 2px solid #327ab7;
+		float: left;
+		margin-right: 40px;
+		margin-bottom: 10px;
+		border-radius: 5px;
+	}
+	.templateCon{
+		width: 200px;
+		height: 146px;
+		/*border: 1px solid #000;*/
+		margin:  15px auto;
+		/*overflow: hidden;*/
+		cursor: pointer;
+	}
+	.template .lookUp{
+		font-weight: 500;
+		color: blue;
+		margin-left: 158px;
+	}
+	.template .lookUp:hover{
+		color: #e91710;
+	}
+	.academicCol{
+		border: 2px solid #5cb95c;
+	}
+	.acaConCol{
+		background-color: #5cb95c;
+		/*margin-top: -1px;*/
+	}
+	.trainCol{
+		border: 2px solid #f1ad4e;
+	}
+	.trainConCol{
+		/*width: 231px;*/
+		background-color: #f1ad4e;
+		/*margin-top: -1px;
+		margin-left: -1px;*/
+	}
+	.tempmatchCol{
+		border: 1px solid #d9524e;
+		visibility: hidden;
+	}
+	.image{
+		margin-top: 20px;
+	}
+	.image img{
+		height: 270px;
+	}
+	.backtrack{
+		margin-left: 332px;
+		margin-top: 20px;
+	}
+	.descript{
+		height: 131px;
+		width: 616px;
+		border: 1px dashed deepskyblue;
+	}
+	.counter{
+		width: 16px;
+		margin-top: 8px;
+	}
+	.changeColor{
+		background-color: #ff6c1a;
+	}
+	.hideParams{
+		visibility: hidden;
+	}
+	.hintColor{
+		background-color: #eb8608; 
+		color: #fff !important;
+	}
+</style>
+</head>
+<body>
+<script type="text/javascript" src="../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="register.html">发布活动</a>
+	</div>
+	<div class="con-box">
+		<div id="subMenu">
+			<div id="subMenuBody">
+				<ul class="navMeet">
+					<li class="navReminder">
+						<img class="counter manageMeet hide" src="../../img/icon/admin/counter_icon.png">
+						<span>会议管理</span>
+					</li>
+					<li class="navReminder">
+						<img class="counter guestMeet hide" src="../../img/icon/admin/counter_icon.png">
+						<span>嘉宾管理</span>
+					</li>
+					<li class="navReminder">
+						<img class="counter trafMeet hide" src="../../img/icon/admin/counter_icon.png">
+						<span>交通住宿</span>
+					</li>
+					<li class="navReminder">
+						<img class="counter userMeet hide" src="../../img/icon/admin/counter_icon.png">
+						<span>用户管理</span>
+					</li>
+					<li class="navReminder">
+						<img class="counter staffMeet hide" src="../../img/icon/admin/counter_icon.png">
+						<span>工作人员</span>
+					</li>
+					<li class="navReminder">
+						<img class="counter placeMeet hide" src="../../img/icon/admin/counter_icon.png">
+						<span>会场管理</span>
+					</li>
+					<li class="navReminder">
+						<img class="counter newsMeet hide" src="../../img/icon/admin/counter_icon.png">
+						<span>新闻公告</span>
+					</li>
+					<li class="navReminder">
+						<img class="counter confiMeet hide" src="../../img/icon/admin/counter_icon.png">
+						<span>配置管理</span>
+					</li>
+					<li class="navReminder">
+						<img class="counter guideMeet hide" src="../../img/icon/admin/counter_icon.png">
+						<span>会议指南</span>
+					</li>
+					<li class="navReminder">
+						<img class="counter discuMeet hide" src="../../img/icon/admin/counter_icon.png">
+						<span>互动交流</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="contentBody" class="mops-table">
+			<div class="descript"></div>
+			<div class="stencil">
+				<p class="essay">请选择活动模板</p>
+				<label for="">
+					<div class="template" id="smallMeet">
+						<div class="templateTil">
+							<input type="radio" name="activityType" value="1000" class="input">
+							<input type="hidden" class="type" value="1"/>
+							<span class="meeting">小型会议模板: </span>
+						</div>
+					</div>
+					<div class="template academicCol" id="smaAcaMeet">
+						<div class="templateTil acaConCol">
+							<input type="radio" name="activityType" value="1100">
+							<input type="hidden" class="type" value="1"/>
+							<span class="meeting">小型学术会议模板: </span>
+						</div>
+					</div>
+					<div class="template trainCol" id="smaTraMeet">
+						<div class="templateTil trainConCol">
+							<input type="radio" name="activityType" value="1000">
+							<input type="hidden" class="type" value="3"/>
+							<span class="meeting">小型培训模板：</span>
+						</div>
+					</div>
+					<br>
+					<div class="template" id="midMeet">
+						<div class="templateTil">
+							<input type="radio" name="activityType" value="2000">
+							<input type="hidden" class="type" value="1"/>
+							<span class="meeting">中型会议模板: </span>
+						</div>
+					</div>
+					<div class="template academicCol" id="midAcaMeet">
+						<div class="templateTil acaConCol">
+							<input type="radio" name="activityType" value="2100">
+							<input type="hidden" class="type" value="1"/>
+							<span class="meeting">中型学术会议模板: </span>
+						</div>
+					</div>
+				</label><br> 
+				<div class="btncon">
+					<a type="button" class="btn btn-default btn-warning save next">下一步</a>
+				</div>
+			</div>
+		</div>
+	</div>     
+</div>
+<script type="text/javascript" src="../../js/common/footer.js"></script>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/common/main.js"></script>
+<script type="text/javascript">
+var str1 = "";
+var isClick = false;
+var isChecked = false;
+$(function(){
+	// 获取左侧菜单列表数据(参数为请求地址)
+	initMenu('../../js/data/adminMenu.json', '发布活动');
+	//单选框事件
+	$(".templateTil").on("click", function(){
+		$(this).children()[0].checked=true;
+		isChecked = true;
+	});
+	$(".navReminder").on("mouseover", function(){
+		$(this).addClass("hintColor").siblings().removeClass("hintColor");
+	});
+
+	$(".navReminder").on("mouseleave", function(){
+		if(!isClick){
+			$(this).removeClass("hintColor");
+		}
+	});
+	$(".navReminder").on("click", function(){
+		isClick = true;
+		str = '';
+		$(this).addClass("hintColor").siblings().removeClass("hintColor");
+		if($(this).find("span").html() == "会议管理"){
+			str = "会议管理";
+		};
+		if($(this).find("span").html() == "嘉宾管理"){
+			str = "嘉宾管理";
+		};
+		if($(this).find("span").html() == "交通住宿"){
+			str = "交通住宿";
+		};
+		if($(this).find("span").html() == "用户管理"){
+			str = "用户管理";
+		};
+		if($(this).find("span").html() == "工作人员"){
+			str = "工作人员";
+		};
+		if($(this).find("span").html() == "会场管理"){
+			str = "会场管理";
+		};
+		if($(this).find("span").html() == "新闻公告"){
+			str = "新闻公告";
+		};
+		if($(this).find("span").html() == "配置管理"){
+			str = "配置管理";
+		};
+		if($(this).find("span").html() == "会议指南"){
+			str = "会议指南";
+		};
+		if($(this).find("span").html() == "互动交流"){
+			str = "互动交流";
+		};
+		$(".descript").html(str);
+	});
+
+	
+	//小型会议模板
+	$("#smallMeet").on("click", function(){
+		$(".counter").removeClass("hide");
+		$(".counter").removeClass("hideParams");
+		$(".staffMeet").addClass("hideParams");//工作人员
+		$(".placeMeet").addClass("hideParams");//会场管理
+	});
+
+	//小型学术会议模板
+	$("#smaAcaMeet").on("click", function(){
+		$(".counter").removeClass("hide");
+		$(".counter").removeClass("hideParams");
+		$(".staffMeet").addClass("hideParams");//工作人员
+		$(".placeMeet").addClass("hideParams");//会场管理
+	});
+
+	//小型培训模板
+	$("#smaTraMeet").on("click", function(){
+		$(".counter").removeClass("hide");
+		$(".counter").removeClass("hideParams");
+		$(".staffMeet").addClass("hideParams");//工作人员
+		$(".placeMeet").addClass("hideParams");//会场管理
+	});
+
+	//中型会议模板
+	$("#midMeet").on("click", function(){
+		$(".counter").removeClass("hide");
+		$(".counter").removeClass("hideParams");
+	});
+	
+	//中型学术会议模板
+	$("#midAcaMeet").on("click", function(){
+		$(".counter").removeClass("hide");
+		$(".counter").removeClass("hideParams");
+	});
+
+	//返回操作
+	$(".goBack").on("click", function(){
+		$(this).parent().parent().addClass("hideParams");
+		$(".stencil").removeClass("hideParams");
+	})
+
+	//下一步操作
+	$(".next").click(function(){
+		if(!isChecked){
+			myConfirm("请选择会议模板");
+			return false;
+		}
+		var activityType = $("input[name='activityType']:checked").val();
+		var actType = $("input[name='activityType']:checked").next().val();
+		window.location.href = "submit.html?activityType=" + activityType+"&actType="+actType;
+	});
+});
+</script>
+</html>

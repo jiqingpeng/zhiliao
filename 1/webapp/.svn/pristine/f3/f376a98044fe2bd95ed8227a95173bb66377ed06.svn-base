@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>会议基本信息</title>
+	<!--[if lte IE 9]>
+		<script src="../../../js/respond.min.js"></script>
+		<script src="../../../js/html5.js"></script>
+	<![endif]-->
+	<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+	<link href="../../../css/common/bootstrap.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="../../../css/common/bootstrap.css">
+	<link rel="stylesheet" href="../../../css/common/bootstrap-table.min.css">
+	<link rel="stylesheet" href="../../../css/common/bootstrap-datetimepicker.min.css">
+	<link rel="stylesheet" href="../../../css/common/bootstrapValidator.min.css"/>
+	<link href="../../../css/style.css" rel="stylesheet"/>
+	<link href="../../../css/main.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="../../../css/admin.css">
+	<style>
+		.sTime, .eTime{
+			background-color: #fff !important;
+		}
+		.orgType option{
+			display: none;
+		}
+		.orgType .optionTitle{
+			display: block;
+		}
+	</style>
+</head>
+<body>	
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<!-- 以下为内容部分，内容部分分为导航头和主体内容 -->
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="basicInfo.html">管理中心</a>
+		<a href="">-&gt;</a> 
+		<a href="basicInfo.html">会议管理</a>
+		<a href="">-&gt;</a>
+		<a href="basicInfo.html">基本信息</a>
+	</div><!-- 内容部分导航头的class : con-nav (必须) -->
+	<div class="con-box" id="box"><!-- 内容部分主体内容的class : con-box (必须) -->
+		<!-- 以下为每个页面自己编写的部分 -->
+		<input id="id" type="hidden" value="">
+		<div id="subMenu">
+		<div id="subMenuBody">
+			<ul>
+				<a href="interactList.html"><li>会前预热</li></a>
+				<a href="intersceneList.html"><li class="menuAct">现场交流</li></a>
+			</ul>
+		</div>
+	</div>
+		<div id="contentBody" class="mops-table">
+			<div class="interList">
+				<div class="conList">
+					<div class="test"></div>
+					<div class="testTil"> 
+						<span class="comment"> <img src="../../img/weixin/comment.png">12</span>
+						<span><img src="../../img/weixin/like.png">16</span>
+					</div>
+				</div>
+			</div>
+		</div>		
+	</div>     
+</div>
+
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/main.js"></script>
+<script type="text/javascript">
+	// 获取左侧菜单列表数据,菜单加载成功后 调用initPage方法
+	
+	$(function(){
+		if(Request("id") && Request("id").length == 32){ // 链接地址中id有值，且值正确
+			sessionStorage.setItem('actId',Request("id"));
+		}
+		$("#id").val(sessionStorage.getItem('actId'));
+		serialMenuAjax('admin/activity/menu.do', '互动交流', sessionStorage.getItem('actId'), initPage);
+		// setSubMenuTwo('会议预热');
+		loading();
+		$(document).on("click", ".conList", function(){
+			id = $(this).find("input").val();
+			window.location.href = "messPrevBoard.html?id=" + id; 
+		});	
+	});
+	function initPage(){
+		actId = $('#id').val();
+		$.myAjax({
+			url: basePath + "admin/activity/issue/list.do",
+			data: {id: actId,field: "2"},
+			success: function(result){
+				$(".loading").remove();
+				if(result.flag){
+					console.log(result)
+					var data = result.data.activityIssue;
+					if(data == null || data.length == 0){
+						myConfirm("暂无议题!");
+						$(".interList").css("display", "none");
+						return;
+					};				
+					var str = '';
+					for(var i = 0; i < data.length; i++){
+						if(data[i].thumbsUp < 0){
+							data[i].thumbsUp = 0;
+						};
+						if(data[i].totalComment < 0){
+							data[i].totalComment = 0;
+						};
+						str += '<div class="conList">' +
+								'<div class="test">' + data[i].name + '</div>' +
+									'<input type="hidden" value="'+ data[i].id + '"/>' +
+									'<div class="testTil">'  +
+										'<span class="comment">' + 
+											'<img src="../../img/weixin/comment.png">' +
+												data[i].totalComment +
+										'</span>' +
+										'<span class="like">' + 
+											'<img src="../../img/weixin/like.png">' + 
+												data[i].thumbsUp +
+										'</span>' +
+									'</div>' +
+								'</div>' +
+							'</div>';
+					};
+					$(".interList").html(str);
+				}else{
+					myAlert(result.msg, "slow");
+				}			
+			},
+			error: function(){
+				$(".loading").remove();
+				myAlert("请求失败!");
+			}
+		});
+	}
+</script>
+		
+</html>

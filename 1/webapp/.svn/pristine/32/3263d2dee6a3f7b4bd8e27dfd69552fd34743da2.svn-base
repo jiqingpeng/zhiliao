@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>忘记密码</title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<meta content="telephone=no" name="format-detection" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" /> 
+	<link rel="stylesheet" type="text/css" href="../../../css/app/style.css">
+	<script src="../../../js/jquery.min.js"></script>
+	<script src="../../../js/common/common.js"></script>
+</head>
+<style type="text/css">
+a{
+	color: #f9752b;
+}
+input{
+	border-left:0px;
+	border-top:0px;
+	border-right:0px;
+	border-bottom:0px; 
+	outline:none;
+}
+
+
+.conBox{
+	padding: 3px 4px;
+}
+.contain{
+	/*padding:0 5%;*/
+	background-color: #fff;
+}
+.group{
+	height: 50px;
+	border-bottom: 1px solid #e2e2e2;
+	line-height: 50px;
+	padding: 0 2%;
+}
+.comFont{
+	font-weight: 600;
+	margin-right: 3px;
+}
+.phone{
+	width: 35%;
+}
+.require{
+	width: 32%;
+	height: 30px;
+	background-color: #f9752b;
+	border-radius: 50px;
+	color: #fff;
+}
+.agreement{
+	font-size: 12px;
+	margin-top: 10px;
+	padding: 0 2%;
+}
+.agreement a{
+	border-bottom: 1px solid #f9752b;
+}
+.agreement input{
+	vertical-align: middle;
+}
+
+.button{
+	margin-top: 20px;
+}
+#register{
+	display: inline-block;
+	width: 80%;
+	margin-left: 10%;
+	background-color: #f9752b;
+	color: #fff;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	border-radius: 5px;
+}
+.account{
+	text-align: center;
+	margin-top: 10px;
+}
+</style>
+<body>
+	<div>
+		<div class="head">
+			<div class="navImg">
+				<img src="../../../img/app/arrowLeft-icon.png">
+			</div>
+			<div class="navDetail">忘记密码</div>
+		</div>
+		<div class="conBox">
+			<div class="contain">
+				<div class="group">
+					<span for="" class="comFont">用户名:</span>
+					<input type="text" class="user" name="mobile" placeholder="请输入注册使用手机号" />
+				</div>
+				<div class="group">
+					<span for="" class="comFont">用户密码:</span>
+					<input type="password" class="password" name="pwd" placeholder="请输入密码" />
+				</div>
+				<div class="group">
+					<span for="" class="comFont">确认密码:</span>
+					<input type="password" class="password1" name="pwd1" placeholder="请在此输入密码" />
+				</div>
+				<div class="group">
+					<span for="" class="comFont phoneCode">手机验证码:</span>
+					<input type="text" class="phone" name="phone" placeholder="请输入手机验证码" />
+					<input type="button" class="require" value="获取验证码" />
+				</div>	
+			</div>
+			<div class="button">
+				<a href="#" id="register">确定</a>
+			</div>
+			<div class="account">
+				<a href="login.html">取消</a>
+			</div>
+		</div>
+	</div>		
+</body>
+<script type="text/javascript">
+	$(function(){
+		$("#register").on("click",function(){
+			verify();
+		});
+	})
+	$(".require").on("click", function(){
+		verifyPhone();
+	})
+
+
+	//注册信息验证
+	function verifyPhone(){
+		var mobile = $(".user").val();
+		var	password = $(".password").val();
+		var	password1 = $(".password1").val();
+		var	code = $(".code").val();
+
+		if (mobile == null || mobile == '') {
+			$(".user").focus();
+			alert('请输入用户名！');
+			return false;
+		} else if(!(/^1[34578]\d{9}$/.test(mobile))){
+			$(".user").focus(); 
+			alert("手机号码有误，请重新输入！");  
+			return false;
+		};
+		
+		if(password == '' || password ==null){
+			alert("请输入密码");
+			$(".password").focus();
+			return;
+		}else if(!(/^[\w]{6,12}$/.test(password))){
+			alert("密码格式错误");
+			$(".password").focus();
+			return;
+		};
+
+		if(password1 == null || password1 == ''){
+			$(".password1").focus();
+			alert('请确认密码');
+			return;
+		}else if(!(password1 == password)){
+			alert('2次输入的密码不一样');
+			$(".password1").focus();
+			return;
+		};
+		getPhone();
+	}
+
+
+	//注册信息验证
+	function verify(){
+		var phone = $(".phone").val();
+		var mobile = $(".user").val();
+		var	password = $(".password").val();
+		var	password1 = $(".password1").val();
+		var	code = $(".code").val();
+		if (mobile == null || mobile == '') {
+			$(".user").focus();
+			alert('请输入用户名！');
+			return false;
+		} else if(!(/^1[34578]\d{9}$/.test(mobile))){
+			$(".user").focus(); 
+			alert("手机号码有误，请重新输入！");  
+			return false;
+		};
+		
+		if(password == '' || password ==null){
+			alert("请输入密码");
+			$(".password").focus();
+			return;
+		}else if(!(/^[\w]{6,12}$/.test(password))){
+			alert("密码格式错误");
+			$(".password").focus();
+			return;
+		};
+
+		if(password1 == null || password1 == ''){
+			$(".password1").focus();
+			alert('请确认密码');
+			return;
+		}else if(!(password1 == password)){
+			alert('2次输入的密码不一样');
+			$(".password1").focus();
+			return;
+		};
+		if(phone == null || phone == ''){
+			alert("手机验证码不能为空");
+			$(".phone").focus();
+			return;
+		}else if(!(/^\d{6}$/.test(phone))){
+			alert("请输入6位数字验证码");
+			$(".phone").focus();
+			return;
+		}
+		register();
+	}
+
+	//获取手机验证码
+	function getPhone(){
+		console.log("手机号");
+		// $.myAjax({
+		// 	url: url,
+		// 	data: data,
+		// 	success: function(result){
+		// 		console.log(result);
+		// 		register();
+		// 	},
+		// 	error: function(){
+		// 		console.log("登录失败,请重新登录");
+		// 	}
+		// })
+	}
+	//提交注册信息
+	function register(){
+		var url = 'http://192.168.1.151:8080/user/regist/save.do';
+		var data = {"mobile": $(".user").val(),"pwd":$(".password").val()};
+		console.log("注册");
+		// $.myAjax({
+		// 	success: function(result){
+		// 		console.log(result);
+		// 		console.log(111);
+		// 	},
+		// 	error: function(){
+		// 		console.log("注册失败,请重新注册!");
+		// 	}
+		// })
+	}
+</script>
+</html>

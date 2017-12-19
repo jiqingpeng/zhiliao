@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>酒店预订</title>
+	<link rel="stylesheet" type="text/css" href="../../css/index/hotel.css">
+	<link rel="stylesheet" href="../../css/index/base.css">
+	<link rel="stylesheet" href="../../css/index/public.css">
+</head>
+<body>
+	<div class="head clearfix">
+		<div class="hnav  clearfix">
+			<ul class="fl">
+				<li class="fl"><a href="index.html">首页</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="content">
+		<div class="clearfix contentBox">
+			<!-- <div class="search">
+			    <div class="searchTitle">
+			    	国内酒店搜索
+			    </div>
+			    <div class="searchContent">
+		    		<ul class="searchDetails">
+		    			<li>
+		    				<span>&nbsp;目的地</span>
+		    				<input type="text">
+		    			</li>
+		    			<li class="distance">
+		    				<span>入住时间</span>
+		    				<input type="text"/>
+		    			</li>
+		    			<li class="distance">
+		    				<span>离店时间</span>
+		    				<input type="text"/>
+		    			</li>
+		    			<li class="distance">
+		    				<span>&nbsp;关键词</span>
+		    				<input type="text"/>
+		    			</li>
+		    		</ul>
+		    		<button type=button class="searchBtn">搜&nbsp索</button>
+		    	</div> 		
+			</div> -->
+			<div class="grogshopDetail clearfix">
+				<div class="grogshopTitle">
+					<ul>
+						<li>
+							<a href="">推荐酒店</a>
+						</li>
+						<li>
+							<a href="">价格</a>
+						</li>
+					</ul>
+				</div>
+				<div class="grogshopContent">
+					<div class="grogConBox">
+						<div class="imagesBox">
+							<img src="../../img/index/grogshop01.jpg" class="grogshopImg grogshopImg01">
+							<img src="../../img/index/grogshop01.jpg" class="bigGrogshopImg none">
+						</div>
+						<div class="grogConIntro">
+							<div>
+								<i class="num">1</i>
+								<h4>北京云逸酒店</h4>
+								<br>
+								<span class="business">商务出行</span>
+								<span class="business">商务出行</span>
+								<br>
+								<a href="">首都机场,新国展地区 |</a>
+								<a href="">查看地图</a>
+								<br>
+								<span class="bottomSpan">免费外费</span>
+								<span class="bottomSpan">停车场</span>
+								<span class="bottomSpan">餐厅</span>
+							</div>
+						</div>
+						<div class="grogshopprice">
+							<!-- <p>北京云逸酒店距离首都机场T3航站楼车程约8分钟，距T2航站楼约12分钟，距新国展展览中心约15分钟，交通便利地理位置优越。 </p> -->
+							<div class="grogRiceLeft">
+								<span><span class="grade">4.8分</span>/5分</span>
+								<span><span class="grade">优异</span></span>
+								<br>
+								<span><span class="comment">433</span>条点评</span>
+								<span><span class="comment">94%</span>好评</span>
+								<br>
+								<span><span class="reserve">48小时内有24人预定</span></span>
+							</div>
+							<div class="grogRiceRight">
+								<span>¥778起</span>
+								<br>
+								<button type="button">查看详情</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="grogshopDetail clearfix">
+				<div class="grogshopContent">
+					<div class="grogConBox">
+						<div class="imagesBox">
+							<img src="../../img/index/grogshop01.jpg" class="grogshopImg">
+						</div>
+						<div class="grogConIntro">
+							<div>
+								<i class="num">2</i>
+								<h4>北京国际酒店</h4>
+								<br>
+								<span class="business">商务出行</span>
+								<span class="business">位置便利</span>
+								<br>
+								<a href="">首都机场,新国展地区 |</a>
+								<a href="">查看地图</a>
+								<br>
+								<span class="bottomSpan">免费外费</span>
+								<span class="bottomSpan">停车场</span>
+								<span class="bottomSpan">餐厅</span>
+							</div>
+						</div>
+						<div class="grogshopprice">
+							<!-- <p>北京云逸酒店距离首都机场T3航站楼车程约8分钟，距T2航站楼约12分钟，距新国展展览中心约15分钟，交通便利地理位置优越。 </p> -->
+							<div class="grogRiceLeft">
+								<span><span class="grade">4.7分</span>/5分</span>
+								<span><span class="grade">优异</span></span>
+								<br>
+								<span><span class="comment">504</span>条点评</span>
+								<span><span class="comment">96%</span>好评</span>
+								<br>
+								<span><span class="reserve">48小时内有75人预定</span></span>
+							</div>
+							<div class="grogRiceRight">
+								<span>¥566起</span>
+								<br>
+								<button type="button">查看详情</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="grogshopDetail clearfix">
+				<div class="grogshopContent">
+					<div class="grogConBox">
+						<div class="imagesBox">
+							<img src="../../img/index/grogshop01.jpg" class="grogshopImg">
+						</div>
+						<div class="grogConIntro">
+							<div>
+								<i class="num">3</i>
+								<h4>北京首都机场国际酒店</h4>
+								<br>
+								<span class="business">商务出行</span>
+								<span class="business">商务出行</span>
+								<br>
+								<a href="">首都机场,新国展地区 |</a>
+								<a href="">查看地图</a>
+								<br>
+								<span class="bottomSpan">免费外费</span>
+								<span class="bottomSpan">停车场</span>
+								<span class="bottomSpan">餐厅</span>
+							</div>
+						</div>
+						<div class="grogshopprice">
+							<!-- <p>北京云逸酒店距离首都机场T3航站楼车程约8分钟，距T2航站楼约12分钟，距新国展展览中心约15分钟，交通便利地理位置优越。 </p> -->
+							<div class="grogRiceLeft">
+								<span><span class="grade">4.8分</span>/5分</span>
+								<span><span class="grade">优异</span></span>
+								<br>
+								<span><span class="comment">433</span>条点评</span>
+								<span><span class="comment">94%</span>好评</span>
+								<br>
+								<span><span class="reserve">48小时内有24人预定</span></span>
+							</div>
+							<div class="grogRiceRight">
+								<span>¥868起</span>
+								<br>
+								<button type="button">查看详情</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="grogshopDetail clearfix">
+				<div class="grogshopContent">
+					<div class="grogConBox">
+						<div class="imagesBox">
+							<img src="../../img/index/grogshop01.jpg" class="grogshopImg">
+						</div>
+						<div class="grogConIntro">
+							<div>
+								<i class="num">4</i>
+								<h4>北京首都大酒店</h4>
+								<br>
+								<span class="business">休闲度假</span>
+								<span class="business">商务出行</span>
+								<br>
+								<a href="">首都机场,新国展地区 |</a>
+								<a href="">查看地图</a>
+								<br>
+								<span class="bottomSpan">免费外费</span>
+								<span class="bottomSpan">停车场</span>
+								<span class="bottomSpan">餐厅</span>
+							</div>
+						</div>
+						<div class="grogshopprice">
+							<!-- <p>北京云逸酒店距离首都机场T3航站楼车程约8分钟，距T2航站楼约12分钟，距新国展展览中心约15分钟，交通便利地理位置优越。 </p> -->
+							<div class="grogRiceLeft">
+								<span><span class="grade">4.9分</span>/5分</span>
+								<span><span class="grade">棒极了</span></span>
+								<br>
+								<span><span class="comment">566</span>条点评</span>
+								<span><span class="comment">98%</span>好评</span>
+								<br>
+								<span><span class="reserve">48小时内有85人预定</span></span>
+							</div>
+							<div class="grogRiceRight">
+								<span>¥898起</span>
+								<br>
+								<button type="button">查看详情</butaton>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="grogshopMap">
+			<div class="checkMap">点击查看大地图</div>
+				<div class="detailMap" id="map"></div>
+			</div>	 
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=FB6c98d828da5bf508fb357f9ee535ef"></script>
+<script src="../../js/jquery.min.js"></script>
+</html>
+<script type="text/javascript">
+	$(function(){
+    	$("button").on("click", function(){
+    		window.location.href = "hotelDetails.html";
+    	});
+    	$(".grogshopImg01").on("mouseover", function(){
+    		$(".bigGrogshopImg").removeClass("none");
+    	})
+    	$(".grogshopImg").on("mouseleave", function(){
+    		$(".bigGrogshopImg").addClass("none");
+    	})
+    })
+	 //创建和初始化地图函数：
+    function initMap(){
+      createMap();//创建地图
+      setMapEvent();//设置地图事件
+    }
+    function createMap(){ 
+      map = new BMap.Map("map"); 
+      map.setCurrentCity("北京"); 
+      map.centerAndZoom(new BMap.Point(116.394675,39.917545),11);
+      marker = new BMap.Marker(new BMap.Point(116.394675, 39.917545));
+      map.addOverlay(marker);
+    }
+    function setMapEvent(){
+      map.enableScrollWheelZoom();
+      map.enableKeyboard();
+      map.enableDragging();
+      map.enableDoubleClickZoom()
+    }
+    function addClickHandler(target,window){
+      target.addEventListener("click",function(){
+        target.openInfoWindow(window);
+      });
+    }
+    var map;
+      initMap();
+
+    
+</script>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>报名信息</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+<link rel="stylesheet" type="text/css" href="../../../css/app/style.css">
+<style type="text/css">
+.container {
+	margin: 10px 8px;
+	margin-top: 58px;
+}
+.oneinfoCon {
+	min-height: 60px;
+	border-bottom: 1px solid #fefefe;
+	margin-bottom: 5px;
+	background-color: #fff;
+	box-shadow: 0 0 8px #eee;
+	border-radius: 4px;
+}
+.twoinfoCon {
+	background-color: #fafafa;
+	min-height: 60px;
+	border-radius: 6px;
+	box-shadow: 0 0 3px #dfdfdf inset;
+	padding-bottom: 12px;
+}
+.infotil {
+	height: 30px;
+	line-height: 30px;
+	padding-left: 14px;
+	color: #e16100;
+}
+.infoDetail {
+	line-height: 44px;
+	border-bottom: 1px solid #e2e2e2;
+}
+.form-box li {
+	height: 48px;
+	line-height: 48px;
+	border-bottom: 1px solid #e2e2e2;
+	font-size: 14px;
+}
+.form-box i {
+	color: red;
+	float: right;
+	margin-right: 4px;
+	font-weight: bold;
+}
+.inp-label {
+	display: inline-block;
+	color: #4a4a4a;
+	font-weight: bold;
+	margin-left: 8px;
+	max-width: 110px;
+	vertical-align: top;
+}
+.inp-box {
+	display: inline-block;
+	color: #333;
+}
+.inp-text {
+	height: 30px;
+	border: none;
+	width: 190px;
+	float: left;
+	margin-top: 9px;
+	padding-left: 4px;
+	color: #666;
+	background: none;
+}
+.sel {
+	height: 28px;
+	width: 246px;
+	border: 1px solid #f9752b;
+	border-radius: 4px;
+	float: left;
+	margin-top: 9px;
+	color: #666;
+	background-color: #fff;
+}
+.takepartin {
+	width: 80%;
+	height: 36px;
+	color: #fff;
+	border: none;
+	background-color: #f9752b;
+	border-radius: 4px;
+	margin-left: 10%;
+	margin-top: 10px;
+	font-size: 16px;
+}
+</style>
+</head>
+<body>
+	<div class="head">
+		<div class="navImg">
+			<img src="../../../img/app/arrowLeft-icon.png">
+		</div>
+		<div class="navDetail">报名信息</div>
+	</div>
+	<div class="container">
+		<div class="infotil">已填写信息</div>
+	    <div class="oneinfoCon">
+	    	<ul class="oneinfo">
+	    		<!-- <li class="infoDetail">
+	    			<span class="inp-label">单位名称：</span>
+	    			<span>世纪协达</span>
+	    		</li> -->
+	    	</ul>
+	    </div>
+	    <div class="twoTil infotil">审核中······</div>
+	    <div class="twoinfoCon hide">
+	    	<form id="userform">
+	    		<input type="hidden" name="id" id="attendId">
+			    <input type="hidden" name="activityId" id="activityId">
+			    <input type="hidden" name="attendWay" value="3"/>
+				<ul class="form-box">
+				</ul> 
+				<input type="button" class="takepartin" value="提交补充信息"/>
+			</form>	
+	    </div>		   
+	</div>
+</body>
+<script type="text/javascript" src="../../../js/zepto.js"></script>
+<script type="text/javascript" src="../../../js/app/mtCommon.js"></script>
+<script>
+var id = Request("actId"),
+	status = Request("status");
+var second = false; // 标识补充信息是否提交
+$(function(){
+	$("#activityId").val(id);
+	getAttendData();
+
+	$(".takepartin").click(function(){
+		if(second){
+			return false;
+		}
+		takepartin();
+	});
+});
+// 获取数据
+function getAttendData(){
+	$.myAjax({
+		url: basePath + "mt/user/activity/get.do",
+		data: {id:id,type:"enroll"},
+		success: function(result){
+			if(result.flag){
+				$("#attendId").val(result.data.attendId);
+				initPage(result.data.enroll.userAttend);
+				initExtraInfo(result.data.enroll.activityAttend);
+			} else {
+				myConfirm(result.msg);
+			}
+		},
+		error: function(){
+			myConfirm("请求失败!");
+		}
+	})
+}
+function initPage(data){
+	var personLi = '',
+		unitLi = '',
+		extra = '';
+	for(var i=0;i<data.length;i++){
+		var val = data[i];
+		var str = '';
+		if(val.name == "gender"){ // 男女
+			str += '<li class="infoDetail"><span class="inp-label">'+val.showName+'：</span><span>'+
+			(val.value=="1"?"男":"女")+'</span></li>';
+		} else {
+			str += '<li class="infoDetail"><span class="inp-label">'+val.showName+'：</span><span>'+val.value+'</span></li>';
+		}
+		if(val.family == '1'){
+			personLi += str;
+		} else if(val.family == '2') {
+			unitLi += str;
+		} else if(val.family == '3' && ('value' in val)){
+			$(".takepartin").val('补充信息已提交').css('background-color','#ddd');
+			second = true;
+			extra += str;
+		}
+	}
+	$(".oneinfo").html( personLi + unitLi );
+	if(!!extra){
+		$(".form-box").html( extra );
+		$(".twoinfoCon").removeClass("hide");
+		$(".twoTil").html("补充报名信息");
+	}
+}
+// 初始化补充字段
+function initExtraInfo(twoInfo){
+	if(second){
+		return false;
+	} 
+	if(status > '1'){
+		if(twoInfo.length > 0){
+			$(".twoinfoCon").removeClass("hide");
+			$(".twoTil").html("审核通过，请补充以下报名信息");
+		} else {
+			$(".twoTil").html("审核通过");
+		}
+	}
+	var str = '';
+	for(var i=0; i<twoInfo.length; i++){					 
+		var obj = twoInfo[i];
+		var li = '<li><div class="inp-label">'+ obj.showName+"：</div>";
+		if(obj.type.substring(0,1) == '2'){ // 自定义字段
+			if(obj.type.substring(1,2) == '2'){
+				li += '<div class="inp-box"><input class="inp inp-diy" type="text" name="'+obj.name+'" value="'+obj.value+'"></div>';
+			}else if(obj.type.substring(1,2) == '4'){
+				li += '<div class="inp-box"><select class="inp inp-diy sel" type="text" name="'+obj.name+'" value="'+obj.value+'"></select></div>';
+				
+			}else {
+				li += '<div class="inp-box"><input class="inp inp-diy inp-text" type="text" name="'+obj.name+'" value="'+obj.value+'"></div>';
+			}
+		} else {
+			if(obj.type.substring(1,2) == '2'){
+				li += '<div class="inp-box"><input class="inp" type="text" name="'+obj.name+'" value="'+obj.value+'"></div>';
+			}else if(obj.type.substring(1,2) == '4'){
+				if(obj.dict.length>0){
+					li += '<div class="inp-box"><select class="inp sel" type="text" name="'+obj.name+'" value="'+obj.value+'">'+getOption(obj.dict)+'</select></div>';
+				}
+			}else {
+				li += '<div class="inp-box"><input class="inp inp-text" type="text" name="'+obj.name+'" value="'+obj.value+'" placeholder="请输入'+obj.showName+'"></div>';
+			}
+		}
+		if(obj.isNeeded == 1){
+			li += '<span><i>*</i></span>';
+		}
+		
+		li += '</li>';
+		str += li;
+	}
+	$(".form-box").html(str);
+}
+// 报名参会
+function takepartin(){
+    if(inputcheck(".inp input") == false) return false;
+    myConfirm("信息提交后无法修改(如需修改，请联系主办方)，确定提交？",function(){
+		// 选择自定义的字段
+		var aInp = $(".inp");
+		var str = '{';
+		aInp.each(function(index){
+			if(index == 0){
+				str += '"'+$(this).attr("name")+'":"'+$(this).val()+'"';
+			} else {
+				str += ',"'+$(this).attr("name")+'":"'+$(this).val()+'"';
+			}
+		});
+		str += '}';
+		var postData = "id="+$("#attendId").val() + "&activityId="+$("#activityId").val() + 
+				'&family=3&attendWay=2&extendInformation='+str;
+		$.myAjax({
+			url: basePath + "user/userattend/save.do",
+			data: postData,
+	        success: function(result) {
+		    	if(result.flag) {
+					myConfirm("补充信息提交成功！",function(){
+						getAttendData();
+					},"nocancle");
+		    	} else {
+		    		myConfirm(result.msg);
+		    	}
+	        },
+	        error: function(result) {
+		        myConfirm("请求失败，请稍后再试！");
+	        }
+		});
+	});
+}
+// 输入验证
+function inputcheck(){
+	var aInput = $(".inp");		 
+	for(var i=0; i<aInput.length; i++){					 
+		if($(aInput[i]).parent().parent().find("span").html() == '<i>*</i>'){
+			if($(aInput[i]).val() == '' || $(aInput[i]).val() == null){
+				myConfirm("标星字段为必填项，请准确填写信息！！");
+				return false; 
+			} else if($(aInput[i]).attr("name") == "mobile"){
+				if(!(/^1[34578]\d{9}$/.test($(aInput[i]).val()))){ 
+					myConfirm("手机号码有误，请重新输入！");
+					return false; 
+				}
+			} else if($(aInput[i]).attr("name") == "email"){
+				if(!/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test($(aInput[i]).val())){
+					myConfirm("请输入正确的邮箱!");
+					return false;
+				}
+			}
+		}
+	}
+	return true;
+}
+</script>
+</html>

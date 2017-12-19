@@ -1,0 +1,29 @@
+.app-header{
+	height: 48px;
+	line-height: 48px;
+	/*background-color: #f36a1c;*/
+	background-color: #f9752b;
+	color: #fff;
+	position: fixed;
+	top: 0;
+	z-index: 100;
+	width: 100%;
+	text-align: center;
+}
+.navDetail{
+	font-size: 18px;
+	font-weight: 500;
+}
+.app-header div{
+	display: inline-block;
+}
+.navImg{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 53px;
+}
+.app-header img{
+	width: 12px;
+	vertical-align: middle;
+}

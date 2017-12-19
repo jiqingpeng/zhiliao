@@ -1,0 +1,33 @@
+[{
+	"icon": "../../img/icon/super/conflisticon.png",
+	"name": "活动列表",
+	"link": "activityList.html"
+}, {
+	"icon": "../../img/icon/super/adminediticon.png",
+	"name": "我的活动",
+	"link": "myActivity.html"
+}, {
+	"icon": "../../img/icon/super/informationicon.png",
+	"name": "受邀活动",
+	"link": "activityList.html"
+}, {
+	"icon": "../../img/icon/super/societyhomeicon.png",
+	"name": "我的日程",
+	"link": "myDate.html"
+}, {
+	"icon": "../../img/icon/super/adminediticon.png",
+	"name": "我的关注",
+	"link": "activityList.html"
+}, {
+	"icon": "../../img/icon/super/adminediticon.png",
+	"name": "活动的群",
+	"link": "activityList.html"
+}, {
+	"icon": "../../img/icon/super/adminediticon.png",
+	"name": "站内信息",
+	"link": "activityList.html"
+}, {
+	"icon": "../../img/icon/super/adminediticon.png",
+	"name": "用户中心",
+	"link": "personal.html"
+}]

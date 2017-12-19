@@ -1,0 +1,115 @@
+@media screen and (max-width: 1200px){
+ 
+}
+
+@media screen and (max-width: 1000px){
+
+    .m-hd{
+        display: block;
+    }
+    .header{
+        display: none;
+    }
+    body{         
+        overflow-x: hidden;
+    }
+    .pb-menu  li{
+        width: 33.333%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .lb-con u{
+        margin-right: 0;
+    }
+    .lb-con span,
+    .lb-con em{
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 640px){
+    .course-detail .right{}
+  .table-list{
+    width: 900px;
+  }
+    .pagination-box{
+        text-align: center;
+    }
+    .table-list th{
+        font-size: 15px;
+    }
+    .pagination-box .inp,
+    .pagination-box .sub,
+    .pagination-box > span{
+        display: none;
+    }
+    .pb-menu em{
+        font-size: 12px;
+    }
+    #banner{
+        height: 240px;
+        margin-bottom: 20px;
+    }
+    #footer{
+        margin-top: 20px;
+    }
+    #footer .fd-link,
+    .login-bar{
+        display: none;
+    }
+    #banner{
+        height: auto;
+    }
+    .login-box{
+        position: static;
+        width: 100%;
+        margin-top: 0;
+    }
+    .news-box{
+        margin-bottom: 20px;
+    }
+    .news-box .hd{
+        padding-left: 45%;
+        background-position: 36% 50% !important;
+        -webkit-background-size: auto 30px !important;
+        background-size: auto 30px !important;
+        height: 50px;
+    }
+    #footer .copy-right{
+        width: 100%;
+        text-align: center;
+    }
+    .news-box .hd h3{
+        font-size: 18px;
+    }
+    .video-list{
+        padding: 20px;
+    }
+    .v-box i{
+        width: 50px;
+        height: 50px;
+        opacity: 1;
+    }
+    .sign-box{width: 100%;}
+ 
+    .form-box .inp-label{width: 90px;}
+    .form-box .inp-box{margin-left: 90px;width: 100%;}
+    .form-box select{width: 100%;margin-bottom: 20px;}
+    .tablist li{width: 50%;}
+    .tablist li a{width: 100%;}
+    .up-load span{margin-left: 0;margin-top: 10px;}
+    .search-box-center{height: 250px;}
+    .search-box{width: 330px;}
+    .sb-con .inp{width: 159px;}
+    .course-detail .left{padding-left: 0;}
+    .course-detail h3{font-size: 24px;}
+    .course-detail p{font-size: 14px;}
+    .course-detail .right{width: 120px;}
+    .course-detail h4{font-size: 20px;}
+    .order-z1{width: 100%;height: 36px;line-height: 36px;font-size: 16px;}
+    .course-detail li{padding: 20px 14px;}
+    .cur{padding: 0 10px;}
+    .new-info{min-height:140px;height: auto;}
+}

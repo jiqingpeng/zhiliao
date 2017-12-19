@@ -1,0 +1,282 @@
+.wrap {
+  width: 1160px;
+  margin-bottom:10px;
+}
+.wrap .group {
+  width: 290px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+  position:relative;
+}
+.wrap .group .issueMove{
+  min-width:276px;
+  /*text-align: center;*/
+  min-height: 216px;
+  border:1px solid #ddd;
+  position: absolute;
+  left:290px;
+  top:-1px;
+  z-index:1;
+  background:#fff;
+  display: none;
+}
+.popupStyle{
+  border-radius: 0 6px 6px 0;
+  box-shadow: 2px 2px 4px #ccc;
+  padding: 15px 7px;
+}
+.wrap .group .orginfoMove{
+  min-width: 276px;
+  min-height: 201px;
+  border:1px solid #ddd;
+  position: absolute;
+  left:290px;
+  top:-1px;
+  z-index:1;
+  background:#fff;
+  display: none;
+}
+.wrap .group .orginfoMove p{
+  margin-top:10px;
+}
+.wrap .group h4 {
+  height: 30px;
+  border-bottom: 1px solid #ccc;
+  font-size: 16px;
+  line-height: 30px;
+  font-weight: bold;
+}
+.wrap .group h4 #totalAttend{
+  margin-right:5px;
+}
+.wrap .group h4 img {
+  margin-top: 10px;
+  margin-left: 5px;
+}
+.wrap .group .item{
+  margin-left:5px;
+}
+.wrap .group #mess_time{
+  min-height:170px;
+}
+.wrap .group #mess_address{
+  margin-bottom: 6px;
+}
+.wrap .group .orginfo{
+  height:200px;
+  overflow: hidden;
+}
+.wrap .group .orginfo #activityOrginfoList{
+  
+}
+.wrap .group .item div {
+  margin: 5px 0;
+  margin-left: 5px;
+}
+.wrap .group .item .news{
+  height:110px;
+}
+.wrap .group .item div .bold{
+  // color:#a1a1a1;
+}
+.wrap .wrap-l {
+  width: 290px;
+}
+.wrap .wrap-l #mess_issue{
+  height:200px;
+  overflow: hidden;
+}
+.wrap .group .item div p {
+  
+  margin-top: 10px;
+}
+.wrap .group .item div img {
+  margin-left:-8px;
+  width:100%;
+  height:100%;
+}
+.wrap .group .item div .sign {
+  width: 86px;
+  height: 24px;
+  line-height: 24px;
+  padding: 6px;
+  margin: 0 auto;
+  margin-top: 54px;
+  background: #fe6600;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+}
+.wrap .group .item .btnGroup{
+  overflow: hidden;
+}
+.wrap .group .item div .sign a{
+  display: inline-block;
+  width:100%;
+  height:100%;
+}
+.wrap .group .item div .gray{
+  background-color: #ccc;
+  cursor:default;
+}
+.wrap .group .item div .gray a{
+  cursor:default;
+}
+.wrap .group .item div .sign:hover{
+  background: #f0ad4e;
+}
+.wrap .group .item div .gray:hover{
+  background: #ccc;
+}
+.wrap .group .item div .sign a {
+  color: #fff;
+}
+.wrap .group .item .h60 {
+  height: 160px;
+}
+.wrap .contact {
+  height: 428px;
+  border: 1px solid #ccc;
+}
+.wrap .contact .item {
+  margin-left: 22px;
+}
+.wrap .contact .item div {
+  font-weight: 700;
+}
+.wrap .contact .item .tit {
+  margin: 20px 0;
+}
+.wrap .contact ul {
+  margin-left: 5px;
+}
+.wrap .contact .item #contact_our{
+  margin-top: 46px;
+}
+.wrap .contact ul li {
+  margin-top: 10px;
+}
+.wrap .contact .code {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  margin-top: 30px;
+  margin-left: 20px;
+}
+.wrap .contact .messTxt{
+  margin-left:30px;
+}
+.wrap .contact .platTxt{
+  margin-left:60px;
+}
+.messTitle{
+  width:1160px;
+  height:30px;
+  line-height: 30px;
+  
+}
+/*// .messTitle .w290{
+//   width:290px;
+// }
+// .messTitle .messName{
+//   width:580px;
+//   text-align: center;
+//   font-size: 20px;
+// }
+// .messTitle .messCompany{
+ 
+// }*/
+.wrap .wrap-c {
+  width: 578px;
+  margin-top:5px;
+}
+.wrap .wrap-c .bann {
+  display: block;
+  margin: 0 auto;
+  width:560px;
+  height:280px;
+}
+.wrap .wrap-c h4 {
+  height: 30px;
+  margin: 10px 5px;
+  font-size: 16px;
+  line-height: 30px;
+  font-weight: bold;
+}
+.wrap .wrap-c h4 img {
+  margin-top: 10px;
+}
+.wrap .wrap-c .message {
+  margin: 0 10px;
+  margin-top: 10px;
+  height:516px;
+  overflow: hidden;
+}
+.wrap .wrap-c .message p {
+  text-indent: 2em;
+  line-height: 24px;
+}
+.wrap .wrap-c .messTitle{
+  margin-top: 14px;
+  width:100%;
+  height: 60px;
+}
+.messTitle .messName{
+  font-size:20px;
+  text-align: center;
+  font-weight: bold;
+}
+.messCompany {
+  text-align: right;
+  margin-right:10px;
+  font-size: 12px;
+  cursor: pointer;
+  float: right;
+  margin-right: 18px;
+}
+.messCompany:hover {
+  color: #ff8400;
+}
+.wrap .wrap-r {
+  width: 290px;
+}
+.person {
+  width: 1160px;
+  margin-top: 5px;
+  display: none;
+}
+.person h4 {
+  width: 1155px;
+  height: 30px;
+  line-height: 30px;
+  border: 1px solid #ccc;
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 5px;
+}
+.person .personList {
+  margin-bottom: 10px;
+  width: 100%;
+  min-height: 50px;
+  border: 1px solid #ccc;
+}
+.person .personList li{
+  // border:1px solid red;
+  margin:10px;
+}
+/*ÂÖ²¥*/
+.bann{width: 560px;height: 280px;border: 2px solid #ccc;margin: 100px auto;position: relative;overflow: hidden;}
+.img{position: absolute;top: 0;left: 0;}
+.img li{float: left;}
+.img li img{
+  width: 560px;
+  height: 280px;
+}
+.num{position: absolute;bottom: 10px;width: 100%;text-align: center;font-size: 0;}
+.num li{width: 10px;height: 10px;background:rgba(0,0,0,0.5);display: block;border-radius: 100%;display: inline-block;margin: 0 5px;cursor: pointer;}
+.btn{display: none;}
+.btn span{display: block;width: 50px;height: 100px;background: rgba(0,0,0,0.6);color: #fff;font-size: 40px;line-height: 100px;text-align: center;cursor:pointer;}
+.btn .prev{position: absolute;left: 0;top: 50%;margin-top: -50px;}
+.btn .next{position: absolute;right: 0;top: 50%;margin-top: -50px;}
+.num .active{background-color: #fe6600;}
+/*ÂÖ²¥end*/

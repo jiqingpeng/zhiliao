@@ -1,0 +1,14 @@
+.left-arrow:after{
+  border: 10px solid transparent;
+  border-left: 10px solid #fff;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 0;
+  right: -20px;
+  content: ' '
+}
+.left-arrow:before {
+  border-left-color: #f00;
+  right: -21px;
+}

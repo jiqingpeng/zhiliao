@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<!-- <meta charset="UTF-8"> -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>会议指南</title>
+<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="../../../css/common/bootstrap.css">
+<link rel="stylesheet" href="../../../css/common/bootstrap-table.min.css">
+<link href="../../../css/style.css" rel="stylesheet" />
+<link href="../../../css/main.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../../css/admin.css">
+<!-- 引入项目中每个模块的独立样式 : xxx.css -->
+</head>      
+<body>
+<!-- 引入页头 -->
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav" style="background-color: #fff;">
+		<a href="activityGuide.html">会议指南</a>
+	</div>
+	<!-- <div class="con-box noSubMenu" style="width: 70%;">
+		<table id="texttable">
+  		</table>
+		<div class="btncon">
+			<button type="button" class="btn btn-default btn-warning guideSave">生成指南</button>
+		</div>      
+	</div>  -->
+	<!-- <div id="toolbar">
+        <div class="btn-group">
+            <button id="btn_add" type="button" class="btn btn-sm btn-default">导出</button>
+        </div>	
+    </div> -->
+    <!-- <div id="toolbar" class="btn-group">
+        <select id="sel_exportoption" class="form-control">
+            <option value="">导出当前页面数据</option>
+            <option value="all">导出全部数据</option>
+            <option value="selected">导出选中数据</option>
+        </select>
+    </div> -->
+    <div style="width: 220px; margin: 200px auto;"><img width="220px" src="../../../img/coming.png"></div>
+</div>
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/bootstrap-table.min.js"></script>
+<script src="../../../js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../../js/bootstrapValidator.min.js"></script>
+<script src="../../../js/bootstrap-table-export.js"></script>
+<script src='../../../js/tableExport.js'></script>
+<script src="../../../js/ga.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/main.js"></script>
+                                   
+<script type="text/javascript">
+	$(function(){
+		$(function(){
+			$("#main-contant").height($("#content").height())
+			$("#main-contant").css("backgroundColor", "#ededed");
+		})
+		// 获取ID值
+		if(Request("id") && Request("id").length == 32){ // 链接地址中id有值，且值正确
+		    sessionStorage.setItem('actId',Request("id"));
+		}
+
+		// 获取左侧菜单列表数据(参数为请求地址)
+		// initMenu('../../../js/data/administrator.json','会议指南');
+		serialMenuAjax('admin/activity/menu.do', '会议指南', sessionStorage.getItem('actId'));
+		// initTable(data);
+		// $("#sel_exportoption").change(function () {
+	 //    $('#texttable').bootstrapTable('refreshOptions', {
+	 //        	exportDataType: $(this).val()
+	 //    	});
+		// });
+	})
+
+	// var data=[
+	// 	{
+	// 		"activityGuide": "会议须知"
+	// 	},
+	// 	{
+	// 		"activityGuide": "会议日程表"
+	// 	},
+	// 	{
+	// 		"activityGuide": "参会人员名单"
+	// 	},
+	// 	{
+	// 		"activityGuide": "会场安排"
+	// 	},
+	// 	{
+	// 		"activityGuide": "住宿安排"
+	// 	},
+	// 	{
+	// 		"activityGuide": "服务指南"
+	// 	}
+	// ]
+
+	// function initTable(data){
+	// 	$('#texttable').bootstrapTable({
+	//             data: data,
+	//             dataLocale: 'zh-CN',               //表格汉化
+	//             toolbar: '#toolbar',                //工具按钮用哪个容器
+	//             striped: true,                      //是否显示行间隔色
+	//             cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+	//             pagination: true,                   //是否显示分页（*）
+	//             sortable: false,                     //是否启用排序
+	//             sortOrder: "asc",                   //排序方式
+	//             // queryParams: oTableInit.queryParams,//传递参数（*）
+	//             sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
+	//             pageNumber:1,                       //初始化加载第一页，默认第一页
+	//             pageSize: 10,                       //每页的记录行数（*）
+	//             strictSearch: false,
+	//             clickToSelect: true,                //是否启用点击选中行
+	//             clickToSelect:true,
+	//             showExport: true,                     //是否显示导出
+	//             exportDataType: "basic",              //basic', 'all', 'selected'.
+	//             columns: [{
+ //                checkbox: true,
+ //                valign: 'middle'
+ //            	},
+	//             {
+	//                 field: 'id',
+	//                 title: '会议邮箱id',
+	//             },
+	//             {
+	//                 field: 'activityGuide',
+	//                 title: '会议指南功能',
+	//                 align: 'center'
+	//             },
+
+	//             ],        
+	//     });
+	//     $('#texttable').bootstrapTable('hideColumn', 'id');
+	// };	
+</script> 
+
+</html>
+
+<!-- <script>
+   //    onExpandRow: function (index, row, $detail) {
+          //  			initSubTable(index, row, $detail);
+        		// } 
+	var childData = [
+		{
+			"meetDisciplin": "会议日期"
+		},
+		{
+			"meetDisciplin": "会议纪律"
+		},
+		{
+			"meetDisciplin": "会议服务会议组联系方式"
+		},
+		{
+			"meetDisciplin": "作息安排"
+		},
+		{
+			"meetDisciplin": "会议天气预报"
+		},
+		{
+			"meetDisciplin": "注意事项"
+		}
+	]
+
+	function initSubTable(index, row, $detail){
+		var cur_table = $detail.html('<table></table>').find('table');
+        $(cur_table).bootstrapTable({
+			data:childData,
+			dataType: 'json',
+            pageSize: 10,
+            pageList: [10, 25],
+            columns: [{
+	                checkbox: true,
+	                valign: 'middle'
+            	},
+            	{
+					field:"meetDisciplin",
+					title:"会议须知详情"
+			}]
+        });
+	}
+</script> -->

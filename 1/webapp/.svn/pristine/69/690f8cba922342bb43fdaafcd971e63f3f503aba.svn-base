@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>会议简介</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+	<link rel="stylesheet" type="text/css" href="../../../css/app/style.css">
+</head>
+<style type="text/css">
+	.contain{
+		padding: 15px 10px;
+		
+		margin-top: 48px;
+	}
+	.content{
+		background-color: #ffffff;
+		padding: 0 15px 10px 15px; 
+	}
+	.conTitle{
+		border-bottom: 1px solid #e2e2e2;
+		margin: 0 -15px;
+		padding: 15px;
+	}
+	.title{
+		font-weight: 600;
+		color: #4a4a4a;
+	}
+	.timeBox{
+		margin-top: 10px;
+		font-size: 12px;
+		color: #878787;		
+	}
+	.timeBox img{
+		width: 12px;
+		vertical-align: middle;
+		margin-top: -2px;
+	}
+	.time{
+		margin-right: 3px;
+	}
+	.date{
+		margin-right: 5px;
+	}
+	.textContent{
+		color: #444444;
+		margin-top: 15px;
+	}
+</style>
+<body>
+	<div>
+		<div class="head">
+			<div class="navImg">
+				<img src="../../../img/app/arrowLeft-icon.png">
+			</div>
+			<div class="navDetail">会议简介</div>
+		</div>
+		<div class="contain">
+			<div class="content">
+				<div class="conTitle">
+					<div class="title">
+						
+					</div>
+					<div class="timeBox">
+						<span class="timeIcon"><img src="../../../img/app/time.png"></span>
+						<span class="time">时间:</span>
+						<span class="date"></span>
+						<span class="second"></span>
+					</div>
+				</div>
+				
+				<div class="textContent">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="../../../js/zepto.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<script type="text/javascript">
+$(function(){
+	var url = basePath + "index/activity.do";
+	var id = Request("id");
+	// console.log(title);
+	// console.log(time);
+	// console.log(id);
+	var data= {id:id,type:"14"};
+	initPage(url,data)
+});
+function initPage(url, data){
+	$.myAjax({
+		url: url,
+		data: data,
+		success: function(result){
+			console.log(result);
+			if(result.flag){
+				
+				var title = getUrlJson("title");
+				var time = getUrlJson("time");
+				console.log(time)
+				$(".textContent").html(result.data.introduction);
+				$(".title").html(title);
+				$(".date").html(time.substring(0,11));
+				$(".second").html(time.substring(11));
+			}else{
+				myAlert(result.msg);
+			}
+		},
+		error: function(){
+			myConfirm("请求失败!");
+		}
+	})
+}
+
+</script>
+</html>

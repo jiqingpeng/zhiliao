@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+	<meta name="charset" content="UTF-8">
+	<title>静态页面效果图</title>
+	<link href="../../css/common/bootstrap.min.css" rel="stylesheet">
+	<link href="../../css/common/jquery-confirm.css" rel="stylesheet">
+	<link href="../../css/style.css" rel="stylesheet">
+	<link href="../../css/main.css" rel="stylesheet">
+	<link href="../../css/userfiled.css" rel="stylesheet">
+</head>
+<body>
+<div id="header">
+	<span id="lineicon"></span>
+	<span class="hotline">客服热线：010-82363670</span>
+	<span id="userinfo">
+		<span id="usertil">欢迎您</span>
+		<span id="user">巩克春</span>
+		<a href="#">注销<span id="usericon"></span></a>
+	</span>
+</div>
+<div id="sysnav">
+	<div id="logo"><img src="../../img/logoandname.png" alt="群英汇：一体化会议系统" /></div>
+	<span class="nav">
+		<a href="=basePath">首页</a>
+	</span>
+</div>
+<div class="prejoincon">
+	<div class="activname">《猴年河南南省病理技术研理技术研技术讨》 报名表</div>
+    <div class="jcon person">
+   		<div class="jconheader">
+   			<span class="jcontil">
+   				<span class="jconnum">1</span>个人信息
+   			</span>
+   		</div>
+   		<ul class="jcondetail">
+			<li>
+				<span class="fieldcon">
+					<span class="til"><span class="red">* </span><label>姓名</label></span>
+					<input class="inp" type="text" name="name">
+				</span>
+				<!-- <span class="filedopt">
+					<input type="checkbox" class="must checkinp"/>必填
+					<input type="checkbox" class="optional checkinp"/>选填
+					<input type="checkbox" class="noneed checkinp"/>不需要
+				</span>
+				<span class="moveopt">
+					<img src="../../img/moveup.png" title="上移"/>
+					<img src="../../img/movedown.png" title="下移"/>
+				</span> -->
+			</li>
+			<li>
+				<span class="til"><span class="red">* </span><label>性别</label></span>
+				<input class="sex radioinp" type="radio" name="sex">男
+				<input class="sex radioinp" type="radio" name="sex">女
+			</li>
+			<li>
+				<span class="til"><label>出生年月</label></span>
+				<input class="inp" type="text" name="userid">
+			</li>
+			<li>
+				<span class="til"><label>民族</label></span>
+				<input class="inp" type="text" name="email">
+			</li>
+			<li>
+				<span class="til"><span class="red">* </span><label>证件类型</label></span>
+				<input class="inp" type="text" name="email">
+			</li>
+			<li>
+				<span class="til"><span class="red">* </span><label>证件号码</label></span>
+				<input class="inp" type="text" name="email">
+			</li>
+			<li>
+				<span class="til"><label>职业</label></span>
+				<input class="inp" type="text" name="email">
+			</li>
+			<li>
+				<span class="til"><label>手机</label></span>
+				<input class="inp" type="text" name="email">
+			</li>
+			<li>
+				<span class="til"><label>邮箱</label></span>
+				<input class="inp" type="text" name="email">
+			</li>
+			
+   		</ul>
+    </div>
+    <div class="jcon">
+   		<div class="jconheader">
+   			<span class="jcontil">
+   				<span class="jconnum">2</span>单位信息
+   			</span>
+   		</div>
+   		<ul class="jcondetail">
+			<li>
+				<span class="til"><label>单位名称</label></span>
+				<input class="inp" type="text" name="name">
+			</li>
+			<li>
+				<span class="til"><label>单位性质</label></span>
+				<input class="inp" type="text" name="phone">
+			</li>
+			<li>
+				<span class="til"><label>部门</label></span>
+				<input class="inp" type="text" name="userid">
+			</li>
+			<li>
+				<span class="til"><label>职务</label></span>
+				<input class="inp" type="text" name="userid">
+			</li>
+			<li>
+				<span class="til"><label>职称</label></span>
+				<input class="inp" type="text" name="userid">
+			</li>
+			<li>
+				<span class="til"><label>地址</label></span>
+				<input class="inp" type="text" name="userid">
+			</li>
+			<li>
+				<span class="til"><label>邮编</label></span>
+				<input class="inp" type="text" name="userid">
+			</li>
+			<li>
+				<span class="til"><label>联系电话</label></span>
+				<input class="inp" type="text" name="userid">
+			</li>
+			
+   		</ul>
+    </div>
+    <div class="jcon person">
+   		<div class="jconheader">
+   			<span class="jcontil">
+   				<span class="jconnum">3</span>其他信息
+   			</span>
+   		</div>
+   		<ul class="jcondetail">
+			<li>
+				<span class="til"><label>备注</label></span>
+				<input class="inp" type="text" name="phone">
+			</li>
+   		</ul>
+    </div>
+    <div class="jcon joinbtn">
+   		<button class="btn btn-warning joinok">保&nbsp存</button>
+   		<button class="btn btn-default canclej">取&nbsp消</button>
+    </div>
+</div>
+<div id="footer">
+	<div id="hytlink">
+		<span><a target="_blank" href="#">关于我们</a></span>
+		<span><a target="_blank" href="#">联系我们</a></span>
+		<span><a target="_blank" href="#">帮助中心</a></span>
+		<span><a target="_blank" href="#">网站声明</a></span>
+		<span><a target="_blank" href="#">公司新闻</a></span>
+	</div>
+	<p>未经gconfs.com同意，不得转发网站会议信息</p>
+	<p>京ICP备17018133号</p>
+</div> 
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/jquery-confirm.js"></script>
+<script src="../../js/common/common.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".joinok").click(function(){
+		myAlert('报名成功！');
+		// $.dialog({
+    //     title: '群英汇',
+    //     content: '报名成功！',
+    // });
+  	//$.alert('报名成功！', '群英汇');
+	});
+	$(".canclej").click(function(){
+		$.confirm({
+			title : "群英汇",
+		content: "确认取消报名？",
+		sureButton: "确定",
+		cancelButton: "取消"
+		
+	});
+	});
+
+});
+</script>
+
+</html>

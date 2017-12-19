@@ -1,0 +1,342 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>监控统计</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+    <link href="../../css/common/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/common/bootstrap-table.min.css" rel="stylesheet">
+    <link href="../../css/mng/monitor-base.css" rel="stylesheet">
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+<div id="root">
+    <div id="head">
+        <div class="head-main">
+            <div class="logo">
+                <a href="http://www.gconfs.com">
+                    <img class="" src="../../img/logoandname.png" title="群英汇：一体化会议系统" alt="群英汇：一体化会议系统"/>
+                </a>
+                <span class="logo-title">网站统计</span>
+            </div>
+            <div class="head-tab ">
+                <a href="index.html" target="_top" class="active-head">主页</a>
+                <a href="activitymonitor.html" target="_top">活动概览</a>
+                <a href="activityadminmonitor.html" target="_top">活动管理员概览</a>
+                <a href="activityhotelmonitor.html" target="_top">活动酒店</a>
+                <!--<a href="index.html" target="_top">主页</a>-->
+            </div>
+            <div class="head-user">
+                <span>Hi </span>
+                <span id="user-name"></span>
+                <a onclick="loginout();">登出<span class="glyphicon glyphicon-log-out"></span></a>
+            </div>
+        </div>
+    </div>
+    <div id="menu">
+        <div class="menu-main">
+            <div class="menu-title">
+                <span class="hide-able">网站导航</span>
+                <a class="hideMenu">
+                    <span class="glyphicon glyphicon-menu-hamburger ">
+                        <span class="arrow-left"></span>
+                    </span>
+                </a>
+            </div>
+            <ul class="menu-content list-group">
+                <!-- <li class="list-group-item">
+                     <a href="activitymonitor.html">
+                         <span class="glyphicon glyphicon-list-alt"></span>
+                         <span class="hide-able">活动概况</span>
+                     </a>
+                 </li>
+                 <li class="list-group-item">
+                     <a href="activityconversion.html">
+                         <span class="glyphicon glyphicon-hourglass"></span>
+                         <span class="hide-able">转化概况</span>
+                     </a>
+                 </li>-->
+            </ul>
+        </div>
+    </div>
+    <div id="content">
+        <div id="content-body">
+            <div class="content-title">
+                <div class="title-bar">
+                    <div>
+                        <a>活动基本信息</a>
+                    </div>
+                </div>
+            </div>
+            <div class="content-main">
+                <div class="content-main-body">
+                    <div id="activity-div">
+                        <table id="activity-table">
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="foot"><span>© 京备17018133</span></div>
+    </div>
+</div>
+<div class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-warning active" role="progressbar" aria-valuenow="100"
+         aria-valuemin="0"
+         aria-valuemax="100" style="width: 100%">
+        <span class="sr-only">loding...</span>
+    </div>
+</div>
+<div id="model-div"></div>
+<div id="toast_" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" href="#toast_">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="mySmallModalLabel">群英汇</h4>
+            </div>
+            <div class="modal-body" id="toast_msg">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../../js/jquery.min.js" type="application/javascript"></script>
+<script src="../../js/bootstrap.min.js" type="application/javascript"></script>
+<script src="../../js/bootstrap-table.min.js" type="application/javascript"></script>
+<script src="../../js/bootstrap-table-zh-CN.min.js" type="application/javascript"></script>
+<script src="../../js/tableExport.js" type="application/javascript"></script>
+<script src="../../js/bootstrap-table-export.js" type="application/javascript"></script>
+<script src="../../js/mng/mng.js" type="application/javascript"></script>
+<script src="../../js/mng/monitor-base.js" type="application/javascript"></script>
+<script type="application/javascript">
+    $(function () {
+        loding();
+        init();
+        tableInit();
+    });
+
+    function init() {
+        $.myAjax({
+            url: basePath + "sys/monitor/activity/info/list.do",
+            data: "",
+            success: function (result) {
+                lodingDown();
+                if (result.flag) {
+                    $("#activity-table").bootstrapTable('load', result.data.activityList);
+                } else {
+                    toastMsg(result.msg);
+                }
+            },
+            error: function (result) {
+                toastMsg(result.msg);
+            }
+        });
+    }
+
+    function tableInit() {
+        $('#activity-table').bootstrapTable({
+            dataType: 'json', //数据格式
+            dataLocale: 'zh-US', //表格汉化
+            toolbar: '#toolbar',
+            striped: true, //是否显示行间隔色
+            cache: false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+            pagination: true, //是否显示分页（*）
+            sortable: true, //是否启用排序
+            sortOrder: "desc", //排序方式
+            search: true,
+            showExport: true,
+            searchFormatter: false,
+            showRefresh: false, //是否显示刷新按钮
+            cellStyle: true,
+            checkbox: true,
+            sidePagination: "client", //分页方式：client客户端分页，server服务端分页（*）
+            pageNumber: 1, //初始化加载第一页，默认第一页
+            pageSize: 50, //每页的记录行数（*）
+            pageList: [50, 100, 200], //可供选择的每页的行数（*）
+            formatLoadingMessage: function () {
+                return "请稍等，正在加载中。。。";
+            },
+            columns: [{
+                field: 'id',
+                title: 'ID',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'stime',
+                title: '开始时间',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'location',
+                title: '地点',
+                valign: 'middle',
+                sortable: true,
+                align: 'center',
+                formatter: function (value, row, index) {
+                    return '<span title="' + row.location_info + '">' + value + '</span>';
+                }
+            }, {
+                field: 'location_info',
+                title: '地点详情',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'name',
+                title: '名称',
+                valign: 'middle',
+                sortable: true,
+                height: '40px',
+                align: 'center',
+                formatter: function (value, row, index) {
+                    return '<a style="display: inline-block;line-height: 24px" href="' +
+                        basePath + 'page/admin/conf/basicInfo.html?id=' + row.id + '"' + 'title="' + value +
+                        '&nbsp;&nbsp;&nbsp;点击进入活动信息编辑页面" target="_blank">' + value + '</a>';
+                }
+            }, {
+                field: 'unit_host',
+                title: '主办/指导单位',
+                valign: 'middle',
+                sortable: true,
+                align: 'center',
+                formatter: function (value, row, index) {
+                    return '<span title="' + row.unit_info + '" ><h>' + value + '</h><br><h>' + row.unit_guidance + '</h></span>';
+                }
+            }, {
+                field: 'unit_guidance',
+                title: '指导单位',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'unit_info',
+                title: '全部单位',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'schedual',
+                title: '日程',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'expert_total',
+                title: '嘉宾',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'activity_reg_config_family',
+                title: '报名字段',
+                valign: 'middle',
+                sortable: true,
+                align: 'center',
+                formatter: function (value, row, index) {
+                    return '<span title="一段：总: ' + value + ' ,必/选:' + row.activity_reg_config_family_ +
+                        '。二段：总: ' + row.activity_reg_config_family3 + ' ,必/选:' + row.activity_reg_config_family3_ +
+                        '" >' + value + '</span>';
+                }
+            }, {
+                field: 'activity_reg_config_family3',
+                title: '二次报名字段',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'activity_reg_config_family_',
+                title: '一段报名字段',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'activity_reg_config_family3_',
+                title: '二段报名字段',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'contact',
+                title: '联系方式',
+                valign: 'middle',
+                sortable: true,
+                align: 'center',
+                formatter: function (value, row, index) {
+                    return '<span title="' + row.contact_info + '" >' + value + '</span>';
+                }
+            }, {
+                field: 'contact_info',
+                title: '联系方式',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'option',
+                title: '操作',
+                width: 86,
+                valign: 'middle',
+                align: 'center',
+                formatter: function (value, row, index) {
+                    return '<span class="glyphicon glyphicon-ok do-release" style="display: none" title="点击发布" aria-hidden="true"></span>' +
+                        '<span class="glyphicon glyphicon-remove cancel-release" title="取消发布" aria-hidden="true"></span>';
+                },
+                events: {
+                    'click .do-release': function (e, value, row, index) {
+                        var _this = this;
+                        $.myAjax({
+                            url: basePath + "admin/activity/save.do",
+                            data: {id: row.id, state: 2},
+                            success: function (result) {
+                                if (result.flag) {
+                                    $($(_this).parent().children(".cancel-release")).show();
+                                    $(_this).hide();
+                                    toastMsg(result.msg);
+                                } else {
+                                    toastMsg(result.msg);
+                                }
+                            },
+                            error: function () {
+                                toastMsg("请求失败!");
+                            }
+                        });
+                    },
+                    'click .cancel-release': function (e, value, row, index) {
+                        var _this = this;
+                        $.myAjax({
+                            url: basePath + "admin/activity/save.do",
+                            data: {id: row.id, state: 1},
+                            success: function (result) {
+                                if (result.flag) {
+                                    $(_this).hide();
+                                    $($(_this).parent().children(".do-release")).show();
+                                    toastMsg(result.msg);
+                                } else {
+                                    toastMsg(result.msg);
+                                }
+                            },
+                            error: function () {
+                                toastMsg("请求失败!");
+                            }
+                        });
+                    }
+                }
+            }]
+        });
+        $('#activity-table').bootstrapTable('hideColumn', 'id');
+        $('#activity-table').bootstrapTable('hideColumn', 'location_info');
+        $('#activity-table').bootstrapTable('hideColumn', 'unit_guidance');
+        $('#activity-table').bootstrapTable('hideColumn', 'unit_info');
+        $('#activity-table').bootstrapTable('hideColumn', 'activity_reg_config_family3');
+        $('#activity-table').bootstrapTable('hideColumn', 'activity_reg_config_family_');
+        $('#activity-table').bootstrapTable('hideColumn', 'activity_reg_config_family3_');
+        $('#activity-table').bootstrapTable('hideColumn', 'contact_info');
+    }
+</script>
+</html>

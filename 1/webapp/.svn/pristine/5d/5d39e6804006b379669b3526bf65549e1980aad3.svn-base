@@ -1,0 +1,33 @@
+.my-page{
+	width:100%;
+	height:auto;
+	position: fixed;
+	top:48px;
+	bottom:1px;
+	overflow-y:auto;
+}
+.my-page .page-list{
+	width:94%;
+	padding:0 3%;
+	height:60px;
+	display: flex;
+	justify-content:space-between;
+	align-items:center;
+	border-bottom: 1px solid #e2e2e2;
+}
+.my-page .page-list .page-l{
+	display: flex;
+	// justify-content:space-between;
+	align-items:center;
+}
+.picture{
+	border-radius: 50%;
+	background:#824415;
+}
+.my-page .page-list img{
+	width:24px;
+	height:24px;
+}
+.my-page .page-list span{
+	margin: 3px 0 0 5px;
+}

@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<title>火车详情</title>
+	<link rel="stylesheet" href="../../../css/index/base.css"/>
+	<link rel="stylesheet" href="../../../css/weixin/style.css">
+	<link rel="stylesheet" href="../../../css/app/header-app.css">
+	<style>
+		body{
+			background:#f2f4f7;
+			color:#333;
+		}
+		.margin-box{
+			margin-top:0;
+		}
+		.f24{
+			font-size:0.24rem;
+		}
+		.f46{
+			font-size:0.46rem;
+		}
+		/*.f24{
+			font-size:0.24rem;
+		}*/
+		header{
+			width:7.5rem;
+			
+		}
+		header nav{
+			width:7.5rem;
+		}
+		header nav .title{
+			width:7.5rem;
+			height: 1.08rem;
+			line-height: 1.08rem;
+			font-size:0.3rem;
+			font-weight: bold;
+			color:#666;
+		}
+		section{
+			width:100%;
+		}
+		section .timeTable{
+			border-top:1px solid #fff;
+			padding:0.42rem;
+			width:6.66rem;
+			background:#f60;
+			color:#fff;
+		}
+		section .timeTable .aTime,.cTime{
+			width:33.3%;
+			/*border:1px solid red;*/
+		}
+		section .timeTable .aTime p{
+			margin:0.12rem 0;
+		}
+		section .timeTable .cTime p{
+			margin:0.12rem 0;
+		}
+		section .timeTable .trainNo{
+			text-align:center;
+			font-size:0.4rem;
+		}
+		section .timeTable .txtR{
+			text-align: right;
+		}
+		section .timeTable .timeType{
+			width:33.4%;
+			margin-top:0.2rem;
+		}
+		section .timeTable .timeType .tClockBox{
+			width:1.8rem;
+			margin:0 auto;
+			margin-top:0.1rem;
+		}
+		section .timeTable .timeType .line{
+			display: inline-block;
+			width:10px;
+			height:1px;
+			background:#fff;
+			margin-top:0.2rem;
+		}
+		section .timeTable .timeType .timeClock{
+			display: inline-block;
+			width:1.25rem;
+			height:0.4rem;
+			line-height: 0.4rem;
+			border:1px solid #fff;
+			text-align:center;
+		}
+		section .setTable,.passengers{
+			padding:0 0.2rem;
+		}
+		section .setTable{
+			width:7.1rem;
+			margin:0.3rem 0;
+		}
+		section .setTable .setItem{
+			width:1.7rem;
+			height:1.8rem;
+			margin:1px;
+			border:1px solid #ccc;
+			box-sizing: border-box;
+			border-radius: 6px;
+		}
+		section .setTable .setItemOn{
+			border:1px solid #f60;
+		}
+		section .setTable .setItem>p{
+			width:100%;
+			height:0.6rem;
+			line-height: 0.6rem;
+			text-align: center;
+			font-size:0.35rem;
+		}
+		section .noMess{
+			background:#fff;
+			width:7.1rem;
+			margin:0.1rem auto;
+			height:24px;
+			display: flex;
+			justify-content: center;
+			font-size:0.3rem;
+			color:#333;
+			border-radius: 6px;
+			align-items: center;
+		}
+		section .noMess input{
+			top:0;	
+		}
+		section .passengers{
+			width:7.1rem;
+		}
+		section .passengers .add{
+			width:7.1rem;
+			height:1rem;
+			line-height: 1rem;
+			display: flex;
+			color:#f60;
+			align-items: center;
+			border-radius:6px;
+		}
+		section .passengers .add .addIcon{
+			width:100%;
+			height:100%;
+		}
+		
+		section .passengers .add .addTxt{
+			width:100%;
+			font-size:20px;
+			margin-left:8px;
+		}
+		section .passengers .add .addImg{
+			font-size:20px;
+		}
+		section .passengers .add .addImg .addIcon{
+			width:0.4rem;
+			height:100%;
+			/*vertical-align: top;*/
+		}
+		section .passengers .add span{
+			font-size:0.3rem;
+		}
+		section .passengers .add .redStar{
+			color:red;
+		}
+		section .passengers .passItem{
+			position: relative;
+			background:#fff;
+			font-size:0.16rem;
+			margin:0.3rem 0;
+			height:1.4rem;
+			border-radius:6px;
+		}
+		section .passengers .passItem .delIcon{
+			display: inline-block;
+			position: absolute;
+			width:0.4rem;
+			height:0.4rem;
+			border:1px solid #ff5b45;
+			left:0;
+			top:0rem;
+			border-radius: 50%;
+			margin-left:0.2rem;
+			margin-top:0.45rem;
+		}
+		section .passengers .passItem .delIcon .line{
+			width:0.4rem;
+			height:1px;
+			position:absolute;
+			left:50%;
+			top:50%;
+			margin-left:-0.2rem;
+			margin-top:-0.5px;
+			display: inline-block;
+			background:#ff5b45;
+		}
+		section .passengers .passItem>p{
+			height:0.7rem;
+			/*line-height: 0.9rem;*/
+		}
+		section .passengers .passItem .passTXT{
+			display: inline-block;
+			width:1.5rem;
+			height:0.7rem;
+			line-height: 0.7rem;
+			text-align:right;
+			color:#666;
+			margin-left:10px;
+			font-size:0.3rem;
+			
+		}
+		section .passengers .passItem input{
+			height:0.7rem;
+			border:0;
+			vertical-align: top;
+			margin-left:10px;
+			font-size:0.3rem;
+			
+		}
+		section .passengers .passItem input::-webkit-input-placeholder{
+			font-size:0.3rem;
+		}
+		section .countPrice{
+			width:7.1rem;
+			height:0.5rem;
+			line-height: 0.5rem;
+			margin: 0 auto;
+			font-size:0.4rem;
+			margin:0.3rem 0;
+			margin-left:0.2rem;
+		}
+		section .countPrice .money{
+			font-size:0.5rem;
+			color:#f60;
+		}
+		section .countPrice .icon{
+			font-size:0.4rem;
+			color:#f60;
+		}
+		section .sub{
+			display:block;
+			width:60%;
+			height:40px;
+			line-height: 40px;
+			margin:0 auto;
+			background:#f60;
+			color:#fff;
+			text-align: center;
+			font-size:16px;
+			margin-top:20px;
+			border-radius: 6px;
+		}
+	</style>
+	<script>
+		(function(win,doc){
+			function change(){
+				doc.documentElement.style.fontSize = doc.documentElement.clientWidth / 7.5 + 'px';
+			}
+			change();
+			win.addEventListener('resize',change,false);	
+		})(window,document);
+	</script>
+</head>
+<body>
+	<!-- <header class="app-header">
+		<div class="navImg">
+			<img src="../../../img/app/arrowLeft-icon.png">
+		</div>
+		<div class="navDetail">火车订票</div>
+	</header> -->
+	<div class="margin-box">
+		<header>
+			<!-- <nav>
+				<div class="arrow"></div>
+				<div class="title">填写订单</div>
+			</nav> -->
+		</header>
+		<section>
+			<ul class="timeTable clearfix">
+				<li class="fl aTime">
+					<p class="aCity"></p>
+					<p class="aT f46"></p>
+					<p class="date"></p>
+				</li>
+				<li class="fl timeType">
+					<p class="trainNo"></p>
+					<p class="clearfix tClockBox">
+						<span class="line fl"></span>
+						<span class="timeClock fl">时刻表</span>
+						<span class="line fl"></span>
+					</p>
+					
+				</li>
+				<li class="fl cTime">
+					<p class="txtR cCity"></p>
+					<p class="txtR cT f46"></p>
+					<p class="txtR date"></p>
+				</li>
+			</ul>
+			<ul class="setTable clearfix">
+				<!-- <li class="fl setItem">
+					<p class="setType">硬座</p>
+					<p calss="setPrice">￥75</p>
+					<p class="setLast">61张</p>
+				</li>
+				<li class="fl setItem">
+					<p class="setType">硬座</p>
+					<p calss="setPrice">￥75</p>
+					<p class="setLast">61张</p>
+				</li>
+				<li class="fl setItem">
+					<p class="setType">硬座</p>
+					<p calss="setPrice">￥75</p>
+					<p class="setLast">61张</p>
+				</li>
+				<li class="fl setItem">
+					<p class="setType">硬座</p>
+					<p calss="setPrice">￥75</p>
+					<p class="setLast">61张</p>
+				</li> -->
+			</ul>
+			<p class="noMess">
+				<input type="checkbox" class="acceptNoSeatBtn" checked>
+				<span>接受无座(所选坐席票数不足时,是否接受无座票)</span>
+			</p>
+			<form id="trainOrderForm">
+				<!-- 车次信息 -->
+				<input class="queryKey" type="hidden" name="queryKey">
+				<input class="actId" type="hidden" name="activityId">
+				<input class="trainNo" type="hidden" name="trainNo">
+				<input class="trainDate" type="hidden" name="trainDate">
+				<input class="fromStation" type="hidden" name="fromStation">
+				<input class="toStation" type="hidden" name="toStation">
+				<!-- 车票信息 -->
+				<input class="orderPrice" type="hidden" name="orderPrice">
+				<input class="acceptNoSeat" type="hidden" name="acceptNoSeat" value="1">
+				<!-- 乘客数量-->
+				<input type="hidden" class="journeyType" name="journeyType" value="1">
+				<div class="passengers">
+					<a class="add" href="javascript:;">
+						<span class="addImg">
+							
+						</span>	
+						<span class="addTxt addBtn">+添加旅客</span>
+					</a>
+					<div class="passItem">
+						<input class="ticketPrice" type="hidden" name="ticketPrice">
+						<input class="seatClass" type="hidden" name="seatClass">
+						<input class="seatClassName" type="hidden" name="seatClassName">
+						<input type="hidden" class="passengerType" name="passengerType" value="1">
+						<p>
+							<label class="passTXT">姓名</label>
+							<input class="passengerName" type="text" placeholder="与乘客姓名一致" name="passengerName">
+						</p>
+						<p>
+							<label class="passTXT">身份证</label>
+							<input class="idType" type="hidden" name="idType" value="1">
+							<input class="idCard" type="text" placeholder="证件号码" name="idCard">
+						</p>
+						<a class="delIcon" src="javascript:;">
+							<i class="line"></i>
+						</a>
+					</div>
+					<ul class="passBox" style="display: none;">
+						<li class="passItem">
+							<input class="ticketPrice" type="hidden" name="ticketPrice">
+							<input class="seatClass" type="hidden" name="seatClass">
+							<input class="seatClassName" type="hidden" name="seatClassName">
+							<input type="hidden" class="passengerType" name="passengerType" value="1">
+							<p>
+								<label class="passTXT">姓名</label>
+								<input class="passengerName" type="text" placeholder="与乘客证件一致" name="passengerName">
+							</p>
+							<p>
+								<label class="passTXT">身份证</label>
+								<input class="idType" type="hidden" name="idType" value="1">
+								<input class="idCard" type="text" placeholder=证件号码 name="idCard">
+							</p>
+							<a class="delIcon" src="javascript:;">
+								<i class="line"></i>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="passengers">
+					<a class="add" href="javascript:;">
+						
+						<span><i class="redStar">*</i>联系信息(必填可接受订单信息)</span>
+					</a>
+					<ul class="">
+						<li class="passItem">
+							<p>
+								<span class="passTXT">姓名</span>
+								<input type="text" placeholder="姓名" name="person" class="person">
+							</p>
+							<p>
+								<span class="passTXT">手机号</span>
+								<input type="text" placeholder="手机号" name="cellphone" class="cellphone">
+							</p>
+							
+						</li>
+					</ul>
+				</div>
+				<p class="countPrice">
+					<span>总额:</span>
+					<span class="icon">￥</span>
+					<span class="money"></span>
+				</p>
+			</form>
+			<a class="sub" href="javascript:;">提交订单</a>
+		</section>
+	</div>
+</body>
+<!-- <script src="../../../js/jquery.min.js"></script> -->
+<script src="../../../js/zepto.js"></script>
+<script src="../../../js/app/form.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<script src="../../../js/user/userMain.js"></script>
+<script>
+	$(function(){
+		$('.navImg').on('click',function(){
+			goBack();
+		});
+		$(".nav-title").html("火车订单");
+		//添加乘客
+		function addPerson(){
+			$('.addBtn').on('click',function(){
+				// var passInfo=$('.passBox').html();
+				// $(this).parent().next().append(passInfo);
+				var len=$(this).parent().siblings('.passItem').length;
+				var passInfo=$('.passBox').html();
+				if(len<=4){
+					$(this).parent().next().before(passInfo);
+					countPrice();
+				}else{
+					myAlert('最多可定五张');
+				}
+			});
+		};
+		addPerson();
+		//删除乘客
+		function delPerson(){
+			$(document).on('click','.delIcon',function(){
+				var len=$(this).parent().siblings('.passItem').length;
+				if(len!=0){
+					$(this).parents('.passItem').remove();
+					countPrice();
+				};
+			});
+		};
+		delPerson();
+		//乘客信息
+		function setOrderName(){
+			var OrderName = $(".passItem");
+			//姓名
+			OrderName.each(function(index){
+				$(this).find('.passengerName').attr('name','lyTrainPassengerList['+ index + '].passengerName');
+			});
+			//证件类型
+			OrderName.each(function(index){
+				$(this).find('.idType').attr('name','lyTrainPassengerList['+ index + '].idType');
+			});
+			//证件号码
+			OrderName.each(function(index){
+				$(this).find('.idCard').attr('name','lyTrainPassengerList['+ index + '].idCard');
+			});
+			//乘客类型
+			OrderName.each(function(index){
+				$(this).find('.passengerType').attr('name','lyTrainPassengerList['+ index + '].passengerType');
+			});
+			//价格
+			OrderName.each(function(index){
+				$(this).find('.ticketPrice').attr('name','lyTrainPassengerList['+ index + '].ticketPrice');
+			});
+			//座位
+			OrderName.each(function(index){
+				$(this).find('.seatClass').attr('name','lyTrainPassengerList['+ index + '].seatClass');
+			});
+			//座位名
+			OrderName.each(function(index){
+				$(this).find('.seatClassName').attr('name','lyTrainPassengerList['+ index + '].seatClassName');
+			});
+		};
+		//车次信息
+		function getInfo(){
+			var data=getUrlJson("ticketJson");
+			$('.trainNo').html(data.trainNo);
+			$('.aT').html(data.fromT);
+			$('.cT').html(data.toT);
+			$('.aCity').html(data.fromC);
+			$('.cCity').html(data.toC);
+			$('.runTime').html(data.tDate);
+			$('.date').html(getSubstring(data.tDate,4,4));
+			//票类型
+			for(var i=0;i<data.ticket.length;i++){
+				$('.setTable').append(
+					'<li class="fl setItem" data-seat="'+data.ticket[i].seatClass+'">'+
+						'<p class="seatName">'+data.ticket[i].seatName+'</p>'+
+						'<p calss="setPrice"><span>￥</span><span class="pricer">'+data.ticket[i].price+'</span></p>'+
+						'<p class="setLast">'+data.ticket[i].last+'张</p>'+
+					'</li>'
+				);
+			};
+			// $('.setItem').css('width','(100/data.ticket.length)%');
+			//提交订单信息
+				//活动Id
+				$('.actId').val(data.actId);
+				//车次信息
+				$('.queryKey').val(data.key);
+				$('.trainNo').val(data.trainNo);
+				$('.trainDate').val(data.tDate);
+				$('.fromStation').val(data.fromCode);
+				$('.toStation').val(data.toCode);
+				//车票信息
+				var defultSeat=$($('.setItem').eq(data.num));
+				$('.orderPrice').val(defultSeat.find('.pricer').html());
+				defultSeat.addClass('setItemOn');
+				$('.seatClass').val(defultSeat.data('seat'));
+				$('.seatClassName').val(defultSeat.find('.seatName').html());
+				$('.ticketPrice').val(defultSeat.find('.pricer').html());
+				$('.money').html(defultSeat.find('.pricer').html());
+				//接受无座
+				$('.acceptNoSeatBtn').on('click',function(){
+					if($(this).is(':checked')){
+						$('.acceptNoSeat').val(1);
+					}else{
+						$('.acceptNoSeat').val(0);
+					};
+				});
+			};
+		getInfo();
+		function countPrice(){
+			var count=$('.countPrice').prev().prev().find('.passItem').length-1;
+			var price=$('.ticketPrice').val();
+			$('.money').html(count*price);
+			$('.orderPrice').val(count*price);
+		};
+		countPrice();
+		//车票选择
+		$(document).on('click','.setItem',function(){
+			$('.setItem').removeClass('setItemOn');
+			$(this).addClass('setItemOn');
+			var defultSeat=$(this);
+			$('.orderPrice').val(defultSeat.find('.pricer').html());
+			defultSeat.addClass('setItemOn');
+			$('.seatClass').val(defultSeat.data('seat'));
+			$('.seatClassName').val(defultSeat.find('.seatName').html());
+			$('.ticketPrice').val(defultSeat.find('.pricer').html());
+			countPrice();
+			console.log($('.orderPrice').val())
+		});
+		//提交订单
+		$('.sub').on('click',function(){
+			setOrderName();
+			var url=basePath+"user/trainorder/save.do";
+			if(trainOrderValid ()){
+				$('.passBox').remove();
+				$.myAjax({
+					url: url,
+					type: 'POST',
+					data:$('#trainOrderForm').serialize(),
+					success:function(result){
+						if(result.flag){
+							window.location.href=result.url;
+						}else{
+							myAlert(result.msg);
+						};
+					},
+					error:function(){
+						myAlert('请求失败');
+					}
+				});
+			};
+		});
+		//验证
+		function trainOrderValid (){
+			var passName=$('.passengerName').val();
+			var idCard=$('.idCard').val();
+			var person=$('.person').val();
+			var cellPhone=$('.cellphone').val();
+			if (passName == '' || passName == null) {
+				myAlert('姓名不能为空','slow');
+				return false;
+			};
+			if (idCard == '' || idCard == null) {
+				myAlert('身份证不能为空','slow');
+				return false;
+			}else{
+				if(!(/^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$/.test(idCard)) && !(/^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/.test(idCard))){ 
+		        	myAlert("身份证格式不正确,请重新输入！",'slow');  
+		        	return false; 
+		        };
+			};
+			if (person == '' || person == null) {
+				myAlert('联系人姓名不能为空','slow');
+				return false;
+			};
+			if (cellPhone == '' || cellPhone == null) {
+				myAlert('联系人手机号不能为空!','slow');
+				return false;
+			}else{
+				if(!(/^1[34578]\d{9}$/.test(cellPhone))){ 
+		        	myAlert("联系人手机号格式不正确！",'slow');  
+		        	return false; 
+		        };
+			};
+			return true;
+		}
+	});
+</script>
+</html>

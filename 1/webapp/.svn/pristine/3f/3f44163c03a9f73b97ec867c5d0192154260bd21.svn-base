@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>我</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+	<link rel="stylesheet" type="text/css" href="../../../css/app/meetdetail.css">
+	<link rel="stylesheet" type="text/css" href="../../../css/app/style.css">
+	<style type="text/css">
+	.myhead {
+		height: 170px;
+		background-color: #fff;
+	}
+	.myBanner {
+		position: relative;
+		height: 146px;
+		width: 100%;
+	}
+	.myMine, .myCode{
+		width: 50px;
+		position: absolute;
+		top: 10px;
+		left: 50%;
+		margin-left:-25px; 
+		color: #fff;
+		font-size: 18px;
+	}
+	.myCode{
+		left: auto;
+		right: 10px;
+	}
+	.myCode img{
+		height: 36px;
+		width: 26px;
+	}
+	.my-name {
+		font-weight: bold;
+	}
+	.circle{
+		width: 76px;
+		height: 76px;
+		border-radius: 50%;
+		background-color: #fff;
+		position: absolute;
+		top: 62px;
+		left: 50%;
+		margin-left: -38px;
+	}
+	.circleChild{
+		position: absolute;
+		width: 68px;
+		height: 68px;
+		border-radius: 50%;
+		background-color: #824415;
+		top: 2px;
+		left: 4px;
+	}
+	.circleChild img{
+		position: absolute;
+		width: 48px;
+		height: 48px;
+		border-radius: 50%;
+		top: 10px;
+		left: 10px;
+	}
+	.nameBox{
+		text-align: center;
+		margin-top: -10px;
+	}
+	</style>
+</head>
+<body>
+	<div>
+		<div class="myhead">
+			<img class="myBanner" src="../../../img/app/myBanner.png"/>
+			<div class="myMine">我的</div>
+			<div class="myCode code">
+				<img src="../../../img/app/code.png">
+			</div>
+			<div class="circle">
+				<div class="circleChild">
+					<img src="../../../img/app/picture1.png">
+				</div>
+
+			</div>
+			<div class="nameBox">
+				<span class="my-name"></span>
+				<!-- <span class="my-phone">13241418629</span> -->
+			</div>
+		</div>
+		<div class="information white">
+			<a href="myPage.html" class="inform comPadding">
+				<span><img src="../../../img/app/inform-icon.png"></span>
+				<span>个人信息</span>
+				<span class="arrows fr"><img src="../../../img/app/arrowRigth-icon.png"></span>
+			</a>
+			<a href="" class="discuss comPadding">
+				<span><img src="../../../img/app/discussion-icon.png"></span>
+				<span>发票信息</span>
+				<span class="arrows fr"><img src="../../../img/app/arrowRigth-icon.png"></span>
+			</a>
+		</div>
+		<div>
+			<a href="recompose.html" class="ticket white comPadding">
+				<span><img src="../../../img/app/ticket-icon.png"></span>
+				<span>密码修改</span>
+				<span class="arrows fr"><img src="../../../img/app/arrowRigth-icon.png"></span>
+			</a>
+		</div>
+		<div class="information white">
+			<a href="" class="discuss comPadding">
+				<span><img src="../../../img/app/discussion-icon.png"></span>
+				<span>使用帮助</span>
+				<span class="arrows fr"><img src="../../../img/app/arrowRigth-icon.png"></span>
+			</a>
+			<a href="feedback.html" class="apply comPadding">
+				<span><img src="../../../img/app/apply-icon.png"></span>
+				<span>意见反馈</span>
+				<span class="arrows fr"><img src="../../../img/app/arrowRigth-icon.png"></span>
+			</a>
+		</div>
+	</div>
+</body>
+<script src="../../../js/zepto.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<script src="../../../js/app/mtTool.js"></script>
+<script type="text/javascript">
+$(function(){
+	$.myAjax({
+		url: basePath + "user/user/info.do",
+		success: function(result){
+			console.log(result);
+			var data = result.data.user
+			if(data.name){
+				$('.my-name').html(data.name);
+			}else if(data.nick){
+				$('.my-name').html(data.nick);
+			}else{
+				$('.my-name').html("请尽快设置个人信息");
+			}
+		}
+	})
+})
+</script>
+</html>

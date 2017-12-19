@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+	<title>actList</title>
+	<style>
+		@charset "utf-8";
+		body{font: 14px/20px "SimSun","宋体","Arial Narrow",HELVETICA;}
+		*{padding:0; margin:0;}
+		h1,h2,h3,h4,h5,h6{ font-size:12px; font-weight:normal;}
+		li{list-style: none;}
+		a{ text-decoration:none;
+		color:#000;
+		}
+		b,strong{font-weight:normal;}
+		i,em{font-style:normal;}
+		img{ vertical-align:top; border:none;}
+		.clearfix:after{display:block;
+		                content:'';
+						clear:both;
+		}
+		.clearfix{ zoom:1;}
+		.fl{ float:left;
+			}
+		.fr{ float:right;
+			}
+	</style>
+	<style>
+		body{
+			background:#f4f4f4;
+		}
+		.head{
+			width:100%;
+			height:50px;
+			line-height: 50px;
+			background:#f9752b;
+			text-align: center;
+			color:#fff;
+			position: fixed;
+			left:0;
+			top:0;
+		}
+		.nav{
+			width:100%;
+			display: flex;
+			position: fixed;
+			top:50px;
+			background:#fd823d;
+			align-items:center;
+		}
+		.nav .nav-list{
+			height:40px;
+			flex:1;
+			color:#fff;
+			display:flex;
+			flex-direction:column;
+			justify-content:space-between;
+		}
+		.nav .nav-line{
+			width:1px;
+			height:20px;
+			background:#fff;
+		}
+		.nav .nav-list .nav-txt{
+			flex:1;
+			display: flex;
+			align-items:center;
+			justify-content: center;
+        }
+		.nav .nav-list .nav-line{
+			width:60px;
+			height:2px;
+			display: inline-block;
+			background:#fff;
+			border-radius:2px;
+			margin:0 auto;
+		}
+		.act{
+			/*position: absolute;
+			top:90px;*/
+			/*left:6%;*/
+			width:94%;
+			margin:0 auto;
+			margin-bottom:55px;
+			
+			margin-top:90px;
+			/*box-shadow: 0.3px 0.3px #f4f4f4;*/
+		}
+		.act-list{
+			padding:0 2%;
+			width:96%;
+			margin:5px 0;
+			background:#fff;
+			border:1px solid #fff;
+			box-shadow:0px 1px 0.3px #e8e8e8;
+		}
+		.act-list .act-tit{
+			width:100%;
+			margin:10px 0;
+			line-height: 20px;
+		}
+		.act-list .act-cont{
+			display: flex;
+			justify-content: space-between;
+		}
+		.act-list .act-cont .act-group{
+			width:200px;
+		}
+		.act-list .act-cont .act-state{
+			background:#fd823d;
+			width:70px;
+			height:22px;
+			margin-top:26px;
+			text-align: center;
+			border-radius:10px;
+			color:#fff;
+			margin-left:4px;
+		}
+		.act-list .act-cont .act-atten{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width:70px;
+			height:20px;
+			margin-top:26px;
+			border:1px solid #f60;
+			border-radius:10px;
+			color:#f60;
+		}
+		.act-atten .atten{
+			width:14px;
+			height:14px;
+		}
+		.act-item{
+			display: flex;
+			height:30px;
+		}
+		.act-item span{
+			margin-left:10px;
+		}
+		.act-item .icon{
+			width:20px;
+			height:20px;
+		}
+		.act-list .act-cont .green{
+			background:#8fda37;
+		}
+		.act-list .act-cont .ccc{
+			background:#ccc;
+		}
+	</style>
+</head>
+<body>
+	<header class="head">群英会会议</header>
+	<nav class="nav">
+		<div class="nav-list">
+			<span class="nav-txt"><i>全部会议(12)</i></span>
+			<span class="nav-line"><i></i></span>
+		</div>
+		<div class="nav-line"></div>
+		<div class="nav-list">
+			<span class="nav-txt">已报名(20)</span>
+			<span ></span>
+		</div>
+	</nav>
+	<section class="act">
+		<article class="act-list" onclick="a()">
+			<header class="act-tit">20178届世界增强现实欧洲博览</header>
+			<section class="act-cont">
+				<div class="act-group">
+					<p class="act-item">
+						<img class="icon" src="../../../img/app/time.png"/>
+						<span class="time">时间：</span>
+						<span class="txt">2017-10-20</span>
+					</p>
+					<p class="act-item">
+						<img class="icon" src="../../../img/app/address.png"/>
+						<span class="address">地点:</span>
+						<span class="txt">昆明市</span>
+					</p>
+				</div>
+				<div class="act-atten">
+					<img class="atten" src="../../../img/app/no-atten.png" alt="">
+					<span class="txt">未关注</span>
+				</div>
+				<div class="act-state">
+					已报名
+				</div>
+			</section>
+		</article>
+		<article class="act-list">
+			<header class="act-tit">20178届世界增强现实欧洲博览20178届世界增强现实欧洲博览</header>
+			<section class="act-cont">
+				<div class="act-group">
+					<p class="act-item">
+						<img class="icon" src="../../../img/app/time.png"/>
+						<span class="time">时间：</span>
+						<span class="txt">2017-10-20</span>
+					</p>
+					<p class="act-item">
+						<img class="icon" src="../../../img/app/address.png"/>
+						<span class="address">地点:</span>
+						<span class="txt">昆明市</span>
+					</p>
+				</div>
+				<div class="act-atten">
+					<img class="atten" src="../../../img/app/no-atten.png" alt="">
+					<span class="txt">未关注</span>
+				</div>
+				<div class="act-state green">
+					未报名
+				</div>
+			</section>
+		</article>
+		<article class="act-list">
+			<header class="act-tit">2017届世界增强现实欧洲博览</header>
+			<section class="act-cont">
+				<div class="act-group">
+					<p class="act-item">
+						<img class="icon" src="../../../img/app/time.png"/>
+						<span class="time">时间：</span>
+						<span class="txt">2017-10-20</span>
+					</p>
+					<p class="act-item">
+						<img class="icon" src="../../../img/app/address.png"/>
+						<span class="address">地点:</span>
+						<span class="txt">昆明市</span>
+					</p>
+				</div>
+				<div class="act-atten">
+					<img class="atten" src="../../../img/app/no-atten.png" alt="">
+					<span class="txt">未关注</span>
+				</div>
+				<div class="act-state ccc">
+					已结束
+				</div>
+			</section>
+		</article>
+		<article class="act-list">
+			<header class="act-tit">2017届世界增强现实欧洲博览</header>
+			<section class="act-cont">
+				<div class="act-group">
+					<p class="act-item">
+						<img class="icon" src="../../../img/app/time.png"/>
+						<span class="time">时间：</span>
+						<span class="txt">2017-10-20</span>
+					</p>
+					<p class="act-item">
+						<img class="icon" src="../../../img/app/address.png"/>
+						<span class="address">地点:</span>
+						<span class="txt">昆明市</span>
+					</p>
+				</div>
+				<div class="act-atten">
+					<img class="atten" src="../../../img/app/no-atten.png" alt="">
+					<span class="txt">未关注</span>
+				</div>
+				<div class="act-state">
+					已报名
+				</div>
+			</section>
+		</article>
+		<article class="act-list">
+			<header class="act-tit">2017届世界增强现实欧洲博览</header>
+			<section class="act-cont">
+				<div class="act-group">
+					<p class="act-item">
+						<img class="icon" src="../../../img/app/time.png"/>
+						<span class="time">时间：</span>
+						<span class="txt">2017-10-20</span>
+					</p>
+					<p class="act-item">
+						<img class="icon" src="../../../img/app/address.png"/>
+						<span class="address">地点:</span>
+						<span class="txt">昆明市</span>
+					</p>
+				</div>
+				<div class="act-atten">
+					<img class="atten" src="../../../img/app/no-atten.png" alt="">
+					<span class="txt">未关注</span>
+				</div>
+				<div class="act-state">
+					已报名
+				</div>
+			</section>
+		</article>
+		<article class="act-list">
+			<header class="act-tit">20178届世界增强现实欧洲博览</header>
+			<section class="act-cont">
+				<div class="act-group">
+					<p class="act-item">
+						<img class="icon" src="../../../img/app/time.png"/>
+						<span class="time">时间：</span>
+						<span class="txt">2017-10-20</span>
+					</p>
+					<p class="act-item">
+						<img class="icon" src="../../../img/app/address.png"/>
+						<span class="address">地点:</span>
+						<span class="txt">昆明市</span>
+					</p>
+				</div>
+				<div class="act-atten">
+					<img class="atten" src="../../../img/app/no-atten.png" alt="">
+					<span class="txt">未关注</span>
+				</div>
+				<div class="act-state">
+					已报名
+				</div>
+			</section>
+		</article>
+		<article class="act-list">
+			<header class="act-tit">2017届世界增强现实欧洲博览</header>
+			<section class="act-cont">
+				<div class="act-group">
+					<p class="act-item">
+						<img class="icon" src="../../../img/app/time.png"/>
+						<span class="time">时间：</span>
+						<span class="txt">2017-10-20</span>
+					</p>
+					<p class="act-item">
+						<img class="icon" src="../../../img/app/address.png"/>
+						<span class="address">地点:</span>
+						<span class="txt">昆明市</span>
+					</p>
+				</div>
+				<div class="act-state">
+					已报名
+				</div>
+			</section>
+		</article>
+	</section>
+</body>
+<script>
+	function a(){
+		window.location.href="meetDetail.html"
+	}
+</script>
+</html>
+

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>火车</title>
+	<link rel="stylesheet" href="../../css/index/base.css">
+	<link rel="stylesheet" href="../../css/index/train.css">
+</head>
+<body>
+	<div class="wrap clearfix">
+		<div class="wrapl fl">
+			<div class="traffic clearfix">
+		    	<div class="trafficBox fl">
+		    		<div class="traHead">国内火车票搜索</div>
+		    		<ul class="clearfix traType">
+		    			<!-- <li class="fl active">单程</li>
+		    			<li class="fl">往返</li>
+		    			<li class="fl">连程</li> -->
+		    		</ul>
+		    		<ul class="traBody">
+		    			<li>
+		    				<span>出发城市</span>
+		    				<input type="text"/>
+		    			</li>
+		    			<li>
+		    				<span>到大城市</span>
+		    				<input type="text"/>
+		    			</li>
+		    			<li>
+		    				<span>出发日期</span>
+		    				<input type="text"/>
+		    			</li>
+		    			<li>
+		    				<span>到达日期</span>
+		    				<input type="text"/>
+		    			</li>
+		    		</ul>
+		    		<button type=button"">搜&nbsp索</button>
+		    	</div>
+			</div>
+		</div>
+		<div class="wrapr fr">
+			<div class="timeMess clearfix">
+				<div class="fl tmAddress">北京——>上海(6月13日周二)</div>
+				<div class="fr tmInfo">共40个车次</div>
+			</div>
+			
+			<ul class="screening clearfix">
+				<li class="fl scree">筛选</li>
+				<li class="fl seleBox">车次类型</li>
+				<li class="fl seleBox">出发时段</li>
+				<li class="fl seleBox">到达时段</li>
+				<li class="fl seleBox">出发车站</li>
+				<li class="fl seleBox">到达车站</li>
+				<li class="fl seleBox">始发过路</li>
+				<li class="fl seleBox">是否有票</li>
+				<!-- <li class="fl sort">排序</li>
+				<li class="fl"><a class="up" href="javascript:;">起飞时间</a></li>
+				<li class="fl"><a class="scrPrice" href="javascript:;">价格</a></li> -->
+			</ul>
+			<ul class="flistBox flistBoxat">
+				<div class="trainTit">
+					<table class="fSize12 flistInfo" cellspacing="0px">
+						<thead>
+							<tr class="theFlight">
+								<td width="160">
+									<div class="air">
+										<span class="airLogo"></span>
+										车次
+									</div>
+								</td>
+								<td width="106" align="right">
+									出发
+									<!-- <div class="fSize24">6:44</div>
+									<div class="airAddress">北京南</div> -->
+								</td>
+								<td width="75" align="center">
+									<!-- <div class="arrow"></div> -->
+								</td>
+								<td width="108" align="left">
+									<!-- <div class="fSize24">12:38</div>
+									<div class="airAddress">上海虹桥</div> -->
+									到达
+								</td>
+								<td width="100" align="center">
+									耗时
+									<!-- <div class="c666">耗时</div>
+									<div class="c666">5小时56分</div> -->
+								</td>
+								<td width="30">
+									
+								</td>
+								<td width="130" align="center">
+									<div>
+									参考票价
+									</div>
+								</td>
+								<td width="120" align="center">
+									余票
+								</td>
+								<td>
+									<!-- <a class="more" href="javascript:;">
+										<div class="btn">选择</div>
+									</a> -->
+								</td>
+							</tr>
+						</thead>
+					</table>
+				</div>
+				<li class="trainList">
+					<table class="fSize12 flistInfo" cellspacing="0px">
+						<tbody>
+							<tr class="theFlight flightbody">
+								<td width="160">
+									<div class="air fSize28">
+										<span class="airLogo"></span>
+										G101
+									</div>
+									<div class="airType clearfix">
+										<span class="fl">经停站</span>
+										<i class="fl"></i>
+									</div>
+								</td>
+								<td width="106" align="right">
+									<div class="fSize20">6:44</div>
+									<div class="airAddress">北京南</div>
+								</td>
+								<td width="75" align="center">
+									<div class="arrow"></div>
+								</td>
+								<td width="108" align="left">
+									<div class="fSize20">12:38</div>
+									<div class="airAddress">上海虹桥</div>
+								</td>
+								<td width="100" align="center">
+									<div class="c666">5小时56分</div>
+								</td>
+								<td width="30">
+									<div class="c999"></div>
+									<div class="c999"></div>
+								</td>
+								<td width="130">
+									<div>
+										<ul class="fSzie12">
+											<li class="trainprice clearfix mt">
+												<span class="fl c333 mt5">二等座</span>
+												<span class="fl cf60 mt5">￥</span>
+												<span class="fl cf60 fSize20">1178</span>
+											</li>
+											<li class="trainprice clearfix mt">
+												<span class="fl c333 mt5">二等座</span>
+												<span class="fl cf60 mt5">￥</span>
+												<span class="fl cf60 fSize20">1178</span>
+											</li>
+											<li class="trainprice clearfix mt">
+												<span class="fl c333 mt5">二等座</span>
+												<span class="fl cf60 mt5">￥</span>
+												<span class="fl cf60 fSize20">553</span>
+											</li>
+										</ul>
+									</div>
+								</td>
+								<td width="130">
+									<p class="mt trainNum c666">余<span class="cf60 ">99</span>张</p>
+									<p class="mt trainNum c666">余<span class="cf60 ">467</span>张</p>
+									<p class="mt trainNum c666">
+									余<span class="cf60">99</span>张
+									</p>
+									<i class="less"></i>
+								</td>
+								<td align="center">
+									<a class="more mt" href="javascript:;">
+										预订
+									</a>
+									<a class="more mt" href="javascript:;">
+										预订
+									</a>
+									<a class="more mt" href="javascript:;">
+										预订
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</li>
+				<li class="trainList">
+					<table class="fSize12 flistInfo" cellspacing="0px">
+						<tbody>
+							<tr class="theFlight flightbody">
+								<td width="160">
+									<div class="air fSize28">
+										<span class="airLogo"></span>
+										G101
+									</div>
+									<div class="airType clearfix">
+										<span class="fl">经停站</span>
+										<i class="fl"></i>
+									</div>
+								</td>
+								<td width="106" align="right">
+									<div class="fSize20">6:44</div>
+									<div class="airAddress">北京南</div>
+								</td>
+								<td width="75" align="center">
+									<div class="arrow"></div>
+								</td>
+								<td width="108" align="left">
+									<div class="fSize20">12:38</div>
+									<div class="airAddress">上海虹桥</div>
+								</td>
+								<td width="100" align="center">
+									<div class="c666">5小时56分</div>
+								</td>
+								<td width="30">
+									<div class="c999"></div>
+									<div class="c999"></div>
+								</td>
+								<td width="130">
+									<div>
+										<ul class="fSzie12">
+											<li class="trainprice clearfix mt">
+												<span class="fl c333 mt5">二等座</span>
+												<span class="fl cf60 mt5">￥</span>
+												<span class="fl cf60 fSize20">1178</span>
+											</li>
+											<li class="trainprice clearfix mt">
+												<span class="fl c333 mt5">二等座</span>
+												<span class="fl cf60 mt5">￥</span>
+												<span class="fl cf60 fSize20">1178</span>
+											</li>
+											<li class="trainprice clearfix mt">
+												<span class="fl c333 mt5">二等座</span>
+												<span class="fl cf60 mt5">￥</span>
+												<span class="fl cf60 fSize20">553</span>
+											</li>
+										</ul>
+									</div>
+								</td>
+								<td width="130">
+									<p class="mt trainNum c666">余<span class="cf60 ">99</span>张</p>
+									<p class="mt trainNum c666">余<span class="cf60 ">467</span>张</p>
+									<p class="mt trainNum c666">
+									余<span class="cf60">99</span>张
+									</p>
+									<i class="less"></i>
+								</td>
+								<td align="center">
+									<a class="more mt" href="javascript:;">
+										预订
+									</a>
+									<a class="more mt" href="javascript:;">
+										预订
+									</a>
+									<a class="more mt" href="javascript:;">
+										预订
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</li>
+				<li class="trainList">
+					<table class="fSize12 flistInfo" cellspacing="0px">
+						<tbody>
+							<tr class="theFlight flightbody">
+								<td width="160">
+									<div class="air fSize28">
+										<span class="airLogo"></span>
+										G101
+									</div>
+									<div class="airType clearfix">
+										<span class="fl">经停站</span>
+										<i class="fl"></i>
+									</div>
+								</td>
+								<td width="106" align="right">
+									<div class="fSize20">6:44</div>
+									<div class="airAddress">北京南</div>
+								</td>
+								<td width="75" align="center">
+									<div class="arrow"></div>
+								</td>
+								<td width="108" align="left">
+									<div class="fSize20">12:38</div>
+									<div class="airAddress">上海虹桥</div>
+								</td>
+								<td width="100" align="center">
+									<div class="c666">5小时56分</div>
+								</td>
+								<td width="30">
+									<div class="c999"></div>
+									<div class="c999"></div>
+								</td>
+								<td width="130">
+									<div>
+										<ul class="fSzie12">
+											<li class="trainprice clearfix mt">
+												<span class="fl c333 mt5">二等座</span>
+												<span class="fl cf60 mt5">￥</span>
+												<span class="fl cf60 fSize20">1178</span>
+											</li>
+											<li class="trainprice clearfix mt">
+												<span class="fl c333 mt5">二等座</span>
+												<span class="fl cf60 mt5">￥</span>
+												<span class="fl cf60 fSize20">1178</span>
+											</li>
+											<li class="trainprice clearfix mt">
+												<span class="fl c333 mt5">二等座</span>
+												<span class="fl cf60 mt5">￥</span>
+												<span class="fl cf60 fSize20">553</span>
+											</li>
+										</ul>
+									</div>
+								</td>
+								<td width="130">
+									<p class="mt trainNum c666">余<span class="cf60 ">99</span>张</p>
+									<p class="mt trainNum c666">余<span class="cf60 ">467</span>张</p>
+									<p class="mt trainNum c666">
+									余<span class="cf60">99</span>张
+									</p>
+									<i class="less"></i>
+								</td>
+								<td align="center">
+									<a class="more mt" href="javascript:;">
+										预订
+									</a>
+									<a class="more mt" href="javascript:;">
+										预订
+									</a>
+									<a class="more mt" href="javascript:;">
+										预订
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</li>
+			</ul>
+		</div>
+	</div>
+</body>
+<script src="jquery.min.js"></script>
+<script>
+	$(function(){
+		$('.btn').on('click',function(){
+			$(this).parents('.flistBox').toggleClass('flistBoxato');
+			$(this).parents('.flistBox').find('.moreFligh').toggleClass('active');
+		})
+	})
+</script>
+</html>

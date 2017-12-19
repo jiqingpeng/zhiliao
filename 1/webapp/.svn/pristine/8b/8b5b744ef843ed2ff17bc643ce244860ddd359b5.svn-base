@@ -1,0 +1,328 @@
+html,body{
+    /*color: #ffffff;*/
+    background-color: #fff;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+/*a:target{ 
+    padding-top: 100px; 
+}*/ 
+.container{
+    position: fixed;
+    overflow: auto;
+    height: 100%; 
+    width: 100%; 
+}
+.contentBox{
+    padding:0 14px;
+}
+/*导航菜单样式*/
+.navMenu{
+    position: fixed;
+    top: 58px;
+    right: 5px;
+    z-index: 1000;
+}
+.menuImg{
+    width: 30px;
+    height: 30px;
+    /*background-color: #ffa319;*/
+    margin-left: 62px;
+    border-radius: 50%;
+    background-color: #f9752b;
+    filter:alpha(Opacity=70);
+    -moz-opacity:0.7;
+    opacity: 0.7;
+}
+.menuImg img{
+    height: 10px;
+    margin-top: 10px;
+    margin-left: 6px;
+}
+.menuList{
+    border: 1px solid #797979;
+    background: linear-gradient(to right, #ffa319 , #f9752b);
+    border-radius: 5px;
+}
+.switchover{
+    transform: rotate(180deg);
+}
+.menuList li{
+    height: 25px;
+    text-align: center;
+    width: 70px;
+    line-height: 25px;
+    padding: 5px 10px;
+    border-bottom: 1px solid #999;
+}
+.menuList li a{
+    color: #fff;
+}
+.menuList .menuApply{
+    border-bottom: none;
+}
+/*导航头样式及图片*/
+.share{
+    width: 40px;
+    position: absolute;
+    top: -20px;
+    right: 2px;
+}
+.share img{
+    width: 26px;
+}
+.code{
+    margin-top: 20px;
+}
+.inviImg {
+    width: 100%;
+    margin-top: 49px;
+}
+.themeName{
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 15px;
+    font-size: 18px;
+    font-weight: 700;
+    height: 72px;
+    overflow: hidden;
+    line-height: 23px;
+    color: #fff;
+}
+.themeTiem{
+    color: #fff;
+}
+.themeLocation{
+    width: 70%;
+    margin: 10px auto;
+    margin-top: 30px;
+    color: #fff;
+}
+
+.inviImg img{
+    height: 100%;
+    width: 100%;
+}
+
+/*邀请函首页样式*/
+h4{
+    color: #f9752b;
+}
+.designation{
+    border-bottom: 1px solid #f9752b;
+    padding: 6px 0 14px 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+.meetFrist{
+    /*border-bottom: 1px solid #f9752b;*/
+    padding: 10px 0;      
+}
+.theme{
+    margin-top: 10px;
+    display: flex;
+}
+.conFlex{
+    display: flex;
+}
+.flexOne{
+    flex: 1;
+}
+.flexFive{
+    flex: 5;
+}
+.time{
+    margin: 10px 0;
+}
+
+.middleCir{
+    height: 8px;
+    width: 8px;
+    display: inline-block;
+    border-radius: 50%;
+    vertical-align: middle;
+    background-color: #f9752b;
+    margin: -2px 5%;
+}
+.leftLine, .rightLine{
+    vertical-align: middle;
+    display: inline-block;
+    width: 42%;
+    height: 1px;
+    border-bottom: 1px dashed #f9752b;
+}
+.bottomLine {
+    margin-top: 10px;
+}
+
+/*会议简介样式*/
+.intro *{
+    font-size: 14px !important;
+}
+.intro img{
+    width: 100%; 
+}
+.intro table{
+    width: 100%;
+}
+/*.intro table tr{
+    height: 10px !important;
+}*/
+.introTil{
+    width: 80px;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.pachytene{
+    display: inline-block;
+    width: 48%;
+    height: 4px;
+    background-color: #f9752b;
+}
+.vacancy{
+   width: 3%;
+   display: inline-block;
+}
+.rightPachytene{
+    background-color: #999;
+}
+/*组织机构样式*/
+.triangle-right {
+    /*绘制三角形*/
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-left: 12px solid #f9752b;
+    border-bottom: 10px solid transparent;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 10px;
+}
+.triangleOne{
+    opacity: 0.7;
+}
+.institutionName{
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 8px;
+    font-weight: 700;
+    margin-top: 10px;
+}
+.instCon{
+    margin-left: 32px;
+    margin-top: 8px;
+}
+.distance{
+    margin-top: 20px;
+}
+/*嘉宾介绍样式*/
+.guestDetail{
+    display: flex;
+}
+.guestImg{
+    flex: 1;
+    margin-right: 5px;
+}
+.guestImg img{
+    width: 70px;
+    height: 70px;
+    border-radius: 5px;
+}
+.guestMatter{
+    flex: 3;
+}
+.guestName{
+    font-weight: 700;
+}
+.roll{
+    height: 40px;
+    line-height: 20px;
+    overflow: auto;
+    margin-top: 7px;
+}
+/*活动日程样式*/
+.scheduleTime{
+    display: flex;
+    margin-left: 32px;
+    margin-top: 10px;
+}
+.schTime{
+    color: #f9752b;
+}
+.schDetDistance{
+    margin-top: 6px;
+}
+.schDetTime{
+    flex: 1.2;
+    color: #f9752b;
+}
+.schDetCon{
+    flex: 2;
+}
+/*报名页样式*/
+.meetApply{
+    border-top: 1px solid #f9752b;
+    text-align: center;
+}
+@keyframes mymove1{
+    from {left:0px;}
+    to {left:6px;}
+}
+@keyframes mymove2{
+    from {right:0px;}
+    to {right:6px;}
+}
+.motion{
+    display: flex;
+}
+.motion img{
+    width: 32px;
+}
+.motionLeft, .motionRight {
+    position:relative;
+    animation:mymove1 0.3s infinite;
+    -webkit-animation:mymove1 0.3s infinite; /*Safari and Chrome*/
+    animation-direction:alternate;
+    animation-timing-function:linear;
+    margin-top: 32px;
+    flex: 1;
+}
+.motionRight{
+    animation:mymove2 0.3s infinite;
+    -webkit-animation:mymove2 0.3s infinite; /*Safari and Chrome*/
+    animation-direction:alternate;
+    animation-timing-function:linear;
+    transform: rotateY(180deg);
+}
+.apply{
+    flex: 3;
+    display: inline-block;
+    text-align: center;
+    line-height: 40px;
+    width: 200px;
+    height: 40px;
+    background-color: #f9752b;
+    border: 1px solid #f9752b;
+    margin-top: 20px;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+}
+.QRcode img{
+    width: 160px;
+    height: 160px;
+    margin: 20px auto;
+}
+.attention{
+    color: #000;
+}
+.hospitality{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 24px;
+    color: #f9752b;
+    font-weight: 600;
+}

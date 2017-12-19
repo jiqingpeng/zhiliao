@@ -1,0 +1,872 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>活动概览</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+    <link href="../../css/common/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/common/bootstrap-table.min.css" rel="stylesheet">
+    <link href="../../css/mng/font-awesome.min.css" rel="stylesheet">
+    <link href="../../css/mng/monitor-base.css" rel="stylesheet">
+    <style type="text/css">
+        .paging {
+            display: block;
+            min-width: 1024px;
+            width: 100%;
+            overflow: hidden;
+            height: 44px;
+            line-height: 40px;
+            margin: 0 2px 0 2px;
+            padding: 0 2px 0 2px;
+        }
+
+        .paging div {
+            display: inline-block;
+            height: 40px;
+            margin: 0 20px 0 20px;
+        }
+
+        .paging div nav {
+            padding: 0;
+            height: 30px;
+        }
+
+        .paging div nav ul {
+            margin: 3px 0 0 0;
+        }
+
+
+    </style>
+    <style type="text/css">
+        #activity-graph-div {
+            height: 100%;
+            width: 100%;
+            display: none;
+        }
+
+        .graph-group {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        #activity-graph {
+            height: 100%;
+            width: 100%;
+            max-height: 594px;
+            min-width: 796px;
+            display: block;
+        }
+
+        .graph-tools {
+            height: 60px;
+            width: 100%;
+            display: block;
+            overflow: hidden;
+        }
+
+        .graph-div-left, .graph-div-right {
+            display: block;
+            position: relative;
+            height: 640px;
+            margin: 0 0 10px 0;
+            float: left;
+            background-color: #fff;
+        }
+
+        .graph-div-left {
+            width: 26.2%;
+            min-width: 284px;
+            border-right: 4px solid #ececec;
+            border-radius: 6px 0 0 6px;
+            padding: 6px;
+            overflow: auto;
+        }
+
+        .graph-div-right {
+            width: 73.4%;
+            min-width: 796px;
+            border-radius: 0 6px 6px 0;
+        }
+
+        #activity-graph-scatter {
+            display: none;
+            width: 100%;
+            height: 100%;
+            min-height: 760px;
+            max-height: 800px;
+            margin-bottom: 20px;
+            background-color: #fff;
+            border-radius: 6px;
+            padding-top: 10px;
+        }
+
+        #activity-id a {
+            height: 30px;
+            line-height: 30px;
+            overflow: hidden;
+            padding: 2px 2px 2px 4px;
+        }
+    </style>
+</head>
+<body>
+<div id="root">
+    <div id="head">
+        <div class="head-main">
+            <div class="logo">
+                <a href="http://www.gconfs.com">
+                    <img class="" src="../../img/logoandname.png" title="群英汇：一体化会议系统" alt=""/>
+                </a>
+                <span class="logo-title">网站统计</span>
+            </div>
+            <div class="head-tab ">
+                <a href="index.html" target="_top" onclick="return">主页</a>
+                <a href="activitymonitor.html" target="_top" class="active-head">活动概览</a>
+                <a href="activityadminmonitor.html" target="_top">活动管理员</a>
+                <a href="activityhotelmonitor.html" target="_top">活动酒店</a>
+                <!--<a href="index.html" target="_top">主页</a>-->
+            </div>
+            <div class="head-user">
+                <span>Hi </span>
+                <span id="user-name"></span>
+                <a onclick="loginout();">登出<span class="glyphicon glyphicon-log-out"></span></a>
+            </div>
+        </div>
+    </div>
+    <div id="menu">
+        <div class="menu-main">
+            <div class="menu-title">
+                <span class="hide-able">网站导航</span>
+                <a class="hideMenu">
+                    <span class="glyphicon glyphicon-menu-hamburger ">
+                        <span class="arrow-left"></span>
+                    </span>
+                </a>
+            </div>
+            <ul class="menu-content list-group">
+                <li class="list-group-item">
+                    <a href="activitymonitor.html">
+                        <span class="glyphicon glyphicon-list-alt active"></span>
+                        <span class="hide-able active">活动概况</span>
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="activityconversion.html">
+                        <span class="glyphicon glyphicon-hourglass"></span>
+                        <span class="hide-able">转化概况</span>
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="activitypageview.html">
+                        <span class="glyphicon glyphicon-eye-open"></span>
+                        <span class="hide-able">访问概况</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="content">
+        <div id="content-body">
+            <div class="content-title">
+                <div class="title-bar">
+                    <div>
+                        <a href="javascript:void(0)" onclick="showTable();">全部活动</a>
+                        <a href="javascript:void(0)" onclick="attendScatter(this);">报名分布</a>
+                    </div>
+                </div>
+            </div>
+            <div class="content-main">
+                <div class="content-main-body">
+                    <div id="activity-graph-scatter"></div>
+                    <div id="activity-div">
+                        <table id="activity-table">
+                        </table>
+                    </div>
+                    <div id="activity-graph-div">
+                        <div class="graph-div-left">
+                            <div id="activity-id" class="list-group">
+                            </div>
+                        </div>
+                        <div class="graph-div-right">
+                            <div class="graph-group">
+                                <div id="activity-graph"></div>
+                                <!--<div class="graph-tools">-->
+                                <!--<div class="breadcrumb paging">-->
+                                <!--<div>-->
+                                <!--<page class="paging-position">显示第 <span></span> 到第 <span></span> 条记录，总共-->
+                                <!--<span></span> 条记录每页显示 <span></span> 条记录-->
+                                <!--</page>-->
+                                <!--</div>-->
+                                <!--<div>-->
+                                <!--<nav aria-label="Page navigation">-->
+                                <!--<ul class="pagination"></ul>-->
+                                <!--</nav>-->
+                                <!--</div>-->
+                                <!--</div>-->
+                                <!--</div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="foot"><span>© 京备17018133</span></div>
+    </div>
+</div>
+<div class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-warning active" role="progressbar" aria-valuenow="100"
+         aria-valuemin="0"
+         aria-valuemax="100" style="width: 100%">
+        <span class="sr-only">loding...</span>
+    </div>
+</div>
+<div id="toast_" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" href="#toast_">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="mySmallModalLabel">群英汇</h4>
+            </div>
+            <div class="modal-body" id="toast_msg">
+            </div>
+        </div>
+    </div>
+</div>
+<div id="model-div"></div>
+</body>
+<script src="../../js/jquery.min.js" type="application/javascript"></script>
+<script src="../../js/mng/echarts.js" type="application/javascript"></script>
+<script src="../../js/bootstrap.min.js" type="application/javascript"></script>
+<script src="../../js/bootstrap-table.min.js" type="application/javascript"></script>
+<script src="../../js/bootstrap-table-zh-CN.min.js" type="application/javascript"></script>
+<script src="../../js/tableExport.js" type="application/javascript"></script>
+<script src="../../js/bootstrap-table-export.js" type="application/javascript"></script>
+<script src="../../js/mng/mng.js" type="application/javascript"></script>
+<script src="../../js/mng/monitor-base.js" type="application/javascript"></script>
+<script type="text/javascript">
+    var avtData = [];
+    var selectVal = "";
+    var myChart = echarts.init(document.getElementById('activity-graph'));
+    var isInitOptions = false;
+    var fullData = [];
+    $(function () {
+        loding();
+        init();
+        tableInit();
+    });
+
+    function init() {
+        $.myAjax({
+            url: basePath + "sys/monitor/activity/list.do",
+            type: "POST",
+            async: false,
+            dataType: "JSON",
+            success: function (result) {
+                lodingDown();
+                if (result.flag) {
+                    avtData = result.data.activityList;
+                    $('#activity-table').bootstrapTable('load', result.data.activityList);
+                } else {
+                    toastMsg(result.msg);
+                }
+            },
+            error: function (result) {
+                toastMsg(result.msg);
+            }
+        });
+        $('#activity-graph-div').show();
+        $("#activity-graph").html('');
+        myChart.dispose();
+        myChart = echarts.init(document.getElementById('activity-graph'));
+    }
+
+    function tableInit() {
+        $('#activity-graph-div').hide();
+        $('#activity-table').bootstrapTable({
+            dataType: 'json', //数据格式
+            dataLocale: 'zh-US', //表格汉化
+            toolbar: '#toolbar',
+            striped: true, //是否显示行间隔色
+            cache: false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+            pagination: true, //是否显示分页（*）
+            sortable: true, //是否启用排序
+            sortOrder: "desc", //排序方式
+            search: true,
+            showExport: true,
+            searchFormatter: false,
+            showRefresh: false, //是否显示刷新按钮
+            cellStyle: true,
+            checkbox: true,
+            sidePagination: "client", //分页方式：client客户端分页，server服务端分页（*）
+            pageNumber: 1, //初始化加载第一页，默认第一页
+            pageSize: 20, //每页的记录行数（*）
+            pageList: [20, 40, 80], //可供选择的每页的行数（*）
+            formatLoadingMessage: function () {
+                return "请稍等，正在加载中。。。";
+            },
+            columns: [{
+                field: 'id',
+                title: 'ID',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'ctime',
+                title: '注册时间',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'stime',
+                title: '开始时间',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'location',
+                title: '地点',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'state',
+                title: '状态',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'name',
+                title: '名称',
+                valign: 'middle',
+                sortable: true,
+                align: 'center',
+                formatter: function (value, row, index) {
+                    return '<a href="javascript:void(0);" onclick="activityBaseMsg(\'' + row.id + '\');\" ' +
+                        'title="点击查看活动基本指标" >' + value + '</a>';
+                }
+            }, {
+                field: 'unit',
+                title: '单位',
+                valign: 'middle',
+                sortable: true,
+                align: 'center',
+                formatter: function (value, row, index) {
+                    return '<a href="http://' + row.unit_web + '" target="_blank" title="点击前往官网" >' + value + '</a>';
+                }
+            }, {
+                field: 'admin',
+                title: '管理员',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'expert_total',
+                title: '嘉宾',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'attend_total',
+                title: '报名',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'attend_pc',
+                title: 'PC报名',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'attend_h5',
+                title: 'H5报名',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'attend_az',
+                title: '安卓报名',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'attend_import',
+                title: '导入',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'attend_del',
+                title: '删除',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'hotel_total',
+                title: '酒店',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'train_total',
+                title: '高铁',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }]
+        });
+        $('#activity-table').bootstrapTable('hideColumn', 'id');
+    }
+
+    function showTable() {
+        $('#activity-div').show();
+        $('#activity-graph-div').hide();
+        $('#activity-graph-scatter').hide();
+        $("#activity-id").children("a").each(function (i, obj) {
+            if ($(obj).hasClass("active")) {
+                $(obj).removeClass("active");
+            }
+        });
+        fullData.length = 0;
+    }
+
+    function activityBaseMsg(activityId) {
+        initPaging(avtData.length);
+        showGraph();
+        $('#activity-div').hide();
+        $('#activity-graph-div').show();
+        for (var i = 0; i < avtData.length; i++) {
+            if (activityId === avtData[i].id) {
+                var xAxisData = ['attend_total', 'expert_total', 'attend_pc', 'attend_h5', 'attend_az', 'attend_import',
+                    'attend_del', 'hotel_total', 'train_total'];
+                var stringList = [];
+                for (var j = 0; j < xAxisData.length; j++) {
+                    var string = [];
+                    string[0] = j;
+                    string[1] = Number(avtData[i][xAxisData[j]]);
+                    string[2] = avtData[i].name;
+                    stringList[stringList.length] = string;
+                }
+                fullData = fullData.concat(stringList);
+                refreshData(fullData);
+                break;
+            }
+        }
+        $("#activity-id").children("a").each(function (i, obj) {
+            if (activityId === $(obj).attr("activityId")) {
+                $(obj).addClass("active");
+                return;
+            }
+        });
+    }
+
+    $(document).on("click", "#activity-id a", function () {
+        myChart.showLoading();
+        var activityId = $(this).attr("activityId");
+        var xAxisData = ['attend_total', 'expert_total', 'attend_pc', 'attend_h5', 'attend_az', 'attend_import',
+            'attend_del', 'hotel_total', 'train_total'];
+        if ($(this).hasClass("active")) {
+            $(this).removeClass("active");
+            fullData.length = 0;
+            $(this).parent().children("a").each(function (i, obj) {
+                if ($(obj).hasClass("active")) {
+                    activityId = $(obj).attr("activityId");
+                    for (var i = 0; i < avtData.length; i++) {
+                        if (activityId === avtData[i].id) {
+                            var stringList = [];
+                            for (var j = 0; j < xAxisData.length; j++) {
+                                var string = [];
+                                string[0] = j;
+                                string[1] = Number(avtData[i][xAxisData[j]]);
+                                string[2] = avtData[i].name;
+                                stringList[stringList.length] = string;
+                            }
+                            fullData = fullData.concat(stringList);
+                            break;
+                        }
+                    }
+                }
+            });
+            refreshData(fullData);
+        } else {
+            $(this).addClass("active");
+            for (var i = 0; i < avtData.length; i++) {
+                if (activityId === avtData[i].id) {
+                    var stringList = [];
+                    for (var j = 0; j < xAxisData.length; j++) {
+                        var string = [];
+                        string[0] = j;
+                        string[1] = Number(avtData[i][xAxisData[j]]);
+                        string[2] = avtData[i].name;
+                        stringList[stringList.length] = string;
+                    }
+                    fullData = fullData.concat(stringList);
+                    refreshData(fullData);
+                    break;
+                }
+            }
+        }
+    });
+
+    function refreshData(data) {
+        myChart.hideLoading();
+        try {
+            // 填入数据
+            myChart.setOption({
+                series: [{
+                    // 根据名字对应到相应的系列
+                    data: data
+                }]
+            });
+        } catch (er) {
+            myChart.dispose();
+            myChart = echarts.init(document.getElementById('activity-graph'));
+        }
+    }
+
+    function initPaging(dataL) {
+        dataL = parseInt(dataL);
+        totalSize = dataL;
+        thisSize = 1;
+        pageSize = 10;
+        if (dataL > 80 && dataL <= 150) {
+            pageSize = 15;
+        } else if (dataL > 150 && dataL <= 500) {
+            pageSize = 30;
+        }
+        totalPage = parseInt(dataL / pageSize);
+        $($(".paging").children("div")[0]).css("float", "left");
+        $($(".paging").children("div")[1]).css("float", "right");
+        $(".paging .paging-total").children("span").html(dataL);
+        $($(".paging .paging-position").children("span")[0]).html(1);
+        $($(".paging .paging-position").children("span")[1]).html(pageSize);
+        $($(".paging .paging-position").children("span")[2]).html(dataL);
+        $($(".paging .paging-position").children("span")[3]).html(pageSize);
+        var str =
+            '<li><a href="javascript:void(0)" onclick="changePage(\'-\');" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
+        var k = 1;
+        while (k < totalPage + 2) {
+            str += '<li><a href="javascript:void(0)" onclick="changePage(' + k + ');" >' + k + '</a></li>';
+            k += 1;
+        }
+        str +=
+            '<li><a href="javascript:void(0)" onclick="changePage(\'+\');" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>';
+        $(".paging .pagination").html(str);
+    }
+
+    function changeGraph(pageNum) {
+        myChart.showLoading();
+        showGraph();
+        var len = pageNum + 10;
+        if ((pageNum + 10) > avtData.length) {
+            len = avtData.length;
+        }
+        var stringList = [];
+        var xAxisData = ['attend_total', 'expert_total', 'attend_pc', 'attend_h5', 'attend_az', 'attend_import',
+            'attend_del', 'hotel_total', 'train_total'];
+        for (pageNum; pageNum < len; pageNum++) {
+            for (var j = 0; j < xAxisData.length; j++) {
+                var string = [];
+                string[0] = j;
+                string[1] = Number(avtData[pageNum][xAxisData[j]]);
+                string[2] = avtData[pageNum].name;
+                stringList[stringList.length] = string;
+            }
+        }
+        refreshData(stringList);
+    }
+
+    /**
+     * 返回起始下标
+     * @param pageNum 页码
+     * @returns {number}
+     */
+    function changePage(pageNum) {
+        var pageNumber;
+        if ("+" === pageNum) {
+            if (thisSize < totalPage) {
+                $($(".paging .paging-position").children("span")[0]).html(thisSize * pageSize + 1);
+                thisSize += 1;
+                $($(".paging .paging-position").children("span")[1]).html(thisSize * pageSize);
+                pageNumber = (thisSize - 1) * pageSize;
+            } else if (thisSize = totalPage) {
+                $($(".paging .paging-position").children("span")[0]).html(thisSize * pageSize + 1);
+                $($(".paging .paging-position").children("span")[1]).html(totalSize);
+                pageNumber = totalPage;
+            } else {
+                thisSize = totalPage;
+                pageNumber = totalPage;
+            }
+        } else if ("-" === pageNum) {
+            if (thisSize > 1) {
+                thisSize -= 1;
+                $($(".paging .paging-position").children("span")[0]).html((thisSize - 1) * pageSize + 1);
+                $($(".paging .paging-position").children("span")[1]).html(thisSize * pageSize);
+                pageNumber = (thisSize - 1) * pageSize;
+            } else if (thisSize = 1) {
+                $($(".paging .paging-position").children("span")[0]).html(1);
+                $($(".paging .paging-position").children("span")[1]).html(thisSize * pageSize);
+                pageNumber = 0;
+            } else {
+                thisSize = 1;
+                pageNumber = 0;
+            }
+        } else {
+            thisSize = pageNum;
+            $($(".paging .paging-position").children("span")[0]).html((thisSize - 1) * pageSize + 1);
+            if (((thisSize - 1) * pageSize + pageSize) >= totalSize) {
+                $($(".paging .paging-position").children("span")[1]).html(totalSize);
+            } else {
+                $($(".paging .paging-position").children("span")[1]).html((thisSize - 1) * pageSize + pageSize);
+            }
+            pageNumber = (thisSize - 1) * pageSize + 1;
+        }
+        changeGraph(pageNumber)
+        return pageNumber;
+    }
+
+    function showGraph() {
+//        var legendData = [];
+        for (var i = 0; i < avtData.length; i++) {
+            selectVal += "<a class=\"list-group-item\" href=\"javascript:void(0)\" activityId=\"" +
+                avtData[i].id + "\" title='" + avtData[i].name + "'>" + avtData[i].name + "</a>";
+            if (avtData[i].name) {
+                avtData[i].name = avtData[i].name.trim().replace("(", "").replace(")", "").replace("-", "");
+            } else {
+                avtData[i].name = avtData[i].id;
+            }
+        }
+        $("#activity-id").html("");
+        $("#activity-id").html(selectVal);
+//        for (var i = 0; i < avtData.length; i++) {
+//            legendData[i] = avtData[i].name;
+//        }
+        if (!isInitOptions) {
+            isInitOptions = true;
+            var option = {
+                title: {
+                    text: '活动基本指标',
+                    left: 'center'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'line',
+                        lineStyle: {
+                            color: 'rgba(0,0,0,0.2)',
+                            width: 1,
+                            type: 'solid'
+                        }
+                    }
+                },
+//            legend: {
+////                left: 'center',
+////                top: 'bottom'
+////                data: legendData
+//            },
+                singleAxis: {
+                    top: 50,
+                    bottom: 50,
+                    nameTextStyle: {
+                        align: "right",
+                        lineHeight: 10
+                    },
+                    axisTick: {},
+                    axisLabel: {},
+                    type: 'category',
+                    nameLocation: "center",
+                    axisPointer: {
+                        animation: true,
+                        label: {
+                            show: true
+                        }
+                    },
+                    splitLine: {
+                        show: true,
+                        lineStyle: {
+                            type: 'dashed',
+                            opacity: 0.2
+                        }
+                    },
+                    data: ['总报名', '嘉宾', 'Pc报名', 'H5报名', '安卓报名', '导入', '删除', '酒店', '高铁']
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                toolbox: {
+                    show: true,
+                    orient: 'vertical',
+                    left: 'right',
+                    top: 'center',
+                    feature: {
+                        saveAsImage: {
+                            show: true,
+                            pixelRatio: 3
+                        }
+                    }
+                },
+                series: {
+                    type: 'themeRiver',
+                    itemStyle: {
+                        shadowBlur: 20,
+                        shadowColor: 'rgba(0, 0, 0, 0.8)'
+                    }
+                }
+            };
+            myChart.setOption(option);
+        }
+    }
+
+    /**
+     * 报名纵向分布
+     */
+    function attendScatter(_this) {
+        if (!$(_this).hasClass("active")) {
+            $(_this).addClass("active");
+        } else {
+            $(_this).removeClass("active");
+            $('#activity-graph-scatter').hide();
+            return false;
+        }
+        $('#activity-graph-scatter').height(0);
+        $('#activity-graph-scatter').width(0);
+        if($($('#activity-graph-scatter').parent()).height()>760&&$($('#activity-graph-scatter').parent()).height()<800){
+            $('#activity-graph-scatter').height($($('#activity-graph-scatter').parent()).height());
+        }else{
+            $('#activity-graph-scatter').height(760);
+        }
+        $('#activity-graph-scatter').width($($('#activity-graph-scatter').parent()).width());
+        $('#activity-graph-scatter').show();
+        var xAxisData = ['attend_total', 'expert_total', 'attend_pc', 'attend_h5', 'attend_az', 'attend_import',
+            'attend_del', 'hotel_total', 'train_total'];
+        var stringList = [];
+        for (var i = 0; i < avtData.length; i++) {
+            var string = [];
+            string[string.length] = Number(avtData[i].stime_long);
+            for (var j = 0; j < xAxisData.length; j++) {
+                string[string.length] = Number(avtData[i][xAxisData[j]]);
+            }
+            string[string.length] = avtData[i].stime;
+            string[string.length] = avtData[i].name;
+            stringList[stringList.length] = string;
+        }
+        var schema = [
+            {name: 'attend_total', index: 1, text: '总报名'},
+            {name: 'expert_total', index: 2, text: '导入'},
+            {name: 'attend_pc', index: 3, text: 'PC'},
+            {name: 'attend_h5', index: 4, text: 'H5'},
+            {name: 'attend_az', index: 5, text: '安卓'},
+            {name: 'attend_import', index: 6, text: '导入'},
+            {name: 'attend_del', index: 7, text: '删除'},
+            {name: 'hotel_total', index: 8, text: '酒店预定'},
+            {name: 'train_total', index: 9, text: '高铁预定'},
+            {name: 'stime', index: 10, text: '时间'}
+        ];
+        var scatterOption = {
+            title: {
+                text: '报名分布',
+                left: 'center'
+            },
+            grid: {
+                x: '10%',
+                y: '18%'
+            },
+            backgroundColor: '#fff',
+            tooltip: {
+                padding: 10,
+                backgroundColor: '#222',
+                borderColor: '#777',
+                borderWidth: 1,
+                formatter: function (obj) {
+                    var value = obj.value;
+                    return '<div style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 18px;padding-bottom: 7px;margin-bottom: 7px">'
+                        + value[11] + '</div>'
+                        + schema[0].text + '：' + value[1] + '<br>'
+                        + schema[1].text + '：' + value[2] + '<br>'
+                        + schema[2].text + '：' + value[3] + '<br>'
+                        + schema[3].text + '：' + value[4] + '<br>'
+                        + schema[4].text + '：' + value[5] + '<br>'
+                        + schema[5].text + '：' + value[6] + '<br>'
+                        + schema[6].text + '：' + value[7] + '<br>'
+                        + schema[7].text + '：' + value[8] + '<br>'
+                        + schema[8].text + '：' + value[9] + '<br>'
+                        + schema[9].text + '：' + value[10] + '<br>';
+                }
+            },
+            xAxis: {
+                type: 'time',
+                name: '日期',
+                splitLine: {
+                    lineStyle: {
+                        type: 'dashed'
+                    }
+                }
+            },
+            yAxis: {
+                type: 'value',
+                name: '人数',
+                splitLine: {
+                    lineStyle: {
+                        type: 'dashed'
+                    }
+                },
+                scale: true
+            },
+            visualMap: [
+                {
+                    left: 'right',
+                    top: '10%',
+                    max: 1500,
+                    dimension: 1,
+                    itemWidth: 30,
+                    itemHeight: 120,
+                    precision: 0.1,
+                    text: ['报名人数'],
+                    textGap: 30,
+                    textStyle: {
+                        color: '#333'
+                    },
+                    inRange: {
+                        symbolSize: [10, 100]
+                    },
+                    controller: {
+                        inRange: {
+                            color: ['#c23531']
+                        },
+                        outOfRange: {
+                            color: ['#444']
+                        }
+                    }
+                }
+            ],
+            series: [{
+                type: "scatter",
+                encode: {
+                    x: 0      // 表示维度 3、1、5 映射到 x 轴。
+                    //y: 1              // 表示维度 2 映射到 y 轴。
+//                tooltip: [3, 2, 4], // 表示维度 3、2、4 会在 tooltip 中显示。
+//                label: 3           // 表示 label 使用维度 3。
+                },
+                itemStyle: {
+                    normal: {
+                        opacity: 0.8,
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowOffsetY: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                },
+                data: stringList
+            }]
+        };
+        var scatter = echarts.init(document.getElementById('activity-graph-scatter'));
+        scatter.setOption(scatterOption);
+    }
+
+</script>
+</html>

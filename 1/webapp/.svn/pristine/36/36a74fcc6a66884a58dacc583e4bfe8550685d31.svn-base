@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>论文管理</title>
+<link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="../../../css/common/bootstrap.min.css">
+<link rel="stylesheet" href="../../../css/common/bootstrap-table.min.css">
+<link href="../../../css/style.css" rel="stylesheet" />
+<link href="../../../css/main.css" rel="stylesheet" />
+<!-- <link rel="stylesheet" href="../../../css/admin.css"> -->
+<!-- 引入项目中每个模块的独立样式 : xxx.css -->
+</head>      
+<body>
+<!-- 引入页头 -->
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con"  style="background-color: #ededed;">
+	<div class="con-nav" style="background-color: #fff;">
+		<a href="thesis.html">论文管理</a>
+	</div>
+	<!-- <div class="con-box noSubMenu">
+		<div id="toolbar">
+            <div class="btn-group">
+                <button id="btn_export" type="button" class="btn btn-sm btn-default">导出
+                </button>
+            </div>	
+        </div>
+		<table id="texttable">
+  		</table>      
+	</div> -->
+	<div style="width: 220px; margin: 200px auto;"><img width="220px" src="../../../img/coming.png"></div> 
+</div>
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/bootstrap-table.min.js"></script>
+<script src="../../../js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/main.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#main-contant").height($("#content").height())
+		$("#main-contant").css("backgroundColor", "#ededed");
+	})
+</script>
+                                   
+<script type="text/javascript">
+$(function(){
+	// 获取左侧菜单列表数据(参数为请求地址)
+	serialMenuAjax('admin/activity/menu.do', '论文管理', sessionStorage.getItem('actId'));
+	//初始化表格数据
+	// initTable(data);
+});
+
+// //模拟数据
+// var data=[
+// 	{
+// 		"state": "已提交",
+// 		"author": "黄强辉",
+// 		"paperTitle": "医疗需求与中国医疗费用增长——基于城乡老年医疗支出差异的视角",
+// 		"antistop": "项目、周期",
+// 		"submissionTime": "2017年03月20日",
+// 		"modificationTime": "2017年03月30日"
+// 	},{
+// 		"state": "已提交",
+// 		"author": "章汉夫",
+// 		"paperTitle": "医疗保险对老年人医疗支出与健康的影响",
+// 		"antistop": "项目、周期",
+// 		"submissionTime": "2017年03月20日",
+// 		"modificationTime": "2017年03月30日"
+// 	},{
+// 		"state": "已提交",
+// 		"author": "谭平山",
+// 		"paperTitle": "美国医疗责任保险制度困境的破解之道及其启示",
+// 		"antistop": "项目、周期",
+// 		"submissionTime": "2017年03月20日",
+// 		"modificationTime": "2017年03月30日"
+// 	},{
+// 		"state": "已提交",
+// 		"author": "朱希亮",
+// 		"paperTitle": "——基于中国城镇居民基本医疗保险的实证分析",
+// 		"antistop": "项目、周期",
+// 		"submissionTime": "2017年03月20日",
+// 		"modificationTime": "2017年03月30日"
+// 	},{
+// 		"state": "已提交",
+// 		"author": "甘铁生",
+// 		"paperTitle": "医疗保险对农民工城市融入的影响分析",
+// 		"antistop": "项目、周期",
+// 		"submissionTime": "2017年03月20日",
+// 		"modificationTime": "2017年03月30日"
+// 	},{
+// 		"state": "已提交",
+// 		"author": "冯兴国",
+// 		"paperTitle": "医疗保险中的道德风险研究——基于微观数据的分析",
+// 		"antistop": "项目、周期",
+// 		"submissionTime": "2017年03月20日",
+// 		"modificationTime": "2017年03月30日"
+// 	},{
+// 		"state": "已提交",
+// 		"author": "郝爱民",
+// 		"paperTitle": "基本医疗服务法制化研究",
+// 		"antistop": "项目、周期",
+// 		"submissionTime": "2017年03月20日",
+// 		"modificationTime": "2017年03月30日"
+// 	},{
+// 		"state": "已提交",
+// 		"author": "张大力",
+// 		"paperTitle": "中国补充医疗保险发展:成效、问题与出路",
+// 		"antistop": "项目、周期",
+// 		"submissionTime": "2017年03月20日",
+// 		"modificationTime": "2017年03月30日"
+// 	},{
+// 		"state": "已提交",
+// 		"author": "王海平",
+// 		"paperTitle": "中国老人医疗保障与医疗服务需求的实证分析",
+// 		"antistop": "项目、周期",
+// 		"submissionTime": "2017年03月20日",
+// 		"modificationTime": "2017年03月30日"
+// 	},{
+// 		"state": "已提交",
+// 		"author": "张鹏",
+// 		"paperTitle": "新农合制度下农村基层医疗服务质量及其治理研究",
+// 		"antistop": "项目、周期",
+// 		"submissionTime": "2017年03月20日",
+// 		"modificationTime": "2017年03月30日"
+// 	},{
+// 		"state": "已提交",
+// 		"author": "李达",
+// 		"paperTitle": "医疗保障水平的福利效果",
+// 		"antistop": "项目、周期",
+// 		"submissionTime": "2017年03月20日",
+// 		"modificationTime": "2017年03月30日"
+// 	},{
+// 		"state": "已提交",
+// 		"author": "李东",
+// 		"paperTitle": "社会医疗保险对老年人卫生服务利用的影响——基于倾向得分匹配的反事实估计",
+// 		"antistop": "项目、周期",
+// 		"submissionTime": "2017年03月20日",
+// 		"modificationTime": "2017年03月30日"
+// 	},{
+// 		"state": "已提交",
+// 		"author": "赵大海",
+// 		"paperTitle": "医疗保险中的道德风险研究——基于微观数据的分析",
+// 		"antistop": "项目、周期",
+// 		"submissionTime": "2017年03月20日",
+// 		"modificationTime": "2017年03月30日"
+// 	},{
+// 		"state": "已提交",
+// 		"author": "杨靖宇",
+// 		"paperTitle": "中国医疗服务市场中的信息不对称程度",
+// 		"antistop": "项目、周期",
+// 		"submissionTime": "2017年03月20日",
+// 		"modificationTime": "2017年03月30日"
+// 	},{
+// 		"state": "已提交",
+// 		"author": "王铮",
+// 		"paperTitle": "普适医疗信息管理与服务的关键技术与挑战",
+// 		"antistop": "项目、周期",
+// 		"submissionTime": "2017年03月20日",
+// 		"modificationTime": "2017年03月30日"
+// 	}
+// 	// },{
+// 	// 	"state": "已提交",
+// 	// 	"author": "王振坤",
+// 	// 	"paperTitle": "医疗保险对中国城市和农村家庭资产选择的影响研究",
+// 	// 	"antistop": "项目、周期",
+// 	// 	"submissionTime": "2017年03月20日",
+// 	// 	"modificationTime": "2017年03月30日"
+// 	// },{
+// 	// 	"state": "已提交",
+// 	// 	"author": "赵宽",
+// 	// 	"paperTitle": "城乡二元医疗保险结构对农民工返乡意愿的影响——以北京市农民工为例",
+// 	// 	"antistop": "项目、周期",
+// 	// 	"submissionTime": "2017年03月20日",
+// 	// 	"modificationTime": "2017年03月30日"
+// 	// },{
+// 	// 	"state": "已提交",
+// 	// 	"author": "王婧",
+// 	// 	"paperTitle": "城镇基本医疗保险中逆向选择的检验",
+// 	// 	"antistop": "项目、周期",
+// 	// 	"submissionTime": "2017年03月20日",
+// 	// 	"modificationTime": "2017年03月30日"
+// 	// },{
+// 	// 	"state": "已提交",
+// 	// 	"author": "李婧",
+// 	// 	"paperTitle": "新兴研究热点及其进展",
+// 	// 	"antistop": "项目、周期",
+// 	// 	"submissionTime": "2017年03月20日",
+// 	// 	"modificationTime": "2017年03月30日"
+// 	// },{
+// 	// 	"state": "已提交",
+// 	// 	"author": "王铮",
+// 	// 	"paperTitle": "普适医疗信息管理与服务的关键技术与挑战",
+// 	// 	"antistop": "项目、周期",
+// 	// 	"submissionTime": "2017年03月20日",
+// 	// 	"modificationTime": "2017年03月30日"
+// 	// }
+// ]
+
+// //填充表格数据
+// function initTable(data){
+// 	$('#texttable').bootstrapTable({
+//             data: data,
+//             dataLocale: 'zh-CN',               //表格汉化
+//             toolbar: '#toolbar',                //工具按钮用哪个容器
+//             striped: true,                      //是否显示行间隔色
+//             cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+//             pagination: true,                   //是否显示分页（*）
+//             sortable: false,                     //是否启用排序
+//             sortOrder: "asc",                   //排序方式
+//             sidePagination: "client",           
+//             pageNumber:1,                       //初始化加载第一页，默认第一页
+//             pageSize: 10,                       //每页的记录行数（*）
+//             pageList: [10,15,20,25],
+//             showRefresh: true, 
+//             pagination: true,
+//             strictSearch: false,
+//             search: true,
+//             clickToSelect:false,
+//             columns: [{
+//                 checkbox: true,
+//                 valign: 'middle'
+//         	},
+//             {
+//                 field: 'id',
+//                 title: '论文管理id',
+//             },{
+// 	            align: 'center',
+// 	            width: 50,
+// 	            formatter: function(value,row,index){
+// 	                return index+1;
+// 	            }
+//     		},
+//             {
+//                 field: 'state',
+//                 title: '评审状态',
+//                 align: 'center'
+//             },{
+//                 field: 'author',
+//                 title: '作者',
+//                 align: 'center'
+//             },{
+//                 field: 'paperTitle',
+//                 title: '论文题目',
+//                 align: 'center'
+//             },{
+//                 field: 'antistop',
+//                 title: '关键词',
+//                 align: 'center'
+//             },{
+//                 field: 'submissionTime',
+//                 title: '提交时间',
+//                 align: 'center'
+//             },{
+//                 field: 'modificationTime',
+//                 title: '最后修改时间',
+//                 align: 'center'
+//             }]        
+//     });
+//     $('#texttable').bootstrapTable('hideColumn', 'id');
+// };	
+</script> 
+
+</html>

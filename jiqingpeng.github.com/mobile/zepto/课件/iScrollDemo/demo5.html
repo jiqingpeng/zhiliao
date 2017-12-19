@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script src="js/iscroll.js"></script>
+<style>
+	*{ padding:0; margin:0; list-style:none;}
+	.box{ width:200px; height:200px; border:1px solid red; margin:100px auto; overflow:hidden; position:relative;}
+	.list{ padding:20px;}
+</style>
+
+</head>
+
+<body>
+	<div class="box">
+    	<div class="list">
+        	<p>之所以iscroll会诞生，主要是因为无论是在iphone、ipod、android 或是更早前的移动webkit都没有提供一种原生的方式来支持在一个固定高度的容器内滚动内容。
+
+这个不幸的规则导致所有web-app要模拟成app的样子时，只能由一个绝对定位的header 或是footer再加上一个可以内容的滚动的中间区域组成。
+
+幸运的是移动webkit提供了一种强大的硬件加速的CSS属性，这个属性可以用来模拟这个缺失的功能，Iscroll从这里开始了前进之路，但是没有不带刺的玫瑰。让内容滚动像原生方式一般比想象中要难</p>
+<p>之所以iscroll会诞生，主要是因为无论是在iphone、ipod、android 或是更早前的移动webkit都没有提供一种原生的方式来支持在一个固定高度的容器内滚动内容。
+
+这个不幸的规则导致所有web-app要模拟成app的样子时，只能由一个绝对定位的header 或是footer再加上一个可以内容的滚动的中间区域组成。
+
+幸运的是移动webkit提供了一种强大的硬件加速的CSS属性，这个属性可以用来模拟这个缺失的功能，Iscroll从这里开始了前进之路，但是没有不带刺的玫瑰。让内容滚动像原生方式一般比想象中要难</p>
+        </div>
+    </div>
+    <script>
+		var myscroll=new IScroll(".box",{
+			scrollbars: true,
+			mouseWheel: true,	
+			interactiveScrollbars: true, //允许拖拽滚动条
+			shrinkScrollbars: 'scale',
+			fadeScrollbars: true,
+			bounceEasing:'elastic',
+			bounceTime:1000
+		});
+		
+		myscroll.on('scrollEnd',function(){
+			alert(1);	
+		});
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

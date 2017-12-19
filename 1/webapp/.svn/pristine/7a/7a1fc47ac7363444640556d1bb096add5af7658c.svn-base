@@ -1,0 +1,194 @@
+.wrap {
+    width: 100%;
+    margin: 0 auto;
+    font-size: 12px;
+    color:#333;
+    padding-left:15px;
+}
+
+.wrap h2 {
+    height: 26px;
+    line-height: 26px;
+    font-size: 14px;
+    border-bottom: 1px solid #ccc;
+    padding-left:10px;
+    margin-top:10px;
+}
+.wrap .active {
+    display: none
+}
+
+.wrap .listHead {
+    height: 48px;
+    line-height: 48px
+}
+
+.wrap .listHead li {
+    color: #999
+}
+
+.wrap .listHead .station {
+    margin-left: 80px
+}
+
+.wrap .listHead .price {
+    margin-left: 212px;
+}
+
+.wrap .listHead .Mtime {
+    margin-left:126px
+}
+
+.wrap .listHead .tickMessage {
+    margin-left: 152px;
+}
+
+.wrap .listHead .look {
+    margin-left:202px;
+}
+
+.wrap .listBody {
+    width: 100%
+}
+
+.wrap .listBody .listbox {
+    width: 100%;
+    border-top: 1px dashed #ddd;
+    // border-bottom: 1px solid #ddd;
+    padding: 10px 0
+}
+
+.wrap .listBody .listbox .orderDetail {
+    
+    padding: 10px 0;
+    // border: 1px solid red;
+    color: #999;
+    font-size:14px;
+}
+.wrap .listBody .listbox .orderDetail .passengerMessage{
+    // border:1px solid #ccc;
+}
+.wrap .listBody .listbox .orderDetail .tickectMessage{
+    // border:1px solid #ccc;
+    margin-top:10px;
+}
+.wrap .listBody .listbox .orderDetail .orderOperation{
+    margin-top:10px;
+}
+.wrap .listBody .listbox .orderDetail h3{
+    font-size:16px;
+    margin:10px 0;
+}
+.wrap .listBody .listbox .orderDetail .orderBtn{
+	display: inline-block;
+	border:1px solid #f60;
+	width:54px;
+	height:20px;
+    line-height:20px;
+    text-align: center;
+	background:#f60;
+	color:#fff;
+	border-radius:2px;
+	margin:0 5px;
+    font-size:12px;
+}	
+.wrap .listBody .listbox .orderDetail .passengerTit{
+	font-size:14px;
+	margin:10px auto;
+}
+.wrap .listBody .listbox .orderDetail .passenger{
+    font-size:14px;
+    background:#f0f5fa;
+    // margin-top:10px;
+}
+.wrap .listBody .listbox .orderDetail .tickectTitle{
+    font-size:14px;
+    margin:10px auto;
+}
+.wrap .listBody .listbox .orderDetail .person{
+    font-size:14px;
+    background:#f0f5fa;
+    padding:5px 0;
+}
+.wrap .listBody .listbox .orderDetail .passenger li{
+    margin: 5px 0;
+}
+.wrap .listBody .listbox .orderDetail .passenger .passName {
+    width:50px;
+}
+.wrap .listBody .listbox .orderDetail .passenger .passCode {
+    margin-left: 104px
+}
+
+.wrap .listBody .listbox .orderDetail .passenger .passSeat {
+    width:120px;
+    margin-left:122px
+}
+
+.wrap .listBody .listbox .orderDetail .passenger .passTicket {
+    margin-left:104px;
+}
+.wrap .listBody .listbox .orderDetail .passenger .passTicket .num{
+    color:#999;
+    font-size:16px;
+}
+.wrap .listBody .listbox .orderDetail .passenger .passState {
+    margin-left: 64px
+}
+
+// .wrap .listBody .listbox .orderDetail .person li {
+//     margin: 10px 0
+// }
+
+.wrap .listBody .tickImg {
+    width: 50px;
+    height: 50px;
+   
+}
+.wrap .listBody .tickImg img{
+    width:100%;
+    height:100%;
+}
+.wrap .listBody .station {
+    width: 200px;
+    margin-left: 10px
+}
+.wrap .listBody .station .trainNo{
+    font-size:20px;
+    font-weight: bold;
+}
+.wrap .listBody .station .outOrderNo{
+   color:#999;
+   margin-top:5px;
+}
+.wrap .listBody .price {
+    width: 90px;
+    margin-left: 80px;
+    font-size: 16px;
+    color: #f60;
+}
+.wrap .listBody .price .icon{
+    font-size:12px;
+}
+.wrap .listBody .price .text{
+    font-size:20px;
+    margin-left:-10px;
+}
+.wrap .listBody .time {
+    width: 150px;
+    font-size: 14px;
+    margin-left:86px;
+}
+
+.wrap .listBody .tickMessage {
+    width:80px;
+    text-align: center;
+    margin-left: 6px;
+    // border:1px solid red;
+}
+.wrap .listBody .look {
+    margin-left: 52px
+}
+.wrap .listBody .lastPay {
+    margin-left: 56px;
+}

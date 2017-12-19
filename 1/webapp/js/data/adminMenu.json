@@ -1,0 +1,17 @@
+[
+	{
+		"icon" : "../../img/icon/admin/actListIcon.png",
+		"name" : "管理活动",
+		"url" : "activityList.html"
+	},
+	{
+		"icon" : "../../img/icon/admin/registAct.png",
+		"name" : "发布活动",
+		"url" : "register.html"
+	},
+	{
+		"icon" : "../../img/icon/admin/personal.png",
+		"name" : "个人信息",
+		"url" : "personal.html"
+	}
+]

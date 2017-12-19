@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>详情</title>
+	<link rel="stylesheet" href="../../css/index/base.css">
+	<link rel="stylesheet" href="../../css/index/public.css">
+	<link rel="stylesheet" href="../../css/index/detail.css">
+</head>
+<body>
+	<div class="head">
+		<div class="clearfix hnav">
+			<ul class="fl">
+				<li class="fl"><a href="index.html">首页</a></li>
+				<!-- <li class="fl"><a href="detail.html">解决方案</a></li>
+				<li class="fl"><a href="second.html">合作单位</a></li>
+				<li class="fl"><a href="cation.html">关于我们</a></li> -->
+			</ul>
+			<ul class="fr">
+				<li class="fl"><a id="user_center" href="../user/activityList.html"></a></li>
+				<li class="fl" id="user_name"></li>
+				<li class="fl"><a id="login_out" href="javascript:;"></a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="contain">
+		<input type="hidden" id="id"/> <!-- 活动id -->
+		<input type="hidden" id="logType"/>
+		<div class="bannimg">
+			<a class="fl" href="index.html"><img class="logol" src="../../img/index/logoandname.png" alt="logoname"></a>
+			<img class="logor fr" src="../../img/index/homenav.png" alt="homenav">
+		</div>
+		<div class="clearfix messTitle">
+			<div class="fl w290">
+				<a href="index.html" class="fl">首页</a>
+				<a href="javascript:;" class="fl">&gt;全部活动</a>
+				<a class="detail" href="" class="fl">&gt;活动详情</a>
+			</div>
+			<!-- <h2 class="messName fl"></h2>
+			<p class="messCompany fl w290"></p> -->
+		</div>
+		<div class="wrap clearfix">
+			<div class="wrap-l fl">
+				<div class="group">
+					<h4>
+						<img src="../../img/index/small_black.jpg" alt="icon">
+						会议时间
+					</h4>
+					<div class="item" id="mess_time">
+						<!-- <div>
+							<p>会议日期</p>
+							<p>2015/10/5</p>
+						</div>
+						<div>
+							<p>征文投稿截止日期:</p>
+							<p>2015/10/5</p>
+						</div>
+						<div>
+							<p>现场报道日期</p>
+							<p>2015/10/5</p>
+						</div> -->
+					</div>
+				</div>
+				<!-- <div class="group">
+					<h4>
+						<img src="../../img/index/small_black.jpg" alt="icon">
+						会议地点
+					</h4>
+					<div class="item" id="mess_address">
+						<div>
+							<p>北京市</p>
+							
+						</div>
+						<div>
+							<p>地址北京市海淀区六道口静淑苑路创业广场101室</p>
+							
+						</div>
+					</div>
+				</div> -->
+				<div class="group mess_issue">
+					<h4>
+						<img src="../../img/index/small_black.jpg" alt="icon">
+						会议议题
+					</h4>
+					<div class="item">
+						<div>
+							<!-- <p>会议议题</p> -->
+							<p id="mess_issue"></p>
+						</div>
+					</div>
+					<div class="issueMove"></div>
+				</div>
+				<div class="group org">
+					<h4>
+						<img src="../../img/index/small_black.jpg" alt="icon">
+						组织机构
+					</h4>
+					<div class="item orginfo">
+						<div>
+							<p>主办方：</p>
+							<ul id="activityOrginfoList">
+								
+							</ul>
+						</div>
+					</div>
+					<div class="orginfoMove"></div>
+				</div>
+				<div class="group">
+					<h4>
+						<img src="../../img/index/small_black.jpg" alt="icon">
+						动态信息
+					</h4>
+					<div class="item">
+						<div class="news">
+							<!-- <p><a href="">第一条信息</a></p>
+							<p><a href="">第一条信息</a></p>
+							<p><a href="">第一条信息</a></p>
+							<p><a href="">第一条信息</a></p> -->
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<div class="wrap-c fl">
+				<div class="bann" id="banner">
+					<ul class="img">
+			    		<!-- <li><a href=""></a><img class="img1" src="" alt="第1张图片"></a></li>
+			    		<li><a href=""><img class="img2" src="" alt="第2张图片"></a></li>
+			    		<li><a href=""><img class="img3" src="" alt="第3张图片"></a></li> -->
+			    	</ul>
+  					<ul class="num"></ul>
+					<div class="btn">
+						<span class="prev"><</span>
+						<span class="next">></span>
+					</div>
+				</div>
+				<!-- <img class="bann detailImg" src="" alt="show"> -->
+				<div class="messTitle">
+					<p class="messName"></p>
+					<a href="#" class="messCompany"></a>
+				</div>
+				<!-- <h4>
+					<img src="../../img/index/small_black.jpg" alt="icon">
+					会议简介
+				</h4> -->
+				<div class="message" id="introduction">
+				</div>
+			</div>
+			<div class="wrap-r fr">
+				<div class="group">
+					<h4 class="clearfix">
+						<span class="fl"><img src="../../img/index/small_black.jpg" alt="icon">已报名人数</span>
+						<span class="fr" id="totalAttend"></span>	
+					</h4>
+					<div class="item">
+						<div class="h60 btnGroup">
+							<!-- <p class="sign gray">
+								<a href="javascript:;">我要关注</a>
+							</p> -->
+							<p class="sign">
+								<a class="enroll" href="#">立即报名</a>
+							</p>
+							<!-- <p class="sign gray">
+								<a class="genroll" href="#">团体报名</a>
+								<a href="javascript:;">团体报名</a>
+							</p> -->
+						</div>
+					</div>
+				</div>
+				<div class="group">
+					<h4>
+						<img src="../../img/index/small_black.jpg" alt="icon">
+						会议位置
+					</h4>
+					<div class="item">
+						<div class="item" id="mess_address">
+						</div>
+						<div id="allmap" style="height: 160px;width: 270px;">
+							<!-- <img src="../../img/user/map.jpg" alt="flow"> -->
+						</div>
+					</div>
+				</div>
+				<div class="group contact">
+					<h4>
+						<img src="../../img/index/small_black.jpg" alt="icon">
+						联系我们
+					</h4>
+					<div class="item">
+						<!-- <div class="tit">
+							择财汇中科技有限公司
+						</div> -->
+						<ul id="contact_our">
+							<!-- <li id="contactPhone">电话: 010-85158148</li>
+							<li>&nbsp&nbsp&nbsp15068965582</li>
+							<li id="contactEmail">邮箱: 124324@qq.com</li>
+							<li>&nbsp&nbsp&nbsp15068965582@qq.com</li> -->
+						</ul>
+					</div>
+					<div class="code" id="qrcode" src="" alt="code">
+					</div>
+					<img class="code" src="../../img/index/publicvx.jpg" alt="code">
+				</div>
+			</div>
+		</div>
+		<!-- 嘉宾 -->
+		<div class="person">
+			<h4>嘉宾</h4>
+			<ul class="personList clearfix">
+				<li class="fl">杨豆豆</li>
+				<li class="fl">杨豆</li>
+				<li class="fl">杨豆豆豆</li>
+				<li class="fl">杨豆豆</li>
+				<li class="fl">杨豆豆</li>
+				<li class="fl">杨豆豆</li>
+			</ul>
+		</div>
+	</div>
+	<div class="foot">
+			<ul class="f-list clearfix">
+				<!-- <li class="fl tell no">
+				</li> -->
+				<li class="fl">
+					<ul class="foot-message">
+						<li class="font24"><a href="#">关于我们</a></li>
+						<li><a href="#">关于群英会</a></li>
+						<li><a href="#">加入我们</a></li>
+						<li><a href="#">免责申明</a></li>
+					</ul>
+				</li>
+				<li class="fl">
+					<ul class="foot-message">
+						<li class="font24"><a href="#">联系我们</a></li>
+						<li><a href="#">电话</a></li>
+						<li><a href="#">官方微信</a></li>
+						<li><a href="#">新浪微博</a></li>
+					</ul>
+				</li>
+				<li class="fl">
+					<ul class="foot-message">
+						<li class="font24"><a href="#">新闻中心</a></li>
+						<li><a href="#">公司新闻</a></li>
+						<li><a href="#">合作伙伴</a></li>
+						<li><a href="#">知名客户</a></li>
+					</ul>
+				</li>
+				<li class="fl">
+					<ul class="foot-message">
+						<li class="font24"><a href="#">合作</a></li>
+						<li><a href="#">主办方合作</a></li>
+						<li><a href="#">媒体合作</a></li>
+						<li><a href="#">资助合作</a></li>
+					</ul>
+				</li>
+				
+				<li class="fl font24 la"><a href="#">公司新闻</a></li>
+			</ul>
+			<p class="p1">未经gconfs.com同意不得转发网站会议信息</p>
+			<p class="p2">京ICP备1708133号</p>
+	</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/common/qrcode.min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=FB6c98d828da5bf508fb357f9ee535ef"></script>
+<script src="../../js/user/userMain.js"></script>
+<script>
+	$(function(){
+		//init获取页面信息和登陆状态
+		var url=basePath+"index/activity.do";
+		//截取ID
+		var id = '';
+		if(Request('location')){
+			id = Request('location');
+			$("#id").val(id);
+		} else if(sessionStorage.getItem('actId')) {
+			id = sessionStorage.getItem('actId');
+			$("#id").val(id);
+		}
+
+		if(!id){ // 如果没有id,禁止请求
+			return false;
+		}
+		//初始化
+		$.myAjax({
+			url: url,
+			type: 'GET',
+			data:{id:id},
+			success:function(result){
+				console.log(result);
+				if(result.flag){
+					// 获取用户登陆状态信息
+					if(result.status.url){
+						$('#user_name').html(result.status.nick);
+						$('#user_center').html('用户中心');
+						$('#login_out').html('注销');
+						$('#user_center').attr('href',basePath+result.status.url);
+						$("#logType").val(1);
+					}else{
+						$("#logType").val(0);
+					};
+					//会议名称
+					$('.messName').html(result.data.activity.name);
+					//单位名称
+					$('.messCompany').html(result.data.orgName).attr('href','http://'+result.data.orgUrl+'.gconfs.com');
+					//会议地址
+					initMap(result.data.activity.longtitude,result.data.activity.latitude);
+					
+					//时间截取
+					var stime=result.data.activity.stime.substr(0,11);
+					var paperEtime=result.data.activity.paperEtime.substr(0,11);
+					var signupStime=result.data.activity.signupStime.substr(0,11);
+					var signupEtime=result.data.activity.signupEtime.substr(0,11);
+					//会议时间
+					$('#mess_time').append('<div><p class="bold">会议日期</p><p class="color_ccc">&nbsp'+stime+'</p></div><div><p class="bold">征文投稿截止日期</p><p>&nbsp'+paperEtime+'</p></div><div><p class="bold">现场报道日期</p><p>&nbsp'+signupStime+'至'+signupEtime+'</p></div>');	
+					//会议地点
+					// $('#mess_address').append('<div><p class="bold">城市</p><p>&nbsp'+result.data.activity.city+'</p></div><div><p class="bold">地址</p><p>&nbsp'+result.data.activity.contactAddress+'</p></div>');
+					$('#mess_address').append('<div><p>'+result.data.activity.city+'</p></div><div><p>&nbsp;'+result.data.activity.contactAddress+'</p></div>');
+					//动态信息
+					for(var i=0;i<result.data.news.length;i++){
+						if(i>=3){
+							break;
+						};
+						var str = '<p>' + 
+								'<input type="hidden" value="'+result.data.news[i].id+'"/>' +
+								'<a target="_blank" href="" class="newsDetail">' + result.data.news[i].title +
+								'</a>' +
+								'</p>';
+						// $('.news').append('<p><a href="" class="newsDetail">'+result.data.news[i].title+'</a></p>');
+						$('.news').append(str);
+					};
+					$(document).on('click', '.newsDetail', function(){
+						var id = $(this).prev().val();
+						$(this).attr('href', 'newsDetail.html?newsId='+id);
+					})
+					//会议议题
+					$('#mess_issue').html(result.data.activity.issue)
+	    			$('#totalAttend').html(result.data.activity.totalAttend);
+	    			$('.issueMove').html(result.data.activity.issue);
+					//会议简介
+					$('#introduction').html(result.data.activity.introduction);
+					//组织机构
+					for(var i=0;i<result.data.activity.activityOrginfoList.length;i++){
+						$('#activityOrginfoList').append('<p><a href="javascript:;">'+result.data.activity.activityOrginfoList[i].name+'</a></p>');
+						$('.orginfoMove').append('<p><a href="javascript:;">'+result.data.activity.activityOrginfoList[i].name+'</a></p>');
+					};
+					
+					//联系方式
+					var str='<li id="contactPhone">&nbsp联系人:&nbsp'+result.data.activity.contactUser+'</li><li id="contactPhone">联系电话:&nbsp'+result.data.activity.contactPhone+'</li><li id="contactEmail">联系邮箱:&nbsp'+result.data.activity.contactEmail+'m</li><li id="contactEmail">联系地址:&nbsp'+result.data.activity.contactAddress+'</li>';
+					$('#contact_our').append(str);
+					//会议图片
+					for(var i=0;i<result.data.imageUrl.length;i++){
+						$('#banner .img').append('<li><a href=""></a><img class="img1" src="'+basePath+result.data.imageUrl[i]+'" alt="第'+(i+1)+'张图片"></a></li>');
+					};
+					pictureShow('#banner',{
+				      autoplay:true,
+				      mousehover:true,
+				      round:true
+    				});
+					
+				}else{
+					alert(result.msg);
+				};
+			},
+			error:function(){
+				alert("请求失败");
+			}
+		});
+		// 报名
+		$(".enroll").on('click',function(){
+			var url = basePath+'index/status.do';
+			$.myAjax({
+				url: url,
+				type: 'GET',
+				data:{id:id},
+				success:function(result){
+					if(result.flag){
+						// if(result.data.user){
+							window.location.href = 'previewFiled.html?actId='+$("#id").val()+'&logType='+$("#logType").val();
+						// }else{
+						// 	window.location.href = '../index/login.html';
+						// };
+					}else{
+						alert(result.msg)
+					};
+				},
+				error:function(){
+					alert("请求失败")
+				}
+			});
+		});
+
+		//注销
+		loginOut('#login_out');
+		//二维码
+		var qrcode = new QRCode(document.getElementById("qrcode"), {
+			width : 100,
+			height : 100
+		});
+		var url=window.location;
+		qrcode.makeCode(window.location);
+		//轮播
+		function pictureShow(id,options){
+	        var i=0;
+	        var timer=null;
+	        var options=options||{};
+	        var scrollAuto=false;
+	        
+	        for (var j = 0; j < $(id+' .img li').length; j++) {  //创建圆点
+	          $(id+' .num').append('<li></li>')
+	        }
+	        $(id+' .num li').first().addClass(id+' active'); //给第一个圆点添加样式
+	     	var firstimg=$(id+' .img li').first().clone(); //复制第一张图片
+	        $(id+' .img').append(firstimg).width($(id+' .img li').length*($(id+' .img img').width())); //将第一张图片放到最后一张图片后，设置ul的宽度为图片张数*图片宽度
+	      	// 下一个按钮
+	        $(id+' .next').click(function(){
+	          i++;
+	          if (i==$(id+' .img li').length) {
+	            i=1; //这里不是i=0
+	            $(id+' .img').css({left:0}); //保证无缝轮播，设置left值
+	          };
+	      
+	          $(id+' .img').stop().animate({left:-i*560},300);
+	          if (i==$(id+' .img li').length-1) {   //设置小圆点指示
+	            $(id+' .num li').eq(0).addClass(id+' active').siblings().removeClass(id+' active');
+	          }else{
+	            $(id+' .num li').eq(i).addClass(id+' active').siblings().removeClass(id+' active');
+	          }
+	        })
+	      
+	        // 上一个按钮
+	        $(id+' .prev').click(function(){
+	          i--;
+	          if (i==-1) {
+	            i=$(id+' .img li').length-2;
+	            $(id+' .img').css({left:-($(id+' .img li').length-1)*560});
+	          }
+	          $(id+' .img').stop().animate({left:-i*560},300);
+	          $(id+' .num li').eq(i).addClass(id+' active').siblings().removeClass(id+' active');
+	        })
+	      
+	        //设置按钮的显示和隐藏
+	        function buttonShow(){
+	            $(id).hover(function(){
+	              $(id+' .btn').show();
+	            },function(){
+	              $(id+' .btn').hide();
+	            })
+	        }
+	        if(options.buttonShow){
+	            buttonShow();
+	        }
+	        //鼠标划入圆点
+	        function round(){
+	            $(id+' .num li').mouseover(function(){
+	            var _index=$(this).index();
+	            $(id+' .img').stop().animate({left:-_index*560},800);
+	            $(id+' .num li').eq(_index).addClass(id+' active').siblings().removeClass(id+' active');
+	            })
+	        }
+	        if(options.round){
+	          round();
+	        }
+	        //定时器自动播放
+	        function autoplay(){
+	          timer=setInterval(show,3000)
+	        }
+	        if(options.autoplay){
+	          autoplay();
+	        }
+	        //鼠标移入，暂停自动播放，移出，开始自动播放
+	        function mousehover(){
+	            $(id).hover(function(){ 
+	              clearInterval(timer);
+	            },function(){
+	              timer=setInterval(show,3000)
+	            })
+	        }
+	        if(options.mousehover){
+	          mousehover();
+	        }
+	        //图片滚动
+	        function show(){
+	          i++;
+	          if (i==$(id+' .img li').length) {
+	            i=1;
+	            $(id+' .img').css({left:0});
+	          };
+	      
+	      	  $(id+' .img').stop().animate({left:-i*560},300);
+	          if (i==$(id+' .img li').length-1) { 
+	            $(id+' .num li').eq(0).addClass(id+' active').siblings().removeClass(id+' active');
+	          }else{
+	            $(id+' .num li').eq(i).addClass(id+' active').siblings().removeClass(id+' active');
+	          }
+	        }
+    	};
+    	//移入查看更多
+    	function hoverMore(mouseId,showId){
+    		$(mouseId).on('mouseover',function(){
+    			$(showId).css('display','block');
+    			$(showId).addClass("popupStyle");
+    		});
+    		$(mouseId).on('mouseout',function(){
+    			$(showId).css('display','none');
+    		});
+    	};
+    	hoverMore('.mess_issue','.issueMove');
+    	hoverMore('.org','.orginfoMove');
+    	//页面链接
+		$('.detail').click(function(){
+			$(this).attr('href',window.location);
+		});
+	})
+</script>
+</html>

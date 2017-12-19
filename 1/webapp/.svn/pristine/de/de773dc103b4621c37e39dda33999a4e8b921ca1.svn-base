@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>讨论组</title>
+<link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="../../../css/common/bootstrap.css">
+<link href="../../../css/style.css" rel="stylesheet" />
+<link href="../../../css/main.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../../css/admin.css">
+<!-- 引入项目中每个模块的独立样式 : xxx.css -->
+</head>
+<body>
+<!-- 引入页头 -->
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="functionary.html">工作人员</a>
+		<a href="">-&gt;</a>
+		<a href="functionaryForum.html">讨论组</a>
+	</div>
+	<div class="con-box">
+	<div id="subMenu">
+		<div id="subMenuBody">
+			<ul>
+				<a href="functionary.html"><li>权限管理</li></a>
+				<a href="functionary.html"><li>留言板</li></a>
+				<a href="functionary.html"><li>交通住宿预定</li></a>
+				<a href="functionaryForum.html"><li class="menuAct">讨论组</li></a>
+			</ul>
+		</div>
+	</div>
+	<div id="contentBody" class="mops-table">
+		<!-- 以下为每个页面自己编写的部分 -->
+	</div>
+	</div>     
+</div> 
+
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/common/main.js"></script>
+<script src="../../../js/common/common.js"></script>
+
+<script src="../../../js/admin/userGovern.js"></script>
+
+<script type="text/javascript">
+	initMenu('../../../js/data/administrator.json','工作人员');
+</script>
+</html>
+

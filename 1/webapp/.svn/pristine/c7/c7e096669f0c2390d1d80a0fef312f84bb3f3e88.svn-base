@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta content="text/html"/>
+<title>我的会议</title>
+<link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+<link href="../../css/common/bootstrap.min.css" rel="stylesheet" />
+<link href="../../css/style.css" rel="stylesheet" />
+<link href="../../css/main.css" rel="stylesheet" />
+<!-- 引入项目中每个模块的独立样式 : xxx.css -->
+<link href="../../css/user.css" rel="stylesheet"/>
+<style>
+	.actBox{
+		/*border:1px solid red;*/
+		width:1060px;
+		
+	}
+	.actBox .actTit{
+		/*background:#fe6600;*/
+		font-weight: bold;
+		color:#000;
+	}
+	.actBox .actList{
+		margin-left:20px;
+		margin-top:20px;
+	}
+	.actBox .actList .group{
+		border:1px solid #ccc;
+		margin-top:10px;
+		border-radius:4px 4px 0 0;
+	}
+	.actBox .actList .group h4{
+		height:34px;
+		line-height:34px;
+		border-bottom:1px solid #ccc;
+		color:#000;
+		font-weight:bold;
+		font-size:20px;
+	}
+	.actBox .actList .group .message{
+		/*display:none;*/
+		position: relative;
+	}
+	.actBox .actList .group .message .more{
+		position: absolute;
+		right:0;
+		bottom:0;
+	}
+	.actBox .actList .group .message .trAcc{
+		width:850px;
+		/*border:1px solid red;*/
+		margin-top:10px;
+	}
+	.actBox .actList .group .message .trAcc td{
+		padding:5px 10px;
+	}
+	
+	.actBox .actList .group .message .messInfo{
+		margin-top:10px;
+		margin-left:10px;
+	}
+	.actBox .actList .group tbody tr td{
+		border:1px solid #ccc;
+	}
+	.actBox .actList .group tbody .thead{
+		background:#666;
+	}
+	.progress{
+		/*width:200px;*/
+		margin:20px auto;
+		
+	}
+	.progress-bar{
+		/*border-right:1px solid #ccc;*/
+		/*margin-top:20px;*/
+	}
+	.ml20{
+		margin-left:20px;
+	}
+	.actBox .actList .group .message .reserVation{
+		height:243px;
+		margin-top:20px;
+		margin-left:42px;
+		margin-bottom:20px;
+	}
+	.actBox .actList .group .message .reserVation .resType,.resMess{
+		height:100%;
+		border:1px solid #ccc;
+	}
+	.actBox .actList .group .message .reserVation .resType{
+		border-right:none;
+		width:92px;
+	}
+	.actBox .actList .group .message .reserVation .resMess{
+		border-left:none;
+
+	}
+	.actBox .actList .group .message .reserVation .resType li{
+		height:60px;
+		width:90px;
+		line-height: 60px;
+		text-align: center;
+		background:#2577e3;
+		color:#fff;
+		font-weight:bold;
+	}
+	.actBox .actList .group .message .reserVation .resType li span{
+		display: inline-block;
+		width:60px;
+		border-bottom:1px dashed #fff;
+	}
+	.actBox .actList .group .message .reserVation .resMess .resMl{
+		padding:0 15px;
+		width:460px;
+		height:100%;
+		display: none;
+	}
+	.reserVation .resMess .resMl .airMessage{
+		width:100%;
+		margin-top:36px;
+	}
+	.reserVation .resMess .resMl .airMessage li{
+		margin-top:15px;
+	}
+	.reserVation .resMess .resMl .airMessage .airType span{
+		margin-right:10px;
+	}
+	.reserVation .resMess .resMl .airMessage .w151{
+		width:151px;
+	}
+	.actBox .actList .group .message .reserVation .resMess .active{
+		display: block;
+	}
+	.search{
+		width:145px;
+		height:34px;
+		line-height: 34px;
+		text-align: center;
+		color:#fff;
+		background: #fe6600;
+		border:1px solid #e77c00;
+		border-radius: 4px;
+		margin-left:283px;
+		margin-top:30px;
+	}
+</style>
+</head>
+<body>
+<!-- 引入页头 -->
+<script type="text/javascript" src="../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="myActivity.html">我的会议</a>
+	</div>
+	<div class="con-box">
+		<!-- 以下为每个页面自己编写的部分 -->
+		<div class="actBox">
+			<h3 class="actTit">国际材联-亚洲材料大会</h3>
+			<div class="actList">
+				<div class="group">
+					<h4>一、基本信息</h4>
+					<div class="message">IUMRS-ICA（国际材联-亚洲材料大会）是国际材联最重要的系列会议之一，由亚洲地区材料研究学会轮流承办，在国际材料学界具有重要影响。经由国际材联授权，第17届亚洲材料大会（IUMRS-ICA 2016）将由中国材料研究学会主办，中国材料科学学会（MRS-T）协办，于2016年10月20-24日在山东青岛市国际会展中心召开。本次大会共27个分会，主题涵盖能源与环境材料、先进结构材料、功能材料、生物材料、材料模拟-计算与设计等五大热点领域。此外，大会期间，将同期举办“先进材料、制造和测试设备展览会”。<a class="more" href="javascript:;">查看详情</a></div>
+				</div>
+				<div class="group">
+					<h4>二、参会状态</h4>
+					<ul class="message">
+						<li class="messInfo">报名状态：已报名</li>
+						<li class="messInfo">报名状态：已报名</li>
+						<li class="messInfo">报名状态：已报名</li>
+						<li class="messInfo">报名状态：已报名</li>
+						<li class="progress">
+							<div class="progress-bar progress-bar-success" style="width: 25%">
+							    <span class="sr-only">35% Complete (success)</span>已报名
+							</div>
+							<div class="progress-bar progress-bar-success" style="width: 25%">
+							  	<span class="sr-only">20% Complete (warning)</span>已审核
+							</div>
+							<div class="progress-bar progress-bar-success" style="width: 25%">
+							    <span class="sr-only">10% Complete (danger)</span>已通过审核
+							</div>
+							<div class="progress-bar progress-bar-defulit" style="width: 25%">
+							    <span class="sr-only">10% Complete (danger)</span>可参会
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="group">
+					<h4>三、交通住宿</h4>
+					<div class="message">
+						<div class="clearfix trAcc">
+							<span class="fl">交通：</span>
+							<table class="fl">
+								<tr class="thead">
+									<td></td>
+									<td>交通方式</td>
+									<td>航班车次/车牌号(自驾)</td>
+									<td>出发时间</td>
+									<td>到达时间</td>
+									<td>接送地点</td>
+									<td>车辆型号(型号)</td>
+									<td>保存</td>
+								</tr>
+								<tr>
+									<td>去程</td>
+									<td>
+										<select name="" id="">
+											<option value="航空">航空</option>
+											<option value="高铁">高铁</option>
+											<option value="大巴">大巴</option>
+											<option value="自驾">航空</option>
+											<option value="其他">自驾</option>
+										</select>
+									</td>
+									<td>航班车次/车牌号(自驾)</td>
+									<td>出发时间</td>
+									<td>到达时间</td>
+									<td>接送地点</td>
+									<td>车辆型号(型号)</td>
+									<td>
+										<button type="button">保存</button>
+									</td>
+								</tr>
+								<tr>
+									<td>返程</td>
+									<td>
+										<select name="" id="">
+											<option value="航空">航空</option>
+											<option value="高铁">高铁</option>
+											<option value="大巴">大巴</option>
+											<option value="自驾">航空</option>
+											<option value="其他">自驾</option>
+										</select>
+									</td>
+									<td>航班车次/车牌号(自驾)</td>
+									<td>出发时间</td>
+									<td>到达时间</td>
+									<td>接送地点</td>
+									<td>车辆型号(型号)</td>
+									<td>
+										<button type="button">保存</button>
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div class="clearfix trAcc">
+							<span class="fl">住宿：</span>
+							<select name="" id="" class="fl">
+								<option value="选择酒店">-选择酒店-</option>
+								<option value="选择酒店">北京大学/北京大学东门速8酒店</option>
+								<option value="选择酒店">北京大学/北京大学东门速8酒店</option>
+							</select>
+						</div>
+						<div class="clearfix trAcc">
+							<span class="fl">&nbsp&nbsp&nbsp</span>
+							
+							<table class="fl">
+								<tr class="thead ml20">
+									<td>房间类型</td>
+									<td>窗型</td>
+									<td>宽带</td>
+									<td>优惠方式</td>
+									<td>价格</td>
+									<td>房间数</td>
+									<td>已预定数</td>
+									<td>入住时间</td>
+									<td>离开时间</td>
+									<td>保存</td>
+								</tr>
+								<tr class="ml20">
+									<td>房间类型</td>
+									<td>窗型</td>
+									<td>宽带</td>
+									<td>优惠方式</td>
+									<td>价格</td>
+									<td>房间数</td>
+									<td>已预定数</td>
+									<td>入住时间</td>
+									<td>离开时间</td>
+									<td>
+										<button type="button">保存</button>
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div class="reserVation clearfix">
+							<ul class="resType fl">
+								<li><span>机票</span></li>
+								<li><span>火车</span></li>
+								<li><span>自驾</span></li>
+								<li><span>酒店</span></li>
+							</ul>
+							<ul class="resMess fl">
+								<li class="active airTicket resMl">
+									<ul class="airMessage">
+										<li class="airType">
+											<span>航程类型</span>
+											<span>
+												<input type="radio" name="startingWay"/>单程
+											</span>
+											<span>
+												<input type="radio" name="startingWay"/>往返
+											</span>
+											<span>
+												<input type="radio" name="startingWay"/>多程
+											</span>
+										</li>
+										<li class="start clearfix">
+											<span class="fl">
+												出发城市<input class="start" type="text"/>
+											</span>
+											<span class="fr">
+												出发时间<input class="start" type="date"/>
+											</span>
+										</li>
+										<li class="end clearfix">
+											<span class="fl">
+												到达城市<input class="start" type="text"/>
+											</span>
+											<span class="fr">
+												到达时间<input class="start" type="date"/>
+											</span>
+										</li>
+										<button class="search">搜索</button>
+									</ul>
+								</li>
+								<li class="train resMl">
+									<ul class="airMessage">
+										<li class="airType">
+											<span>行程类型</span>
+											<span>
+												<input type="radio" name="startingWay"/>单程
+											</span>
+											<span>
+												<input type="radio" name="startingWay"/>往返
+											</span>
+											<span>
+												<input type="radio" name="startingWay"/>多程
+											</span>
+										</li>
+										<li class="start clearfix">
+											<span class="fl">
+												出发城市<input class="start" type="text"/>
+											</span>
+											<span class="fr">
+												出发时间<input class="start" type="date"/>
+											</span>
+										</li>
+										<li class="end clearfix">
+											<span class="fl">
+												到达城市<input class="start" type="text"/>
+											</span>
+											<span class="fr">
+												到达时间<input class="start" type="date"/>
+											</span>
+										</li>
+										<button class="search">搜索</button>
+									</ul>
+								</li>
+								<li class="drive resMl">
+									<ul class="airMessage">
+										<li class="airType">
+											<span>自由类型</span>
+											<span>
+												<input type="radio" name="startingWay"/>单程
+											</span>
+											<span>
+												<input type="radio" name="startingWay"/>往返
+											</span>
+											<span>
+												<input type="radio" name="startingWay"/>多程
+											</span>
+										</li>
+										<li class="start clearfix">
+											<span class="fl">
+												出发城市<input class="start" type="text"/>
+											</span>
+											<span class="fr">
+												出发时间<input class="start" type="date"/>
+											</span>
+										</li>
+										<li class="end clearfix">
+											<span class="fl">
+												到达城市<input class="start" type="text"/>
+											</span>
+											<span class="fr">
+												到达时间<input class="start" type="date"/>
+											</span>
+										</li>
+										<button class="search">搜索</button>
+									</ul>
+								</li>
+								<li class="hotel resMl">
+									<ul class="airMessage">
+										<li class="airType">
+											<span>酒店类型</span>
+											<span>
+												<input type="radio" name="startingWay"/>单程
+											</span>
+											<span>
+												<input type="radio" name="startingWay"/>往返
+											</span>
+											<span>
+												<input type="radio" name="startingWay"/>多程
+											</span>
+										</li>
+										<li class="start clearfix">
+											<span class="fl">
+												出发城市<input class="start" type="text"/>
+											</span>
+											<span class="fr">
+												出发时间<input class="start" type="date"/>
+											</span>
+										</li>
+										<li class="end clearfix">
+											<span class="fl">
+												到达城市<input class="start" type="text"/>
+											</span>
+											<span class="fr">
+												到达时间<input class="start" type="date"/>
+											</span>
+										</li>
+										<button class="search">搜索</button>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="group">
+					<h4>四、个人日程</h4>
+					<div class="message">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>     
+</div> 
+
+
+<script type="text/javascript" src="../../js/common/footer.js"></script>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/common/main.js"></script>
+<script src="../../js/common/common.js"></script>
+<script type="text/javascript">
+$(function(){
+	// 获取左侧菜单列表数据(参数为请求地址)
+	initMenu('../../js/data/attend.json','我的活动');
+	$("#submenumark").css('display','none');
+	//展开方式
+	$(".group h4").on('click',function(){
+		$(this).next().toggle()
+	})
+	//交通选项卡
+	$('.resType li').on('click',function(){
+		
+		$('.resType li').css({
+			'background':'#2577e3',
+			'color':'#fff'
+		});
+		$(this).css({
+			'background':'#fff',
+			'color':'#2577e3'
+		});
+		$('.resMess .resMl').removeClass('active');
+		$('.resMess .resMl').eq($(this).index()).addClass('active');
+		
+	})
+
+	//首页
+	$(document).on('click','.nav a',function(){
+		$(this).attr('href','../index/index.html');
+	});
+	//注销
+	$(document).on('click','#userinfo a',function(){
+		url=basePath+"login/out.do";
+		$.ajax({
+			url: url,
+			type: 'GET',
+			dataType: 'json',
+			xhrFields: {
+       			withCredentials: true
+    		},
+    		crossDomain: true,
+			success:function(result){
+				window.location.href="../index/index.html"
+			}
+		});
+	});
+});
+</script>
+</html>
+

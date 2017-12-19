@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div>
+		<a class="aa" href="javascript:;">支付</a>
+	</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script>
+	$(function(){
+		$('.aa').on('click',function(){
+			wxFn();
+			
+		})
+		function wxFn(){
+			// $.getJSON("../../wx/getjssign.do?url="+encodeURIComponent(location.href),function(json){
+				wx.config({  
+					debug: true,  
+					appId: 'wx08342b578d71814c',  
+					timestamp:"1503916452",  
+					nonceStr: "845101CD1892775049201638FA41DC6F",  
+					signature: "6B591160BD28DB783E62B568E98461E8",  
+					jsApiList: [  
+						// 所有要调用的 API 都要加到这个列表中  		
+						// 'checkJsApi',					   
+						// 'onMenuShareTimeline',
+						// 'onMenuShareAppMessage',
+						// 'onMenuShareQQ',
+						// 'onMenuShareWeibo',
+						// 'startRecord', 
+						// 'stopRecord',
+						// 'translateVoice',
+						// 'scanQRCode',
+						'chooseWXPay'
+					]  
+				});			
+			// });
+				wx.chooseWXPay({
+					timestamp:"1503916452",  
+					nonceStr: "845101CD1892775049201638FA41DC6F",  
+					signature: "90C98C077F9744B4C0E33A5E727E8E08", 
+					signType:"MD5",
+					packagage:"prepay_id=wx201708281833325740daa2390613217104",
+					paySign:'6B591160BD28DB783E62B568E98461E8',
+					success:function(){
+
+					}
+				})
+		}
+	})
+</script>
+</html>

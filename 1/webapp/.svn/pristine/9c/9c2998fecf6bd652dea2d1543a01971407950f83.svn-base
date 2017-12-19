@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>详情</title>
+	<link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+	<link rel="stylesheet" href="../../css/index/base.css">
+	<link rel="stylesheet" href="../../css/index/public.css">
+	<link rel="stylesheet" href="../../css/index/detail.css">
+</head>
+<body>
+	<div class="head">
+		<div class="clearfix hnav">
+			<ul class="fl">
+				<li class="fl">
+					<a href="index.html">
+						<img class="imgTitle" src="../../img/index/logo.png">
+					</a>
+				</li>
+				<!-- <li class="fl"><a href="detail.html">解决方案</a></li>
+				<li class="fl"><a href="second.html">合作单位</a></li>
+				<li class="fl"><a href="cation.html">关于我们</a></li> -->
+			</ul>
+			<ul class="fr">
+				<li class="fl"><a id="user_center" href="../user/activityList.html"></a></li>
+				<li class="fl" id="user_name"></li>
+				<li class="fl"><a id="login_out" href="javascript:;"></a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="contain">
+		<input type="hidden" id="id"/> <!-- 活动id -->
+		<input type="hidden" id="logType"/>
+		<div class="bannimg">
+			<!-- <a class="fl" href="index.html"><img class="logol" src="../../img/index/banner.jpg" alt="logoname"></a> -->
+			<img class="logor fr" src="../../img/banner.png" alt="banner">
+		</div>
+		<div class="clearfix messTitle">
+			<div class="line fl"></div>
+			<div class="fl second-nav">
+				<a href="index.html" class="fl">首页</a>
+				<a href="javascript:;" class="fl">&gt;全部活动</a>
+				<a class="detail" href="" class="fl">&gt;协会简介</a>
+			</div>
+			<!-- <h2 class="messName fl"></h2>
+			<p class="messCompany fl w290"></p> -->
+		</div>
+		<div class="wrap clearfix">
+			<div class="wrap-c fl">
+				<div class="messIntroTitle">
+					<p class="messName"></p>
+					<a href="#" class="messCompany"></a>
+				</div>
+				<div class="introBox">
+					<div class="message" id="introduction">
+					</div>
+				</div>
+				<div class="mess-img clearfix">
+					
+				</div>
+			</div>
+			<div class="wrap-r fr">
+				<div class="group">
+					<h4>新闻公告</h4>
+					<div class="item">
+						<ul class="news">
+							
+						</ul>
+						
+					</div>
+				</div>
+				<div class="group ">
+					<h4>会议活动</h4>
+					<div class="item">
+						<ul class="conf-tit">
+							
+						</ul>
+					</div>
+				</div>
+				<div class="group contact">
+					<h4>联系方式</h4>
+					<div class="item">
+						<ul id="contact_our">
+							
+							<li class="contactPhone clearfix">
+								<img class="fl" src="../../img/index/act-phone.png" alt="icon">
+								<span class="fl conTit">联系电话:</span>
+								<span class="fl conTxt"></span>
+							</li>
+							<li class="contactUser clearfix">
+								<img class="fl" src="../../img/index/act-person.png" alt="icon">
+								<span class="fl conTit">传真:</span>
+								<span class="fl conTxt userTxt"></span>
+							</li>
+							<li class="contactEmail clearfix">
+								<img class="fl" src="../../img/index/act-email.png" alt="icon">
+								<span class="fl conTit">E-mail:</span>
+								<span class="fl conTxt"></span>
+							</li>
+							<li class="contactAddress clearfix">
+								<img class="fl" src="../../img/index/act-address.png" alt="icon">
+								<span class="fl conTit">联系地址:</span>
+								<span class="fl conTxt"></span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="foot">
+			<ul class="f-list clearfix">
+				<li class="fl"><a href="indepPage/about.html" target="_blank">关于我们</a></li>
+				<li class="fl"><a href="indepPage/contant.html" target="_blank">联系我们</a></li>
+				<li class="fl"><a href="indepPage/help.html" target="_blank">帮助中心</a></li>
+				<li class="fl"><a href="javascript:;">会务商加盟</a></li>
+				<li class="fl"><a href="javascript:;">会展商加盟</a></li>
+				<li class="fl"><a href="javascript:;">媒体加盟</a></li>
+				<li class="fl"><a href="javascript:;">场馆加盟</a></li>
+				<li class="fl"><a href="javascript:;">旅游合作</a></li>
+				<li class="fl"><a href="indepPage/companyNews.html" target="_blank">公司新闻</a></li>
+			</ul>
+			<p class="p1">未经gconfs.com同意不得转发网站会议信息</p>
+			<p class="p2">京ICP备1708133号</p>
+	</div>
+	<div class="introPos">
+		<div class="introTxt"></div>
+		<img class="introIcon" src="../../img/index/del.jpg"/>
+	</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/common/qrcode.min.js"></script>
+<script src="../../js/user/userMain.js"></script>
+<!-- <script>
+	var actState = 2; // 活动状态，默认2（未结束）
+
+		$(function(){
+			$(".group").on("mouseover", function(){
+				$(this).find(".row").css("display", "block");
+			});
+			$(".group").on("mouseleave", function(){
+				$(this).find(".row").css("display", "none");
+			})
+			//init获取页面信息和登陆状态
+			var url=basePath+"index/unitpage.do";
+			//截取ID
+			var id = '';
+			if(Request('location')){
+				id = Request('location');
+				$("#id").val(id);
+			} else if(sessionStorage.getItem('actId')) {
+				id = sessionStorage.getItem('actId');
+				$("#id").val(id);
+			}
+			var type = Request('type');
+			if(!id){ // 如果没有id,禁止请求
+				return false;
+			}
+			//初始化
+			init(id,type);
+			function init(id,type){
+				$.myAjax({
+					url: url,
+					type: 'GET',
+					data:{id:id},
+					success:function(result){
+						console.log(result);
+						if(result.flag){
+							console.log(result);
+							// 获取用户登陆状态信息
+							if(result.status.url){
+								$('#user_name').html(result.status.nick);
+								$('#user_center').html('用户中心');
+								$('#login_out').html('注销');
+								$('#user_center').attr('href',basePath+result.status.url);
+								$("#logType").val(1);
+							}else{
+								$("#logType").val(0);
+							};
+							//会议名称
+							$('.messName').html(result.data.activity.name);
+							//单位名称
+							$('.messCompany').html(result.data.orgName);
+							// .attr('href','http://'+result.data.orgUrl+'.gconfs.com');
+							//会议地址
+							initMap(result.data.activity.longtitude,result.data.activity.latitude);
+							//会议日期
+							if(result.data.activity.stime){
+								var messData=
+											'<div class="mess-date">'+
+												'<p class="bold date-tit">'+
+													'<img class="icon" src="../../img/index/mess-icon1.png" />'+
+													'<span class="date txt">会议时间<span>'+
+												'</p>'+
+												'<p class="mess-date-time clearfix">'+
+													'<span class="fr">'+getSubstring(result.data.activity.stime,0, 11)+
+													'</span>'+
+												'</p>'+
+											'</div>';
+								$('#mess_time').append(messData);
+							};
+							//征文投稿截止日期
+							if(result.data.activity.paperEtime){
+								var messData=
+											'<div class="mess-date">'+
+												'<p class="bold date-tit">'+
+													'<img class="icon" src="../../img/index/mess-icon1.png" />'+
+													'<span class="date txt">征文投稿截止日期<span>'+
+												'</p>'+
+												'<p class="mess-date-time clearfix">'+
+													'<span class="fr">'+getSubstring(result.data.activity.paperEtime,0, 11)+
+													'</span>'+
+												'</p>'+
+											'</div>';
+								$('#mess_time').append(messData);
+							};
+							//现场报道日期
+							if(result.data.activity.signupStime){
+								var messData=
+											'<div class="mess-date">'+
+											'<p class="bold date-tit">'+
+												'<img class="icon" src="../../img/index/mess-icon1.png" />'+
+												'<span class="date txt">现场报到日期<span>'+
+											'</p>'+
+											'<p class="mess-date-time clearfix">'+
+												'<span class="fr">'+getSubstring(result.data.activity.signupEtime,0, 11)+
+												'</span>'+
+												'<span class="txt fr">至</span>'+
+												'<span class="fr">'+getSubstring(result.data.activity.signupStime,0, 11)+
+												'</span>'+
+											'</p>'+
+										'</div>';
+								$('#mess_time').append(messData);
+							};
+							//论文提交日期
+							if(result.data.activity.signupStime){
+								var messData=
+											'<div class="mess-date">'+
+											'<p class="bold date-tit">'+
+												'<img class="icon" src="../../img/index/mess-icon1.png" />'+
+												'<span class="date txt">现场报到时间<span>'+
+											'</p>'+
+											'<p class="mess-date-time clearfix">'+
+												'<span class="fr">'+getSubstring(result.data.activity.signupEtime,0, 11)+
+												'</span>'+
+												'<span class="txt fr">至</span>'+
+												'<span class="fr">'+getSubstring(result.data.activity.signupStime,0, 11)+
+												'</span>'+
+											'</p>'+
+										'</div>';
+								$('#mess_time').append(messData);
+							};
+							//缴费日期
+							if(result.data.activity.payStime){
+								var messData=
+											'<div class="mess-date">'+
+											'<p class="bold date-tit">'+
+												'<img class="icon" src="../../img/index/mess-icon1.png" />'+
+												'<span class="date txt">缴费日期<span>'+
+											'</p>'+
+											'<p class="mess-date-time clearfix">'+
+												'<span class="fr">'+getSubstring(result.data.activity.payEtime,0, 11)+
+												'</span>'+
+												'<span class="txt fr">至</span>'+
+												'<span class="fr">'+getSubstring(result.data.activity.payStime,0, 11)+
+												'</span>'+
+											'</p>'+
+										'</div>';
+								$('#mess_time').append(messData);
+							};
+							//论文审核日期
+							if(result.data.activity.checkStime){
+								var messData=
+											'<div class="mess-date">'+
+											'<p class="bold date-tit">'+
+												'<img class="icon" src="../../img/index/mess-icon1.png" />'+
+												'<span class="date txt">论文审核日期<span>'+
+											'</p>'+
+											'<p class="mess-date-time clearfix">'+
+												'<span class="fr">'+getSubstring(result.data.activity.checkEtime,0, 11)+
+												'</span>'+
+												'<span class="txt fr">至</span>'+
+												'<span class="fr">'+getSubstring(result.data.activity.checkStime,0, 11)+
+												'</span>'+
+											'</p>'+
+										'</div>';
+								$('#mess_time').append(messData);
+							};
+							//报名日期
+							if(result.data.activity.signupStime){
+								var messData=
+											'<div class="mess-date">'+
+											'<p class="bold date-tit">'+
+												'<img class="icon" src="../../img/index/mess-icon1.png" />'+
+												'<span class="date txt">报名日期<span>'+
+											'</p>'+
+											'<p class="mess-date-time clearfix">'+
+												'<span class="fr">'+getSubstring(result.data.activity.signupStime,0, 11)+
+												'</span>'+
+												'<span class="txt fr">至</span>'+
+												'<span class="fr">'+getSubstring(result.data.activity.enrollStime,0, 11)+
+												'</span>'+
+											'</p>'+
+										'</div>';
+								$('#mess_time').append(messData);
+							};
+							//会议地点
+							$('.act-address').html('地址:'+result.data.activity.province+result.data.activity.city+result.data.activity.location);
+							//动态信息
+							for(var i=0;i<result.data.news.length;i++){
+								if(i>=3){
+									break;
+								};
+								var str =
+									'<li>' + 
+										
+										'<input type="hidden" value="'+result.data.news[i].id+'"/>' +
+										'<a target="_blank" href="" class="newsDetail">' +  getSubstring(result.data.news[i].title, 0, 18)+
+										'</a>' +
+									'</li>';
+								$('.news').append(str);
+							};
+							$(document).on('click', '.newsDetail', function(){
+								var id = $(this).prev().val();
+								$(this).attr('href', 'newsDetail.html?newsId='+id);
+							})
+							//会议议题
+							$('#mess_issue').html(result.data.activity.issue)
+			    			$('#totalAttend').html(result.data.activity.totalAttend);
+			    			$('.issueMove').html(result.data.activity.issue);
+							//会议简介
+							$('#introduction').html(result.data.activity.introduction);
+							if($('#introduction img').width() > $('#introduction').width()){ // 重新设置图片宽高
+								var w = $('#introduction img').width();
+								var h = $('#introduction img').height();
+								var sw = $('#introduction').width();
+								$('#introduction img').css({'width':'100%','height':scale(w,h,sw)});
+							}
+
+							var height=$('#introduction').height()-$('.introBox').height();
+							if(height>0){
+								$('.introTxt').html(result.data.activity.introduction);
+								$('.look').css('display','block');
+								if($('.introTxt img').width() > $('.introTxt').width()){ // 重新设置图片宽高
+									var w = $('.introTxt img').width();
+									var h = $('.introTxt img').height();
+									var sw = $('.introTxt').width();
+									$('.introTxt img').css({'width':'100%','height':scale(w,h,sw)});
+								}
+							};
+							//组织机构
+							for(var i=0;i<result.data.activityOrgList.length;i++){
+								$('.orgList').append(
+									'<li class="orgItem">'+
+										'<p class="orgType">'+result.data.activityOrgList[i].name+':</p>'+
+										'<ul class="orgname">'+
+										'</ul>'+
+									'</li>');
+								var orgList=result.data.activityOrgList[i].value;
+								for(var j=0;j<orgList.length;j++){
+									$($('.orgname')[i]).append('<li>&nbsp&nbsp'+orgList[j]+'</li>')
+								}
+							};
+							$('.orgList').prepend($(".orgItem:contains('主办单位:')"));
+							//联系我们
+							$('.contactUser .conTxt').html(result.data.activity.contactUser);
+							$('.contactPhone .conTxt').html(result.data.activity.contactPhone);
+							$('.contactEmail .conTxt').html(result.data.activity.contactEmail);
+							$('.contactAddress .conTxt').html(result.data.activity.contactAddress);
+							// $('#contact_our').append(str);
+							//会议图片
+							if(result.data.imageUrl.length>0||!result.data.imageUrl==null){
+								for(var i=0;i<result.data.imageUrl.length;i++){
+									$('.mess-img').append('<img class="img1" src="'+basePath+result.data.imageUrl[i]+'" alt="第'+(i+1)+'张图片">');
+								};
+							}
+							
+							//嘉宾
+							if(!(result.data.expert.length==0)){
+								$('.person').css('display','block');
+								for(var i=0;i<result.data.expert.length;i++){
+									$('.personList').append('<li class="fl">'+result.data.expert[i].expertName+'</li>')
+								};
+							};
+							if(result.data.activity.state!=2){
+								actState = result.data.activity.state;
+								$('.sign').css('background','#ccc');
+								if(actState == 1){
+									$('.enroll').html('立即报名');
+								} else {
+									$('.enroll').html('报名结束');
+								}
+							};
+						}else{
+							alert(result.msg);
+						};
+						if(type){
+							// $('.date').html('培训日期');
+							$('.time').html('培训时间');
+							$('.address').html('培训位置');
+						};
+					},
+					error:function(){
+						alert("请求失败");
+					}
+				});
+			};
+
+
+	    	//移入查看更多
+	    	function hoverMore(mouseId,showId){
+	    		$(mouseId).on('mouseover',function(){
+	    			$(showId).css('display','block');
+	    			$(showId).addClass("popupStyle");
+	    		});
+	    		$(mouseId).on('mouseout',function(){
+	    			$(showId).css('display','none');
+	    		});
+	    	};
+	    	hoverMore('.mess_issue','.issueMove');
+	    	hoverMore('.org','.orginfoMove');
+	    	hoverMore('.messTime','.messTimeMove');
+	    	//页面链接
+			$('.detail').click(function(){
+				$(this).attr('href',window.location);
+			});
+			//查看详情
+			$('.look').on('click',function(){
+				$('.introPos').css('display','block');
+				mask();
+			});
+		})
+
+	// 图片等比缩放
+	function scale(width,height,swidth){
+		var h = (swidth/width * height);
+		return h + 'px';
+	}
+</script> -->
+<script>
+var base = 'http://www.gconfs.com/';
+$(function(){
+	url= base+"index/unitpage.do";
+	$.myAjax({
+		url: url,
+		data: {pageUrl:window.location.host.substring(0,window.location.host.indexOf("."))},
+		success:function(result){
+			console.log(result)
+			if(result.flag){
+					console.log(result);
+					// 获取用户登陆状态信息
+					if(result.status.url){
+						$('#user_name').html(result.status.nick);
+						$('#user_center').html('用户中心');
+						$('#user_center').attr('href', base+result.status.url);
+						$('#login_out').html('注销');
+					};
+					//公司简介
+					$('.introduction').append(result.data.org.introduction);
+					//联系方式
+					$('.contact').append('<li>联系人：</span>'+result.data.org.contactUser+'</li><li>地&nbsp址：</span>'+result.data.org.contactAddress+'</li><li><span>邮&nbsp编：</span>'+result.data.org.contactZipcode+'</li><li><span>手&nbsp机：</span>'+result.data.org.contactPhone+'</li><li><span>E-mail：</span><span>'+result.data.org.contactEmail+'</span></li>');
+					//新闻公告
+					for(var i=0;i<result.data.news.length;i++){
+						$('.news').append('<li><input type="hidden" value="'+result.data.news[i].id+'"/><a class="on_detail" href="javascript:;" title="'+result.data.news[i].title+'">'+getSubstring(result.data.news[i].title, 0, 23)+'</a></li>');
+					};
+					//新闻公告跳转
+					$(document).on('click', '.on_detail', function(){
+						var id = $(this).prev().val();
+						// return;
+						$(this).attr('href','page/index/newsDetail.html?newsId=' + id);
+					});
+					//会议活动
+					for(var i=0;i<result.data.activity.length;i++){
+						$('.activity').append('<li><input type="hidden" value="'+result.data.activity[i].id+'"/><a class="on_mess" href="javascript:;" title="'+result.data.activity[i].name+'">'+getSubstring(result.data.activity[i].name, 0, 23)+'</a></li>');
+					};
+					//链接跳活动详情
+					$(document).on('click','.on_mess',function(){
+						$(this).attr("href",'page/index/detail.html?location='+$(this).prev().val());
+					});
+					//公司logo
+					if(result.data.imageUrl==null){
+
+					}else{
+						$('.canpanyLogo').attr('src', base+result.data.imageUrl);
+					};
+			};
+		}
+	});
+	//注销
+	loginOut('#login_out');
+});
+</script>
+</html>

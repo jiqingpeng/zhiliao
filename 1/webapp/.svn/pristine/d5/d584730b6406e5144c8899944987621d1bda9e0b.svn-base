@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" charset="UTF-8">
+<title>api-接口测试</title>
+<style type="text/css">
+.content {
+	height: 200px;
+	width: 100%;
+	background-color: #eee;
+}
+.blk {
+	display: inline-block;
+}
+.success, .error {
+	height: 150px;
+	width: 500px;
+	margin: 40px 40px;
+	border: 1px solid #ddd;
+
+}
+
+</style>
+<script src="../js/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+
+	var url = 'http://192.168.1.189:8080/admin/attend/get.do';
+	var postData = {id:'9c2d2f6a84e84ee882b73d66a7b8a7f6'};
+
+	$.ajax({
+		url: 'http://192.168.1.189:8080/admin/login/check.do',
+		data: {mobile:"13633334444",pwd:"asd"},
+		dataType : 'json',
+
+		xhrFields: {				// 解决跨域session不一致问题，上线删除，只开发使用
+           withCredentials: true
+        },
+        crossDomain: true,
+
+		success: function(result){
+			console.log(result);
+		},
+		error: function(result){
+			alert('请求失败！');
+		}
+	});
+
+});
+</script>
+</head>
+<body>
+	<div class="content"></div>
+	<div class="blk success">
+		<label>success</label>
+		<div></div>
+	</div>
+	<div class="blk error">
+		<label>error</label>
+		<div></div>
+	</div>
+</body>
+</html>

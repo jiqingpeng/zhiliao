@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>论文列表</title>
+	<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+	<link rel="stylesheet" href="../../../css/common/bootstrap.css" />
+	<link rel="stylesheet" href="../../../css/common/bootstrap-table.min.css"> 
+	<link rel="stylesheet" href="../../../css/style.css"  />
+	<link rel="stylesheet" href="../../../css/main.css"  />
+	<link rel="stylesheet" href="../../../css/admin.css">
+</head>
+<body>
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="basicInfo.html">管理中心</a>
+		<a href="">-&gt;</a>
+		<a href="basicInfo.html">会议管理</a>
+		<a href="">-&gt;</a>
+		<a href="schedule.html">论文列表</a>
+	</div>
+	<div class="con-box">
+    <div id="subMenu"></div>
+    <div id="contentBody" class="mops-table">
+    	<input type="hidden" id="scheduleId" name="id"/>
+        <input type="hidden" id="activityId" name="resourcesId"/>		 
+		<table id="papertable" data-toggle="table" data-url="../../../admin/activitypaper/list.do"
+			data-query-params="getparam">
+			<thead>
+		        <tr>
+		            <th data-field="title">标题</th>
+		            <th data-field="author">作者</th>
+		            <th data-field="keyword">关键字</th>
+		            <th>操作</th>
+		        </tr>
+		    </thead>
+  		</table>
+	</div>
+    </div>     
+</div>
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/bootstrap-table.min.js"></script>
+<script src="../../../js/bootstrap-table-zh-CN.min.js"></script> 
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/main.js"></script>
+
+<script>
+	$(function(){   
+		// 获取左侧菜单列表数据(参数为请求地址)
+		serialMenuAjax('admin/activity/menu.do','会议管理',sessionStorage.getItem('actId'), initPage);
+	    setSubMenu('会议日程');
+		$("#activityId").val(sessionStorage.getItem('actId'));   
+		 
+		 
+	});
+	
+	function getparam(){		 
+		return "activityId="+sessionStorage.getItem('actId')
+	}
+     
+
+    //初始化
+    function initPage(){
+    	 
+         
+    }
+
+    
+</script>
+</html>

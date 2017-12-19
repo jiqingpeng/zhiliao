@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta name="charset" content="UTF-8">
+<title>管理员配置</title>
+<link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="../../css/common/bootstrap.min.css"/>
+<link rel="stylesheet" href="../../css/common/bootstrap-table.min.css"/>
+<link href="../../css/style.css" rel="stylesheet" />
+<link href="../../css/main.css" rel="stylesheet" />
+
+<link href="../../css/super.css" rel="stylesheet"/>
+</head>
+<body>
+<script type="text/javascript" src="../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="adminEdit.html">管理员配置</a>
+	</div>
+	<div class="con-box">
+		<!-- 以下为每个页面自己编写的部分 -->
+		<div class="adminEdit"> <!-- 建议用功能名为类名 -->
+			<table id="adminTab" class="bootTable"></table>
+		</div>
+	</div>     
+</div> 
+
+
+<script type="text/javascript" src="../../js/common/footer.js"></script>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap-table.min.js"></script>
+<script src="../../js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../js/common/main.js"></script>
+<script type="text/javascript">
+$(function(){
+	// 获取左侧菜单列表数据(参数为请求地址)
+	initMenu('../../js/data/superMenu.json','管理员配置');
+	$("#submenumark").css('display','none');
+
+	var oTable = new TableInit();
+	    oTable.Init();
+});
+
+var TableInit = function () {
+    var oTableInit = new Object();
+    oTableInit.Init = function () {
+        $('#adminTab').bootstrapTable({
+        	url: '../../js/data/adminlist.json',
+            //method: 'get',                      //请求方式（*）
+            dataType: 'json',
+            dataLocale: 'zh-US',               //表格汉化
+            //toolbar: '#toolbar',                //工具按钮用哪个容器
+            striped: true,                      //是否显示行间隔色
+            cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+            cellStyle: true,
+            checkbox : true,
+            // showRefresh: true,                  //是否显示刷新按钮
+            //height: 560,                        //行高，如果没有设置height属性，表格自动根据记录条数决定表格高度
+            columns: [
+            {
+                align: 'center',
+                width: 50,
+                formatter: function(value,row,index){
+                	return index+1;
+                }
+            }, {
+                field: 'adminId',
+                title: 'adminId'
+            }, {
+                field: 'nick',
+                title: '姓名',
+                align: 'center',
+                sortable: true
+            }, {
+                field: 'phone',
+                title: '手机号',
+                align: 'center',
+                sortable: true	                
+            }, {
+                field: 'name',
+                title: '单位名称',
+                align: 'left'                
+            }, {
+                field: 'duty',
+                title: '职务职级',
+                align: 'center'                
+            }, {
+                field: 'address',
+                title: '工作地址',
+                align: 'left'                
+            }, {
+                field: 'email',
+                title: '邮箱',
+                align: 'left'                
+            }, {
+                title: '操作',
+                width: 150,
+                align: 'center',
+                formatter: function(value,row,index){
+                  return '<button type="button" class="btn btn-xs admindel">删除</button>'+
+                  	'<button type="button" class="btn btn-xs btn-warning adminadd">添加</button>';
+                },
+                events: {
+                        'click .admindel': function (e, value, row, index) {
+                            //删除操作
+                            $(this).parent().parent().remove();
+                        },
+                        'click .adminadd': function (e, value, row, index) {
+
+                        },
+                        'mouseover .admindel' :function(){
+                        	
+                        }
+                    }
+            }]
+        });
+        $('#adminTab').bootstrapTable('hideColumn', 'adminId');
+    };
+    return oTableInit;
+};
+
+</script>
+</html>
+

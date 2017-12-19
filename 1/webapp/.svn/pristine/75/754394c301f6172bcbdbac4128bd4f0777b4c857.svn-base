@@ -1,0 +1,309 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>群英汇-网站监控登录</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+    <link href="../../css/common/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/common/bootstrap-table.min.css" rel="stylesheet">
+    <link href="../../css/common/bootstrapValidator.min.css" rel="stylesheet"/>
+    <style type="text/css">
+        body, #root {
+            margin: auto;
+            width: 100%;
+            height: 100%;
+            min-width: 1280px;
+            background-color: #fff;
+            font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, SimSun, sans-serif;
+            font-size: 14px;
+            position: absolute;
+            display: block;
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            user-select: none;
+        }
+
+        a, a:hover {
+            text-decoration: none;
+        }
+
+        ul, li {
+            list-style: none;
+            margin: 0 auto;
+            display: block;
+        }
+
+        #head, #main, #foot {
+            width: 1280px;
+            margin: 0 auto;
+        }
+
+        #head {
+            height: 60px;
+            display: block;
+            overflow: hidden;
+            border-bottom: 1px solid #f60;
+            margin-bottom: 10px;
+        }
+
+        .logo {
+            padding: 10px 10px 10px 20px;
+        }
+
+        #main {
+            height: 600px;
+            display: block;
+            padding-top: 5px;
+        }
+
+        #foot {
+            padding: 15px 0;
+            margin-top: 10px;
+            border-top: 1px solid #f60;
+            color: #aaa;
+            text-align: center;
+            line-height: 1;
+            overflow: hidden;
+        }
+
+        .shadows {
+            background: -webkit-linear-gradient(left top, #fff, #f60); /* Safari 5.1 - 6.0 */
+            background: -o-linear-gradient(bottom right, #fff, #f60); /* Opera 11.1 - 12.0 */
+            background: -moz-linear-gradient(bottom right, #fff, #f60); /* Firefox 3.6 - 15 */
+            background: linear-gradient(to bottom right, #fff, #f60); /* 标准的语法 */
+            box-shadow: 3px 3px #b44f18;
+        }
+    </style>
+    <style type="text/css">
+        .l {
+            float: left;
+            position: relative;
+            display: block;
+        }
+
+        .main-div {
+            width: 50%;
+            height: 100%;
+        }
+
+        .main-login {
+            margin-left: 150px;
+        }
+
+        .main-login form {
+            margin-top: 100px;
+            margin-right: 40px;
+            height: 300px;
+            border: none;
+            padding: 0;
+        }
+
+        .main-login form ul {
+            width: 100%;
+            height: 100%;
+            margin: 0 auto;
+            padding: 0;
+
+        }
+
+        .main-login form ul li {
+            min-height: 46px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .user-div {
+            width: 70%;
+            height: 100%;
+            margin: 5px 0 0 80px;
+            display: inline-table;
+        }
+
+        .user-div div {
+            height: 100%;
+        }
+
+        .user-div-title {
+            text-align: center;
+            color: #666;
+            height: 41px;
+            line-height: 100%;
+        }
+
+        .user-div-title h4 {
+            font-weight: bold;
+        }
+
+        .user-div .input-group-addon, .input-group-addon input {
+            cursor: default !important;
+            background-color: #f60;
+            color: #fff;
+        }
+
+        .submit-div {
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .modal-content {
+            height: 100px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 100px;
+            font-size: 16px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+<div id="root">
+    <div id="head">
+        <div class="logo">
+            <a href="http://www.gconfs.com">
+                <img class="" src="../../img/logoandname.png" title="群英汇：一体化会议系统"/>
+            </a>
+            <span class="logo-title"></span>
+        </div>
+    </div>
+    <div id="main" class="jumbotron shadows">
+        <div class="l main-div"></div>
+        <div class="l main-div">
+            <div class="main-login">
+                <form class="well shadows" id="logintable">
+                    <ul>
+                        <li>
+                            <div class="user-div user-div-title"><span class=""><h4>群英汇-网站监控登录</h4></span></div>
+                        </li>
+                        <li>
+                            <div class="user-div ">
+                                <div class="form-group">
+                                    <label class="sr-only" for="user-name-lab"></label>
+                                    <div class="input-group shadows">
+                                        <div class="input-group-addon">用户名</div>
+                                        <input type="text" class="form-control" id="user-name-lab" name="name">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="user-div ">
+                                <div class="form-group">
+                                    <label class="sr-only" for="user-pwd-lab"></label>
+                                    <div class="input-group shadows">
+                                        <div class="input-group-addon ">密
+                                            <input style="background-color: transparent;border: none;width: 10px;"
+                                                   readonly="readonly" disabled="disabled">码
+                                        </div>
+                                        <input type="password" class="form-control" id="user-pwd-lab" name="pwd">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="user-div">
+                                <div class="submit-div">
+                                    <input type="button" onclick="userLogin();"
+                                           class="btn btn-primary btn-warning user-submit shadows"
+                                           value="登录"/>
+                                </div>
+                            </div>
+                        </li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="foot"><span>© 京备17018133</span></div>
+</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/bootstrap-table.min.js"></script>
+<script src="../../js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../js/bootstrapValidator.min.js"></script>
+<script src="../../js/jQuery.md5.js"></script>
+<script src="../../js/mng/mng.js"></script>
+<script type="text/javascript">
+    var bootValidator;
+
+    function userLogin() {
+        bootValidator = $("#logintable").data('bootstrapValidator');
+        bootValidator.validate();
+        if (bootValidator.isValid()) {
+            $('.submit-div .user-submit').attr('data-toggle', "modal");
+            $('.submit-div .user-submit').attr('data-target', ".bs-example-modal-sm");
+            var name = $('#user-name-lab').val();
+            var pwd = $('#user-pwd-lab').val();
+            pwd = $.md5(pwd);
+            $.myAjax({
+                url: basePath + "sys/monitor/login.do",
+                type: "POST",
+                data: {name: name, pwd: pwd},
+                dataType: "JSON",
+                success: function (result) {
+                    if (result.flag) {
+                        try {
+                            sessionStorage.setItem("nick", result.status.nick);
+                        } catch (Exception) {
+                            sessionStorage.setItem("nick", "");
+                        }
+                        $('.modal-content').html("登录成功！正在跳转。。。");
+                        setTimeout("loding()", 2000);
+                    } else {
+                        $('.modal-content').html(result.msg);
+                    }
+                },
+                error: function (result) {
+                    $('.modal-content').html(result.msg);
+                }
+            });
+        }
+    }
+
+    function loding() {
+        $('.user-submit').trigger("click");
+        location = '/page/mng/index.html';
+    }
+
+    $("#logintable").bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            name: {
+                validators: {
+                    notEmpty: {
+                        message: '用户名不能为空！'
+                    }
+                }
+            },
+            pwd: {
+                validators: {
+                    notEmpty: {
+                        message: '密码不能为空！'
+                    }
+                }
+            }
+        }
+    });
+    $(document).keypress(function (e) {
+        // 回车键事件
+        if (e.which == 13) {
+            userLogin();
+            return false;
+        }
+    });
+</script>
+</html>

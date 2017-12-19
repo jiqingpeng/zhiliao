@@ -1,0 +1,20 @@
+@charset "utf-8";
+body{font: 14px/20px "SimSun","宋体","Arial Narrow",HELVETICA;background:#f4f4f4}
+body,h1,h2,h3,h4,h5,p,dd,ul,ol,form,input,textarea,th,td,select,button { margin:0; padding:0; }
+h1,h2,h3,h4,h5,h6{ font-size:12px; font-weight:normal;}
+li{list-style: none;}
+a{ text-decoration:none;
+color:#000;
+}
+b,strong{font-weight:normal;}
+i,em{font-style:normal;}
+img{ vertical-align:top; border:none;}
+.clearfix:after{display:block;
+                content:'';
+				clear:both;
+}
+.clearfix{ zoom:1;}
+.fl{ float:left;
+	}
+.fr{ float:right;
+	}

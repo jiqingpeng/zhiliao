@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+	<title>organ</title>
+	<link rel="stylesheet" href="../../../css/app/base.css">
+	<link rel="stylesheet" href="../../../css/app/org.css">
+</head>
+<body>
+	<header class="head">
+		<div class="navImg">
+			<img src="../../../img/app/arrowLeft-icon.png">
+		</div>
+		<div class="navDetail">组织机构</div>
+	</header>
+	<section class="box">
+		<section class="org">
+			<!-- <article class="org-unit">
+				<header class="org-tit">
+					<span class="org-line"></span>
+					<span class="org-txt">主办单位</span>
+				</header>
+				<section class="org-list">
+					<div class="org-name">中国教育后勤协会</div>
+					<div class="org-name">中国教育后勤协会</div>
+					<div class="org-name">中国教育后勤协会</div>
+				</section>
+			</article> -->
+			
+		</section>
+		<section class="org-instruction">
+			说明：每场会议的组织机构的类型都不相同，如主办单位，协办单位，承办单位，指导单位规范行业秩序，健全各项管理自律性管理制度，制定并组织实施教育系统后勤管理服务行业准则，建立完善行业自律性管理约束机制，规范会员行为，协调会员关系，维护行业的和谐与稳定。
+		</section>
+	</section>
+</body>
+
+<script src="../../../js/zepto.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<!-- <script src="../../../js/app/mtTool.js"></script> -->
+<!-- <script src="../../../js/weixin/iscroll.js"></script> -->
+
+<script>
+	$(function(){
+		// var url = 'http://192.168.1.112:8080/index/activity.do';
+		var actId = Request('id');
+		var url = 'http://192.168.1.112:8080/mt/user/activity/get.do?id='+actId+'&type=base,org';
+
+		init(url);
+	})
+	function init(url){
+		
+		$.myAjax({
+			url : url ,
+			success : function(result){
+				console.log(result);
+				if(result.flag){
+					console.log(result);
+					var org = result.data.org;
+					//判断组织机构是否为空
+					if(org.length == 0){
+						myAlert("暂无组织机构内容");
+						return;
+					};
+					for(var i = 0; i < org.length; i ++){
+						var str=
+							'<article class="org-unit">'+
+								'<header class="org-tit">'+
+									'<span class="org-line"></span>'+
+									'<span class="org-txt">'+org[i].name+'</span>'+
+								'</header>'+
+								'<section class="org-list">'+
+									
+								'</section>'+
+							'</article>';
+							$('.org').append(str)
+							var orgList = org[i].value;
+							console.log(orgList);
+							for(var j = 0; j < orgList.length; j ++){
+								var str = '<div class="org-name">'+orgList[j]+'</div>';
+								$('.org-list').append(str);
+							};
+					};
+					
+				}else{
+					myAlert(result.msg, "slow");
+				}
+			},
+			error: function(){
+				$(".loading").remove();
+				myConfirm("请求失败!");
+			}
+		});
+	}
+</script>
+</html>
+

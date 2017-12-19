@@ -1,0 +1,683 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>活动酒店</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+    <link href="../../css/common/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/common/bootstrap-table.min.css" rel="stylesheet">
+    <link href="../../css/mng/font-awesome.min.css" rel="stylesheet">
+    <link href="../../css/mng/monitor-base.css" rel="stylesheet">
+    <style type="text/css">
+        #activity-hotel-div {
+            width: 100%;
+        }
+
+        #activity-hotel-div .pull-left, #activity-hotel-div .pull-right {
+            margin: 0 0 0 0 !important;
+        }
+
+        #activity-hotel-div-tool {
+            border-radius: 6px;
+            background-color: #ffffff;
+        }
+
+        #activity-hotel-div-tool .breadcrumb {
+            margin: 0 0 0 0;
+            padding: 0 0;
+        }
+
+        #activity-hotel-div-tool .input-group {
+            display: inline-flex;
+        }
+
+        #activity-hotel-div-tool .breadcrumb .form-group {
+            display: inline-block;
+            margin: 0 0 0 0;
+        }
+    </style>
+</head>
+<body>
+<div id="root">
+    <div id="head">
+        <div class="head-main">
+            <div class="logo">
+                <a href="http://www.gconfs.com">
+                    <img class="" src="../../img/logoandname.png" title="群英汇：一体化会议系统" alt=""/>
+                </a>
+                <span class="logo-title">网站统计</span>
+            </div>
+            <div class="head-tab ">
+                <a href="index.html" target="_top">主页</a>
+                <a href="activitymonitor.html" target="_top">活动概览</a>
+                <a href="activityadminmonitor.html" target="_top">活动管理员</a>
+                <a href="activityhotelmonitor.html" target="_top" class="active-head">活动酒店</a>
+                <!--<a href="index.html" target="_top">主页</a>-->
+            </div>
+            <div class="head-user">
+                <span>Hi </span>
+                <span id="user-name"></span>
+                <a onclick="loginout();">登出<span class="glyphicon glyphicon-log-out"></span></a>
+            </div>
+        </div>
+    </div>
+    <div id="menu">
+        <div class="menu-main">
+            <div class="menu-title">
+                <span class="hide-able">网站导航</span>
+                <a class="hideMenu">
+                    <span class="glyphicon glyphicon-menu-hamburger ">
+                        <span class="arrow-left"></span>
+                    </span>
+                </a>
+            </div>
+            <ul class="menu-content list-group">
+            </ul>
+        </div>
+    </div>
+    <div id="content">
+        <div id="content-body">
+            <div class="content-title">
+                <div class="title-bar">
+                    <div>
+                        <a id="url-tree" href="javaScript:void(0);" onclick="actList();">全部活动</a>
+                    </div>
+                </div>
+            </div>
+            <div class="content-main">
+                <div class="content-main-body">
+                    <div id="activity-div">
+                        <table id="activity-table">
+                        </table>
+                    </div>
+                    <div id="activity-hotel-div" style="display: none">
+                        <div id="activity-hotel-div-tool" class=" ">
+                            <div class="">
+                                <div class="breadcrumb ">
+                                    <!--<a href="javaScript:void(0);" onclick="actList();">&nbsp;&nbsp;返回活动列表&nbsp;|</a>-->
+                                    <li>&nbsp;&nbsp;地址：&nbsp;&nbsp;<span id="act_prov"></span></li>
+                                    <li><span id="act_city"></span></li>
+                                    <li><span id="act_section"></span></li>
+                                    <li>
+                                        <div class="form-group">
+                                            <select class="form-control">
+                                                <option value="3">点击查询推荐酒店</option>
+                                                <option value="1">1公里内</option>
+                                                <option value="2">2公里内</option>
+                                                <option value="3">3公里内</option>
+                                                <option value="5">5公里内</option>
+                                                <option value="7">7公里内</option>
+                                                <option value="10">10公里内</option>
+                                                <option value="15">15公里内</option>
+                                            </select>
+                                        </div>
+                                    </li>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <table id="act-ly-hotel-table">
+                            </table>
+                        </div>
+                        <div>
+                            <table id="ly-hotel-table">
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="foot"><span>© 京备17018133</span></div>
+    </div>
+</div>
+<div class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-warning active" role="progressbar" aria-valuenow="100"
+         aria-valuemin="0"
+         aria-valuemax="100" style="width: 100%">
+        <span class="sr-only">loding...</span>
+    </div>
+</div>
+<div id="model-div"></div>
+<div id="toast_" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
+     aria-labelledby="mySmallModalLabel" href="#toast_">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="mySmallModalLabel">群英汇</h4>
+            </div>
+            <div class="modal-body" id="toast_msg">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../../js/jquery.min.js" type="application/javascript"></script>
+<script src="../../js/mng/echarts.js" type="application/javascript"></script>
+<script src="../../js/bootstrap.min.js" type="application/javascript"></script>
+<script src="../../js/bootstrap-table.min.js" type="application/javascript"></script>
+<script src="../../js/bootstrap-table-zh-CN.min.js" type="application/javascript"></script>
+<script src="../../js/tableExport.js" type="application/javascript"></script>
+<!--<script src="../../js/bootstrap-table-export.js" type="application/javascript"></script>-->
+<script src="../../js/mng/mng.js" type="application/javascript"></script>
+<script src="../../js/mng/monitor-base.js" type="application/javascript"></script>
+<script type="text/javascript">
+    var actId;
+    var lastLyHotelData;
+    var lastActHotelList;
+    $(function () {
+        loding();
+        init();
+        tableInit();
+    });
+
+    function init() {
+        $.myAjax({
+            url: basePath + "sys/monitor/hotel/activity/list.do",
+            success: function (result) {
+                lodingDown();
+                if (result.flag) {
+                    $('#activity-table').bootstrapTable('load', result.data.activityHotelList);
+                } else {
+                    toastMsg(result.msg);
+                }
+            },
+            error: function (result) {
+                toastMsg(result.msg);
+            }
+        });
+    }
+
+    function actList() {
+        $('#activity-table').show();
+        $("#activity-hotel-div").hide();
+        $('#activity-div').show();
+        $("#url-tree").next().remove();
+    }
+
+    function tableInit() {
+        $('#activity-table').bootstrapTable({
+            dataType: 'json', //数据格式
+            dataLocale: 'zh-US', //表格汉化
+            toolbar: '#toolbar',
+            striped: true, //是否显示行间隔色
+            cache: false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+            pagination: true, //是否显示分页（*）
+            sortable: true, //是否启用排序
+            sortOrder: "desc", //排序方式
+            search: true,
+            showExport: true,
+            searchFormatter: false,
+            showRefresh: false, //是否显示刷新按钮
+            cellStyle: true,
+            checkbox: true,
+            sidePagination: "client", //分页方式：client客户端分页，server服务端分页（*）
+            pageNumber: 1, //初始化加载第一页，默认第一页
+            pageSize: 50, //每页的记录行数（*）
+            pageList: [50, 100, 200, 400, 1000], //可供选择的每页的行数（*）
+            formatLoadingMessage: function () {
+                return "请稍等，正在加载中。。。";
+            },
+            columns: [{
+                field: 'activity_id',
+                title: 'ID',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'activity_hotel_id',
+                title: '活动酒店id',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'stime',
+                title: '开始时间',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'name',
+                title: '活动名称',
+                valign: 'middle',
+                sortable: true,
+                align: 'center',
+                formatter: function (value, row, index) {
+                    return '<a href="javaScript:void(0);"' + ' title="点击进入活动酒店配置" onclick="actHotelEdit(\'' +
+                        row.activity_id + '\',\'' + row.name + '\',\'' + row.province + '\',\'' + row.city + '\',\'' +
+                        row.locations.substring(row.locations.indexOf(row.city + row.area)) +
+                        '\');">' + value + '</a>';
+                }
+            }, {
+                field: 'province',
+                title: '省',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'city',
+                title: '市',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'area',
+                title: '区',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'locations',
+                title: '位置',
+                valign: 'middle',
+                sortable: true,
+                align: 'center',
+                formatter: function (value, row, index) {
+                    return '<span ' + 'title="' + row.province + row.city + row.area + value + '" >' +
+                        row.province + row.city + row.area + value + '</span>';
+                }
+            }, {
+                field: 'res_id',
+                title: '酒店ID',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'distance',
+                title: '距离',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'res_name',
+                title: '酒店名称',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'prov_id',
+                title: '省id',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'prov_name',
+                title: '省',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'city_id',
+                title: '省id',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'city_name',
+                title: '市',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'section_id',
+                title: '区id',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'section_name',
+                title: '区id',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'location',
+                title: '地址',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'address',
+                title: '酒店地址',
+                valign: 'middle',
+                sortable: true,
+                align: 'center',
+                formatter: function (value, row, index) {
+                    return '<span ' + 'title="' + row.prov_name + row.city_name + row.section_name + row.location + value
+                        + '" >' + row.prov_name + row.city_name + row.section_name + row.location + value + '</span>';
+                }
+            }, {
+                field: 'res_phone',
+                title: '联系电话',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'short_intro',
+                title: '简介',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'res_grade_id',
+                title: '星级id',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'res_grade',
+                title: '星级',
+                valign: 'middle',
+                sortable: true,
+                align: 'center',
+                formatter: function (value, row, index) {
+                    return '<span ' + 'title="' + row.short_intro + '" >' + value + '</span>';
+                }
+            }, {
+                field: '',
+                title: '操作',
+                width: 86,
+                valign: 'middle',
+                align: 'center',
+                formatter: function (value, row, index) {
+                    return '<span class="glyphicon glyphicon-remove do-del" title="删除" aria-hidden="true"></span>';
+                },
+                events: {
+                    'click .do-del': function (e, value, row, index) {
+                        $.myAjax({
+                            url: basePath + "sys/monitor/hotel/activity/del.do",
+                            data: {"ids": row.activity_hotel_id},
+                            success: function (result) {
+                                if (result.flag) {
+                                    toastMsg(result.msg);
+                                    $('#activity-table').bootstrapTable('hideRow', {"index": index});
+                                } else {
+                                    toastMsg(result.msg);
+                                }
+                            },
+                            error: function () {
+                                toastMsg("请求失败!");
+                            }
+                        });
+                    }
+                }
+            }]
+        });
+        $('#activity-table').bootstrapTable('hideColumn', 'activity_id');
+        $('#activity-table').bootstrapTable('hideColumn', 'activity_hotel_id');
+        $('#activity-table').bootstrapTable('hideColumn', 'province');
+        $('#activity-table').bootstrapTable('hideColumn', 'city');
+        $('#activity-table').bootstrapTable('hideColumn', 'area');
+        $('#activity-table').bootstrapTable('hideColumn', 'res_id');
+        $('#activity-table').bootstrapTable('hideColumn', 'prov_id');
+        $('#activity-table').bootstrapTable('hideColumn', 'prov_name');
+        $('#activity-table').bootstrapTable('hideColumn', 'city_id');
+        $('#activity-table').bootstrapTable('hideColumn', 'city_name');
+        $('#activity-table').bootstrapTable('hideColumn', 'section_id');
+        $('#activity-table').bootstrapTable('hideColumn', 'section_name');
+        $('#activity-table').bootstrapTable('hideColumn', 'location');
+        $('#activity-table').bootstrapTable('hideColumn', 'short_intro');
+        $('#activity-table').bootstrapTable('hideColumn', 'res_grade_id');
+    }
+
+    function actHotelEdit(activityId, name, province, city, area) {
+        loding();
+        actId = activityId;
+        $('#activity-table').hide();
+        $("#activity-hotel-div").show();
+        $('#activity-div').hide();
+        $("#act_prov").html(province);
+        $("#act_city").html(city);
+        $("#act_section").html(area);
+        $("#url-tree").after("<a>&nbsp;&nbsp;/&nbsp;&nbsp;" + name + "&gt;&gt;已配置酒店列表</a>");
+        actHotelEditTable();
+        actHotelListData();
+    }
+
+    function actHotelListData() {
+        $.myAjax({
+            url: basePath + "sys/monitor/hotel/activity/list.do",
+            data: {"actId": actId},
+            success: function (result) {
+                lodingDown();
+                if (result.flag) {
+                    lastActHotelList = result.data.activityHotelList;
+                    $('#act-ly-hotel-table').bootstrapTable('load', result.data.activityHotelList);
+                    if (lastLyHotelData && lastLyHotelData.length >= 0) {
+                        $('#act-ly-hotel-table').bootstrapTable('append', lastLyHotelData);
+                    }
+                } else {
+                    toastMsg(result.msg);
+                }
+            },
+            error: function (result) {
+                lodingDown();
+                toastMsg(result.msg);
+            }
+        });
+    }
+
+    function actHotelEditTable() {
+        $('#act-ly-hotel-table').bootstrapTable({
+            dataType: 'json', //数据格式
+            dataLocale: 'zh-US', //表格汉化
+            toolbar: '#activity-hotel-div-tool',
+            striped: true, //是否显示行间隔色
+            cache: false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+            pagination: true, //是否显示分页（*）
+            sortable: true, //是否启用排序
+            sortOrder: "desc", //排序方式
+            search: true,
+            showExport: true,
+            searchFormatter: false,
+            showRefresh: false, //是否显示刷新按钮
+            cellStyle: true,
+            checkbox: true,
+            sidePagination: "client", //分页方式：client客户端分页，server服务端分页（*）
+            pageNumber: 1, //初始化加载第一页，默认第一页
+            pageSize: 100, //每页的记录行数（*）
+            pageList: [100, 200, 400, 1000], //可供选择的每页的行数（*）
+            formatLoadingMessage: function () {
+                return "请稍等，正在加载中。。。";
+            },
+            columns: [{
+                field: 'res_id',
+                title: '酒店ID',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'id',
+                title: '酒店ID',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'res_name',
+                title: '酒店名称',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'distance',
+                title: '距离',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'prov_name',
+                title: '省',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'city_name',
+                title: '市',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'section_name',
+                title: '区',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'location',
+                title: '地址',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'address',
+                title: '酒店地址',
+                valign: 'middle',
+                sortable: true,
+                align: 'center',
+                formatter: function (value, row, index) {
+                    return '<span ' + 'title="' + row.prov_name + row.city_name + row.section_name + row.location + value
+                        + '" >' + row.prov_name + row.city_name + row.section_name + row.location + value + '</span>';
+                }
+            }, {
+                field: 'res_phone',
+                title: '联系电话',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'short_intro',
+                title: '简介',
+                valign: 'middle',
+                sortable: true,
+                align: 'center',
+                formatter: function (value, row, index) {
+                    if (value && value.length > 40) {
+                        return '<span title="\'' + value + '\'" >' + value.substring(0, 40) + '...</span>';
+                    } else {
+                        return '<span title="\'' + value + '\'" >' + value + '</span>';
+                    }
+                }
+            }, {
+                field: 'res_grade',
+                title: '星级',
+                valign: 'middle',
+                sortable: true,
+                align: 'center',
+                formatter: function (value, row, index) {
+                    return '<span ' + 'title="' + row.short_intro + '" >' + value + '</span>';
+                }
+            }, {
+                field: 'is_new',
+                title: '待新增',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'edit',
+                title: '操作',
+                width: 86,
+                valign: 'middle',
+                align: 'center',
+                formatter: function (value, row, index) {
+                    if (row.is_new) {
+                        return '<span class="glyphicon glyphicon-ok do-add" onclick="actHotelEditOne(this,\'true\',\'' +
+                            row.id + '\')" title="新增" aria-hidden="true"></span>';
+                    } else {
+                        return '<span class="glyphicon glyphicon-remove do-del" onclick="actHotelEditOne(this,\'false\',\'' +
+                            row.activity_hotel_id + '\')" title="删除" aria-hidden="true"></span>';
+                    }
+                }
+            }]
+        });
+        $('#act-ly-hotel-table').bootstrapTable('hideColumn', 'res_id');
+        $('#act-ly-hotel-table').bootstrapTable('hideColumn', 'id');
+        $('#act-ly-hotel-table').bootstrapTable('hideColumn', 'prov_id');
+        $('#act-ly-hotel-table').bootstrapTable('hideColumn', 'prov_name');
+        $('#act-ly-hotel-table').bootstrapTable('hideColumn', 'city_id');
+        $('#act-ly-hotel-table').bootstrapTable('hideColumn', 'city_name');
+        $('#act-ly-hotel-table').bootstrapTable('hideColumn', 'section_id');
+        $('#act-ly-hotel-table').bootstrapTable('hideColumn', 'section_name');
+        $('#act-ly-hotel-table').bootstrapTable('hideColumn', 'location');
+        $('#act-ly-hotel-table').bootstrapTable('hideColumn', 'is_new');
+    }
+
+    function actHotelEditOne(_this, isNew, id) {
+        if (isNew === "true") {
+            $.myAjax({
+                url: basePath + "sys/monitor/hotel/activity/save.do",
+                data: {"actId": actId, "hotelId": id},
+                success: function (result) {
+                    if (result.flag) {
+                        toastMsg(result.msg);
+//                        var lastLyHotelDataNew = [];
+                        for (var i = 0; i < lastLyHotelData.length; i++) {
+                            var hotelData = lastLyHotelData[i];
+                            if (hotelData.id === id) {
+                                lastLyHotelData.splice(i, 1);
+                                break;
+//                            } else {
+//                                lastLyHotelDataNew.add(hotelData);
+                            }
+                        }
+//                        lastLyHotelData = lastLyHotelDataNew;
+                        actHotelListData();
+                    } else {
+                        toastMsg(result.msg);
+                    }
+                },
+                error: function () {
+                    toastMsg("请求失败!");
+                }
+            });
+        } else {
+            $.myAjax({
+                url: basePath + "sys/monitor/hotel/activity/del.do",
+                data: {"ids": id},
+                success: function (result) {
+                    if (result.flag) {
+                        toastMsg(result.msg);
+                        $(_this).addClass("glyphicon-ok");
+                        $(_this).addClass("do-add");
+                        $(_this).removeClass("glyphicon-remove");
+                        $(_this).removeClass("do-del");
+                        $(_this).attr("title", "新增");
+                        actHotelListData();
+                    } else {
+                        toastMsg(result.msg);
+                    }
+                },
+                error: function () {
+                    toastMsg("请求失败!");
+                }
+            });
+        }
+    }
+
+    $("#activity-hotel-div-tool .form-control").change(function () {
+        loding();
+        //lyHotelInitTable();
+        var distance = $("#activity-hotel-div-tool .form-control").val();
+        $.myAjax({
+            url: basePath + "sys/monitor/hotel/ly/list.do",
+            data: {"actId": actId, "distance": distance},
+            success: function (result) {
+                lodingDown();
+                if (result.flag) {
+                    lastLyHotelData = result.data.lyHolte;
+                    $('#act-ly-hotel-table').bootstrapTable('load', lastActHotelList);
+                    $('#act-ly-hotel-table').bootstrapTable('append', result.data.lyHolte);
+                } else {
+                    toastMsg(result.msg);
+                }
+            },
+            error: function (result) {
+                lodingDown();
+                toastMsg(result.msg);
+            }
+        });
+    });
+
+</script>
+</html>

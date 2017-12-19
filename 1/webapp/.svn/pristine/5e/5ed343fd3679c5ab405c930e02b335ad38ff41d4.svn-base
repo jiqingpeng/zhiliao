@@ -1,0 +1,144 @@
+.wrap {
+    width: 1000px;
+    margin: 0 auto;
+    font-size: 12px;
+    color:#333;
+}
+
+.wrap h2 {
+    height: 26px;
+    line-height: 26px;
+    font-size: 20px;
+    border-bottom: 1px solid #ccc
+}
+
+.wrap .active {
+    display: none
+}
+
+.wrap .listHead {
+    height: 48px;
+    line-height: 48px
+}
+
+.wrap .listHead li {
+    color: #999
+}
+
+.wrap .listHead .station {
+    margin-left: 146px
+}
+
+.wrap .listHead .price {
+    margin-left: 354px
+}
+
+.wrap .listHead .time {
+    margin-left: 60px
+}
+
+.wrap .listHead .message {
+    margin-left: 120px
+}
+
+.wrap .listHead .look {
+    margin-left: 70px
+}
+
+.wrap .listBody {
+    width: 100%
+}
+
+.wrap .listBody .listbox {
+    width: 100%;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0
+}
+
+.wrap .listBody .listbox .orderDetail {
+    margin-left: 20px;
+    padding: 10px 0;
+    // border: 1px solid red
+}
+.wrap .listBody .listbox .orderDetail .btn{
+	display: inline-block;
+	border:1px solid #f60;
+	width:60px;
+	height:24px;
+	line-height: 24px;
+	text-align: center;
+	background:#f60;
+	color:#fff;
+	border-radius:2px;
+	margin:0 5px;
+}	
+.wrap .listBody .listbox .orderDetail h4{
+	
+	margin:5px auto;
+}
+.wrap .listBody .listbox .orderDetail .passenger{
+    margin:5px auto;
+}
+.wrap .listBody .listbox .orderDetail .passenger .passName {
+    width:50px;
+}
+.wrap .listBody .listbox .orderDetail .passenger .passCode {
+    margin-left: 104px
+}
+
+.wrap .listBody .listbox .orderDetail .passenger .passSeat {
+    width:120px;
+    margin-left: 88px
+}
+
+.wrap .listBody .listbox .orderDetail .passenger .passTicket {
+    margin-left: 272px
+}
+.wrap .listBody .listbox .orderDetail .passenger .passTicket .num{
+    color:#f60;
+    font-size:14px;
+}
+.wrap .listBody .listbox .orderDetail .passenger .passState {
+    margin-left: 64px
+}
+
+// .wrap .listBody .listbox .orderDetail .person li {
+//     margin: 10px 0
+// }
+
+.wrap .listBody .tickImg {
+    width: 115px;
+    height: 86px;
+    margin-left: 20px
+}
+
+.wrap .listBody .station {
+    width: 200px;
+    margin-left: 10px
+}
+
+.wrap .listBody .price {
+    width: 90px;
+    margin-left: 200px;
+    font-size: 16px;
+    color: #f60;
+    font-weight: 700
+}
+
+.wrap .listBody .time {
+    width: 150px;
+    font-size: 14px;
+    margin-left:20px;
+}
+
+.wrap .listBody .message {
+    width:80px;
+    text-align: center;
+    margin-left: 6px;
+    // border:1px solid red;
+}
+
+.wrap .listBody .look {
+    margin-left: 52px
+}

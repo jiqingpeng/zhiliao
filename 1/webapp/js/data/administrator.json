@@ -1,0 +1,52 @@
+[
+	{
+		"icon" : "../../../img/icon/super/conflisticon.png",
+		"name" : "会议管理",
+		"link" : "basicInfo.html"
+	},
+	{
+		"icon" : "../../../img/icon/super/adminediticon.png",
+		"name" : "工作人员",
+		"link" : "functionary.html"
+	},
+	{
+		"icon" : "../../../img/icon/super/informationicon.png",
+		"name" : "会场管理",
+		"link" : "venueList.html"
+	},
+	{
+		"icon" : "../../../img/icon/super/societyhomeicon.png",
+		"name" : "嘉宾管理",
+		"link" : "guestsControl.html"
+	},
+	{
+		"icon" : "../../../img/icon/super/societyhomeicon.png",
+		"name" : "交通住宿",
+		"link" : "trafficInfo.html"
+	},
+	{
+		"icon" : "../../../img/icon/super/informationicon.png",
+		"name" : "用户管理 <span style='color: red;'>new</span>",
+		"link" : "userManage.html"
+	},
+	{
+		"icon" : "../../../img/icon/super/societyhomeicon.png",
+		"name" : "新闻公告",
+		"link" : "news.html"
+	},
+	{
+		"icon" : "../../../img/icon/super/societyhomeicon.png",
+		"name" : "论文管理",
+		"link" : "thesis.html"
+	},
+	{
+		"icon" : "../../../img/icon/super/societyhomeicon.png",
+		"name" : "配置管理",
+		"link" : "configuration.html"
+	},
+	{
+		"icon" : "../../../img/icon/super/societyhomeicon.png",
+		"name" : "会议指南",
+		"link" : "activityGuide.html"
+	}
+]

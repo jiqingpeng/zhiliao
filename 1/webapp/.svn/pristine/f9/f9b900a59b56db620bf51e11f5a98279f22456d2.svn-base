@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>活动简介</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="../../css/common/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../../css/weixin/style.css">
+	<style type="text/css">
+		.introduction{
+			width: 100%;
+			padding: 10px 22px;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+<body>
+	<iframe name="head" class="m-head" marginwidth="0" marginheight="0" width="100%" height="58" src="header.html" frameborder="0"></iframe>
+	<div class="introduction"></div>
+	<iframe name="footer" class="m-foot" marginwidth="0" marginheight="0" width="100%" height="30" src="footer.html" frameborder="0"></iframe> 
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script type="text/javascript">
+	// $.myAjax({
+	// 	url: basePath + "wx/islogin.do",
+	// 	dataType: "text",
+	// 	success: function(data){
+	// 		if(data == "notlogin"){
+	// 			var url = "index/activity.do";
+	// 			loginState(url, 1);
+	// 			console.log(222);
+	// 		}else{
+	// 			console.log(111)
+	// 			var url = "user/activity/get.do";
+	// 			loginState(url, 1);
+	// 		}
+	// 	}
+	// });
+	var actId = '';
+	$(function(){
+		var url = "index/activity.do";
+		init(url, 14);
+	})
+	
+	//初始化页面
+	function init(url, type){
+		loading();
+		//获取id值
+		actId = Request('actId');
+		$.myAjax({
+			url: basePath + url,
+			data: {id: actId, type: type},
+			success: function(result){
+				$(".loading").remove();
+				console.log(result);
+				if(result.flag){
+					//判断内容是否为空
+					if(result.data.introduction === null){
+						myAlert("暂无活动简介内容");
+						return;
+					}
+					$(".introduction").html(result.data.introduction);
+					if($('.introduction img').width() > $('.introduction').width()){ 
+						// 重新设置图片宽高
+						var w = $('.introduction img').width();
+						var h = $('.introduction img').height();
+						var sw = $('.introduction').width();
+						$('.introduction img').css({'width':'100%','height':scale(w,h,sw)});
+					}
+				}else{
+					myAlert(result.msg, "slow");
+				}
+			},
+			error: function(){
+				$(".loading").remove();
+				myConfirm("请求失败!");
+			}
+		});
+	}
+	// 图片等比缩放
+	function scale(width,height,swidth){
+		var h = (swidth/width * height);
+		return h + 'px';
+	}
+</script>
+</html>

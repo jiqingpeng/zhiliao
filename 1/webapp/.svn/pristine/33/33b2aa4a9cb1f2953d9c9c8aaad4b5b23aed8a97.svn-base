@@ -1,0 +1,320 @@
+
+body,ul,li {
+ padding:0;
+ margin:0;
+ border:0;
+}
+
+body {
+ font-size:14px;
+ -webkit-user-select:none;
+ -webkit-text-size-adjust:none;
+ font-family:helvetica;
+ background:#ccc;
+ position: relative;
+}
+#header .mess-foot{
+	// padding:6px;
+	margin-left:15px;
+	margin-bottom:5px;
+}
+#footer {
+     position:absolute;
+     bottom:0; left:0;
+     width:100%;
+     height:48px;
+     background-image:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #999), color-stop(0.02, #666), color-stop(1, #222));
+     background-image:-moz-linear-gradient(top, #999, #666 2%, #222);
+     background-image:-o-linear-gradient(top, #999, #666 2%, #222);
+     padding:0;
+     border-top:1px solid #444;
+}
+.head{
+	height: 48px;
+	line-height: 48px;
+	background-color: #f36a1c;
+	color: #fff;
+	/*padding:0 10px;*/
+	position: fixed;
+	top: 0;
+	z-index: 100;
+	width: 100%;
+	text-align: center;
+}
+.head div{
+	display: inline-block;
+}
+.navImg{
+	position: absolute;
+	top: 0px;
+	left: 12px;
+}
+#mescroll{
+	// position: fixed;
+	width:100%;
+	height:auto;
+	// top:130px;
+	// bottom:40px;
+}
+.head img{
+	width: 12px;
+	vertical-align: middle;
+}
+.header{
+	// position:fixed;
+	// box-sizing: border-box;
+	width:100%;
+	margin-top:48px;																															px;
+}
+/*
+* 会前讨论/现场讨论 选项页
+*/
+.interactionTil {
+	height: 60px;
+	width: 100%;
+	line-height: 60px;
+	margin-top: 28px;
+}
+.intIcon {
+	margin: 0 8px 0 20px;
+	height: 34px;
+	width: 34px;
+	border-radius: 17px;
+	background-color: #d04745;
+	line-height: 34px;
+	display: inline-block;
+}
+.intIcon img {
+	width: 23px;
+	height: 23px;
+	margin-left: 5px;
+}
+.intTitle {
+	font-size: 22px;
+	color: #000;
+	line-height: 60px;
+	display: inline-block;
+}
+.optCon {
+	width: 100%;
+	padding: 0 20px;
+	font-size: 0;
+}
+.circle, .huiqian, .huizhong {
+	display: inline-block;
+	height: 116px;
+	width: 50%;
+	margin: 0;
+	padding: 0;
+	border: none;
+	vertical-align: top;
+	/*width: 100px;
+	height: 100px;
+	background-color: #d94500;
+	margin: 20% auto;
+	border-radius: 50%;
+	line-height: 100px;
+	text-align: center;
+	color: #fff;
+	font-size: 16px;*/
+}
+.huiqian img, .huizhong img {
+	width: 100%;
+	height: 100%;
+}
+.circle {
+	background-color: #67cd67;
+	padding: 6px 10px;
+}
+.curCircle{
+	background-color: #ff9726;
+}
+.circle div {
+	width: 100%;
+	height: 100%;
+	border: 1px solid #eee;
+	text-align: center;
+	line-height: 100px;
+	color: #fff;
+	font-size: 22px;
+}
+
+/* 会前讨论/现场讨论 选项页-END */
+	
+#wrapper {
+	position:absolute;
+	left:0;
+	z-index:1;
+	bottom:1px;
+	width:100%;
+	overflow:auto;
+	top:110px; 
+	bottom:40px;
+}
+
+#scroller {
+	position:relative;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+	float:left;
+	width:100%;
+	padding:0;
+}
+
+#pullDown, #pullUp {
+    background:#fff;
+    height:40px;
+    line-height:40px;
+    padding:5px 10px;
+    border-bottom:1px solid #ccc;
+    font-weight:bold;
+    font-size:14px;
+    color:#ccc;
+    text-align: center;
+}
+.issueImg{
+	// width:45px;
+	height:24px;
+}
+.floor{
+	width:100%;
+	padding:10px;
+	margin-bottom:1px;
+	background:#fff;
+}
+.floor .talk-txt{
+	width:86%;
+}
+.floor .mess-foot{
+	margin-left:14%;
+}
+.mess-head .mess-tit{
+	width:86%;
+}
+
+.mess-head .mess-icon{
+	width:30px;
+	padding:0;
+}
+.headIcon {
+	width:32px;
+	height:32px;
+}
+.tit-cont{
+	font-size:16px;
+	color:#000;
+	margin:5px 0;
+	margin-left:15px;
+}
+.mess-foot .item{
+	padding:0;
+}
+.mess-foot .item .num{
+	font-size:12px;
+}
+.up-num,.comment-num{
+	display: inline-block;
+	font-size:18px;
+	color:#c9c7ca;
+	margin-top:-3px;
+}
+.mess-foot .item img{
+	display: inline-block;
+	width:22px;
+	height:18px;
+	vertical-align: top;
+}
+.mess-talk{
+	width:100%;
+	height:40px;
+	position:fixed;
+	left:0;
+	bottom:2px;
+	// display:none;
+	z-index:5;
+	background:#fff;
+}
+.mess-talk .mess-txt{
+	width:100%;
+}
+.mess-talk .mess-txt img{
+	width:30px;
+	height:30px;
+	padding:0;
+}
+.title-cont{
+	margin:10px 0;
+}
+.mess-talk .mess-txt input{
+	height:30px;
+	padding-left: 3px;
+	margin: 5px 0 0 8px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}
+.page-more{
+	color:#d64644;
+}
+.mess-time{
+	padding:0;
+	font-size:12px;
+}
+.mess-talk-group{
+	background:#eee;
+	border-radius: 4px;
+}
+.mess-talk-group .talk-box{
+	width:96%;
+	height:96%;
+	// padding:2%;
+}
+.mess-talk-group .page-more{
+	margin-left:2%;
+	margin-top:5px;
+}
+.mess-talk-group img{
+	width:30px;
+	height:30px;
+}
+.mess-talk-group .talk-txt{
+	width:86%;
+}
+.talk-btn{
+	display: inline-block;
+	width:64px;
+	height:30px;
+	line-height: 30px;
+	margin-top: 5px;
+	background:#d64644;
+	color:#fff;
+	text-align:center;
+	border-radius:2px;
+	float:right;
+}
+.talk-btn:hover{
+	color:#fff;
+}
+.mess-child .second{
+	display:none;
+}
+.child-box .mess-foot {
+	margin-left: 4px;
+	color: #999;
+}
+.mess-child .child-floorw{
+	width:98%;
+	padding:2%;
+}
+.mess-child .child-floorw .talk-txt{
+	width:100%;
+	word-wrap:break-word;
+}
+.reply{
+	display: inline-block;
+	width:32px;
+	height:20px;
+
+}
+.f60{
+	color:#d64644;
+	margin: 0 4px;
+}

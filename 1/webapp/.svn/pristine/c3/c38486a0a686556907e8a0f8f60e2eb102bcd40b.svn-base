@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+	<meta charset="UTF-8">
+	<title>酒店预订</title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+    <meta content="telephone=no" name="format-detection" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+    <link rel="stylesheet" href="css/bootstrap.css" />  
+    <link rel="stylesheet" href="../../css/common/bootstrap-datetimepicker.min.css" />
+	<link rel="stylesheet" href="css/style.css" />
+	<style>
+	</style>
+  </head>
+  <body>   
+    <iframe name="head" class="m-head" 
+		marginwidth="0" marginheight="0" width="100%" height="50" src="header.html" frameborder="0"></iframe> 
+     
+	<div class="order-box">
+		<div class="hd">	
+		  <form id="hotelform" class="form-horizontal">	   
+		   <div>
+			  <img id="mainimg" style="height:200px;width:100%"/>			   
+		   </div>
+		    <div>
+		    	<div class="cols-xs-5">
+		    		<input type="text"  class="form-control datetime"  style="background-color:#fff" 	
+		    			id="stime" placeholder="入住时间"  readonly data-date-format="yyyy-mm-dd">
+		    	</div>
+		    	<div class="cols-xs-5">
+		    		<input type="text"  class="form-control datetime"  style="background-color:#fff"
+		    			 id="etime" placeholder="离店时间"  readonly data-date-format="yyyy-mm-dd">
+		    	</div>	    	 
+		    </div>
+		    <div id="roomdiv">
+		    </div>	
+		 </form>	    
+		</div>		 
+		<div style="height:40px;">&nbsp;
+		</div>
+	</div> 
+	<iframe name="footer" class="m-foot" 
+		marginwidth="0" marginheight="0" width="100%" height="30" src="footer.html" frameborder="0"></iframe>
+  </body>   
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>  
+  <script type="text/javascript" src="js/pub.js?"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datetimepicker.min.js"></script> 
+  <script type="text/javascript" src="../../js/bootstrap-datetimepicker.zh-CN.js"></script>
+ 
+  <script>
+    var confid ;
+    var resId;
+	 
+    function UrlSearch() 
+	{
+	   var name,value; 
+	   var str=location.href; //取得整个地址栏
+	   var num=str.indexOf("?") 
+	   str=str.substr(num+1); //取得所有参数   stringvar.substr(start [, length ]
+
+	   var arr=str.split("&"); //各个参数放到数组里
+	   for(var i=0;i < arr.length;i++){ 
+		num=arr[i].indexOf("="); 
+		if(num>0){ 
+		 name=arr[i].substring(0,num);
+		 value=arr[i].substr(num+1);
+		 this[name]=value;
+		 } 
+		} 
+	}
+	 $(function(){
+		 var request=new UrlSearch(); //实例化
+		 confid = request.activityId;
+		 resId = request.resId;
+		 $('.datetime').datetimepicker({
+		        language:  'zh-CN',
+		        weekStart: 1,
+		        todayBtn:  1,
+				autoclose: 1,
+				todayHighlight: 1,
+				startView: 2,
+				minView: 2,
+				forceParse: 0
+		    });	
+		 $.post("../../tc/hotel/get.do",
+			{"id":resId,"stime":"2017-07-12","etime":"2017-07-12"},
+			function(result){
+				if(result.flag){
+					$("#mainimg").attr("src",result.data.hotel.lyHotelImgList[0].imageUrl);
+					
+				}
+				else
+					alert(result.msg);
+				
+			},'json');
+		 
+	 });	
+
+	  
+      
+	 
+	 
+	 
+  </script>
+</html>

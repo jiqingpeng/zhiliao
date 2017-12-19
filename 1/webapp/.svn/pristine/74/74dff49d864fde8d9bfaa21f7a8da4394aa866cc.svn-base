@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>我</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+	<link rel="stylesheet" type="text/css" href="../../../css/app/meetdetail.css">
+	<link rel="stylesheet" type="text/css" href="../../../css/app/style.css">
+	<style type="text/css">
+	.myhead {
+		height: 170px;
+		background-color: #fff;
+	}
+	.myBanner {
+		height: 146px;
+		width: 100%;
+	}
+	.myhead div {
+		text-align: center;
+		color: #909090;
+		position: relative;
+		top: -25px;
+	}
+	.my-name {
+		font-weight: bold;
+	}
+	</style>
+</head>
+<body>
+	<div>
+		<div class="myhead">
+			<img class="myBanner" src="../../../img/app/myBanner.png"/>
+			<div>
+				<span class="my-name">李文俊</span><br/>
+				<span class="my-phone">13241418629</span>
+			</div>
+		</div>
+		<div class="information white">
+			<a href="../index/login.html" class="inform comPadding">
+				<span><img src="../../../img/app/inform-icon.png"></span>
+				<span>个人信息</span>
+				<span class="arrows fr"><img src="../../../img/app/arrowRigth-icon.png"></span>
+			</a>
+			<a href="" class="discuss comPadding">
+				<span><img src="../../../img/app/discussion-icon.png"></span>
+				<span>发票信息</sarrowspan>
+				<span class="arrows fr"><img src="../../../img/app/arrowRigth-icon.png"></span>
+			</a>
+		</div>
+		<div>
+			<a href="" class="ticket white comPadding">
+				<span><img src="../../../img/app/ticket-icon.png"></span>
+				<span>密码修改</span>
+				<span class="arrows fr"><img src="../../../img/app/arrowRigth-icon.png"></span>
+			</a>
+		</div>
+		<div class="information white">
+			<a href="" class="discuss comPadding">
+				<span><img src="../../../img/app/discussion-icon.png"></span>
+				<span>使用帮助</sarrowspan>
+				<span class="arrows fr"><img src="../../../img/app/arrowRigth-icon.png"></span>
+			</a>
+			<a href="feedback.html" class="apply comPadding">
+				<span><img src="../../../img/app/apply-icon.png"></span>
+				<span>意见反馈</span>
+				<span class="arrows fr"><img src="../../../img/app/arrowRigth-icon.png"></span>
+			</a>
+		</div>
+	</div>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+	})
+</script>
+</html>

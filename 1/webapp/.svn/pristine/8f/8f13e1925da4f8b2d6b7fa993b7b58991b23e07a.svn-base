@@ -1,0 +1,133 @@
+[
+	{
+		"icon" : "../../img/icon/super/conflisticon_hi.png",
+		"name" : "会议列表",
+		"link" : "message.html",
+		"subMenu" : [
+					{
+						"icon" : "../../img/icon/super/adminediticon.png",
+						"name" : "短信",
+
+						"link" : ""
+					},
+					{
+						"icon" : "../../img/icon/super/conflisticon.png",
+						"name" : "邮件",
+						"link" : ""
+					},
+					{
+						"icon" : "../../img/icon/super/societyhomeicon.png",
+						"name" : "站内信",
+						"link" : ""
+					},
+					{
+						"icon" : "../../img/icon/super/informationicon.png",
+						"name" : "导入",
+						"link" : ""
+					},
+					{
+						"icon" : "../../img/icon/super/informationicon.png",
+						"name" : "导出",
+						"link" : ""
+					},
+					{
+						"icon" : "../../img/icon/super/informationicon.png",
+						"name" : "模板",
+						"link" : ""
+					},
+					{
+						"icon" : "../../img/icon/super/informationicon.png",
+						"name" : "邀请会员",
+						"link" : ""
+					},
+					{
+						"icon" : "../../img/icon/super/informationicon.png",
+						"name" : "批准会员",
+						"link" : ""
+					}
+				]
+	},
+	{
+		"icon" : "../../img/icon/super/adminediticon.png",
+		"name" : "工作人员",
+		"link" : "activitydetail.html",
+		"subMenu" : [
+					{
+						"icon" : "../../img/icon/super/adminediticon.png",
+						"name" : "基本信息",
+						"link" : "activitydetail.html"
+					}
+				]
+	},
+	{
+		"icon" : "../../img/icon/super/informationicon.png",
+		"name" : "注册活动",
+		"link" : "register.html",
+		"subMenu" : [
+					{
+						"icon" : "../../img/icon/super/adminediticon.png",
+						"name" : "基本信息",
+						"link" : "activitydetail.html"
+					}
+				]
+	},
+	{
+		"icon" : "../../img/icon/super/informationicon.png",
+		"name" : "用户管理<span style='color: red; margin-left:6px;'>new</span>",
+		"link" : "customer.html",
+		"subMenu" : [
+					{
+						"icon" : "../../img/icon/super/adminediticon.png",
+						"name" : "短信",					
+						"link" : ""
+					},
+					{
+						"icon" : "../../img/icon/super/conflisticon.png",
+						"name" : "邮件",
+						"link" : ""
+					},
+					{
+						"icon" : "../../img/icon/super/informationicon.png",
+						"name" : "站内信",
+						"link" : ""
+					},
+					{
+						"icon" : "../../img/icon/super/membericon.png",
+						"name" : "导入",
+						"link" : ""
+					},
+					{
+						"icon" : "../../img/icon/super/informationicon.png",
+						"name" : "导出",
+						"link" : ""
+					},
+					{
+						"icon" : "../../img/icon/super/societyhomeicon.png",
+						"name" : "模板",
+						"link" : ""
+					},
+					{
+						"icon" : "../../img/icon/super/safetyicon.png",
+						"name" : "邀请会员",
+						"link" : ""
+					},
+					{
+						"icon" : "../../img/icon/super/regmticon.png",
+						"name" : "批准会员",
+						"link" : ""
+					}
+				]
+	},
+	{
+		"icon" : "../../img/icon/super/societyhomeicon.png",
+		"name" : "密码修改",
+		"link" : "activitylist.html",
+		"subMenu" : [
+					{
+						"icon" : "../../img/icon/super/adminediticon.png",
+						"name" : "基本信息",
+						"link" : "activitydetail.html"
+					}
+				]
+	}
+]

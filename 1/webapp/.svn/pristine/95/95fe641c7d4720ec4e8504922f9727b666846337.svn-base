@@ -1,0 +1,177 @@
+.wrap {
+  width: 1160px;
+}
+.wrap .group {
+  width: 290px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+  // position:relative;
+}
+.wrap .group h4 {
+  height: 30px;
+  border-bottom: 1px solid #ccc;
+  font-size: 16px;
+  line-height: 30px;
+  font-weight: bold;
+}
+.wrap .group h4 #totalAttend{
+  margin-right:5px;
+}
+.wrap .group h4 img {
+  margin-top: 10px;
+  margin-left: 5px;
+}
+.wrap .group .item{
+  margin-left:5px;
+}
+.wrap .group .orginfo{
+  min-height: 80px;
+}
+.wrap .group .item div {
+  margin: 5px 0;
+  margin-left: 5px;
+}
+.wrap .group .item .news{
+  height:110px;
+}
+.wrap .group .item div .bold{
+  // color:#a1a1a1;
+}
+.wrap .wrap-l {
+  width: 290px;
+}
+.wrap .wrap-l .posBox{
+  position:relative;
+}
+.wrap .wrap-l .posBox{
+  position:relative;
+}
+.wrap .wrap-l .mess_issue{
+  min-height:90px;
+  // height:90px;
+}
+.wrap .wrap-l .mess_issue2{
+  height:97px;
+  // border:1px solid #ccc;
+  // margin-top:5px;
+  display: none;
+}
+.wrap .group .item div p {
+  margin-top: 10px;
+}
+.wrap .group .item div img {
+  margin-left: 48px;
+}
+.wrap .group .item div .sign {
+  width: 86px;
+  height: 24px;
+  line-height: 24px;
+  padding: 6px;
+  margin: 0 auto;
+  margin-top: 30px;
+  background: #fe6600;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+}
+.wrap .group .item div .sign:hover{
+  background: #f0ad4e;
+}
+.wrap .group .item div .sign a {
+  color: #fff;
+}
+.wrap .group .item .h60 {
+  height: 114px;
+}
+.wrap .contact {
+  height: 375px;
+  border: 1px solid #ccc;
+}
+.wrap .contact .item {
+  margin-left: 22px;
+}
+.wrap .contact .item div {
+  font-weight: 700;
+}
+.wrap .contact .item .tit {
+  margin: 20px 0;
+}
+.wrap .contact ul {
+  margin-left: 5px;
+}
+.wrap .contact ul li {
+  margin-top: 10px;
+}
+.wrap .contact .code {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  margin-top: 30px;
+  margin-left: 20px;
+}
+
+.wrap .wrap-c {
+  width: 578px;
+  margin-top:5px;
+}
+.wrap .wrap-c .bann {
+  display: block;
+  margin: 0 auto;
+  width:560px;
+  height:280px;
+}
+.wrap .wrap-c h4 {
+  height: 30px;
+  margin: 10px 5px;
+  font-size: 16px;
+  line-height: 30px;
+  font-weight: bold;
+}
+.wrap .wrap-c h4 img {
+  margin-top: 10px;
+}
+.wrap .wrap-c .message {
+  margin: 0 10px;
+  margin-top: 26px;
+}
+.wrap .wrap-c .message p {
+  text-indent: 2em;
+  margin-top: 10px;
+}
+.wrap .wrap-r {
+  width: 290px;
+}
+.person {
+  width: 1160px;
+  margin-top: 5px;
+}
+.person h4 {
+  width: 1155px;
+  height: 30px;
+  line-height: 30px;
+  border: 1px solid #ccc;
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 5px;
+}
+.person div {
+  width: 100%;
+  height: 50px;
+  border: 1px solid #ccc;
+}
+/*轮播*/
+.bann{width: 560px;height: 280px;border: 2px solid #ccc;margin: 100px auto;position: relative;overflow: hidden;}
+.img{position: absolute;top: 0;left: 0}
+.img li{float: left;}
+.img li img{
+  width: 560px;
+  height: 280px;
+}
+.num{position: absolute;bottom: 10px;width: 100%;text-align: center;font-size: 0;}
+.num li{width: 10px;height: 10px;background:rgba(0,0,0,0.5);display: block;border-radius: 100%;display: inline-block;margin: 0 5px;cursor: pointer;}
+.btn{display: none;}
+.btn span{display: block;width: 50px;height: 100px;background: rgba(0,0,0,0.6);color: #fff;font-size: 40px;line-height: 100px;text-align: center;cursor:pointer;}
+.btn .prev{position: absolute;left: 0;top: 50%;margin-top: -50px;}
+.btn .next{position: absolute;right: 0;top: 50%;margin-top: -50px;}
+.num .active{background-color: #fe6600;}
+/*轮播end*/

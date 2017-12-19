@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>订单列表</title>
+	<link rel="stylesheet" href="../../css/index/base.css">
+	<link rel="stylesheet" href="../../css/index/trainorderList.css">
+	<link rel="stylesheet" href="../../css/index/public.css">
+</head>
+<body>
+	<!-- <input type="button" class="btn" value="aa"> -->
+	<div class="head">
+		<div class="clearfix hnav">
+			<ul class="fl">
+				<li class="fl"><a href="index.html">首页</a></li>
+				<!-- <li class="fl"><a href="detail.html">解决方案</a></li>
+				<li class="fl"><a href="second.html">合作单位</a></li>
+				<li class="fl"><a href="cation.html">关于我们</a></li> -->
+			</ul>
+			<ul class="fr">
+				<li class="fl"><a id="user_center" href="../user/activityList.html"></a></li>
+				<li class="fl" id="user_name"></li>
+				<li class="fl"><a id="login_out" href="javascript:;"></a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="wrap">
+		<h2>全部订单</h2>
+		<ul class="clearfix listHead">
+			<li class="fl station">产品信息</li>
+			<li class="fl price">订单金额</li>
+			<li class="fl time">起始时间</li>
+			<li class="fl message">订单状态</li>
+			<li class="fl look">订单操作</li>
+		</ul>
+		<ul class="clearfix listBody">
+			<div class="listboxModel" style="display:none;">
+				<li class="listbox">
+					<input type="hidden" class="orderId">
+					<div class="orderList clearfix">
+						<div class="fl tickImg">
+							<img src="../../img/index/img_trainticket.jpg" alt="">
+						</div>
+						<div class="fl station">
+						<p>
+							<span class="trainNo"></span>
+							<span class="fromStation"></span>
+							<span>→</span>
+							<span class="toStation"></span>
+						</p>
+						<p class="outOrderNo"></p>
+						</div>
+						<div class="fl price"></div>
+						<div class="fl time">
+							<p class="departureTime"></p>
+							<p class="arrivalTime"></p>
+						</div>
+						<div class="fl message"></div>
+						<div class="fl look">
+							<a class="lookOrder" href="javascript:;">查看订单</a>
+						</div>
+					</div>
+					<div class="orderDetail active">
+						<h3>订单详情</h3>
+						<div class="passengerMessage">
+							<h4>乘客信息</h4>
+							<ul class="clearfix passenger">
+								<input type="hidden" class="passId">
+								<li class="fl passName">张玉龙</li>
+								<!-- <li class="fl passCode">身份证号</li> -->
+								<li class="fl passSeat">硬座</li>
+								<li class="fl passTicket">
+									票价:<span class="num">￥12.5</span>
+								</li>
+								
+								<li class="fr">
+									<a class="cancelTicket btn" href="javascript:;">退票
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="tickectMessage">
+							<h4>取票信息</h4>
+							<ul class="person">
+								<li class="personName">联系人：张玉龙</li>
+								<!-- <li class="cellPhone">联系电话：18201571705</li> -->
+							</ul>
+						</div>	
+						<ul class="clearfix orderOperation">
+							<li class="fr"><a class="delOrder btn" href="javascript:;">删除订单</a></li>
+							<li class="fr"><a class="cancelOrder btn" href="javascript:;">取消订单</a></li>
+							<li class="fr"><a class="payOrder btn" href="javascript:;">支付订单</a></li>
+						</ul>
+					</div>
+				</li>
+			</div>
+			
+			<!-- <li class="fl">
+				<div class="fl tickImg">
+					<img src="../../img/index/img_trainticket.jpg" alt="">
+				</div>
+				<div class="fl station">
+					<p>2603北京->张家口南</p>
+					<p>订单号：135852</p>
+				</div>
+				<div class="fl price">￥35.5</div>
+				<div class="fl time">
+					<p>20170505 00:08:05</p>
+					<p>20170505 00:08:05</p>
+				</div>
+				<div class="fl message">
+					退票完成(有退款)
+				</div>
+				<div class="fl look">
+					<a href="javascript:;">查看订单</a>
+				</div>
+			</li>
+			<li class="fl">
+				<div class="fl tickImg">
+					<img src="../../img/index/img_trainticket.jpg" alt="">
+				</div>
+				<div class="fl station">
+					<p>2603北京->张家口南</p>
+					<p>订单号：135852</p>
+				</div>
+				<div class="fl price">￥35.5</div>
+				<div class="fl time">
+					<p>20170505 00:08:05</p>
+					<p>20170505 00:08:05</p>
+				</div>
+				<div class="fl message">
+					退票完成(有退款)
+				</div>
+				<div class="fl look">
+					<a href="javascript:;">查看订单</a>
+				</div>
+			</li>
+			<li class="fl">
+				<div class="fl tickImg">
+					<img src="../../img/index/img_trainticket.jpg" alt="">
+				</div>
+				<div class="fl station">
+					<p>2603北京->张家口南</p>
+					<p>订单号：135852</p>
+				</div>
+				<div class="fl price">￥35.5</div>
+				<div class="fl time">
+					<p>20170505 00:08:05</p>
+					<p>20170505 00:08:05</p>
+				</div>
+				<div class="fl message">
+					退票完成(有退款)
+				</div>
+				<div class="fl look">
+					<a href="javascript:;">查看订单</a>
+				</div>
+			</li>
+			<li class="fl">
+				<div class="fl tickImg">
+					<img src="../../img/index/img_trainticket.jpg" alt="">
+				</div>
+				<div class="fl station">
+					<p>2603北京->张家口南</p>
+					<p>订单号：135852</p>
+				</div>
+				<div class="fl price">￥35.5</div>
+				<div class="fl time">
+					<p>20170505 00:08:05</p>
+					<p>20170505 00:08:05</p>
+				</div>
+				<div class="fl message">
+					退票完成(有退款)
+				</div>
+				<div class="fl look">
+					<a href="javascript:;">查看订单</a>
+				</div>
+			</li>
+			<li class="fl">
+				<div class="fl tickImg">
+					<img src="../../img/index/img_trainticket.jpg" alt="">
+				</div>
+				<div class="fl station">
+					<p>2603北京->张家口南</p>
+					<p>订单号：135852</p>
+				</div>
+				<div class="fl price">￥35.5</div>
+				<div class="fl time">
+					<p>20170505 00:08:05</p>
+					<p>20170505 00:08:05</p>
+				</div>
+				<div class="fl message">
+					退票完成(有退款)
+				</div>
+				<div class="fl look">
+					<a href="javascript:;">查看订单</a>
+				</div>
+			</li>
+			<li class="fl">
+				<div class="fl tickImg">
+					<img src="../../img/index/img_trainticket.jpg" alt="">
+				</div>
+				<div class="fl station">
+					<p>2603北京->张家口南</p>
+					<p>订单号：135852</p>
+				</div>
+				<div class="fl price">￥35.5</div>
+				<div class="fl time">
+					<p>20170505 00:08:05</p>
+					<p>20170505 00:08:05</p>
+				</div>
+				<div class="fl message">
+					退票完成(有退款)
+				</div>
+				<div class="fl look">
+					<a href="javascript:;">查看订单</a>
+				</div>
+			</li> -->
+		</ul>
+	</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script>
+	$(function(){
+		function init(){
+			var url=basePath+'user/trainorder/list.do';
+			$.myAjax({
+				url: url,
+				type: 'GET',
+				// data:{id:'15784303f9f84c5d89400e35713e996a'},
+				success: function(result) {
+					console.log(result)
+					if (result.flag) {
+						if (result.status.nick) {
+							$('#user_name').html(result.status.nick);
+							$('#user_center').html('用户中心');
+							$('#login_out').html('注销');
+							//遍历列表
+							var list=result.data.orderList;
+							for(var i=0;i<list.length;i++){
+								$('.listboxModel').before($('.listboxModel').html());
+								//订单id
+								$('.listboxModel').prev().find('.orderId').val(list[i].id);
+								//车次
+								$('.listboxModel').prev().find('.trainNo').html(list[i].trainNo);
+								//出发车站
+								$('.listboxModel').prev().find('.fromStation').html(list[i].fromStation);
+								//到达车站
+								$('.listboxModel').prev().find('.toStation').html(list[i].toStation);
+								//出发时间
+								$('.listboxModel').prev().find('.departureTime').html(list[i].departureTime);
+								//到达时间
+								$('.listboxModel').prev().find('.arrivalTime').html(list[i].arrivalTime);
+								//订单号
+								$('.listboxModel').prev().find('.outOrderNo').html(list[i].outOrderNo);
+								//订单金额
+								$('.listboxModel').prev().find('.price').html('￥'+list[i].orderPrice);
+								//状态
+								$('.listboxModel').prev().find('.message').html(list[i].orderStateValue);
+								//联系人
+								$('.listboxModel').prev().find('.personName').html('联系人:'+list[i].person);
+								//联系电话
+								$('.listboxModel').prev().find('.cellPhone').html('联系电话:'+list[i].cellphone);
+								var detailList=list[i].lyTrainPassengerList;
+								for(var j=0;j<detailList.length;j++){
+									//姓名
+									$('.listboxModel').prev().find('.passName').html(detailList[j].passengerName);
+									//证件
+									$('.listboxModel').prev().find('.passCode').html('身份证号:'+detailList[j].idCard);
+									//座位
+									$('.listboxModel').prev().find('.passSeat').html(detailList[j].seatClassName+detailList[j].seatNo);
+									//票价
+									$('.listboxModel').prev().find('.passTicket').html('票价:<span class="num">￥'+detailList[j].ticketPrice+'</span>');
+									//乘客id
+									$('.listboxModel').prev().find('.passId').val(detailList[j].id);
+								};
+							};
+						};
+					} else {
+						myAlert(result.msg);
+					}
+				},
+				error: function() {
+					myAlert('请求失败');
+				}
+			});
+		};
+		init();
+		//查看订单
+		function orderTogg(){
+			$(document).on('click','.lookOrder',function(){
+				$(this).parent().parent().next().toggleClass('active');
+			});
+		};
+		orderTogg();
+		//删除订单
+		function delOrder(){
+			$(document).on('click','.delOrder',function(){
+				// console.log(1)
+				var url=basePath+'user/trainorder/del.do';
+				var id=$(this).parents('.orderDetail').prev().prev().val();
+				$.myAjax({
+					url: url,
+					type: 'GET',
+					data:{id:id},
+					success: function(result) {
+						if (result.flag) {
+							console.log(result)
+							myAlert(result.msg);
+							$('.listboxModel').siblings().remove();
+							init();
+						} else {
+							myAlert(result.msg);
+						};
+					},
+					error: function() {
+						myAlert('请求失败');
+					}
+				});
+			});
+		};
+		delOrder();
+		//取消订单
+		function cancelOrder(){
+			$(document).on('click','.cancelOrder',function(){
+				var url=basePath+'tc/train/cancelorder.do';
+				var id=$(this).parents('.orderDetail').prev().prev().val();
+				console.log(id)
+				$.myAjax({
+					url: url,
+					type: 'GET',
+					data:{id:id},
+					success: function(result) {
+						if (result.flag) {
+							myAlert(result.msg);
+							$('.listboxModel').siblings().remove();
+							init();
+						} else {
+							myAlert(result.msg);
+						};
+					},
+					error: function() {
+						myAlert('请求失败');
+					}
+				});
+			});
+		};
+		cancelOrder();
+		//退票
+		function cancelTicket(){
+			$(document).on('click','.cancelTicket',function(){
+				var url=basePath+'tc/train/refundorder.do';
+				var id=$(this).parents('.orderDetail').prev().prev().val();
+				var passId=$(this).parents('.passenger').find('.passId').val();
+				// console.log(passId)
+				$.myAjax({
+					url: url,
+					type: 'GET',
+					data:{id:id,passengerId:passId},
+					success: function(result) {
+						if (result.flag) {
+							console.log(result);
+							myAlert(result.msg);
+						} else {
+							myAlert(result.msg);
+						};
+					},
+					error: function() {
+						myAlert('请求失败');
+					}
+				});
+			});
+		};
+		cancelTicket();
+		//支付订单
+		function payOrder(){
+			$(document).on('click','.payOrder',function(){
+				var url=basePath+'tc/train/payurl.do';
+				var id=$(this).parents('.orderDetail').prev().prev().val();
+				$.myAjax({
+					url: url,
+					type: 'GET',
+					data:{id:id},
+					success: function(result) {
+						if (result.flag) {
+							console.log(result);
+							window.location.href=result.url;
+						} else {
+							myAlert(result.msg);
+						};
+					},
+					error: function() {
+						myAlert('请求失败');
+					}
+				});
+			});
+		};
+		payOrder();
+		function show(){
+			$(document).on('click','.btn',function(){
+				var url=basePath+'tc/train/orderdetail.do';
+				var id='40ee143ce5c146c3b864a01e83dd6903';
+				$.myAjax({
+					url: url,
+					type: 'GET',
+					data:{id:id},
+					success: function(result) {
+						if (result.flag) {
+							console.log(result);
+
+						} else {
+							myAlert(result.msg);
+							console.log(result);
+						};
+					},
+					error: function() {
+						myAlert('请求失败');
+					}
+				});
+			});
+		};
+		// show();
+	})
+</script>
+</html>

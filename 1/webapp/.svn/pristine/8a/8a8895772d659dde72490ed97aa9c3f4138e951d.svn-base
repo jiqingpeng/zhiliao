@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>接送车辆配置</title>
+<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="../../../css/common/bootstrap.min.css">
+<link rel="stylesheet" href="../../../css/common/bootstrap-table.min.css">
+<link href="../../../css/style.css" rel="stylesheet" />
+<link href="../../../css/main.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../../css/admin.css">
+<!-- 引入项目中每个模块的独立样式 : xxx.css -->
+</head>
+<body>
+<!-- 引入页头 -->
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="trafficInfo.html">交通住宿</a>
+		<a href="">-&gt;</a>
+		<a href="vehicleAllocation.html">接送车辆配置</a>
+	</div>
+	<div class="con-box">
+		<!-- 以下为每个页面自己编写的部分 -->
+		<div class="modification none">
+			<div class="modificationTitle">添加/编辑车辆</div>
+			<form class="tabaddForm form-horizontal" id="tabaddForm">
+				<input type="hidden" name="id" id="id">
+				<input type="hidden" name="activityId" id="activityId">
+				<div class="form-group">
+				    <label for="" class="col-sm-2 control-label"><span class="redStar">*</span>&nbsp;驾驶人姓名</label>
+				    <div class="col-sm-7">
+				      <input type="text" name="name" maxlength="32" class="form-control name" placeholder="请输入驾驶人姓名">
+				    </div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><span class="redStar">*</span>&nbsp;驾驶人性别</label>
+					<div class="col-sm-7">
+						<input type="text" name="gender" maxlength="2" class="form-control gender" placeholder="请输入驾驶人性别">
+					</div>
+				</div>
+				<div class="form-group">
+				    <label for="" class="col-sm-2 control-label">驾驶人电话</label>
+				    <div class="col-sm-7">
+				      <input type="text" name="phone" maxlength="16" class="form-control phone" placeholder="请驾驶人电话">
+				    </div>
+				</div>	
+				<div class="form-group">
+				    <label for="" class="col-sm-2 control-label"><span class="redStar">*</span>&nbsp;驾驶人手机</label>
+				    <div class="col-sm-7">
+				      <input type="text" name="mobile" maxlength="32" class="form-control mobile" placeholder="请驾驶人手机">
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="" class="col-sm-2 control-label"><span class="redStar">*</span>&nbsp;驾驶人单位</label>
+				    <div class="col-sm-7">
+				      <input type="text" name="unit" maxlength="32" class="form-control unit" placeholder="请驾驶人单位">
+				    </div>
+				</div>	
+				<div class="form-group">
+				    <label for="" class="col-sm-2 control-label"><span class="redStar">*</span>&nbsp;车牌号</label>
+				    <div class="col-sm-7">
+				      <input type="text" name="plateNumber" maxlength="16" class="form-control plateNumber" placeholder="请车牌号">
+				    </div>
+				</div>							
+				<div class="btncon">
+					<button type="button" class="btn btn-default btn-warning functionarySave">保&nbsp;存</button>
+					<button type="button" class="btn btn-default functionaryCancel">取&nbsp;消</button>
+			    </div>
+			</form>
+		</div>
+
+
+		<div id="toolbar">
+            <div class="btn-group">
+                <button id="btn_add" type="button" class="btn btn-sm btn-default">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+                </button>
+            </div>	
+        </div>
+		<table id="texttable">
+  		</table>
+	</div>     
+</div> 
+
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/bootstrap-table.min.js"></script>
+<script src="../../../js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../../js/bootstrapValidator.min.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/main.js"></script>
+<script type="text/javascript">
+
+	$(function(){	
+		// 获取左侧菜单列表数据(参数为请求地址)
+		initMenu('../../../js/data/administrator.json','交通住宿');
+		
+		//初始化页面
+		initPage()
+
+	    //新增
+	    $("#btn_add").on("click", function(){
+			showTableForm();
+		});
+
+	    //取消
+	    $(".functionaryCancel").click(function(){
+	    	$("#tabaddForm input").val('');
+	    	$(".modification").hide(1000);
+	    	$('#tabaddForm').data('bootstrapValidator').resetForm(true);
+	    	initPage();
+		});	
+
+		//保存
+	    $('.functionarySave').on('click',function(){
+			// $("#activityId").val(sessionStorage.getItem('actId'));
+	    	var bootValidator = $(".tabaddForm").data('bootstrapValidator');
+        	bootValidator.validate();
+        	console.log($("#tabaddForm").serialize());
+        	if(bootValidator.isValid()){
+		        $.ajax({
+		                url: basePath + "admin/activityvehicle/save.do",
+		                data:$("#tabaddForm").serialize(),
+		                type: 'POST',
+		                dataType: 'json',
+		                xhrFields: {
+		                    withCredentials: true
+		                },
+		                crossDomain: true,
+		                success:function(result){
+		                    console.log(result);
+		                    if(result.flag){
+		                       	myAlert(result.msg);
+		                        $('#tabaddForm').data('bootstrapValidator').resetForm(true);
+		                        $(".modification").hide(1000);
+		                        setTimeout(function(){
+	                 				 location.reload();  
+	              				},1200);
+		                    }else{
+		                        myConfirm(result.msg);
+		                  	}
+		                },
+			            error:function(){
+			                myAlert("请求失败!", "slow");
+			            }
+		        }); 
+	        }       	
+	    });
+	});
+    
+    
+ 	
+ 	//初始化页面
+	function initPage(){	
+		$("#activityId").val(sessionStorage.getItem('actId'));
+        $.ajax({
+	        url: basePath + "admin/activityvehicle/list.do",
+	        type: "POST",
+	        data: {id: $("#activityId").val()},
+	        dataType: "json",
+	        xhrFields: {
+	            withCredentials: true
+	        },
+	        crossDomain: true,
+	        success: function(result){
+		            //console.log(result);
+		            if(result.flag){
+		                var data = result.data;
+            		}else{
+            			initTable(data);
+            		}
+            		initTable(data);
+	        },
+	        error: function(){
+	            myAlert("请求失败!", "slow");
+	            initTable();
+	        }
+        })
+    };
+	
+
+	//初始化table
+    function initTable(data){
+		$('#texttable').bootstrapTable({
+	            data: data,
+	            dataLocale: 'zh-CN',               //表格汉化
+	            toolbar: '#toolbar',                //工具按钮用哪个容器
+	            striped: true,                      //是否显示行间隔色
+	            cache: false,                       
+	            pagination: true,                   //是否显示分页（*）
+	            sortable: false,                     //是否启用排序
+	            sortOrder: "asc",                   //排序方式
+	            sidePagination: "client",           
+	            strictSearch: false,
+	            pageNumber:1,                       //初始化加载第一页，默认第一页
+	            pageSize: 10, 
+	            search: true,                       
+	            showRefresh: true,                  //是否显示刷新按钮
+	            columns: [{
+		            align: 'center',
+		            width: 50,
+		            formatter: function(value,row,index){
+		                return index+1;
+		            }
+        		},
+	            {
+	                field: 'id',
+	                title: '车辆管理id',
+	            },{
+	                field: 'name',
+	                title: '驾驶人姓名',
+	                align: 'center'
+	            },
+	            {
+	                field: 'gender',
+	                title: '驾驶人性别',
+	                align: 'center'
+	            },
+	            {
+	                field: 'phone',
+	                title: '驾驶人电话',
+	                align: 'center'
+	            }, {
+	                field: 'mobile',
+	                title: '驾驶人手机',
+	                align: 'center'
+	            }, {
+	                field: 'unit',
+	                title: '驾驶人单位',
+	                align: 'center'
+	            },{
+	                field: 'plateNumber',
+	                title: '车牌号',
+	                align: 'center'
+	            },
+	            {
+                    field: 'option',
+                    title: '操作',
+                    width: 86,
+                    align: 'center',
+                    formatter: function(value, row, index){
+                    	return '<span class="glyphicon glyphicon-pencil tabEdit cursor" aria-hidden="true"></span>&nbsp'+'<span class="glyphicon glyphicon-trash tabDel cursor" aria-hidden="true"></span>';
+                    },
+                    events: {
+                            'click .tabEdit': function (e, value, row, index) {
+                                //修改表单内容
+                                $(".modification").show(1000);	
+                                showTableForm(row);	
+
+                            },
+                            'click .tabDel': function (e, value, row, index) {
+                            	myConfirm("确定删除", function(){
+	                            	var clickThis = this;
+	                            	//console.log(row.id);
+	                        		//删除当前数据
+		                        	$.ajax({
+							            url: basePath + "admin/activityvehicle/del.do",
+							            data:{id:row.id},
+							            type: 'POST',
+							            dataType: 'json',
+							            xhrFields: {
+							                withCredentials: true
+							            },
+							            crossDomain: true,
+							            success:function(result){
+							                //console.log(result);
+							                if(result.flag){
+							                	$(clickThis).parent().parent().remove();
+							                	setTimeout(function(){
+					                     			location.reload();  
+					                  			},200);
+							                }else{
+							               	    myConfirm(result.msg);
+							                }
+							            },
+							            error:function(){
+							                myAlert("请求失败!", "slow");
+							            }
+						            });
+						        });
+                            }
+	                },
+
+	            }],
+	    });
+	    $('#texttable').bootstrapTable('hideColumn', 'id');
+	};
+
+
+	//修改/新增
+	function showTableForm(data){
+		if(data){
+			$("#id").val(data.id);
+			//console.log(data.id);
+			$("#activityId").val(sessionStorage.getItem("actId"));
+			$(".name").val(data.name);
+	    	$(".gender").val(data.gender);
+	    	$(".phone").val(data.phone);
+	    	$(".mobile").val(data.mobile);
+	    	$(".unit").val(data.unit);
+	    	$(".plateNumber").val(data.plateNumber);
+	        $(".modification").show(1000);
+		}else{
+			$("#tabaddForm input").val("");
+			$("#activityId").val(sessionStorage.getItem("actId"));
+			$(".modification").show(1000);
+		}
+	}
+
+
+	//表单验证
+    $("#tabaddForm").bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            name: {
+                validators: {
+                    notEmpty: {
+                        message: '姓名不能为空'
+                    }
+                }
+            },
+            gender: {
+                validators: {
+                    notEmpty: {
+                        	message: "性别不能为空"
+                        }
+                }
+            },           
+            phone: {
+                validators: {                    
+                        regexp: {
+                        regexp: /(\(\d{3,4}\)|\d{3,4}-|\s)?\d{8}/,
+                        message: '请输入正确的电话！'
+                    	}
+                }
+            },
+            mobile: {
+                validators: {
+                        notEmpty: {
+                        	message: "手机不能为空"
+                        },
+                        regexp: {
+                        regexp: /^1[34578]\d{9}$/,
+                        message: '请输入正确的手机号！'
+                    	}
+                }
+            },
+            unit: {
+                validators: {
+                        notEmpty: {
+                        	message: "驾驶单位不能为空"
+                        }
+                }
+            },
+            plateNumber: {
+                validators: {
+                        notEmpty: {
+                        	message: "车牌号不能为空"
+                        }
+                }
+            },          
+        }
+    });
+
+    
+</script>
+</html>

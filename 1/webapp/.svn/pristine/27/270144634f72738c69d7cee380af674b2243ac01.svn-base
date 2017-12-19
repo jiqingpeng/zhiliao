@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>火车票预订</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+	<link rel="stylesheet" href="../../css/weixin/style.css">
+	<link href="../../css/common/bootstrap.min.css" rel="stylesheet"/>
+	<style>
+		body{
+			background:rgb(236,239,244);
+		}
+		
+		.search-item{
+			width:100%;
+			background:#fff;
+			/*border:1px solid red;*/
+		}
+		.search-item .search-input{
+			width:100%;
+			height:50px;
+			margin-top:10px;
+			padding:10px;
+			box-sizing: border-box;
+		}
+		.search-item .search-input>input{
+			width:100%;
+			font-size:20px;
+			border:0;
+		}
+		.search-item .search-input .form-control{
+			padding:0;
+		}
+		.search-item .search{
+			width:100%;
+			padding:10px;
+			box-sizing: border-box;
+		}
+		.search-item .search .search-btn{
+			display: inline-block;
+			width:100%;
+			height:44px;
+			line-height: 44px;
+			background:#ff5346;
+			font-size:20px;
+			color:#fff;
+			text-align: center;
+			text-decoration: none;
+			border-radius:4px;
+		}
+	</style>
+</head>
+<body>
+	<iframe name="head" class="m-head" 
+		marginwidth="0" marginheight="0" width="100%" height="50" src="header.html" frameborder="0"></iframe> 
+	<div class="order-box">
+		<input type="hidden" id="id"/>
+		<div class="hd">
+			<div class="search-item">
+				<div class="search-input">
+				    <input class="form-control " style="background-color:#fff" type="text" value="" size="15" id="trainhomecity_name" name="trainhomecity_name" 
+			    	mod="address|notice" mod_address_source="tHote" mod_address_suggest="" mod_address_reference="traincityid" 
+			    	mod_notice_tip="出发城市"  readonly/>
+					<input id="traincityid" name="traincityid" type="hidden" value="{$traincityid}" />	
+				</div>
+				<div class="search-input">
+				    <input class="form-control "  style="background-color:#fff" type="text" value="" size="15" id="traingetcity_name" name="traingetcity_name" 
+			    	mod="address|notice" mod_address_source="tHote"  mod_address_reference="traingetcityid" 
+			    	mod_notice_tip="到达城市"  readonly/>
+					<input id="traingetcityid" name="traingetcityid" type="hidden" value="{$traingetcityid}" />	
+				</div>
+				<div class="search-input">
+					<input class="form-control" id="trainstime" type="text" placeholder="出发时间" />
+				</div>
+				<div class="search">
+					<a href="javascript:;" class="search-btn">搜索</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../../js/jquery.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script type="text/javascript" src="../../js/user/fix.js?v=1.1"></script>
+<script type="text/javascript" src="../../js/user/address.js"></script>
+<script src="../../js/bootstrap-datetimepicker.min.js"></script>
+<script src="../../js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script type="text/javascript" src="../../js/user/userMain.js"></script>
+<script>
+	$(function(){
+		var confid="7e762879704e4e188511605754e59802";
+		//页面初始化
+		init(confid);
+		$('.search-btn').on('click',function(){
+			var formC= $("#traincityid").val();
+			var toC= $("#traingetcityid").val();
+			var formT= $("#trainstime").val();
+			if(seachValidation(formC, toC, formT)){
+				var url = "trainList.html?startdatetime="+formT+"&startname="+formC+"&arrivename="+toC+"&actId="+confid;
+				window.location.href=url;
+			};
+			
+		});
+	});
+	function init(id) {
+		dateTime('#trainstime');
+		var url = basePath + "user/activity/get.do";
+		$.myAjax({
+				url: url,
+				data:{id:id},
+				success: function(result) {
+					if (result.flag) {
+						console.log(result)
+						//火车字典表
+						$$.module.address.source.tHote=result.data.trainStationAll;
+						var data = result.data.trainStationAbc;
+						console.log(data.热门);
+						(function(){
+							$$.module.address.source.tHote_hotData.热门= data.热门;
+							$$.module.address.source.tHote_hotData.A =data.A;
+							$$.module.address.source.tHote_hotData.B =data.B;
+							$$.module.address.source.tHote_hotData.C =data.C;
+							$$.module.address.source.tHote_hotData.D =data.D;
+							$$.module.address.source.tHote_hotData.E =data.E;
+							$$.module.address.source.tHote_hotData.F =data.F;
+							$$.module.address.source.tHote_hotData.G =data.G;
+							$$.module.address.source.tHote_hotData.H =data.H;
+							$$.module.address.source.tHote_hotData.I =data.I;
+							$$.module.address.source.tHote_hotData.J =data.J;
+							$$.module.address.source.tHote_hotData.K =data.K;
+							$$.module.address.source.tHote_hotData.L =data.L;
+							$$.module.address.source.tHote_hotData.M =data.M;
+							$$.module.address.source.tHote_hotData.N =data.N;
+							$$.module.address.source.tHote_hotData.O =data.O;
+							$$.module.address.source.tHote_hotData.P =data.P;
+							$$.module.address.source.tHote_hotData.Q =data.Q;
+							$$.module.address.source.tHote_hotData.R =data.R;
+							$$.module.address.source.tHote_hotData.S =data.S;
+							$$.module.address.source.tHote_hotData.T =data.T;
+							$$.module.address.source.tHote_hotData.U =data.U;
+							$$.module.address.source.tHote_hotData.V =data.V;
+							$$.module.address.source.tHote_hotData.W =data.W;
+							$$.module.address.source.tHote_hotData.X =data.X;
+							$$.module.address.source.tHote_hotData.Z =data.Z;
+							$$.module.address.source.tHote_hotData.Y =data.Y;
+						})();
+					} else {
+						myAlert(result.msg);
+					}
+				},
+				error: function() {
+					myAlert('请求失败');
+				}
+		});
+	};
+</script>
+</html>

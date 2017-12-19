@@ -1,0 +1,84 @@
+//basicInfo页面js
+$(function(){
+	//添加行业类别操作
+	$(document).on("click",".business", function(e){
+		//var industryAll = $(this).parent().children().text();
+		// console.log(industryAll);
+		var children = $(".trade").children();
+		if (children.length < 3){
+			var valNum = $(this).children().val();
+			var str = '<span class="SingleSpan">'+
+				$(this).text()+
+				'<input type="hidden" value="'+ valNum +'" class="indusVal"/>'+
+				'<input style="width: 18px; heigth: 8px;" type="button" value="-" class="delIndustry"/></span>';
+			$(".trade").append(str);
+			console.log(str);
+		} else {
+			myAlert("只能选择三个行业类别");
+		}	
+	});
+	$(document).on('click','.delIndustry',function(e) {
+		$(this).parent().remove();
+	});
+
+
+	//组织机构删除操作
+	$(document).on('click','.removeButton',function(e) {
+		var current = $(this).parent().parent();
+		douAlert("确定删除吗? ", function(){
+			current.remove();
+			$("#alert_box").remove();
+		},function(){
+			$("#alert_box").remove();
+		})
+	});
+})
+
+
+//personal.html页面js
+$(function(){
+
+	//取消按钮操作
+	// $(".cancel").on("click",function(){
+	// 	$(".edit").show();
+	// 	$(".save").hide();
+	// 	$(this).hide();
+	// 	// $("input[type=reset]").trigger("click")
+	// });
+
+	//保存按钮操作
+	// $(".save").on("click", function(){
+	// 	$(".edit").show();
+	// 	$(".cancel").hide();
+	// 	$(this).hide();
+	// 	myAlert("已保存");
+	// });
+
+	//个人信息切换操作
+	$(".secSettings").on("click", function(){
+		$(".perDetails").removeClass("hasBgc")
+		$(".perDetailsForm").css("display", "none");
+		$(".secSettingsForm").css("display", "block")
+		$(".secSettings").addClass("hasBgc");
+		$(".secSettings a").css("color", "#fff");
+		$(".perDetails a").css("color", "#000");
+	});
+
+	//安全信息切换操作
+	$(".perDetails").on("click", function(){
+		$(".secSettings").removeClass("hasBgc")
+		$(".secSettingsForm").css("display", "none");
+		$(".perDetailsForm").css("display", "block")
+		$(".secSettings a").css("color", "#000");
+		$(".perDetails a").css("color", "#fff");
+		$(".perDetails").addClass("hasBgc");
+	});
+})
+
+
+//functionary.html页面js
+$(function(){	
+	$("#btn_add").on("click", function(){
+		showTableForm();
+	});
+})

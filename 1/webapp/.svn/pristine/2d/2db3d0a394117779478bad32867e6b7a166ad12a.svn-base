@@ -1,0 +1,43 @@
+.my-page{
+	width:100%;
+	height:auto;
+	position: fixed;
+	top:48px;
+	bottom:1px;
+	overflow-y:auto;
+}
+.my-page .page-list{
+	width:88%;
+	padding:0 6%;
+	height:60px;
+	display: flex;
+	justify-content:space-between;
+	align-items:center;
+	border-bottom:0.5px solid #e2e2e2;
+}
+.my-page .page-list .page-l{
+	display: flex;
+	// justify-content:space-between;
+	align-items:center;
+}
+.picture{
+	border-radius: 50%;
+	background:#824415;
+}
+.my-page .page-list img{
+	width:30px;
+	height:30px;
+}
+.my-page .page-list span{
+	margin-left:5px;
+}
+.my-page .page-list input{
+	border:none;
+	text-align: right;
+	outline: none;
+	background:none;
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+	color:#ccc;
+	font-size:14px;
+}

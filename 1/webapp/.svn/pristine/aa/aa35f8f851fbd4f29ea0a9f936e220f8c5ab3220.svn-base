@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>管理员配置</title>
+<link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="../../css/common/bootstrap.css"/>
+<link rel="stylesheet" href="../../css/common/bootstrap-table.min.css"/>
+<link rel="stylesheet" href="../../css/common/bootstrapValidator.min.css"/>
+<link href="../../css/style.css" rel="stylesheet" />
+<link href="../../css/main.css" rel="stylesheet" />
+<link href="../../css/super.css" rel="stylesheet"/>
+
+</head>
+<body>
+<script type="text/javascript" src="../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="adminEdit.html">管理员配置</a>
+	</div>
+	<div class="con-box noSubMenu">
+		<!-- 以下为每个页面自己编写的部分 -->
+        <div class="tableAdd none">
+            <div class="tabAddTitle">添加/编辑管理员</div>
+            <form class="tabaddForm form-horizontal" id="tabaddForm">
+                <input type="hidden" name="id" id="adminId"/>
+                <div class="form-group">
+                    <label for="" class="col-sm-2 control-label"><span style="color: red">* </span>姓名</label>
+                    <div class="col-sm-7">
+                        <input type="text" name="nick" class="form-control nick" placeholder="请输入管理员姓名"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-sm-2 control-label"><span style="color: red">* </span>手机号</label>
+                    <div class="col-sm-7">
+                      <input type="text" name="mobile" id="mobile" class="form-control mobile" placeholder="请填写手机号">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-sm-2 control-label"><span style="color: red">* </span>单位名称</label>
+                    <div class="col-sm-7">
+                      <input type="text" name="name" class="form-control name" placeholder="请填写单位名称">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-sm-2 control-label">职务</label>
+                    <div class="col-sm-7">
+                      <input type="text" name="duty" class="form-control duty" placeholder="请填写职务">
+                    </div>
+                </div>
+                <div class="btncon">
+                    <button type="button" class="btn btn-default btn-warning adminSave">保&nbsp;存</button>
+                    <button type="button" class="btn btn-default adminCancel">取&nbsp;消</button>
+                </div>
+            </form>
+        </div>
+		<div class="adminEdit"> <!-- 建议用功能名为类名 -->
+            <div id="toolbar">
+                <button id="addAdmin" type="button" class="btn btn-sm btn-default">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+                </button>
+            </div>
+			<table id="adminTab" class="bootTable"></table>
+		</div>
+	</div>     
+</div> 
+
+
+<script type="text/javascript" src="../../js/common/footer.js"></script>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/bootstrap-table.min.js"></script>
+<script src="../../js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../js/bootstrapValidator.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/common/main.js"></script>
+<script type="text/javascript">
+$(function(){
+	// 获取左侧菜单列表数据(参数为请求地址)
+	initMenu('../../js/data/superMenu.json','管理员配置');
+
+	initPage();
+
+    // 添加管理员
+    $("#addAdmin").click(function(){
+        showTableForm();
+    })
+    //表单验证
+    $("#tabaddForm").bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            nick: {
+                validators: {
+                    notEmpty: {
+                        message: '管理员姓名不能为空！'
+                    }
+                }
+            },
+            mobile: {
+                validators: {
+                    notEmpty: {
+                        message: '手机号不能为空！'
+                    },
+                    regexp: {
+                        regexp: /^1[34578]\d{9}$/,
+                        message: '请输入正确的手机号！'
+                    }
+                }
+            },
+            name: {
+                validators: {
+                    notEmpty: {
+                        message: '单位名称不能为空！'
+                    }
+                }
+            }
+        }
+    });
+    // 管理员信息保存
+    $(".adminSave").click(function(){
+        var bootValidator = $(".tabaddForm").data('bootstrapValidator');
+        bootValidator.validate();
+        if(bootValidator.isValid()){
+            $.myAjax({
+                url: basePath + "super/admin/save.do",
+                data: $("#tabaddForm").serialize(),
+                success: function(result){
+                    if(result.flag){
+                        myConfirm('分配成功，管理员密码为手机后六位！');
+                        $('#tabaddForm').data('bootstrapValidator').resetForm(true);
+                        $(".tableAdd").hide(1000);
+                    }else{
+                        myAlert(result.msg);
+                    }
+                },
+                error: function(){
+                    myAlert("请求失败",'slow');
+                }
+            })
+        }
+    })
+    // 管理员信息保存
+    $(".adminCancel").click(function(){
+        $("#tabaddForm input").val('');
+        $('#tabaddForm').data('bootstrapValidator').resetForm(true);
+        $(".tableAdd").hide(1000);
+    })
+});
+
+// 初始化页面
+function initPage(){
+    $.myAjax({
+        url : basePath + 'super/admin/list.do',
+        success : function(result){
+            // console.log(result);
+            initTable(result.data.admin);
+        },
+        error : function(result) {
+            alert("请求失败！！");
+        }
+    });
+}
+
+function showTableForm(data){
+    if(data){
+        $("#adminId").val(data.id);
+        $(".nick").val(data.nick);
+        $(".mobile").val(data.mobile);
+        $(".name").val(data.name);
+        $(".duty").val(data.duty);
+        $(".tableAdd").show(1000);
+    } else {
+        $("#tabaddForm input").val('');
+        $(".tableAdd").show(1000);
+    }
+}
+
+// 初始化表格
+function initTable(data){
+    $('#adminTab').bootstrapTable({
+        dataType: 'json',                   //数据格式
+        dataLocale: 'zh-US',               //表格汉化
+        toolbar: '#toolbar',
+        striped: true,                      //是否显示行间隔色
+        cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+        pagination: true,                   //是否显示分页（*）
+        sortable: true,                     //是否启用排序
+        sortOrder: "desc",                  //排序方式
+        search: true,                  
+        searchFormatter: false,
+        showRefresh: true,                  //是否显示刷新按钮
+        cellStyle: true,
+        checkbox : true,
+        //height: 560,
+        sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
+        pageNumber:1,                       //初始化加载第一页，默认第一页
+        pageSize: 10,                       //每页的记录行数（*）
+        pageList: [10, 15, 20],        //可供选择的每页的行数（*）
+        columns: [
+        {
+            align: 'center',
+            width: 50,
+            formatter: function(value,row,index){
+                return index+1;
+            }
+        }, {
+            field: 'id',
+            title: 'ID'
+        }, {
+            field: 'nick',
+            title: '姓名',
+            align: 'center',
+            sortable: true
+        }, {
+            field: 'mobile',
+            title: '手机号',
+            align: 'center',
+            sortable: true                  
+        }, {
+            field: 'name',
+            align: 'center',
+            title: '单位名称'           
+        }, {
+            field: 'duty',
+            align: 'center',
+            title: '职务'           
+        }, {
+            title: '操作',
+            width: 80,
+            align: 'center',
+            formatter: function(value,row,index){
+                return '<span class="glyphicon glyphicon-pencil tabEdit adminedit" aria-hidden="true"></span>&nbsp'+
+                        '<span class="glyphicon glyphicon-trash tabDel admindel" aria-hidden="true"></span>';
+            },
+            events: {
+                    'click .adminedit': function (e, value, row, index) {
+                        showTableForm(row);
+                    },
+                    //删除操作
+                    'click .admindel' :function(e, value, row, index){
+                        var _this = this;
+                        $.myAjax({
+                            url : basePath + 'super/admin/del.do',
+                            data : {id:row.id},
+                            success : function(result){
+                                if(result.flag){
+                                    $(_this).parent().parent().remove();
+                                    initPage();
+                                } else {
+                                    myConfirm(result.msg);
+                                }
+                            },
+                            error : function(result) {
+                                myAlert("请求失败！");
+                            }
+                        });
+                        
+                    }
+                }
+        }]
+    });
+    $('#adminTab').bootstrapTable('hideColumn', 'id');
+    $('#adminTab').bootstrapTable('load', data);
+}
+
+</script>
+</html>
+

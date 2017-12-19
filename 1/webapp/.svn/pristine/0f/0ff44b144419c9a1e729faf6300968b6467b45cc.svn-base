@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>我</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+	<link rel="stylesheet" type="text/css" href="../../../css/app/base.css">
+	<link rel="stylesheet" type="text/css" href="../../../css/app/header-app.css">
+	<link rel="stylesheet" type="text/css" href="../../../css/app/myPage.css">
+	<style>
+		.aa{
+			display: flex;
+			flex-direction: column;
+		}
+	</style>
+</head>
+<body>
+	<header class="app-header">
+		<div class="navImg">
+			<img src="../../../img/app/arrowLeft-icon.png">
+		</div>
+		<div class="navDetail">个人主页</div>
+	</header>
+	<section class="my-page">
+		<article>
+			<div class="page-list">
+				<p class="page-l">
+					<img src="../../../img/app/picture.png" alt="">
+					<span>头像</span>
+				</p>
+				<p class="page-r">
+					<img class="picture" src="../../../img/app/picture1.png" alt="picture">
+				</p>
+			</div>
+			<div class="page-list" data-type="name">
+				<p class="page-l">
+					<img src="../../../img/app/name.png" alt="name">
+					<span>姓名</span>
+				</p>
+				<p class="page-r">
+					<span class="name">张三</span>
+				</p>
+			</div>
+			<div class="page-list" data-type="nick">
+				<p class="page-l">
+					<img src="../../../img/app/nick.png" alt="nick">
+					<span>昵称</span>
+				</p>
+				<p class="page-r">
+					<span class="nick">请设置昵称</span>
+				</p>
+			</div>
+			<div class="page-list" data-type="corporation">
+				<p class="page-l">
+					<img src="../../../img/app/unit.png" alt="unit">
+					<span>单位</span>
+				</p>
+				<p class="page-r">
+					<span class="unit">北京世纪协达</span>
+				</p>
+			</div>
+			<div class="page-list" data-type="mobile">
+				<p class="page-l">
+					<img src="../../../img/app/phone.png" alt="mobile">
+					<span>手机号</span>
+				</p>
+				<p class="page-r">
+					<span class="mobile">13672113681</span>
+				</p>
+			</div>
+			<div class="page-list" data-type="email">
+				<p class="page-l">
+					<img src="../../../img/app/email.png" alt="email">
+					<span>邮箱</span>
+				</p>
+				<p class="page-r">
+					<span class="email">youxiang@163.com</span>
+				</p>
+			</div>
+			<!-- <div class="page-list" data-type="nick">
+				<p class="page-l">
+					<img src="../../../img/app/duty.png" alt="duty">
+					<span>职务/职称</span>
+				</p>
+				<p class="page-r">
+					<span class="duty">张三</span>
+				</p>
+			</div> -->
+			<!-- <div class="page-list" data-type="address">
+				<p class="page-l">
+					<img src="../../../img/app/address.png" alt="address">
+					<span>单位地址</span>
+				</p>
+				<p class="page-r">
+					<span class="address">张三</span>
+				</p>
+			</div> -->
+			<!-- <div class="page-list" data-type="nation">
+				<p class="page-l">
+					<img src="../../../img/app/gender.png" alt="gender">
+					<span>性别</span>
+				</p>
+				<p class="page-r">
+					<span class="gender">张三</span>
+				</p>
+			</div> -->
+			<!-- <div class="page-list">
+				<p class="page-l">
+					<img src="../../../img/app/weixin.png" alt="weixin">
+					<span>微信号</span>
+				</p>
+				<p class="page-r">
+					<span>张三</span>
+				</p>
+			</div> -->
+			<!-- <div class="page-list" data-type="zipcode">
+				<p class="page-l">
+					<img src="../../../img/app/postcode.png" alt="postcode">
+					<span>邮编</span>
+				</p>
+				<p class="page-r">
+					<span class="postcode">张三</span>
+				</p>
+			</div> -->
+		</article>
+		
+	</section>
+</body>
+<script src="../../../js/zepto.js"></script>
+<!-- <script src="../../../js/"></script> -->
+<script src="../../../js/app/mtCommon.js"></script>
+<script src="../../../js/app/mtTool.js"></script>
+<script type="text/javascript">
+	$(function(){
+		type = null;
+ 		init();
+		$('.page-list').on('click',function(){
+			type = this.dataset.type;
+			var txt = $(this).find('.page-l span').html();
+			var item = $(this).find('.page-r span').html();
+			myConf(txt,item,save);
+		});
+		$($('.page-list')[0]).off();
+		$($('.page-list')[4]).off();
+		function myConf(txt,item,YES,NO) {
+			$("body").prepend('<div id="masking"></div><div class="alert_box"><div class="abox_tit">aaa</div><input class="abox_mess"/><div class="abox_foot"><button class="yes">确&nbsp定</button><button class="no">取&nbsp消</button></div></div>');
+			$("#masking").css({
+				"position": "fixed",
+				"width": "100%",
+				"height": "100%",
+				"background": "#000",
+				"z-index": "3001",
+				"filter": "alpha(Opacity=40)",
+				"-moz-opacity": "0.4",
+				"opacity": "0.4"
+			});
+			$(".alert_box").css({
+				"position": "fixed",
+				'left': '12%',
+				'top': '42%',
+				"border": "1px solid #ddd",
+				"border-radius": "4px 4px",
+				"width": "66%",
+				"padding":"0 5%",
+				"min-height": "80px",
+				"background": "#fff",
+				"z-index": "3002",
+			});
+			$(".abox_tit").css({
+				"width":"100%",
+				"height": "40px",
+				"line-height": "40px",
+			});
+			$(".abox_mess").css({
+				"width":"100%",
+				"height": "30px",
+				"border":"none",
+				"border-bottom":"1px solid #f60",
+				"outline":"none"
+			});
+			$(".abox_foot").css({
+				"border-top": "1px solid #ddd",
+				"height": "56",
+				"width": "100%",
+				"line-height": "56px",
+				"text-align": "right"
+			});
+			$(".abox_foot button").css({
+				"width": "15%",
+				"margin-right": "10px",
+				"color": "#fc742a",
+				"border": "none",
+				"background": "none"
+			});
+			$('.alert_box').css('display', 'block')
+			$('.alert_box .abox_tit').html('修改'+txt);
+			$('.alert_box .abox_mess').val(item);
+			$('.alert_box .abox_mess').focus();
+			// 点击确定
+			if (!!YES) {
+				$('.yes').on('click', function() {
+					YES();
+					// save()
+					$("#masking").remove();
+					$(this).parent().parent().remove();
+				});
+			} else {
+				$('.yes').on('click', function() {
+					$("#masking").remove();
+					$(this).parent().parent().remove();
+					return true;
+				});
+			}
+			// 点击取消
+			if (!!NO) {
+				$('.no').on('click', function() {
+					NO();
+					$("#masking").remove();
+					$(this).parent().parent().remove();
+				});
+			} else {
+				$('.no').on('click', function() {
+					$("#masking").remove();
+					$(this).parent().parent().remove();
+					return false;
+				});
+			}
+		};
+		function reset(){
+			var url = basePath + ""
+		};
+		function init(){
+			$('.name').html('');
+			$('.nick').html('');
+			$('.unit').html('');
+			$('.mobile').html('');
+			$('.email').html('');
+			$('.duty').html('');
+			$('.address').html('');
+			$('.gender').html('');
+			$('.postcode').html('');
+			var url = basePath + "user/user/info.do";
+			$.myAjax({
+				url:url,
+				success:function(result){
+					if(result.flag){
+						var data = result.data.user
+						$('.name').html(data.name);
+						$('.nick').html(data.nick);
+						$('.unit').html(data.corporation);
+						$('.mobile').html(data.mobile);
+						$('.email').html(data.email);
+						$('.duty').html(data.corporation);
+						$('.address').html(data.address);
+						if(1==data.gender){
+							$('.gender').html('男');
+						}else{
+							$('.gender').html('女');
+						};
+						$('.postcode').html(data.zipcode);
+					}else{
+						myAlert('请求失败')
+					}
+				},
+				error:function(result){
+					myConfirm('请求失败')
+				}
+			})
+		};
+		function save(){
+			var url = basePath + "user/user/save.do";
+			var content = $('.abox_mess').val();
+			var data = '{"'+type+'":"'+content+'"}';
+			data = $.parseJSON(data);
+			$.myAjax({
+				url:url,
+				data:data,
+				success:function(result){
+					if(result.flag){
+						init()
+					}else{
+						myAlert('请求失败')
+					}
+				},
+				error:function(result){
+					myConfirm('请求失败')
+				}
+			})
+		};
+});
+</script>
+</html>

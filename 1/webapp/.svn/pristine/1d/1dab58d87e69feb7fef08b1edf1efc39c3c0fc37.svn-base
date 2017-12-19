@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>群英汇-会场人员</title>
+<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="../../../css/common/bootstrap.css">
+<link rel="stylesheet" href="../../../css/common/bootstrap-table.min.css">
+<link href="../../../css/style.css" rel="stylesheet" />
+<link href="../../../css/main.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../../css/admin.css">
+<style type="text/css">
+.allUserCon {
+	margin-bottom: 24px;
+}
+</style>
+</head>
+<body>
+<!-- 引入页头 -->
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="venueList.html">会场管理</a>
+		<a href="">-&gt;</a>
+		<a href="venueUser.html">会场人员</a>
+	</div>
+	<div class="con-box">
+	<!-- 以下为每个页面自己编写的部分 -->
+	<div id="subMenu">
+		<div id="subMenuBody">
+			<ul>
+				<a href="venueList.html"><li>会场列表</li></a>
+				<a href="venueSchedule.html"><li>会场日程</li></a>
+				<a href="venueUser.html"><li class="menuAct">会场人员</li></a>
+				<a href="venueAffairs.html"><li>会务保障</li></a>
+				<!-- <a href="venueSign.html" class="venueSign venueDetail"><li>会场签到</li></a> -->
+			</ul>
+		</div>
+	</div>
+    <div id="contentBody" class="mops-table">
+		<input type="hidden" id="venueId"/>
+		<!-- 全部人员table -->
+		<div class="allUserCon none">
+			<div id="allUserToolbar">
+	            <div class="btn-group">
+	                <button type="button" class="btn btn-sm btn-default">全部人员</button>
+	            </div>	
+	            <div class="btn-group">
+	                <button type="button" class="btn btn-sm btn-warning toVenue none">拉入分会场</button>
+	            </div>
+	        </div>
+			<table id="allUserTable">
+	  		</table>
+  		</div>
+  		<!-- 分会场人员table -->
+  		<div id="venueUserToolbar">
+            <!-- <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-default">会场人员</button>
+            </div> -->
+            <div class="btn-group">
+            	<button id="addvenueuser" type="button" class="btn btn-sm btn-default">手动添加人员</button>
+            </div>
+        </div>
+  		<table id="venueUserTable">
+  		</table>
+	</div>
+	</div>    
+</div> 
+
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/bootstrap-table.min.js"></script>
+<script src="../../../js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/main.js"></script>
+<script type="text/javascript">
+
+var tabTil = ''; // 表格头
+var allData = []; // 全部参会人员数据 
+
+$(function(){
+
+	// 获取左侧菜单列表数据(参数为请求地址)
+	// initMenu('../../../js/data/administrator.json','会场管理');
+    serialMenuAjax('admin/activity/menu.do', '会场管理', sessionStorage.getItem('actId'), initPage);
+	// 会场id获取和保存
+	if(Request("venueId") && Request("venueId").length == 32){ // 链接地址中id有值，且值正确
+		sessionStorage.setItem('venueId',Request("venueId"));
+	}
+    $("#venueId").val(sessionStorage.getItem('venueId'));
+	
+	// 手动添加分会场人员
+	$("#addvenueuser").click(function(){
+		$(".allUserCon").show(800);
+	})
+	// 将选择的人员拉入分会场
+	$(".toVenue").click(function(){
+		var elems = $("#allUserTable").bootstrapTable('getSelections');
+        if(elems.length <= 0){
+            myAlert("请选择人员",'slow');
+            return false;
+        }
+        
+        var attendIds ='';
+        var venueUser = [];
+        for(var i=0;i<elems.length;i++){
+            // console.log(elems[i]);
+            if(elems[i].isVenueUser == true){
+                myConfirm('人员:'+elems[i].name+'已经在会场中,请勿重复添加！！');
+                return false;
+            } else {
+                attendIds += '&attendId='+elems[i].id;
+            }
+        }
+
+        var postData = 'id='+$("#venueId").val()+attendIds;
+        $.myAjax({
+            url : basePath + 'admin/activity/venue/seat/savepeople.do',
+            data : postData,
+            success : function(result){
+                if(result.flag){  
+                    $(".toVenue").addClass('none'); 
+                    $(".allUserCon").hide(800);     
+                    initPage();
+                } else {
+                    myAlert(result.msg,'slow');
+                }
+            },
+            error : function(result) {
+                myAlert("请求失败!",'slow');
+            }
+        });
+
+	});
+
+
+});
+
+// 初始化页面
+function initPage(){
+    $.myAjax({
+        url : basePath + 'admin/activity/venue/seat/list.do',
+        data : {id: $("#venueId").val()},
+        success: function(result){
+            $(".loading").remove();
+            if(result.flag){     
+                tabTil = result.data.activityRegConfig;
+                // for(var i = 0; i < result.data.activityAttend.length; i++){
+                //     if(result.data.activityAttend[i].gender==1){
+                //             result.data.activityAttend[i].gender="男";
+                //     }else{
+                //         result.data.activityAttend[i].gender="女";
+                //     }
+                // };
+                // 初始化表格，参数（表格列名称，表格数据）
+                initVenueUserTable(result.data.activityRegConfig,result.data.activityAttend,result.data.venueAttend);
+                initAllUserTable(result.data.activityRegConfig);
+            }
+        },
+        error: function(result) {
+            $(".loading").remove();
+            myAlert("请求失败!",'slow');
+            initVenueUserTable();
+        }
+    });
+}
+// 初始化会议全部人员列表
+function initAllUserTable(tabTitle){
+    // allData = tabData;
+    var columns = [{
+                    field: 'id',
+                }, {
+                    field: 'state',
+                }, {
+                    checkbox: true,
+                    valign: 'middle'
+                }, {
+                    title: '报名状态',
+                    align: 'center',
+                    width: 80,
+                    formatter: function(value, row, index){
+		                if(row.state == 2){
+		                    return '审核通过';
+		                } else if (row.state == 3) {
+		                	return '已通知';
+		                } else if (row.state == 4) {
+		                	return '已报道';
+		                }
+		            }
+                }];
+    for(var i=0;i<tabTitle.length;i++){
+        var column = {};
+        column.field = tabTitle[i].name;
+        column.title = tabTitle[i].showname;
+        column.align = 'center';
+        column.valign = 'middle';
+        columns.push(column);
+    };
+              
+    $('#allUserTable').bootstrapTable({ 
+        dataType: 'json',
+        dataLocale: 'zh-CN',               //表格汉化
+        toolbar: '#allUserToolbar',                //工具按钮用哪个容器
+        striped: true,                      //是否显示行间隔色
+        cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+        pagination: true,                   //是否显示分页（*）
+        sortable: true,                     //是否启用排序
+        sortOrder: "desc",                   //排序方式
+        searchFormatter: false,
+        cellStyle: true,
+        checkbox : true,
+        sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
+        pageNumber:1,                       //初始化加载第一页，默认第一页
+        pageSize: 10,                       //每页的记录行数（*）
+        pageList: [10, 20, 30, 40, 50],        //可供选择的每页的行数（*）
+        search: true,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
+        //strictSearch: false,
+        //showColumns: true,                  //是否显示所有的列
+        showRefresh: true,                  //是否显示刷新按钮
+        showColumns: true,
+        columns: columns,
+        onCheck: function (row,$element,field) {
+	        $(".toVenue").removeClass("none");
+            if(row.isVenueUser == true){
+                myConfirm('人员:'+row.name+' 已经在会场中,请勿重复添加！！');
+            }
+	    },
+	    onCheckAll: function (row,$element,field) {
+	        $(".toVenue").removeClass("none");
+	    }
+    });
+
+    $("#allUserTable").bootstrapTable('hideColumn', 'id');
+    $("#allUserTable").bootstrapTable('hideColumn', 'state');
+    $("#allUserTable").bootstrapTable('load', allData);
+}
+
+// 初始化会场人员列表
+function initVenueUserTable(tabTitle,allUser,venueUserIds){
+    
+    var venueUser = [];
+    for(var i=0;i<venueUserIds.length;i++){
+        for(var j=0;j<allUser.length;j++){
+            if(venueUserIds[i].userAttendId == allUser[j].id){
+                allUser[j].isVenueUser = true; // 后续判断是否已经拉入分会场
+                venueUser.push(allUser[j]);
+                break;
+            }
+        }
+    }
+
+    allData = allUser; // 人员含有分会场标记（isVenueUser）
+
+    var columns = [{
+                    field: 'id',
+                }, {
+                    field: 'state',
+                }, {
+                    checkbox: true,
+                    valign: 'middle'
+                }, {
+                    title: '报名状态',
+                    align: 'center',
+                    width: 80,
+                    formatter: function(value, row, index){
+		                if(row.state == 2){
+		                    return '审核通过';
+		                } else if (row.state == 3) {
+		                	return '已通知';
+		                } else if (row.state == 4) {
+		                	return '已报道';
+		                }
+		            }
+                }];
+    for(var i=0;i<tabTitle.length;i++){
+        var column = {};
+        column.field = tabTitle[i].name;
+        column.title = tabTitle[i].showname;
+        column.align = 'center';
+        column.valign = 'middle';
+        columns.push(column);
+    };
+              
+    $("#venueUserTable").bootstrapTable({ 
+        dataType: 'json',
+        dataLocale: 'zh-CN',               //表格汉化
+        toolbar: '#venueUserToolbar',                //工具按钮用哪个容器
+        striped: true,                      //是否显示行间隔色
+        cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+        pagination: true,                   //是否显示分页（*）
+        sortable: true,                     //是否启用排序
+        sortOrder: "desc",                   //排序方式
+        searchFormatter: false,
+        cellStyle: true,
+        checkbox : true,
+        sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
+        pageNumber:1,                       //初始化加载第一页，默认第一页
+        pageSize: 10,                       //每页的记录行数（*）
+        pageList: [10, 15, 20],        //可供选择的每页的行数（*）
+        search: true,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
+        //strictSearch: false,
+        //showColumns: true,                  //是否显示所有的列
+        showRefresh: true,                  //是否显示刷新按钮
+        showColumns: true,
+        columns: columns,
+        onClickCell:function(field,value,row,$element){
+        }
+    });
+
+    $("#venueUserTable").bootstrapTable('hideColumn', 'id');
+    $("#venueUserTable").bootstrapTable('hideColumn', 'state');
+    $("#venueUserTable").bootstrapTable('load', venueUser);
+}
+
+</script>
+</html>

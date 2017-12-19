@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>忘记密码</title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<meta content="telephone=no" name="format-detection" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" />
+	<link rel="stylesheet" type="text/css" href="../../../css/app/style.css"> 
+</head>
+<style type="text/css">
+a{
+	color: #f9752b;
+}
+input{
+	border-left:0px;
+	border-top:0px;
+	border-right:0px;
+	border-bottom:0px; 
+	outline:none;
+}
+.conBox{
+	padding:3px 4px;
+	margin-top: 48px;
+}
+.contain{
+	
+	background-color: #fff;
+}
+.group{
+	height: 50px;
+	border-bottom: 1px solid #e2e2e2;
+	line-height: 50px;
+	padding: 0 2%;
+}
+.comFont{
+	font-weight: 600;
+	margin-right: 3px;
+}
+.phone{
+	width: 35%;
+}
+.require{
+	width: 32%;
+	height: 30px;
+	background-color: #f9752b;
+	border-radius: 50px;
+	color: #fff;
+}
+.agreement{
+	font-size: 12px;
+	margin-top: 10px;
+	padding: 0 2%;
+}
+.agreement a{
+	border-bottom: 1px solid #f9752b;
+}
+.agreement input{
+	vertical-align: middle;
+}
+
+.button{
+	margin-top: 20px;
+}
+#register{
+	display: inline-block;
+	width: 80%;
+	margin-left: 10%;
+	background-color: #f9752b;
+	color: #fff;
+	height: 40px;
+	/*line-height: 40px;*/
+	/*margin-top: 3px;*/
+	text-align: center;
+	border-radius: 5px;
+	border: 1px solid #f9752b;
+}
+.account{
+	text-align: center;
+	margin-top: 10px;
+}
+.change{
+	color: #f9752b;
+	border-bottom: 1px solid #f9752b;
+	font-size: 12px;
+}
+.code{
+	width: 84px;
+	height: 40px;
+}
+.phone{
+	height: 30px;
+}
+.imgCode{
+	width: 70px;
+	height: 30px;
+	vertical-align: middle;
+	margin-top: -3px;
+	margin-right: 3px;
+}
+.hide{
+	display: none;
+}
+.circle{
+	display: inline-block;
+	height: 12px;
+	/*line-height: 12px;*/
+	text-align: center;
+	/*line-height: 10px;*/
+	width: 12px;
+	border: 1px solid #f9752b;
+	vertical-align: middle;
+	margin-right: 8px;
+	background-color: #ffffff;
+	border-radius: 2px;
+}
+.solid{
+	display: inline-block;
+	vertical-align: middle;
+	height: 8px;
+	width: 8px;
+	background-color: #f9752b;
+	margin-top: -2px;
+	/*margin-left: 3px;*/
+}
+</style>
+<body>
+	<div>
+		<div class="head">
+			<div class="navImg">
+				<img src="../../../img/app/arrowLeft-icon.png">
+			</div>
+			<div class="navDetail">忘记密码</div>
+		</div>
+		<div class="conBox">
+			<div class="contain">
+				<div class="group">
+					<span for="" class="comFont">手机号:</span>
+					<input type="text" maxlength="11" class="user" name="mobile" placeholder="请输入手机号" />
+				</div>
+				<div class="group">
+					<span for="" class="comFont">用户密码:</span>
+					<input type="password" maxlength="16" class="password" name="pwd" placeholder="请输入新密码" />
+				</div>
+				<div class="group">
+					<span for="" class="comFont">确认密码:</span>
+					<input type="password" maxlength="16" class="password1" name="pwd1" placeholder="请再次输入密码" />
+				</div>
+				<div class="group hide" id="getCode">
+					<span for="" class="comFont phoneCode">图片验证码:</span>
+					<input type="text" class="code" name="code" placeholder="图片验证码" />
+					<span class="codeImg"><img class="imgCode" src=""></span>
+					<span class="change">换一张</span>
+				</div>
+				<div class="group">
+					<span for="" class="comFont phoneCode">手机验证码:</span>
+					<input type="text" disabled="disabled" class="phone" name="phone" placeholder="请输入手机验证码" maxlength="6" />
+					<input type="button" class="require" value="获取验证码" />
+				</div>	
+			</div>
+			<div class="button">
+				<button id="register">保存</button>
+			</div>
+			<div class="account">
+				<a href="login.html" onclick="javascript:location.replace(this.href);event.returnValue=false;">返回</a>
+			</div>
+		</div>
+	</div>	
+</body>
+<script type="text/javascript" src="../../../js/zepto.js"></script>
+<script type="text/javascript" src="../../../js/zepto.md5.js"></script>
+<script type="text/javascript" src="../../../js/app/mtCommon.js"></script>
+<script type="text/javascript">
+var token = '';
+$(function(){
+	getToken();
+	$(".circle").on("click", function(){
+		$("#solid").toggleClass("solid");
+		if($("#solid").hasClass("solid")){
+			$("#register").removeAttr("disabled");
+		}else{
+			$("#register").attr({"disabled":"disabled"});
+		}	
+	});
+	// 点击保存
+	$("#register").on("click",function(){
+		if(verify()){
+			register();
+		}
+	});
+	$('.password1').focus(function(){
+		var mobile=$('.mobile').val();
+		var password = $('.password').val();
+		if(mobile!=''&&password!=''){
+			$('#getCode').removeClass("hide");
+		};
+	});
+	$(".change").on("click", function(){
+		getCode()
+	})
+	// 获取验证码
+	$(".require").on("click", function(){
+		if(verifyPhone()){
+			getPhone();
+		}
+	});
+});
+// 获取token
+function getToken(){
+	$.ajax({
+		url: basePath + 'mt/token/get.do',
+		type: 'post',
+		dataType: 'json',
+		success: function(result){
+			if(result.flag){
+				token = result.data;
+				getCode();
+			} else {
+				myConfirm(result.msg);
+			}
+		},
+		error: function(){
+			myConfirm("请求失败,请重试！");
+		}
+	})
+}
+// 输入信息验证
+function verifyPhone(){
+	var mobile = $(".user").val();
+	var	password = $(".password").val();
+	var	password1 = $(".password1").val();
+	var	code = $(".code").val();
+
+	if (mobile == null || mobile == '') {
+		$(".user").focus();
+		myConfirm('请输入用户名！');
+		return false;
+	} else if(!(/^1[34578]\d{9}$/.test(mobile))){
+		$(".user").focus(); 
+		myConfirm("手机号码有误，请重新输入！");  
+		return false;
+	};
+	if(password == '' || password ==null){
+		myConfirm("请输入密码");
+		$(".password").focus();
+		return false;
+	}else if(!(/^[1-9a-zA-Z]\w{5,15}$/.test(password))){
+		$(".password").focus();
+		myConfirm("密码只能是6-16位并且以非零数字和字母开头");
+		return false;
+	};
+	if(password1 == null || password1 == ''){
+		$(".password1").focus();
+		myConfirm('请确认密码');
+		return false;
+	}else if(!(/^[1-9a-zA-Z]\w{5,15}$/.test(password1))){
+		$(".password1").focus();
+		myConfirm("密码只能是6-16位并且以非零数字和字母开头");
+		return false;
+	}
+	else if(!(password1 == password)){
+		myConfirm('2次输入的密码不一样');
+		$(".password1").focus();
+		return false;
+	};
+	return true;
+}
+
+// 输入信息验证
+function verify(){
+	if(!verifyPhone()){
+		return false;
+	}
+	var phone = $(".phone").val();
+	if(phone == null || phone == ''){
+		myConfirm("手机验证码不能为空");
+		$(".phone").focus();
+		return false;
+	}else if(!(/^\d{6}$/.test(phone))){
+		myConfirm("请输入6位数字验证码");
+		$(".phone").focus();
+		return false;
+	}
+	return true;
+}
+
+//获取手机验证码
+function getPhone(){
+	var data = {"mobile": $(".user").val(),"code":$(".code").val(),"token": token,"tokenType": '1'};
+	$.ajax({
+		url: basePath + "user/safe/forget/verification.do",
+		data: data,
+		type: "post",
+		dataType: "json",
+		success: function(result){
+			if(result.flag){
+				$('.phone').removeAttr('disabled');
+				//倒计时获取验证码
+	    		clearInterval(timer);
+		    	var i=60;
+		    	var timer=null;
+		    	function show(){
+					i--;
+					$('.require').val(i+'秒后获取');
+					$('.require').attr('disabled','disabled');
+					if(i<=0){
+						clearInterval(timer);
+						$('.require').val('免费获取验证码');
+						$('.require').removeAttr('disabled');
+					}
+				};
+					show();
+					timer=setInterval(show,1000);
+				}else{
+					myConfirm(result.msg);
+					getCode();
+				}
+			},
+		error: function(){
+			myConfirm("请求失败，请重试！");
+		}
+	})
+}
+
+//获取图形验证码
+function getCode(){
+	$.ajax({
+		url: basePath + '/verification/get.do?token='+token+'&tokenType=1',
+		type: "POST",
+		dataType: "json",
+		success: function(result){
+			$('.imgCode').attr('src','data:image/png;base64,'+result.data);
+		}
+	})
+}
+//提交信息
+function register(){
+	var data={
+			"mobile": $(".user").val(),
+			"pwd": $.md5($(".password").val()),
+			"code": $('.phone').val(), // 此为手机短信验证码
+			"token": token,
+			"tokenType": '1'
+		};
+	$.ajax({
+		url: basePath + 'user/safe/forget.do',
+		data: data,
+		type: "POST",
+		dataType: "json",
+		success: function(result){
+			if(result.flag){
+				history.back(-1);
+			} else {
+				myConfirm(result.msg);
+			}
+		},
+		error: function(result){
+			myConfirm("请求失败，请重试！");
+		}
+	})
+}
+</script>
+</html>

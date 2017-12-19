@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>我的会议</title>
+	<meta content="telephone=no" name="format-detection" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+	<link rel="stylesheet" href="../../css/common/bootstrap.css"/>  
+	<link rel="stylesheet" href="../../css/weixin/style.css" />
+</head>
+<body>   
+    <iframe name="head" class="m-head" 
+		marginwidth="0" marginheight="0" width="100%" height="50" src="header.html" frameborder="0"></iframe>
+	<div class="order-box">	  
+		<ul class="topic-list">		 
+		</ul>
+	</div>
+	<div style="height:40px;">&nbsp;
+	</div> 
+
+	<script src="../../js/weixin/wxLoginModel.js"></script>
+</body>   
+<script type="text/javascript" src="../../js/jquery.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../js/common/common.js"></script>
+<script src="../../js/weixin/wxCommon.js"></script>
+<script>
+$(function(){
+	initPage();
+});
+
+function initPage(){
+	$.myAjax({
+		url: basePath + "user/activity/list.do",
+		success: function(result){
+			if(!result.status){ // 用户没登录，显示登录模态框
+				showLoginModel();
+				return;
+			} else if(!result.status.url){ // 用户没登录，显示登录模态框
+				showLoginModel();
+				return;
+			}
+			var json = result.data.activity;
+			for(var conf in json){
+				var li = '<li class="a-topic">'+
+					'<a class="topic-tutor-link" href="actDetail.html?id='+json[conf].id+'">'+
+					'<hr style="margin-top:0px;margin-bottom:5px;"/>'+
+					'<p class="topic-title-txt">'+json[conf].name+'</p>'+
+					'<p>'+json[conf].stime+' <img src="../../img/weixin/icon-location.png"> '+json[conf].city+'</p>';
+				li += '</a></li>';				 
+				$(".topic-list").append(li);
+			}
+		}			
+	});
+}
+</script>
+</html>

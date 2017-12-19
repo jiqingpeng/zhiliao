@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>密码修改</title>
+<link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" type="text/css" href="../../css/common/bootstrap.min.css"/>
+<link href="../../css/style.css" rel="stylesheet" />
+<link href="../../css/main.css" rel="stylesheet" />
+<!-- 引入项目中每个模块的独立样式 : xxx.css -->
+<link href="../../css/super.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- 引入页头 -->
+<script type="text/javascript" src="../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="information.html">密码修改</a>
+	</div>
+	<div class="con-box">
+		<!-- 以下为每个页面自己编写的部分 -->
+		<div class="information"> <!-- 建议用功能名为类名 -->
+			<form id="informationFm" class="form-horizontal mops-form">
+				<div class="form-group">
+				    <label for="oldpwd" class="col-sm-2 control-label">原密码</label>
+				    <div class="col-sm-7">
+				    	<input type="password" class="form-control" name="oldpwd" placeholder="请输入原密码"/>
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="oldpwd" class="col-sm-2 control-label">新密码</label>
+				    <div class="col-sm-7">
+				    	<input type="password" class="form-control" name="oldpwd" placeholder="请输入新密码"/>
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="" class="col-sm-2 control-label">验证码</label>
+				    <div class="col-sm-3">
+				      	<input type="text" class="form-control" name="" placeholder="输入验证码"/>
+				    </div>
+					<div class="col-sm-3">
+					    <button type="button" class="btn btn-default btn-warning">获取手机验证码</button>
+				    </div>
+				</div>
+			    <div class="btncon">
+					<button type="button" class="btn btn-default btn-warning save">保&nbsp存</button>
+					<button type="button" class="btn btn-default cancel">取&nbsp消</button>
+			    </div>
+			</form>
+		</div>
+	</div>     
+</div> 
+
+
+<script type="text/javascript" src="../../js/common/footer.js"></script>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/common/main.js"></script>
+<script type="text/javascript">
+$(function(){
+	// 获取左侧菜单列表数据(参数为请求地址)
+	initMenu('../../js/data/superMenu.json','密码修改');
+	$("#submenumark").css('display','none');
+});
+</script>
+</html>
+

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+	<link rel="stylesheet" href="../../css/weixin/style.css">
+	<link rel="stylesheet" href="../../css/common/bootstrap.css">
+	<title>全部订单</title>
+	<style>
+		body{
+			background:rgb(236,239,244);
+		}
+		.order-box .hd{
+			padding:0 5px;
+		}
+		.order-item{
+			width:100%;
+			background:#fff;
+			margin-top:10px;
+			padding:10px;
+		}
+		.order-item .ord-tit{
+			width:100%;
+			height:50px;
+			line-height: 50px;
+			font-size:16px;
+			
+		}
+		.order-item .ord-tit .ord-statu{
+			text-align:right;
+			font-size:18px;
+			color:#ff6633;
+		}
+		.order-item .ord-city{
+			width:100%;
+			height:50px;
+			line-height: 50px;
+			font-size:18px;
+		}
+		.order-item .ord-detail{
+			width:100%;
+			width:100%;
+			height:50px;
+		}
+		.order-item .ord-type{
+			padding:0;
+		}
+		.order-item .ord-detail .ord-time{
+			padding:0;
+		}
+		.order-item .ord-detail .ord-time>p{
+			color:#878787;
+			margin:5px 0;
+			padding:0;
+		}
+		.order-item .ord-detail .ord-price{
+			color:#ff6633;
+			font-size:16px;
+			margin-top:26px;
+			text-align: right;
+		}
+		.order-item .del-box{
+			height:30px;
+			margin-top:10px;
+		}
+		.order-item .del-box .del{
+			height:30px;
+			line-height: 30px;
+			float:right;
+			box-sizing: border-box;
+			color:#ff6633;
+			text-align: right;
+			font-size:16px;
+			padding:0;
+		}
+	</style>
+</head>
+<body>
+	<iframe name="head" class="m-head" 
+		marginwidth="0" marginheight="0" width="100%" height="50" src="header.html" frameborder="0"></iframe> 
+	<div class="order-box">
+		<input type="hidden" id="id"/>
+		<div class="hd">
+			<!-- <div class="order-item">
+				<div class="ord-tit">
+					<div class="ord-type col-xs-6">
+						<img src="../../img/weixin/trainbg.jpg" alt="">
+						<span>火车票</span>
+					</div>
+					<div class="ord-statu col-xs-6">代付款</div>
+				</div>
+				<div class="ord-city">
+					<span class="a-city">北京</span>
+					<span>-</span>
+					<span class="c-city">张家口南</span>
+					<span class="number">(2603)</span>
+				</div>
+				<div class="ord-detail">
+					<div class="col-xs-9 ord-time">
+						<p class="a-time">出行时间:2017-07-27 00:18</p>
+						<p class="c-time">出行时间:2017-07-27 00:18</p>
+					</div>
+					<div class="col-xs-3 ord-price">￥36.5</div>
+				</div>
+				<div class="del-box">
+					<a class="del col-xs-4" href="javascript:;">删除记录</a>
+				</div>
+			</div> -->
+		</div>
+	</div>
+	<iframe name="footer" class="m-foot" marginwidth="0" marginheight="0" width="100%" src="footer.html" frameborder="0"></iframe>
+</body>
+<script type="text/javascript" src="../../js/jquery.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/user/userMain.js"></script>
+<script>
+	$(function(){
+		// 活动ID
+		$("#id").val(Request('actId')); 
+		//页面初始化
+		init();
+		//订单详情
+		$(document).on('click','.order-item',function(){
+			var fTime = $(this).find('.a-time').html();
+			var tTime = $(this).find('.c-time').html();
+			var ticketJson={};
+			ticketJson.id = $(this).find('.id').val();
+			ticketJson.fCity = $(this).find('.a-city').html();
+			ticketJson.tCity = $(this).find('.c-city').html();
+			ticketJson.fTime = getSubstring(fTime,16,5);
+			ticketJson.cTime = getSubstring(tTime,16,5);
+			ticketJson.runTime = getTime(fTime, tTime);
+			window.location.href='../weixin/trainOrderDetail.html?ticketJson='+setUrlJson(ticketJson);
+		});
+		//删除订单
+		$(document).on('click','.del',function(event){
+			var url = basePath+'user/trainorder/del.do';
+			var id=$(this).parents('.order-item').find('.id').val();
+			console.log(id);
+			$.myAjax({
+				url:url,
+				data:{id:id},
+				success:function(result){
+					if(result.flag){
+						$('.hd').html('');
+						init();
+					};
+				},
+				error:function(result){
+					myAlert(result.msg);
+				}
+			});
+			return false;
+		});
+	});
+	function init() {
+		var url = basePath + "user/activity/get.do";
+		$.myAjax({
+			url: url,
+			type: 'GET',
+			data:{id:$("#id").val(),type:5},
+			success:function(result){
+				console.log(result)
+				if(result.flag){
+					for(var i= 0; i < result.data.trainOrder.length; i ++){
+						var str =
+						'<div class="order-item">'+
+							'<input class="id" type="hidden" value="'+result.data.trainOrder[i].id+'"/>'+
+							'<div class="ord-tit">'+
+								'<div class="ord-type col-xs-6">'+
+									'<img src="../../img/weixin/trainbg.jpg" alt="">'+
+									'<span>火车票</span>'+
+								'</div>'+
+								'<div class="ord-statu col-xs-6">'+result.data.trainOrder[i].orderStateValue+'</div>'+
+							'</div>'+
+							'<div class="ord-city">'+
+								'<span class="a-city">'+result.data.trainOrder[i].fromStation+'</span>'+
+								'<span>-</span>'+
+								'<span class="c-city">'+result.data.trainOrder[i].toStation+'</span>'+
+								'<span class="number">('+result.data.trainOrder[i].trainNo+')</span>'+
+							'</div>'+
+							'<div class="ord-detail">'+
+								'<div class="col-xs-9 ord-time">'+
+									'<p class="a-time">出行时间:'+result.data.trainOrder[i].departureTime+'</p>'+
+									'<p class="c-time">出行时间:'+result.data.trainOrder[i].arrivalTime+'</p>'+
+								'</div>'+
+								'<div class="col-xs-3 ord-price">￥'+result.data.trainOrder[i].lyTrainPassengerList[0].ticketPrice+'</div>'+
+							'</div>'+
+							'<div class="del-box">'+
+								'<a class="del col-xs-3" href="javascript:;">删除记录</a>'+
+							'</div>'+
+						'</div>';
+						$('.hd').append(str)
+					};
+				}else{
+					myAlert(result.msg);
+				};
+			},
+			error:function(){
+				$(".loading").remove();
+				myAlert('请求失败');
+			}
+		});
+	}
+</script>
+</html>

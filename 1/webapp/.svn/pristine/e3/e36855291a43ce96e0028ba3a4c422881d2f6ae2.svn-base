@@ -1,0 +1,92 @@
+.contain .cation_box {
+  width: 1160px;
+  // border:1px solid red;
+}
+.contain .cation_box .cation_mess {
+  margin-top: 20px;
+  width: 69%;
+}
+.contain .cation_box .cation_mess .hlist {
+  width: 100%;
+}
+.contain .cation_box .cation_mess .hlist .afirst {
+  width: 76px;
+  height: 100%;
+  display: inline-block;
+}
+.contain .cation_box .cation_mess .hlist .hlist_message {
+  width: 712px;
+  margin-left: 10px;
+}
+.contain .cation_box .cation_mess .hlist .hlist_message li {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.contain .cation_box .cation_mess .hlist .hlist_message li a {
+  color: #999;
+}
+.contain .cation_box .cation_mess .hlist .hlist_message li a:hover {
+  color: blue;
+}
+.contain .cation_box .cation_mess .hlist .hlist_message .org {
+  color: #f0ad4e;
+}
+.contain .cation_box .cation_mess .actdetail {
+  width: 100%;
+  margin-top:20px;
+}
+.contain .cation_box .cation_mess .actdetail li {
+  height: 38px;
+  line-height: 38px;
+  border-bottom: 1px dashed #999;
+}
+.contain .cation_box .cation_mess .actdetail li .time {
+  font-size: 14px;
+  height: 38px;
+  display: inline-block;
+  line-height: 38px;
+}
+.contain .cation_box .cation_mess .actdetail li .mess {
+  margin-left: 30px;
+}
+.contain .cation_box .cation_mess .actdetail li .place {
+  display: inline-block;
+  height: 14px;
+  line-height: 14px;
+  margin-left: 40px;
+  margin-top: 13px;
+  padding: 0 8px;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+}
+.contain .cation_box .cation_mess .page {
+  width: 100%;
+  margin: 15px auto;
+}
+.contain .cation_box .cation_mess .page .org {
+  color: #ff8600;
+}
+.contain .cation_box .cation_mess .page .pcen {
+  width: 600px;
+  margin: 0 auto;
+}
+.contain .cation_box .cation_mess .page .pcen li {
+  margin: 0 5px;
+}
+.contain .cation_box .cation_mess .page .pcen .border {
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  padding: 0 4px;
+}
+.contain .cation_box .cation_mess .page .pcen input {
+  width: 34px;
+  text-align: center;
+}
+.contain .cation_box .cation_banner {
+  width: 30%;
+  height: 588px;
+}
+.contain .cation_box .cation_banner img {
+  width: 100%;
+  height: 100%;
+}

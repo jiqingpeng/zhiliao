@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" charset="UTF-8">
+<meta http-equiv="Access-Control-Allow-Origin">
+<title>活动列表</title>
+<link rel="shortcut icon" href="../img/webicon.ico" type="image/x-icon"/>
+<link href="../css/common/bootstrap.min.css" rel="stylesheet" />
+<link href="../css/style.css" rel="stylesheet" />
+<link href="../css/main.css" rel="stylesheet" />
+<link href="formdemo.css" rel="stylesheet"/>
+</head>
+<body>
+<script type="text/javascript" src="../js/common/header.js"></script>
+<div class="demo mops-con">
+	<div class="con-nav">
+		<a href="#">后台管理</a>
+		<a href="#">->活动管理</a>
+		<a href="#">->基本信息</a>
+	</div>
+	<div class="democon con-box">
+		<form id="detailform" class="form-horizontal mops-form">
+			<div class="form-group">
+			    <label for="" class="col-sm-2 control-label">姓名</label>
+			    <div class="col-sm-7">
+			      <input type="email" class="form-control" id="inputTell" placeholder="请输入姓名">
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label for="" class="col-sm-2 control-label">联系电话</label>
+			    <div class="col-sm-7">
+			      <input type="email" class="form-control" id="inputTell" placeholder="请输入电话">
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label for="" class="col-sm-2 control-label">联系邮箱</label>
+			    <div class="col-sm-7">
+			      <input type="email" class="form-control" id="inputEmail3" placeholder="请输入邮箱">
+			    </div>
+			</div>
+		    <div class="btncon">
+		      <button type="button" class="btn btn-default btn-warning save">保&nbsp存</button>
+		      <button type="button" class="btn btn-default cancel">取&nbsp消</button>
+		      <!-- <button class="btn btn-default btn-danger">删&nbsp除</button> -->
+		    </div>
+		</form>
+	</div>
+	    
+</div>
+<script type="text/javascript" src="../js/common/footer.js"></script>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/common/main.js"></script>
+<script src="../js/common/common.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".save#").click(function(data){
+		var url = basePath + 'adminlogin/check.do';
+		$.getJSON( url, {phone:"13633334444",pwd:"asd"}, function() {
+		  console.log(data);
+		})
+		.done(function(data) {
+			console.log(data.result);
+		})
+		.fail(function(data) {
+			console.log(data);
+		})
+		.always(function(data) {
+			console.log( "完成" );
+		});
+	});
+
+	$(".cancel").click(function(data){
+		var url = basePath + 'adminlogin/check.do';
+		$.ajax({
+			url: url,
+			data: {phone:"13633334444",pwd:"asd"},
+
+			xhrFields: {
+				withCredentials: true
+			},
+			crossDomain: true,
+
+			success: function(result){
+				console.log(result);
+			},
+			error: function(){
+				console.log('78676845684');
+			}
+		});
+	});
+	
+});
+</script>
+</html>

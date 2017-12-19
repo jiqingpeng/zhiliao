@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title class="title">活动简介</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="../../css/common/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../../css/weixin/style.css">
+	<style type="text/css">
+		.venueSeat li {
+			min-height: 54px;
+			background-color: #fff;
+			margin-top: 8px;
+			border-radius: 2px;
+			padding: 0px 14px;
+			color: #333;
+		}
+		.venueName {
+			font-size: 16px;
+			line-height: 30px;
+		}
+		.seatNum {
+			line-height: 24px;
+			color: #ff6100;
+		}
+		.venueTime {
+			color: #666;
+		}
+	</style>
+</head>
+<body>
+	<script src="../../js/weixin/wxHeader.js"></script>
+	<div>
+		<ul class="venueSeat">
+		</ul>
+	</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script type="text/javascript">
+
+$(function(){
+	$(".nav-title").html("会场座次");
+	loading();
+	//获取id值
+	var actId = Request('actId');
+	$.myAjax({
+		url: basePath + "user/activity/seat/list.do",
+		data: {id: actId},
+		success: function(result){
+			$(".loading").remove();
+			if(result.flag){
+				//判断内容是否为空
+				if(result.data.seatList.length <=0){
+					myAlert("无分会场","slow");
+					return;
+				} else {
+					showList(result.data.seatList);
+				}
+			}else{
+				myAlert(result.msg, "slow");
+			}
+		},
+		error: function(){
+			$(".loading").remove();
+			myConfirm("请求失败!");
+		}
+	});
+})
+
+function showList(data){
+	var str = '';
+	for(var i=0;i<data.length;i++){
+		var timeStr = data[i].stime.substring(5,16)+' ~ '+data[i].etime.substring(5,16);
+		str += '<li>'+
+					'<div class="venueName">'+data[i].theme+'</div>'+
+					'<span class="venueTime">'+timeStr+'</span>&nbsp;&nbsp;&nbsp;'+
+					'<span class="seatNum">'+data[i].seatName+'</span>'+
+				'</li>';
+	}
+	$(".venueSeat").html(str);
+}
+
+</script>
+</html>

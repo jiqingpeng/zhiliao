@@ -1,0 +1,242 @@
+.contain {
+  width: 1160px;
+}
+.contain .group {
+  width: 1159px;
+}
+.contain .group .item {
+  width: 560px;
+}
+.contain .group .item .wrap {
+  width: 560px;
+  padding: 0 5px;
+}
+.contain .group .item .h410{
+  height:390px;
+}
+.contain .group .item .wrap .title {
+  width: 100%;
+  border-top: 1px solid #ccc;
+}
+.contain .group .item .wrap .title .icon {
+  width: 94px;
+  border-top: 1px solid #2095f2;
+  height: 60px;
+  line-height: 60px;
+}
+.contain .group .item .wrap .title .icon img {
+  margin-top: 22px;
+  margin-left: 18px;
+}
+.contain .group .item .wrap .title .icon span {
+  font-size: 20px;
+  margin-left: 6px;
+}
+.contain .group .item .wrap .title .nav {
+  width: 444px;
+  height: 60px;
+  border-left: 1px solid #ccc;
+  border-bottom: 2px solid #2095f2;
+  font-size: 14px;
+
+}
+.contain .group .item .wrap .title .nav li span {
+  display: inline-block;
+  text-align: center;
+  color: #000;
+  padding: 0 7px;
+  border-right: 1px solid #999;
+  margin-top: 7px;
+  cursor:pointer;
+}
+.contain .group .item .wrap .title .nav li span:hover{
+  color:blue;
+}
+.contain .group .item .wrap .title .nav li span img {
+  margin-top: 3px;
+  margin-left: -5px;
+}
+.contain .group .item .wrap .title .nav li .mr {
+  border-right: none;
+  margin-right: 5px;
+}
+.contain .group .item .wrap .message {
+  margin: 4px 0;
+  height: 340px;
+  list-style-position: inside;
+  // border:1px solid red;
+}
+.contain .group .item .wrap .message li {
+  width:600px;
+  margin-top: 7px;
+  height:24px;
+  line-height: 24px;
+}
+.contain .group .item .wrap .message li .dot {
+  width:4px;
+  height:4px;
+  background:#000;
+  border-radius:50%;
+  margin-top:11px;
+}
+.contain .group .item .wrap .message li .time {
+  width: 72px;
+  margin-left:10px;
+}
+.contain .group .item .wrap .message li .city {
+  width: 80px;
+  // border-left: 1px solid #000;
+  // border-right: 1px solid #000;
+  text-align: center;
+  margin:0 20px;
+}
+.contain .group .item .wrap .message li .city i {
+  display: inline-block;
+  width: 80px;
+  height: 16px;
+  line-height: 16px;
+  font-size: 14px;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  text-align: center;
+}
+.contain .group .item .wrap .message li .on_mess {
+  display: inline-block;
+  width:352px;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  font-size: 14px;
+}
+.contain .group .item .wrap .message li .on_mess:hover{
+  color:blue;
+  cursor:pointer;
+}
+.contain .group .item .wrap .titlet {
+  height: 40px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+.contain .group .item .wrap .titlet span {
+  display: block;
+  width: 130px;
+  line-height: 40px;
+  height: 40px;
+  background: url(../../img/index/color.png);
+  text-align: center;
+  color: #fff;
+  font-size: 20px;
+}
+.contain .group .item .wrap .titlet a {
+  height: 40px;
+  line-height: 40px;
+}
+.contain .group .item .wrap .titlet a img {
+  margin-top: 14px;
+  margin-left: -5px;
+}
+.contain .group .item .wrap .messaget{
+  margin-top:5px;
+}
+.contain .group .item .wrap .messaget li {
+  list-style: disc;
+  margin-left: 22px;
+}
+.contain .group .item .wrap .messaget li a {
+  display: inline-block;
+  color: #000;
+  font-size: 14px;
+  margin:6px 0;
+}
+.contain .group .item .wrap .messaget li a:hover{
+  color:blue;
+}
+.contain .group .item .wrap .messaget li .person {
+  width: 70px;
+}
+.contain .group .item .wrap .messaget .lno {
+  list-style: none;
+}
+.contain .group .item .wrap .messaget .w224 {
+  width: 200px;
+}
+.head .hnav .active{
+  display: none;
+}
+.head .hnav .login {
+  position: relative;
+}
+.head .hnav .login .w60{
+  display: inline-block;
+  width:60px;
+  text-align:center;
+}
+.head .hnav .login .login_box {
+  width: 200px;
+  padding: 15px 35px;
+  position: absolute;
+  left: -188px;
+  top: 40px;
+  background: #fff;
+  border: 1px solid #ddd;
+  display: none;
+}
+.head .hnav .login .login_box input {
+  width: 196px;
+  height: 28px;
+  padding-left:4px;
+}
+.head .hnav .login .login_box .regCode{
+  margin-top:15px;
+ 
+}
+.head .hnav .login .login_box .regCode .regBox{
+  width:60px;
+}
+.head .hnav .login .login_box .regCode .regImg{
+  width:60px;
+  height:32px;
+  margin-left:10px;
+  border:1px solid #ccc;
+}
+.head .hnav .login .login_box .regCode .regText{
+  height:30px;
+  line-height: 30px;
+  font-size:12px;
+  margin-left:20px;
+  color:blue;
+  text-decoration: underline;
+}
+.head .hnav .login .login_box .user {
+  margin-top: 15px;
+}
+.head .hnav .login .login_box .password {
+  margin-top: 15px;
+}
+.head .hnav .login .login_box .login_btn {
+  display: inline-block;
+  width: 100%;
+  height: 32px;
+  line-height: 32px;
+  background: url(../../img/index/color.png);
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 15px;
+}
+.head .hnav .login .login_box .login_btn:hover{
+  cursor:pointer;
+}
+.head .hnav .login .login_box .login_message {
+  width: 100%;
+  height: 28px;
+  line-height: 28px;
+  // border: 1px solid red;
+  color: red;
+  font-size: 12px;
+  margin-top: 15px;
+  display: none;
+}
+.head .hnav .login:hover .login_box {
+  display: block;
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// var obj = new Object();
+		// obj.name = "aa";
+		// obj.age=10;
+		// obj.run=function(){
+		// 	return this.name+this.age
+		// }
+		// console.log(obj.run())
+		function createObj(name,age){
+			this.name=name;
+			this.age=age;
+			this.run=function(){
+				return this.name+this.age
+			}
+			return this
+		}
+		var box1=createObj("xiaowang",10)
+		console.log(box1.age)
+	</script>
+</body>
+</html>

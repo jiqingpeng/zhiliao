@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>嘉宾登记</title>
+<link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="../../../css/common/bootstrap.css">
+<link rel="stylesheet" href="../../../css/common/bootstrap-table.min.css">
+<link rel="stylesheet" href="../../../css/common/bootstrap-datetimepicker.min.css">
+<link href="../../../css/style.css" rel="stylesheet" />
+<link href="../../../css/main.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../../css/admin.css">
+<!-- 引入项目中每个模块的独立样式 : xxx.css -->
+<style>
+	.sTime, .eTime{
+		background-color: #fff !important;
+	}
+</style>
+</head>
+<body>
+<!-- 引入页头 -->
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="guestsControl.html">嘉宾管理</a>
+		<a href="">-&gt;</a>
+		<a href="guestsControl.html">嘉宾登记</a>
+	</div>
+	<div class="con-box">
+	<!-- 以下为每个页面自己编写的部分 -->
+	<div id="subMenu">
+        <div id="subMenuBody">
+            <ul>
+                <a href="guestsControl.html"><li class="menuAct">嘉宾登记</li></a>
+				<a href="guestsSchedule.html" class="guestDetail"><li>嘉宾日程</li></a>
+				<!-- <a href="guestsEleInvite.html" class="guestDetail"><li>电子邀请函</li></a>
+				<a href="guestsPapInvite.html" class="guestDetail"><li>纸质邀请函</li></a> -->
+				<a href="guestsWinTic.html" class="guestDetail"><li>酒店机票</li></a>
+            </ul>
+        </div>
+    </div>
+    <div id="contentBody" class="mops-table">
+		<div class="modification none">
+			<div class="modificationTitle">添加/编辑嘉宾</div>
+			<form class="tabaddForm  form-horizontal" id="tabaddForm">
+				<input type="hidden" name="id" id="actiId"/>
+				<input type="hidden" name="activityId" id="activityId">
+				<div class="form-group">
+				    <label for="" class="col-sm-2 control-label"><span class="redStar">*</span> &nbsp;姓名</label> 
+				    <div class="col-sm-7">
+				     <input type="text" name="chineseName" maxlength="32" class="form-control chineseName" placeholder="请填写姓名">
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="" class="col-sm-2 control-label"><span class="redStar">*</span> &nbsp;单位</label> 
+				    <div class="col-sm-7">
+				     <input type="text" name="unit" maxlength="64" class="form-control unit" placeholder="请填写单位">
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="" class="col-sm-2 control-label"><span class="redStar">*</span> &nbsp;职务</label> 
+				    <div class="col-sm-7">
+				     <input type="text" name="duty" maxlength="32" class="form-control duty" placeholder="请填写职务">
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="" class="col-sm-2 control-label"><span class="redStar">*</span> &nbsp;联系手机</label> 
+				    <div class="col-sm-7">
+				     <input type="text" name="contactMobile" maxlength="32" class="form-control contactMobile" placeholder="请填写联系手机">
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="" class="col-sm-2 control-label"><span class="redStar">*</span> &nbsp;联系人</label> 
+				    <div class="col-sm-7">
+				     <input type="text" name="contactPeople" maxlength="32" class="form-control contactPeople" placeholder="请填写联系人">
+				    </div>
+				</div>
+				<div class="btncon">
+					<button type="button" class="btn btn-default btn-warning functionarySave">保&nbsp;存</button>
+					<button type="button" class="btn btn-default functionaryCancel">取&nbsp;消</button>
+			    </div>
+			</form>
+		</div>
+		<div id="toolbar">
+            <div class="btn-group">
+                <button id="btn_add" type="button" class="btn btn-sm btn-default">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>嘉宾登记
+                </button>
+            </div>	
+        </div>
+		<table id="texttable">
+  		</table>
+	</div>
+	</div>    
+</div> 
+
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/bootstrap-table.min.js"></script>
+<script src="../../../js/bootstrap-table-zh-CN.min.js"></script>
+
+<script src="../../../js/bootstrapValidator.min.js"></script>
+<script src="../../../js/bootstrap-datetimepicker.min.js"></script>
+<script src="../../../js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/main.js"></script>
+<script type="text/javascript">
+// 获取左侧菜单列表数据(参数为请求地址)
+initMenu('../../../js/data/administrator.json','嘉宾管理');
+$(function(){
+	$("#btn_add").on("click", function(){
+		showTableForm();
+	});		
+	$("#submenumark").css('display','none');
+	initPage();		
+
+	//确认保存
+    $('.functionarySave').on('click',function(){
+    	$("#activityId").val(sessionStorage.getItem('actId'));	
+    	var bootValidator = $(".tabaddForm").data('bootstrapValidator');
+    	bootValidator.validate();
+    	if(bootValidator.isValid()){
+	        $.myAjax({
+	                url: basePath + "admin/activity/expert/save.do",
+	                data:$("#tabaddForm").serialize(),
+	                success:function(result){
+	                    if(result.flag){
+	                       	myAlert(result.msg);
+	                        $('#tabaddForm').data('bootstrapValidator').resetForm(true);
+	                        $(".modification").hide(1000);
+	                        setTimeout(function(){
+                 				 location.reload();  
+              				},1200);
+	                    }else{
+	                        myConfirm(result.msg);
+	                  	}
+	                },
+		            error:function(){
+		                myAlert("请求失败!", "slow");
+		            }
+	        }); 
+        }       	
+    });
+
+    // 管理员信息取消
+    $(".functionaryCancel").click(function(){
+    	$("#tabaddForm input").val('');
+    	$(".modification").hide(1000);
+    	$('#tabaddForm').data('bootstrapValidator').resetForm(true);
+    	//initPage();
+	});
+
+	// 跳转详情页
+	$(".guestDetail").click(function(){
+		var elems = $("#texttable").bootstrapTable('getSelections');
+		if(elems.length <= 0){
+            myAlert("请勾选要查看的嘉宾",'slow');
+            return false;
+        } else if(elems.length > 1){
+        	myAlert("只能勾选单个嘉宾查看详情",'slow');
+            return false;
+        }
+        $(this).attr('href',$(this).attr('href')+'?guestId='+elems[0].id);
+	});
+});
+
+	
+    //初始化table
+    function initTable(data){
+		$('#texttable').bootstrapTable({
+	            data: data,
+	            dataLocale: 'zh-CN',               //表格汉化
+	            toolbar: '#toolbar',                //工具按钮用哪个容器
+	            striped: true,                      //是否显示行间隔色
+	            cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+	            pagination: true,                   //是否显示分页（*）
+	            sortable: true,                     //是否启用排序
+	            sortOrder: "asc",                   //排序方式
+	            sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
+	            pageNumber:1,                       //初始化加载第一页，默认第一页
+	            pageSize: 10,                       //每页的记录行数（*）
+	            //pageList: [10,15,20,25],        //可供选择的每页的行数（*）
+	            search: true,                      
+	            strictSearch: false,
+	            //showColumns: true,                  //是否显示所有的列
+	            showRefresh: true,                  //是否显示刷新按钮
+	            //clickToSelect: true,                //是否启用点击选中行
+	            columns: [{
+		            align: 'center',
+		            width: 30,
+		            formatter: function(value,row,index){
+		                return index+1;
+		            }
+        		}, {
+                    checkbox: true,
+                    valign: 'middle'
+                },
+	            {
+	                field: 'id',
+	                title: '嘉宾id',
+	            },
+	            {
+	                field: 'state',
+	                title: '邀请状态',
+                    align: 'center',
+                    sortable: true,
+                    width: 120,
+                    formatter:function(value,row,index){
+                    	if(value == '1'){ // 未邀请
+                    		return '未邀请';
+                    	} else if(value == '2'){ // 已发邀请
+							return '已发邀请';
+                    	} else if(value == '3'){ // 接受邀请
+							return '接受邀请';
+                    	}
+                    }
+	            },
+	            {
+                    field: 'chineseName',
+                    title: '姓名',
+                    align: 'center',
+                    width: 110,
+                    sortable: true
+                },{
+                    field: 'unit',
+                    title: '单位',
+                    align: 'center',
+                    sortable: true
+                },
+	            {
+	                field: 'duty',
+	                title: '职务',
+	                align: 'center',
+                    sortable: true
+	            }, {
+	                field: 'contactMobile',
+	                title: '联系手机',
+	                align: 'center'
+	            }, {
+	                field: 'contactPeople',
+	                title: '联系人',
+	                align: 'center'
+	            },{
+                    field: 'option',
+                    title: '操作',
+                    width: 86,
+                    align: 'center',
+                    formatter: function(value,row,index){
+                      return '<span class="glyphicon glyphicon-pencil tabEdit cursor" aria-hidden="true"></span>&nbsp'+'<span class="glyphicon glyphicon-trash tabDel cursor" aria-hidden="true"></span>';
+                    },
+                    events: {
+                            'click .tabEdit': function (e, value, row, index) {
+                                //修改表单内容
+                                $(".modification").show(1000);	
+                                showTableForm(row);	      
+                            },
+                            'click .tabDel': function (e, value, row, index) {
+                            	myConfirm("确定删除", function(){
+	                            	var clickThis = this;
+	                        		//删除当前数据
+		                        	$.myAjax({
+							            url: basePath + "admin/activity/expert/del.do",
+							            data:{
+							            	id:row.id,
+							            	activityId: $("#activityId").val()
+							            },
+							            success:function(result){
+							                var _this = $(clickThis);
+							                if(result.flag){	
+							                	_this.parent().parent().remove();
+							                	setTimeout(function(){
+				                     				 location.reload();  
+				                  				},1200);					                	
+							                }else{
+							               	    myConfirm(result.msg);
+							                }
+							            },
+							            error:function(){
+							                myAlert("请求失败!", "slow");
+							            }
+						            });
+						        });	
+                            }
+	                }
+	            }]    
+	    });
+	    $('#texttable').bootstrapTable('hideColumn', 'id');
+	};
+    //初始化页面
+	function initPage(){
+		$("#activityId").val(sessionStorage.getItem('actId'));
+        $.myAjax({
+	        url: basePath + "admin/activity/expert/list.do",
+	        data: {id: $("#activityId").val()},
+	        success: function(result){
+		            if(result.flag){
+		                var data = result.data;		                
+            		}else{
+            			myAlert(result.msg,'slow');
+            		}
+            		initTable(data);
+	        },
+	        error: function(){
+	            myAlert("请求失败!", "slow");
+	        }
+        })
+    };
+	//表单验证
+    $("#tabaddForm").bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            chineseName: {
+                validators: {
+                    notEmpty: {
+                        message: '姓名不能为空'
+                    }
+                }
+            },
+            unit: {
+                validators: {
+                    notEmpty: {
+                        message: '单位不能为空'
+                    }
+                }
+            },
+            duty: {
+                validators: {
+                    notEmpty: {
+                        message: '职务不能为空'
+                    }
+                }
+            },
+            contactMobile: {
+                validators: {
+                    notEmpty: {
+                        message: '联系手机不能为空'
+                    },
+                    regexp: {
+                        regexp: /^1[34578]\d{9}$/,
+                        message: '请输入正确的手机号！'
+                    }
+                }
+            },
+            contactPeople: {
+                validators: {
+                    notEmpty: {
+                        message: '联系人不能为空'
+                    }
+                }
+            }
+        }
+    });
+    //修改/新增
+    function showTableForm(data){
+        if(data){
+            $("#actiId").val(data.id);
+            $("#activityId").val(sessionStorage.getItem('actId'));
+            $(".chineseName").val(data.chineseName);
+            $(".unit").val(data.unit);
+            $(".duty").val(data.duty);
+            $(".contactMobile").val(data.contactMobile);
+            $(".contactPeople").val(data.contactPeople);
+            $(".modification").show(1000);
+        } else {
+            $("#tabaddForm input").val('');
+            $("#activityId").val(sessionStorage.getItem('actId'));
+            $(".modification").show(1000);
+        }
+    }
+    
+</script>
+</html>
+

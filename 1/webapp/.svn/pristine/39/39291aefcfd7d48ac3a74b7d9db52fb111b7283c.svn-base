@@ -1,0 +1,102 @@
+[
+	{
+		"icon" : "../../../img/icon/super/conflisticon.png",
+		"name" : "活动管理",
+		"link" : "basicInfo.html"
+	},
+	{
+		"icon" : "../../../img/icon/super/adminediticon.png",
+		"name" : "工作人员",
+		"link" : "functionary.html"
+	},
+	{
+		"icon" : "../../../img/icon/super/informationicon.png",
+		"name" : "会场管理",
+		"link" : "venueList.html"
+	},
+	{
+		"icon" : "../../../img/icon/super/societyhomeicon.png",
+		"name" : "嘉宾管理",
+		"link" : "guestsControl.html",
+		"subMenu" : [
+					{
+						"icon" : "../../../img/icon/admin/allusericon.png",
+						"name" : "嘉宾登记",
+						"link" : "guestsControl.html"
+					},
+					{
+						"icon" : "../../../img/icon/admin/articleicon.png",
+						"name" : "嘉宾活动",
+						"link" : "guestsActivity.html"
+					}
+
+				]
+	},
+	{
+		"icon" : "../../../img/icon/super/societyhomeicon.png",
+		"name" : "交通住宿",
+		"link" : "trafficInfo.html",
+		"subMenu" : [
+					{
+						"icon" : "../../../img/icon/admin/allusericon.png",
+						"name" : "基本信息",
+						"link" : "trafficInfo.html"
+					},
+					{
+						"icon" : "../../../img/icon/admin/allusericon.png",
+						"name" : "接送车辆配置",
+						"link" : "vehicleAllocation.html"
+					},
+					{
+						"icon" : "../../../img/icon/admin/articleicon.png",
+						"name" : "停车场配置",
+						"link" : "parkManage.html"
+					},{
+						"icon" : "../../../img/icon/admin/articleicon.png",
+						"name" : "酒店配置",
+						"link" : "hotelEdit.html"
+					}
+
+				]
+	},
+	{
+		"icon" : "../../../img/icon/super/informationicon.png",
+		"name" : "用户管理 <span style='color: red;'>new</span>",
+		"link" : "userManage.html"
+	},
+	{
+		"icon" : "../../../img/icon/super/societyhomeicon.png",
+		"name" : "新闻公告",
+		"link" : "news.html"
+	},
+	{
+		"icon" : "../../../img/icon/super/societyhomeicon.png",
+		"name" : "配置管理",
+		"link" : ""
+	},
+	{
+		"icon" : "../../../img/icon/super/societyhomeicon.png",
+		"name" : "活动指南",
+		"link" : ""
+	},
+	{
+		"icon" : "../../../img/icon/super/societyhomeicon.png",
+		"name" : "统计分析",
+		"link" : ""
+	},
+	{
+		"icon" : "../../../img/icon/super/societyhomeicon.png",
+		"name" : "传媒管理",
+		"link" : ""
+	},
+	{
+		"icon" : "../../../img/icon/super/societyhomeicon.png",
+		"name" : "费用管理",
+		"link" : ""
+	},
+	{
+		"icon" : "../../../img/icon/super/societyhomeicon.png",
+		"name" : "会展管理",
+		"link" : ""
+	}
+]

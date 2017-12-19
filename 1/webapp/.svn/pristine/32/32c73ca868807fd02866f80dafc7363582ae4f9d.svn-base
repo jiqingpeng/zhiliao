@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>火车列表</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<link rel="stylesheet" href="../../css/index/base.css">
+	<script>
+		(function(win,doc){
+			function change(){
+				doc.documentElement.style.fontSize = doc.documentElement.clientWidth / 7.5 + 'px';
+			}
+			change();
+			win.addEventListener('resize',change,false);	
+		})(window,document);
+	</script>
+	<style>
+		*{
+			font-size:0.12rem;
+		}
+		header{
+			font-size:0.35rem;
+		}
+		header nav{
+			font-size:0.4rem;
+			margin:0.2rem 0;
+			margin-left:0.3rem;
+		}
+		header nav span{
+			display: inline-block;
+			font-size:0.3rem;
+		}
+		section{
+			width:7.5rem;
+		}
+		section .trainTitle{
+			width:100%;
+			background:#f0f0f0;
+		}
+		section .trainTitle li{
+			
+		}
+		section .trainDetail li{
+			height:100%;
+			line-height: 100%;
+		}
+		td{
+			/*border:1px solid red;*/
+		}
+		.trainBox{
+			width:7.5rem;
+		}
+		.trainTit{
+			width:1.2rem;
+			text-align: center;
+		}
+		.trainList{
+			border:1px solid #ccc;
+		}
+		.trainList .trainNo{
+			font-size:0.35rem;
+			display: inline-block;
+			width:1.2rem;
+			
+		}
+		.trainA,.trainC{
+			width:0.8rem;
+		}
+		.trainList .fromC{
+			width:0.8rem;
+		}
+		.trainList .fromT{
+			width:0.8rem;
+		}
+		.trainList .toC{
+			width:0.8rem;
+		}
+		.trainList .toT{
+			width:0.8rem;
+		}
+		.arrowBox{
+			width:0.3rem;
+		}
+		.arrowBox .arrow{
+			width:0.3rem;
+		}
+		.hours{
+			width:1.2rem;
+			font-size:12px;
+			
+		}
+		.hours .runTime{
+			width:1.2rem;
+		}
+		.setBox{
+			width:1.6rem;
+			
+		}
+		.setBox .set{
+			width:1.6rem;
+		}
+		.setBox .trainprice{
+			margin:2px 0;
+		}
+		.last{
+			width:0.9rem;
+			
+		}
+		.last .trainNum{
+			width:0.9rem;
+		}
+		.lastPrice{
+			width:1rem;
+		}
+		.lastPrice{
+			margin-left:5px;
+		}
+		.lastPrice .trainNum{
+			margin: 2px 0;
+			width:1rem;
+			text-align: right;
+			
+		}
+		.fSize12{
+			font-size:12px;
+		}
+		.orderBtn{
+			margin-left:5px;
+		}
+		.orderBtn a{
+			width:0.7rem;
+			display: inline-block;
+			font-size:12px;
+			background:#f60;
+			color:#fff;
+			margin:2px 0;
+		}
+		.orderBtn .more{
+			
+		}
+		.cf60{
+			color:#f60;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<nav class="clearfix">
+			<span class="fl arrow"></span>
+			<span class="aCity fl">北京</span>
+			<span class="fl">-</span>
+			<span class="bCity fl">上海</span>
+		</nav>
+	</header>
+	<section>
+		<input type="hidden" class="queryKey">
+		<input type="hidden" class="actId">
+		<ul class="trainTitle clearfix">
+			<li class="fl" style="width:1.2rem; text-align:center;">车次</li>
+			<li class="fl" style="width:0.8rem; text-align:center;">出发</li>
+			<li class="fl" style="width:0.3rem; text-align:center;"></li>
+			<li class="fl" style="width:0.8rem; text-align:center;">到达</li>
+			<li class="fl" style="width:1.2rem; text-align:center;">耗时</li>
+			<li class="fl" style="width:1.6rem; text-align:center;">产考票价</li>
+			<li class="fl" style="width:0.9rem; text-align:center;">余票</li>
+			<li class="fl" style="width:0.7rem; text-align:center;""></li>
+		</ul>
+		<!-- <ul class="trainDetail clearfix">
+			<li class="fl">K7727</li>
+			<li class="fl">
+				<p class="atime">00:42</p>
+				<p class="astation">北京西</p>
+			</li>
+			<li class="fl arrow">-</li>
+			<li class="fl">
+				<p class="atime">00:42</p>
+				<p class="astation">北京西</p>
+			</li>
+			<li class="fl">1小时51分钟</li>
+			<li class="fl">
+				<ul>
+					<li>硬座￥15</li>
+					<li>硬座￥15</li>
+					<li>硬座￥15</li>
+				</ul>
+			</li>
+			<li class="fl">
+				<ul>
+					<li>余3张</li>
+					<li>余3张</li>
+					<li>余3张</li>
+				</ul>
+			</li>
+			<li class="fl"></li>
+		</ul> -->
+		<div class="trainBox">
+			<div class="trainModel" style="display: none">
+				<div class="trainList">
+					<table class="fSize12 flistInfo" cellspacing="0px">
+						<tbody>
+							<tr class="theFlight flightbody">
+								<td class="trainTit">
+									<div class="train fSize28">
+										<span class="airLogo"></span>
+										<span class="trainNo">k777</span>
+									</div>
+									<div class="airType clearfix">
+										<!-- <span class="fl">经停站</span> -->
+										<i class="fl"></i>
+									</div>
+								</td>
+								<td class="trainA" align="right">
+									<div class="fSize20 fromT">1:00</div>
+									<div class="airAddress fromC">上海</div>
+								</td>
+								<td class="arrowBox" align="center">
+									<div class="arrow">-</div>
+								</td>
+								<td class="trainC" align="left">
+									<div class="fSize20 toT">2:00</div>
+									<div class="airAddress toC">北京</div>
+								</td>
+								<td class="hours" align="center">
+									<div class="c666 runTime">1小时</div>
+								</td>
+								<!-- <td width="30">
+									<div class="c999"></div>
+									<div class="c999"></div>
+								</td> -->
+								<td class="setBox" align="right">
+									<div>
+										<ul class="fSize12 set">
+											<!-- <li class="trainprice clearfix mt">
+												<span class="fl c333 mt5">二等座</span>
+												<span class="fl cf60 mt5">￥</span>
+												<span class="fl cf60 fSize20">1178</span>
+											</li>
+											<li class="trainprice clearfix mt">
+												<span class="fl c333 mt5">一等座</span>
+												<span class="fl cf60 mt5">￥</span>
+												<span class="fl cf60 fSize20">1178</span>
+											</li>
+											<li class="trainprice clearfix mt">
+												<span class="fl c333 mt5">二等座</span>
+												<span class="fl cf60 mt5">￥</span>
+												<span class="fl cf60 fSize20">553</span>
+											</li> -->
+										</ul>
+									</div>
+								</td>
+								<td class="last">
+									<!-- <p class="mt trainNum c666">余<span class="cf60 ">99</span>张</p>
+									<p class="mt trainNum c666">余<span class="cf60 ">467</span>张</p>
+									<p class="mt trainNum c666">
+									余<span class="cf60">99</span>张
+									</p>
+									<i class="less"></i> -->
+								</td>
+								<td align="center" class="orderBtn">
+									<!-- <a class="more mt" href="javascript:;">
+										预订
+									</a>
+									<a class="more mt" href="javascript:;">
+										预订
+									</a>
+									<a class="more mt" href="javascript:;">
+										预订
+									</a> -->
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/user/userMain.js"></script>
+<script>
+	$(function(){
+		var oa = Request('startname');
+		var aa = Request('arrivename');
+		$('#trainDate').val(Request('startdatetime'));
+		var tDate = strChange(Request('startdatetime'),'-','');
+		console.log(tDate)
+		$('.actId').val(Request('actId'));
+		//获取火车信息
+		function train(oa,aa,tDate){
+			//带参数
+			$(document).on('click','.more',function(){
+				var len=$(this).parents('.theFlight').find('.trainprice').length;
+				var ticketJson={};
+				var parent=$(this).parents('.theFlight');
+				ticketJson.key=$('.queryKey').val();
+				ticketJson.actId=$('.actId').val();
+				ticketJson.trainNo=parent.find('.trainNo').html();
+				ticketJson.fromT=parent.find('.fromT').html();
+				ticketJson.toT=parent.find('.toT').html();
+				ticketJson.fromCode=parent.find('.fromC').data('code');
+				ticketJson.toCode=parent.find('.toC').data('code');
+				ticketJson.fromC=parent.find('.fromC').html();
+				ticketJson.toC=parent.find('.toC').html();
+				ticketJson.runTime=parent.find('.runTime').html();
+				ticketJson.date=$('.tmAddress').html();
+				ticketJson.num=$(this).index();
+				ticketJson.tDate=tDate;
+				var arr=[];
+				for(var i=0;i<len;i++){
+					var train={};
+					train.seatName=$($(this).parents('.theFlight').find('.txt')[i]).html();
+					train.price=$($(this).parents('.theFlight').find('.tickpri')[i]).html();
+					train.last=$($(this).parents('.theFlight').find('.lastp')[i]).html();
+					train.seatClass=$($(this).parents('.theFlight').find('.txt')[i]).data('seat');
+					arr.push(train);
+				};
+				ticketJson.ticket=arr;
+				// console.log(ticketJson);
+				window.location.href = "trainOrder.html?ticketJson="+setUrlJson(ticketJson);
+			});
+			var data={fromStation:oa,toStation:aa,trainDate:tDate};
+			var url=basePath+'tc/train/trainSearch.do';
+			$.myAjax({
+				url: url,
+				type: 'GET',
+				data:data,
+				success:function(result){
+					console.log(result);
+					if(result.flag){
+						var res=result.data.trainData;
+						//城市数据
+						//queryKey
+						$('.queryKey').val(res.queryKey);
+						var fStation=res.fromStation;
+						var tStation=res.toStation;
+						$('#trainhomecity_name').val(fStation);
+						$('#traingetcity_name').val(tStation);
+						//站站
+						$('.tmAddress').html(res.fromStation+'→'+res.toStation+'('+result.data.trainDate+')');
+						//火车数量
+						var train=$('.trainModel').html();
+						var trainData=$.parseJSON(result.data.trainData.trains);
+						console.log(trainData)
+						$('.tmInfo').html('共'+trainData.length+'个车次')
+						for(var i=0;i<trainData.length;i++){
+							//车辆
+							$('.trainModel').before(train);
+							//车次
+							$('.trainModel').prev().find('.trainNo').html(trainData[i].trainNo);
+							//出发时间
+							$('.trainModel').prev().find('.fromT').html(trainData[i].fromTime);
+							//出发地点
+							$('.trainModel').prev().find('.fromC').html(trainData[i].fromStation);
+							$('.trainModel').prev().find('.fromC').attr('data-code',trainData[i].fromStationCode);
+							//到达时间
+							$('.trainModel').prev().find('.toT').html(trainData[i].toTime);
+							//到达城市
+							$('.trainModel').prev().find('.toC').html(trainData[i].toStation);
+							$('.trainModel').prev().find('.toC').attr('data-code',trainData[i].toStationCode);
+							//耗时
+							var min=trainData[i].runTimeSpan;
+							var hours=parseInt(trainData[i].runTimeSpan/60);
+							min%=60;
+							$('.trainModel').prev().find('.runTime').html(hours+'小时'+min+'分');
+							//车次类型
+							var trainType=trainData[i].trainClass;
+							// console.log(trainType)
+							if(!(trainType.indexOf('G')==-1)||!(trainType.indexOf('D')==-1)){
+								//二等座
+								if(trainData[i].tickets.secondseat){
+									$('.trainModel').prev().find('.set').append('<li class="trainprice clearfix mt"><span class="fl c333 mt5 txt" data-seat="secondseat">'+trainData[i].tickets.secondseat.seatName+'</span><span class="fl cf60 mt5">￥</span><span class="fl cf60 fSize20 tickpri">'+trainData[i].tickets.secondseat.price+'</span></li>');
+									$('.trainModel').prev().find('.last').append('<p class="mt trainNum c666">余<span class="cf60 lastp">'+trainData[i].tickets.secondseat.seats+'</span>张</p>');
+									$('.trainModel').prev().find('.orderBtn').append('<a class="more mt" href="javascript:; target="_blank">预订</a>');
+								};
+								//一等座
+								if(trainData[i].tickets.firstseat){
+									$('.trainModel').prev().find('.set').append('<li class="trainprice clearfix mt"><span class="fl c333 mt5 txt" data-seat="firstseat">'+trainData[i].tickets.firstseat.seatName+'</span><span class="fl cf60 mt5">￥</span><span class="fl cf60 fSize20 tickpri">'+trainData[i].tickets.firstseat.price+'</span></li>');
+									$('.trainModel').prev().find('.last').append('<p class="mt trainNum c666">余<span class="cf60 lastp">'+trainData[i].tickets.firstseat.seats+'</span>张</p>');
+									$('.trainModel').prev().find('.orderBtn').append('<a class="more mt" href="javascript:;">预订</a>');
+								};
+								//商务座
+								if(trainData[i].tickets.businessseat){
+									$('.trainModel').prev().find('.set').append('<li class="trainprice clearfix mt"><span class="fl c333 mt5  txt" data-seat="usinessseat">'+trainData[i].tickets.businessseat.seatName+'</span><span class="fl cf60 mt5">￥</span><span class="fl cf60 fSize20 tickpri">'+trainData[i].tickets.businessseat.price+'</span></li>');
+									$('.trainModel').prev().find('.last').append('<p class="mt trainNum c666">余<span class="cf60 lastp">'+trainData[i].tickets.businessseat.seats+'</span>张</p>');
+									$('.trainModel').prev().find('.orderBtn').append('<a class="more mt" href="javascript:;">预订</a>');
+								};
+								//特等座
+								if(trainData[i].tickets.specialseat){
+									$('.trainModel').prev().find('.set').append('<li class="trainprice clearfix mt"><span class="fl c333 mt5  txt" data-seat="usinessseat">'+trainData[i].tickets.specialseat.seatName+'</span><span class="fl cf60 mt5">￥</span><span class="fl cf60 fSize20 tickpri">'+trainData[i].tickets.specialseat.price+'</span></li>');
+									$('.trainModel').prev().find('.last').append('<p class="mt trainNum c666">余<span class="cf60 lastp">'+trainData[i].tickets.specialseat.seats+'</span>张</p>');
+									$('.trainModel').prev().find('.orderBtn').append('<a class="more mt" href="javascript:;">预订</a>');
+								};
+								//软卧
+								if(trainData[i].tickets.softsleeperdown){
+									$('.trainModel').prev().find('.set').append('<li class="trainprice clearfix mt"><span class="fl c333 mt5  txt" data-seat="usinessseat">'+trainData[i].tickets.softsleeperdown.seatName+'</span><span class="fl cf60 mt5">￥</span><span class="fl cf60 fSize20 tickpri">'+trainData[i].tickets.softsleeperdown.price+'</span></li>');
+									$('.trainModel').prev().find('.last').append('<p class="mt trainNum c666">余<span class="cf60 lastp">'+trainData[i].tickets.softsleeperdown.seats+'</span>张</p>');
+									$('.trainModel').prev().find('.orderBtn').append('<a class="more mt" href="javascript:;">预订</a>');
+								};
+								//无座
+								if(trainData[i].tickets.noseat){
+									$('.trainModel').prev().find('.set').append('<li class="trainprice clearfix mt"><span class="fl c333 mt5 txt" data-seat="noseat">'+trainData[i].tickets.noseat.seatName+'</span><span class="fl cf60 mt5">￥</span><span class="fl cf60 fSize20 tickpri">'+trainData[i].tickets.noseat.price+'</span></li>');
+									$('.trainModel').prev().find('.last').append('<p class="mt trainNum c666">余<span class="cf60 lastp">'+trainData[i].tickets.noseat.seats+'</span>张</p>');
+									$('.trainModel').prev().find('.orderBtn').append('<a class="more mt" href="javascript:;">预订</a>');
+								};
+							}else{
+								//硬座
+								if(trainData[i].tickets.hardseat){
+									$('.trainModel').prev().find('.set').append('<li class="trainprice clearfix mt"><span class="fl c333 mt5 txt" data-seat="hardseat">'+trainData[i].tickets.hardseat.seatName+'</span><span class="fl cf60 mt5">￥</span><span class="fl cf60 fSize20 tickpri">'+trainData[i].tickets.hardseat.price+'</span></li>');
+									$('.trainModel').prev().find('.last').append('<p class="mt trainNum c666">余<span class="cf60 lastp">'+trainData[i].tickets.hardseat.seats+'</span>张</p>');
+									$('.trainModel').prev().find('.orderBtn').append('<a class="more mt" href="javascript:;" target="_blank">预订</a>');
+								};
+								//无座
+								if(trainData[i].tickets.noseat){
+									$('.trainModel').prev().find('.set').append('<li class="trainprice clearfix mt"><span class="fl c333 mt5 txt" data-seat="noseat">'+trainData[i].tickets.noseat.seatName+'</span><span class="fl cf60 mt5">￥</span><span class="fl cf60 fSize20 tickpri">'+trainData[i].tickets.noseat.price+'</span></li>');
+									$('.trainModel').prev().find('.last').append('<p class="mt trainNum c666">余<span class="cf60 lastp">'+trainData[i].tickets.noseat.seats+'</span>张</p>');
+									$('.trainModel').prev().find('.orderBtn').append('<a class="more mt" href="javascript:;">预订</a>');
+								};
+								//硬卧
+								if(trainData[i].tickets.hardsleepermid){
+									$('.trainModel').prev().find('.set').append('<li class="trainprice clearfix mt"><span class="fl c333 mt5 txt" data-seat="hardsleepermid">'+trainData[i].tickets.hardsleepermid.seatName+'</span><span class="fl cf60 mt5">￥</span><span class="fl cf60 fSize20 tickpri">'+trainData[i].tickets.hardsleepermid.price+'</span></li>');
+									$('.trainModel').prev().find('.last').append('<p class="mt trainNum c666">余<span class="cf60 lastp">'+trainData[i].tickets.hardsleepermid.seats+'</span>张</p>');
+									$('.trainModel').prev().find('.orderBtn').append('<a class="more mt" href="javascript:;">预订</a>');
+								};
+								//软卧
+								if(trainData[i].tickets.softsleeperdown){
+									$('.trainModel').prev().find('.set').append('<li class="trainprice clearfix mt""><span class="fl c333 mt5 txt" data-seat="softsleeperdown">'+trainData[i].tickets.softsleeperdown.seatName+'</span><span class="fl cf60 mt5">￥</span><span class="fl cf60 fSize20 tickpri">'+trainData[i].tickets.softsleeperdown.price+'</span></li>');
+									$('.trainModel').prev().find('.last').append('<p class="mt trainNum c666">余<span class="cf60 lastp">'+trainData[i].tickets.softsleeperdown.seats+'</span>张</p>');
+									$('.trainModel').prev().find('.orderBtn').append('<a class="more mt" href="javascript:;">预订</a>');
+								};
+							};
+						};
+					}else{
+						myAlert(result.flag);
+					};
+				},
+				error:function(){
+					myAlert('请求失败');
+				}
+			});
+		};
+		train(oa,aa,tDate);
+		// train('beijing','tianjin','20170720');
+	})
+</script>
+</html>

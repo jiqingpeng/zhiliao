@@ -1,0 +1,114 @@
+.wrap{
+	width:962px;
+	margin:0 auto;
+	font-size:12px;
+	// border:1px solid red;
+	.f60{
+		color:#f60;
+	}
+	.fSize14{
+		font-size:14px;
+	}
+	.fSize16{
+		font-size:16px;
+	}
+	.fSize18{
+		font-size:18px;
+	}
+	.bold{
+		font-weight:bold;
+	}
+	.arrow{
+		// border:1px solid red;
+		text-align: center;
+		margin-top:26px;
+		border-bottom:1px solid #ccc;
+		font-size:16px;
+	}
+	.orderList{
+		width:100%;
+		border:1px solid #ddd;
+		margin-bottom:20px;
+		.listHead{
+			padding-left:24px;
+			height:54px;
+			line-height: 54px;
+			border-bottom:1px dashed #ddd;
+		}
+		.listBody{
+			padding:20px;
+			.station{
+				.stationList{
+					width:62px;
+					li{
+						margin:8px 0;
+					}
+				}
+				.arrow{
+					width:116px;
+				}
+				.txtR{
+					text-align: right;
+				}
+			}
+			.price{
+				margin:0 140px;
+				p{
+					color:#999;
+				}
+				.num{
+					margin-top:10px;
+				}
+				.time{
+					margin-top:34px;
+				}
+			}
+			.ticket{
+				.ticketState{
+					margin-top:10px;
+				}
+				.ticketBtn{
+					display:inline-block;
+					width:132px;
+					height:36px;
+					line-height: 36px;
+					text-align: center;
+					color:#fff;
+					background: #f60;
+					margin-top:16px;
+					border-radius: 2px;
+				}
+			}
+			.passengersMess{
+				.passCode{
+					margin-left:104px;
+				}
+				.passSeat{
+					margin-left:56px;
+				}
+				.passTicket{
+					margin-left:168px;
+				}
+				.passState{
+					margin-left:64px;
+				}
+			}
+			.getTicketMess{
+				li{
+					margin:10px 0;
+					color:#333;
+				}
+			}
+		}
+	}
+	.orderDetail{
+		display: inline-block;
+		color:#209ef6;
+		margin-bottom:20px;
+	}
+	.refunt{
+		li{
+			margin:10px 0;
+		}
+	}
+}

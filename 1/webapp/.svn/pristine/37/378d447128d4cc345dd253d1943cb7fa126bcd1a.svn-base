@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>二级域名</title>
+	<link rel="stylesheet" href="../../css/index/base.css">
+	<link rel="stylesheet" href="../../css/index/public.css">
+	<link rel="stylesheet" href="../../css/index/second.css">
+	<style>
+		/*.on_mess:hover{
+			cursor:pointer;
+			color:red;
+		}*/
+	</style>
+</head>
+<body>
+	<div class="head">
+			<div class="clearfix hnav">
+				<ul class="fl">
+				<li class="fl"><a href="index.html">首页</a></li>
+				<!-- <li class="fl"><a href="detail.html">解决方案</a></li>
+				<li class="fl"><a href="second.html">合作单位</a></li>
+				<li class="fl"><a href="cation.html">关于我们</a></li> -->
+			</ul>
+				<ul class="fr">
+					<li class="fl">
+						<a id="user_center" href="../user/activityList.html"></a>
+					</li>
+					<li class="fl" id="user_name"></li>
+					<li class="fl"><a id="login_out" href="javascript:;"></a></li>
+				</ul>
+			</div>
+	</div>
+	<div class="contain">
+		<div class="bannimg">
+			<img class="logol fl" src="../../img/index/logoandname.png" alt="logoname">
+			<img class="logor fr" src="../../img/index/homenav.png" alt="homenav">
+		</div>
+		<div class="company-sec clearfix">
+			<div class="group fl">
+					<div class="message clearfix">
+						<img  class="fl canpanyLogo" src="" alt="bg">
+						<span class="introduction">
+							<!-- 中国产学研合作促进会成立于2007年11月，是经国务院批准 ，由国家发改委、教育部、科技部、工信部、环保部、国务院国资委、国家知识产权局、中国科协、中国科学院、中国工程院、中华全国总工会、国家自然科学基金委等相关部门和一批高校、科研院所、央企、国企、民企等政产学研界共同参与创办的全国性社会团体，是跨部委、跨区域、跨行业、跨学科，产学研、政金介、商贸用互动合作的资源整合型高层协同创新服务平台。
+							中国产学研合作促进会由国务院国资委主管，是中国科协团体会员。经中组部批准，全国人大常委会原副委员长，中国科学院原院长、两院院士路甬祥任中国产学研合作促进会第二届理事会会长。促进会的宗旨是做好“三个服务”，即为推进国家技术创新体系建设服务；为加快区域经济创新发展服务；为提升企业自主创新能力服务。促进会的任务是充分发挥产学研三方与政府之间的桥梁和纽带作用，搭建政产学研金协同创新共享服务平台，探索产学研合作的新模式、新机制、新方法、新途径，着力构建以企业为主体、市场为导向、产学研相结合的技术创新体系，促进政产学研用的紧密结合，为建设创新型国家和世界科技强国作贡献。党中央、国务院和各级政府十分重视产学研合作工作，时任国务院副总理曾培炎致信祝贺中国产学研合作促进会成立。党和国家领导人李克强、张德江、张高丽、刘延东、路甬祥、陈至立、张梅颖、徐匡迪等都从不同的角度关心和支持促进会的工作。刘延东在批示中指出： “中国产学研合作促进会成立以来，在推动企业、高校和科研院所互动协作，整合创新资源，促进科技与经济结合等方面做了大量卓有成效的工作。谨向为之付出辛勤努力的同志们表示诚挚敬意和衷心的感谢。”促进会将进一步整合创新资源，搭建创新平台，拓展服务功能，更好地发挥桥梁、纽带作用，为推进政产学研用结合做些更切实、更有成效的工作，为完善国家和区域创新体系，建设创新型国家作出新的贡献。 -->	
+						</span>
+					</div>
+			</div>
+			<div class="meet fr">
+				<h4>
+					<img src="../../img/index/scon.png" alt="new">
+					<span>联系方式</span>
+				</h4>
+				<ul class="message mt56 contact">
+					<!-- <li>地　址：</span>北京市海淀区阜成路北3街6号轻苑大厦1002 </li>
+					<li><span>邮　编：</span>100048 </li> -->
+					<!-- <li> <span>总　机：</span>010-68987182   68987183 </li>
+					<li> <span>办公室：</span>010-68988078   68987192  68900377 </li> -->
+					<!-- <li> <span>传　真：</span>010-68986913  </li>
+					<li> <span>E-mail：</span><span>zgcxy06@163.com</span> 
+					</li> -->
+				</ul>	
+			</div>
+		</div>
+		<div class="company-thr clearfix">
+			<div class="meet h428 fl">
+				<h4>
+					<img src="../../img/index/snew.png" alt="new">
+					<span>新闻公告</span>
+				</h4>
+				<ul class="message news">
+					<!-- <li>关于召开中国环境保护协会第五届理事会</li>
+					<li>关于召开中国可持续发展会议</li>
+					<li>环境保护部等四部联合召开经济会议</li>
+					<li>关于征求中国环境保护产业协会标准《柴油机排气后处理</li>
+					<li>环境保护部等四部联合召开经济会议</li>
+					<li>关于召开中国可持续发展会议</li>
+					<li>关于召开中国环境保护协会第五届理事会</li>
+					<li>关于征求中国环境保护产业协会标准《柴油机排气后处理</li>
+					<li>环境保护部等四部联合召开经济会议</li>
+					<li>关于召开中国环境保护协会第五届理事会</li> -->
+				</ul>
+			</div>
+			<div class="meet h428 fl ml10">
+				<h4>
+				<img src="../../img/index/sact.png" alt="new">
+				<span>会议活动</span>
+				</h4>
+				<ul class="message activity">
+					<!-- <li>关于召开中国环境保护协会第五届理事会</li>
+					<li>关于召开中国可持续发展会议</li>
+					<li>环境保护部等四部联合召开经济会议</li>
+					<li>关于征求中国环境保护产业协会标准《柴油机排气后处理</li>
+					<li>环境保护部等四部联合召开经济会议</li>
+					<li>关于召开中国可持续发展会议</li>
+					<li>关于召开中国环境保护协会第五届理事会</li>
+					<li>关于征求中国环境保护产业协会标准《柴油机排气后处理</li>
+					<li>环境保护部等四部联合召开经济会议</li>
+					<li>关于召开中国环境保护协会第五届理事会</li> -->
+				</ul>
+			</div>
+			<div class="meet h428 fr">
+				<h4>
+					<img src="../../img/index/slead.png" alt="new">
+					<span>工会领导</span>
+				</h4>
+				<ul class="message">
+					<li>
+						<p>会长</p>
+						<p>卢永祥 &nbsp&nbsp十届、十一届全国人大常委会副委员长</p>
+						<p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp中国科学院原院长、俩院院士</p>
+					</li>
+					<li>
+						<p>常务副会长</p>
+						<p>陈晓雅&nbsp&nbsp全国政协教科文卫体委员会副主任</p>
+						
+					</li>
+					<li>
+						<p>秘书长</p>
+						<p>王建华</p>
+						
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="foot">
+			<ul class="f-list clearfix">
+				<!-- <li class="fl tell no">
+				</li> -->
+				<li class="fl">
+					<ul class="foot-message">
+						<li class="font24"><a href="#">关于我们</a></li>
+						<li><a href="#">关于群英会</a></li>
+						<li><a href="#">加入我们</a></li>
+						<li><a href="#">免责申明</a></li>
+					</ul>
+				</li>
+				<li class="fl">
+					<ul class="foot-message">
+						<li class="font24"><a href="#">联系我们</a></li>
+						<li><a href="#">电话</a></li>
+						<li><a href="#">官方微信</a></li>
+						<li><a href="#">新浪微博</a></li>
+					</ul>
+				</li>
+				<li class="fl">
+					<ul class="foot-message">
+						<li class="font24"><a href="#">新闻中心</a></li>
+						<li><a href="#">公司新闻</a></li>
+						<li><a href="#">合作伙伴</a></li>
+						<li><a href="#">知名客户</a></li>
+					</ul>
+				</li>
+				<li class="fl">
+					<ul class="foot-message">
+						<li class="font24"><a href="#">合作</a></li>
+						<li><a href="#">主办方合作</a></li>
+						<li><a href="#">媒体合作</a></li>
+						<li><a href="#">资助合作</a></li>
+					</ul>
+				</li>
+				
+				<li class="fl font24 la"><a href="#">公司新闻</a></li>
+			</ul>
+			<p class="p1">未经gconfs.com同意不得转发网站会议信息</p>
+			<p class="p2">京ICP备1708133号</p>
+	</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/user/userMain.js"></script>
+<script>
+	$(function(){
+		url=basePath+"index/unitpage.do";
+		$.myAjax({
+			url: url,
+			data:{pageUrl:'unit'},
+			success:function(result){
+				if(result.flag){
+						console.log(result)
+						// 获取用户登陆状态信息
+						if(result.status.nick){
+							$('#user_name').html(result.status.nick);
+							$('#user_center').html('用户中心');
+							$('#login_out').html('注销');
+						};
+						//公司简介
+						$('.introduction').append(result.data.org.introduction);
+						//联系方式
+						$('.contact').append('<li>联系人：</span>'+result.data.org.contactUser+'</li><li>地&nbsp址：</span>'+result.data.org.contactAddress+'</li><li><span>邮&nbsp编：</span>'+result.data.org.contactZipcode+'</li><li><span>手&nbsp机：</span>'+result.data.org.contactPhone+'</li><li><span>E-mail：</span><span>'+result.data.org.contactEmail+'</span></li>');
+						//新闻公告
+						for(var i=0;i<result.data.news.length;i++){
+							$('.news').append('<li><input type="hidden" value="'+result.data.news[i].id+'"/><a class="on_detail" href="javascript:;">'+result.data.news[i].title+'</a></li>');
+						};
+						//新闻公告跳转
+						$(document).on('click', '.on_detail', function(){
+							var id = $(this).prev().val();
+							// return;
+							$(this).attr('href','newsDetail.html?newsId=' + id);
+						});
+						//会议活动
+						for(var i=0;i<result.data.activity.length;i++){
+							$('.activity').append('<li><input type="hidden" value="'+result.data.activity[i].id+'"/><a class="on_mess" href="javascript:;">'+result.data.activity[i].name+'</a></li>');
+						};
+						//链接跳活动详情
+						$(document).on('click','.on_mess',function(){
+							$(this).attr("href",'detail.html?location='+$(this).prev().val());
+						});
+						//公司logo
+						if(result.data.imageUrl==null){
+
+						}else{
+							$('.canpanyLogo').attr('src',basePath+result.data.imageUrl);
+						};
+				};
+			}
+		});
+		//注销
+		loginOut('#login_out');
+	});
+</script>
+</html>

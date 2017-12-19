@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+	<meta charset="UTF-8">
+	<title>会议信息</title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="会议信息" />
+    <meta content="telephone=no" name="format-detection" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+    <link rel="stylesheet" href="../../css/common/bootstrap.css" />  
+    <link rel="stylesheet" href="../../css/common/bootstrap-datetimepicker.min.css" />
+	<link rel="stylesheet" href="css/style.css" />
+	
+  </head>
+  <body>     
+    <iframe name="head" class="m-head" 
+		marginwidth="0" marginheight="0" width="100%" height="50" src="header.html" frameborder="0"></iframe> 
+	<div class="order-box">
+		<div class="hd">		   
+		   <div>
+			  <p><font style="font-size:20px;line-height:40px;color:#000" id="wx-title"></font></p>
+			  <p style="color:#999;font-size:14px;" id="wx-theme"></font></p>			   
+		   </div>
+		   <div class="tab-detail-title"><img class="tab-detail-img" src="images/icon_info.png"/>会议概况</div>
+		   <hr class="split-hr1"/>
+		   <div class="tab-detail-info" id="wx-outlines">		     
+			  正在加载，请稍后...	 
+		   </div>		    
+		   <div class="tab-detail-title"><img class="tab-detail-img" src="images/icon_history.png"/>会议简介</div>
+		   <hr class="split-hr1"/>
+		   <div class="tab-detail-info" id="wx-desc">		      
+			  正在加载，请稍后...			
+		   </div>
+		   <div class="tab-detail-title"><img class="tab-detail-img" src="images/icon_related.png"/>主要议题</div>
+		   <hr class="split-hr1"/>
+		   <div class="tab-detail-info" id="wx-problem">		      
+			  正在加载，请稍后...			
+		   </div>
+		    <div class="tab-detail-title"><img class="tab-detail-img" src="images/icon_related.png"/>会议行程</div>
+		   <hr class="split-hr1"/>
+		   <div class="tab-detail-info" id="wx-schedual">		      
+			  正在加载，请稍后...			
+		   </div>
+		   <div class="tab-detail-title"><img class="tab-detail-img" src="images/icon_info.png"/>联系方式</div>
+		   <hr class="split-hr1"/>
+		   <div class="tab-detail-info" id="wx-contact">	
+		       正在加载，请稍后...			  	 
+		   </div>
+		   <div class="tab-detail-title"><img class="tab-detail-img" src="images/icon_info.png"/>机票&酒店&火车</div>
+		   <hr class="split-hr1"/>
+		   <div class="tab-detail-info" >	
+		       <ul class="nav nav-pills" role="tablist">
+			    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">机 票</a></li>
+			    <li role="presentation"><a href="#hoteldiv" aria-controls="hoteldiv" role="tab" data-toggle="tab">酒 店</a></li>		
+			    <li role="presentation"><a href="#traindiv" aria-controls="traindiv" role="tab" data-toggle="tab">火 车</a></li>	      
+			  </ul>
+			  <div class="tab-content">
+			    <div role="tabpanel" class="tab-pane active" id="home">	
+			    	<div class="clear">&nbsp;</div>				    		         
+			    	<form id="airlineform" class="form-horizontal">			    	    
+			    		<div class="form-group">			    		 						    
+						    <div class="col-sm-11 col-xs-11">							
+						    	<input class="form-control " style="background-color:#fff" type="text" value="" size="15" id="homecity_name" name="homecity_name" 
+						    	mod="address|notice" mod_address_source="hotel" mod_address_suggest="" mod_address_reference="cityid" 
+						    	mod_notice_tip="出发城市"  readonly/>
+								<input id="cityid" name="cityid" type="hidden" value="{$cityid}" />	
+						        <!-- <input type="text"  class="form-control" placeholder="" > -->
+						    </div>						     
+						</div>
+						<div class="form-group">			    		 	  			    
+						    <div class="col-sm-11 col-xs-11">
+						    	<input class="form-control "  style="background-color:#fff" type="text" value="" size="15" id="getcity_name" name="getcity_name" 
+						    	mod="address|notice" mod_address_source="hotel"  mod_address_reference="getcityid" 
+						    	mod_notice_tip="到达城市"  readonly/>
+								<input id="getcityid" name="getcityid" type="hidden" value="{$getcityid}" />	
+						        <!-- <input type="text"  class="form-control" placeholder="" > -->
+						    </div>						     
+						</div>
+						<div class="form-group">				    		 	 		    
+						    <div class="col-sm-11 col-xs-11">								
+						        <input type="text"  class="form-control datetime"  style="background-color:#fff"  id="stime" placeholder="出发时间"  readonly data-date-format="yyyy-mm-dd">
+						    </div>						     
+						</div>						 
+						<div class="form-group text-center">
+							<div class="col-sm-11 col-xs-11">
+								<input type="button" class="btn btn-warning form-control"  value="查询"  onclick="airSearch()">
+							</div>
+						</div>
+			    	</form>			    	 
+			    </div>
+			    <div role="tabpanel" class="tab-pane" id="hoteldiv">
+			    </div>
+			     <div role="tabpanel" class="tab-pane" id="traindiv">	
+			    	<div class="clear">&nbsp;</div>				    		         
+			    	<form id="hotelform" class="form-horizontal">			    	    
+			    		<div class="form-group">			    		 						    
+						    <div class="col-sm-11 col-xs-11">							
+						    	<input class="form-control " style="background-color:#fff" type="text" value="" size="15" id="trainhomecity_name" name="trainhomecity_name" 
+						    	mod="address|notice" mod_address_source="tHote" mod_address_suggest="" mod_address_reference="traincityid" 
+						    	mod_notice_tip="出发城市"  readonly/>
+								<input id="traincityid" name="traincityid" type="hidden" value="{$traincityid}" />	
+						        <!-- <input type="text"  class="form-control" placeholder="" > -->
+						    </div>						     
+						</div>
+						<div class="form-group">			    		 	  			    
+						    <div class="col-sm-11 col-xs-11">
+						    	<input class="form-control "  style="background-color:#fff" type="text" value="" size="15" id="traingetcity_name" name="traingetcity_name" 
+						    	mod="address|notice" mod_address_source="tHote"  mod_address_reference="traingetcityid" 
+						    	mod_notice_tip="到达城市"  readonly/>
+								<input id="traingetcityid" name="traingetcityid" type="hidden" value="{$traingetcityid}" />	
+						        <!-- <input type="text"  class="form-control" placeholder="" > -->
+						    </div>						     
+						</div>
+						<div class="form-group">				    		 	 		    
+						    <div class="col-sm-11 col-xs-11">								
+						        <input type="text"  class="form-control datetime"  style="background-color:#fff"  id="trainstime" placeholder="出发时间"  readonly data-date-format="yyyy-mm-dd">
+						    </div>						     
+						</div>						 
+						<div class="form-group text-center">
+							<div class="col-sm-11 col-xs-11">
+								<input type="button" class="btn btn-warning form-control"  value="查询"  onclick="trainSearch()">
+							</div>
+						</div>
+			    	</form>			    	 
+			    </div>			  
+			  </div> 	           			  	 
+		   </div>
+		   <div class="tab-detail-title"><img class="tab-detail-img" src="images/icon_info.png"/>提示</div>
+		   <hr class="split-hr1"/>
+		   <div class="tab-detail-info" id="wx-contact">
+		       <img src="images/wx-mp-2code.jpg" style="width:70%;margin:0 auto"><br/>
+			   关注公众号可扫码签到
+			  	 
+		   </div>
+		</div>
+		<div style="position:fixed;top:70%;right:5%" id="checkindiv">
+		  <a href="javascript:checkin()"><img src="images/icon-sign.jpg" style="width:50px"/></a>
+		</div> 
+		<div style="height:40px;">&nbsp;
+		</div>
+	</div>  
+	<div class="modal fade bs-example-modal-sm" style="top:20%;" tabindex="-1" role="dialog" id="msgmodal">
+	  <div class="modal-dialog modal-sm"  role="document">
+		<div class="modal-content" style="height:300px">
+		  <div class="modal-header">	
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<h4 class="modal-title">提示</h4>
+		  </div>
+		  <div class="modal-body">
+			  <p id="msg"></p>
+		  </div>		   
+		</div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	<iframe name="footer" class="m-foot" 
+		marginwidth="0" marginheight="0" width="100%" height="30" src="footer.html" frameborder="0"></iframe>
+  </body>   
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/jquery.cookie.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>  
+  <script type="text/javascript" src="../../js/bootstrap-datetimepicker.min.js"></script> 
+  <script type="text/javascript" src="../../js/bootstrap-datetimepicker.zh-CN.js"></script>
+  <script type="text/javascript" src="../../js/user/fix.js?v=1.1"></script>
+  <script type="text/javascript" src="../../js/user/address.js"></script>
+  <script type="text/javascript" src="js/pub.js"></script>
+  <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script> 
+  <script src="../../js/common/common.js"></script>
+  
+  <script>
+  var confid ;  
+	var title, confdesc,imgurl;
+	var share;
+  var attendname;
+	var airport = new Array();
+	 
+	 $(function(){
+		 
+		 $.ajax({
+			 url:"../../wx/islogin",
+			 dataType: "text",
+			 success: function(data){
+				if(data == "notlogin"){
+					var request=new UrlSearch(); //实例化
+					confid = request.id;
+					if(typeof(confid) == "string")
+					  window.location.href="login.html?id="+confid;
+					else
+					  window.location.href="login.html";
+					  
+				}
+			}
+		 });
+		 
+		 var request=new UrlSearch(); //实例化
+		 confid = request.id;
+		 $.post("../../user/activity/get.do",
+		    {"id":confid},
+		    function(data){
+		    	 
+		    	//火车字典表
+	 			$$.module.address.source.tHote=data.data.trainStationAll;
+				var trainData = data.data.trainStationAbc;
+				(function(){
+					$$.module.address.source.tHote_hotData.热门= trainData.热门;
+					$$.module.address.source.tHote_hotData.A =trainData.A;
+					$$.module.address.source.tHote_hotData.B =trainData.B;
+					$$.module.address.source.tHote_hotData.C =trainData.C;
+					$$.module.address.source.tHote_hotData.D =trainData.D;
+					$$.module.address.source.tHote_hotData.E =trainData.E;
+					$$.module.address.source.tHote_hotData.F =trainData.F;
+					$$.module.address.source.tHote_hotData.G =trainData.G;
+					$$.module.address.source.tHote_hotData.H =trainData.H;
+					$$.module.address.source.tHote_hotData.I =trainData.I;
+					$$.module.address.source.tHote_hotData.J =trainData.J;
+					$$.module.address.source.tHote_hotData.K =trainData.K;
+					$$.module.address.source.tHote_hotData.L =trainData.L;
+					$$.module.address.source.tHote_hotData.M =trainData.M;
+					$$.module.address.source.tHote_hotData.N =trainData.N;
+					$$.module.address.source.tHote_hotData.O =trainData.O;
+					$$.module.address.source.tHote_hotData.P =trainData.P;
+					$$.module.address.source.tHote_hotData.Q =trainData.Q;
+					$$.module.address.source.tHote_hotData.R =trainData.R;
+					$$.module.address.source.tHote_hotData.S =trainData.S;
+					$$.module.address.source.tHote_hotData.T =trainData.T;
+					$$.module.address.source.tHote_hotData.U =trainData.U;
+					$$.module.address.source.tHote_hotData.V =trainData.V;
+					$$.module.address.source.tHote_hotData.W =trainData.W;
+					$$.module.address.source.tHote_hotData.X =trainData.X;
+					$$.module.address.source.tHote_hotData.Z =trainData.Z;
+					$$.module.address.source.tHote_hotData.Y =trainData.Y;
+					 
+				})();
+			 var json = data.data.activity;
+			 document.title = json.name;
+			 title = json.name;
+            attendname = data.data.userAttend.name;
+			 $("#wx-title").html(json.name);
+			 $("#wx-theme").html(json.theme);
+			 $("#wx-outlines").html(
+				"<p><b>会议时间</b>:"+json.stime+" 至 "+json.etime+"</p>"+
+				 
+				"<p><b>举办城市</b>:"+json.province+"</p>"+
+				"<p><b>举办地点</b>:"+json.city+'-'+json.location+"</p>"+
+				//"<p><b>发布单位</b>:"+json.organizer+"</p>"+
+				"<p><b>参会状态</b>:"+data.data.state+"</p>");
+			 if(data.data.state == "已签到")
+				 $("#checkindiv").attr("display","none");
+		 
+			var desc = json.introduction.replace(new RegExp(/(\r\n)/g),'<br/>');
+			confdesc = json.introduction;
+			 
+			$("#wx-desc").html(desc);
+			
+			$("#wx-problem").html(json.issue);	
+			var scheduals = data.data.schedual;
+			var schedualDesc = "";			 
+			for(var o = 0; o < scheduals.length; ++o){
+				schedualDesc += scheduals[o].stime + "至" + scheduals[o].etime
+					+ "  " +scheduals[o].content + "<br/>";			 
+			}		
+			var hotels = data.data.hotel;
+			var hoteldesc = "";
+			
+			for(var o = 0; o < hotels.length; ++o){
+				hoteldesc += "<a href='https://m.ly.com/hotel/jiudian_"+hotels[o].resId+".html?refid=9368888' target='_blank'><div class='col-xs-6 col-sm-6' style='font-size:12px'><p>"+hotels[o].resName
+					+"</p><p><img style='height:80px' src='"+hotels[o].imageUrl[0]
+					+"'></p></div></a>";				
+			}
+			 
+			$("#hoteldiv").html(hoteldesc);	
+			$("#wx-schedual").html(schedualDesc);
+
+			$("#wx-contact").html(
+				"<p><b>联系人</b>:"+json.contactUser+"</p>"+
+				"<p><b>电&nbsp;&nbsp;&nbsp;&nbsp;话</b>:"+json.contactPhone+"</p>"+
+				"<p><b>邮&nbsp;&nbsp;&nbsp;&nbsp;箱</b>:"+json.contactEmail+"</p>");
+		    },
+			'json'
+		);
+		 
+		 $.getJSON("../../wx/getjssign.do?url="+encodeURIComponent(location.href),function(json){
+			wx.config({  
+				debug: false,  
+				appId: json.appId,  
+				timestamp: json.timestamp,  
+				nonceStr: json.noncestr,  
+				signature: json.sign,  
+				jsApiList: [  
+				  // 所有要调用的 API 都要加到这个列表中  		
+				  'checkJsApi',				  
+				  'scanQRCode',
+				  'onMenuShareTimeline',
+				  'onMenuShareAppMessage',
+				  'onMenuShareQQ',
+				  'onMenuShareWeibo'
+				]  
+			}); 			 
+		  });
+		 
+		 $('.datetime').datetimepicker({
+		        language:  'zh-CN',
+		        weekStart: 1,
+		        todayBtn:  1,
+				autoclose: 1,
+				todayHighlight: 1,
+				startView: 2,
+				minView: 2,
+				forceParse: 0
+		    });	 
+	 });
+	 
+	wx.ready(function () {		 	
+		share = {
+		  title:title,
+		  link:host+"/page/mobile/confdetail.html?id="+confid,
+		  desc:confdesc,
+		  imgUrl:imgurl,
+		  success:function(){
+			   
+		  }	   
+		};
+		wx.onMenuShareTimeline(share);
+	    wx.onMenuShareAppMessage(share);
+	    wx.onMenuShareQQ(share);
+	    wx.onMenuShareWeibo(share);	
+	 });
+	 
+
+	function msgshow(msg, autoclose){
+		$("#msg").html(msg);
+		$("#msgmodal").modal("show");
+    if(autoclose)
+		  setTimeout('$("#msgmodal").modal("hide")',3000);
+	}
+
+	  
+	 
+	 function checkin(){
+     
+      
+     wx.scanQRCode({
+			needResult: 1, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
+			scanType: ["qrCode","barCode"], // 可以指定扫二维码还是一维码，默认二者都有
+			success: function (res) {
+				var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果;
+				//alert(encodeURIComponent(result));				 
+				 
+				$.getJSON(result+"&signType=1" ,function(json){
+					if(json.flag == true){
+						msgshow("<div class='text-center' style='font-size:24px;margin-top:10px'>"+title+"<br/>签到成功<br/><br/><font style='font-family:黑体;font-weight:bold'>参会代表："+attendname+"</font></div>", false);
+						//setTimeout('window.location.reload()',3000);
+					}
+					else
+						msgshow("<div class='text-center' style='font-size:24px;margin-top:60px'>"+json.msg+"</div>", true);
+				});			 
+			}
+		});
+	 }
+	 
+	 function airSearch(){	 
+		 if($("#cityid").val() != "" &&　$("#getcityid").val()　!= "" && ($("#stime").val() != "")){
+			 var url = "https://m.ly.com/flightnew/"+$("#cityid").val()+"_"+$("#getcityid").val()+".html?refid=9368888&";			
+			 url += "&flyofftime=" + $("#stime").val() + "&showwxpaytitle=1";	 
+			 window.open(url);		 
+		 }		 
+	 }
+	 
+	 function trainSearch(){	 
+		 if($("#traincityid").val() != "" &&　$("#traingetcityid").val()　!= "" && ($("#trainstime").val() != "")){
+			 // var url =  "https://m.ly.com/uniontrain/webapp/train/list.html?startdatetime="+$("#trainstime").val()
+				// 	 +"&startname="+$("#trainhomecity_name").val()+"&arrivename="+$("#traingetcity_name").val() + "&refid=9368888";
+			 var url =  basePath+'trainList.html?startdatetime="+$("#trainstime").val()'
+					 +"&startname="+$("#trainhomecity_name").val()+"&arrivename="+$("#traingetcity_name").val() +"&refid" ;
+			 window.location.href=url;	 
+		 }		 
+	 }
+  </script>
+</html>

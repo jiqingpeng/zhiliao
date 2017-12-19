@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>联系主办方</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+	<link rel="stylesheet" type="text/css" href="../../../css/app/style.css">
+	<style type="text/css">
+		html,body{
+			width: 100%;
+		}
+		.contBox{
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			overflow-y: auto;
+		}
+		.container{ 
+			background-color: #f7f7f7;
+			padding: 20px 10px;
+			margin-top: 48px;
+		}
+		.backdrop{
+			display: inline-block;
+			width: 22px;
+			height: 22px;
+			background-color: #d54544;
+			text-align: center;
+			line-height: 22px;
+			border-radius: 50%;
+			margin-left: 20px;
+		}
+		.backdrop img{
+			width: 14px;
+			margin-top: -1px;
+		}
+		.titleCon{
+			font-size: 18px;
+			margin-left: 15px;
+		}
+		.content{
+			/*width: 100%;*/
+			background-color: #ffffff;
+			padding: 10px 20px;
+			margin-bottom: 2px;
+		}
+		.contentImg{
+			line-height: 50px;
+			text-align: center;
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			background-color: #fe771d;
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.contentImg img{
+			width: 25px;
+			margin-top: 11px;
+		}
+		.contentDet{
+			width: 70%;
+			display: inline-block;
+			vertical-align: middle;
+			margin-left: 20px;
+		}
+		.headline{
+			font-size: 18px;
+			font-weight: 500;
+			margin-bottom: 5px;
+		}
+		.contentTop{
+			margin-top: 20px;
+		}
+		.email{
+			background-color: #4badf6;
+		}
+		.phone{
+			background-color: #ffbb1c;
+		}
+		.person{
+			background-color: #d64645;
+		}
+		.zipcode{
+			background-color: #82d255;
+		}
+		.meeting, .platform{
+			width: 40%;
+			float: left;
+			text-align: center;
+			margin: 10px 0 3% 10px;
+		}
+		.meetingTntro{
+			margin-top: 10px;
+		}
+		.platformIntro{
+			margin-top: 6px;
+		}
+		.platform{
+			float: right;
+			margin-left: 0;
+			margin-right: 3%;
+		}
+		.meetCode{
+			height: 100%;
+			background-color: #fff;
+			padding: 5%;
+		}
+		.code img{
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div class="head">
+			<div class="navImg">
+				<img src="../../../img/app/arrowLeft-icon.png">
+			</div>
+			<div class="navDetail">联系主办方</div>
+		</div>
+	<div class="contBox">
+		<div class="container">
+			<div class="content">
+				<div class="contentImg"><img src="../../../img/app/location.png"></div>
+				<div class="contentDet">
+					<div class="headline">联系地址</div>
+					<div class="site contactAddress"></div>
+				</div>
+			</div>
+			<div class="content">
+				<div class="contentImg email"><img src="../../../img/app/emailIcon.png"></div>
+				<div class="contentDet">
+					<div class="headline">联系邮箱</div>
+					<div class="site contactEmail"></div>
+				</div>
+			</div>
+			<div class="content">
+				<div class="contentImg phone"><img src="../../../img/app/phoneIcon.png"></div>
+				<div class="contentDet">
+					<div class="headline">联系电话</div>
+					<div class="site contactPhone"></div>
+				</div>
+			</div>
+			<div class="content contentTop">
+				<div class="contentImg person"><img src="../../../img/app/personIcon.png"></div>
+				<div class="contentDet">
+					<div class="headline">联系人</div>
+					<div class="site contactUser"></div>
+				</div>
+			</div>
+			<div class="content">
+				<div class="contentImg zipcode"><img src="../../../img/app/zipcodeIcon.png"></div>
+				<div class="contentDet">
+					<div class="headline">联系邮编</div>
+					<div class="site contactZipcode"></div>
+				</div>
+			</div>
+		</div>
+		<div class="code">
+			<div class="meeting">
+				<div class="meetCode">
+					<div class="meetingCode" id="qrcode"></div>
+				</div>
+				<div class="meetingTntro">会议二维码</div>
+			</div>
+			<div class="platform">
+				<div class="platformCode">
+					<img src="../../../img/app/public.jpg">
+				</div>
+				<div class="platformIntro">平台二维码</div>
+			</div>
+		</div>
+	</div>	
+</body>
+<script type="text/javascript" src="../../../js/zepto.js"></script>
+<script type="text/javascript" src="../../../js/common/qrcode.min.js"></script>
+<script type="text/javascript" src="../../../js/app/mtCommon.js"></script>
+<script type="text/javascript">
+$(function(){
+	myLoading();
+	initPage();
+	// 会议二维码
+	var qrcode = new QRCode(document.getElementById("qrcode"), {
+		width : 120,
+		height : 120
+	});
+	var urlData= basePath + "page/weixin/actDetail.html?id=" + Request("id");
+	qrcode.makeCode(urlData);
+})
+//初始化页面
+function initPage(url, type){
+	$.myAjax({
+		url: basePath + "mt/user/activity/get.do",
+		data: {id: Request("id"), type: "contact"},
+		success: function(result){
+			removeMyLoading();
+			if(result.flag){
+				if((result.data.contactAddress == "") && (result.data.contactEmail == "")&& (result.data.contactPhone == "")&& (result.data.contactUser == "") && (result.data.contactZipcode == "")){
+					$(".container").html("");
+					myAlert("暂无内容");
+					return;
+				};
+				//处理某一字段为空
+				if(result.data.contact.contactAddress == ""){
+					$(".contactAddress").prev().html("");
+					$(".contactAddress").parent().parent().remove();
+				};
+				if(result.data.contact.contactEmail == ""){
+					$(".contactEmail").parent().parent().remove();
+				};
+				if(result.data.contact.contactPhone == ""){
+					$(".contactPhone").parent().parent().remove();
+				};
+				if(result.data.contact.contactUser == ""){
+					$(".contactUser").parent().parent().remove();
+				};
+				if(result.data.contact.contactZipcode == ""){
+					$(".contactZipcode").parent().parent().remove();
+				};
+				//页面赋值
+				$(".contactAddress").html(result.data.contact.contactAddress);	
+				$(".contactEmail").html(result.data.contact.contactEmail);	
+				$(".contactPhone").html(result.data.contact.contactPhone);	
+				$(".contactUser").html(result.data.contact.contactUser);	
+				$(".contactZipcode").html(result.data.contact.contactZipcode);	
+			}else{
+				myAlert(result.msg);
+			}
+		},
+		error: function(){
+			removeMyLoading();
+			myConfirm("请求失败!");
+		}
+	});
+}
+</script>
+</html>

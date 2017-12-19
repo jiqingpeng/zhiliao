@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>分类</title>
+	<link rel="stylesheet" href="../../css/index/base.css">
+	<link rel="stylesheet" href="../../css/index/public.css">
+	<link rel="stylesheet" href="../../css/index/cation.css">
+</head>
+<body>
+	<div class="head">
+		<div class="clearfix hnav">
+			<ul class="fl">
+				<li class="fl">
+					<a href="index.html">
+						<img class="imgTitle" src="../../img/index/logo.png">
+					</a>
+				</li>
+				<!-- <li class="fl"><a href="detail.html">解决方案</a></li>
+				<li class="fl"><a href="second.html">合作单位</a></li>
+				<li class="fl"><a href="cation.html">关于我们</a></li> -->
+			</ul>
+			<ul class="fr">
+				<li class="fl"><a id="user_center" href="../user/activityList.html"></a></li>
+				<li class="fl" id="user_name"></li>
+				<li class="fl"><a id="login_out" href="javascript:;"></a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="contain">
+		<div class="bannimg clearfix">
+			<!-- <a href="index.html" class="fl"><img class="logol" src="../../img/index/logoandname.png" alt="logoname"></a> -->
+			<img class="logor fr" src="../../img/banner.png" alt="homenav">
+		</div>
+		<div class="clearfix messTitle">
+			<div class="line fl"></div>
+			<div class="fl second-nav">
+				<a href="index.html" class="fl">首页</a>
+				<a href="javascript:;" class="fl">&gt;全部活动</a>
+				<a class="detail" href="" class="fl cation">&gt;分类信息</a>
+			</div>
+		</div>
+		<!-- <h3 class="clearfix">
+			<a href="index.html" class="fl">首页</a>
+			<a href="javascript:;" class="fl">&gt全部活动</a>
+			<a href="javascript:;" class="fl cation">&gt分类信息</a>
+		</h3> -->
+		<div class="cation_box clearfix">
+			<div class="cation_mess fl">
+				<div class="hlist clearfix">
+					<a class="fl afirst" href="javascript:;">行业分类:</a>
+					<ul class="fl hlist_message">
+					</ul>
+				</div>
+				<ul class="actdetail">
+					<!-- <li class="clearfix">
+						<span class="time fl">2017-05-12</span>
+						<a href="#" class="fl mess">猴年河南南省病理技术研理技术研讨会河南省病理猴年河南南病理南病理
+						</a>
+						<span class="place" class="fl">北京市</span>
+					</li> -->
+				</ul>
+				<div class="page">
+					<ul class="pcen clearfix">
+						<li class="fl pageCount"></li>
+						<li class="fl"><a class="first_page" href="#">首页</a></li>
+						<li class="fl border"><a class="prev" href="#">上一页</a></li>
+						<li class="fl">
+							<ul class="clearfix pageList">
+								<!-- <li class="fl org"><a href="#" class="org">1</a></li>
+								<li class="fl"><a href="#">9</a></li> -->
+							</ul>
+						</li>
+						<li class="fl border"><a class="next" href="#">下一页</a></li>
+						<li class="fl"><a class="last_page" href="#">尾页</a></li>
+						<li class="fl">15条/页</li>
+						<li class="fl">转到第<input class="kup" type="text" value="1">页</li>
+						<li class="fl" id="jump"><input type="button" value="跳转"></li>
+					</ul>
+				</div>
+			</div>
+			<div class="cation_banner fr">
+				<img src="../../img/news01.jpg" alt="cation_img">
+				<img src="../../img/news02.jpg" alt="cation_img">
+			</div>
+		</div>
+	</div>
+	<div class="foot">
+			<ul class="f-list clearfix">
+				<!-- <li class="fl tell no">
+				</li> -->
+				<li class="fl"><a href="indepPage/about.html">关于我们</a></li>
+				<li class="fl"><a href="indepPage/contant.html">联系我们</a></li>
+				<li class="fl"><a href="indepPage/help.html">帮助中心</a></li>
+				<li class="fl"><a href="javascript:;">会务商加盟</a></li>
+				<li class="fl"><a href="javascript:;">会展商加盟</a></li>
+				<li class="fl"><a href="javascript:;">媒体加盟</a></li>
+				<li class="fl"><a href="javascript:;">场馆加盟</a></li>
+				<li class="fl"><a href="javascript:;">旅游合作</a></li>
+				<li class="fl"><a href="indepPage/companyNews.html">公司新闻</a></li>
+			</ul>
+			<p class="p1">未经gconfs.com同意不得转发网站会议信息</p>
+			<p class="p2">京ICP备1708133号</p>
+	</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/user/userMain.js"></script>
+<script>
+	$(function(){
+		setFootBottom($(".contain"));
+		//init获取页面信息和登陆状态
+		var url=basePath+"index/search.do";
+		var type=Request('type');
+		var trade=Request('trade');
+		//分页数据
+		var pageData=[];
+		//分页
+		function pageShow(){  
+		    var Count = pageData.length;//记录条数  
+		    var PageSize = 15;//设置每页示数目  
+		    var PageCount=Math.ceil(Count/PageSize);//计算总页数  
+		    var currentPage = 1;//当前页，默认为1。
+		    var selectPage = currentPage;
+		    //默认显示首页
+		    for(var i=(currentPage-1)*PageSize;i<PageSize*currentPage;i++){    
+		        $('.actdetail').append(pageData[i]);  
+		    };
+		    //显示页数
+		    for(var i=1;i<=PageCount;i++){
+		    	$('.pageList').append('<li class="fl"><a href="javascript:;">'+i+'</a></li>');
+		    };
+		    //条数
+		    $('.pageCount').html('共&nbsp'+Count+'&nbsp条')
+		    $('.pageList li a').eq(currentPage-1).addClass('org'); 
+		    //显示选择页的内容  
+		    $('.pageList li a').on('click',function(){  
+		        selectPage=($(this).parent().index()+1);
+		        page();  
+		    });
+		    //每页
+		    function page(){
+		    	$('.pageList li a').removeClass('org');  
+		        $('.pageList li a').eq(selectPage-1).addClass('org'); 
+		        $('.actdetail').html('');
+		        for(i=(selectPage-1)*PageSize;i<PageSize*selectPage;i++){  
+		            $('.actdetail').append(pageData[i]);  
+		        };
+		    }
+		    //上一页
+		    $('.prev').click(function(){
+		    	selectPage--;
+		    	if(selectPage<1){
+		    		myAlert('已到首页');
+		    		firstpage();
+		    	}
+		    	page();
+		    });
+		    //下一页 
+		    $('.next').click(function(){
+		    	selectPage++;
+		    	if(selectPage>$('.pageList li').length){
+		    		myAlert('已到尾页');
+		    		lastpage();
+		    	};
+		    	page();
+		    });
+		    //首页
+		    $('.first_page').click(firstpage)
+		    function firstpage(){
+			        selectPage=1;
+			        page();
+			}
+		    //尾页
+		    $('.last_page').click(lastpage)
+		    function lastpage(){
+		        selectPage=$('.pageList li').length;
+		        page();
+		    }
+		    //键盘选择页面
+		    $(document).keypress(function(e) {  
+					// 回车键事件  
+			        if(e.which == 13) {
+			        	keyup()
+			        };	  
+			});
+	    	function keyup(){
+	        	if($('.kup').val()>PageCount){
+	        		myAlert('超出列表页数');
+
+	        	}else if($('.kup').val()<1){
+	        		myAlert('最小页数为1');
+	        	}else{
+	        		$('.actdetail').html('');
+		        	selectPage=currentPage=$('.kup').val();
+					page();
+				}; 
+			};
+			//点击跳转
+			$('#jump').on('click',keyup)
+		};
+		//遍历数据
+		if(trade==0){
+			$.myAjax({
+				url: url,
+				data:{'type':type},
+				success:function(result){
+					if(result.flag){
+						//用户登陆状态信息
+						if(result.status.url){
+							$('#user_name').html(result.status.nick);
+							$('#user_center').html('用户中心');
+							$('#login_out').html('注销');
+							$('#user_center').attr('href',basePath+result.status.url);
+						};
+						//行业类型
+						for(var i=0;i<result.data.industy.length;i++){
+							if(i+1==trade){
+								$('.hlist_message').append('<li class="fl"><input type="hidden" value="'+result.data.industy[i].value+'"><a class="on_cat org" href="javascript:;">'+result.data.industy[i].name+'</a></li>');
+							}else{
+								$('.hlist_message').append('<li class="fl"><input type="hidden" value="'+result.data.industy[i].value+'"><a class="on_cat" href="javascript:;">'+result.data.industy[i].name+'</a></li>');
+							};
+						};
+						//行业分类信息
+						if(result.data.activity.length==0){
+							myAlert('暂无数据');
+						}else{
+							for(var i=0;i<result.data.activity.length;i++){
+								var stime= result.data.activity[i].stime.substr(0,11); 
+							    var str=
+							 	'<li>'+
+								    '<input  type="hidden" value="'+result.data.activity[i].id+'"/>'+
+								    '<a href="javascript:;" class="mess on_mess">'+result.data.activity[i].name+'</a>'+
+								    '<a class="place" title="'+result.data.activity[i].city+'">'+result.data.activity[i].city+'</a>'+
+								    '<span class="time">'+stime+'</span>'+
+							    '</li>';
+							    pageData.push(str);  
+							};
+						};
+						//分页
+						pageShow();
+					}else{
+						myAlert(result.msg);
+					};
+				}
+			});
+		}else{
+			$.myAjax({
+				url: url,
+				data:{'type':type,trade:trade},
+				success:function(result){
+					if(result.flag){
+						//用户登陆状态信息
+						if(result.status.url){
+							$('#user_name').html(result.status.nick);
+							$('#user_center').html('用户中心');
+							$('#login_out').html('注销');
+							$('#user_center').attr('href',basePath+result.status.url);
+						};
+						//行业类型
+						for(var i=0;i<result.data.industy.length;i++){
+							if(i+1==trade){
+								$('.hlist_message').append('<li class="fl"><input type="hidden" value="'+result.data.industy[i].value+'"><a class="on_cat org" href="javascript:;">'+result.data.industy[i].name+'</a></li>');
+							}else{
+								$('.hlist_message').append('<li class="fl"><input type="hidden" value="'+result.data.industy[i].value+'"><a class="on_cat" href="javascript:;">'+result.data.industy[i].name+'</a></li>');
+							};
+						};
+						//行业分类信息
+						if(result.data.activity.length==0){
+							myAlert('暂无数据');
+						}else{
+							for(var i=0;i<result.data.activity.length;i++){
+								var stime= result.data.activity[i].stime.substr(0,11); 
+							    var str=
+							    '<li >'+
+								    '<input class="" type="hidden" value="'+result.data.activity[i].id+'"/>'+
+								    '<a href="javascript:;" class=" mess on_mess">'+result.data.activity[i].name+'</a>'+
+								    '<a class="place" title="'+result.data.activity[i].city+'">'+result.data.activity[i].city+'</a>'+
+								    '<span class="time ">'+stime+'</span>'+
+								'</li>';
+							    pageData.push(str);  
+							};
+						};
+						//分页
+						pageShow();
+						//用户登陆状态信息
+						if(result.data.user){
+							$('#user_name').html(result.data.user.name);
+							$('#user_center').html('用户中心');
+							$('#login_out').html('注销');
+						};
+					}else{
+						myAlert(result.msg);
+					};
+				}
+			});
+		};
+		//跳活动详情
+		$(document).on('click','.on_mess',function(){
+			$(this).attr('href','detail.html?location='+$(this).prev().val());
+		});
+		//行情分类
+		$(document).on('click','.on_cat',function(){
+			$('.on_cat').removeClass('org');
+			$(this).addClass('org');
+			trade=$(this).prev().val();
+			$('.actdetail').html('');
+			pageData=[];
+			$.myAjax({
+				url: url,
+				data:{'type':type,'trade':trade},
+				success:function(result){
+					if(result.flag){
+						//行业分类信息
+						$('.pageList').html('');
+						//行业分类信息
+						if(result.data.activity.length==0){
+							myAlert('暂无数据');
+						}else{
+							for(var i=0;i<result.data.activity.length;i++){
+								var stime= result.data.activity[i].stime.substr(0,11); 
+							    var str=
+							    '<li>'+
+								    '<input type="hidden" value="'+result.data.activity[i].id+'"/>'+
+								   	'<a href="javascript:;" class="mess on_mess">'+result.data.activity[i].name+'</a>'+
+								    '<a class="place" title="'+result.data.activity[i].city+'">'+result.data.activity[i].city+'</a>'+
+								    '<span class="time">'+stime+'</span>'+
+							    '</li>';
+							    pageData.push(str);  
+							};
+						};
+						//分页
+						pageShow();
+					}else{
+						$('.pageCount').html('共&nbsp0&nbsp条');
+					}
+				},
+				error:function(){
+					myAlert('请求失败');
+				}
+			});
+		});
+		//注销
+		loginOut('#login_out');
+		//页面链接
+		$('.cation').click(function(){
+			$(this).attr('href',window.location);
+		});
+	})
+</script>
+</html>

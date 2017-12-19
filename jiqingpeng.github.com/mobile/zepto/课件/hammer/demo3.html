@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script src="js/hammer.min.js"></script>
+<script>
+	window.onload=function(){
+		var oDiv=document.querySelector('div');
+		
+		var obj=new Hammer(oDiv);
+		
+			
+		obj.on('pan',function(ev){
+			var x=ev.center.x;
+			var y=ev.center.y;
+			console.log(x,y);
+			oDiv.style.transform='translate('+x+'px,'+y+'px)';
+		});
+		
+	}
+</script>
+</head>
+
+<body>
+	<div style="width:200px; height:200px; background:red;"></div>
+</body>
+</html>

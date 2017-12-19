@@ -1,0 +1,441 @@
+/*
+* 酒店详情页样式
+*/
+.contain {
+	width: 100%;
+}
+.contain .bannimg {
+	width: 1200px;
+	margin: 0 auto;
+}
+.detailContent{
+	background-color: #fff;
+}
+.detailTop {
+	background-color: #f4f4f4;
+	padding-bottom: 30px;
+}
+.detailBottom {
+	width: 1200px;
+	margin: 10px auto;
+}
+.detailConWid{
+	width: 810px;
+}
+.pictureTitle{
+	height: 86px;
+	width: 1200px;
+	margin: 0 auto;
+}
+.resName{
+	font-size: 28px;
+	height: 46px;
+	line-height: 46px;
+	font-weight: 700;
+	color: #333;
+	margin-left: 60px;
+}
+.location {
+	margin: 0 10px 0 60px;
+	color: #005bb5;
+	font-size: 12px;
+}
+.address {
+	font-size: 12px;
+}
+.grogImages{
+	width: 1200px;
+	background-color: #fff;
+	margin: 0 auto;
+}
+.grogImages .grogImages-right {
+	float: left;
+	width: 230px;
+	height: 435px;
+	overflow: hidden;
+	font-size: 0;
+}
+.grogImages .grogImages-left{
+	float: left;
+	width: 570px;
+	height: 435px;
+}
+.bigimg {
+	height: 410px;
+	width: 550px;
+	margin: 10px 0 0 10px;
+}
+.smallimg {
+	border: none;
+	height: 95px;
+	width: 105px;
+	margin: 10px 10px 0 0;
+}
+.smallMap{
+	width: 373px;
+	height: 410px;
+	border:1px solid #ddd;
+	display: inline-block;
+	margin: 10px 0 0 10px;
+}
+.switchover{
+	width: 790px;
+	height: 60px;
+	border-bottom:2px solid #4c5a65;
+}
+.switchover li{
+	float: left;
+	min-width: 60px;
+	line-height: 60px;
+	padding: 0 20px;
+	text-align: center;	
+	font-weight: 700;
+	font-size: 16px;
+}
+.switchover li a{
+	color: #4c5a65;
+}
+.switchover li:nth-child(1){
+	background-color: #4c5a65;
+}
+.switchover li:nth-child(1) a{
+	color: #fff;
+}
+/*.switchover li:hover {
+	background-color: #f5f5f5;
+}*/
+
+.timeCheck, .quickCheck {
+	height: 32px;
+	margin-top: 10px;
+}
+.timeCheck span {
+	display: inline-block;
+	height: 30px;
+	line-height: 30px;
+}
+.arrivalTime, .leaveTime {
+	border: 1px solid #ddd;
+	width: 174px;
+	border-right-width: 0;
+}
+.changeTime {
+	width: 72px;
+	font-size: 12px;
+	color: #666;
+	border: 1px solid #ddd;
+	background-color: #f0f0f0;
+	text-align: center;
+	vertical-align: top;
+}
+.changeTime:hover {
+	color: #fff;
+	background-color: #ff7800;
+}
+.alldays {
+	margin-left: 12px;
+	color: #333;
+	vertical-align: top;
+}
+.quickCheck {
+	border: 1px solid #ddd;
+	border-width: 1px 0 1px 0;
+	width: 790px;
+	background-color: #f0f0f0;
+	line-height: 30px;
+}
+.quickCheck span {
+	display: inline-block;
+	margin-left: 10px;
+	height: 22px;
+	padding: 0 12px 0 12px;
+	line-height: 22px;
+	font-size: 12px;
+	color: #333;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+}
+
+.roomCon {
+	margin-top: 10px;
+	border-bottom: 1px solid #ddd;
+	width: 790px;
+
+}
+.roomDetail{
+	width: 788px;
+	border: 1px solid #ddd;
+	border-bottom-width: 0px;
+	position: relative;
+}
+.roomTitle{
+	height: 127px;
+	background-color: #f4f7fd;
+	border-bottom: 1px solid #ddd;
+	font-size: 0;
+}
+.roomImg{
+	width: 80px;
+	height: 80px;
+	margin: 23px 15px 0 23px;
+}
+.roomTxt {
+	display: inline-block;
+	width: 670px;
+	height: 127px;
+}
+.roomIntroCon {
+	width: 530px;
+	display: inline-block;
+	height: 127px;
+    vertical-align: top;
+}
+.roomType{
+	font-size: 18px;
+	color: #333;
+	margin-top: 40px;
+}
+.roomIntro {
+	font-size: 12px;
+	color: #333;
+	margin-top: 14px;
+}
+.roomPriceCon {
+	width: 140px;
+	display: inline-block;
+	height: 127px;
+    vertical-align: top;
+    font-size: 12px;
+    color: #999;
+    text-align: center;
+}
+.roomPrice {
+	margin: 44px 0 4px 0;
+}
+.priceBig {
+	font-size: 22px;
+	font-weight: bold;
+}
+.orange {
+	color: #fd6633;
+}
+.triangle-down {
+	width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 10px solid #999;
+    border-bottom: none;
+    position: relative;
+	top: 10px;
+}
+.triangle-up {
+	width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 10px solid #999;
+    border-top: none;
+    position: relative;
+	bottom: 10px;
+}
+
+.hideRoomList {
+	height: 0px;
+	border: none;
+	overflow: hidden;
+}
+.roomNav{
+	height: 36px;
+	padding-left: 108px;
+	background-color: #f5f5f5;
+}
+.roomNav li{
+	float: left;
+	line-height: 36px;
+	width: 90px;
+	color: #333;
+}
+.roomNav li:nth-child(1){
+	width: 150px;
+}
+.roomList {
+	padding-bottom: 24px;
+}
+.roomMatter {
+	height: 80px;
+	padding-left: 108px;
+	border-bottom: 1px dashed #ddd;
+	color: #333;
+}
+.roomMatter dd{
+	float: left;
+	line-height: 60px;
+	width: 90px;
+}
+.roomMatter .dd{
+	width: 150px;
+}
+.roomMatter .price{
+	color: red;
+	font-size: 20px;
+	font-weight: 700;
+}
+.roomMatter .predetermine{
+	margin-top: 10px;
+	width: 70px;
+	display: inline-block;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	background-color: #ff5b25;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 600;
+	cursor: pointer;
+}
+.roomMatter .onLine{
+	display: inline-block;
+	width: 68px;
+	height: 28px;
+	line-height: 28px;
+	text-align: center;
+	border: 1px solid #ff5b25;
+	font-size: 12px;
+	color: #ff5b25;
+	cursor: pointer;
+}
+.spanColor{
+	color: #a6a6bf;
+}
+.grogshopInfo{
+	margin-top: 10px;
+} 
+.grogshopInfo .grogInfoTitle{
+	height: 48px;
+	line-height: 48px;
+	font-size: 18px;
+	font-weight: 600;
+}
+.grogshopInfo .grogIconContent{
+	width: 98px;
+	height: 111px;
+	/*border: 1px solid #ccc;*/
+	float: left;
+	text-align: center;
+}
+.grogIconContent .grogConImg{
+	margin: 0 auto;
+	width: 68px;
+	height: 70px;
+	background: url("../../img/index/hotel-info.png"); 	
+}
+.grogIconContent .grogConCharImg{
+	background-position:  -3px -240px;
+}
+.grogIconContent .grogConDes{
+	 margin-top: 10px;
+}
+.grogIconContent .grogConAirImg{
+
+}
+.grogIconContent .grogConAirImg{
+	background-position:  -165px 161px;
+}
+.grogshopInfo .grogInfoBasal{
+	margin-top: 20px;
+	height: 44px;
+	line-height: 44px;
+	font-size: 12px;
+	border-bottom: 1px solid #ccc;
+}
+.grogshopInfo .spanInfo{
+	padding-right: 20px;
+	padding-left: 20px;
+	border-right: 1px solid #ccc;
+}
+.grogshopInfo .grogFacility{
+	height: 44px;
+	line-height: 44px;
+	font-size: 12px;
+	border-bottom: 1px solid #ccc;
+}
+.grogFacility .spanPark{
+	padding-right: 20px;
+	padding-left: 20px;	
+}
+.grogshopInfo .grogTime{
+	font-size: 12px;
+	height: 44px;
+	line-height: 44px;
+	font-size: 12px;
+	border-bottom: 1px solid #ccc;
+}
+.grogshopInfo .grogIntro{
+	font-size: 12px;
+	height: 44px;
+	line-height: 44px;
+	font-size: 12px;
+	border-bottom: 1px solid #ccc;
+}
+.grogIntro .grogIntroCon{
+	margin-left: 30px;
+}
+.grogshopInfo .grogCard{
+	font-size: 12px;
+	height: 44px;
+	line-height: 44px;
+	font-size: 12px;
+	border-bottom: 1px solid #ccc;
+}
+.rimTraffic {
+	width: 1200px;
+}
+.rimTraffic .rimTrafAtlas{
+	float: left;
+	width: 745px;
+	height: 478px;
+}
+.rimTraffic .rimTrafContent{
+	height: 48px;
+	line-height: 48px;
+	font-size: 18px;
+	font-weight: 600;
+}
+.rimTraffic .rimTraRefer{
+	margin-left: 5px;
+	float: left;
+	width: 448px;
+	height: 478px;
+	background-color: #f5f5f5;
+}
+.rimTraRefer .rimTraReferTop{
+	margin: 10px 10px;
+	width: 426px;
+	height: 136px;
+	background-color: #ffffff;
+}
+.rimTraReferTop .origin input{
+	margin-top: 10px;
+	margin-left: 30px;
+	width: 370px;
+	height: 28px;
+}
+.rimTraReferTop .termina input{
+	margin-top: 10px;
+	margin-left: 30px;
+	width: 370px;
+	height: 28px;
+}
+.rimTraReferTop a{
+	border-radius: 5px;
+	width: 78px;
+	height: 27px;
+	line-height: 27px;
+	color: #fff;
+	text-align: center;
+	display: block;
+	background-color: #5eba14;
+	margin: 10px auto;
+}

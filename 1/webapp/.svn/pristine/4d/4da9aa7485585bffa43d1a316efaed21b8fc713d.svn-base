@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>活动通知</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+	<link rel="stylesheet" href="../../css/index/base.css">
+	<link href="../../css/common/bootstrap.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="../../css/common/bootstrap-table.min.css"/>
+	<link rel="stylesheet" href="../../css/weixin/style.css" />
+	<style>
+		.contanin{
+			padding:20px;
+			box-sizing: border-box;
+			font-size:12px;
+		}
+		.mod-box .item{
+			margin:10px 0;
+		}
+		.mod-box .item-contant{
+			display:none;
+		}
+		.item-contant .item-list{
+			height:70px;
+			box-sizing: border-box;
+			margin-top:5px;
+			background:#fff;
+			padding:10px;
+		}
+		.item-contant .item-list>p{
+			padding-left:0;
+		}
+		.item-contant .item-list .item-person{
+			display: inline-block;
+			width:30px;
+			height:30px;
+			line-height: 30px;
+			border:1px solid #ff6600;
+			margin-top:10px;
+			border-radius:50%;
+			text-align: center;
+		}
+		.item-contant .item-list .item-mess{
+			height:50px;
+			padding-left:0;
+			padding-right:0;
+			margin:0;
+			margin-top:6px;
+			margin-left:-15px;
+		}
+		.item-contant .item-list .item-mess .item-mess-tit{
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow:ellipsis;
+		}
+		.item-contant .item-list .item-mess .item-mess-tit,.item-mess-cont{
+			padding:0;
+			margin:2px;
+		}
+		.item-contant .item-list .item-mess .item-time,.item-news{
+			padding:0;
+			margin:0;
+		}
+		.item-contant .item-list .item-mess .item-news{
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow:ellipsis;
+		}
+		.item-contant .item-list .item-mess .item-time{
+			text-align: right;
+		}
+	</style>
+</head>
+<body>
+	<script src="../../js/weixin/wxHeader.js"></script>
+	<div class="wrap margin-box">
+		<input type="hidden" id="id">
+		<div class="contanin">
+			<div class="mod-box">
+				<!-- <table id="standTable">
+            	</table> -->
+            	<div class="item">
+            		<h4 class="item-tit stand-tit">站内信</h4>
+            		<ul class="item-contant stand">
+            			<!-- <li class="item-list">
+            				<p class="col-xs-2">
+            					<span class="item-person">武</span>
+            				</p>
+		            		<p class="col-xs-10 item-mess">
+								<span class="col-xs-12 item-mess-cont">
+									<span class="item-news col-xs-8">
+										吉庆鹏
+									</span>
+									<span class="item-time col-xs-4">2016-07-03</span>
+								</span>
+								<span class="col-xs-12 item-mess-tit">
+									关于公司给与的福利你怎么看关于公司给与的福利你怎么看关于公司给与的福利你怎么看
+								</span>
+							</p>
+            			</li> -->
+            		</ul>
+            	</div>
+            	<div class="item">
+            		<h4 class="item-tit note-tit">短信</h4>
+            		<ul class="item-contant note">
+            			<li class="item-list">
+            				<p class="col-xs-2">
+            					<span class="item-person">武</span>
+            				</p>
+            				<p class="col-xs-10 item-mess">
+            					<span class="col-xs-12 item-mess-tit">关于公司给员工的补助问题</span>
+            					<span class="col-xs-12 item-mess-cont">
+            						<span class="item-news">关于公司给员工的补助问题你怎么看</span>
+            						<span class="item-time">2016-07-03</span>
+            					</span>
+            				</p>
+            			</li>
+            		</ul>
+            	</div>
+            	<div class="item">
+            		<h4 class="item-tit email-tit">邮件</h4>
+            		<ul class="item-contant email">
+            			<li class="item-list">
+            				<p class="col-xs-2">
+            					<span class="item-person">武</span>
+            				</p>
+            				<p class="col-xs-10 item-mess">
+            					<span class="col-xs-12 item-mess-tit">关于公司给员工的补助问题</span>
+            					<span class="col-xs-12 item-mess-cont">
+            						<span class="item-news">关于公司给员工的补助问题你怎么看</span>
+            						<span class="item-time">2016-07-03</span>
+            					</span>
+            				</p>
+            			</li>
+            		</ul>
+            	</div>
+			</div>
+		</div>
+	</div>
+	<!-- <iframe name="footer" class="m-foot" marginwidth="0" marginheight="0" width="100%" src="footer.html" frameborder="0"></iframe> -->
+	<script src="../../js/weixin/wxLoginModel.js"></script>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/bootstrap-table.min.js"></script>
+<script src="../../js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/user/userMain.js"></script>
+<script src="../../js/weixin/wxCommon.js"></script>
+<script>
+	$(function(){
+		$(".nav-title").html("活动通知");
+		//页面初始化
+		initPage();
+				
+		$('.item-tit').on('click',function(){
+			$(this).next().toggle();
+		});
+		var getJsonData= JSON.parse(localStorage.getItem("jsonData")); 
+		
+		//查看详细信息
+		$(document).on('click','.item-list',function(){
+			var name=$(this).find('.item-news').html();
+			var value=$(this).find('.item-mess-tit').html();
+			var time=$(this).find('.item-time').data('time');
+			var jsonData={name:name,value:value,time:time}
+			localStorage.setItem("jsonData",JSON.stringify(jsonData));
+			window.location.href="lettDetail.html";
+		});
+		//请求数据
+		$('.stand-tit').on('click',function(){
+			var state=$(this).next().css('display');
+			if(state=='block'){
+				$(this).next().html('');
+				loading();
+				init(stand,9);
+			};
+		});
+		$('.note-tit').on('click',function(){
+			var state=$(this).next().css('display');
+			if(state=='block'){
+				loading();
+				$(this).next().html('');
+				init(note,7);
+			};
+		});
+		$('.email-tit').on('click',function(){
+			var state=$(this).next().css('display');
+			if(state=='block'){
+				$(this).next().html('');
+				loading();
+				init(email,8);
+			};
+		});
+	});
+
+function initPage(){
+	init(stand,9);
+}
+
+function init(fn,num) {
+	var url = basePath + "user/activity/get.do";
+	var id = Request('actId');
+	$.myAjax({
+		url: url,
+		data:{id:id,type:num},
+		success:fn,
+		error:function(){
+			$(".loading").remove();
+			myAlert('请求失败');
+		}
+	});
+};
+function stand(result) {
+	if(!result.status){ // 用户没登录，显示登录模态框
+		showLoginModel();
+	} else if(!result.status.url){
+		showLoginModel();
+	}
+
+	if(result.flag){
+		$(".loading").remove();
+		$('.stand').css('display','block');
+		var data=result.data;
+		for(var i = 0; i < data.stationLetter.length; i++){
+			var str=
+			'<li class="item-list">'+
+				'<p class="col-xs-2">'+
+					'<span class="item-person">'+getSubstring(data.stationLetter[i].senderName,2,3)+'</span>'+
+				'</p>'+
+				'<p class="col-xs-10 item-mess">'+
+					'<span class="col-xs-12 item-mess-cont">'+
+						'<span class="item-news col-xs-8">'+data.stationLetter[i].senderName+
+						'</span>'+
+						'<span class="item-time col-xs-4" data-time="'+data.stationLetter[i].senderTime+'">'+getSubstring(data.stationLetter[i].senderTime,0,11)+'</span>'+
+					'</span>'+
+					'<span class="col-xs-12 item-mess-tit">'+data.stationLetter[i].senderValue+
+					'</span>'+
+				'</p>'+
+			'</li>';
+			$('.stand').append(str);
+		};
+	} else {
+		myAlert(result.msg);
+	}
+};
+function note(result) {
+	console.log(result)
+	if(result.flag){
+		$(".loading").remove();
+		$('.note').css('display','block');
+		var data=result.data;
+		for(var i = 0; i < data.SMSRecording.length; i++){
+			var str=
+			'<li class="item-list">'+
+				'<p class="col-xs-2">'+
+					'<span class="item-person">'+getSubstring(data.SMSRecording[i].senderName,2,3)+'</span>'+
+				'</p>'+
+				'<p class="col-xs-10 item-mess">'+
+					'<span class="col-xs-12 item-mess-cont">'+
+						'<span class="item-news col-xs-8">'+data.SMSRecording[i].senderName+
+						'</span>'+
+						'<span class="item-time col-xs-4" data-time="'+data.SMSRecording[i].senderTime+'">'+getSubstring(data.SMSRecording[i].senderTime,0,11)+'</span>'+
+					'</span>'+
+					'<span class="col-xs-12 item-mess-tit">'+data.SMSRecording[i].senderValue+
+					'</span>'+
+				'</p>'+
+			'</li>';
+			$('.note').append(str);
+		};
+	};
+};
+function email(result) {
+	if(result.flag){
+		console.log(result)
+		$(".loading").remove();
+		console.log(result)
+		$('.email').css('display','block');
+		var data=result.data;
+		for(var i = 0; i < data.email.length; i++){
+			var str=
+			'<li class="item-list">'+
+				'<p class="col-xs-2">'+
+					'<span class="item-person">'+getSubstring(data.email[i].senderName,2,3)+'</span>'+
+				'</p>'+
+				'<p class="col-xs-10 item-mess">'+
+					'<span class="col-xs-12 item-mess-cont">'+
+						'<span class="item-news col-xs-8">'+data.email[i].senderName+
+						'</span>'+
+						'<span class="item-time col-xs-4" data-time="'+data.email[i].senderTime+'">'+getSubstring(data.email[i].senderTime,0,11)+'</span>'+
+					'</span>'+
+					'<span class="col-xs-12 item-mess-tit">'+data.email[i].senderTitle+
+					'</span>'+
+				'</p>'+
+			'</li>';
+			$('.email').append(str);
+		};
+	};
+};
+</script>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>个人中心</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+	<link rel="stylesheet" type="text/css" href="../../../css/app/meetdetail.css">
+	<link rel="stylesheet" type="text/css" href="../../../css/app/style.css">
+	<style type="text/css">
+	.myBox{
+		margin-bottom: 40px;
+	}
+	.myhead {
+		height: 170px;
+		background-color: #fff;
+	}
+	.myBanner {
+		position: relative;
+		height: 146px;
+		width: 100%;
+	}
+	.myMine {
+		width: 36px;
+		position: absolute;
+		top: 10px;
+		left: 50%;
+		margin-left:-18px; 
+		color: #fff;
+		font-size: 16px;
+	}
+	.my-name {
+		font-weight: bold;
+	}
+	.circle{
+		width: 76px;
+		height: 76px;
+		border-radius: 50%;
+		background-color: #fff;
+		position: absolute;
+		top: 62px;
+		left: 50%;
+		margin-left: -38px;
+	}
+	.circleChild{
+		position: absolute;
+		width: 68px;
+		height: 68px;
+		border-radius: 50%;
+		background-color: #824415;
+		top: 2px;
+		left: 4px;
+	}
+	.circleChild img{
+		position: absolute;
+		width: 48px;
+		height: 48px;
+		border-radius: 50%;
+		top: 10px;
+		left: 10px;
+	}
+	.nameBox{
+		text-align: center;
+		margin-top: -5px;
+	}
+	</style>
+</head>
+<body>
+	<div class="myBox">
+		<div class="myhead">
+			<img class="myBanner" src="../../../img/app/myBanner.png"/>
+			<div class="myMine">我的</div>
+			<div class="circle">
+				<div class="circleChild">
+					<img src="../../../img/app/picture1.png">
+				</div>
+			</div>
+			<div class="nameBox">
+				<span class="my-name"></span>
+				<!-- <span class="my-phone">13241418629</span> -->
+			</div>
+		</div>
+		<div class="information white">
+			<a href="myPage.html" class="inform comPadding">
+				<span><img src="../../../img/app/person_icon.png"></span>
+				<span>个人信息</span>
+				<span class="arrows fr"><img src="../../../img/app/arrowRigth-icon.png"></span>
+			</a>
+			<a href="myInvo.html" class="discuss comPadding">
+				<span><img src="../../../img/app/invoice_icon.png"></span>
+				<span>发票信息</span>
+				<span class="arrows fr"><img src="../../../img/app/arrowRigth-icon.png"></span>
+			</a>
+			<a href="myCard.html" class="comPadding">
+				<span><img src="../../../img/app/crad_icon.png"></span>
+				<span>信用卡</span>
+				<span class="arrows fr"><img src="../../../img/app/arrowRigth-icon.png"></span>
+			</a>
+		</div>
+		<div>
+			<a href="recompose.html" class="ticket white comPadding">
+				<span><img src="../../../img/app/password_icon.png"></span>
+				<span>密码修改</span>
+				<span class="arrows fr"><img src="../../../img/app/arrowRigth-icon.png"></span>
+			</a>
+		</div>
+		<div class="information white">
+			<!-- <a href="" class="discuss comPadding">
+				<span><img src="../../../img/app/help_icon.png"></span>
+				<span>使用帮助</span>
+				<span class="arrows fr"><img src="../../../img/app/arrowRigth-icon.png"></span>
+			</a> -->
+			<a href="feedback.html" class="apply comPadding">
+				<span><img src="../../../img/app/opinion_icon.png"></span>
+				<span>意见反馈</span>
+				<span class="arrows fr"><img src="../../../img/app/arrowRigth-icon.png"></span>
+			</a>
+		</div>
+	</div>
+</body>
+<script src="../../../js/zepto.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<script src="../../../js/app/mtTool.js"></script>
+<script type="text/javascript">
+var code = Request('code');
+$(function(){
+	if(sessionStorage.getItem('token') &&
+		(Date.parse(new Date())-sessionStorage.getItem('tokenUtime') < 900000) ){
+		initPage();
+	} else {
+		onceToken();
+	}
+});
+function onceToken(){
+	$.ajax({
+		url: basePath + 'mt/token/get.do',
+		type: 'post',
+		dataType: 'json',
+		success: function(result){
+			if(result.flag){
+				sessionStorage.setItem('token', result.data);
+				autoLogin(); // 自动登录
+			} else {
+				myConfirm(result.msg);
+			}
+		},
+		error: function(){
+			myConfirm("请求失败,请重试！");
+		}
+	})
+}
+// 自动登录
+function autoLogin(){
+	$.myAjax({
+		url: basePath + 'user/login/check.do?code='+code,
+		success: function(result){
+			if(result.flag){
+				sessionStorage.setItem('token', result.data);
+				sessionStorage.setItem('isLogin', "isLogin"); // 用于记录登录状态
+				initPage();
+			} else {
+				location.href = "../index/login.html?pageType=mycenter";
+			}
+		}
+	});	
+}
+function initPage(){
+	$.myAjax({
+		url: basePath + "user/user/info.do",
+		success: function(result){
+			var data = result.data.user
+			if(data.nick){
+				$('.my-name').html(data.nick);
+			}else if(data.name){
+				$('.my-name').html(data.name);
+			}else{
+				$('.my-name').html("请尽快设置个人信息");
+			}
+		}
+	})
+}
+</script>
+</html>

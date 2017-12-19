@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>我</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+	<link rel="stylesheet" type="text/css" href="../../../css/app/base.css">
+	<link rel="stylesheet" type="text/css" href="../../../css/app/header-app.css">
+	<link rel="stylesheet" type="text/css" href="../../../css/app/myPage.css">
+	<style>
+		#save{
+			display: flex;
+			width:60px;
+			margin:0 auto;
+			background:#f60;
+			justify-content: center;
+			align-items: center;
+			color:#fff;
+			border-radius:4px;
+		}
+	</style>
+</head>
+<body>
+	<header class="app-header">
+		<div class="navImg">
+			<img src="../../../img/app/arrowLeft-icon.png">
+		</div>
+		<div class="navDetail">卡包</div>
+	</header>
+	<section class="my-page">
+		<input type="hidden" id="id">
+		<article>
+			<div class="page-list" data-type="bankName">
+				<p class="page-l">
+					<img src="../../../img/app/name.png" alt="name">
+					<span>银行名称</span>
+				</p>
+				<p class="page-r">
+					<input class="bankName" type="text" placeholder="请设置银行名称">
+				</p>
+			</div>
+			<div class="page-list" data-type="cardNumber">
+				<p class="page-l">
+					<img src="../../../img/app/name.png" alt="name">
+					<span>信用卡卡号</span>
+				</p>
+				<p class="page-r">
+					<input class="cardNumber" type="text" placeholder="请设置卡号">
+				</p>
+			</div>
+			<div class="page-list" data-type="cardValueDate">
+				<p class="page-l">
+					<img src="../../../img/app/nick.png" alt="nick">
+					<span>有效期</span>
+				</p>
+				<p class="page-r">
+					<input class="cardValueDate" type="text" placeholder="列(08/19)">
+				</p>
+			</div>
+			<div class="page-list" data-type="cardUserName">
+				<p class="page-l">
+					<img src="../../../img/app/unit.png" alt="unit">
+					<span>持卡人姓名</span>
+				</p>
+				<p class="page-r">
+					<input class="cardUserName" type="text" placeholder="请设置姓名">
+				</p>
+			</div>
+			<div class="page-list" data-type="mobile">
+				<p class="page-l">
+					<img src="../../../img/app/phone.png" alt="mobile">
+					<span>手机号</span>
+				</p>
+				<p class="page-r">
+					<input class="mobile" type="text" placeholder="请设置手机号">
+				</p>
+			</div>
+			<div class="page-list" data-type="credentialNumber">
+				<p class="page-l">
+					<img src="../../../img/app/phone.png" alt="mobile">
+					<span>身份证</span>
+				</p>
+				<p class="page-r">
+					<input class="credentialNumber" type="text" placeholder="请设置身份证号码">
+				</p>
+			</div>
+			<div id="save"><span>保存</span></div>
+		</article>
+	</section>
+</body>
+<script src="../../../js/zepto.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<script src="../../../js/app/mtTool.js"></script>
+<script type="text/javascript">
+	$(function(){
+		type = null;
+		
+		$('#save').on("click",function(){
+			
+			save();
+		})
+		init();
+		function myConf(data) {
+			$("body").prepend('<div id="masking"></div><div class="alert_box"><div class="abox_tit">aaa</div><input class="abox_mess"/><div class="abox_foot"><button class="yes">确&nbsp定</button><button class="no">取&nbsp消</button></div></div>');
+			$("#masking").css({
+				"position": "fixed",
+				"width": "100%",
+				"height": "100%",
+				"background": "#000",
+				"z-index": "3001",
+				"filter": "alpha(Opacity=40)",
+				"-moz-opacity": "0.4",
+				"opacity": "0.4"
+			});
+			$(".alert_box").css({
+				"position": "fixed",
+				'left': '12%',
+				'top': '42%',
+				"border": "1px solid #ddd",
+				"border-radius": "4px 4px",
+				"width": "66%",
+				"padding":"0 5%",
+				"min-height": "80px",
+				"background": "#fff",
+				"z-index": "3002",
+			});
+			$(".abox_tit").css({
+				"width":"100%",
+				"height": "40px",
+				"line-height": "40px",
+			});
+			$(".abox_mess").css({
+				"width":"100%",
+				"height": "30px",
+				"border":"none",
+				"border-bottom":"1px solid #f60",
+				"outline":"none"
+			});
+			$(".abox_foot").css({
+				"border-top": "1px solid #ddd",
+				"height": "56",
+				"width": "100%",
+				"line-height": "56px",
+				"text-align": "right"
+			});
+			$(".abox_foot button").css({
+				"width": "15%",
+				"margin-right": "10px",
+				"color": "#fc742a",
+				"border": "none",
+				"background": "none"
+			});
+			$('.alert_box').css('display', 'block')
+			$('.alert_box .abox_tit').html('修改'+data.txt);
+			$('.alert_box .abox_mess').val(data.val);
+			$('.alert_box .abox_mess').focus();
+			// 点击确定
+			if (!!data.YES) {
+				$('.yes').on('click', function() {
+					var val = $('.alert_box .abox_mess').val();
+					console.log(data.type)
+					if(valit(val,data.type)){
+						// console.log(1)
+						data.YES();
+					};
+					$("#masking").remove();
+					$(this).parent().parent().remove();
+				});
+			} else {
+				$('.yes').on('click', function() {
+					$("#masking").remove();
+					$(this).parent().parent().remove();
+					return true;
+				});
+			}
+			// 点击取消
+			if (!!data.NO) {
+				$('.no').on('click', function() {
+					data.NO();
+					$("#masking").remove();
+					$(this).parent().parent().remove();
+				});
+			} else {
+				$('.no').on('click', function() {
+					$("#masking").remove();
+					$(this).parent().parent().remove();
+					return false;
+				});
+			}
+		};
+		function init(){
+			var url = basePath + "user/card/package/list.do";
+			$.myAjax({
+				url:url,
+				// data:{id:id},
+				success:function(result){
+					console.log(result)
+					if(result.flag){
+						if(result.data.cards.length){
+							var data = result.data.cards[0];
+							$("#id").val(result.data.cards[0].id)
+							if(data.bankName){
+								 $('.bankName').val(data.bankName);
+								 $('.bankName').removeClass('gray')
+							};
+							if(data.cardNumber){
+								$('.cardNumber').val(data.cardNumber);
+								$('.cardNumber').removeClass('gray')
+							};
+							if(data.cardValueDate){
+								 $('.cardValueDate').val(data.cardValueDate);
+								 $('.cardValueDate').removeClass('gray')
+							};
+							if(data.cardUserName){
+								 $('.cardUserName').val(data.cardUserName);
+								 $('.cardUserName').removeClass('gray')
+							};
+							if(data.mobile){
+								 $('.mobile').val(data.mobile);
+								 $('.mobile').removeClass('gray')
+							};
+							if(data.credentialNumber){
+								 $('.credentialNumber').val(data.credentialNumber);
+								 $('.credentialNumber').removeClass('gray')
+							};
+						}
+						
+					}else{
+						myAlert('请求失败')
+					}
+				},
+				error:function(result){
+					myConfirm('请求失败')
+				}
+			})
+		};
+		function save(){
+			var id = $("#id").val();
+			var backName = $('.backName').val();
+			var cardNumber = $('.cardNumber').val();
+			var cardValueDate = $('.cardValueDate').val();
+			var cardUserName = $('.cardUserName').val();
+			var mobile = $('.mobile').val();
+			var credentialNumber = $('.credentialNumber').val();
+			// var data = {id:id,backName:backName,cardNumber:cardNumber,cardValueDate:cardValueDate,cardUserName:cardUserName,mobile:mobile,credentialNumber:credentialNumber,credentialName:1}
+			var data = {id:id,bankName:"广发银行",cardNumber:"6225551373685534",cardValueDate:"08/19",cardUserName:"吉庆鹏",mobile:"18201571705",credentialNumber:"130724199212241113",credentialName:1}
+			var url = basePath + "user/card/package/save.do";
+			$.myAjax({
+				url:url,
+				data:data,
+				success:function(result){
+					console.log(result)
+					if(result.flag){
+						init()
+					}else{
+						myAlert('请求失败')
+					}
+				},
+				error:function(result){
+					myConfirm('请求失败')
+				}
+			})
+		};
+		function myMess(message){
+			$("body").prepend('<div id="myMess"><div class="messBox"><span>'+message+'</span></div></div>');
+			$("#myMess").css({
+				"width":"100%",
+				"position":"fixed",
+				"display":"flex",
+				"justify-content":"center",
+				"align-items":"center",
+				"bottom":"1%",
+			})
+			$(".messBox").css({
+				"width":"100px",
+				"height":"30px",
+				"display":"flex",
+				"justify-content":"center",
+				"align-items":"center",
+				"background":"#ccc",
+				"border-radius":"10px",
+			})
+			setTimeout(function() {
+				$("#myMess").remove();
+			}, 3000);
+		};
+		function valit(data){
+			if (data.backName == '' || data.backName == null) {
+				myAlert('银行名称不能为空','slow');
+				return false;
+			}
+			if (data.backName == '' || data.backName == null) {
+				myAlert('银行名称不能为空','slow');
+				return false;
+			}
+			if (data.backName == '' || data.backName == null) {
+				myAlert('银行名称不能为空','slow');
+				return false;
+			}
+			if (data.backName == '' || data.backName == null) {
+				myAlert('银行名称不能为空','slow');
+				return false;
+			}else{
+				if(!(/^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$/.test(idCard)) && !(/^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/.test(idCard))){ 
+		        	myAlert("身份证格式不正确,请重新输入！",'slow');  
+		        	return false; 
+		        };
+			};
+			return true;
+		};
+});
+</script>
+</html>

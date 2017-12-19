@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div>
+		<button id="a">支付</button>
+	</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<!-- <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script> -->
+<script>
+	$(function(){
+		$('#a').click(function(){
+			pay();
+		})
+		function onBridgeReady(){  
+           
+           WeixinJSBridge.invoke(  
+               'getBrandWCPayRequest', {  
+                   "appId" : 'wx08342b578d71814c',     //公众号名称，由商户传入       
+                   "timeStamp": "1503917190",         //时间戳，自1970年以来的秒数       
+                   "nonceStr" : "A49A9B07C9ABF6E9653724F8ECB9AD29", //随机串       
+                   "package" : "prepay_id=" + 'wx20170828184609140fc7e0b40026463616',       
+                   "signType" : 'MD5',         //微信签名方式:       
+                   "paySign" : '17D0D6AE9956EC5F10BE8B2ACCA670A9'    //微信签名   
+               },  
+                
+               function(res){       
+                   if(res.err_msg == "get_brand_wcpay_request:ok" ) {  
+                         
+                       alert("支付成功");  
+                   }     // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。   
+               }  
+           );   
+        }  
+       	function pay(){  
+              
+            if (typeof WeixinJSBridge == "undefined"){  
+               if( document.addEventListener ){  
+                   document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);  
+               }else if (document.attachEvent){  
+                   document.attachEvent('WeixinJSBridgeReady', onBridgeReady);   
+                   document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);  
+               }  
+            }else{  
+               onBridgeReady();  
+            }   
+        }  
+		// $('.aa').on('click',function(){
+		// 	function onBridgeReady(){
+		//    WeixinJSBridge.invoke(
+		//        'getBrandWCPayRequest', {
+		//            "appId":"wx08342b578d71814c",     //公众号名称，由商户传入     
+		//            "timeStamp":"1503916452",         //时间戳，自1970年以来的秒数     
+		//            "nonceStr":"845101CD1892775049201638FA41DC6F", //随机串     
+		//            "package":"prepay_id=wx201708281833325740daa2390613217104",     
+		//            "signType":"MD5",         //微信签名方式：     
+		//            "paySign":"6B591160BD28DB783E62B568E98461E8" //微信签名 
+		//        },
+		//        function(res){     
+		//            if(res.err_msg == "get_brand_wcpay_request:ok" ) {}     // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。 
+		//        }
+		//    ); 
+		// 	}
+		// 	if (typeof WeixinJSBridge == "undefined"){
+		// 	   if( document.addEventListener ){
+		// 	       document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+		// 	   }else if (document.attachEvent){
+		// 	       document.attachEvent('WeixinJSBridgeReady', onBridgeReady); 
+		// 	       document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+		// 	   }
+		// 	}else{
+		// 	   onBridgeReady();
+		// 	}
+		// })
+		// function wxFn(){
+		// 	// $.getJSON("../../wx/getjssign.do?url="+encodeURIComponent(location.href),function(json){
+		// 		wx.config({  
+		// 			debug: true,  
+		// 			appId: 'wx08342b578d71814c',  
+		// 			timestamp:"1503916452",  
+		// 			nonceStr: "845101CD1892775049201638FA41DC6F",  
+		// 			signature: "6B591160BD28DB783E62B568E98461E8",  
+		// 			jsApiList: [  
+		// 				// 所有要调用的 API 都要加到这个列表中  		
+		// 				// 'checkJsApi',					   
+		// 				// 'onMenuShareTimeline',
+		// 				// 'onMenuShareAppMessage',
+		// 				// 'onMenuShareQQ',
+		// 				// 'onMenuShareWeibo',
+		// 				// 'startRecord', 
+		// 				// 'stopRecord',
+		// 				// 'translateVoice',
+		// 				// 'scanQRCode',
+		// 				'chooseWXPay'
+		// 			]  
+		// 		});			
+		// 	// });
+		// 		wx.chooseWXPay({
+		// 			timestamp:"1503916452",  
+		// 			nonceStr: "845101CD1892775049201638FA41DC6F",  
+		// 			signature: "90C98C077F9744B4C0E33A5E727E8E08", 
+		// 			signType:"MD5",
+		// 			packagage:"prepay_id=wx201708281833325740daa2390613217104",
+		// 			paySign:'6B591160BD28DB783E62B568E98461E8',
+		// 			success:function(){
+
+		// 			}
+		// 		})
+		// }
+
+	})
+</script>
+</html>

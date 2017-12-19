@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>酒店预订</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="../../css/index/base.css">
+	<link rel="stylesheet" href="../../css/index/public.css">
+	<link rel="stylesheet" type="text/css" href="../../css/index/hotelDetail.css">
+</head>
+<body>
+	<div class="head clearfix">
+		<div class="hnav  clearfix">
+			<ul class="fl">
+				<li class="fl"><a href="index.html">首页</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="contain">
+		<div class="bannimg">
+			<a class="fl" href="index.html">
+				<img class="logol" src="../../img/index/logoandname.png" alt="logoname">
+			</a>
+			<img class="logor fr" src="../../img/index/homenav.png" alt="homenav">
+		</div>
+		<div class="detailContent clearfix">
+			<!-- <div class="detailConWid"> -->
+				<div class="detailTop">
+					<div class="pictureTitle">
+						<div class="resName">酒店名称</div>
+						<!-- 酒店ID -->
+						<input type="hidden" id="ResId"/> 
+						<input type="hidden" id="hotelId"/> 
+						<div>
+							<span class="location">[地区展示]</span>
+							<span class="address">地址：李天路环宇科技园近机场东路</span>
+							<!-- <span><a href="">查看地图</a></span> -->
+						</div>
+					</div>
+					<div class="grogImages clearfix">
+						<div class="grogImages-left"><img class="bigimg" src="http://pic4.40017.cn/zzy/rimage/2016/10/10/18/kXJaf7.jpg"></div>
+						<div class="grogImages-right">
+							<img src="http://pic4.40017.cn/zzy/rimage/2016/11/13/16/U21Wsu.jpg" class="smallimg">
+							<img src="http://pic4.40017.cn/zzy/rimage/2016/11/13/16/V2QtdJ.jpg" class="smallimg">
+							<img src="http://pic4.40017.cn/zzy/rimage/2016/11/13/16/G2utRp.jpg" class="smallimg">
+							<img src="http://pic3.40017.cn/zzy/rpimage/2015/03/17/11/ck12KE.jpg" class="smallimg">
+							<img src="http://pic3.40017.cn/zzy/rpimage/2015/03/17/11/6IVx3V.jpg" class="smallimg">
+							<img src="http://pic3.40017.cn/zzy/rimage/2015/12/13/17/lSbVuw.jpg" class="smallimg">
+							<img src="http://pic4.40017.cn/zzy/rpimage/2016/10/10/18/lP7qK3.jpg" class="smallimg">
+							<img src="http://pic4.40017.cn/zzy/rpimage/2016/10/10/18/tfZn9e.jpg" class="smallimg">
+						</div>
+						<div class="smallMap" id="map">		
+						</div>
+					</div>
+				</div>
+				<div class="detailBottom">	
+					<div class="switchover">
+						<ul>
+							<li class="room"><a href="#a3">房型</a></li>
+							<li><a href="#a1">酒店信息</a></li>
+							<!-- <li><a href="#a2">交通</a></li> -->
+						</ul>
+					</div>
+					<div class="timeCheck">
+						<span class="arrivalTime"></span><span class="leaveTime"></span><span class="changeTime">修改日期</span><span class="alldays">共2晚</span>
+					</div>
+					<!-- <div class="quickCheck">
+						<span>含早餐</span><span>立即确认</span><span>可订</span>
+					</div> -->
+					<div class="apartment">
+						<!-- 房型 -->
+						<div name="a3" id="a3"></div>
+						<div class="roomCon">
+							<!-- <div class="roomDetail">
+								<div class="roomTitle">
+									<img class="roomImg" src="../../img/index/grogshop05.jpg">
+									<div class="roomTxt">
+										<div class="roomIntroCon">
+											<div class="roomType">高级大床房</div>
+											<div class="roomIntro">大床(1.8米)|免费有线|最多可住2人|面积24㎡|楼层1-4层</div>
+										</div>
+										<div class="roomPriceCon">
+											<p class="roomPrice">
+											<span class="orange">￥</span><span class="orange priceBig">888</span> 起
+											<span class="triangle triangle-down"></span></p>
+											<p>共3个产品</p>
+										</div>
+									</div>
+								</div>
+								<div class="roomListCon">
+									<div class="roomNav">
+										<ul>
+											<li>名称</li>
+											<li>床型</li>
+											<li>早餐</li>
+											<li>窗户</li>
+											<li>取消规则</li>
+											<li>日均价</li>
+										</ul>
+									</div>
+									<div class="roomList">
+										<div class="roomMatter">
+											<dl>
+												<dt>
+													<dd class="dd">(单人入住)</dd>
+													<dd>大床</dd>
+													<dd>无早</dd>
+													<dd>有窗</dd>
+													<dd>不可取消</dd>
+													<dd class="price">¥245</dd>
+												</dt>
+												<span class="predetermine">预&nbsp;定</span>
+												<br>
+												<span class="onLine">在线订</span>
+											</dl>
+										</div>
+										<div class="roomMatter">
+											<dl>
+												<dt>
+													<dd class="dd">同城自营</dd>
+													<dd>大床</dd>
+													<dd>无早</dd>
+													<dd>有窗</dd>
+													<dd>不可取消</dd>
+													<dd class="price">¥245</dd>
+												</dt>
+												<span class="predetermine">预&nbsp;定</span>
+												<br>
+												<span class="onLine">在线订</span>
+											</dl>
+										</div>
+										<div class="roomMatter">
+											<dl>
+												<dt>
+													<dd class="dd">同城自营</dd>
+													<dd>大床</dd>
+													<dd>无早</dd>
+													<dd>有窗</dd>
+													<dd>不可取消</dd>
+													<dd class="price">¥245</dd>
+												</dt>
+												<span class="predetermine">预&nbsp;定</span>
+												<br>
+												<span class="onLine">在线订</span>
+											</dl>
+										</div>
+									</div>
+								</div>	
+							</div> -->
+						</div>
+						<!-- 酒店信息 -->
+						<div  id="a1" name="a1"></div>
+						<div class="grogshopInfo">
+							<div class="grogInfoTitle">酒店信息</div>
+							<div class="clearfix">
+								<div class="grogInfoIcon">
+								<div class="grogIconContent">
+									<div class="grogConCharImg grogConImg"></div>
+									<div class="grogConChar grogConDes">免费停车场</div>
+								</div>
+								</div>
+								<div class="grogInfoIcon">
+									<div class="grogIconContent">
+										<div class="grogConAirImg grogConImg"></div>
+										<div class="grogConAir grogConDes">接机服务</div>
+									</div>
+								</div>
+							</div>
+							<div class="grogInfoBasal">
+								<span class="spanColor">基本信息</span>&nbsp;
+								<span class="spanInfo whenBuilt">2012开业</span>
+								<span class="spanInfo renovationDate">2012装修</span>
+								<span class="spanInfo resPhone"><a href="">联系电话</a></span>
+							</div>
+							<div class="grogFacility">
+								<span class="spanColor">酒店设施</span>&nbsp;
+								<span class="spanPark">上网服务</span>
+								<span class="spanPark"></span>
+							</div>
+							<div class="grogTime">
+								<span class="spanColor">入离店时间</span>
+								&nbsp;
+								<span class="arrivalAndDeparture"></span>
+							</div>
+							<div class="grogIntro">
+								<span class="spanColor">酒店简介</span>
+								<span class="grogIntroCon"></span>
+							</div>
+							<div class="grogCard">
+								<span class="spanColor">可接受信用卡</span>
+							</div>
+						</div>	
+						<!-- 交通 -->
+						<!-- <div  id="a2" name="a2"></div>		
+						<div class="rimTraffic">
+							<div  id="a2" name="a2"></div>
+							<div class="rimTrafContent">交通</div>
+							<div class="rimTrafAtlas" id="bigMap">						
+							</div>
+							<div class="rimTraRefer">
+								<div class="rimTraReferTop">
+									<div class="origin"><input placeholder="输入起点"></div>
+									<div class="termina"><input placeholder="输入终点"></div>
+									<a href="#">查&nbsp;询</a>
+								</div>
+								<div class="rimTraReferBot"></div>
+							</div>
+						</div> -->
+					</div>
+				</div>		
+			<!-- </div> -->
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../../js/jquery.min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=FB6c98d828da5bf508fb357f9ee535ef"></script>
+<script src="../../js/common/common.js"></script>
+<script type="text/javascript">
+$(function(){
+
+	// 获取ID值
+	if(Request("ResId")){
+		sessionStorage.setItem('ResId',Request("ResId"));
+	}
+	$("#ResId").val(sessionStorage.getItem('ResId'));
+
+	// 房型、酒店信息锚点监听
+	document.onmousemove = function(e){
+		// console.log(document.body.scrollTop);
+		if(document.body.scrollTop>568){
+			$(".switchover").css({"position":"fixed",
+								"top":"0",
+								"z-index":"100",
+								"backgroundColor":"#fff"});
+		}
+		if(document.body.scrollTop<568){
+			$(".switchover").css("position","static");
+		}
+	};
+	$(".switchover li a").on("click", function(){
+		$(this).parent().css("backgroundColor", "#4c5a65").siblings().css("backgroundColor", "#fff");
+		$(this).css("color", "#fff").parents().siblings().children().css("color", "#000");
+	});
+
+	$(".predetermine").on("click", function(){
+		window.location.href="hotelReserve.html";
+	})
+
+	initPage();
+
+})
+
+// 页面初始化
+function initPage(){
+	$.myAjax({
+		url: basePath + 'tc/hotel/get.do',
+		// data: {id: $("#ResId").val()},
+		// data: {id:'0a90d9c5867340b380c836f34621c03f'},  // 香格里拉
+		// data: {id:'cbe689207f5444ab94ba8ac16b0e6d8e'},  // 湖北大厦
+		data: {id:'2b872884255b4bf4a737cb20a5c1802b'},
+		success: function(result){
+			console.log(result);
+			if(result.flag){
+				var hotel = result.data.hotel;
+				$("#hotelId").val(hotel.resId);
+				$(".resName").html(hotel.resName);
+				$(".location").html('['+hotel.location+']');
+				$(".address").html('地址：'+hotel.address);
+				$(".resName").html(hotel.resName);
+				// initRoomList(result.data.hotelSale,result.data.hotelProInfo);
+				initRoomList(result.data.hotelSale);
+				// 地图设置
+				var marker = new BMap.Marker(new BMap.Point(hotel.baiduLon, hotel.baiduLat));
+      			map.addOverlay(marker);
+
+      			$(".whenBuilt").html(tcHotelDate(hotel.whenBuilt).substring(0,4)+'年开业');
+      			$(".renovationDate").html(tcHotelDate(hotel.renovationDate).substring(0,4)+'年装修');
+      			$(".arrivalAndDeparture").html(hotel.arrivalAndDeparture);
+      			$(".grogIntroCon").html(hotel.intro);
+			}
+
+		},
+		error: function(result){
+			myAlert('请求失败！','slow');
+		}
+	});
+}
+
+// 初始化酒店房间
+// function initRoomList(saleData,specData){
+function initRoomList(saleData){
+	Array.prototype.mopsUnique = function(){  // 自定义数组去重
+		var res = [];
+		var json = {};
+		for(var i = 0; i < this.length; i++){
+			if(!json[this[i].ProId]){
+				res.push(this[i]);
+				json[this[i].ProId] = 1;
+			}
+		}
+		return res;
+	}
+
+	//var specData = specData.mopsUnique();
+	
+	var saleRoom = [];  // 房型及房间的最终数据
+	var saleRoom = saleData.mopsUnique();
+
+	// for(var i=0;i<specData.length;i++){
+	// 	var tempjson = {};
+	// 	tempjson.ProId = specData[i].ProId;
+	// 	tempjson.ResProProps = specData[i].ResProProps;
+	// 	tempjson.RoomFloor = specData[i].RoomFloor;
+	// 	tempjson.ResProName = specData[i].ResProName;
+	// 	tempjson.BedTypeName = specData[i].BedTypeName;
+	// 	saleRoom.push(tempjson);
+	// }
+
+	// for(var j=0;j<saleRoom.length;j++){
+	// 	var roomList = [];
+	// 	for(var i=0;i<saleData.length;i++){
+	// 		if(!saleData[i].ProSaleInfoDetails || saleData[i].ProId != saleRoom[j].ProId){
+	// 			continue;
+	// 		}
+	// 		// var roomObj = {};
+	// 		// roomObj.PolicyName = saleData[i].PolicyName;
+	// 		// roomObj.ProductUniqueId = saleData[i].ProductUniqueId;
+	// 		// roomObj.ProSaleInfoDetails = saleData[i].ProSaleInfoDetails;
+	// 		roomList.push(saleData[i]);
+	// 	}
+	// 	saleRoom[j].roomList = roomList;
+	// }
+
+	console.log(saleRoom);
+	
+	// 动态生成房间列表
+	var str = '';
+	for(var i=0;i<saleRoom.length;i++){
+		var roomval = saleRoom[i];
+		var upordown = 'triangle-up'; // 是否展开(默认第一个展开)
+		var showOrhide = 'hideRoomList';
+		if(i==0){
+			upordown = 'triangle-down';
+			showOrhide = 'showRoomList';
+		}
+		var roomKey = '';
+		var minPrice = 1000000; // 最低价格
+
+		var room = ''; // 房间html字符串
+		for(var j=0;j<roomval.roomList.length;j++){
+			var val = roomval.roomList[j];
+
+			if(!val.ProSaleInfoDetails){
+				continue;
+			}
+
+			if(!roomKey){
+				roomKey = getFirstKey(roomval.roomList[j].ProSaleInfoDetails);
+			}
+
+			if(minPrice>val.ProSaleInfoDetails[roomKey].DistributionSalePrice){
+				minPrice=val.ProSaleInfoDetails[roomKey].DistributionSalePrice;
+			}
+			room += '<div class="roomMatter">'+
+					'<dl>'+
+						'<dt>'+
+							'<dd class="dd">'+val.PolicyName+'</dd>'+
+							'<dd>'+roomval.BedTypeName+'</dd>'+
+							'<dd>'+val.ProSaleInfoDetails[roomKey].BreakfastName+'</dd>'+
+							'<dd>'+roomval.ResProProps.是否有窗+'</dd>'+
+							'<dd>免费取消</dd>'+
+							'<dd class="price">¥'+val.ProSaleInfoDetails[roomKey].DistributionSalePrice+'</dd>'+
+						'</dt>'+
+						'<a class="fix" href="#">'+
+						'<input type="hidden" class="ProId" value="'+roomval.ProId+'">'+
+						'<input type="hidden" class="ProductUniqueId" value="'+val.ProductUniqueId+'">'+
+						'<span class="predetermine">预&nbsp;定</span>'+
+						'<br>'+
+						'<span class="hotelPay">到店付</span></a>'+
+					'</dl>'+
+				'</div>';
+		}
+		var roomIntro = ''; // 房间简介 如：大床(1.8米)|免费有线|最多可住2人|面积24㎡|楼层1-4层
+		roomIntro = roomval.ResProProps.床型+'('+roomval.ResProProps.床宽+'米)|免费有线|最多可住2人|面积'+
+			roomval.ResProProps.房间面积+'㎡|楼层'+roomval.RoomFloor+'层';
+		str += '<div class="roomDetail">'+
+				'<div class="roomTitle">'+
+					'<img class="roomImg" src="../../img/index/grogshop05.jpg">'+
+					'<div class="roomTxt">'+
+						'<div class="roomIntroCon">'+
+							'<div class="roomType">'+roomval.ResProName+'</div>'+
+							'<div class="roomIntro">'+roomIntro+'</div>'+
+						'</div>'+
+						'<div class="roomPriceCon">'+
+							'<p class="roomPrice">'+
+							'<span class="orange">￥</span><span class="orange priceBig">'+minPrice+'</span> 起'+
+							'<span class="'+upordown+'"></span></p>'+
+							'<p>共'+roomval.roomList.length+'个产品</p>'+
+						'</div>'+
+					'</div>'+
+				'</div>'+
+				'<div class="roomListCon '+showOrhide+'">'+
+					'<div class="roomNav">'+
+						'<ul>'+
+							'<li>名称</li>'+
+							'<li>床型</li>'+
+							'<li>早餐</li>'+
+							'<li>窗户</li>'+
+							'<li>取消规则</li>'+
+							'<li>日均价</li>'+
+						'</ul>'+
+					'</div>'+
+					'<div class="roomList">'+ room +
+					'</div>'+
+				'</div>'+	
+			'</div>';
+	}
+
+	$(".roomCon").html(str);
+
+	addlistener();
+
+}
+
+// 获取JSON数据key值-> key数组
+function getFirstKey(jsonObj){
+	var jsonKey = [];
+	for(var item in jsonObj){ 
+        jsonKey.push(item);
+        break;
+    }
+    return jsonKey[0];
+}
+
+function addlistener(){
+	var roomE = $(".roomTitle");
+	roomE.each(function(index){
+		$(this).click(function(){
+			if($(this).next().hasClass('hideRoomList')){
+				$(this).next().removeClass('hideRoomList');
+				$(this).find(".triangle").removeClass('triangle-up').addClass('triangle-down');
+			} else {
+				$(this).next().addClass('hideRoomList');
+				$(this).find(".triangle").removeClass('triangle-down').addClass('triangle-up');
+			}
+		});
+	});
+
+	$(".predetermine, .hotelPay").click(function(){
+		var urlJson = {};
+		urlJson.ProId = $(".ProId").val();
+		urlJson.ProductUniqueId = $(".ProductUniqueId").val();
+		// urlJson.ResId = $("#ResId").val();
+		urlJson.ResId = '2b872884255b4bf4a737cb20a5c1802b';
+		urlJson.hotelId = $("#hotelId").val();
+
+		urlJson.stime = '2017-06-28';
+		urlJson.etime = '2017-06-28';
+
+		$(this).parent().attr("href",'hotelReserve.html?dataKey='+setUrlJson(urlJson));
+	});
+}
+</script>
+
+<script type="text/javascript">
+	//创建和初始化地图函数：
+	var map;
+    initMap();
+    function initMap(){
+      createMap();//创建地图
+      setMapEvent();//设置地图事件
+    }
+    function createMap(){ 
+      map = new BMap.Map("map"); 
+      map.setCurrentCity("北京"); 
+      map.centerAndZoom(new BMap.Point(116.394675,39.917545),11);
+      // marker = new BMap.Marker(new BMap.Point(116.394675, 39.917545));
+      // map.addOverlay(marker);
+    }
+    function setMapEvent(){
+      map.enableScrollWheelZoom();
+      map.enableKeyboard();
+      map.enableDragging();
+      map.enableDoubleClickZoom()
+    }
+    function addClickHandler(target,window){
+      target.addEventListener("click",function(){
+        target.openInfoWindow(window);
+      });
+    }
+    
+</script>
+<script type="text/javascript">
+	 //创建和初始化地图函数：
+    // function initMap(){
+    //   createMap();//创建地图
+    //   setMapEvent();//设置地图事件
+    // }
+    // function createMap(){ 
+    //   map = new BMap.Map("bigMap"); 
+    //   map.setCurrentCity("北京"); 
+    //   map.centerAndZoom(new BMap.Point(116.394675,39.917545),11);
+    //   marker = new BMap.Marker(new BMap.Point(116.394675, 39.917545));
+    //   map.addOverlay(marker);
+    // }
+    // function setMapEvent(){
+    //   map.enableScrollWheelZoom();
+    //   map.enableKeyboard();
+    //   map.enableDragging();
+    //   map.enableDoubleClickZoom()
+    // }
+    // function addClickHandler(target,window){
+    //   target.addEventListener("click",function(){
+    //     target.openInfoWindow(window);
+    //   });
+    // }
+    // var map;
+    // initMap();
+</script>
+</html>

@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>联系方式</title>
+<!-- webicon.ico为页面icon -->
+<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+<!-- 引入项目依赖框架css : bootstrap.min.css -->
+<link href="../../../css/common/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../../css/common/bootstrap-table.min.css">
+<!-- 引入项目公共样式 : datatime.css -->
+
+<link rel="stylesheet" href="../../../css/common/bootstrap-datetimepicker.min.css">
+<!-- 引入项目公共样式 : style.css -->
+<link href="../../../css/style.css" rel="stylesheet" />
+<!-- 引入项目中带有左侧菜单栏的公共样式 : main.css -->
+<link href="../../../css/main.css" rel="stylesheet" />
+<style>
+   .m-loca{
+        margin-left:20px;
+        margin-top:44px;
+   } 
+   
+   .ml70{
+            margin-left:70px;
+        }
+    .ml60{
+        margin-left:60px;
+    }
+    .mt20{
+      margin-top:20px;
+    }
+    .mt40{
+      margin-top:40px;
+    }
+    #preview_wrapper
+    {
+        display: inline-block;
+        width: 300px;
+        height: 200px;
+        background-color: #CCC;
+        margin-left:14px;
+    }
+    
+    #preview_fake
+    {
+        /* 该对象用户在IE下显示预览图片 */
+        filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale);
+    }
+    #preview_size_fake
+    {
+        /* 该对象只用来在IE下获得图片的原始尺寸，无其它用途 */
+        filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=image);
+        visibility: hidden;
+    }
+    #preview
+    {
+        /* 该对象用户在FF下显示预览图片 */
+        width: 300px;
+        height: 200px;
+    }
+    .btn-location{
+  		width:300px;
+  		display: block;
+  		margin:0 auto;
+  		margin-bottom:20px;
+  	}
+</style>
+</head>
+<body>
+<!-- 引入页头 -->
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<!-- 以下为内容部分，内容部分分为导航头和主体内容 -->
+<div class="activitylist mops-con"><!-- 内容部分的class : mops-con (必须) -->
+	<div class="con-nav">
+    <a href="message.html">管理中心</a>
+    <a href="">-></a>
+    <a href="message.html">活动管理</a>
+    <a href="">-></a>
+    <a href="tell.html">联系方式</a>
+  </div><!-- 内容部分导航头的class : con-nav (必须) -->
+	<div class="con-box"><!-- 内容部分主体内容的class : con-box (必须) -->
+		<!-- 以下为每个页面自己编写的部分 -->
+		<form id="detailform" class="form-horizontal mops-form">
+			<div class="form-group form-bott">
+		       <label for="" class="col-sm-2 control-label">&nbsp<span class="cred">*</span>联系人</label>
+		       <div class="col-sm-7">
+		         <input type="email" class="form-control" id="inputPerson" placeholder="吴玲玉">
+		       </div>
+		  	</div>
+  			<div class="form-group">
+  			    <label for="" class="col-sm-2 control-label"><span class="cred">*</span>联系电话</label>
+  			    <div class="col-sm-7">
+  			      <input type="email" class="form-control" id="inputTell" placeholder="13810956812">
+  			    </div>
+  			</div>	
+  			<div class="form-group">
+  			    <label for="" class="col-sm-2 control-label"><span class="cred">*</span>联系邮箱</label>
+  			    <div class="col-sm-7">
+  			      <input type="email" class="form-control" id="inputEmail3" placeholder="13810956812@qq.com">
+  			    </div>
+  			</div>
+			  <div class="form-group">
+			    <label for="" class="col-sm-2 control-label">&nbsp联系地址</label>
+			    <div class="col-sm-7">
+			      <input type="adress" class="form-control" id="inputAdress" placeholder="北京市昌平区">
+			    </div>
+  			</div>
+  			<div class="form-group">
+  			    <label for="" class="col-sm-2 control-label">&nbsp联系邮编</label>
+  			    <div class="col-sm-7">
+  			      <input type="email" class="form-control" id="inputCode" placeholder="10011">
+  			    </div>
+  			</div>
+        <div class="form-group">
+            <label for="" class="col-sm-2 control-label">&nbsp主办方网址</label>
+            <div class="col-sm-7">
+              <input type="email" class="form-control" id="inputCode" placeholder="www.gconfs.com">
+            </div>
+        </div>
+        <div class="form-group m-loca mt40">
+            <label for="" class="col-sm-2 control-label">       二维码
+            </label>
+            <div id="preview_wrapper" class="active">
+                <div id="preview_fake">
+                    <img id="preview" src="" alt="" onload="autoSizePreview(this,300,200)" />
+                    <img id="preview_size_fake" src="" alt="" />
+                </div>
+                <div >
+                    <input id="upload_img" class="mt20" name="upload_img" type="file" onchange="onUploadImgChange(this,'preview','preview_fake','preview_size_fake',740,200)" />
+                </div>
+            </div>
+        </div>  
+        <button type="button" class="btn btn-default btn-warning btn-location">用户群(如设置,报名用户可进会议群)
+        </button>	
+        <div class="btncon">
+		      	<button type="button" class="btn btn-warning save">保&nbsp存</button>
+            <button type="button" class="btn btn-default off">取&nbsp消</button>
+		      	<!-- <button class="btn btn-default btn-danger">删&nbsp除</button> -->
+		    </div>
+    </form>
+  </div>     
+</div>
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+
+<!-- 引入项目中带有左侧菜单的公共js -->
+<script src="../../../js/common/main.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/bootstrap-table.min.js"></script>
+<script src="../../../js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../../js/bootstrap-datetimepicker.min.js"></script>
+<script src="../../../js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script>
+	$(function(){
+		// 获取左侧菜单列表数据(参数为请求地址)
+		initMenu('../../../js/data/administrator.json','活动管理');
+    $('.save').on('click',function(){
+        myAlert('保存')
+    });
+    $('.off').on('click',function(){
+        douAlert('您确定取消吗？',function(){
+          alert(1)
+        },function(){
+          alert(2)
+        })
+    })
+    
+	});
+</script>
+<script type="text/javascript" language="javascript">
+    function onUploadImgChange(sender, p, pf, psf,width,height) {
+        if (!sender.value.match(/.jpg|.gif|.png|.bmp/i)) //忽略大小写
+        {
+            alert('图片格式无效！');
+            return false;
+        }
+        var objPreview = document.getElementById(p); //图片1
+        var objPreviewFake = document.getElementById(pf); //图片2
+        var objPreviewSizeFake = document.getElementById(psf); //外套1
+        if (sender.files && sender.files[0]) 
+        {
+            objPreview.style.display = 'block';
+            objPreview.style.width = 'auto';
+            objPreview.style.height = 'auto';
+           objPreview.src = window.URL.createObjectURL(sender.files[0]);
+     
+     
+        }
+        else if (objPreviewFake.filters) 
+        {
+            // IE7,IE8 在设置本地图片地址为 img.src 时出现莫名其妙的后果        
+            //（相同环境有时能显示，有时不显示），因此只能用滤镜来解决        
+            // IE7, IE8因安全性问题已无法直接通过 input[file].value 获取完整的文件路径        
+            sender.select();
+            var imgSrc = document.selection.createRange().text;
+            objPreviewFake.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = imgSrc;
+            objPreviewSizeFake.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = imgSrc;
+            autoSizePreview(objPreviewFake, width, height);
+            objPreview.style.display = 'none';
+        }
+     
+    }
+    function autoSizePreview(objPre, originalWidth, originalHeight) {
+        objPre.style.width = originalWidth + 'px';
+        objPre.style.height = originalHeight + 'px';
+        objPre.style.marginTop = 0 + 'px';
+        objPre.style.marginLeft = 0 + 'px';
+    }
+</script>
+</html>

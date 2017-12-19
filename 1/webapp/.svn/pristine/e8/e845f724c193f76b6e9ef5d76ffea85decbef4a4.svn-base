@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>意见反馈</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+	<link rel="stylesheet" type="text/css" href="../../../css/app/style.css">
+</head>
+<style type="text/css">
+	.contain{
+		padding: 15px 10px;
+		background-color: #ffffff;
+		margin-top: 48px;
+	}
+	.content{
+		/*padding: 10px;*/
+	}
+	.textCon{
+		height: 200px;
+		border: none;
+		outline: none;
+		/*padding: 10px; */
+		border-radius: 5px;
+		width: 90%;
+		padding: 10px 5%;
+		margin: 0 auto;
+		overflow-x: hidden;
+		border:1px solid #f60;
+	}
+	/*.textarea{
+		width: 100%;
+		height: 100%;
+	}*/
+	.reminder{
+		color: #f9752b;
+		font-size: 12px;
+		text-align: right;
+		margin-top: 10px;
+	}
+	.button{
+		margin-top: 10px;
+		text-align: center;
+	}
+	.submint{
+		width: 80%;
+		background-color: #f9752b;
+		border: 1px solid #f9752b;
+		height: 40px;
+		color: #fff;
+		border-radius: 5px;
+		margin-top: 20px;
+	}
+</style>
+<body>
+	<div>
+		<div class="head">
+			<div class="navImg">
+				<img src="../../../img/app/arrowLeft-icon.png">
+			</div>
+			<div class="navDetail">意见反馈</div>
+		</div>
+		<div class="contain">
+			<div class="content">
+				<textarea class="textCon" autofocus maxlength="200"></textarea>
+			</div>
+			<div class="reminder">200字以内</div>
+			<div class="button">
+				<button type="button" class="submint">提交反馈</button>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="../../../js/zepto.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<script type="text/javascript">
+$(function(){
+	var txt = $(".textCon").val();
+	$(".submint").on("click",function(){
+		console.log(1)
+		// if(verify()){
+			var url = basePath+'user/feedback/save.do';
+			$.myAjax({
+				url:url,
+				data:{content:txt,type:2},
+				success:function(result){
+					console.log(result)
+					if(result.flag){
+						myAlert('提交成功');
+					}else{
+						myAlert('提交失败');
+					}
+				},
+				error:function(result){
+					myConfirm('保存失败'+result);
+				}
+			})
+		// };
+	});
+	function verify(){
+		var txt = $(".textCon").val();
+		if(txt==''||txt==null){
+			myConfirm('意见不能为空！');
+			return false;
+		};
+		if(!(/^\S{1,200}$/.test(txt))){
+			myConfirm('最多可输入200个字符');
+			return false;
+		};
+	}
+});
+</script>
+</html>

@@ -1,0 +1,44 @@
+.imgTitle{
+  height: 30px;
+    margin-top: 3px;
+}
+.content{
+	width: 69%;
+	min-height: 580px;
+}
+.content .mainContent{
+	/*width: 90%;*/
+	width: 100%;
+	margin: 0 auto;	
+	margin-top: 20px;
+}
+.mainContent .contentTitle{
+	margin: 0 auto;
+	text-align: center;
+	font-size: 20px;
+	font-weight: 700;
+	color: #333;
+}
+.mainContent .author{
+	text-align: center;
+	margin-top: 10px;
+}
+.mainContent .contentTheme{
+	margin-top: 20px;
+}
+.contentImg {
+	width: 348px;
+	height: 548px;
+}
+.contentImg img {
+	width: 348px;
+	height: 272px;
+	margin-top: 2px;
+	border-radius: 3px;
+}
+.contain .bannimg{
+	padding: 0;
+}
+.bannimg img{
+	width: 1200px !important;
+}

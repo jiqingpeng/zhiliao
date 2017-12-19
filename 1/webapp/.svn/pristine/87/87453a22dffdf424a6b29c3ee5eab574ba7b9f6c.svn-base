@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>基本信息</title>
+<link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" type="text/css" href="../../css/common/bootstrap.css"/>
+<link rel="stylesheet" href="../../css/common/bootstrapValidator.min.css"/>
+<link href="../../css/style.css" rel="stylesheet" />
+<link href="../../css/main.css" rel="stylesheet" />
+<link href="../../css/super.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- 引入页头 -->
+<script type="text/javascript" src="../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="information.html">基本信息</a>
+	</div>
+	<div class="con-box">
+		<!-- 以下为每个页面自己编写的部分 -->
+		<div class="information"> <!-- 建议用功能名为类名 -->
+			<form id="informationFm" class="form-horizontal mops-form" method="post" enctype="multipart/form-data" target="hidden_frame">
+				<div class="form-group">
+				    <label for="nick" class="col-sm-2 control-label">姓名</label>
+				    <div class="col-sm-7">
+				       <input type="text" class="form-control nick" name="nick" maxlength="32" placeholder="请输入姓名"/>
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="" class="col-sm-2 control-label">单位名称</label>
+				    <div class="col-sm-7">
+				      <input type="text" class="form-control name" name="name" maxlength="32" placeholder="请输入单位名称"/>
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="" class="col-sm-2 control-label">单位性质</label>
+				    <div class="col-sm-7">
+					    <select name="corporationType" class="form-control corporationType">
+				      		<option value="1">事业单位</option>
+				      		<option value="2">企业单位</option>
+				      		<option value="3">社会团体</option>
+				      		<option value="4">机关单位</option>
+				      	</select>
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="address" class="col-sm-2 control-label">单位地址</label>
+				    <div class="col-sm-7">
+				      <input type="text" class="form-control address" maxlength="64" name="address" placeholder="请输入通讯地址"/>
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="phone" class="col-sm-2 control-label">电话</label>
+				    <div class="col-sm-7">
+				      <input type="text" class="form-control phone" maxlength="32" name="phone" placeholder="请输入联系电话(座机或手机)"/>
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="email" class="col-sm-2 control-label">邮箱</label>
+				    <div class="col-sm-7">
+				      <input type="email" class="form-control email" maxlength="32" name="email" placeholder="请输入邮箱"/>
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="" class="col-sm-2 control-label">传真</label>
+				    <div class="col-sm-7">
+				      <input type="text" class="form-control fax" maxlength="32" name="fax" placeholder="请输入传真"/>
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="" class="col-sm-2 control-label">头像</label>
+				    <div class="col-sm-7">
+						<img id="perImg" style="width: 200px; height: 180px;" />
+			    	</div>  
+			    </div>
+
+			    <div class="form-group "> 
+					<label for="" class="col-sm-2 control-label"></label>
+				    <div class="col-sm-7">
+						<input type="file" id="uploadImg" name="file" accept="image/jpeg,image/png,image/jpg"/>
+			    	</div>  
+				</div>
+			    <div class="btncon">
+					<button type="button" class="btn btn-default btn-warning infoSave">保&nbsp存</button>
+					<button type="button" class="btn btn-default infoCancel">取&nbsp消</button>
+			    </div>
+			</form>
+		</div>
+	</div>     
+</div> 
+
+<script type="text/javascript" src="../../js/common/footer.js"></script>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/bootstrapValidator.min.js"></script>
+<script src="../../js/common/uploadPreview.js"></script>
+<script src="../../js/common/jquery.form.js"></script>
+<script src="../../js/common/main.js"></script>
+<script src="../../js/common/common.js"></script>
+<script type="text/javascript">
+$(function(){
+	// 获取左侧菜单列表数据(参数为请求地址)
+	initMenu('../../js/data/superMenu.json','基本信息');
+	$("#submenumark").css('display','none');
+	
+	initPage();
+
+	$("#uploadImg").uploadPreview({ Img: "perImg", ImgType: ["jpeg", "jpg", "png"]});
+	$(".infoSave").click(function(){
+		var bootValidator = $("#informationFm").data('bootstrapValidator');
+        bootValidator.validate();
+        if(bootValidator.isValid()){
+        	var actionUrl = basePath + "admin/admin/save.do"
+			$("#informationFm").attr("action", actionUrl);
+        	$("#informationFm").submit();
+        }
+	});
+
+	// 上传文件回显提示
+	var options = {
+		success: function (result) {
+			var data = $.parseJSON(result);
+			if(data.flag){
+				myAlert(data.msg);
+				$('#informationFm').data('bootstrapValidator').resetForm(true);
+			} else {
+				myAlert(data.msg,'slow');
+			}
+		},
+		error: function(){
+			myAlert("请求失败",'slow');
+		}
+	};
+	$("#informationFm").ajaxForm(options);
+
+
+	$(".infoCancel").click(function(){
+		$('#informationFm').data('bootstrapValidator').resetForm(true);
+		initPage();
+	});
+
+	//表单验证
+	$('#informationFm').bootstrapValidator({
+        message: '信息输入有误！',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            nick: {
+                validators: {
+                    notEmpty: {
+                        message: '姓名不能为空'
+                    }
+                }
+            },
+            name: {
+                validators: {
+                    notEmpty: {
+                        message: '单位名称不能为空'
+                    }
+                }
+            },
+            corporationType: {
+                validators: {
+                    notEmpty: {
+                        message: '请选择单位性质'
+                    }
+                }
+            },
+            email: {
+                validators: {
+                    emailAddress: {
+                        message: '请输入正确的邮箱地址！'
+                    }
+                }
+            }
+        }
+    });
+
+});
+
+function initPage(){
+	$.myAjax({
+			url: basePath + "admin/admin/info.do",
+			
+			success: function(result){
+				console.log(result);
+				if(result.flag){
+					$(".nick").val(result.data.nick);
+					$(".corporationType").val(result.data.corporationType);
+					$(".name").val(result.data.name);
+					$(".address").val(result.data.address);
+					$(".phone").val(result.data.phone);
+					$(".email").val(result.data.email);
+					$(".fax").val(result.data.fax);
+					if(result.data.portrait){
+						var imgUrl = basePath + result.data.portrait;
+						// imgUrl = imgUrl.replace(/[\\]/g,"\/");
+						$("#perImg").attr("src",imgUrl);
+					}
+				}else{
+					myAlert(result.msg);
+				}
+			},
+			error: function(){
+				myAlert("请求失败",'slow');
+			}
+		})
+}
+</script>
+</html>
+

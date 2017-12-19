@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>修改密码</title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<meta content="telephone=no" name="format-detection" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" />
+	<link rel="stylesheet" type="text/css" href="../../../css/app/style.css"> 
+</head>
+<style type="text/css">
+a{
+	color: #f9752b;
+}
+input{
+	border-left:0px;
+	border-top:0px;
+	border-right:0px;
+	border-bottom:0px; 
+	outline:none;
+}
+.conBox{
+	padding:3px 4px;
+	margin-top: 48px;
+}
+.contain{
+	
+	background-color: #fff;
+}
+.group{
+	height: 50px;
+	border-bottom: 1px solid #e2e2e2;
+	line-height: 50px;
+	padding: 0 2%;
+}
+.comFont{
+	font-weight: 600;
+	margin-right: 3px;
+}
+.phone{
+	width: 35%;
+	height: 30px;
+}
+.require{
+	width: 32%;
+	height: 30px;
+	background-color: #f9752b;
+	border-radius: 50px;
+	color: #fff;
+}
+.button{
+	margin-top: 20px;
+}
+#recompose{
+	display: inline-block;
+	width: 80%;
+	margin-left: 10%;
+	background-color: #f9752b;
+	color: #fff;
+	height: 40px;
+	text-align: center;
+	border-radius: 5px;
+	border: 1px solid #f9752b;
+}
+.account{
+	text-align: center;
+	margin-top: 10px;
+}
+</style>
+<body>
+	<div>
+		<div class="head">
+			<div class="navImg">
+				<img src="../../../img/app/arrowLeft-icon.png">
+			</div>
+			<div class="navDetail">修改密码</div>
+		</div>
+		<div class="conBox">
+			<div class="contain">
+				<div class="group">
+					<span for="" class="comFont">原密码密码:</span>
+					<input type="password" maxlength="16" class="password" name="pwd" placeholder="请输入原密码" />
+				</div>
+				<div class="group">
+					<span for="" class="comFont">新密码:</span>
+					<input type="password" maxlength="16" class="password1" name="pwd" placeholder="请输入新密码" />
+				</div>
+				<div class="group">
+					<span for="" class="comFont">确认新密码:</span>
+					<input type="password" maxlength="16" class="surePwd"  placeholder="请再次输入新密码" />
+				</div>
+				<div class="group">
+					<span for="" class="comFont phoneCode">手机验证码:</span>
+					<input type="text" maxlength="6" disabled="disabled" class="phone" name="code" placeholder="请输入手机验证码" />
+					<input type="button" class="require" value="获取验证码" />
+				</div>	
+			</div>
+			<div class="button">
+				<button id="recompose">修改</button>
+			</div>
+			<div class="account">
+				<a href="login.html">返回</a>
+			</div>
+		</div>
+	</div>	
+</body>
+<script type="text/javascript" src="../../../js/zepto.js"></script>
+<script type="text/javascript" src="../../../js/zepto.md5.js"></script>
+<script type="text/javascript" src="../../../js/app/mtCommon.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#recompose").on("click",function(){
+		if(verify()){
+			recompose();
+		}
+	});
+	$(".require").on("click", function(){
+		if(verifyPhone()){
+			getPhone();
+		}
+	});
+})
+// 输入信息验证
+function verifyPhone(){
+	var	password = $(".password").val();
+	var	password1 = $(".password1").val();
+	var surePwd = $(".surePwd").val();
+	if(password == '' || password ==null){
+		myConfirm("请输入原密码");
+		$(".password").focus();
+		return false;
+	}else if(!(/^[1-9a-zA-Z]\w{5,15}$/.test(password))){
+		myConfirm("密码只能是6-16位并且以非零数字和字母开头");
+		$(".password").focus();
+		return false;
+	};
+	if(password1 == null || password1 == ''){
+		$(".password1").focus();
+		myConfirm('请输入新密码');
+		return false;
+	}else if(!(/^[1-9a-zA-Z]\w{5,15}$/.test(password1))){
+		myConfirm("密码只能是6-16位并且以非零数字和字母开头");
+		$(".password1").focus();
+		return false;
+	}
+	else if(password1 == password){
+		myConfirm('新密码不能与原密码相同');
+		$(".password1").focus();
+		return false;
+	};
+	if(surePwd == null || surePwd == ''){
+		$(".surePwd").focus();
+		myConfirm('请确认新密码');
+		return false;
+	}else if(!(/^[1-9a-zA-Z]\w{5,15}$/.test(surePwd))){
+		myConfirm("密码只能是6-16位并且以非零数字和字母开头");
+		$(".surePwd").focus();
+		return false;
+	}
+	else if(password1 != surePwd){
+		myConfirm('2次输入的新密码不相同');
+		$(".surePwd").focus();
+		return false;
+	};
+	return true;
+}
+// 输入信息验证
+function verify(){
+	if(!verifyPhone()){
+		return false;
+	}
+	var phone = $(".phone").val();
+	if(phone == null || phone == ''){
+		myConfirm("手机验证码不能为空");
+		$(".phone").focus();
+		return false;
+	}else if(!(/^\d{6}$/.test(phone))){
+		myConfirm("请输入6位数字验证码");
+		$(".phone").focus();
+		return false;
+	}
+	return true;
+}
+
+//获取手机验证码
+function getPhone(){
+	var data = {"pwd":$.md5($(".password").val())};
+	$.myAjax({
+		url: basePath + "user/safe/change/verification.do",
+		data: data,
+		success: function(result){
+			if(result.flag){
+				$('.phone').removeAttr('disabled');
+				//倒计时获取验证码
+	    		clearInterval(timer);
+		    	var i=60;
+		    	var timer=null;
+		    	function show(){
+					i--;
+					$('.require').val(i+'秒后获取');
+					$('.require').attr('disabled','disabled');
+					if(i<=0){
+						// alert(121);
+						clearInterval(timer);
+						$('.require').val('免费获取验证码');
+						$('.require').removeAttr('disabled');
+					}
+				};
+					show();
+					timer=setInterval(show,1000);
+				}else{
+					myConfirm(result.msg);
+				}
+			},
+		error: function(){
+			myConfirm("请求失败，请重试！");
+		}
+	})
+}
+//提交修改信息
+function recompose(){
+	var data={"pwd":$.md5($(".password1").val()),
+				"code":$('.phone').val()// 此为手机短信验证码
+			};
+	$.myAjax({
+		url: basePath + 'user/safe/change.do',
+		data: data,
+		success: function(result){
+			console.log(result);
+			if(result.flag){
+				window.location.href = "../index/login.html";
+			} else {
+				myConfirm(result.msg);
+			}
+		},
+		error: function(){
+			myConfirm("请求失败，请重试！");
+		}
+	})
+}
+</script>
+</html>

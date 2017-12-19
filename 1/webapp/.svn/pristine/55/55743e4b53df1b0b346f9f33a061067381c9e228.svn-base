@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>酒店预订</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="../../css/index/hotel.css">
+	<link rel="stylesheet" type="text/css" href="../../js/daterangepicker/daterangepicker.min.css">
+	<link rel="stylesheet" href="../../css/index/base.css">
+	<link rel="stylesheet" href="../../css/index/hotelReserve.css">
+</head>
+<body>
+	<div class="ReserHead">
+		<div class="ReserHeadCon">
+			<div class="ResHeadTitle">
+				<div class="ResHeaTitTour">主办方推荐酒店</div>
+				<div class="ResHeaIndent">
+					<span><a href="">登录</a></span>
+					<span><a href="">注册</a></span>
+					<span class="phone">4007-777-777</span>
+				</div>
+			</div>
+			<div class="ResHeadPay">
+				<img src="../../img/index/processB.png">
+			</div>
+		</div>
+	</div>
+	<div class="hotelReserve">
+		<div class="ReserContent clearfix">
+			<div class="ReserConLeft">
+				<div class="resConShow">
+					<img class="roomImg" src="../../img/index/grogshop01.jpg">
+				</div>
+				<div class="resConDetail">
+					<input type="hidden" id="ResId"/>
+					<div class="colorBlack ResName">北京饭店</div>
+					<div class="colorDead address">北京 东城区 东长安街333号</div>
+					<div class="resConDetDes">
+						<div class="colorBlack productType">酒店房间介绍</div>
+						<div>
+							<span class="spanWidth">床型：<span class="colorBlack bedType">双床</span>
+							</span>
+							<span>面积：<span class="colorBlack roomsize">40平方米</span></span>
+						</div>
+						<div>
+							<span class="spanWidth">楼层：<span class="colorBlack floor">7-14层</span></span>
+							<span>早餐：<span class="colorBlack breakCount">双份</span></span>
+						</div>
+						<div>
+							<span class="spanWidth">加床：<span class="colorBlack addbed">加床价RMB：415</span></span>
+							<span>窗户：<span class="colorBlack hasWindow">有窗</span></span>
+						</div>
+						<!-- <div class="warm">
+							<div class="warmPrompt">温馨提示</div>
+							<div>1、预订每间房至少需要提供一位实际入住客人姓名。且入住时必须告知酒店订单上的名字，不能有错别字。</div>
+						</div> -->
+					</div>
+					<div class="resConDetPri">
+						<div>
+							<span class="indent">订单总额</span>
+							<span>-------------------------------</span>
+							<span class="price">¥888</span>
+						</div>								
+						<div class="write">房费请于酒店前台支付</div>
+						<div class="write">酒店确认入住后担保费用全部返还</div>
+					</div>
+				</div>
+			</div>
+			<div class="ReserConRight clearfix">
+				<div class="reserGrogInfo clearfix">
+					<div class="reserInfo clearfix">
+						<div class="reserInfoChar">预订信息</div>
+						<input type="hidden" id="unitprice"/>
+						<div class="reserDetail">
+							<div class="reserInfoDet">
+								<span>入离日期&nbsp;&nbsp;&nbsp;&nbsp;<span class="detailDate stime">2017-6-23</span><input id="sdateRange" class="detailamend none" type="text">&nbsp;&nbsp;到&nbsp;&nbsp;<span class="detailDate etime">2017-6-24</span><input type="text" id="edateRange" class="detailamend none"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+								<span class="allDays">共1晚</span><span><a href="#" class="alterData">修改日期</a></span>
+							</div>
+							<!-- 房间数量 -->
+							<div class="reserCount">
+							</div>
+							<div class="reserTotal">
+								<span>房费总计&nbsp;&nbsp;<span class="resTolPrice">¥888</span><span>
+							</div>
+							<br>
+						</div>
+					</div>
+					<div class="checkInfo clearfix">
+						<div class="checkInfoLeft">
+							<span class="orderLabel">入住信息</span>
+						</div>
+						<div class="checkInfoRight">
+							<br>
+							<div class="compellation">
+								<span class="LinkManlabel">住客姓名</span>&nbsp;&nbsp; <input type="text" name="LinkManName" class="linkManName" placeholder="请输入住客真实姓名" />
+							</div>
+							<!-- <div class="compellation">
+								<span class="LinkManlabel"></span>&nbsp;&nbsp; <input type="text" name="LinkManName" placeholder="请输入住客真实姓名"/>
+							</div> -->
+							<div class="compellation namePrompt">
+								<span class="itemLabel"></span>&nbsp;&nbsp;<span>所需姓名需与入住时所持证件一致.</span><span class="regulation"><a href="">填写规则</a></span>
+								<div class="infoIntroHide none">请填写中文或英文姓名，英文姓名格式为zhang/sanfeng。</div>
+							</div>
+							<div class="compellation">
+								<span class="itemLabel">手机号码:</span>&nbsp;&nbsp; <input type="text" name="LinkManMobile" class="linkManMobile" placeholder="请填写手机号码" />
+							&nbsp;&nbsp;预定成功后会向您发送短信通知
+							</div>
+							<div class="compellation">
+								<span class="itemLabel">到达时间</span>&nbsp;&nbsp;
+								<select class="arriveTime">
+									<option value='11'>11点</option>
+									<option value='12'>12点</option>
+									<option value='13'>13点</option>
+									<option value='14'>14点</option>
+									<option value='15'>15点</option>
+									<option value='16'>16点</option>
+									<option value='17'>17点</option>
+									<option value='18' selected>18点</option>
+									<option value='19'>19点</option>
+									<option value='20'>20点</option>
+									<option value='21'>21点</option>
+									<option value='22'>22点</option>
+									<option value='23'>23点</option>
+									<option value='24'>24点</option>
+									<option value='1'>1点</option>
+									<option value='2'>2点</option>
+									<option value='3'>3点</option>
+									<option value='4'>4点</option>
+									<option value='5'>5点</option>
+								</select>&nbsp;&nbsp;
+								<span class="warnText"><span class="GuaranteeHoldTime">00:00</span> 需担保房费 <span class="money">888</span>元</span>
+							</div>
+						</div>	
+					</div>
+					<div class="invoiceInfo clearfix">
+						<div class="invoInfoLeft">发票信息</div>
+						<div class="invoInfoRight">
+							如需房费发票，请从酒店前台索取。
+						</div>
+					</div>
+					<div class="card clearfix">
+						<div class="cardLeft">信用卡信息</div>
+						<div class="cardRight">
+							<br>
+							<div class="marginLeft">
+								<div id="selCard">选择您的卡种</div>
+								<br>
+								<div class="cardList">
+									<span class="spanCard">
+										<input type="hidden" class="bankId" value=""/>
+										<input type="hidden" class="bankName" value="中国农业银行信用卡">
+									</span>
+									<span class="spanCard chinaCard">
+										<input type="hidden" class="bankId" value=""/>
+										<input type="hidden" class="bankName" value="中国银行信用卡">
+									</span>
+									<span class="spanCard constructionCard">
+										<input type="hidden" class="bankId" value=""/>
+										<input type="hidden" class="bankName" value="中国建设银行信用卡">
+									</span>
+									<span class="spanCard brightenCard">
+										<input type="hidden" class="bankId" value=""/>
+										<input type="hidden" class="bankName" value="光大银行信用卡">
+									</span>
+									<br>
+									<span class="spanCard businessCard">
+										<input type="hidden" class="bankId" value=""/>
+										<input type="hidden" class="bankName" value="兴业银行信用卡">
+									</span>
+									<span class="spanCard CITICCard">
+										<input type="hidden" class="bankId" value=""/>
+										<input type="hidden" class="bankName" value="中信银行信用卡">
+									</span>
+									<span class="spanCard attractCrad">
+										<input type="hidden" class="bankId" value=""/>
+										<input type="hidden" class="bankName" value="招商银行信用卡">
+									</span>
+									<span class="spanCard livelihoodCard">
+										<input type="hidden" class="bankId" value=""/>
+										<input type="hidden" class="bankName" value="中国民生银行信用卡">
+									</span>
+									<br>
+									<span class="spanCard richCard">
+										<input type="hidden" class="bankId" value=""/>
+										<input type="hidden" class="bankName" value="富滇银行信用卡">
+									</span>
+									<span class="spanCard developmentCard">
+										<input type="hidden" class="bankId" value=""/>
+										<input type="hidden" class="bankName" value="广东发展银行信用卡">
+									</span>
+									<span class="spanCard hangzhouCard">
+										<input type="hidden" class="bankId" value=""/>
+										<input type="hidden" class="bankName" value="杭州银行信用卡">
+									</span>
+									<span class="spanCard IndustryCard">
+										<input type="hidden" class="bankId" value=""/>
+										<input type="hidden" class="bankName" value="中国工商银行信用卡">
+									</span>
+									<br>
+									<span class="spanCard ningboCard">
+										<input type="hidden" class="bankId" value=""/>
+										<input type="hidden" class="bankName" value="宁波银行信用卡">
+									</span>
+									<span class="spanCard dawkCard">
+										<input type="hidden" class="bankId" value=""/>
+										<input type="hidden" class="bankName" value="邮政储蓄银行信用卡">
+									</span>
+									<span class="spanCard shanghaiCard">
+										<input type="hidden" class="bankId" value=""/>
+										<input type="hidden" class="bankName" value="上海银行信用卡">
+									</span>
+									<span class="spanCard safetyCard">
+										<input type="hidden" class="bankId" value=""/>
+										<input type="hidden" class="bankName" value="平安银行信用卡">
+									</span>
+									<br>
+									<span class="spanCard SPDBCard">
+										<input type="hidden" class="bankId" value=""/>
+										<input type="hidden" class="bankName" value="上海浦东发展银行信用卡">
+									</span>
+								</div>
+								<div class="cardDetail none">
+									<ul>
+										<li>
+											<label class="cardLabel">信用卡卡号</label>
+											<input type="text" name="CardNumber" class="cardInp CardNumber" placeholder="输入信用卡15位或16位卡号"/>
+											<span class="cardPrompt">输入信用卡15位或16位卡号</span>
+										</li>
+										<li>
+											<label class="cardLabel">CVV2验证码</label>
+											<input type="text" name="CardValueCode" class="cardInp CardValueCode" placeholder="请填写验证码"/>
+											<span class="cardPrompt">信用卡背面签名栏里的后三位</span>
+										</li>
+										<li>
+											<label class="cardLabel">有效期限</label>
+											<select class="cardInp CardValueDateMM">
+												<option selected>月份</option>
+												<option>01</option>
+												<option>02</option>
+												<option>03</option>
+												<option>04</option>
+												<option>05</option>
+												<option>06</option>
+												<option>07</option>
+												<option>08</option>
+												<option>09</option>
+												<option>10</option>
+												<option>11</option>
+												<option>12</option>
+											</select>
+											<select class="cardInp CardValueDateYY">
+												<option selected>年份</option>
+												<option>17</option>
+												<option>18</option>
+												<option>19</option>
+												<option>20</option>
+												<option>21</option>
+												<option>22</option>
+												<option>23</option>
+												<option>24</option>
+												<option>25</option>
+												<option>26</option>
+												<option>27</option>
+												<option>28</option>
+												<option>29</option>
+												<option>30</option>
+											</select>
+											<input type="hidden" name="CardValueDate"/>
+											<span class="cardPrompt">位于信用卡卡号下方有效期</span>
+										</li>
+										<li>
+											<label class="cardLabel">持卡人姓名</label>
+											<input type="text" name="CardUserName" class="cardInp CardUserName" placeholder="输入持卡人姓名"/>
+										</li>
+										<li>
+											<label class="cardLabel">持卡人手机号</label>
+											<input type="text" name="mobile" class="cardInp mobile" placeholder="输入持卡人手机号"/>
+										</li>
+										<li>
+											<label class="cardLabel">持卡人身份证</label>
+											<input type="text" name="CredentialNumber" class="cardInp CredentialNumber" placeholder="输入持卡人身份证号"/>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="attention clearfix">
+						<div class="attentionLeft">预订须知</div>
+						<div class="attentionRight">
+							<!-- <p>1、当前房间紧张，需冻结/暂扣您信用卡金额<span class="totPrice">¥888</span>用于担保。订单确认后，该酒店房间保留至2017年7月8日12:00。如订单不确认，同程将立即进行解冻/退款。订单一经确认，不可变更/取消。未如约入住，同程将扣除您的担保费用<span class="totPrice">¥888</span>支付酒店。成功入住及付款离店，同程向酒店确认后立即操作解冻/退款，5-7个工作日恢复额度/到账。</p> -->
+							<p>1、如果您在 <span class="finalDate warn"></span>&nbsp;<span class="finalTime warn"></span> 之前不能到酒店，请您事先联系同程，协商房间保留事宜，避免房间过时被取消。</p>
+							<p>2、入住人需凭有效证件入住。</p>
+							<p>3、为保证您的预订顺利完成，请正确填写信用卡信息。若信用卡预授失败，您选择的取消险将自动取消。</p>
+							<!-- <div class="attentionDes">
+								<span class="marginLeft">1、预订此产品，需预付房费</span>
+								<span class="totPrice">¥1274</span>，如订单不确认将全额退款至您的付款账户。该订单确认后不可被取消，若未入住将收取您全额房费<span id="reimburse">¥1274</span>
+							</div>
+							<br>	
+							<div class="attentionDes marginLeft">
+								<span class="marginLeft">2、入住人需凭有效证件入住。</span>
+							</div> -->
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		<div class="immedPayment">
+				<button class="hotelsave">提交订单</button>&nbsp;
+				<div class="immedPaymentDes"><span>订单金额 : <span class="immedPaymentPrice">¥888</span>&nbsp;（房费<span class="totPrice">¥888</span>，所有费用请于酒店前台支付）</span></div>
+		</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript" src="../../js/jquery.min.js"></script>
+<script src="../../js/daterangepicker/moment.min.js"></script>
+<script type="text/javascript" src="../../js/daterangepicker/jquery.daterangepicker.min.js"></script>
+<script type="text/javascript" src="../../js/common/common.js"></script>
+<script type="text/javascript">
+// 获取酒店及房间ID
+var hotelData = getUrlJson("dataKey");
+var roomNum = 1; // 酒店房间数
+var bankName = ''; // 信用卡NAME
+var bankId = ''; // 信用卡ID
+var allDays = 1; // 入住天数
+
+$(function(){
+	loading();
+	// 设置住店时间
+	$(".stime").html(hotelData.stime);
+	$(".etime").html(hotelData.etime);
+	allDays = useDate(hotelData.stime,hotelData.etime);
+	$(".allDays").html('共'+allDays+'晚');
+	$(".finalDate").html(hotelData.stime);
+
+	initPage(hotelData.stime,hotelData.etime);
+
+	$('#sdateRange').dateRangePicker({
+		isTodayValid: true,
+		startDate: getNowFormatDate().substring(0,10)
+	}).bind('datepicker-apply',function(event,obj){
+		var stime = obj.value.substring(0,10);
+		var etime = obj.value.substring(14,24);
+		$('.stime').html(stime);
+		$('.etime').html(etime);
+		$(".finalDate").html(stime);
+		allDays = useDate(stime,etime);
+        $(".allDays").html('共'+allDays+'晚');
+        $(".alterData").trigger('click');
+        initPage(stime,etime);
+	}).bind('datepicker-change',function(event,obj){
+		$('#sdateRange').val(obj.value.substring(0,10));
+		$('#edateRange').val(obj.value.substring(14,24));
+	})
+	$('#edateRange').dateRangePicker({
+		isTodayValid: true,
+		startDate: getNowFormatDate().substring(0,10)
+	}).bind('datepicker-apply',function(event,obj){
+		var stime = obj.value.substring(0,10);
+		var etime = obj.value.substring(14,24);
+		$('.stime').html(stime);
+		$('.etime').html(etime);
+		$(".finalDate").html(stime);
+		allDays = useDate(stime,etime);
+        $(".allDays").html('共'+allDays+'晚');
+        $(".alterData").trigger('click');
+        initPage(stime,etime);
+	}).bind('datepicker-change',function(event,obj){
+		$('#sdateRange').val(obj.value.substring(0,10));
+		$('#edateRange').val(obj.value.substring(14,24));
+	})
+
+	// 修改日期
+	$(".alterData").on("click", function(){
+		$(".detailDate").toggleClass("none");
+		$(".detailamend").toggleClass("none");
+		if(!$(".detailamend").hasClass("none")){
+			$("#sdateRange").val($(".stime").html());
+			$("#edateRange").val($(".etime").html());
+		}
+		if($(".alterData").text()=="修改日期"){
+			$(".alterData").text("确 定");
+		}else{
+			$(".alterData").text("修改日期");
+		}
+	})
+	$(".particulars").on("mouseover", function(){
+		$(".particularsHide").removeClass("none");
+	});
+	$(".particulars").on("mouseleave", function(){
+		$(".particularsHide").addClass("none");
+	});
+	$(".regulation").on("mouseover", function (){
+		$(".infoIntroHide").removeClass("none");
+	});
+	$(".regulation").on("mouseleave", function () {
+		$(".infoIntroHide").addClass("none");
+	})
+	$(document).on("click", ".resCouSpan", function () {
+		$(this).addClass("active").siblings().removeClass("active");
+		roomNum = $(this).text(); // 酒店房间数
+		var unitprice = $("#unitprice").val();
+		$(".resTolPrice, .price, .totPrice, .immedPaymentPrice").text("¥"+unitprice*roomNum*allDays);
+		$(".money").html(unitprice*roomNum);
+
+		// 增加入住客人
+		var linkManNum = $(".LinkManlabel").length; 
+		if(roomNum > linkManNum){
+			var str = '';
+			for(var i=0;i<(roomNum-linkManNum);i++){
+				str += '<div class="compellation">'+
+							'<span class="LinkManlabel"></span>&nbsp;&nbsp; <input type="text" name="LinkManName" placeholder="请输入住客真实姓名"/>'+
+						'</div>';
+			}
+			$(".namePrompt").before(str);
+		} else {
+			for(var i=linkManNum-1,j=0;j<(linkManNum-roomNum);j++,i--){
+				$($(".LinkManlabel")[i]).parent().remove();
+			}
+		}
+
+	})
+	$(".spanCard").on("click", function(){
+		$(this).addClass("redActive").siblings().removeClass("redActive");
+		bankName = $(this).find(".bankName").val();
+		bankId = $(this).find(".bankId").val();
+		var content = "您已选择" + bankName;
+		$("#selCard").text(content);
+		$(".cardDetail").removeClass('none');
+	}) 	
+
+	// 提交订单
+	$(".hotelsave").on("click", function(){
+
+		if(!checkInput()){  // 输入验证
+			return false;
+		}; 
+
+		var actid = sessionStorage.getItem('actId');
+		var arriveTime = $(".arriveTime").val();
+
+		var credentialNumber = $(".CredentialNumber").val();
+
+		var linkManMobile = $(".linkManMobile").val();
+		var linkManName = '';
+
+		var cardNumber = $(".CardNumber").val();
+		var cardUserName = $(".CardUserName").val();
+		var cardValueCode = $(".CardValueCode").val();
+		var cardValueDate = '20'+$(".CardValueDateYY").val()+'/'+$(".CardValueDateMM").val();
+		var mobile = $(".mobile").val();
+
+		var lyHotelPassengerList = ''; // 入住信息-多个入住人
+		var linkMan = $(".linkManName");
+		for(var i=0;i<linkMan.length;i++){
+			if(i == 0){
+				linkManName = $(linkMan[i]).val();
+				lyHotelPassengerList += '&lyHotelPassengerList[0].mobile='+$(".linkManMobile").val()+
+				'&lyHotelPassengerList[0].name='+$(linkMan[i]).val();
+			} else {
+				lyHotelPassengerList += '&lyHotelPassengerList['+i+'].name='+$(linkMan[i]).val();
+			}
+		}
+		// 入住信息-多天入住
+		var tcHotelResourceUseList = '';
+		allDays = useDate($(".stime").html(),$(".etime").html());
+		function getDayStr(day,num){
+			var datestr = timeStamp(day) + 86400000*num;
+			return format(datestr);
+		}
+		for(var i=0;i<allDays;i++){
+			tcHotelResourceUseList += '&tcHotelResourceUseList['+i+'].checkPrice='+$("#unitprice").val()+'&tcHotelResourceUseList['+i+'].useDate='+getDayStr($(".stime").html(),i);
+		}
+		
+		var postData = 'activityId='+actid+'&proId='+hotelData.ProId+'&productUniqueId='+hotelData.ProductUniqueId+'&resId='+hotelData.hotelId+'&arriveTime='+arriveTime+'&bookCount='+roomNum+lyHotelPassengerList+tcHotelResourceUseList+'&orderChilds=0'+'&paymentSign=2&orderAdults='+roomNum+'&linkManMobile='+linkManMobile+'&linkManName='+linkManName+'&linkManSex=1';
+
+		// 信用卡相关信息
+		var cardInfo = '&credentialName=身份证'+'&credentialNumber='+credentialNumber+'&mobile='+mobile+'&bankId='+bankId+'&bankName='+bankName+'&cardNumber='+cardNumber+'&cardUserName='+cardUserName+'&cardValueCode='+cardValueCode+'&cardValueDate='+cardValueDate;
+		postData += cardInfo;
+		
+		console.log(postData);
+		// return;
+		$.myAjax({
+			url: basePath + 'user/hotelorder/save.do',
+			data: postData,
+			success: function(result) {
+				if(result.flag){
+					window.location.href = '../user/myMess.html?location='+sessionStorage.getItem('actId')+'&location=showhotel';
+				}
+			},
+			error: function(result) {
+				myAlert('请求失败！','slow');
+			}
+		});
+	});
+
+	// 监听到达时间改变
+	$(".arriveTime").change(function(){
+		var endtime = $(".finalTime").html();
+
+		if($(this).val() >= endtime.substring(0,2)){
+			$(".GuaranteeHoldTime").html($(this).val()+':00');
+			$(".warnText").show();
+		} else {
+			$(".warnText").hide();
+		}
+	});
+})
+
+function initPage(stime,etime){ 
+	$.myAjax({
+		url: basePath + 'tc/hotel/getroom.do',
+		data: {
+			// id: '0a90d9c5867340b380c836f34621c03f',
+			id: hotelData.ResId, 
+			proId: hotelData.ProId,
+			pduId:hotelData.ProductUniqueId, 
+			stime:stime,
+			etime:etime
+			},
+		success: function(result){
+			$(".loading").remove();
+			console.log(result);
+			if(result.flag){
+				initCreditCard(result.data.cardType);
+
+				initRoomNum(result.data.InventoryRemainder,result.data.OpeningSale);
+
+				$(".roomImg").attr("src",result.data.hotelRoomImg);
+
+				$(".finalTime").html(result.data.GuaranteeHoldTime);
+				var hotelDetail = result.data.hotelDetail;
+				var roomDetail = result.data.hotelRoomInfo;
+				$(".ResName").html(hotelDetail.ResName);
+				$(".address").html(hotelDetail.ProvName+'&nbsp;'+hotelDetail.SectionName+'&nbsp;'+hotelDetail.Address);
+				$(".productType").html(roomDetail.SupPriceName);
+				$(".bedType").html(roomDetail.ResProProps.床型);
+				$(".roomsize").html(roomDetail.RoomSize);
+				$(".floor").html(roomDetail.RoomFloor);
+				if(roomDetail.BreakfastCount > 1) {
+					var breakCount = '双早';
+				} else if(roomDetail.BreakfastCount == 1){
+					var breakCount = '单早';
+				} else {
+					var breakCount = '无';
+				}
+				$(".breakCount").html(breakCount);
+				if(roomDetail.ResProProps.加床价 > 0){
+					$(".addbed").html(roomDetail.ResProProps.加床价);
+				} else {
+					$(".addbed").html(roomDetail.ResProProps.加床);
+				}
+				$(".hasWindow").html(roomDetail.HasWindows==1?'有窗':'无窗');
+				$(".price,.resTolPrice,.totPrice,.immedPaymentPrice").html(result.data.sale*useDate(stime,etime));
+				$(".money").html(result.data.sale);
+				$("#unitprice,.money").val(result.data.sale);
+
+				// 提醒担保判断
+				// $(".GuaranteeHoldTime").html(result.data.GuaranteeHoldTime);
+				if(result.data.GuaranteeHoldTime.substring(0,2) <= $(".arriveTime").val()){
+					$(".GuaranteeHoldTime").html($(".arriveTime").val()+':00');
+					$(".warnText").show();
+				}
+
+			}
+		},
+		error: function(result){
+			$(".loading").remove();
+			myAlert('请求失败！','slow');
+		}
+	});
+
+}
+// 生成房间数
+function initRoomNum(data,tag){
+	var roomNum = '';
+	if(data>0 && data<8){
+		roomNum = data;
+	} else if(data>8){
+		roomNum = 8;
+	} else if(data == 0 && tag == 'true'){
+		roomNum = 8;
+	}
+	var roomnumstr = '';
+	for(var i=0;i<roomNum;i++){
+		if(i==0){
+			roomnumstr += '<span class="resRoomCon">房间数量</span>'+
+						'<span class="resCouSpan active">'+(i+1)+'</span>';
+		} else {
+			roomnumstr += '<span class="resCouSpan">'+(i+1)+'</span>';
+		}
+	}
+	if(roomNum < 8){
+		roomnumstr += '<span class="warn">仅剩'+roomNum+'间可订</span>'
+	}
+
+	$(".reserCount").html(roomnumstr);
+}
+
+// 初始化信用卡
+function initCreditCard(data){
+	var aCard = $.parseJSON(data.PayMentMerchants);
+
+	var cardList = [];
+	for(var i = 0; i < aCard.length; i++){
+		if(aCard[i].CardBankLogoUrl){
+			cardList.push(aCard[i]);
+		}
+	}
+
+	var aElem = $(".spanCard");
+	var cardstr = '';
+	for(var i=0;i<aElem.length;i++){
+		var bank = $(aElem[i]).find(".bankName").val();
+		for(var j=0;j<cardList.length;j++){
+			if(cardList[j].PaymentWayName == bank){
+				$(aElem[i]).find(".bankId").val(cardList[j].CreditCardBankId);
+				break;
+			}
+		}
+	}
+
+}
+
+// 输入验证
+function checkInput(){
+
+	// 入住信息
+	var maninfo = $(".linkManName");
+	maninfo.each(function(index){
+		if($(this).val() == null || $(this).val() == ''){
+			myAlert('请输入住客真实姓名！','slow');
+			return false;
+		}
+	});
+	if(!$(".linkManMobile").val()){
+		myAlert('请输入联系电话！','slow');
+		return false;
+	} else if(!(/^1[34578]\d{9}$/.test($(".linkManMobile").val()))){
+    	myAlert("请输入正确的联系电话！",'slow');  
+    	return false;
+	}
+	// 信用卡信息
+	var cardNumber = $(".CardNumber").val();
+	if(!(/^\d{15,16}$/.test(cardNumber))) {
+		myAlert("请输入15位或16位信用卡号！",'slow');  
+    	return false;
+	};
+	var cardValueCode = $(".CardValueCode").val();
+	if(!(/^\d{3}$/.test(cardValueCode))) {
+		myAlert("请输入正确的CVV2验证码！",'slow');  
+    	return false;
+	};
+
+	var cardValueDate = '20'+$(".CardValueDateYY").val()+'/'+$(".CardValueDateMM").val();
+	if(!(/^\d{2}$/.test($(".CardValueDateYY").val())) || !(/^\d{2}$/.test($(".CardValueDateMM").val()))) {
+		myAlert("请选择有效期限！",'slow');  
+    	return false;
+	};
+	var cardUserName = $(".CardUserName").val();
+	if(!cardUserName){
+		myAlert("请输入持卡人姓名！",'slow');  
+    	return false;
+	}
+	var mobile = $(".mobile").val();
+	if(!(/^1[34578]\d{9}$/.test(mobile))){
+    	myAlert("请输入正确的持卡人手机号！",'slow');  
+    	return false;
+	}
+	var credentialNumber = $(".CredentialNumber").val();
+	if(!(/^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{2}$/.test(credentialNumber))&&!(/^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/.test(credentialNumber))){
+    	myAlert("请输入正确的持卡人身份证号！",'slow');  
+    	return false;
+	}
+
+	return true;
+}	
+
+// 入住天数计算
+function useDate(stime,etime){
+	var st = timeStamp(stime),
+		et = timeStamp(etime);
+	return (et-st)/(1000*24*60*60);
+}
+
+// 获取时间字符串
+function add0(m){return m<10?'0'+m:m }
+function format(datastr) {
+	var time = new Date(datastr);
+	var y = time.getFullYear();
+	var m = time.getMonth()+1;
+	var d = time.getDate();
+	var h = time.getHours();
+	var mm = time.getMinutes();
+	var s = time.getSeconds();
+	// return y+'-'+add0(m)+'-'+add0(d)+' '+add0(h)+':'+add0(mm)+':'+add0(s);
+	return y+'-'+add0(m)+'-'+add0(d);
+}
+</script>

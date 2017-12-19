@@ -1,0 +1,488 @@
+.wrap {
+    width: 1110px;
+    margin: 0 auto;
+    font-size: 12px
+}
+
+.wrap .active {
+    display: none
+}
+
+.wrap .progress {
+    margin-bottom: 20px
+}
+
+.wrap .progress span {
+    float: left;
+    vertical-align: middle
+}
+
+.wrap .progress span.txt {
+    padding-right: 15px;
+    background: url(../../img/index/pbook.png) no-repeat 58px -9px;
+    color: #2ca1e7
+}
+
+.wrap .progress span.grayicon {
+    background: url(../../img/index/pbook.png) no-repeat 58px 7px
+}
+
+.wrap .progress span.graytxt {
+    color: #ccc;
+    background: url(../../img/index/pbook.png) no-repeat 58px 7px
+}
+
+.wrap .progress span.line {
+    margin-top: 6px;
+    border-bottom: 2px solid #83d0fe;
+    padding-top: 3px
+}
+
+.wrap .progress span.gray {
+    border-bottom-color: #ccc
+}
+
+.wrap .progress span.nobg {
+    background: 0 0;
+    padding-right: 0
+}
+
+.wrap .progress em {
+    float: left;
+    width: 10px;
+    height: 10px;
+    margin: 6px 6px 0 -8px;
+    display: block;
+    background: url(../../img/index/pbook.png) no-repeat 0 -47px
+}
+
+.wrap .progress em.gray {
+    background-position: 0 -32px
+}
+
+.wrap .content .main {
+    width: 1110px
+}
+
+.wrap .content .main .info .infoBox {
+    width: 660px;
+    padding: 0 60px 20px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    border-top: 3px solid #2da1e7
+}
+
+.wrap .content .main .info .infoBox .infoTit {
+    padding: 24px 0 22px;
+    color: #666;
+    font-size: 16px;
+    font-weight: 700
+}
+
+.wrap .content .main .info .infoBox .signin {
+    padding-bottom: 16px;
+    border-bottom: 1px solid #ddd;
+    color: #333
+}
+
+.wrap .content .main .info .infoBox .row {
+    padding-bottom: 10px;
+    height: 34px;
+    line-height: 34px;
+    position: relative
+}
+
+.wrap .content .main .info .infoBox .row input {
+    margin: 1px 0;
+    padding: 7px 10px
+}
+
+.wrap .content .main .info .infoBox .row .name {
+    margin-left: 80px;
+    position: relative
+}
+
+.wrap .content .main .info .infoBox .row .name input {
+    width: 210px
+}
+
+.wrap .content .main .info .infoBox .row .selectHead {
+    display: inline-block;
+    height: 32px;
+    background: #fff;
+    line-height: 32px;
+    border: 1px solid #ddd;
+    border-radius: 2px 2px 0 0;
+    margin-left: 80px;
+    position:relative;
+}
+.wrap .content .main .info .infoBox .row .selectHead:hover{
+    cursor: pointer;
+}
+.wrap .content .main .info .infoBox .row .selectHead .selectBody{
+    position: absolute;
+    left:0;
+    top:34px;
+    width:100%;
+    max-height: 350px;
+    border:1px solid #ddd;
+    z-index:1;
+    background: #fff;
+}
+.wrap .content .main .info .infoBox .row .selectHead .selectBody li{
+    padding-left:10px;
+}
+.wrap .content .main .info .infoBox .row .selectHead .selectBody li:hover{
+    background: #2ca1e7;
+    color:#fff;
+}
+.wrap .content .main .info .infoBox .row .selectHead .selectArrow {
+    width: 20px;
+    height: 20px;
+    float: right;
+    margin: 6px 6px 0 0;
+    background: url(../../img/index/pbook.png) 4px -140px no-repeat #e0e0e0
+}
+
+.wrap .content .main .info .infoBox .row .selectHead .selectTxt {
+    padding-left: 10px;
+    margin-right: 30px;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.wrap .content .main .info .infoBox .row .codeId {
+    margin-left: 20px;
+    position: relative
+}
+
+.wrap .content .main .info .infoBox .row .codeId input {
+    width: 278px
+}
+
+.wrap .content .main .info .infoBox .row .passPhone {
+    width: 402px;
+    margin-left: 80px
+}
+
+.wrap .content .main .info .infoBox .row .prompt {
+    margin-left: 66px;
+    position: relative
+}
+
+.wrap .content .main .info .infoBox .row .prompt .delIocn {
+    display: inline-block;
+    position: absolute;
+    right: -36px;
+    top: 7px;
+    width: 20px;
+    height: 20px;
+    background: url(../../img/index/pbook.png);
+    background-position:-21px -27px;
+}
+
+.wrap .content .main .info .infoBox .row .prompt .promptNum {
+    position: absolute;
+    left: -352px;
+    top: 0;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    font-size: 16px
+}
+
+.wrap .content .main .info .infoBox .row .tipIcon {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 8px;
+    top: 6px;
+    background: url(../../img/index/pbook.png) no-repeat -21px -83px
+}
+
+.wrap .content .main .info .infoBox .row .quesIcon {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 8px;
+    top: 6px;
+    background: url(../../img/index/pbook.png) no-repeat -21px -110px
+}
+
+.wrap .content .main .info .infoBox .passengerContent .passInfo {
+    margin-bottom: 30px;
+    margin-top: 20px;
+    border-left: 4px solid #fff
+}
+
+.wrap .content .main .info .infoBox .passengerContent .passInfo:hover {
+    border-left: 4px solid #83d0fe;
+};
+
+.wrap .content .main .info .infoBox .passengerContent .newBtn {
+    margin-left: 80px
+}
+
+.wrap .content .main .info .infoBox .passengerContent .newBtn a {
+    display: inline-block;
+    height: 34px;
+    line-height: 34px;
+    background: #ffb44a;
+    border-radius: 3px;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    width: 144px;
+    margin-left:80px;
+}
+
+.wrap .content .main .info .infoBox .passengerContent .newBtn a:before {
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    margin-top: 6px;
+    margin-right: 6px;
+    vertical-align: top;
+    background: url(../../img/index/pbook.png) no-repeat -49px -267px;
+    content: "";
+}
+
+.wrap .content .main .info .infoBox .passengerContent .insurance {
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+    margin-top: 20px
+}
+
+.wrap .content .main .info .infoBox .passengerContent .insurance .txt {
+    display: inline-block;
+    width: 64px;
+    margin-left: 80px
+}
+
+.wrap .content .main .info .infoBox .passengerContent .insurance .txtr {
+    margin-left: 10px
+}
+
+.wrap .content .main .info .infoBox .contact .txt {
+    display: inline-block;
+    width: 64px
+}
+
+.wrap .content .main .info .infoBox .contact .selectHead {
+    margin-left: 6px
+}
+
+.wrap .content .main .info .infoBox .contact .row input {
+    width: 336px
+}
+
+.wrap .content .main .info .check {
+    border-top: 3px solid #2da1e7;
+    margin: 20px 0
+}
+
+.wrap .content .main .info .check p {
+    text-align: center;
+    margin-top: 20px
+}
+
+.wrap .content .main .info .check p .radio {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-top: -4px;
+    margin-right: 6px;
+    vertical-align: middle;
+    background: url(../../img/index/pbook.png) no-repeat -89px -202px
+}
+
+.wrap .content .main .info .check p a {
+    color: #2da1e7
+}
+
+.wrap .content .main .info .saveBtn {
+    width: 160px;
+    height: 42px;
+    line-height: 42px;
+    margin: 0 auto;
+    text-align: center;
+    background: #ff7800;
+    color: #fff;
+    border: 1px solid #ff7800;
+    border-radius: 4px;
+    font-size: 20px
+}
+
+.wrap .content .main .slide {
+    width: 320px
+}
+
+.wrap .content .main .slide .fltdetail {
+    width: 280px;
+    padding: 0 20px;
+    border: 1px solid #2ca1e7;
+    background: #2ca1e7;
+    color: #fff
+}
+
+.wrap .content .main .slide .fltdetail .fltInfo {
+    font-size: 14px;
+    margin-top: 10px
+}
+
+.wrap .content .main .slide .fltdetail .address {
+    margin-top: 10px
+}
+
+.wrap .content .main .slide .fltdetail .address .from {
+    width: 64px
+}
+
+.wrap .content .main .slide .fltdetail .address .from .time {
+    font-size: 24px
+}
+
+.wrap .content .main .slide .fltdetail .address .from .city {
+    margin-top: 5px
+}
+
+.wrap .content .main .slide .fltdetail .address .arrow {
+    width: 136px
+}
+
+.wrap .content .main .slide .fltdetail .address .arrow .airName {
+    text-align: center
+}
+
+.wrap .content .main .slide .fltdetail .address .arrow .airLine {
+    position: relative;
+    border-bottom: 1px solid #d5ecfa
+}
+
+.wrap .content .main .slide .fltdetail .address .arrow .airLine i {
+    display: block;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: -4px;
+    right: -2px;
+    background: url(../../img/index/pbook.png) no-repeat
+}
+
+.wrap .content .main .slide .fltdetail .address .to {
+    width: 64px
+}
+
+.wrap .content .main .slide .fltdetail .address .to .time {
+    font-size: 24px
+}
+
+.wrap .content .main .slide .fltdetail .address .to .city {
+    margin-top: 5px
+}
+
+.wrap .content .main .slide .fltdetail .ticket {
+    margin: 10px 0
+}
+
+.wrap .content .main .slide .fltdetail .ticket .whiteArrup {
+    display: inline-block;
+    width: 54px;
+    padding-right: 16px;
+    height: 20px;
+    background: url(../../img/index/pbook.png) no-repeat 54px -122px
+}
+
+.wrap .content .main .slide .fltdetail .ticket .whiteArrdown {
+    display: inline-block;
+    width: 54px;
+    padding-right: 16px;
+    height: 20px;
+    background: url(../../img/index/pbook.png) no-repeat 54px -108px
+}
+
+.wrap .content .main .slide .fltdetail .ticket .whiteArr:hover {
+    cursor: pointer
+}
+
+.wrap .content .main .slide .ticketDetail {
+    width: 280px;
+    padding: 10px 20px;
+    border: 1px solid #ddd
+}
+
+.wrap .content .main .slide .ticketDetail .tdList {
+    color: #666
+}
+
+.wrap .content .main .slide .ticketDetail .tdMess {
+    margin-top: 10px;
+    margin-bottom: 10px
+}
+
+.wrap .content .main .slide .ticketDetail .tdMess p {
+    margin: 0 20px
+}
+
+.wrap .content .main .slide .ticketDetail a {
+    color: #2da1e7
+}
+
+.wrap .content .main .slide .pricenum {
+    width: 280px;
+    padding: 0 20px;
+    border: 1px solid #ffe7cc;
+    background: #fffef2
+}
+
+.wrap .content .main .slide .pricenum .ordertit {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px
+}
+
+.wrap .content .main .slide .pricenum .ordertit .price {
+    height: 20px;
+    line-height: 20px;
+    font-size: 16px;
+    margin: 10px 0
+}
+
+.wrap .content .main .slide .pricenum .ordertit .price .pricer {
+    color: #f63;
+    font-weight: 700;
+    font-size: 20px
+}
+
+.wrap .content .main .slide .pricenum .ordertit .pernum {
+    height: 20px;
+    line-height: 20px;
+    margin-left: 172px;
+    margin-bottom: 10px
+}
+
+.wrap .content .main .slide .pricenum .ordertit .pernum .grayArrup {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url(../../img/index/pbook.png) no-repeat 2px -154px
+}
+
+.wrap .content .main .slide .pricenum .ordertit .pernum .grayArrdown {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url(../../img/index/pbook.png) no-repeat 2px -138px
+}
+
+.wrap .content .main .slide .pricenum .ordertit .pernum:hover {
+    cursor: pointer
+}
+
+.wrap .content .main .slide .pricenum .orderlist {
+    padding: 10px 0;
+    color: #666
+}
+
+.wrap .content .main .slide .pricenum .orderlist li {
+    margin: 5px 0
+}

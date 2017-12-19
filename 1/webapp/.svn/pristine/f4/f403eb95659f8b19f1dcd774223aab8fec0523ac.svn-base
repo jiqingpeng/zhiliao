@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta name="charset" content="UTF-8">
+<title>活动简介</title>
+<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+<link href="../../../css/common/bootstrap.min.css" rel="stylesheet" />
+<link href="../../../css/style.css" rel="stylesheet" />
+<link href="../../../css/main.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../../js/ueditor/themes/default/css/ueditor.css">
+<link rel="stylesheet" href="../../../css/admin.css">
+
+</head>
+<body>
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="message.html">管理中心</a>
+		<a href="">-&gt;</a>
+		<a href="message.html">活动管理</a>
+		<a href="">-&gt;</a>
+		<a href="intro.html">活动简介</a>
+	</div>
+	<div class="con-box">
+	<!-- 以下为每个页面自己编写的部分 -->
+		<!-- <div class="introview none">	
+			<div class="editorcon">
+				<span class="zh introactive">中文简介</span><span class="en">英文简介</span>
+				<div id="viewcon">
+					<img src="../../../img/haha.png" style="height: 120px;width: 120px; margin: 24px 24px; display: inline-block; float: left;" />
+				</div>
+				<label style="color: #666;">简介附件：</label>
+				<input type="" name="" class="filename" value="xxx学会简介.doc" />
+			</div>
+			<button class="btn btn-warning editinfo"> 编 辑 </button>
+		</div> -->
+		<div class="edit">
+			<div class="editorcon">
+				<script id="newseditor" type="text/plain"></script>
+				<!-- <label style="color: #666;">上传简介附件：</label>
+				<input type="" name="" class="filename">
+				<input type="file" name="" class="upfile" /> -->
+			</div>
+            <div class="btncon">
+              <button type="button" class="btn btn-default btn-warning saveinfo">保&nbsp存</button>
+              <button type="button" class="btn btn-default cancel">取&nbsp消</button>
+            </div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/ueditor/ueditor.config.js"></script>
+<script src="../../../js/ueditor/ueditor.all.js"></script>
+<script src="../../../js/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/main.js"></script>
+
+<script>
+	// 实例化编辑器
+	var editor = UE.getEditor('newseditor',{
+		toolbars:[[
+                'undo', //撤销
+                'redo', //重做
+                'preview', //预览
+                'selectall', //全选
+                'removeformat', //清除格式
+                'cleardoc', //清空文档
+                'bold', //加粗
+                'indent', //首行缩进
+                'italic', //斜体
+                'underline', //下划线
+                'strikethrough', //删除线
+                'subscript', //下标
+                'fontborder', //字符边框
+                'superscript', //上标
+                'formatmatch', //格式刷
+                'justifyleft', //居左对齐
+                'justifyright', //居右对齐
+                'justifycenter', //居中对齐
+                'justifyjustify', //两端对齐
+                'forecolor', //字体颜色
+                'backcolor', //背景色
+                'insertorderedlist', //有序列表
+                'insertunorderedlist', //无序列表
+                'imagenone', //默认
+                'imageleft', //左浮动
+                'imageright', //右浮动
+                'imagecenter', //居中
+                'rowspacingtop', //段前距
+                'rowspacingbottom', //段后距
+                'lineheight', //行间距
+                'edittip ', //编辑提示
+                'touppercase', //字母大写
+                'tolowercase', //字母小写
+                'autotypeset', //自动排版
+            ],[
+                'spechars', //特殊字符
+                'fontfamily', //字体
+                'fontsize', //字号
+                'paragraph', //段落格式
+                'customstyle', //自定义标题
+                'inserttable', //插入表格
+                'insertrow', //前插入行
+                'insertcol', //前插入列
+                'mergeright', //右合并单元格
+                'mergedown', //下合并单元格
+                'deleterow', //删除行
+                'deletecol', //删除列
+                'splittorows', //拆分成行
+                'splittocols', //拆分成列
+                'splittocells', //完全拆分单元格
+                'deletecaption', //删除表格标题
+                'inserttitle', //插入标题
+                'mergecells', //合并多个单元格
+                'deletetable', //删除表格
+                'insertparagraphbeforetable', //"表格前插入行"
+                'edittable', //表格属性
+                'edittd', //单元格属性
+                'date', //日期
+                'time', //时间
+                'link', //超链接
+                'unlink', //取消链接
+                'simpleupload', //单图上传
+                'attachment', //附件
+                // 'anchor', //锚点
+                // 'snapscreen', //截图
+                // 'source', //源代码
+                // 'blockquote', //引用
+                // 'pasteplain', //纯文本粘贴模式
+                // 'print', //打印
+                // 'horizontal', //分隔线
+                // 'insertcode', //代码语言
+                // 'insertimage', //多图上传
+                // 'emotion', //表情
+                // 'searchreplace', //查询替换
+                // 'map', //Baidu地图
+                // 'gmap', //Google地图
+                // 'insertvideo', //视频
+                // 'help', //帮助
+                // 'fullscreen', //全屏
+                // 'directionalityltr', //从左向右输入
+                // 'directionalityrtl', //从右向左输入
+                // 'pagebreak', //分页
+                // 'insertframe', //插入Iframe
+                // 'wordimage', //图片转存
+                // 'webapp', //百度应用
+                // 'background', //背景
+                // 'template', //模板
+                // 'scrawl', //涂鸦
+                // 'music', //音乐
+                // 'drafts', // 从草稿箱加载
+                // 'charts', // 图表
+            ]
+        ],
+		autoHeightEnabled: true,
+    	autoFloatEnabled: true
+	})
+
+	$(function(){
+		// $.ajax({
+		// 	url: basePath + "admin/activity/get.do",
+		// 	data: {id:'9c2d2f6a84e84ee882b73d66a7b8a7f6'},
+		// 	type: "POST",
+		// 	dataType: "json",
+		// 	xhrFields: {
+		// 		withCredentials: true
+		// 	},
+		// 	crossDomain: true,
+		// 	success: function(result){
+		// 		//console.log(result);
+		// 		editor.ready( function() { // 富文本实例化完成
+		// 		    editor.setContent(result.data.activity.introduction);
+		// 		});
+		// 	},
+		// 	error: function(result){
+		// 		console.log("请求失败");
+		// 	}
+		// })
+	});
+
+	// $(".editinfo").click(function(){
+	// 	$(this).parent().addClass("none");
+	// 	$(this).parent().next().removeClass("none");
+
+	// });
+	$(".saveinfo").click(function(){
+        return;
+		var uedContent = editor.getContent();
+		console.log(uedContent);
+		// $(this).parent().addClass("none");
+		// $(this).parent().prev().removeClass("none");
+		var postData = 'id=9c2d2f6a84e84ee882b73d66a7b8a7f6'+
+					'&introduction=' + uedContent;
+		$.ajax({
+			url: basePath + "admin/activity/save.do",
+			data: postData,
+			type: "POST",
+			dataType: "json",
+			xhrFields: {
+				withCredentials: true
+			},
+			crossDomain: true,
+			success: function(result){
+				console.log(result);
+			},
+			error: function(){
+				console.log("请求失败");
+			}
+		})
+		
+	});
+</script>
+<script>
+$(function(){
+	// 获取左侧菜单列表数据(参数为请求地址)
+	initMenu('../../../js/data/administrator.json','活动管理');
+});
+</script>
+</html>

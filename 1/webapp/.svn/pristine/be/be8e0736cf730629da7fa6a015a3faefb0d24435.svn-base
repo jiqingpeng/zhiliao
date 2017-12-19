@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>活动列表</title>
+<link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+<link href="../../css/common/bootstrap.min.css" rel="stylesheet" />
+<link href="../../css/style.css" rel="stylesheet" />
+<link href="../../css/main.css" rel="stylesheet" />
+<link href="../../css/user.css" rel="stylesheet"/>
+</head>
+<body>
+<script type="text/javascript" src="../../js/common/header.js"></script>
+<div class="activitylist mops-con">
+	<div class="con-nav">
+		<a href="activitylist.html">活动列表</a>
+		<a href="">-></a>
+		<a href="searchdetail.html">活动搜索</a>
+	</div>
+	<div class="con-box">
+		<!-- 以下为每个页面自己编写的部分 -->
+		<div class="searchcon">
+			<input type="" name="">
+			<img src="../../img/searchicon.png">
+			<a class="inlblk" target="iframepage" href="activitydetail.html">搜索一下</a>
+		</div>
+		<div class="actcon">
+			<ul class="actdetail">
+				<li>
+					<div class="actname">
+						<a href="../../show/detail.html" target="_black">人民日报海外版：中国外贸回稳向好要过三道坎</a>
+					</div>
+					<p class="actinfo">“2017年中国外贸发展面临的环境有望略好于过去两年，今后一段时间进出口有望继续回稳向好，但不稳定不确定因素依然较多，实现全年回稳向好目标需要付出艰苦努力。”</p>
+				</li>
+				<li>
+					<div class="actname">
+						<a href="#">中国到底试飞了什么新型战机？印度终于彻底坐不住</a>
+					</div>
+					<p class="actinfo">近日，据美国新闻周刊发表文章称，中国已经成功首飞了双座版枭龙战机，这是一款具备教练用途的高级双座多用途战斗机，综合作战能力也有了明显提升。有印度媒体表示，双座版枭龙战机的出现，让印度空军彻底坐不住了，这款战机由于性价比十分明显，将是印度空军主要面临的作战对手。</p>
+				</li>
+				<li>
+					<div class="actname">
+						<a href="#">第九届全球健康促进大会</a>
+					</div>
+					<p class="actinfo">由世界卫生组织和中国国家卫生计划生育委员会联合主办的第九届全球健康促进大会于11月21~24日在上海举办</p>
+				</li>
+				<li>
+					<div class="actname">
+						<a href="#">北京大学人民医院儿童眼病诊疗技术培训班</a>
+					</div>
+					<p class="actinfo">为了进一步提 高和规范小儿眼底病、斜视弱视、屈光不正等儿童眼病的诊疗技术，我北京大学人民医院眼科率先联合京津冀的各大医院知名小儿眼科专家，定于2017年6月3~4日在北京大学人民医院教学楼隆重举办每年一度的国家继续教育项目“儿童眼病诊疗技术”培训班</p>
+				</li>
+				<li>
+					<div class="actname">
+						<a href="#">中国到底试飞了什么新型战机？印度终于彻底坐不住</a>
+					</div>
+					<p class="actinfo">近日，据美国新闻周刊发表文章称，中国已经成功首飞了双座版枭龙战机，这是一款具备教练用途的高级双座多用途战斗机，综合作战能力也有了明显提升。有印度媒体表示，双座版枭龙战机的出现，让印度空军彻底坐不住了，这款战机由于性价比十分明显，将是印度空军主要面临的作战对手。</p>
+				</li>
+				<li>
+					<div class="actname">
+						<a href="#">海峡两岸医药卫生交流协会心血管专业委员会第八届年会</a>
+					</div>
+					<p class="actinfo">第八届海峡两岸医药卫生交流协会心血管专业委员会年会，第九届指南和实践：心血管疑难危重病例研讨会（GAP-CCBC），第八届海峡心血管病高峰论坛（CSCSF），第八届厦门国际心血管病介入论坛（XCIS），第七届海峡心血管病护理论坛（CSCNF），将于2017年11月16日~11月19日（星期四~星期日）在厦门举办。</p>
+				</li>
+				<li>
+					<div class="actname">
+						<a href="#">中国到底试飞了什么新型战机？印度终于彻底坐不住</a>
+					</div>
+					<p class="actinfo">近日，据美国新闻周刊发表文章称，中国已经成功首飞了双座版枭龙战机，这是一款具备教练用途的高级双座多用途战斗机，综合作战能力也有了明显提升。有印度媒体表示，双座版枭龙战机的出现，让印度空军彻底坐不住了，这款战机由于性价比十分明显，将是印度空军主要面临的作战对手。</p>
+				</li>
+				<li>
+					<div class="actname">
+						<a href="#">第十九届广东时装周</a>
+					</div>
+					<p class="actinfo">8．22，广州塔七色闪亮，灯光璀璨，星星和月亮都退避三舍。那夜，广州天空中最辉煌的光景全部留给了时装盛会-2016广东时装周！</p>
+				</li>
+				<li>
+					<div class="actname">
+						<a href="#">中国到底试飞了什么新型战机？印度终于彻底坐不住</a>
+					</div>
+					<p class="actinfo">近日，据美国新闻周刊发表文章称，中国已经成功首飞了双座版枭龙战机，这是一款具备教练用途的高级双座多用途战斗机，综合作战能力也有了明显提升。有印度媒体表示，双座版枭龙战机的出现，让印度空军彻底坐不住了，这款战机由于性价比十分明显，将是印度空军主要面临的作战对手。</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+<script type="text/javascript" src="../../js/common/footer.js"></script>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<!-- 引入项目中带有左侧菜单的公共js -->
+<script src="../../js/common/main.js"></script>
+<script type="text/javascript">
+$(function(){
+	// 获取左侧菜单列表数据(参数为请求地址)
+	initMenu('../../js/data/attend.json','我的活动');
+	$("#submenumark").css('display','none');
+});
+</script>
+</html>

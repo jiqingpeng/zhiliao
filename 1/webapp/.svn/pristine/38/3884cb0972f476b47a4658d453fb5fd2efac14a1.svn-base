@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title class="title">活动简介</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="../../css/common/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../../css/weixin/style.css">
+</head>
+<body>
+	<script src="../../js/weixin/wxHeader.js"></script>
+	<div></div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script type="text/javascript">
+
+var actId = '';
+$(function(){
+	$(".nav-title").html("会场座次");
+})
+
+//初始化页面
+function initPage(url, type){
+	loading();
+	//获取id值
+	actId = Request('actId');
+	$.myAjax({
+		url: basePath + url,
+		data: {id: actId, type: type},
+		success: function(result){
+			$(".loading").remove();
+			if(result.flag){
+				$(".title").html(result.data.activity.name);
+				//判断内容是否为空
+				if(result.data.introduction === null){
+					myAlert("暂无活动简介内容");
+					return;
+				}
+			}else{
+				myAlert(result.msg, "slow");
+			}
+		},
+		error: function(){
+			$(".loading").remove();
+			myConfirm("请求失败!");
+		}
+	});
+}
+
+</script>
+</html>

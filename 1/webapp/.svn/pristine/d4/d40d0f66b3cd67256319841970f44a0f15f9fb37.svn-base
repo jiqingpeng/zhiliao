@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>机票</title>
+	<link rel="stylesheet" href="../../css/index/base.css">
+	<link href="../../css/common/bootstrap.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="../../css/index/public.css">
+	<link rel="stylesheet" href="../../css/index/air.css">
+	
+</head>
+<body>
+	<div class="head">
+		<div class="clearfix hnav">
+			<ul class="fl">
+				<li class="fl"><a href="index.html">首页</a></li>
+				<!-- <li class="fl"><a href="detail.html">解决方案</a></li>
+				<li class="fl"><a href="second.html">合作单位</a></li>
+				<li class="fl"><a href="cation.html">关于我们</a></li> -->
+			</ul>
+			<ul class="fr">
+				<li class="fl"><a id="user_center" href="../user/activityList.html"></a></li>
+				<li class="fl" id="user_name"></li>
+				<li class="fl"><a id="login_out" href="javascript:;"></a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="wrap clearfix">
+		<div class="wrapl fl">
+			<div class="traffic clearfix">
+		    	<div class="trafficBox fl">
+		    		<div class="traHead">国内机票搜索</div>
+		    		<ul class="clearfix traType">
+		    			<!-- <li class="fl active">单程</li>
+		    			<li class="fl">往返</li>
+		    			<li class="fl">连程</li> -->
+		    		</ul>
+		    		<!-- <ul class="traBody">
+		    			<li>
+		    				<span>出发城市</span>
+		    				<input type="text"/>
+		    			</li>
+		    			<li>
+		    				<span>到大城市</span>
+		    				<input type="text"/>
+		    			</li>
+		    			<li>
+		    				<span>出发日期</span>
+		    				<input type="text"/>
+		    			</li>
+		    			<li>
+		    				<span>到达日期</span>
+		    				<input type="text"/>
+		    			</li>
+		    		</ul> -->
+		    		<ul class="traBody">
+		    			<li>
+		    				<div>
+							    <span>出发城市</span>
+							    <input type="text" value="" size="15" id="homecity_name" name="homecity_name" mod="address|notice" mod_address_source="hotel" mod_address_suggest="" mod_address_reference="cityid" mod_notice_tip="中文/拼音" />
+							    <input id="cityid" name="cityid" type="hidden" value="{$cityid}" />
+							</div>
+		    			</li>
+		    			<li>
+		    				<div>
+							    <span>到达城市</span>
+							    <input type="text" value="" size="15" id="getcity_name" name="getcity_name" mod="address|notice" mod_address_source="hotel"  mod_address_reference="getcityid" mod_notice_tip="中文/拼音" />
+							    <input id="getcityid" name="getcityid" type="hidden" value="{$getcityid}" />
+							</div>
+		    			</li>
+		    			<!-- <li>
+		    				<span>出发城市</span>
+		    				<input type="text"/>
+		    			</li>
+		    			<li>
+		    				<span>到达城市</span>
+		    				<input type="text"/>
+		    			</li> -->
+		    			<li>
+		    				<span>出发日期</span>
+		    				<input id="fDate" type="text" placeholder="出发时间" />
+		    			</li>
+					</ul>
+		    		<button type="button" id="search">搜&nbsp索</button>
+		    	</div>
+			</div>
+		</div>
+		<div class="wrapr fr">
+			<div class="timeMess clearfix">
+				<div class="fl tmAddress"></div>
+				<div class="fr tmInfo">对50加航空公司、代理商的798个报价只能筛选后的最优结果</div>
+			</div>
+			<!-- <ul class="airDeta clearfix">
+				<li class="fl arrow"><</li>
+				<li class="fl nav">
+					<div class="airDate">
+						<span>06-02</span>
+						<span class="week">周五</span>
+					</div>
+					<div class="airPrice">
+						<span class="priceIcon">￥</span>
+						<span class="price">886</span>
+					</div>
+				</li>
+				<li class="fl nav">
+					<div class="airDate">
+						<span>06-02</span>
+						<span class="week">周五</span>
+					</div>
+					<div class="airPrice">
+						<span class="priceIcon">￥</span>
+						<span class="price">886</span>
+					</div>
+				</li>
+				<li class="fl nav">
+					<div class="airDate">
+						<span>06-02</span>
+						<span class="week">周五</span>
+					</div>
+					<div class="airPrice">
+						<span class="priceIcon">￥</span>
+						<span class="price">886</span>
+					</div>
+				</li>
+				<li class="fl nav">
+					<div class="airDate">
+						<span>06-02</span>
+						<span class="week">周五</span>
+					</div>
+					<div class="airPrice">
+						<span class="priceIcon">￥</span>
+						<span class="price">886</span>
+					</div>
+				</li>
+				<li class="fl nav">
+					<div class="airDate">
+						<span>06-02</span>
+						<span class="week">周五</span>
+					</div>
+					<div class="airPrice">
+						<span class="priceIcon">￥</span>
+						<span class="price">886</span>
+					</div>
+				</li>
+				<li class="fl nav">
+					<div class="airDate">
+						<span>06-02</span>
+						<span class="week">周五</span>
+					</div>
+					<div class="airPrice">
+						<span class="priceIcon">￥</span>
+						<span class="price">886</span>
+					</div>
+				</li>
+				<li class="fl nav">
+					<div class="airDate">
+						<span>06-02</span>
+						<span class="week">周五</span>
+					</div>
+					<div class="airPrice">
+						<span class="priceIcon">￥</span>
+						<span class="price">886</span>
+					</div>
+				</li>
+				<li class="fl arrow">></li>
+			</ul> -->
+			<ul class="screening clearfix">
+				<li class="fl scree">筛选</li>
+				<li class="fl seleBox">起飞时段</li>
+				<li class="fl seleBox">航空公司</li>
+				<li class="fl seleBox">机型</li>
+				<li class="fl seleBox">起飞机场</li>
+				<li class="fl seleBox">抵达机场</li>
+				<li class="fl sort">排序</li>
+				<li class="fl"><a class="airUp" href="javascript:;">起飞时间</a></li>
+				<li class="fl"><a class="scrPrice" href="javascript:;">价格</a></li>
+			</ul>
+			<div class="airBox">
+				<div class="flistModel" style="display: none;">
+					<!-- 默认票价 -->
+					<table class="fSize12 flistInfo">
+						<tbody>
+							<tr class="theFlight">
+								<td width="160">
+									<div class="air">
+										<span class="airLogo"></span>
+										<span class="airtxt"></span>
+									</div>
+									<div class="airType">
+										机型
+										<a class="airNum" href="javascript:;"></a>
+									</div>
+								</td>
+								<td width="106" align="right">
+									<div class="fSize24 ftime"></div>
+									<div class="airAddress ot"></div>
+								</td>
+								<td width="75" align="center">
+									<div class="arrow"></div>
+								</td>
+								<td width="108" align="left">
+									<div class="fSize24 atime"></div>
+									<div class="airAddress at"></div>
+								</td>
+								<td width="100">
+									<div class="c666"></div>
+									<div class="c666"></div>
+								</td>
+								<td width="65">
+									<div class="c999"></div>
+									<div class="c999"></div>
+								</td>
+								<td width="87">
+									<div class="clearfix">
+										<span class="fl c999"></span>
+										<span class="fl cf60"></span>
+									</div>
+								</td>
+								<td width="96">
+									<div class="cf60">
+										<span class="fSzie16">
+											￥
+											<em class="fSzie16 airPrice"></em>
+										</span>
+									</div>
+								</td>
+								<td>
+									<a class="more" href="javascript:;">
+										<div class="Btn">选择</div>
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<!-- 更多票价 -->
+					<div class="moreFligh active">
+						<table class="fSize12 flistInfo">
+							<tbody class="fBody">
+								<tr class="titBorder">
+									<td colspan="15"></td>
+								</tr>
+								<!-- <tr class="airNum0 airC active">
+									<td class="proArea">
+										<div class="fTitle titbg2"></div>
+										<div class="text">报销方便</div>
+									</td>
+									<td class="space">
+										<div class="morehidden110">
+											<a href="javascript:;">
+											
+											<span>公务舱</span>
+											</a>
+										</div>
+									</td>
+									<td width="73">
+										<a href="javascript:;">退改签</a>
+									</td>
+									<td class="c999" width="85" align="right">
+										
+									</td>
+									<td width="80"></td>
+									<td width="80">
+										
+									</td>
+									<td width="70" class="pl10 cf60">
+										<span class="mlMoney clearfix">
+											<em clss="fl">￥</em>
+											<em class="fr fSize20 cPrice"></em>
+										</span>
+									</td>
+									<td width="48">
+										<span class="foot"></span>
+									</td>
+									<td>
+										<a class="link" href="javascript:;">预订</a>
+									</td>
+									<td class="c800" valign="center">
+										仅剩2张
+									</td>
+								</tr>
+								<tr class="airNum0 airF active">
+									<td class="proArea">
+										
+									</td>
+									<td class="space">
+										<div class="morehidden110">
+											<a href="javascript:;">
+											<span>头等舱</span>
+											</a>
+										</div>
+									</td>
+									<td width="73">
+										<a href="javascript:;">退改签</a>
+									</td>
+									<td class="c999" width="85" align="right">
+										
+									</td>
+									<td width="80"></td>
+									<td width="80">
+										
+									</td>
+									<td width="70" class="pl10 cf60">
+										<span class="mlMoney clearfix">
+											<em clss="fl">￥</em>
+											<em class="fr fSize20 fPrice"></em>
+										</span>
+									</td>
+									<td width="48">
+										<span class="foot"></span>
+									</td>
+									<td>
+										<a class="link" href="javascript:;">预订</a>
+									</td>
+									<td class="c800" valign="center">
+										仅剩2张
+									</td>
+								</tr>
+								<tr class="airNum0 airY active">
+									<td class="proArea">
+									</td>
+									<td class="space">
+										<div class="morehidden110">
+											<a href="javascript:;">
+											
+											<span>经济舱</span>
+											</a>
+										</div>
+									</td>
+									<td width="73">
+										<a href="javascript:;">退改签</a>
+									</td>
+									<td class="c999" width="85" align="right">
+										
+									</td>
+									<td width="80"></td>
+									<td width="80">
+									</td>
+									<td width="70" class="pl10 cf60">
+										<span class="mlMoney clearfix">
+											<em clss="fl">￥</em>
+											<em class="fr fSize20 yPrice"></em>
+										</span>
+									</td>
+									<td width="48">
+										<span></span>
+									</td>
+									<td>
+										<a class="link" href="javascript:;">预订</a>
+									</td>
+									<td class="c800" valign="center">
+										仅剩2张
+									</td>
+								</tr> -->
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/user/fix.js"></script>
+<script src="../../js/user/address.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/bootstrap-datetimepicker.min.js"></script>
+<script src="../../js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../../js/user/userMain.js"></script>
+<script>
+	$(function(){
+		//机票展开方式
+		$(document).on('click','.more',function(){
+			$(this).parents('.flistBox').toggleClass('flistBoxato');
+			$(this).parents('.flistBox').find('.moreFligh').toggleClass('active');
+		});
+		var oa=Request('oa');
+		var aa=Request('aa');
+		var fDate=Request('fDate');
+		//获取飞机信息
+		function air(oa,aa,fDate){
+		 	var url=basePath+'tc/flight/flightPrice.do';
+		 	$.myAjax({
+				url: url,
+				type: 'GET',
+				data:{
+					oa:oa,
+					aa:aa,
+					fDate:fDate
+				},
+				success:function(result){
+					console.log(result)
+					if(result.flag){
+						//用户状态
+						if(result.status.url){
+							$('#user_name').html(result.status.nick);
+							$('#user_center').html('用户中心');
+							$('#login_out').html('注销');
+							$('#user_center').attr('href',basePath+result.status.url);
+						};
+						//往返
+						$('.tmAddress').html(result.data.aa+"→"+result.data.oa+"("+result.data.time+")");
+						//航班信息
+						var str = '<div class="flistBox flistBoxat">' + $('.flistModel').html() + '</div>';
+						for(var i=0;i<result.data.line.length;i++){
+							var data=result.data.line[i];
+							//添加数据
+							$('.flistModel').before(str);
+							//航空公司
+							var company=data.companyVal.substring(0,5)
+							$('.flistModel').prev().find('.airtxt').html(company+data.fNo);
+							//机型
+							$('.flistModel').prev().find('.airNum').html(data.craft);
+							//起飞时间
+							$('.flistModel').prev().find('.ftime').html(data.fTime);
+							//到达时间
+							$('.flistModel').prev().find('.atime').html(data.aTime);
+							//起飞航站楼
+							$('.flistModel').prev().find('.ot').html(data.oaVal+data.ot);
+							//到达航站楼
+							$('.flistModel').prev().find('.at').html(data.aaVal+data.at);
+							//推荐价格
+							$('.flistModel').prev().find('.airPrice').html(data.price);
+							//票价类型
+							//公务舱
+							for(var j=0;j<data.pList.length;j++){
+								var cdata=data.pList[j];
+								if(cdata.roomB=="C"){
+									var cstr='<tr class="airNum0"><td class="proArea"></td><td class="space"><div class="morehidden110"><a href="javascript:;"><span>公务舱</span></a></div></td><td width="73"><a href="javascript:;">退改签</a></td><td class="c999" width="85" align="right"></td><td width="80"></td><td width="80"></td><td width="70" class="pl10 cf60"><span class="mlMoney clearfix"><em clss="fl">￥</em><em class="fr fSize20 cPrice">'+cdata.sysBPrice+'</em></span></td><td width="48"><span class="foot"></span></td><td><a class="link" href="javascript:;">预订</a></td><td class="c800 last" valign="center"></td></tr>';
+									
+									$('.flistModel').prev().find('.fBody').append(cstr);
+									//余票
+									if(/^[0-9]*$/.test(cdata.last)){
+										$('.flistModel').prev().find('.last').html('仅余'+cdata.last+'张');
+									};
+									break;
+								};
+							};
+							//头等舱
+							for(var j=0;j<data.pList.length;j++){
+								var fdata=data.pList[j];
+								if(fdata.roomB=="F"){
+									var fstr='<tr class="airNum0"><td class="proArea"></td><td class="space"><div class="morehidden110"><a href="javascript:;"><span>头等舱</span></a></div></td><td width="73"><a href="javascript:;">退改签</a></td><td class="c999" width="85" align="right"></td><td width="80"></td><td width="80"></td><td width="70" class="pl10 cf60"><span class="mlMoney clearfix"><em clss="fl">￥</em><em class="fr fSize20 cPrice">'+fdata.sysBPrice+'</em></span></td><td width="48"><span class="foot"></span></td><td><a class="link" href="javascript:;">预订</a></td><td class="c800 last" valign="center"></td></tr>';
+									$('.flistModel').prev().find('.fBody').append(fstr); 
+									//余票
+									if(/^[0-9]*$/.test(fdata.last)){
+										$('.flistModel').prev().find('.last').html('仅余'+fdata.last+'张');
+									};
+									break;
+								};
+							};
+							//经济舱
+							for(var j=0;j<data.pList.length;j++){
+								var ydata=data.pList[j];
+								if(ydata.roomB=="Y"){
+									var ystr='<tr class="airNum0"><td class="proArea"></td><td class="space"><div class="morehidden110"><a href="javascript:;"><span>经济舱</span></a></div></td><td width="73"><a href="javascript:;">退改签</a></td><td class="c999" width="85" align="right"></td><td width="80"></td><td width="80"></td><td width="70" class="pl10 cf60"><span class="mlMoney clearfix"><em clss="fl">￥</em><em class="fr fSize20 cPrice">'+ydata.sysBPrice+'</em></span></td><td width="48"><span class="foot"></span></td><td><a class="link" href="javascript:;">预订</a></td><td class="c800 last" valign="center"></td></tr>';
+									$('.flistModel').prev().find('.fBody').append(ystr);
+									//余票
+									if(/^[0-9]*$/.test(ydata.last)){
+										$('.flistModel').prev().find('.last').html('仅余'+ydata.last+'张');
+									};
+									break;
+								};
+							};
+							//logo
+							$($('.flistModel').prev().find('.proArea')[0]).append('<div class="fTitle titbg2"></div><div class="text">报销方便</div>');
+							
+						};
+						
+					}else{
+						myAlert(result.msg)
+					};
+				}
+			});
+		};
+		air(oa,aa,fDate);
+		$('#search').click(function(){
+			var formC=$('#cityid').val();
+			var toC=$('#getcityid').val();
+			var formT=$('#fDate').val();
+			if(seachValidation(formC,toC,formT)){
+				$('.flistModel').siblings('.flistBox').remove();
+				var oa=$('#cityid').val();
+				var aa=$('#getcityid').val();
+				var fDate=$('#fDate').val();
+				air(oa,aa,fDate);
+			};
+		});
+		//时间
+		dateTime("#fDate");
+		function seachValidation(formC,toC,formT){
+			if (formC == null || formC == '' || formC == '{$cityid}'||formC == '{$traincityid}') {
+				myAlert('请选择出发城市!','slow');
+				return false;
+			};
+			if (toC == null || toC == ''|| toC == '{$getcityid}'||formC == '{$traingetcityid}') {
+				myAlert('请选择到达城市!','slow');
+				return false;
+			};
+			if (formT == null || formT == '') {
+				myAlert('请选择出发日期!','slow');
+				return false;
+			};
+			return true;
+		};
+		//注销
+		loginOut('#login_out');
+		//订单页
+		$(document).on('click','.link',function(){
+			window.location.href="airOrder.html";
+		});
+	})
+</script>
+</html>

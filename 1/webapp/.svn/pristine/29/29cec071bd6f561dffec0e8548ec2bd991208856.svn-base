@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div>
+		<a class="aa" href="javascript:;">支付</a>
+	</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script>
+	$(function(){
+		$('.aa').on('click',function(){
+			function onBridgeReady(){
+			   WeixinJSBridge.invoke(
+			       'getBrandWCPayRequest', {
+		           "appId":"wx08342b578d71814c",     //公众号名称，由商户传入     
+		           "timestamp":"1503911898",         //时间戳，自1970年以来的秒数     
+		           "nonceStr":"F8573C112722E6CD299F08B13EF14C18", //随机串     
+		           "package":"prepay_id=u802345jgfjsdfgsdg888",     
+		           "signType":"MD5",         //微信签名方式：     
+		           "paySign":"90C98C077F9744B4C0E33A5E727E8E08" //微信签名 
+			       },
+			       function(res){     
+			           if(res.err_msg == "get_brand_wcpay_request:ok" ) {}     // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。 
+			       }); 
+			}
+
+			if (typeof WeixinJSBridge == "undefined"){
+			   if( document.addEventListener ){
+			       document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+			   }else if (document.attachEvent){
+			       document.attachEvent('WeixinJSBridgeReady', onBridgeReady); 
+			       document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+			   }
+			}else{
+			   onBridgeReady();
+			}
+			onBridgeReady()
+		})
+		function wxFn(){
+			$.getJSON("../../wx/getjssign.do?url="+encodeURIComponent(location.href),function(json){
+				wx.config({  
+					debug: ture,  
+					appId: json.appId,  
+					timestamp: json.timestamp,  
+					nonceStr: json.noncestr,  
+					signature: json.sign,  
+					jsApiList: [  
+						// 所有要调用的 API 都要加到这个列表中  		
+						'checkJsApi',					   
+						'onMenuShareTimeline',
+						'onMenuShareAppMessage',
+						'onMenuShareQQ',
+						'onMenuShareWeibo',
+						'startRecord', 
+						'stopRecord',
+						'translateVoice',
+						'scanQRCode',
+						'getBrandWCPayRequest'
+					]  
+				});			
+			});
+		}
+		wxFn();
+		// wx.ready(function () {		 	
+		// 	share = {
+		// 		title:title,
+		// 		link: "http://www.gconfs.com/page/weixin/actDetail.html?id="+confid,
+		// 		desc:confdesc,
+		// 		imgUrl: "http://www.gconfs.com" +imgurl,
+		// 		success:function(){
+				   
+		// 		}	   
+		// 	};
+		// 	wx.onMenuShareTimeline(share);
+		// 	wx.onMenuShareAppMessage(share);
+		// 	wx.onMenuShareQQ(share);
+		// 	wx.onMenuShareWeibo(share);	
+		// });
+	})
+</script>
+</html>

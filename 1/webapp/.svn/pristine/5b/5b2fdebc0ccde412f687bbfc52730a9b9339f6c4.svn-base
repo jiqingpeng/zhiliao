@@ -1,0 +1,38 @@
+/***********************
+    一些公共的方法 
+***********************/
+
+/**
+*根路径
+*/
+var strFullPath=window.document.location.href;  
+var strPath=window.document.location.pathname;  
+var pos=strFullPath.indexOf(strPath);  
+var prePath=strFullPath.substring(0,pos);  
+var postPath=strPath.substring(0,strPath.substr(1).indexOf('/')+1);
+// var basePath = prePath + postPath + '/';
+var basePath = 'http://192.168.1.189:8080/';
+
+/**
+*全局变量
+*/
+var Industy = [],   // 行业类别
+	Org = [];		// 组织机构
+
+
+
+/**
+*页面加载提示信息loading
+*/
+function loading(element){
+	$(element).html("<div class='loading' style='width: 100px; margin:0 auto;'>loading&nbsp<img src='../../img/loading.gif' style='verticalAlign:middle;'</div>");
+	//数据加载完成后记得移除loading;
+}
+
+/**
+*获取地址栏中传入参数的值（如：获取id值 -> Request(id)）
+*/
+function Request(name){
+	new RegExp("(^|&)"+name+"=([^&]*)").exec(window.location.search.substr(1));
+	return RegExp.$2
+}

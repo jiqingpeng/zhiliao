@@ -1,0 +1,103 @@
+/***********************
+    一些公共的方法 
+***********************/
+
+/**
+ *根路径
+ */
+var strFullPath = window.document.location.href;
+var strPath = window.document.location.pathname;
+var pos = strFullPath.indexOf(strPath);
+var prePath = strFullPath.substring(0, pos);
+var postPath = strPath.substring(0, strPath.substr(1).indexOf('/') + 1);
+// var basePath = prePath + postPath + '/';
+var basePath = 'http://192.168.1.189:8080/';
+
+
+
+/**
+ *页面加载提示信息loading
+ */
+function loading(element) {
+	$(element).html("<div class='loading' style='width: 100px; margin:0 auto;'>loading&nbsp<img src='../../img/loading.gif' style='verticalAlign:middle;'</div>");
+	//数据加载完成后记得移除loading;
+}
+
+/**
+ *获取地址栏中传入参数的值（如：获取id值 -> Request(id)）
+ */
+function Request(name) {
+	new RegExp("(^|&)" + name + "=([^&]*)").exec(window.location.search.substr(1));
+	return RegExp.$2
+}
+
+/**
+ *弹出框复选样式(必须用douAlert的样式)
+ */
+function douAlert(message, fn, fun) {
+	$(".con-box").append('<div id="alert_box"><div class="abox_head">群英会</div><div class="abox_mess"></div><div class="abox_foot"><button class="yes">确&nbsp定</button><button class="no">取&nbsp消</button></div></div>');
+	$('#alert_box').css('display', 'block')
+	$('#alert_box .abox_mess').html(message);
+	$('.yes').on('click', fn);
+	$('.no').on('click', fun);
+}
+
+/**
+ *弹出框保存样式(直接调js)
+ */
+function myAlert(data) {
+	$(".con-box").prepend('<div id="myalert"><div id="alerttile">群英汇</div><div id="alertcon"></div></div>');
+	$("#myalert").css({
+		"position": "absolute",
+		'left': '50%',
+		'top': '50%',
+		"border": "1px solid #ddd",
+		"width": "300px",
+		"height": "140px",
+		"background": "#fff",
+		"border-radius": "6px 6px",
+		"z-index": "999"
+	});
+	$("#alerttile").css({
+		"height": "28px",
+		// "color": "#fff",
+		"color": "#333",
+		"font-size": "20px",
+		"padding-left": "14px",
+		"line-height": "28px",
+		"text-align": "left",
+		// "background": "#fff"
+		"background": "#f4b33c"
+	});
+	$("#alertcon").css({
+		"height": "52px",
+		"color": "#333",
+		"font-size": "14px",
+		"line-height": "30px",
+		"padding": "26px 34px",
+		"text-align": "center"
+	});
+
+	var top = -($("#myalert").outerHeight() / 2)
+	var left = -($("#myalert").outerWidth() / 2)
+
+	$("#myalert").css({
+		'marginTop': top + 'px',
+		'marginLeft': left + 'px'
+	});
+
+	$("#alertcon").html(data);
+
+	$("#myalert").fadeIn(1000, function() {
+		$("#myalert").fadeOut(2000, function() {
+			$("#myalert").remove();
+		});
+	});
+}
+//时间转时间戳格式必须为2014-07-10 10:21:12
+function timeStamp(time) {
+	var stringTime = time;
+	var timestamp2 = Date.parse(new Date(stringTime));
+	timestamp2 = timestamp2 / 1000;
+	return timestamp2
+};

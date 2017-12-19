@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+	<meta charset="UTF-8">
+	<title>登录</title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+    <meta content="telephone=no" name="format-detection" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+    <link rel="stylesheet" href="css/bootstrap.css" /> 	
+	<link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>     
+    <div>
+        <div class="m-bar">             
+            <img src="images/logo.png" alt="">
+        </div>            
+    </div>   
+	<div>
+	    <img src="images/nav.jpg" style="width:100%;margin-top:10px;">
+	</div>
+    <div class="login-box">
+        <div class="wrap">
+            <div class="bd">
+              <form id="loginForm" method="post">	  
+				<div style="width:90%;margin:auto">
+                    <ul class="form-list">
+                      <li>用户：<input class="inp inp1 required" placeholder="用户名" id="username" type="text"></li>
+                      <li>密码：<input class="inp inp2 required" placeholder="密码" type="password" id="password">
+                      </li>
+                    </ul>
+                </div>
+                <div style="width:90%;margin-top:30px;" class="login-btn">
+                    <input type="button" class="sub defaultbtn" value="登   录"  onclick="login()">
+					<a href="register.html">注  册</a>
+					<a href="forgetpass.html" style="background:none;font-size:14px;color:#315AAA">忘记密码</a>
+				</div>
+              </form>
+            </div>
+        </div>
+    </div>
+	<div style="clear:both"></div>
+	<div id="footer" style="position:fixed;bottom:0px;width:100%">
+	  <div class="con" style="text-align:center">		 
+		Copyright @2016    京ICP备17018133号
+	  </div>
+    </div>
+	<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" id="msgmodal">
+	  <div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">			 
+			<h4 class="modal-title">提示</h4>
+		  </div>
+		  <div class="modal-body">
+			<p id="msg"></p>
+		  </div>		   
+		</div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+  </body>    
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>  
+  <script type="text/javascript" src="js/jquery.cookie.js"></script> 
+  <script type="text/javascript" src="js/jquery.form.js"></script>
+  <script type="text/javascript" src="js/jquery.md5.js"></script>
+  <script>
+	$(function(){
+		 
+			 
+		 request=new UrlSearch(); //实例化
+		 confid = request.id;
+		 if(typeof(confid) == "string"){			 
+			 $("a").each(function(){
+				 $(this).attr("href",$(this).attr("href")+"?id="+confid);
+			 });
+		 } 
+		 
+		 code = request.code;
+		 var url = "../../wx/wxlogin.do";
+		 //alert(url);
+		 if(typeof(code) == "string")
+		   url += "?code="+code;
+		  
+		 $.ajax({
+			 url:url,
+			 dataType: "json",
+			 success: function(data){
+				 //alert(data.result); 
+				 if(data.result == "logined")
+				 {
+					 
+					$.cookie('wx-user-id', data.userid); 
+				    $.cookie('wx-user-mobile', data.usermobile); 
+					$.cookie('wx-user-email', data.useremail);					 
+					window.location.href="myconf.html";				  			 
+				 }
+			}
+		 });
+		
+	});
+	var request;
+	var confid;	
+
+	function UrlSearch() 
+	{
+	   var name,value; 
+	   var str=location.href; //取得整个地址栏
+	   var num=str.indexOf("?") 
+	   str=str.substr(num+1); //取得所有参数   stringvar.substr(start [, length ]
+
+	   var arr=str.split("&"); //各个参数放到数组里
+	   for(var i=0;i < arr.length;i++){ 
+		num=arr[i].indexOf("="); 
+		if(num>0){ 
+		 name=arr[i].substring(0,num);
+		 value=arr[i].substr(num+1);
+		 this[name]=value;
+		 } 
+		} 
+	}
+
+	function msgshow(msg){
+		$("#msg").html(msg);
+		$("#msgmodal").modal("show");
+		setTimeout('$("#msgmodal").modal("hide")',3000);
+	}
+
+	function login(){			
+	  if($("#username").val() == ""){
+		$("#username").focus();
+		msgshow("请输入用户名");
+		return;
+	  }
+	  if($("#password").val() == ""){
+		$("#password").focus();
+		msgshow("请输入密码");
+		return;
+	  }	     
+	  var param = {"mobile":$("#username").val(),"pwd":$.md5($("#password").val())};
+	  $.ajax({
+		  url:'../../user/login/check.do',
+		  data:param,
+		  type: 'post',  
+		  dataType:'json',
+		  success:function(data){			 
+			  if(data.flag == true){				 					   
+				  if(typeof(confid) == "undefined")
+				      window.location.href="myconf.html";
+				  else if(typeof(confid) == "string")
+				      window.location.href="confdetail.html?id="+confid;
+				  			   
+			  }		
+			  else
+			    msgshow(data.msg);
+		  }
+		 
+
+	  });
+	   
+	}
+
+	 
+  </script>   
+</html>

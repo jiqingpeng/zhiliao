@@ -1,0 +1,64 @@
+.contain .company-sec .group {
+  width: 720px;
+}
+.contain .company-sec .group .message img {
+  display: inline-block;
+  width: 200px;
+  height: 174px;
+}
+.contain .company-sec .meet {
+  width: 370px;
+  height: 350px;
+  border: 1px solid #ccc;
+  border-radius: 10px 10px 0 0;
+  margin-top: 12px;
+}
+.contain .company-sec .meet h4 {
+  border-bottom: 1px solid #ccc;
+  background: url(../../img/index/color.png);
+  height: 30px;
+  line-height: 30px;
+  font-size: 20px;
+  color:#fff;
+}
+.contain .company-sec .meet h4 img {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+.contain .company-sec .meet .mt56 {
+  margin-top: 56px;
+}
+.contain .company-sec .meet .message li {
+  margin-left: 20px;
+  margin-top: 10px;
+}
+.contain .company-thr .h248 {
+  height: 248px;
+}
+.contain .company-thr .meet {
+  width: 370px;
+  height: 350px;
+  border: 1px solid #ccc;
+  border-top:none;
+  border-radius: 10px 10px 0 0;
+  margin-top: 12px;
+}
+.contain .company-thr .meet h4 {
+  border-bottom: 1px solid #ccc;
+  background: url(../../img/index/color.png);
+  height: 30px;
+  line-height: 30px;
+  font-size: 20px;
+  color:#fff;
+}
+.contain .company-thr .meet h4 img {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+.contain .company-thr .meet .message li {
+  margin-left: 20px;
+  margin-top: 10px;
+}
+.contain .company-thr .ml10 {
+  margin-left: 22px;
+}

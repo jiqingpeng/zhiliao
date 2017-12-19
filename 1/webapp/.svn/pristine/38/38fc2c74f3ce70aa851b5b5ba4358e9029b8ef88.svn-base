@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>邀请函</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="../../../css/app/style.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/app/invitation.css">
+</head>
+<body>
+    <div class="head">
+        <div class="navImg">
+            <img src="../../../img/app/arrowLeft-icon.png">
+        </div>
+        <div class="navDetail">邀请函</div>
+        <div class="share code">
+            <img  src="../../../img/app/share-icon.png">
+        </div>
+    </div>
+    
+    <div class="navMenu hide">
+        <div class="menuImg"><img class="imgIcon" src="../../../img/app/menu-icon.png"></div>
+        <ul class="menuList hide">
+            <li class="menuList1">
+                <a href="#skip1" onclick='prevPage(this);return false;'>欢迎辞</a>
+            </li>
+            <li class="menuList2">
+                <a href="#skip2" onclick='prevPage(this);return false;'>组织机构</a>
+            </li>
+            <li class="menuList3">
+                <a href="#skip3" onclick='prevPage(this);return false;'>嘉宾介绍</a>
+            </li>
+            <li class="menuList4">
+                <a href="#skip4" onclick='prevPage(this);return false;'>活动日程</a>
+            </li>
+            <li class="menuApply menuList5">
+                <a href="#skip5" onclick='prevPage(this);return false;'>立即报名</a>
+            </li>
+        </ul>
+    </div>
+    <div class="container hide">
+        <div class="inviImg">
+            <img src="../../../img/app/invitationImg.png"/>
+        </div>
+        <div class="contentBox">
+            <div class="meetFrist">
+                <div class="designation"></div>
+                <!-- <div class="theme">
+                    <span class="themeTit flexOne">主题：</span>
+                    <span class="themeCon flexFive"></span>
+                </div> -->
+                <div class="time conFlex">
+                    <span class="timeTil flexOne">时间：</span>
+                    <span class="timeCon flexFive"></span>
+                </div>
+                <div class="address conFlex">
+                    <span class="addressTil flexOne">地点：</span>
+                    <span class="addressCon flexFive"></span>
+                </div>
+                <div class="bottomLine conFlex">
+                    <div class="leftLine"></div>
+                    <div class="middleCir"></div>
+                    <div class="rightLine"></div>
+                </div>
+            </div>
+            <div class="meetintro distance">
+                <div id="skip1" class="introTil">
+                    <h4>欢迎辞</h4>
+                    <div class="pachytene"></div><div class="vacancy"></div><div class="pachytene rightPachytene"></div>
+                </div>
+                <div class="intro">
+                </div>
+                <div class="bottomLine conFlex">
+                    <div class="leftLine"></div>
+                    <div class="middleCir"></div>
+                    <div class="rightLine"></div>
+                </div>
+            </div>
+            <div class="meetInstitution distance">
+                <div id="skip2" class="introTil">
+                    <h4>组织机构</h4>
+                    <div class="pachytene"></div><div class="vacancy"></div><div class="pachytene rightPachytene"></div>
+                </div>
+                <div class="institution">
+                    <div>
+                        <div class="triangle-right triangleOne"></div><div class="triangle-right triangleTwo"></div><div class="institutionName"></div>
+                        <div class="instCon"></div>
+                        <div class="instCon"></div>
+                    </div>
+                </div>
+                <div class="bottomLine conFlex">
+                    <div class="leftLine"></div>
+                    <div class="middleCir"></div>
+                    <div class="rightLine"></div>
+                </div>
+            </div>
+            <div class="meetguest distance">
+                <div id="skip3" class="introTil">
+                    <h4>嘉宾介绍</h4>
+                    <div class="pachytene"></div><div class="vacancy"></div><div class="pachytene rightPachytene"></div>
+                </div>
+                <div class="guestCon">
+                    <div class="guestDetail distance">
+                        <div class="guestImg"><img src="../../../img/app/invitation.jpg"></div>
+                        <div class="guestMatter">
+                            <div class="guestName"></div>
+                            <div class="roll"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottomLine conFlex">
+                    <div class="leftLine"></div>
+                    <div class="middleCir"></div>
+                    <div class="rightLine"></div>
+                </div>
+            </div>
+            <div class="meetSchedule distance">
+                <div id="skip4" class="introTil">
+                    <h4>活动日程</h4>
+                    <div class="pachytene"></div><div class="vacancy"></div><div class="pachytene rightPachytene"></div>
+                </div>
+                <div class="scheduleCon">
+                    <div class="triangle-right triangleOne"></div><div class="triangle-right triangleTwo"></div><div class="institutionName schTime">2017-10-23</div>
+                    <div class="scheduleTime">
+                        <div class="schDetTime">08:45-09:00</div>
+                        <div class="schDetCon">
+                            <h4></h4>
+                            <div class="schDetDistance"></div>
+                            <div class="schDetDistance"></div>
+                            <div class="schDetDistance"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="meetApply distance">
+                <div class="motion">
+                    <div class="motionLeft"><img src="../../../img/app/motionLeft.png"></div>
+                    <a id="skip5" class="apply">立 即 报 名</a>
+                    <div class="motionRight"><img src="../../../img/app/motionLeft.png"></div>
+                </div>
+                <div class="QRcode">
+                    <img src="">
+                </div>
+                <div class="attention">微信扫一扫 关注更多</div>
+                <div class="hospitality">盛情特邀您出席</div>
+            </div>
+            <div class="advertising">群英汇会议服务平台</div>
+        </div>
+    </div>  
+</body>
+<script src="../../../js/zepto.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<script>
+var result = '';
+var id = Request("actId");
+// 用于分享的字段
+var title = '',
+    confdesc = '',
+    imgurl = 'img/shareIcon.png'; 
+var status = "null"; // 标识是否报名（未报名为 字符串-‘null’）
+try{
+    utilForJs.putValue('share','share');
+    var aaa = utilForJs.getValue('share');
+} catch(err){
+    $(".inviImg").css("margin-top", "0");
+    $(".head").css("display","none");
+    $(".navMenu").css("top","12px");
+}
+
+$(function(){
+    myLoading();
+    initPage();
+    $(".container").on("touchstart", function(){
+        if(!$(".menuList").hasClass("hide")){
+            $(".menuImg").trigger("click");
+        }
+    });
+    $(".menuImg").on("click", function(){
+        $(".menuList").toggleClass("hide");
+        $(this).find(".imgIcon").toggleClass("switchover"); 
+    });
+    $(".apply").on("click", function(){
+        var strHref = "../index/takepart.html";
+        if(status != 'null' && status != null){
+            if(status == 1 || status == 2 || status == 9){
+                strHref = "meetDetail.html";
+            } else {
+                return false;
+            }
+        }
+        var params = strHref + "?actId="+ id;
+        $(this).attr("href", params);
+    });   
+});
+// 微信相关功能
+function wxFn(){
+    $.getJSON(basePath+"wx/getjssign.do?url="+encodeURIComponent(location.href),function(json){
+        wx.config({  
+            debug: false,  
+            appId: json.appId,  
+            timestamp: json.timestamp,  
+            nonceStr: json.noncestr,  
+            signature: json.sign,  
+            jsApiList: [  
+                // 所有要调用的 API 都要加到这个列表中         
+                'checkJsApi',                      
+                'onMenuShareTimeline',
+                'onMenuShareAppMessage',
+                'onMenuShareQQ',
+                'onMenuShareWeibo',
+                'startRecord', 
+                'stopRecord',
+                'translateVoice',
+                'scanQRCode'
+            ]  
+        });         
+    });
+}
+wx.ready(function () {        
+    share = {
+        title:title,
+        link: basePath + "page/weixin/activity/invitation.html?actId="+id,
+        desc: confdesc,
+        imgUrl: basePath +imgurl,
+        success:function(){}       
+    };
+    wx.onMenuShareTimeline(share);
+    wx.onMenuShareAppMessage(share);
+    wx.onMenuShareQQ(share);
+    wx.onMenuShareWeibo(share); 
+});
+function initPage(){
+    var postData = {};
+    if(sessionStorage.getItem('token') && sessionStorage.getItem('isLogin') == "isLogin"){
+        // 如果有token并且是登录状态
+        postData = {id:id,type:"base,introduction,org,schedual,guest,status"};
+    } else {
+        postData = {id:id,type:"base,introduction,org,schedual,guest"};
+    }
+    $.myAjax({
+        url: basePath + "mt/user/activity/get.do",
+        data: postData,
+        success: function(result){
+            $(".navMenu").removeClass("hide");
+            $(".container").removeClass("hide");
+            if(result.flag){
+                if(result.data.base.state == 1 || result.data.base.state == 2){
+                    if(result.data.status != "null" && result.data.status != undefined){
+                        status = result.data.status;
+                        $(".apply").html("已报名 点击查看详情");
+                        $(".motion img").remove();
+                    }
+                } else { // 会议结束
+                    status = result.data.base.state;
+                    $(".apply").html("已结束");
+                    $(".motion img").remove();
+                }
+                getMessage(result);
+                getCode();
+            }else{
+                myConfirm(result.msg);
+            }
+        },
+        error: function(){
+            myConfirm("请求失败，请重试!");
+        }
+    }) 
+}
+function getMessage(result){
+    //邀请函主题及时间添加数据
+    var data = result.data.base;
+        title = data.name;
+        confdesc = '地点：'+data.province+'-'+data.city+'\n时间：'+data.stime;
+    var stime = getTime(data.stime.substring(0,10));
+    var etime = getTime(data.etime.substring(0,10));
+    $(".themeName").html(data.name);
+    $(".themeLocation").html(data.province + data.city );
+    $(".designation").html(data.name);
+    $(".timeCon").html(stime + ' - ' + etime);
+    $(".addressCon").html(data.province + data.city + data.location);
+
+    //欢迎辞添加数据
+    $(".intro").html(result.data.introduction.replace(/w:br/g,"br"));
+    $(".intro").html(result.data.introduction.replace(/\/file/g, basePath+"file"));
+    if($('.intro').html() == ''){
+        $(".meetintro").html('');
+        $(".menuList1").remove();
+    }
+    //添加数据到组织机构
+    confdesc = '地点：'+data.province +'-'+ data.city+'\n时间：'+data.stime;
+    var str = '';
+    data = result.data.org;
+    for(var i=0;i<data.length;i++){
+        if(data[i].name == "主办单位"){
+            confdesc = '主办单位：'+data[i].value[0]+'\n'+confdesc;
+        } 
+    }
+    var string = '';
+    var con = '';
+    for(var i = 0; i < data.length; i++){
+        str = '';
+        str += '<div class="triangle-right triangleOne"></div><div class="triangle-right triangleTwo"></div><div class="institutionName">'+data[i].name+'</div>';
+        string = '';           
+        for(var j = 0; j < data[i].value.length; j++){
+            string += '<div class="instCon">'+data[i].value[j]+'</div>';
+        };
+        con += str + string;
+    }
+   $(".institution").html(con);
+   if($(".institution").html() == ''){
+        $(".meetSchedule").html('');
+        $(".menuList2").remove();
+   }
+   //添加数据到嘉宾介绍
+    str = '';
+    data = result.data.guest;
+    for(var i = 0; i < data.length; i++){
+        var guestImg = '';
+        if(data[i].image.length == 0){
+            guestImg = "../../../img/app/guestImg.png";
+        } else {
+            guestImg = basePath + data[i].image[0];
+        };
+        str += '<div>' + 
+            '<div class="guestDetail distance">' +
+                    '<div class="guestImg">' +
+                        '<img src="'+ guestImg +'">' +
+                    '</div>'+
+                    '<div class="guestMatter">' +
+                        '<div class="guestName">' + data[i].name + '</div>' +
+                      '<div class="roll">' + data[i].duty + '</div>' +
+                    '</div>' +
+                '</div>'+
+            '</div>'
+    }
+    $(".guestCon").html(str);
+    if($(".guestCon").html() == ''){
+        $(".meetguest").html('');
+        $(".menuList3").remove();
+    }
+   //添加数据到活动日程
+    data = '';
+    string = '';
+    con = '';
+    for(var key in result.data.schedual){
+        var str = '<div class="triangle-right triangleOne"></div><div class="triangle-right triangleTwo"></div><div class="institutionName schTime">'+key+'</div>'
+        data = result.data.schedual[key];
+        string='';
+        for(var i = 0; i < data.length; i++){
+            string += '<div class="scheduleTime">' +
+                    '<div class="schDetTime">'+ data[i].time +'</div>' +
+                    '<div class="schDetCon">' +
+                        '<h4>'+ data[i].title +'</h4>' +
+                        '<div class="schDetDistance">'+data[i].content +'</div>' +
+                    '</div>' +
+                '</div>'
+            str += ''
+        }
+        con += '<div class="contain">' + str + string + '</div>'
+    }
+    $(".scheduleCon").html(con);
+    if($(".scheduleCon").html() == ''){
+        $(".meetSchedule").html('');
+        $(".menuList4").remove();
+    }
+    if($(".schDetCon h4").html() == ''){
+        $(".schDetCon .schDetDistance").css("margin-top", "0")
+    }
+
+    wxFn();
+}
+
+function getCode(){
+    $.myAjax({
+        url: basePath+"common/base64image.do",
+        data: {str: window.location.href},
+        success: function(result){
+            if(result.flag){
+                $(".QRcode img").attr("src", "data:image;base64," + result.data);
+            } else {
+                myConfirm(result.msg);
+            }
+        },
+        error: function(){
+            myConfirm("请求失败，请重试！");
+        }
+    })
+}
+function getTime(time){
+    var time = time.split('-');
+    time = time[0]+"年"+time[1]+"月"+time[2]+"日";
+    return time;
+}
+</script>
+</html>

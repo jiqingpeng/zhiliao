@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>火车</title>
+	<link rel="stylesheet" href="../../css/index/base.css">
+	<link rel="stylesheet" href="../../css/index/public.css">
+	<link rel="stylesheet" href="../../css/index/train.css">
+</head>
+<body>
+	<div class="head">
+		<div class="clearfix hnav">
+			<ul class="fl">
+				<li class="fl"><a href="index.html">首页</a></li>
+				<!-- <li class="fl"><a href="detail.html">解决方案</a></li>
+				<li class="fl"><a href="second.html">合作单位</a></li>
+				<li class="fl"><a href="cation.html">关于我们</a></li> -->
+			</ul>
+			<ul class="fr">
+				<li class="fl"><a id="user_center" href="../user/activityList.html"></a></li>
+				<li class="fl" id="user_name"></li>
+				<li class="fl"><a id="login_out" href="javascript:;"></a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="wrap clearfix">
+		<div class="wrapl fl">
+			<div class="traffic clearfix">
+		    	<div class="trafficBox fl">
+		    		<div class="traHead">国内火车票搜索</div>
+		    		<ul class="clearfix traType">
+		    			<!-- <li class="fl active">单程</li>
+		    			<li class="fl">往返</li>
+		    			<li class="fl">连程</li> -->
+		    		</ul>
+		    		<ul class="traBody">
+		    			<li>
+		    				<span>出发城市</span>
+		    				<input type="text"/>
+		    			</li>
+		    			<li>
+		    				<span>到大城市</span>
+		    				<input type="text"/>
+		    			</li>
+		    			<li>
+		    				<span>出发日期</span>
+		    				<input type="text"/>
+		    			</li>
+		    			<li>
+		    				<span>到达日期</span>
+		    				<input type="text"/>
+		    			</li>
+		    		</ul>
+		    		<button type=button"">搜&nbsp索</button>
+		    	</div>
+			</div>
+		</div>
+		<div class="wrapr fr">
+			<div class="timeMess clearfix">
+				<div class="fl tmAddress"></div>
+				<div class="fr tmInfo">共40个车次</div>
+			</div>
+			
+			<ul class="screening clearfix">
+				<li class="fl scree">筛选</li>
+				<li class="fl seleBox">车次类型</li>
+				<li class="fl seleBox">出发时段</li>
+				<li class="fl seleBox">到达时段</li>
+				<li class="fl seleBox">出发车站</li>
+				<li class="fl seleBox">到达车站</li>
+				<li class="fl seleBox">始发过路</li>
+				<li class="fl seleBox">是否有票</li>
+				<!-- <li class="fl sort">排序</li>
+				<li class="fl"><a class="up" href="javascript:;">起飞时间</a></li>
+				<li class="fl"><a class="scrPrice" href="javascript:;">价格</a></li> -->
+			</ul>
+			<div class="flistBox flistBoxat">
+				<div class="trainTit">
+					<table class="fSize12 flistInfo" cellspacing="0px">
+						<thead>
+							<tr class="theFlight">
+								<td width="160">
+									<div class="air">
+										<span class="airLogo"></span>
+										车次
+									</div>
+								</td>
+								<td width="106" align="right">
+									出发
+									<!-- <div class="fSize24">6:44</div>
+									<div class="airAddress">北京南</div> -->
+								</td>
+								<td width="75" align="center">
+									<!-- <div class="arrow"></div> -->
+								</td>
+								<td width="108" align="left">
+									<!-- <div class="fSize24">12:38</div>
+									<div class="airAddress">上海虹桥</div> -->
+									到达
+								</td>
+								<td width="100" align="center">
+									耗时
+									<!-- <div class="c666">耗时</div>
+									<div class="c666">5小时56分</div> -->
+								</td>
+								<td width="30">
+									
+								</td>
+								<td width="130" align="center">
+									<div>
+									参考票价
+									</div>
+								</td>
+								<td width="120" align="center">
+									余票
+								</td>
+								<td>
+									<!-- <a class="more" href="javascript:;">
+										<div class="btn">选择</div>
+									</a> -->
+								</td>
+							</tr>
+						</thead>
+					</table>
+				</div>
+				<div class="trainModel" style="display: none">
+					<div class="trainList">
+						<table class="fSize12 flistInfo" cellspacing="0px">
+							<tbody>
+								<tr class="theFlight flightbody">
+									<td width="160">
+										<div class="train fSize28">
+											<span class="airLogo"></span>
+											<span class="trainNo"></span>
+										</div>
+										<div class="airType clearfix">
+											<span class="fl">经停站</span>
+											<i class="fl"></i>
+										</div>
+									</td>
+									<td width="106" align="right">
+										<div class="fSize20 fromT"></div>
+										<div class="airAddress fromC"></div>
+									</td>
+									<td width="75" align="center">
+										<div class="arrow"></div>
+									</td>
+									<td width="108" align="left">
+										<div class="fSize20 toT"></div>
+										<div class="airAddress toC"></div>
+									</td>
+									<td width="100" align="center">
+										<div class="c666 runTime"></div>
+									</td>
+									<td width="30">
+										<div class="c999"></div>
+										<div class="c999"></div>
+									</td>
+									<td width="130">
+										<div>
+											<ul class="fSzie12 set">
+												<li class="trainprice clearfix mt">
+													<span class="fl c333 mt5">二等座</span>
+													<span class="fl cf60 mt5">￥</span>
+													<span class="fl cf60 fSize20">1178</span>
+												</li>
+												<!-- <li class="trainprice clearfix mt">
+													<span class="fl c333 mt5">二等座</span>
+													<span class="fl cf60 mt5">￥</span>
+													<span class="fl cf60 fSize20">1178</span>
+												</li>
+												<li class="trainprice clearfix mt">
+													<span class="fl c333 mt5">二等座</span>
+													<span class="fl cf60 mt5">￥</span>
+													<span class="fl cf60 fSize20">553</span>
+												</li> -->
+											</ul>
+										</div>
+									</td>
+									<td width="130">
+										<p class="mt trainNum c666">余<span class="cf60 ">99</span>张</p>
+										<p class="mt trainNum c666">余<span class="cf60 ">467</span>张</p>
+										<p class="mt trainNum c666">
+										余<span class="cf60">99</span>张
+										</p>
+										<i class="less"></i>
+									</td>
+									<td align="center">
+										<a class="more mt" href="javascript:;">
+											预订
+										</a>
+										<a class="more mt" href="javascript:;">
+											预订
+										</a>
+										<a class="more mt" href="javascript:;">
+											预订
+										</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script>
+	$(function(){
+		function train(){
+			var data={fromStation:"shanghai",toStation:"suzhou",trainDate:20170710,ticketType:1};
+			var url='http://192.168.1.189:8080/tc/train/trainSearch';
+			$.myAjax({
+				url: url,
+				type: 'GET',
+				data:data,
+				success:function(result){
+					console.log(result);
+					if(result.flag){
+						var res=result.data;
+						//站口
+						$('.tmAddress').html(res.fromStation+'→'+res.toStation+'('+res.trainDate.substring(4,6)+'月'+res.trainDate.substring(6,8)+'日)');
+						//火车数量
+						var train=$('.trainModel').html();
+						var trainData=$.parseJSON(result.data.trains);
+						console.log(trainData)
+						for(var i=0;i<2;i++){
+							//车辆
+							$('.trainModel').before(train);
+							//车次
+							$('.trainModel').prev().find('.trainNo').html(trainData[i].trainNo);
+							//出发时间
+							$('.trainModel').prev().find('.fromT').html(trainData[i].fromTime);
+							//出发地点
+							$('.trainModel').prev().find('.fromC').html(trainData[i].fromStation);
+							//到达时间
+							$('.trainModel').prev().find('.toT').html(trainData[i].toTime);
+							//到达城市
+							$('.trainModel').prev().find('.toC').html(trainData[i].toStation);
+							//耗时
+							var min=trainData[i].runTimeSpan;
+							var hours=parseInt(trainData[i].runTimeSpan/60);
+							min%=60;
+							$('.trainModel').prev().find('.runTime').html(hours+'小时'+min+'分');
+							//票价
+							// for(var j=0;j<trainData[i].ticke.length;j++){
+							//动车
+							// if(){
+
+							// }
+							if(trainData[i].tickets.hardseat){
+								$('.trainModel').prev().find('.set').append('<li class="trainprice clearfix mt"><span class="fl c333 mt5">'+trainData[i].tickets.hardseat.seatName+'</span><span class="fl cf60 mt5">￥</span><span class="fl cf60 fSize20">'+trainData[i].tickets.hardseat.price+'</span></li>');
+							};
+								
+							// };
+						};
+						// console.log(data.length);
+					}else{
+						myAlert(result.flag);
+					}
+				},
+				error:function(){
+					myAlert('请求失败');
+				}
+			});
+		};
+		train();
+		//订单页
+		$(document).on('click','.more',function(){
+			window.location.href='trainOrder.html';
+		})
+	})
+</script>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<link rel="stylesheet" type="text/css" href="../../../css/app/style.css">
+		<link rel="stylesheet" href="../../../css/app/mescroll.min.css">
+		<style type="text/css">
+		body{
+			position:relative;
+		}
+		.mescroll{
+			position:fixed;
+			top:48px;
+			bottom:40px;
+			height:auto;
+		}
+		.date{
+			text-align: center;
+			width: 100%;
+			margin-top: 15px;
+			color: #878787;
+			font-weight: 600;
+		}
+		.navTitle{
+			position: fixed;
+			top: 48px;
+			padding: 15px 10px;
+			background-color: #ffffff;
+			color: #4b4b4b;
+			font-weight: 700;
+			box-shadow: 1px 1px 1.5px 1.5px #ccc;
+			width: 100%;
+			text-align: center;
+			/*margin-top: 48px;*/
+		}
+		.conDetail{
+			margin-top: 40px;
+		}
+		.contain{
+			padding: 5px 16px;
+		}
+		.content{
+			margin-top: 10px;
+			background-color: #ffffff;
+			padding: 18px;
+			border-radius: 6px;
+			color: #444444;
+		}
+	</style>
+	</head>
+
+	<body>
+		<div>
+		<div class="head">
+			<div class="navImg">
+				<img src="../../../img/app/arrowLeft-icon.png">
+			</div>
+			<div class="navDetail">消息详情</div>
+		</div>
+		<div class="navTitle">
+			中国教育后勤协会思想文化建设与人力资源管理专业委员会（2017）年会暨高校后勤文化建设与人力资源管理创新论坛
+		</div>
+		<div class="mescroll conDetail" id="mescroll">
+			<div id="List" class="List">
+				<!-- <div class="contain">
+				<div class="date">
+					<span>10月30号</span>
+					<span>6:00</span>
+				</div>
+				<div class="content">
+					为服务“保险姓保”的行业职能，帮助各会员单位克服竞争压力，不断变革创新，加强对中高端人才核心管理能力的培养，化领导力为可衡量的行动，全面提升管理效能，以管理效能提升促进保险公司价值稳健成长。中国保险学会将联合美国管理协会共同举办“全国保险公司高阶领导力提升专题研修班”。培训内容涵盖了领导力领域的高阶内容及最新成果，从领导能力、领导力开发、成功领导者的特质、当代领导力面临的挑战和领导力的延伸等多个方面进行全面、深刻的剖析
+				</div>
+			</div> -->
+			</div>
+		</div>
+	</div>
+	
+	</body>
+	<script src="../../../js/app/mescroll.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../../../js/zepto.js"></script>
+	<script type="text/javascript" src="../../../js/app/mtCommon.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		$(function(){
+
+			//创建MeScroll对象,内部已默认开启下拉刷新,自动执行up.callback,刷新列表数据;
+			var mescroll = new MeScroll("mescroll", {
+				//上拉加载的配置项
+				up: {
+					callback: getListData, //上拉回调,此处可简写; 相当于 callback: function (page) { getListData(page); }
+					// empty: {
+					// 	icon: "../res/img/mescroll-empty.png", //图标,默认null
+					// 	tip: "暂无相关数据~" //提示
+					// },
+					clearEmptyId: "List", //相当于同时设置了clearId和empty.warpId; 简化写法;默认null
+					// toTop:{ //配置回到顶部按钮
+					// 	src : "../../../img/app/mescroll-totop.png", //默认滚动到1000px显示,可配置offset修改
+					// 	offset : 800
+					// }
+				}
+			});
+			/*联网加载列表数据  page = {num:1, size:10}; num:当前页 从1开始, size:每页数据条数 */
+			function getListData(page){
+				//联网加载数据
+				getListDataFromNet(page.num, page.size, function(curPageData){
+					//联网成功的回调,隐藏下拉刷新和上拉加载的状态;
+					//mescroll会根据传的参数,自动判断列表如果无任何数据,则提示空;列表无下一页数据,则提示无更多数据;
+					console.log(curPageData)
+					console.log("page.num="+page.num+", page.size="+page.size+", curPageData.length="+curPageData.length);
+					
+					//方法一(推荐): 后台接口有返回列表的总页数 totalPage
+					//mescroll.endByPage(curPageData.length, totalPage); //必传参数(当前页的数据个数, 总页数)
+					
+					//方法二(推荐): 后台接口有返回列表的总数据量 totalSize
+					//mescroll.endBySize(curPageData.length, totalSize); //必传参数(当前页的数据个数, 总数据量)
+					
+					//方法三(推荐): 您有其他方式知道是否有下一页 hasNext
+					//mescroll.endSuccess(curPageData.length, hasNext); //必传参数(当前页的数据个数, 是否有下一页true/false)
+					
+					//方法四 (不推荐),会存在一个小问题:比如列表共有20条数据,每页加载10条,共2页.如果只根据当前页的数据个数判断,则需翻到第三页才会知道无更多数据,如果传了hasNext,则翻到第二页即可显示无更多数据.
+					mescroll.endSuccess(curPageData.length);
+					console.log(curPageData.length)
+					//设置列表数据
+					setListData(curPageData);
+				}, function(){
+					//联网失败的回调,隐藏下拉刷新和上拉加载的状态;
+	                mescroll.endErr();
+				});
+			}
+			
+			/*设置列表数据*/
+			function setListData(curPageData){
+				var str = '';
+				for(var i = 0; i < curPageData.length; i++){
+					str += '<div class="contain">' +
+						'<div class="date">' +
+							'<span>' + curPageData[i].send_time.substring(0,11) + '</span>' +
+							'<span>' + curPageData[i].send_time.substring(12) + '</span>' +
+						'</div>' +
+						'<div class="content">' + curPageData[i].message_value + '</div>' +
+					'</div>';
+				}
+				// str = str +'<a name="skip"></a>';
+				$("#List").append(str);
+				window.location = "#skip";
+			}
+			/*联网加载列表数据*/
+			// var pageSize = 5; 
+			function getListDataFromNet(pageNum,pageSize,successCallback,errorCallback) {
+				var url = basePath + "mt/user/message/activity/list.do";
+                $.myAjax({
+                	url: url,
+                	data:{id:Request("actid"),pageNum:pageNum,pageSize:pageSize},
+                	success: function(result){
+                		console.log(result.data);
+                		if(result.flag){
+                			$(".navTitle").html(result.data.activity.name);
+                			var dataList = result.data.messageList;
+                			var listArr = [];
+                			for(var i = 0; i < dataList.length; i++){
+                				listArr.push(dataList[i]);
+                			}
+                			successCallback(listArr);
+                		}else{
+                			myConfirm(result.msg)
+                		}
+                	},
+                	error: errorCallback
+                });
+
+			};
+			//禁止PC浏览器拖拽图片,避免与下拉刷新冲突;如果仅在移动端使用,可删除此代码
+			document.ondragstart=function() {return false;}
+		});
+	</script>
+</html>

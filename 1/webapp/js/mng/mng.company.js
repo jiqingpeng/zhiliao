@@ -1,0 +1,344 @@
+var isScroll = false;
+
+/**
+ * 公司页初始化
+ */
+function companyInit() {
+    isScroll = companyActivityList();
+    if (isScroll) {
+        clearInterval(timers);
+        timers = null;
+        x = $(".activity-echart-list");
+        scrollText();
+    }
+}
+
+function companyActivityList() {
+    $
+        .myAjax({
+            url: basePath + "monitor/company/activity/list.do",
+            type: "POST",
+            async: false,
+            dataType: "JSON",
+            success: function (result) {
+                if (result.flag) {
+                    var activityHtml = $("#company .activity-echart-list");
+                    var activity = result.data;
+                    $($("#company .panel .panel-heading")[0]).children("a")
+                        .html(activity.length);
+                    var str = '';
+                    if (activity.length > 13) {
+                        isScroll = true;
+                    }
+                    for (var i = 0; i < activity.length; i++) {
+                        var act = activity[i];
+                        if (i == 0) {
+                            var _thisInfo = $(
+                                $("#company .collapse-title .collapse-title-avg")[1])
+                                .children("ul");
+                            $(_thisInfo.children("li")[0]).find("span")
+                                .html(
+                                    '&nbsp;所在城市：<j class="">'
+                                    + act.city + '</j>');
+                            $(_thisInfo.children("li")[1])
+                                .find("span")
+                                .html(
+                                    '&nbsp;开始时间：<j class="">'
+                                    + act.stime.substring(
+                                    0, 10) + '</j>');
+                            var hrefOld = $(
+                                $("#company .panel .panel-heading")[1])
+                                .children("a").attr("href");
+                            str += '<li><a class="activity-echart-first" data-toggle="collapse" href=".activity-process-echart'
+                                + '" data-act-id="'
+                                + act.id
+                                + '" data-act-city="'
+                                + act.city
+                                + '" data-act-stime="'
+                                + act.stime
+                                + '">' + act.name + '</a></li>';
+                            var hrefOld = String($(
+                                $("#company .panel .panel-heading")[1])
+                                .children("a").attr("href"));
+                            hrefOld = hrefOld.substring(0, hrefOld
+                                .indexOf("html") + 4);
+                            $($("#company .panel .panel-heading")[1])
+                                .children("a")
+                                .attr("href",
+                                    hrefOld + "?location=" + act.id);
+                            activityProcessEchart(act.id, act.name);
+                        } else {
+                            str += '<li><a data-toggle="collapse" href=".activity-process-echart'
+                                + '" data-act-id="'
+                                + act.id
+                                + '" data-act-city="'
+                                + act.city
+                                + '" data-act-stime="'
+                                + act.stime
+                                + '">' + act.name + '</a></li>';
+                        }
+                    }
+                    $(activityHtml).html(str);
+                } else {
+                    alert(result.msg);
+                }
+            },
+            error: function (result) {
+                alert(result.msg);
+            }
+        });
+    return isScroll;
+}
+
+function companyEmployList() {
+    $
+        .myAjax({
+            url: basePath + "monitor/company/employ/list.do",
+            type: "POST",
+            async: false,
+            dataType: "JSON",
+            success: function (result) {
+                if (result.flag) {
+                    var employHtml = $("#company .company-employ-list");
+                    var employ = result.data;
+                    var a = $($("#company .contentDiv-avg")[1]);
+                    var b = $(a.children(".panel-default")[0]);
+                    $(b.children(".panel-heading")).children(".badge")
+                        .html(employ.length);
+                    var str = "";
+                    for (var i = 0; i < employ.length; i++) {
+                        var emp = employ[i];
+                        if (i == 0) {
+                            // var _thisInfo = $(
+                            //     $("#company .collapse-title .collapse-title-avg")[2])
+                            //     .children("ul");
+                            // $(_thisInfo.children("li")[0]).find("span")
+                            //     .html(
+                            //         '&nbsp;所在城市：<j class="">'
+                            //         + emp.city + '</j>');
+                            // $(_thisInfo.children("li")[1])
+                            //     .find("span")
+                            //     .html(
+                            //         '&nbsp;开始时间：<j class="">'
+                            //         + emp.stime.substring(
+                            //         0, 10) + '</j>');
+                            // var hrefOld = $(
+                            //     $("#company .panel .panel-heading")[1])
+                            //     .children("a").attr("href");
+                            str += '<li><a data-toggle="" href="#'
+                                + '"><span class="employ-nick">' + emp.nick + '</span><span class="employ-mobile">' + emp.mobile
+                                + '</span><span class="employ-address">' + emp.uipAddress + '</span><span class="employ-utime">' + emp.utime + '</a></li>';
+                            // var hrefOld = String($(
+                            //     $("#company .panel .panel-heading")[1])
+                            //     .children("a").attr("href"));
+                            // hrefOld = hrefOld.substring(0, hrefOld
+                            //     .indexOf("html") + 4);
+                            // $($("#company .panel .panel-heading")[1])
+                            //     .children("a")
+                            //     .attr("href",
+                            //         hrefOld + "?location=" + act.id);
+                            // activityProcessEchart(act.id, act.name);
+                        } else {
+                            str += '<li><a data-toggle="" href="#'
+                                + '"><span class="employ-nick">' + emp.nick + '</span><span class="employ-mobile">' + emp.mobile
+                                + '</span><span class="employ-address">' + emp.uipAddress + '</span><span class="employ-utime">' + emp.utime + '</a></li>';
+                        }
+                    }
+                    $(employHtml).html(str);
+                } else {
+                    alert(result.msg);
+                }
+            },
+            error: function (result) {
+                alert(result.msg);
+            }
+        });
+    return isScroll;
+}
+
+$(document)
+    .on(
+        "click",
+        "#company .activity-echart-list li a",
+        function () {
+            if (String($(this).attr("href")) == "undefined"
+                || String($(this).attr("href")) == ""
+                || String($(this).attr("href")) == "null") {
+                return;
+            }
+            var hrefOld = String($(
+                $("#company .panel .panel-heading")[1]).children(
+                "a").attr("href"));
+            hrefOld = hrefOld.substring(0, hrefOld.indexOf("html") + 4);
+            $($("#company .panel .panel-heading")[1]).children("a")
+                .attr(
+                    "href",
+                    hrefOld + "?location="
+                    + $(this).attr("data-act-id"));
+            var _thisInfo = $(
+                $("#company .collapse-title .collapse-title-avg")[1])
+                .children("ul");
+            $(_thisInfo.children("li")[0]).find("span").html(
+                '&nbsp;所在城市：<j class="">'
+                + $(this).attr("data-act-city") + '</j>');
+            $(_thisInfo.children("li")[1]).find("span").html(
+                '&nbsp;开始时间：<j class="">'
+                + $(this).attr("data-act-stime").substring(
+                0, 10) + '</j>');
+            activityProcessEchart($(this).attr("data-act-id"), $(this)
+                .html());
+            $(this).parent().parent().find("a").attr("data-toggle",
+                "collapse");
+            $(this).parent().parent().find("a").attr("href",
+                ".activity-process-echart");
+            $(this).removeAttr("data-toggle");
+            $(this).removeAttr("href");
+        });
+
+// 活动进程
+function activityProcessEchart(id, name) {
+    $("#company .activity-process-echart").removeAttr("style");
+    $("#company .activity-process-echart").attr("aria-expanded", "true");
+    $("#company .activity-process-echart").addClass("in");
+    $("#collapse-act-echart").html("");
+    $("#collapse-act-echart").removeAttr("style");
+    $("#collapse-act-echart").removeAttr("_echarts_instance_");
+    if (name.length > 19) {
+        name = name.substring(0, 19) + "\n" + name.substring(19);
+    }
+    $
+        .myAjax({
+            url: basePath + "monitor/company/register/statistic.do",
+            data: {
+                "id": id
+            },
+            type: "POST",
+            async: false,
+            dataType: "JSON",
+            success: function (result) {
+                if (result.flag) {
+                    var data = result.data;
+                    var _thisAttend = $(
+                        $("#company .collapse-title .collapse-title-avg")[0])
+                        .children("ul");
+                    var pc = 0;
+                    var wx = 0;
+                    var az = 0;
+                    var pg = 0;
+                    var imp = 0;
+                    if (data.pc) {
+                        pc = data.pc;
+                    }
+                    if (data.wx) {
+                        wx = data.wx;
+                    }
+                    if (data.az) {
+                        az = data.az;
+                    }
+                    if (data.pg) {
+                        pg = data.pg;
+                    }
+                    if (data.import) {
+                        imp = data.import;
+                    }
+                    $(_thisAttend.children("li")[0]).find("span").html(
+                        '&nbsp;PC终端&nbsp;&nbsp;：<j class="badge">' + pc
+                        + '人</j>');
+                    $(_thisAttend.children("li")[1]).find("span").html(
+                        '&nbsp;WX公众号&nbsp;：<j class="badge">' + wx
+                        + '人</j>');
+                    $(_thisAttend.children("li")[2]).find("span").html(
+                        '&nbsp;安卓客户端：<j class="badge">' + az + '人</j>');
+                    $(_thisAttend.children("li")[3]).find("span").html(
+                        '&nbsp;苹果客户端：<j class="badge">' + pg + '人</j>');
+                    $(_thisAttend.children("li")[4]).find("span").html(
+                        '&nbsp;手动导入&nbsp;：<j class="badge">' + imp
+                        + '人</j>');
+                    var myChart = echarts.init(document
+                        .getElementById('collapse-act-echart'));
+                    var option = {
+                        title: {
+                            text: name,
+                            textStyle: {
+                                fontSize: 16,
+                                lineHeight: 12,
+                                align: 'center'
+                            },
+                            x: 'center'
+                        },
+                        tooltip: {
+                            trigger: 'axis'
+                        },
+                        legend: {
+                            left: 'center',
+                            top: 'bottom',
+                            data: data.legend
+                        },
+                        toolbox: {
+                            show: true,
+                            orient: 'vertical',
+                            left: 'right',
+                            top: 'center',
+                            feature: {
+                                magicType: {
+                                    show: true,
+                                    type: ['line', 'bar']
+                                },
+                                restore: {
+                                    show: true
+                                },
+                                saveAsImage: {
+                                    show: true,
+                                    pixelRatio: 3
+                                }
+                            }
+                        },
+                        calculable: true,
+                        xAxis: [{
+                            type: 'category',
+                            data: data.xAxis
+                        }],
+                        yAxis: [{
+                            type: 'value'
+                        }],
+                        dataZoom: [
+                            {
+                                textStyle: {
+                                    color: '#8392A5'
+                                },
+                                handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+                                handleSize: '80%',
+                                dataBackground: {
+                                    areaStyle: {
+                                        color: '#8392A5'
+                                    },
+                                    lineStyle: {
+                                        opacity: 0.8,
+                                        color: '#8392A5'
+                                    }
+                                },
+                                handleStyle: {
+                                    color: '#fff',
+                                    shadowBlur: 2,
+                                    shadowColor: 'rgba(0, 0, 0, 0.6)',
+                                    shadowOffsetX: 1,
+                                    shadowOffsetY: 1
+                                }
+                            }, {
+                                type: 'inside'
+                            }],
+                        series: data.series
+                    };
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+                } else {
+                    alert(result.msg);
+                }
+                companyEmployList();
+            },
+            error: function (result) {
+                companyEmployList();
+                alert(result.msg);
+            }
+        });
+}

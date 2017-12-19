@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>详情</title>
+	<link rel="stylesheet" href="../../css/index/base.css">
+	<link rel="stylesheet" href="../../css/index/public.css">
+	<link rel="stylesheet" href="../../css/index/detail.css">
+
+</head>
+<body>
+	<div class="head">
+		<div class="clearfix hnav">
+			<ul class="fl">
+				<li class="fl"><a href="index.html">首页</a></li>
+				<li class="fl"><a href="detail.html">解决方案</a></li>
+				<li class="fl"><a href="second.html">合作单位</a></li>
+				<li class="fl"><a href="cation.html">关于我们</a></li>
+			</ul>
+			<ul class="fr">
+				<li class="fl"><a id="user_name" href="javascript:;"></a></li>
+				<li class="fl"><a id="login_out" href="javascript:;"></a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="contain">
+		<div class="bannimg">
+			<a class="fl" href="#"><img class="logol" src="../../img/index/logoandname.png" alt="logoname"></a>
+			<img class="logor fr" src="../../img/index/homenav.png" alt="homenav">
+		</div>
+		<h3 class="clearfix">
+			<a href="index.html" class="fl">首页</a>
+			<a href="javascript:;" class="fl">&gt全部活动</a>
+			<a href="detail.html" class="fl">&gt活动详情</a>
+		</h3>
+		<div class="wrap clearfix">
+			<div class="wrap-l fl">
+				<div class="group">
+					<h4>
+						<img src="../../img/index/small_black.jpg" alt="icon">
+						会议时间
+					</h4>
+					<div class="item" id="mess_time">
+						<!-- <div>
+							<p>会议日期</p>
+							<p>2015/10/5</p>
+						</div>
+						<div>
+							<p>征文投稿截止日期:</p>
+							<p>2015/10/5</p>
+						</div>
+						<div>
+							<p>现场报道日期</p>
+							<p>2015/10/5</p>
+						</div> -->
+					</div>
+				</div>
+				<div class="group">
+					<h4>
+						<img src="../../img/index/small_black.jpg" alt="icon">
+						会议地点
+					</h4>
+					<div class="item" id="mess_address">
+						<!-- <div>
+							<p>城市</p>
+							<p>北京市</p>
+						</div>
+						<div>
+							<p>地址</p>
+							<p>北京市海淀区六道口静淑苑路创业广场101室</p>
+						</div> -->
+					</div>
+				</div>
+				<div class="group">
+					<h4>
+						<img src="../../img/index/small_black.jpg" alt="icon">
+						会议议题
+					</h4>
+					<div class="item">
+						<div>
+							<p>会议议题</p>
+							<p id="mess_issue"></p>
+						</div>
+					</div>
+				</div>
+				<div class="group">
+					<h4>
+						<img src="../../img/index/small_black.jpg" alt="icon">
+						组织机构
+					</h4>
+					<div class="item">
+						<div>
+							<p>主办方</p>
+							<p>中华医学会血液分学会</p>
+						</div>
+						
+					</div>
+				</div>
+				<div class="group">
+					<h4>
+						<img src="../../img/index/small_black.jpg" alt="icon">
+						动态信息
+					</h4>
+					<div class="item">
+						<div>
+							<p><a href="">第一条信息</a></p>
+							<p><a href="">第一条信息</a></p>
+							<p><a href="">第一条信息</a></p>
+							<p><a href="">第一条信息</a></p>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<div class="wrap-c fl">
+				<img class="bann" src="../../img/index/conf-show.jpg" alt="show">
+				<h4>
+					<img src="../../img/index/small_black.jpg" alt="icon">
+					会议简介
+				</h4>
+				<div class="message">
+					<p>两年一度的全国营养科学大会是中国营养学会的重点学术活动，是营养界的科学盛会，也是分享国内外营养学领域的最新研究进展，展示我国营养学及公共卫生领域最新研究成果、推动学科全面发展的一个重要平台。</p>
+					<p>在2016年8月在全国卫生与健康大会上,习近平主席强调把人民健康放在优先发展战略地位，努力全方位全周期保障人民健康。健康中国，营养要先行，当前，营养学科作为生命科学领域的重要分支，其学科内涵不断拓宽，在多学科交叉研究、健康促进和疾病康复中的作用日益凸显，其受到的关注和重视程度前所未有，迎来新的发展机遇。本次会议将从就营养科学技术理论和创新、营养与食品科学基础理论研究与技术应用，以及相关产业发展等领域的重点、热点、难点问题进行广泛而深入的交流。</p>
+					<p>会议将邀请国内外著名专家作专题报告和讲座，并开展论文交流、学术报告与讨论、知名专家与一线科技工作者板报交流和口头报告等形式多样、内容丰富的学术活动，将更多的营养科研成果落地生根，实现技术转化。</p>
+					<p>会议同期将举行“2017年全民营养周启动仪式”。欢迎各省组织参与，欢迎各位会员单位、大专院校、研究机构、医疗机构以及从事营养相关工作的管理人员、业务骨干和科研人员参加会议。</p>
+				</div>
+			</div>
+			<div class="wrap-r fr">
+				<div class="group">
+					<h4 class="clearfix">
+						<span class="fl">已报名人数</span>
+						<span class="fr" id="totalAttend">500人</span>	
+					</h4>
+					<div class="item">
+						<div class="h60">
+							<p class="sign">
+								<a href="javascript:;">我要关注</a>
+							</p>
+							<p class="sign">
+								<a href="previewFiled.html" target="_blank">立即报名</a>
+							</p>
+						</div>
+						
+					</div>
+				</div>
+				<div class="group">
+					<h4>
+						<img src="../../img/index/small_black.jpg" alt="icon">
+						会议流程
+					</h4>
+					<div class="item">
+						<div>
+							<img src="../../img/index/conf-flow.jpg" alt="flow">
+						</div>
+						
+					</div>
+				</div>
+				
+				<div class="group contact">
+					<h4>
+						<img src="../../img/index/small_black.jpg" alt="icon">
+						联系我们
+					</h4>
+					<div class="item">
+						<div class="tit">
+							择财汇中科技有限公司
+						</div>
+						<ul >
+							<li>电话: 010-85158148</li>
+							<li>&nbsp&nbsp&nbsp15068965582</li>
+							<li>邮箱: 124324@qq.com</li>
+							<li>&nbsp&nbsp&nbsp15068965582@qq.com</li>
+						</ul>
+					</div>
+					<img class="code" src="../../img/index/code.jpg" alt="code">
+				</div>
+				
+			</div>
+		</div>
+		<div class="person">
+			<h4>嘉宾</h4>
+			<div></div>
+		</div>
+	</div>
+	<div class="foot">
+			<ul class="f-list clearfix">
+				<li class="fl tell no">
+				</li>
+				<li class="fl">
+					<ul class="foot-message">
+						<li class="font24"><a href="#">关于我们</a></li>
+						<li><a href="#">关于群英会</a></li>
+						<li><a href="#">加入我们</a></li>
+						<li><a href="#">免责申明</a></li>
+					</ul>
+				</li>
+				<li class="fl">
+					<ul class="foot-message">
+						<li class="font24"><a href="#">联系我们</a></li>
+						<li><a href="#">电话</a></li>
+						<li><a href="#">官方微信</a></li>
+						<li><a href="#">新浪微博</a></li>
+					</ul>
+				</li>
+				<li class="fl">
+					<ul class="foot-message">
+						<li class="font24"><a href="#">新闻中心</a></li>
+						<li><a href="#">公司新闻</a></li>
+						<li><a href="#">合作伙伴</a></li>
+						<li><a href="#">知名客户</a></li>
+					</ul>
+				</li>
+				<li class="fl">
+					<ul class="foot-message">
+						<li class="font24"><a href="#">合作</a></li>
+						<li><a href="#">主办方合作</a></li>
+						<li><a href="#">媒体合作</a></li>
+						<li><a href="#">资助合作</a></li>
+					</ul>
+				</li>
+				
+				<li class="fl font24 la"><a href="#">公司新闻</a></li>
+			</ul>
+			<p class="p1">未经gconfs.com同意不得转发网站会议信息</p>
+			<p class="p2">京ICP备1708133号</p>
+	</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script>
+	$(function(){
+		//init获取页面信息和登陆状态
+		var url=basePath+"index/activity.do";
+		//截取ID
+		var id=Request('location')
+		
+		$.ajax({
+			url: url,
+			type: 'GET',
+			data:{id:id},
+			// data:{id:'9c2d2f6a84e84ee882b73d66a7b8a7f6'},
+			dataType: 'json',
+			xhrFields: {
+       			withCredentials: true
+    		},
+    		crossDomain: true,
+			success:function(result){
+				console.log(result)
+				//时间截取
+				var stime=result.data.activity.stime.substr(0,11);
+				var paperEtime=result.data.activity.paperEtime.substr(0,11);
+				var signupStime=result.data.activity.signupStime.substr(0,11);
+				var signupEtime=result.data.activity.signupEtime.substr(0,11);
+				//会议时间
+				$('#mess_time').append('<div><p>会议日期</p><p>'+stime+'</p></div><div><p>征文投稿截止日期:</p><p>'+paperEtime+'</p></div><div><p>现场报道日期</p><p>'+signupStime+'至'+signupEtime+'</p></div>');	
+				//会议地点
+				$('#mess_address').append('<div><p>城市</p><p>'+result.data.activity.city+'</p></div><div><p>地址</p><p>'+result.data.activity.contactAddress+'</p></div>');
+				//会议议题
+				$('#mess_issue').html(result.data.activity.issue);
+				//报名人数
+				$('#totalAttend').html(result.data.activity.totalAttend);
+				// 获取用户登陆状态信息
+				if(result.data.user){
+					$('#user_name').html(result.data.user.name);
+					$('#login_out').html('注销');
+				}
+			}
+		})
+		//注销
+		$('#login_out').click(function(){
+			url=basePath+"login/out.do"
+			$.ajax({
+				url: url,
+				type: 'GET',
+				dataType: 'json',
+				xhrFields: {
+           			withCredentials: true
+        		},
+        		crossDomain: true,
+				success:function(data){
+					console.log(data.url)
+					window.location.href='index.html'
+				}
+			})
+		})
+	})
+</script>
+</html>

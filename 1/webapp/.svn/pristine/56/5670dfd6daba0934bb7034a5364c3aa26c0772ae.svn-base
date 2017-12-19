@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no"> -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<link rel="stylesheet" href="../../../css/app/mescroll.min.css">
+		<link rel="stylesheet" href="../../../css/app/actList.css">
+		
+	</head>
+	
+	<body>
+		<!--标题-->
+		<div class="header">
+			<div class="title">群英会会议</div>
+			<div class="nav">
+				<img class="code" src="../../../img/app/code.png" alt="">
+				<ul class="round">
+					<li class="point"></li>
+					<li class="point"></li>
+					<li class="point"></li>
+				</ul>
+			</div>
+			<ul class="suspension toggle">
+				<span class="triangle"></span>
+				<li class="menu" i="null">
+					<img class="icon" src="../../../img/app/menu_all.png"/>
+					<span class="txt">全部会议</span>
+				</li>
+				<li class="menu border" i="2">
+					<img class="icon" src="../../../img/app/is_sign.png"/>
+					<span class="txt">已报名会议</span>
+				</li>
+				<li class="menu" i="1">
+					<img class="icon" src="../../../img/app/no_sign.png"/>
+					<span class="txt">未报名会议</span>
+				</li>
+			</ul>
+		</div>
+		<!--滑动区域-->
+		<div id="mescroll" class="mescroll">
+			<ul id="newsList" class="news-list">
+				<!-- <article class="act-list" >
+					<header class="act-tit">20178届世界增强现实欧洲博览</header>
+					<section class="act-cont">
+						<div class="act-group">
+							<p class="act-item">
+								<img class="icon" src="../../../img/app/time.png"/>
+								<span class="time">时间：</span>
+								<span class="txt">2017-10-20</span>
+							</p>
+							<p class="act-item">
+								<img class="icon" src="../../../img/app/address.png"/>
+								<span class="address">地点:</span>
+								<span class="txt">昆明市</span>
+							</p>
+						</div>
+						<div class="act-atten">
+							<img class="atten" src="../../../img/app/no-atten.png" alt="">
+							<span class="txt">未关注</span>
+						</div>
+						<div class="act-state">
+							已报名
+						</div>
+					</section>
+				</article> -->
+			</ul>
+		</div>
+	</body>
+	
+	<script src="../../../js/app/mescroll.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/zepto.js"></script>
+	<script src="../../../js/app/mtCommon.js"></script>
+	<script src="../../../js/app/mtTool.js"></script>
+	<script src="../../../js/user/userMain.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		$(function(){
+			//创建MeScroll对象,内部已默认开启下拉刷新,自动执行up.callback,刷新列表数据;
+			var mescroll = new MeScroll("mescroll", {
+				//上拉加载的配置项
+				up: {
+					callback: getListData, //上拉回调,此处可简写; 相当于 callback: function (page) { getListData(page); }
+					empty: {
+						icon: "../res/img/mescroll-empty.png", //图标,默认null
+						tip: "暂无相关数据~" //提示
+					},
+					clearEmptyId: "newsList", //相当于同时设置了clearId和empty.warpId; 简化写法;默认null
+					toTop:{ //配置回到顶部按钮
+						src : "../../../img/app/mescroll-totop.png", //默认滚动到1000px显示,可配置offset修改
+						offset : 800
+					}
+				}
+			});
+			/*初始化菜单*/
+			var pdType=null;//全部商品0; 奶粉1; 面膜2; 图书3;
+			$(".header li").click(function(){
+				$(this).parent().addClass('toggle')
+				var i=$(this).attr("i");
+				if(pdType!=i) {
+					//更改列表条件
+					pdType=i;
+
+					//重置列表数据
+					mescroll.resetUpScroll();
+				}
+			})
+			/*联网加载列表数据  page = {num:1, size:10}; num:当前页 从1开始, size:每页数据条数 */
+			function getListData(page){
+				//联网加载数据
+				getListDataFromNet(pdType,page.num, page.size, function(curPageData){
+					//联网成功的回调,隐藏下拉刷新和上拉加载的状态;
+					//mescroll会根据传的参数,自动判断列表如果无任何数据,则提示空;列表无下一页数据,则提示无更多数据;
+					console.log("pdType="+pdType+",page.num="+page.num+", page.size="+page.size+", curPageData.length="+curPageData.length);
+					
+					//方法一(推荐): 后台接口有返回列表的总页数 totalPage
+					//mescroll.endByPage(curPageData.length, totalPage); //必传参数(当前页的数据个数, 总页数)
+					
+					//方法二(推荐): 后台接口有返回列表的总数据量 totalSize
+					//mescroll.endBySize(curPageData.length, totalSize); //必传参数(当前页的数据个数, 总数据量)
+					
+					//方法三(推荐): 您有其他方式知道是否有下一页 hasNext
+					//mescroll.endSuccess(curPageData.length, hasNext); //必传参数(当前页的数据个数, 是否有下一页true/false)
+					
+					//方法四 (不推荐),会存在一个小问题:比如列表共有20条数据,每页加载10条,共2页.如果只根据当前页的数据个数判断,则需翻到第三页才会知道无更多数据,如果传了hasNext,则翻到第二页即可显示无更多数据.
+					mescroll.endSuccess(curPageData.length);
+					console.log(curPageData.length)
+					//设置列表数据
+					setListData(curPageData);
+				}, function(){
+					//联网失败的回调,隐藏下拉刷新和上拉加载的状态;
+	                mescroll.endErr();
+				});
+			}
+			
+			/*设置列表数据*/
+			function setListData(curPageData){
+				console.log(curPageData)
+				var str=" "
+				for(var i = 0; i < curPageData.length; i ++){
+					 str += 
+						'<article class="act-list">'+
+							'<input class="id" type="hidden" value="'+curPageData[i].id+'"/>'+
+							'<header class="act-tit">'+curPageData[i].name+'</header>'+
+							'<section class="act-cont">'+
+								'<div class="act-group">'+
+									'<p class="act-item">'+
+										'<img class="icon" src="../../../img/app/time.png"/>'+
+										'<span class="time">时间:</span>'+
+										'<span class="txt">'+getSubstring(curPageData[i].stime, 0, 11)+'</span>'+
+									'</p>'+
+									'<p class="act-item">'+
+										'<img class="icon" src="../../../img/app/address.png"/>'+
+										'<span class="address">地点:</span>'+
+										'<span class="txt">'+curPageData[i].province+'</span>'+
+									'</p>'+
+								'</div>'+
+								// '<div class="act-atten">'+
+								// 	'<img class="atten" src="../../../img/app/no-atten.png" alt="">'+
+								// 	'<span class="txt">未关注</span>'+
+								// '</div>'+
+								'<div class="state-box">'+
+									'<div class="act-state">'+
+										curPageData[i].attend_state+
+									'</div>'+
+								'</div>'+
+							'</section>'+
+						'</article>';
+				}
+				$('#newsList').append(str);
+			}
+			/*联网加载列表数据*/
+			function getListDataFromNet(pdType,pageNum,pageSize,successCallback,errorCallback) {
+				var url = basePath + 'mt/user/activity/list.do';
+				// url = getToken(url);
+				// alert(url);
+				$.myAjax({
+					url: url,
+					data: {pageNum:pageNum,pageSize:pageSize,type:pdType},
+					success: function(result){
+						if(result.flag){
+							console.log(result)
+							var data = result.data.activityList;
+							var listData=[];
+							for (var i = 0; i < data.length; i++) {
+			            		// if(i==data.length) break;
+			            		data[i].a=data[i].act_state;
+			            		if(8==data[i].act_state){
+			            			data[i].attend_state="已结束";
+			            		}else {
+			            			if(0==data[i].attend_state){
+			            				data[i].attend_state="立即报名";
+			            			}else if(1==data[i].attend_state){
+				            			data[i].attend_state="待审核";
+				            		}else if(1<data[i].attend_state&&8>data[i].attend_state){
+				            			data[i].attend_state="准备参会";
+				            		}else if(8==data[i].attend_state||9==data[i].attend_state){
+				            			data[i].attend_state="未通过";
+				            		};
+			            		};
+			            		listData.push(data[i]);
+			            	};
+			            	console.log(listData)
+							//回调
+		                	successCallback(listData);
+						}else{
+							console.log("请求失败");
+						}
+					},
+					error: errorCallback
+				});
+			};
+			//禁止PC浏览器拖拽图片,避免与下拉刷新冲突;如果仅在移动端使用,可删除此代码
+			document.ondragstart=function() {return false;}
+			$('.round').on('click',function(){
+				$('.suspension').toggleClass('toggle');
+			});
+			$(document).on('click','.act-list',function(){
+				var state = $(this).find('.act-state').html();
+				var id = $(this).find('.id').val();
+				if('立即报名'==state){
+					window.location.href="invitation.html?id="+id
+				}else{
+					window.location.href="meetDetail.html?id="+id
+				};
+			});
+		});
+	</script>
+
+</html>

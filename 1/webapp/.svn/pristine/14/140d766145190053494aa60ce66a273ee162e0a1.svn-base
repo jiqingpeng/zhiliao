@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>机票预订</title>
+	<link rel="stylesheet" href="../../css/index/base.css">
+	<link rel="stylesheet" href="../../css/index/public.css">
+	<link rel="stylesheet" href="../../css/index/airOrder.css">
+</head>
+<body>
+	<div class="head">
+		<div class="clearfix hnav">
+			<ul class="fl">
+				<li class="fl"><a href="index.html">首页</a></li>
+				<!-- <li class="fl"><a href="detail.html">解决方案</a></li>
+				<li class="fl"><a href="second.html">合作单位</a></li>
+				<li class="fl"><a href="cation.html">关于我们</a></li> -->
+			</ul>
+			<ul class="fr">
+				<li class="fl"><a id="user_center" href="../user/activityList.html"></a></li>
+				<li class="fl" id="user_name"></li>
+				<li class="fl"><a id="login_out" href="javascript:;"></a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="wrap">
+		<div class="progress clearfix">
+			<span class="txt">查询航班</span>
+			<span class="line" style="width:280px"></span>
+			<em></em>
+			<span class="txt grayicon">填写订单</span>
+			<span class="line gray" style="width:280px"></span>
+			<em class="gray"></em>
+			<span class="txt graytxt">支付票款</span>
+			<span class="line gray" style="width:280px"></span>
+			<em class="gray"></em>
+			<span class="txt graytxt nobg">支付成功</span>
+		</div>
+		<div class="content">
+			<div class="main clearfix">
+				<div class="info fl">
+					<div class="infoBox">
+						<h2 class="infoTit">乘机人</h2>
+						<p class="signin">选择常用登机人</p>
+						<div class="passengerContent">
+							<div class="passInfo">
+								<div class="row clearfix">
+									<div class="name fl">
+										<input type="text" placeholder="姓名与所选证件上的姓名一致">
+										<div class="tipIcon"></div>
+									</div>
+									<p class="fl prompt">
+										
+										<a class="delIocn delPerson" href="javascript:;"></a>
+										<span class="promptNum"></span>
+									</p>
+									<span class="quesIcon"></span>
+								</div>
+								<div class="row clearfix">
+									<div class="selectHead fl">
+										<span class="selectArrow"></span>
+										<div class="fl selectTxt">身份证</div>
+										<ul class="selectBody active">
+											<li class="selectList">身份证</li>
+											<li class="selectList">护照</li>
+											<li class="selectList">其他</li>
+										</ul>
+									</div>
+									<div class="fl codeId">
+										<input type="text" placeholder="证件号码">
+										<div class="tipIcon"></div>
+									</div>
+								</div>
+								<div class="row clearfix">
+									<input class="fl passPhone" type="text" placeholder="(选填)乘机人手机号码,用于接受航变信息,请准确填写">
+								</div>
+							</div>
+							<div class="passBox" style="display: none">
+								<div class="passInfo">
+									<div class="row clearfix">
+										<div class="name fl">
+											<input type="text" placeholder="姓名与所选证件上的姓名一致">
+											<div class="tipIcon"></div>
+										</div>
+										<p class="fl prompt">
+											<a class="delIocn delPerson toggIcon" href="javascript:;"></a>
+											<span class="promptNum">1</span>
+										</p>
+										<span class="quesIcon"></span>
+									</div>
+									<div class="row clearfix">
+										<div class="selectHead fl">
+											<span class="selectArrow"></span>
+											<div class="fl selectTxt">身份证</div>
+											<ul class="selectBody active">
+												<li class="selectList">身份证</li>
+												<li class="selectList">护照</li>
+												<li class="selectList">其他</li>
+											</ul>
+										</div>
+										<div class="fl codeId">
+											<input type="text" placeholder="证件号码">
+											<div class="tipIcon"></div>
+										</div>
+									</div>
+									<div class="row clearfix">
+										<input class="fl passPhone" type="text" placeholder="(选填)乘机人手机号码,用于接受航变信息,请准确填写">
+									</div>
+								</div>
+							</div>
+							<div class="newBtn">
+								<a class="addBtn" href="javascript:;">新增乘机人</a>
+								<span class="perLast">您还可以新增4位乘客</span>
+							</div>
+							<div class="insurance">
+								<div class="row">
+									<span class="txt fl">退改无忧</span>
+									<div class="selectHead fl">
+										<div class="fl selectTxt">不需要</div>
+										<span class="selectArrow"></span>
+									</div>
+									<span class="fl txtr">行程难免有变,减少您的退票改签手续
+									</span>
+									<span class="quesIcon"></span>
+								</div>
+								<div class="row">
+									<span class="txt fl">航班延误险</span>
+									<div class="selectHead fl">
+										<div class="fl selectTxt">不需要</div>
+										<span class="selectArrow"></span>
+									</div>
+									<span class="fl txtr"></span>
+									<span class="quesIcon"></span>
+								</div>
+								<div class="row">
+									<span class="txt fl">航班意外险</span>
+									<div class="selectHead fl">
+										<div class="fl selectTxt">保险：保额225万 60元/份</div>
+										<span class="selectArrow"></span>
+									</div>
+									<span class="fl txtr">给自己百万保障
+									</span>
+									<span class="quesIcon"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="infoBox">
+						<h2 class="infoTit">联系信息</h2>
+						<div class="contact">
+								<div class="row">
+									<span class="txt">&nbsp姓名</span>
+									<input type="text" placeholder="联系人姓名">
+								</div>
+								<div class="row">
+									<span class="txt">手机号</span>
+									<input type="text" placeholder="通过手机可接受订单信息">
+								</div>
+						</div>
+					</div>
+					<div class="infoBox">
+						<h2 class="infoTit">
+							<input type="checkbox" class="cardCheck">
+							<span>需要报销凭证</span>
+							<span>(如需补寄，可在起飞后25天内申请)</span>
+						</h2>
+						<div class="contact active">
+								<div class="row">
+									<span class="txt">配送内容</span>
+									<span>包含：行程单、保险发票</span>
+								</div>
+								<div class="row">
+									<span class="txt fl">配送方式</span>
+									<div class="selectHead fl">
+										<span class="selectArrow"></span>
+										<div class="fl selectTxt">EMS快递￥10.00</div>
+									</div>
+									<span class="fl">预计2017-06-21前到达</span>
+								</div>
+								<div class="row">
+									<span class="txt"></span>
+									<span>报销凭证最晚在起飞后25天内索取有效</span>
+								</div>
+								<div class="row">
+									<span class="txt">配送地址</span>
+									
+								</div>
+								<div class="row">
+									<span class="txt">收件人姓名</span>
+									<input type="text">
+								</div>
+								<div class="row">
+									<span class="txt fl">所在区域</span>
+									<div class="selectHead fl">
+										<span class="selectArrow"></span>
+										<div class="fl selectTxt">请选择省</div>
+									</div>
+									<div class="selectHead fl">
+										<span class="selectArrow"></span>
+										<div class="fl selectTxt">请选择市</div>
+									</div>
+									<div class="selectHead fl">
+										<span class="selectArrow"></span>
+										<div class="fl selectTxt">请选择区</div>
+									</div>
+								</div>
+								
+								<div class="row">
+									<span class="txt">街道地址</span>
+									<input type="text">
+								</div>
+								<div class="row">
+									<span class="txt">手机号</span>
+									<input type="text">
+								</div>
+						</div>
+					</div>
+					<div class="check">
+						<p>
+							<a class="radio" href="javascript:;"></a>
+							<span >我已阅读并接受了
+								<a href="javascript:;">《锂电池及危险平须知》</a>
+							</span>
+							
+						</p>
+					</div>
+					<div class="saveBtn">提交订单</div>
+				</div>
+				<div class="slide fr">
+					<div class="fltdetail">
+						<p class="fltInfo">
+							<span>06-15\</span>
+							<span>北京-上海\</span>
+							<span>头等舱</span>
+						</p>
+						<div class="clearfix address">
+							<div class="fl from">
+								<p class="time">19:00</p>
+								<p class="city">北京首都T2</p>
+							</div>
+							<div class="fl arrow">
+								<p class="airName">东航MU5124</p>
+								<p class="airLine">
+									<i></i>
+								</p>
+							</div>
+							<div class="fr to">
+								<p class="time">21:15</p>
+								<p class="city">上海虹桥T2</p>
+							</div>
+						</div>
+						<p class="clearfix ticket">
+							<span class="fl ticknow whiteArrup">
+							票务说明
+							</span>
+							<span class="fr">出票保证</span>
+						</p>
+					</div>
+					<div class="ticketDetail clearfix">
+						<ul class="tdList">
+							<li>1、按110%比例累计行程，免费托运行李额为20公斤。</li>
+							<li>1、按110%比例累计行程，免费托运行李额为20公斤。</li>
+							<li>1、按110%比例累计行程，免费托运行李额为20公斤。</li>
+							<a href="javascript:;">查看全部</a>
+						</ul>
+						<div class="tdMess">
+							<p class="fl">
+								<a href="javascript:;">购票须知</a>
+							</p>
+							<p class="fr">
+								<a href="javascript:;">退改签规则</a>
+							</p>
+						</div>
+					</div>
+					<div class="pricenum">
+						<div class="ordertit">
+							<p class="clearfix price">
+								<span class="fl">订单总额</span>
+								<span class="fr pricer">￥4820</span>
+							</p>
+							<p class="pernum clearfix">
+								<span class="fl">明细</span>
+								<span class="fl">(一名乘客)</span>
+								<span class="grayArrup fl personMess"></span>
+							</p>
+						</div>
+						<ul class="orderlist">
+							<li class="clearfix">
+								<span class="fl">成人票</span>
+								<span class="fr">￥4710/人<i>x1</i></span>
+							</li>
+							<li class="clearfix">
+								<span class="fl">成人票</span>
+								<span class="fr">￥4710/人<i>x1</i></span>
+							</li>
+							<li class="clearfix">
+								<span class="fl">成人票</span>
+								<span class="fr">￥4710/人<i>x1</i></span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script>
+	$(function(){
+		//显示方式
+		function show(id,id2,upClass,downClass,ifClass){
+			$(id).on('click',function(){
+				$(id2).toggleClass('active');
+				if($(id).is(ifClass)){
+					$(id).removeClass(upClass);
+					$(id).addClass(downClass);
+				} else {
+					$(id).addClass(upClass);
+					$(id).removeClass(downClass);
+				};
+			});
+		};
+		//票务说明
+		show('.ticknow','.ticketDetail','whiteArrup','whiteArrdown','.whiteArrup');
+		//乘客明细
+		show('.pernum','.orderlist','grayArrup','grayArrdown','.grayArrup');
+		function num(){
+			var len=$('.passengerContent').find('.passInfo').length;
+			for(var i=0;i<len-1;i++){
+				$($('.passInfo')[i]).find('.promptNum').html(i+1);
+			};
+			if(len==2){
+				$('.promptNum').html('');
+			};
+			$('.perLast').html('您还可以新增'+(6-len)+'位乘客')
+		};
+		//添加乘机人
+		function addPerson(){
+			$('.addBtn').on('click',function(){
+				var len=$(this).parents('.passengerContent').find('.passInfo').length;
+				var passInfo=$('.passBox').html();
+				if(len!=6){
+					$('.passBox').before(passInfo);
+					num();
+					// priceCount();
+				};
+			});
+		};
+		addPerson();
+		//删除乘机人
+		function delPerson(){
+			$(document).on('click','.delPerson',function(){
+				var len=$(this).parents('.passengerContent').find('.passInfo').length;
+				if(len!=2){
+					$(this).parents('.passInfo').remove();
+					num();
+					// priceCount();
+				};
+			});
+		};
+		delPerson();
+		//计算票额总价
+		function priceCount(){
+			var price=$('.ticketSizeOn').find('.tprice').html();
+			var Count=$('.passengerContent').find('.passInfo').length-1;
+			$('.pricer').html(price*Count);
+		};
+		// priceCount();
+		//删除图标
+		function toggIcon(){
+			$(document).on('mouseover','.passInfo',function(){
+				$(this).find('.delIocn').addClass('toggIcon');
+			});
+			$(document).on('mouseout','.passInfo',function(){
+				$(this).find('.delIocn').removeClass('toggIcon');
+			});
+		};
+		toggIcon();
+		//下拉框
+		function selectShow(){
+			$('.selectHead').on('click',function(){
+				$('.selectBody').toggleClass('active');
+			});
+		};
+		selectShow();
+		function selectChoose(){
+			$('.selectList').on('click',function(){
+				$(this).parent().prev().html($(this).html())
+			})
+		};
+		selectChoose();
+		//证件
+		function cardCheck(){
+			$('.cardCheck').on('click',function(){
+				$(this).parent().next().toggleClass('active');
+			});
+		};
+		cardCheck();
+		//提交图标切换
+		function submitIcon(){
+			$('.radio').on('click',function(){
+				$(this).toggleClass('submitIcon');
+			})
+		};
+		submitIcon();
+	})
+</script>
+</html>

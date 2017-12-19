@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>嘉宾管理</title>
+<link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="../../../css/common/bootstrap.min.css">
+<link href="../../../css/style.css" rel="stylesheet" />
+<link href="../../../css/main.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../../css/admin.css">
+<!-- 引入项目中每个模块的独立样式 : xxx.css -->
+</head>
+<style type="text/css">
+	.inviteHomepage{
+		width: 220px;
+		border: 1px solid #cccccc;
+		border-radius: 5px;s
+		padding: 6px;
+		margin-left: 10px;
+		float: left;
+		min-height: 473px;
+	}
+	.invite{
+		width: 100px;
+		margin: 0 auto;
+	}
+	.invitemiddle{
+		width: 200px;
+		margin: 0 auto;
+	}
+	.applyInput{
+		margin-bottom: 10px;
+		/*width: 152px;*/
+	}
+	/*.applyname{
+		width: 194px;
+	}*/
+</style>
+<body>
+<!-- 引入页头 -->
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="guestsControl.html">嘉宾管理</a>
+		<a href="">-&gt;</a>
+		<a href="guestsInvitation.html">发送邀请函</a>
+	</div>
+	<div class="con-box">
+	<!-- 以下为每个页面自己编写的部分 -->
+	<div id="subMenu">
+        <div id="subMenuBody">
+            <ul>
+                <a href="guestsControl.html"><li >嘉宾管理</li></a>
+				<a href="guestsActivity.html"><li>嘉宾日程</li></a>
+				<a href="guestsInvitation.html"><li class="menuAct">电子邀请函</li></a>
+				<a href=""><li>纸质邀请函</li></a>
+            </ul>
+        </div>
+    </div>
+    <div id="contentBody" class="mops-table">
+		<div>
+			<div class="inviteHomepage">
+				<div class="invitemiddle">
+					<h4 class="invite">邀请函</h4>
+					<br>
+					<p>尊敬的先生和女士：</p>
+		　　			<p>
+						&nbsp;&nbsp;中共中央关于“十三五”时期的规划建议，
+						明确提出了坚持创新、协调、绿色、开放、共享的发展理念，并做出全面深刻的诠释。。
+					</p>
+		　　			<p>
+						&nbsp;&nbsp;本届年会下午主题为新理念 新格局 新发展 
+						——“十三五”互联网金融创新与行业发展，将由中国互联网金融创新研究院与互联网金融千人会(IFC1000)联合承办.
+					</p>
+		　　			<p>
+						&nbsp;&nbsp;我们诚挚地邀请互联网金融行业有志之士作为嘉宾出席20XX金融时报年会(名额有限)，时间：12月18日13:30(签到13：00)。我们热切期待您能拨冗出席，感谢您的支持!
+					</p>
+				</div>
+			</div>
+
+			<div class="inviteHomepage">
+				<div class="invitemiddle">
+					<h4 class="invite">会议日程</h4>
+					<br>
+					<p>一、领导致辞 9:00-9:30</p>
+					<p>二、专家发言 9:30-11:00</p>
+					<p>三、发布仪式 11:00-12:00</p>
+					<p>四、午餐 12:00-13:30</p>
+					<p>五、十三五规划之大数据专场 13:30-15:00</p>
+					<p>六、十三五新理念专场 15:00-16:00</p>
+					<p>七、十三五互联网创新 16:00-18:00</p>
+					<p>八、答谢晚宴 18:30-20:00</p>
+				</div>
+			</div>
+			<div class="inviteHomepage">
+				<div class="invitemiddle">
+					<h4 class="invite">会议详情</h4><br>
+					<p>
+						主办单位:<br>
+						&nbsp;&nbsp;江苏省人民政府 <br>	
+						&nbsp;&nbsp;启迪控股有限公司
+					</p>
+					<p>
+						承办单位: <br>
+						&nbsp;&nbsp;世纪协达科技有限公司 <br>	
+						&nbsp;&nbsp;数字产城联盟
+					</p>
+					<p>
+						协办单位: <br>
+						&nbsp;&nbsp;江苏省人民政府 <br>	
+						&nbsp;&nbsp;启迪控股有限公司
+					</p>
+					<p>
+						会议时间: <br>
+						&nbsp;&nbsp;2017年6月24号 <br>	
+					<p>
+						会议地点: <br>
+						&nbsp;&nbsp;北京市朝阳区
+					</p>
+				</div>
+			</div>
+			<div class="inviteHomepage">
+				<div class="invitemiddle">
+					<h4 class="invite">参会报名</h4><br>
+				</div>
+			</div>
+			<div class="inviteHomepage">
+				<div class="invitemiddle">
+					<h4 class="invite">参会报名</h4><br>
+					<div>
+					姓名: <input type="text" class="form-control applyInput">
+					电话: <input type="text" class="form-control applyInput">
+					性别: <input type="text" class="form-control applyInput">
+					公司名称: <input type="text" class="form-control applyInput applyname">
+					部门职位: <input type="text" class="form-control applyInput applyname">
+					<div class="btncon">
+					<button type="button" class="btn btn-default btn-warning save">提交</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>    
+</div> 
+
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/main.js"></script>
+<script type="text/javascript">
+	// 获取左侧菜单列表数据(参数为请求地址)
+	initMenu('../../../js/data/administrator.json','嘉宾管理');
+</script>
+</html>
+

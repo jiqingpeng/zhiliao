@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>酒店机票</title>
+<link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+<link href="../../../css/style.css" rel="stylesheet" />
+<link href="../../../css/main.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../../css/admin.css">
+<!-- 引入项目中每个模块的独立样式 : xxx.css -->
+<style>
+	.sTime, .eTime{
+		background-color: #fff !important;
+	}
+</style>
+</head>
+<body>
+<!-- 引入页头 -->
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="guestsControl.html">嘉宾管理</a>
+		<a href="">-&gt;</a>
+		<a href="guestsWinTic.html">酒店机票</a>
+	</div>
+	<div class="con-box">
+	<!-- 以下为每个页面自己编写的部分 -->
+	<div id="subMenu">
+        <div id="subMenuBody">
+            <ul>
+                <a href="guestsControl.html"><li>嘉宾登记</li></a>
+				<a href="guestsActivity.html"><li>嘉宾日程</li></a>
+				<a href="guestsEleInvite.html"><li>电子邀请函</li></a>
+				<a href="guestsPapInvite.html"><li>纸质邀请函</li></a>
+				<a href="guestsWinTic.html"><li class="menuAct">酒店机票</li></a>
+            </ul>
+        </div>
+    </div>
+    <div id="contentBody" class="mops-table">
+	
+	</div>
+	</div>    
+</div> 
+
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/main.js"></script>
+<script type="text/javascript">
+	// 获取左侧菜单列表数据(参数为请求地址)
+	initMenu('../../../js/data/administrator.json','嘉宾管理');
+    
+</script>
+</html>
+

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<!-- <meta charset="UTF-8"> -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>查看签到</title>
+<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="../../../css/common/bootstrap.css">
+<link rel="stylesheet" href="../../../css/common/bootstrap-table.min.css">
+<link href="../../../css/style.css" rel="stylesheet" />
+<link href="../../../css/main.css" rel="stylesheet" />
+<style type="text/css">
+	.bootstrap-table {
+        max-width: 1000px;
+        margin-left: 40px;
+    }
+</style>
+</head>      
+<body>
+<!-- 引入页头 -->
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="basicInfo.html">管理中心</a>
+		<a href="">-&gt;</a> 
+		<a href="basicInfo.html">会议管理</a>
+		<a href="">-&gt;</a>
+		<a href="actSign.html">查看签到</a>
+	</div>
+	<div class="con-box" id="box">
+		<div id="subMenu">
+		</div>
+		<div id="contentBody" class="mops-table">
+			<input type="hidden" id="activityId"/>
+			<table id="texttable"></table> 
+		</div>
+	</div>	
+</div>
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/bootstrap-table.min.js"></script>
+<script src="../../../js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/main.js"></script>               
+<script type="text/javascript">
+	$(function(){
+		// 获取左侧菜单列表数据(参数为请求地址)
+		serialMenuAjax('admin/activity/menu.do', '会议管理', sessionStorage.getItem('actId'), initPage);
+		setSubMenu('查看签到');
+
+		$("#activityId").val(sessionStorage.getItem("actId"))
+
+	});
+	function initTable(data){
+		$('#texttable').bootstrapTable({
+	            dataLocale: 'zh-CN',               //表格汉化
+	            striped: true,                      //是否显示行间隔色
+	            cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+	            pagination: true,                   //是否显示分页（*）
+	            sortable: false,                     //是否启用排序
+	            sortOrder: "asc",                   //排序方式
+	            sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
+	            pageNumber:1,                       //初始化加载第一页，默认第一页
+	            pageSize: 10,                       //每页的记录行数（*）
+	            pageList: [10,20,30,40,50],        //可供选择的每页的行数（*）
+	            search: true,                 
+	            strictSearch: false,
+	            showRefresh: true,                  //是否显示刷新按钮       
+	            clickToSelect: true,                //是否启用点击选中行
+	            columns: [{
+		            field: 'id',
+	                title: 'ID'
+        		},{
+		            align: 'center',
+		            width: 50,
+		            formatter: function(value,row,index){
+		                return index+1;
+		            }
+        		},
+	            {
+	                field: 'name',
+	                title: '姓名',
+	                align: 'center'
+	            }, {
+	                field: 'mobile',
+	                title: '手机',
+	                align: 'center'
+	            }, {
+	                field: 'ctime',
+	                title: '签到时间',
+	                align: 'center'
+	            }]    
+	    });
+	    $("#texttable").bootstrapTable('hideColumn','id');
+	    $('#texttable').bootstrapTable('load',data);
+	};
+	function initPage(){
+		$.myAjax({
+			url: basePath + "admin/activity/sign/list.do",
+			data: {id:$("#activityId").val()},
+			success: function(result){
+				// console.log(result);
+				if(result.flag){
+					var data = result.data;
+				}else{
+					myConfirm(result.msg);
+				}
+				initTable(data);
+			},
+			error: function(){
+				myAlert("请求失败", "slow");
+			}
+		});
+	}
+</script> 
+
+</html>

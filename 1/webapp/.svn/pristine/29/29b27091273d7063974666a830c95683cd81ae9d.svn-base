@@ -1,0 +1,67 @@
+/**
+* 页脚相关独立页面样式
+*/
+.contain {
+ 	width: 1160px;
+}
+.contain .bannimg .logor{
+    width:1160px;
+}
+.contain .bannimg {
+  padding: 0;
+}
+.indepcontent {
+	width: 1160px;
+	margin: 14px auto;
+	min-height: 375px;
+	background-color: #fff;
+}
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 18px auto;
+    color: #333;
+    text-align: center;
+}
+h3 {
+    font-weight: bold;
+    color: #333;
+}
+.indepcontent p {
+    margin: 0 48px;
+    text-indent: 2em;
+    font-size: 14px;
+    color: #333;
+    line-height: 30px;
+}
+
+.contactcon {
+    margin-top: 60px;
+}
+.qcode {
+	margin-left: 150px;
+	height: 258px;
+	width: 258px;
+}
+pre { 
+	padding: 0 48px; 
+	width: 1024px; 
+	word-wrap: break-word; 
+	white-space:pre-wrap; 
+	white-space: -moz-pre-wrap; 
+	font-size: 14px; 
+	color: #666; 
+}
+#declarecon { 
+	padding: 0 48px; 
+	word-wrap: break-word; 
+	line-height: 30px; 
+	font-size: 14px; 
+	color: #333; 
+}
+.btnApply{
+	text-align: center;
+}
+/*.bannimg{
+	margin-left: 58px;
+}*/

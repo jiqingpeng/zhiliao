@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+	<title>组织机构</title>
+	<link rel="stylesheet" href="../../../css/app/base.css">
+	<link rel="stylesheet" href="../../../css/app/org.css">
+	<link rel="stylesheet" href="../../../css/app/header-app.css">
+	<style>
+		.box{
+			margin-top: 48px;
+			top:0;
+		}
+	</style>
+</head>
+<body>
+	<header class="app-header">
+		<div class="navImg">
+			<img src="../../../img/app/arrowLeft-icon.png">
+		</div>
+		<div class="navDetail">组织机构</div>
+	</header>
+	<section class="box">
+		<section class="org">
+			<!-- <article class="org-unit">
+				<header class="org-tit">
+					<span class="org-line"></span>
+					<span class="org-txt">主办单位</span>
+				</header>
+				<section class="org-list">
+					<div class="org-name">中国教育后勤协会</div>
+					<div class="org-name">中国教育后勤协会</div>
+					<div class="org-name">中国教育后勤协会</div>
+				</section>
+			</article> -->
+		</section>
+	</section>
+</body>
+
+<script src="../../../js/zepto.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<!-- <script src="../../../js/app/mtTool.js"></script> -->
+<script>
+$(function(){
+	var actId = Request('id');
+	$.myAjax({
+		url : basePath + 'mt/user/activity/get.do?id='+actId+'&type=base,org' ,
+		success : function(result){
+			if(result.flag){
+				var org = result.data.org;
+				//判断组织机构是否为空
+				if(org.length == 0){
+					myConfirm("暂无组织机构内容");
+					return;
+				};
+				var con = '';
+				for(var i = 0; i < org.length; i ++){
+					var str =
+						'<article class="org-unit">'+
+							'<header class="org-tit">'+
+								'<span class="org-line"></span>'+
+								'<span class="org-txt">'+org[i].name+'</span>'+
+							'</header>'+
+							'<section class="org-list">';
+						var string = '';
+						var orgList = org[i].value;
+						for(var j = 0; j < orgList.length; j ++){
+							 string += '<div class="org-name">'+orgList[j]+'</div>';
+						};
+						con = str + string +'</section>'+
+						'</article>';
+						$('.org').append(con);
+				};
+				
+			}else{
+				myAlert(result.msg, "slow");
+			}
+		},
+		error: function(){
+			$(".loading").remove();
+			myConfirm("请求失败!");
+		}
+	});
+})
+</script>
+</html>
+

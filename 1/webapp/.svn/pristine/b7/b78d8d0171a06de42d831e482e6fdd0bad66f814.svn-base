@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>aries</display-name>
+	<!-- 欢迎页面 -->
+	<welcome-file-list>
+		<welcome-file>page/index/index.html</welcome-file>
+	</welcome-file-list>
+
+
+	<!-- 参数 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:config/spring.xml;classpath:config/log4jAOP.xml;classpath:config/spring-mybatis.xml;classpath:config/spring-redis.xml;</param-value>
+	</context-param>
+
+	<!-- 过滤器 -->
+	<filter>
+		<description>字符集过滤器</description>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<description>字符集编码</description>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- url过滤器 -->
+	<!-- <filter> <filter-name>urlFilter</filter-name> <filter-class>com.sjxd.gconfs.mng.filter.UrlFilter</filter-class> 
+		</filter> <filter-mapping> <filter-name>urlFilter</filter-name> <url-pattern>/*</url-pattern> 
+		</filter-mapping> -->
+	<!--由Spring载入的Log4j配置文件位置 -->
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>classpath:config/log4j.properties</param-value>
+	</context-param>
+	<!--Spring默认刷新Log4j配置文件的间隔,单位为millisecond -->
+	<context-param>
+		<param-name>log4jRefreshInterval</param-name>
+		<param-value>60000</param-value>
+	</context-param>
+	<!-- Log4jConfigListener会去log4j.propeties 读取配置文件;开一条watchdog线程每60秒扫描一下配置文件的变化 -->
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+	<!-- session监听 -->
+	<listener>
+		<listener-class>com.sjxd.gconfs.mng.listener.SessionListener</listener-class>
+	</listener>
+	<!-- session过期 -->
+	<session-config>
+		<session-timeout>60</session-timeout>
+	</session-config>
+	<!-- 监听器 -->
+	<listener>
+		<description>spring监听器</description>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<!-- Spring 刷新Introspector防止内存泄露 -->
+	<listener>
+		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+	</listener>
+
+	<!-- Servlet -->
+	<servlet>
+		<description>spring mvc servlet</description>
+		<servlet-name>springMvc</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<description>spring mvc 配置文件</description>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:config/spring-mvc.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>springMvc</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	<!-- 静态资源 -->
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<!-- 图片 -->
+		<url-pattern>*.ico</url-pattern>
+		<url-pattern>*.jpg</url-pattern>
+		<url-pattern>*.jpeg</url-pattern>
+		<url-pattern>*.image</url-pattern>
+		<url-pattern>*.png</url-pattern>
+		<url-pattern>*.gif</url-pattern>
+		<!-- 样式 -->
+		<url-pattern>*.css</url-pattern>
+		<url-pattern>*.woff</url-pattern>
+		<url-pattern>*.ttf</url-pattern>
+		<!-- js相关 -->
+		<url-pattern>*.js</url-pattern>
+		<url-pattern>*.json</url-pattern>
+		<url-pattern>*.swf</url-pattern>
+		<url-pattern>*.txt</url-pattern>
+		<!-- 页面 -->
+		<url-pattern>*.html</url-pattern>
+	</servlet-mapping>
+</web-app>

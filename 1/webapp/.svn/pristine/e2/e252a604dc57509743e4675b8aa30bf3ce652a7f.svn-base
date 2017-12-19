@@ -1,0 +1,144 @@
+.wrap {
+  width: 1160px;
+}
+.wrap .group {
+  width: 290px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+}
+.wrap .group h4 {
+  height: 30px;
+  border-bottom: 1px solid #ccc;
+  font-size: 16px;
+  line-height: 30px;
+  font-weight: bold;
+}
+.wrap .group h4 #totalAttend{
+  margin-right:5px;
+}
+.wrap .group h4 img {
+  margin-top: 10px;
+  margin-left: 5px;
+}
+.wrap .group .item{
+  margin-left:5px;
+}
+.wrap .group .item div {
+  margin: 5px 0;
+  margin-left: 5px;
+}
+// .wrap .group .item .mess_issue{
+//     position:relative;
+//     height:90px;
+// }
+// .wrap .group .item .mess_issue2{
+//     position:absolute;
+//     left:0;
+//     top:0;
+//     // display: none;
+//     height:90px;
+//     border:1px solid red;
+// }
+// .wrap .group .item .mess_issue:hover{
+//     height:90px;
+//     border:1px solid red;
+//     display: block;
+// }
+.wrap .group .item div p {
+  margin-top: 10px;
+}
+.wrap .group .item div img {
+  margin-left: 48px;
+}
+.wrap .group .item div .sign {
+  width: 86px;
+  height: 24px;
+  line-height: 24px;
+  padding: 6px;
+  margin: 0 auto;
+  margin-top: 30px;
+  background: #f0ad4e;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+}
+.wrap .group .item div .sign a {
+  color: #fff;
+}
+.wrap .group .item .h60 {
+  height: 114px;
+}
+.wrap .contact {
+  height: 375px;
+  border: 1px solid #ccc;
+}
+.wrap .contact .item {
+  margin-left: 22px;
+}
+.wrap .contact .item div {
+  font-weight: 700;
+}
+.wrap .contact .item .tit {
+  margin: 20px 0;
+}
+.wrap .contact ul {
+  margin-left: 5px;
+}
+.wrap .contact ul li {
+  margin-top: 10px;
+}
+.wrap .contact .code {
+  width: 100px;
+  height: 100px;
+  margin-top: 30px;
+  margin-left: 20px;
+}
+.wrap .wrap-l {
+  width: 290px;
+}
+.wrap .wrap-c {
+  width: 578px;
+}
+.wrap .wrap-c .bann {
+  display: block;
+  margin: 0 auto;
+}
+.wrap .wrap-c h4 {
+  height: 30px;
+  margin: 10px 5px;
+  font-size: 16px;
+  line-height: 30px;
+  font-weight: bold;
+}
+.wrap .wrap-c h4 img {
+  margin-top: 10px;
+}
+.wrap .wrap-c .message {
+  margin: 0 10px;
+  margin-top: 26px;
+}
+.wrap .wrap-c .message p {
+  text-indent: 2em;
+  margin-top: 10px;
+}
+.wrap .wrap-r {
+  width: 290px;
+}
+.person {
+  width: 1160px;
+  margin-top: 5px;
+}
+.person h4 {
+  width: 1155px;
+  height: 30px;
+  line-height: 30px;
+  border: 1px solid #ccc;
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 5px;
+}
+.person div {
+  width: 100%;
+  height: 50px;
+  border: 1px solid #ccc;
+}

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta content="text/html"/>
+<title>站内信息</title>
+<link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+<link href="../../css/common/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../css/common/bootstrap-table.min.css"/>
+<link href="../../css/style.css" rel="stylesheet" />
+<link href="../../css/main.css" rel="stylesheet" />
+<!-- 引入项目中每个模块的独立样式 : xxx.css -->
+<link href="../../css/user.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- 引入页头 -->
+<script type="text/javascript" src="../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="myActivity.html">我的会议</a>
+	</div>
+	<div class="con-box">
+		<!-- 以下为每个页面自己编写的部分 -->
+		<div class="actBox">
+			<form class="form-horizontal message">
+				<table id="stationTable">
+				</table>
+			</form>
+		</div>
+	</div>     
+</div> 
+<script type="text/javascript" src="../../js/common/footer.js"></script>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/common/main.js"></script>
+<script src="../../js/bootstrap-table.min.js"></script>
+<script src="../../js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../js/user/userMain.js"></script>
+<script type="text/javascript">
+$(function(){
+	// 获取左侧菜单列表数据(参数为请求地址)
+	// initMenu('common/menu.do', '站内信息');
+	serialMenuAjax('common/menu.do','站内信息',null,initPage);
+
+	//首页
+	$(document).on('click','.nav a',function(){
+		$(this).attr('href','../index/index.html');
+	});
+	
+});
+
+function initPage(){
+	$('.intro .message').css('display','block');
+	$.myAjax({
+		url: basePath+"user/usermessage/list.do",
+		data:{id:Request('location')},
+		success:function(result){
+			if(result.flag){
+				if(result.status){
+					loginInfo(result.status);
+				};
+				var stationData=result.data;
+				var	stationList=[
+							{
+				                field: 'sendTime',
+				                title: '时间',
+				                valign: 'middle',
+				                align: 'left',
+				                width: '200',
+            				},{
+				                field: 'senderName',
+				                title: '发信人',
+				                width:  '150',
+				                align: 'left',
+				                valign: 'middle',
+				               }
+				            },{
+				                field: 'message',
+				                title: '活动消息',
+				                width:  '700',
+				                align: 'left',
+				                valign: 'middle',
+				            }
+				   //          ,
+				   //          {
+				   //              field: 'state',
+				   //              title: '状态',
+				   //              width:  '50',
+				   //              align: 'left',
+				   //              valign: 'middle',
+							// }
+							];
+				table('#stationTable',stationData,stationList);
+			}else{
+				myAlert(result.msg);
+			};
+		},
+		error:function(){
+			myAlert('请求失败');
+		}
+	});
+};
+</script>
+</html>
+

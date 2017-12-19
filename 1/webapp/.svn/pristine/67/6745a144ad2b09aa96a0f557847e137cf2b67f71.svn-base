@@ -1,0 +1,1644 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>鎴戠殑浼氳</title>
+<link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+<link href="../../css/common/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../css/common/bootstrap-table.min.css"/>
+<link href="../../css/style.css" rel="stylesheet" />
+<link href="../../css/main.css" rel="stylesheet" />
+<!-- 寮曞叆椤圭洰涓瘡涓ā鍧楃殑鐙珛鏍峰紡 : xxx.css -->
+<link href="../../css/user.css" rel="stylesheet"/>
+<link rel="stylesheet" href="../../css/index/trainOrderListM.css">
+<style>
+	/*琛ㄦ牸鍘昏竟妗�/
+	.bootstrap-table{
+		margin-left:20px;
+		border:none;
+	}
+	.fixed-table-container{
+		border:none;
+	}
+	#noteTable tr th{
+		border:none;
+	}
+	#noteTable tr td{
+		border:none;
+	}
+	#emailTable tr th{
+		border:none;
+	}
+	#emailTable tr td{
+		border:none;
+	}
+	#actTable tr th{
+		border:none;
+	}
+	#actTable tr td{
+		border:none;
+	}
+	#standTable tr th{
+		border:none;
+	}
+	#standTable tr td{
+		border:none;
+	}
+	.actBox{
+		/*border:1px solid red;*/
+		width:1060px;
+		
+	}
+	.actBox .actTit{
+		/*background:#fe6600;*/
+		text-align: center;
+		font-weight: bold;
+		color:#000;
+		
+	}
+	.actBox .actList{
+		margin-left:20px;
+		margin-top:20px;
+	}
+	.actBox .actList .group{
+		/*border:1px solid #ccc;*/
+		margin-top:10px;
+		border-radius:4px 4px 0 0;
+	}
+	.actBox .actList .group .groupTit{
+		height:34px;
+		line-height:34px;
+		border-bottom:1px solid #2095f2;
+		color:#000;
+		font-weight:bold;
+		font-size:20px;
+	}
+	.actBox .actList .group .groupTit:hover{
+		cursor:pointer;
+		/*background:#f0f0f0;*/
+	}
+	.actBox .actList .group .form-group{
+		width:100%;
+		margin-top:10px;
+	}
+	.actBox .actList .group .form-group #allmap{
+		margin-left:15px;
+		width:300px;
+		height:200px;
+	}
+	.actBox .actList .group .form-group .mapInfo{
+		
+		width:300px;
+		height:200px;
+	}
+	.actBox .actList .group .form-group label{
+		text-align:left;
+		margin-left:10px;
+	}
+	.actBox .actList .group .form-group button{
+		margin-left:-5px;
+		margin-top:5px;
+	}
+	.actBox .actList .group .paperMessage{
+		margin-left:-5px;
+		margin-top:7px;
+	}
+	.actBox .actList .group .form-group .invoiceText,.invoiceInput{
+		margin-top:5px;
+	}
+	.actBox .actList .group .form-group .invoiceMess{
+		
+	}
+	.actBox .actList .group .form-group .invoiceMess .type{
+		height:46px;
+		margin-right:5px;
+	}
+	.actBox .actList .group .form-group .invoiceMess .money{
+		border-bottom:1px solid #000;
+	}
+	.actBox .actList .group .message{
+		display:none;
+		position: relative;
+		/*border:1px solid red;*/
+	}
+	.actBox .actList .group .introduction{
+		width:1040px;
+		line-height: 15px;
+		line-height:24px;
+		text-indent: 2em;
+	}
+	.actBox .actList .group .message .more{
+		display: inline-block;
+		margin-top:10px;
+		margin-left:970px;
+	}
+	.actBox .actList .group .message .trAcc{
+		width:850px;
+		/*border:1px solid red;*/
+		margin-top:10px;
+	}
+	.actBox .actList .group .message .trAcc td{
+		padding:5px 10px;
+	}
+	
+	.actBox .actList .group .message .messInfo{
+		margin-top:10px;
+		margin-left:10px;
+	}
+	.actBox .actList .group tbody tr td{
+		border:1px solid #ccc;
+	}
+	.actBox .actList .group tbody .thead{
+		background:#666;
+	}
+	.progress{
+		/*width:200px;*/
+		margin:20px auto;
+		
+	}
+	.progress-bar{
+		border-right:1px solid #ccc;
+		/*margin-top:20px;*/
+	}
+	.ml20{
+		margin-left:20px;
+	}
+	/*鏈虹エ*/
+	.actBox .actList .group .message .form-group .traffic{
+		/*border:1px solid red;*/
+	}
+	.actBox .actList .group .message .form-group .trafficBox{
+		width:300px;
+		height:261px;
+		border:2px solid #2095f2;
+		margin:10px 23px 0;
+	}
+	.actBox .actList .group .message .form-group .trafficBox button{
+		width:150px;
+		height:26px;
+		line-height: 26px;
+		margin-left:108px;
+		margin-bottom: 18px;
+		background:#e57c00;
+		color:#fff;
+		border:1px solid #e57c00;
+	}
+	.actBox .actList .group .message .form-group .trafficBox .traHead{
+		height:30px;
+		color:#fff;
+		line-height: 30px;
+		background:#2095f2;
+	}
+	.actBox .actList .group .message .form-group .trafficBox .traBody{
+		width:270px;
+		height:138px;
+		padding:0 15px;
+		margin:0 auto;
+	}
+	.actBox .actList .group .message .form-group .trafficBox .traBody #homecity_name,#getcity_name,#trainhomecity_name,#traingetcity_name{
+		width:151px;
+		height:34px;
+
+	}
+	.actBox .actList .group .message .form-group .trafficBox .traBody .form-control{
+		display: inline-block;
+		width:151px;
+	}
+	.actBox .actList .group .message .form-group .trafficBox .traBody li{
+		margin:10px 0;
+	}
+	.actBox .actList .group .message .form-group .trafficBox .traBody li span{
+		margin-right:16px;
+	}
+	.actBox .actList .group .message .form-group .trafficBox .traType{
+		width:150px;
+		height:20px;
+		margin-left:30px;
+		margin-top:10px;
+	}
+	.actBox .actList .group .message .form-group .trafficBox .active{
+		border-bottom:2px solid #6ab30b;
+	}
+	.trafficBox .traType li{
+		margin-right:15px;
+	}
+	.grogshopBox{
+		margin-top: 10px;
+		width: 182px;
+		/*height: 180px;*/
+		border: 2px solid #2095f2;
+		margin-left: 26px;
+	}
+	
+	.grogshopBox .grogContent{
+		position: relative;
+		width: 162px;
+		/*height: 208px;*/
+		margin: 10px;
+	}
+	.grogName{
+		text-align: center;
+		margin-bottom: 5px;
+		height: 19px;
+		overflow: hidden;
+	}
+	.grogStar{
+		/*margin: 0 auto;*/
+		/*width: 37px;*/
+		/*height: 20px;*/
+		background: url("../../img/index/grogStar.png") no-repeat;
+	}
+	.grogImg{
+		height: 58px;
+		width: 162px;
+		margin: 0 auto;
+	}
+	.grogImg img{
+		display: block;
+		height: 58px;
+		width: 162px;
+		/*margin-left: 32px;*/
+		margin-bottom: 5px;
+	}
+	.grogBigBox{
+		background-color: #fff;
+		width: 382px;
+		min-height: 424;
+		border: 2px solid #ccc;
+		display: none;
+		position: absolute;
+		top: -12px;
+		left: 182px;
+		z-index: 100;
+	}
+	.grogRightBox{
+		background-color: #fff;
+		width: 382px;
+		min-height: 424;
+		border: 2px solid #ccc;
+		display: none;
+		position: absolute;
+		top: -12px;
+		left: -406px;
+		z-index: 100;
+	}
+	#grogName{
+		margin-top: 10px;
+	}
+	.bigImgBox{
+		width: 260px;
+		margin: 0 auto;
+	}
+	.distance{	
+		margin: 10px 10px;
+	}
+	.bigImgBox img{
+		display: block;
+		width: 260px;
+	}
+	.grogBigBox .leftImg{
+		width: 10px;
+		height: 16px;
+		position: absolute;
+		top: 74px;
+		left: -9px;
+	}
+	.rightImg{
+		width: 10px;
+		height: 16px;
+		position: absolute;
+		top: 74px;
+		right: -9px;
+		transform: rotate(180deg);
+	}
+	.grogAddress{
+		overflow: hidden;
+		height: 19px;
+		margin-top: 5px;
+		font-size: 12px;
+	}
+	.grogPrice{
+		height: 19px;
+		overflow: hidden;
+		min-width: 64px;
+		text-align: center;
+	}
+	.grogPrice span{
+		color: red;
+		font-size: 14px;
+		font-weight: 700;
+	}
+	.reserve a{
+		display: block;
+		width: 131px;
+		height: 22px;
+		line-height: 22px;
+		font-weight: 500;
+		font-size: 14px;
+		border: 1px solid #ff7800;
+		background-color: #ff7800;
+		margin: 0 auto;
+		text-align: center;
+		color: #fff;
+	}
+	.floatLeft{
+		float: left;
+	}
+	.imgUp, .imgDown{
+		float: right;
+		background-color: #fff;
+		width: 80px;
+		height: 31px;	
+		transform: rotate(180deg);
+	}
+	.imgTans{
+		transform: rotate(360deg);
+	}
+	.emailTit:hover{
+		cursor:pointer;
+	}
+</style> 
+</head>
+<body>
+<!-- 寮曞叆椤靛ご -->
+<script type="text/javascript" src="../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="myActivity.html">鎴戠殑浼氳</a>
+	</div>
+	<div class="con-box">
+		<!-- 浠ヤ笅涓烘瘡涓〉闈㈣嚜宸辩紪鍐欑殑閮ㄥ垎 -->
+		<div class="actBox">
+			<input type="hidden" id="id"/>
+			<h3 class="actTit">鍥介檯鏉愯仈-浜氭床鏉愭枡澶т細</h3>
+			<div class="actList">
+				<div class="group intro">
+					<h4 class="groupTit"><img class="imgUp" src="../../img/index/down.png"><img class="imgDown none" src="../../img/index/up.png">涓��娲诲姩绠�粙</h4>
+					<div class="message">
+						<a class="more onDetail" href="">鏌ョ湅璇︽儏</a>
+						<div class="introduction">
+							
+						</div>
+					</div>
+				</div>
+				<div class="group">
+					<h4 class="groupTit">浜屻�娲诲姩鍔ㄦ�<img class="imgDown none" src="../../img/index/down.png"><img class="imgUp" src="../../img/index/up.png"></h4>
+					<form class="form-horizontal message">
+						<div class="form-group ml">
+						    <label for="inputEmail3" class="col-sm-2 control-label">涓诲姙鏂规彁绀猴細</label>
+						    <div class="paperMessage">
+						      	鎮ㄦ湁鏂扮殑娲诲姩鍔ㄦ�
+						    </div>
+						    <table id="actTable">
+            				</table>
+						</div>
+					</form>
+					<!-- <ul class="message">
+						<li class="messInfo">
+							<span class="time">2017-05-31</span>
+							<span class="time">鎻愪氦鎶ュ悕琛�/span>
+							<a href="javascript:;">鏌ョ湅鎶ュ悕琛�/a>
+							<span class="time">宸茶</span>
+						</li>
+						<li class="messInfo">
+							<span class="time">2017-06-05</span>
+							<span class="time">涓诲姙鏂瑰闃呮姤鍚嶈〃锛屾姤鍚嶉�杩囧鏍�/span>
+							<span class="time">宸茶</span>
+						</li>
+						<li class="messInfo">
+							<span class="time">2017-06-18</span>
+							<span class="time">涓诲姙鏂归�鐭ュ弬浼�/span>
+							<span class="time">鏈</span>
+						</li>
+						<li class="messInfo">
+							<span class="time">2017-06-19</span>
+							<span class="time">棰勫畾鏈虹エ</span>
+							<span class="time">涓诲姙鏂瑰凡</span>
+							<span class="time">鏈</span>
+						</li>
+						<li class="messInfo">
+							<span class="time">2017-06-19</span>
+							<span class="time">宸查璁㈤厭搴�/span>
+							<span class="time">宸茶</span>
+						</li>
+						<li class="messInfo">
+							<span class="time">2017-06-20</span>
+							<span class="time">涓诲姙鏂瑰凡鏌ラ槄鎮ㄧ殑鏈虹エ閰掑簵淇℃伅锛岃鏌ラ槄涓诲姙鏂瑰鍐呬氦閫氭彁绀�/span>
+							<span class="time">宸茶</span>
+						</li>
+						<!-- <li class="progress">
+							<div class="progress-bar progress-bar-success" style="width: 25%">
+							    <span class="sr-only">35% Complete (success)</span>宸叉姤鍚�
+							</div>
+							<div class="progress-bar progress-bar-success" style="width: 25%">
+							  	<span class="sr-only">20% Complete (warning)</span>宸插鏍�
+							</div>
+							<div class="progress-bar progress-bar-success" style="width: 25%">
+							    <span class="sr-only">10% Complete (danger)</span>宸查�杩囧鏍�
+							</div>
+							<div class="progress-bar progress-bar-defulit" style="width: 25%">
+							    <span class="sr-only">10% Complete (danger)</span>鍙弬浼�
+							</div>
+						</li> -->
+					<!-- </ul>  -->
+				</div>
+				<div class="group">
+					<h4 class="groupTit">涓夈�鎻愪氦璁烘枃<img class="imgDown none" src="../../img/index/down.png"><img class="imgUp" src="../../img/index/up.png"></h4>
+					<form class="form-horizontal message">
+						  <div class="form-group ml">
+							    <label for="inputEmail3" class="col-sm-2 control-label">鎻愪氦涓诲姙鏂硅鏂囨彁绀猴細</label>
+							    <div class="paperMessage col-sm-2">
+							      	鎮ㄧ殑璁烘枃宸插彲浠ユ彁浜�
+							    </div>
+						  </div>
+						  <div class="form-group">
+							    <label for="inputPassword3" class="col-sm-2 control-label"></label>
+							    <div class="col-sm-3">
+							      <input type="password" class="form-control" id="inputPassword3"/>
+							    </div>
+							    <button>涓婁紶闄勪欢</button>
+							    <span>(浠呴檺word,pdf鏂囦欢)</span>
+						  </div>
+					</form>
+				</div>
+				<div class="group">
+					<h4 class="groupTit">鍥涖�鍙備細缂磋垂<img class="imgDown none" src="../../img/index/down.png"><img class="imgUp" src="../../img/index/up.png"></h4>
+					<form class="form-horizontal message">
+						<div class="form-group ml">
+						    <label for="inputEmail3" class="col-sm-2 control-label">鎻愪氦涓诲姙鏂硅鏂囨彁绀猴細</label>
+						    <div class="paperMessage col-sm-2">
+						      	鎮ㄥ彲浠ヤ氦璐�
+						    </div>
+						</div>
+						<div class="form-group ml">
+						    <label for="inputEmail3" class="col-sm-2 control-label"></label>
+						    <div class="paperType col-sm-4">
+								<span>
+									<i>&bull;</i>
+									<a href="javascript:;">寰俊杞处</a>
+								</span>
+								<span>
+									<i>&bull;</i>
+									<a href="javascript:;">缃戦摱</a>
+								</span>
+								<span>
+									<i>&bull;</i>
+									<a href="javascript:;">鏀粯瀹�/a>
+								</span>
+							</div>
+						</div>
+						<!-- <p class="paperType">
+							<span>
+								<i>&bull;</i>
+								<a href="javascript:;">寰俊杞处</a>
+							</span>
+							<span>
+								<i>&bull;</i>
+								<a href="javascript:;">缃戦摱</a>
+							</span>
+							<span>
+								<i>&bull;</i>
+								<a href="javascript:;">鏀粯瀹�/a>
+							</span>
+						</p> -->
+						<div class="form-group ml">
+						    <label for="inputEmail3" class="col-sm-2 control-label invoiceText">鍙戠エ鎶ご</label>
+						    <div class="col-sm-2">
+							      <input type="password" class="form-control invoiceInput" id="inputPassword3"/>
+							</div>
+							<div class="clearfix invoiceMess col-sm-4">
+								<p class="fl type">绫诲埆</p>
+								<p class="fl">
+									<p>
+										<input type="radio" name="a">
+										<span>浼氳璐�/span>
+									</p>
+									<p>
+										<input type="radio" name="a">
+										<span>璁烘枃鍑虹増璐�/span>
+										<span class="money">1000鍏�/span>
+									</p>
+								</p>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="group">
+					<h4 class="groupTit">浜斻�棰勫畾鏈虹エ<img class="imgDown none" src="../../img/index/down.png"><img class="imgUp" src="../../img/index/up.png"></h4>
+					<form class="form-horizontal message">
+						<div class="form-group ml">
+						    <label for="inputEmail3" class="col-sm-2 control-label">涓诲姙鏂规彁绀猴細</label>
+						    <div class="paperMessage">
+						      	鎮ㄥ彲浠ラ瀹氭満绁�
+						    </div>
+						    <div class="traffic clearfix" style="display: none">
+						    	<div class="trafficBox fl">
+						    		<div class="traHead">&nbsp&nbsp鍥藉唴鏈虹エ</div>
+						    		<ul class="clearfix traType">
+						    			<li class="fl active"></li>
+						    			<li class="fl"></li>
+						    			<li class="fl"></li>
+						    		</ul>
+						    		<ul class="traBody">
+						    			<li>
+						    				<div>
+											    <span>鍑哄彂鍩庡競</span>
+											    <input type="text" value="" size="15" id="homecity_name" name="homecity_name" mod="address|notice" mod_address_source="hotel" mod_address_suggest="" mod_address_reference="cityid" mod_notice_tip="涓枃/鎷奸煶" />
+											    <input id="cityid" name="cityid" type="hidden" value="{$cityid}" />
+											</div>
+						    			</li>
+						    			<li>
+						    				<div>
+											    <span>鍒拌揪鍩庡競</span>
+											    <input type="text" value="" size="15" id="getcity_name" name="getcity_name" mod="address|notice" mod_address_source="hotel"  mod_address_reference="getcityid" mod_notice_tip="涓枃/鎷奸煶" />
+											    <input id="getcityid" name="getcityid" type="hidden" value="{$getcityid}" />
+											</div>
+						    			</li>
+						    			<li>
+						    				<span>鍑哄彂鏃ユ湡</span>
+						    				<input class="form-control" id="fDate" type="text" placeholder="鍑哄彂鏃堕棿" />
+						    			</li>
+						    			<!-- <li>
+						    				<span>杩旂▼鏃ユ湡</span>
+						    				<input class="form-control" id="" type="text" placeholder="鍑哄彂鏃堕棿" />
+						    			</li> -->
+						    		</ul>
+						    		<button type="button" id="airBtn">鎼�nbsp绱�/button>
+						    	</div>
+						    	<div class="trafficBox fl">
+						    		<div class="traHead">&nbsp&nbsp鍥藉唴鐏溅绁�/div>
+						    		<ul class="clearfix traType">
+						    			<li class="fl active"></li>
+						    			<li class="fl"></li>
+						    			<li class="fl"></li>
+						    		</ul>
+						    		<ul class="traBody">
+						    			<li>
+						    				<div>
+											    <span>鍑哄彂鍩庡競</span>
+											    <input type="text" value="" size="15" id="trainhomecity_name" name="trainhomecity_name" mod="address|notice" mod_address_source="tHote" mod_address_suggest="" mod_address_reference="traincityid" mod_notice_tip="涓枃/鎷奸煶" />
+											    <input id="traincityid" name="traincityid" type="hidden" value="{$traincityid}" />
+											</div>
+						    			</li>
+						    			<li>
+						    				<div>
+											    <span>鍒拌揪鍩庡競</span>
+											    <input type="text" value="" size="15" id="traingetcity_name" name="traingetcity_name" mod="address|notice" mod_address_source="tHote"  mod_address_reference="traingetcityid" mod_notice_tip="涓枃/鎷奸煶" />
+											    <input id="traingetcityid" name="traingetcityid" type="hidden" value="{$traingetcityid}" />
+											</div>
+						    			</li>
+						    			<!-- <li>
+						    				<span>鍑哄彂鍩庡競</span>
+						    				<input type="text"/>
+						    			</li>
+						    			<li>
+						    				<span>鍒拌揪鍩庡競</span>
+						    				<input type="text"/>
+						    			</li> -->
+						    			<li>
+						    				<span>鍑哄彂鏃ユ湡</span>
+						    				<input class="form-control" id="trainDate" type="text" placeholder="鍑哄彂鏃堕棿" />
+						    			</li>
+						    		</ul>
+						    		<button type="button" id="trainBtn">鎼�nbsp;绱�/button>
+						    	</div>
+						   		<div class="trafficBox fl">
+						    		<div class="traHead">&nbsp;&nbsp;鑷┚</div>
+						    		<ul class="clearfix traType">
+						    			<li class="fl"></li>
+						    			<li class="fl"></li>
+						    			<li class="fl"></li>
+						    		</ul>
+						    		<ul class="traBody">
+						    			<li>
+						    				<span>鍒拌揪鏃ユ湡</span>
+						    				<input type="text"/>
+						    			</li>
+						    			<li>
+						    				<span>&nbsp杞︾墝鍙�/span>
+						    				<input type="text"/>
+						    			</li>
+						    			<!-- <li>
+						    				<span>鍑哄彂鏃ユ湡</span>
+						    				<input type="text"/>
+						    			</li>
+						    			<li>
+						    				<span>杩斿洖鏃ユ湡</span>
+						    				<input type="text"/>
+						    			</li> -->
+						    		</ul>
+						    		<button type=button"">鎻�nbsp浜�/button>
+						    	</div>
+						    </div>
+						    <div class="wrap">
+							<h2>鍏ㄩ儴璁㈠崟</h2>
+							<ul class="clearfix listHead">
+								<li class="fl station">浜у搧淇℃伅</li>
+								<li class="fl price">璁㈠崟閲戦</li>
+								<li class="fl Mtime">璧峰鏃堕棿</li>
+								<li class="fl tickMessage">璁㈠崟鐘舵�</li>
+								<li class="fl look">璁㈠崟鎿嶄綔</li>
+							</ul>
+							<ul class="clearfix listBody">
+								<div class="listboxModel" style="display:none;">
+									<li class="listbox">
+										<input type="hidden" class="orderId">
+										<div class="orderList clearfix">
+											<div class="fl tickImg">
+												<img src="../../img/index/img_trainticket.jpg" alt="">
+											</div>
+											<div class="fl station">
+											<p>
+												<span class="trainNo"></span>
+												<span class="fromStation"></span>
+												<span>鈫�/span>
+												<span class="toStation"></span>
+											</p>
+											<p class="outOrderNo"></p>
+											</div>
+											<div class="fl price"></div>
+											<div class="fl time">
+												<p class="departureTime"></p>
+												<p class="arrivalTime"></p>
+											</div>
+											<div class="fl tickMessage"></div>
+											<div class="fl look">
+												<a class="lookOrder" href="javascript:;">鏌ョ湅璁㈠崟</a>
+											</div>
+										</div>
+										<div class="orderDetail active">
+											<h3>璁㈠崟璇︽儏</h3>
+											<div class="passengerMessage">
+												<h4 class="passengerTit">涔樺淇℃伅</h4>
+												<!-- <ul class="clearfix passenger">
+													<input type="hidden" class="passId">
+													<li class="fl passName">寮犵帀榫�/li>
+													
+													<li class="fl passSeat">纭骇</li>
+													<li class="fl passTicket">
+														绁ㄤ环:<span class="num">锟�2.5</span>
+													</li>
+													
+													<li class="fr">
+														<a class="cancelTicket btn" href="javascript:;">閫�エ
+														</a>
+													</li>
+												</ul> -->
+											</div>
+											<div class="tickectMessage">
+												<h4>鍙栫エ淇℃伅</h4>
+												<ul class="person">
+													<li class="personName">鑱旂郴浜猴細寮犵帀榫�/li>
+													<!-- <li class="cellPhone">鑱旂郴鐢佃瘽锛�8201571705</li> -->
+												</ul>
+											</div>	
+											<ul class="clearfix orderOperation">
+												<li class="fr"><a class="delOrder orderBtn" href="javascript:;">鍒犻櫎璁㈠崟</a></li>
+												<li class="fr"><a class="cancelOrder orderBtn" href="javascript:;">鍙栨秷璁㈠崟</a></li>
+												<li class="fr"><a class="payOrder orderBtn" href="javascript:;">鏀粯璁㈠崟</a></li>
+											</ul>
+										</div>
+									</li>
+								</div>
+								<!-- <div class="listboxModel" style="display:none;">
+									<li class="listbox">
+										<input type="hidden" class="orderId">
+										<div class="orderList clearfix">
+											<div class="fl tickImg">
+												<img src="../../img/index/img_trainticket.jpg" alt="">
+											</div>
+											<div class="fl station">
+											<p>
+												<span class="trainNo"></span>
+												<span class="fromStation"></span>
+												<span>鈫�/span>
+												<span class="toStation"></span>
+											</p>
+											<p class="outOrderNo"></p>
+											</div>
+											<div class="fl price"></div>
+											<div class="fl time">
+												<p class="departureTime"></p>
+												<p class="arrivalTime"></p>
+											</div>
+											<div class="fl message"></div>
+											<div class="fl look">
+												<a class="lookOrder" href="javascript:;">鏌ョ湅璁㈠崟</a>
+											</div>
+										</div>
+										<div class="orderDetail active">
+											<h3>璁㈠崟璇︽儏</h3>
+											<div class="passengerMessage">
+												<h4>涔樺淇℃伅</h4>
+												<ul class="clearfix passenger">
+													<input type="hidden" class="passId">
+													<li class="fl passName">寮犵帀榫�/li>
+													<li class="fl passCode">韬唤璇佸彿</li>
+													<li class="fl passSeat">纭骇</li>
+													<li class="fl passTicket">
+														绁ㄤ环:<span class="num">锟�2.5</span>
+													</li>
+													
+													<li class="fr">
+														<a class="cancelTicket btn" href="javascript:;">閫�エ
+														</a>
+													</li>
+												</ul>
+											</div>
+											<div class="tickectMessage">
+												<h4>鍙栫エ淇℃伅</h4>
+												<ul class="person">
+													<li class="personName">鑱旂郴浜猴細寮犵帀榫�/li>
+													<li class="cellPhone">鑱旂郴鐢佃瘽锛�8201571705</li>
+												</ul>
+											</div>	
+											<ul class="clearfix orderOperation">
+												<li class="fr"><a class="delOrder btn" href="javascript:;">鍒犻櫎璁㈠崟</a></li>
+												<li class="fr"><a class="cancelOrder btn" href="javascript:;">鍙栨秷璁㈠崟</a></li>
+												<li class="fr"><a class="payOrder btn" href="javascript:;">鏀粯璁㈠崟</a></li>
+											</ul>
+										</div>
+									</li>
+								</div> -->
+								<!-- <li class="fl">
+									<div class="fl tickImg">
+										<img src="../../img/index/img_trainticket.jpg" alt="">
+									</div>
+									<div class="fl station">
+										<p>2603鍖椾含->寮犲鍙ｅ崡</p>
+										<p>璁㈠崟鍙凤細135852</p>
+									</div>
+									<div class="fl price">锟�5.5</div>
+									<div class="fl time">
+										<p>20170505 00:08:05</p>
+										<p>20170505 00:08:05</p>
+									</div>
+									<div class="fl message">
+										閫�エ瀹屾垚(鏈夐�娆�
+									</div>
+									<div class="fl look">
+										<a href="javascript:;">鏌ョ湅璁㈠崟</a>
+									</div>
+								</li>
+								<li class="fl">
+									<div class="fl tickImg">
+										<img src="../../img/index/img_trainticket.jpg" alt="">
+									</div>
+									<div class="fl station">
+										<p>2603鍖椾含->寮犲鍙ｅ崡</p>
+										<p>璁㈠崟鍙凤細135852</p>
+									</div>
+									<div class="fl price">锟�5.5</div>
+									<div class="fl time">
+										<p>20170505 00:08:05</p>
+										<p>20170505 00:08:05</p>
+									</div>
+									<div class="fl message">
+										閫�エ瀹屾垚(鏈夐�娆�
+									</div>
+									<div class="fl look">
+										<a href="javascript:;">鏌ョ湅璁㈠崟</a>
+									</div>
+								</li>
+								<li class="fl">
+									<div class="fl tickImg">
+										<img src="../../img/index/img_trainticket.jpg" alt="">
+									</div>
+									<div class="fl station">
+										<p>2603鍖椾含->寮犲鍙ｅ崡</p>
+										<p>璁㈠崟鍙凤細135852</p>
+									</div>
+									<div class="fl price">锟�5.5</div>
+									<div class="fl time">
+										<p>20170505 00:08:05</p>
+										<p>20170505 00:08:05</p>
+									</div>
+									<div class="fl message">
+										閫�エ瀹屾垚(鏈夐�娆�
+									</div>
+									<div class="fl look">
+										<a href="javascript:;">鏌ョ湅璁㈠崟</a>
+									</div>
+								</li>
+								<li class="fl">
+									<div class="fl tickImg">
+										<img src="../../img/index/img_trainticket.jpg" alt="">
+									</div>
+									<div class="fl station">
+										<p>2603鍖椾含->寮犲鍙ｅ崡</p>
+										<p>璁㈠崟鍙凤細135852</p>
+									</div>
+									<div class="fl price">锟�5.5</div>
+									<div class="fl time">
+										<p>20170505 00:08:05</p>
+										<p>20170505 00:08:05</p>
+									</div>
+									<div class="fl message">
+										閫�エ瀹屾垚(鏈夐�娆�
+									</div>
+									<div class="fl look">
+										<a href="javascript:;">鏌ョ湅璁㈠崟</a>
+									</div>
+								</li>
+								<li class="fl">
+									<div class="fl tickImg">
+										<img src="../../img/index/img_trainticket.jpg" alt="">
+									</div>
+									<div class="fl station">
+										<p>2603鍖椾含->寮犲鍙ｅ崡</p>
+										<p>璁㈠崟鍙凤細135852</p>
+									</div>
+									<div class="fl price">锟�5.5</div>
+									<div class="fl time">
+										<p>20170505 00:08:05</p>
+										<p>20170505 00:08:05</p>
+									</div>
+									<div class="fl message">
+										閫�エ瀹屾垚(鏈夐�娆�
+									</div>
+									<div class="fl look">
+										<a href="javascript:;">鏌ョ湅璁㈠崟</a>
+									</div>
+								</li>
+								<li class="fl">
+									<div class="fl tickImg">
+										<img src="../../img/index/img_trainticket.jpg" alt="">
+									</div>
+									<div class="fl station">
+										<p>2603鍖椾含->寮犲鍙ｅ崡</p>
+										<p>璁㈠崟鍙凤細135852</p>
+									</div>
+									<div class="fl price">锟�5.5</div>
+									<div class="fl time">
+										<p>20170505 00:08:05</p>
+										<p>20170505 00:08:05</p>
+									</div>
+									<div class="fl message">
+										閫�エ瀹屾垚(鏈夐�娆�
+									</div>
+									<div class="fl look">
+										<a href="javascript:;">鏌ョ湅璁㈠崟</a>
+									</div>
+								</li> -->
+							</ul>
+						</div>
+						</div>
+					</form>
+				</div>
+				<div class="group">
+					<h4 class="groupTit">鍏�棰勫畾閰掑簵<img class="imgDown none" src="../../img/index/down.png"><img class="imgUp" src="../../img/index/up.png"></h4>
+					<form class="form-horizontal message">
+						<div class="form-group ml" id="gropshop" style="width: 106%">
+						    <label for="inputEmail3" class="col-sm-2 control-label">鎻愪氦涓诲姙鏂硅鏂囨彁绀猴細</label>
+						    <div class="paperMessage">
+						      	浼氳瀹樻柟鎺ㄨ崘閰掑簵,璇烽瀹�
+						    </div>
+						 	<div class="referralsGrog"></div>
+						</div>
+					</form>
+				</div>
+				<div class="group">
+					<h4 class="groupTit">涓冦�鐭俊<img class="imgDown none" src="../../img/index/down.png"><img class="imgUp" src="../../img/index/up.png"></h4>
+					<form class="form-horizontal message">
+						<div class="form-group ml">
+						    <label for="inputEmail3" class="col-sm-2 control-label">涓诲姙鏂规彁绀猴細</label>
+						    <div class="paperMessage">
+						      	鎮ㄦ湁鏂扮殑鐭俊
+						    </div>
+						    <table id="noteTable">
+            				</table>
+						</div>
+					</form>
+				</div>
+				<div class="group">
+					<h4 class="groupTit">鍏�閭欢<img class="imgDown none" src="../../img/index/down.png"><img class="imgUp" src="../../img/index/up.png"></h4>
+					<form class="form-horizontal message">
+						<div class="form-group ml">
+						    <label for="inputEmail3" class="col-sm-2 control-label">涓诲姙鏂规彁绀猴細</label>
+						    <div class="paperMessage">
+						      	鎮ㄦ湁鏂扮殑閭欢
+						    </div>
+						    <table id="emailTable">
+            				</table>
+						</div>
+					</form>
+				</div>
+				<div class="group">
+					<h4 class="groupTit">涔濄�绔欏唴淇�img class="imgDown none" src="../../img/index/down.png"><img class="imgUp" src="../../img/index/up.png"></h4>
+					<form class="form-horizontal message">
+						<div class="form-group ml">
+						    <label for="inputEmail3" class="col-sm-2 control-label">涓诲姙鏂规彁绀猴細</label>
+						    <div class="paperMessage">
+						      	鎮ㄦ湁鏂扮殑绔欏唴淇�
+						    </div>
+						    <table id="standTable">
+            				</table>
+						</div>
+					</form>
+				</div>
+				<div class="group">
+					<h4 class="groupTit">鍗併�娲诲姩鍦扮偣<img class="imgDown none" src="../../img/index/down.png"><img class="imgUp" src="../../img/index/up.png"></h4>
+					<form class="form-horizontal message">
+						<div class="form-group ml">
+						    <div class="fl" id="allmap">
+						    </div>
+						    <div class="mapInfo fl"></div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" 
+								aria-hidden="true">脳
+						</button>
+						<h4 class="modal-title" id="myModalLabel">
+							妯℃�妗嗭紙Modal锛夋爣棰�
+						</h4>
+					</div>
+					<div class="modal-body" id="myModalBody">
+						鎸変笅 ESC 鎸夐挳閫�嚭銆�
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" 
+								data-dismiss="modal">鍏抽棴
+						</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+		</div>
+	</div>     
+</div> 
+<script type="text/javascript" src="../../js/common/footer.js"></script>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/common/main.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/bootstrap-table.min.js"></script>
+<script src="../../js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../js/bootstrap-datetimepicker.min.js"></script>
+<script src="../../js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=FB6c98d828da5bf508fb357f9ee535ef"></script>
+<script src="../../js/user/userMain.js"></script>
+<script src="../../js/user/fix.js"></script>
+<script src="../../js/user/addressTrain.js"></script>
+<script type="text/javascript">
+$(function(){
+	// 鑾峰彇宸︿晶鑿滃崟鍒楄〃鏁版嵁(鍙傛暟涓鸿姹傚湴鍧�
+	initMenu('../../js/data/attend.json', '鎴戠殑娲诲姩');
+
+	if(Request("location")){
+		sessionStorage.setItem('actId',Request("location")); // 瀛樺偍娲诲姩ID,鍚庣画浣跨敤
+	}
+	$("#id").val(Request('location'));
+
+	$(document).on("mouseover", ".grogImg",  function(){
+		$(this).next().css("display", "block");
+	});
+	$(document).on("mouseleave",".grogImg", function(){
+		$(this).next().css("display", "none");
+	});
+	
+	// 璇锋眰鏁版嵁骞跺垵濮嬪寲
+	actMode(1,init);
+
+	//灞曞紑鏂瑰紡
+	$(".group h4").on('click',function(){
+		$(this).next().toggle();
+		$(this).children(".imgUp").toggleClass("none");
+		$(this).children(".imgDown").toggleClass("none");
+		//鐩戝惉鐘舵�
+		var state=$(this).next().css('display');
+		if(state=='block'){
+			// console.log(1)
+		}
+	});
+
+	$($(".group").eq(4).find('h4')).on('click',function(){
+		var state=$(this).next().css('display');
+		if(state=='block'){
+			// console.log(1)
+			actMode(5,train);
+		}
+	})
+
+	$($(".group").eq(5).find('h4')).on('click',function(){
+		var state=$(this).next().css('display');
+		if(state=='block'){
+			$(".referralsGrog").html("");
+			actMode(6,hotel);
+		};
+	})
+	$($(".group").eq(6).find('h4')).on('click',function(){
+		var state=$(this).next().css('display');
+		if(state=='block'){
+			actMode(7,note);
+		};
+	})
+	$($(".group").eq(7).find('h4')).on('click',function(){
+		var state=$(this).next().css('display');
+		if(state=='block'){
+			actMode(8,email);
+		};
+	})
+	$($(".group").eq(8).find('h4')).on('click',function(){
+		var state=$(this).next().css('display');
+		if(state=='block'){
+			actMode(9,stand);
+		};
+	})
+	$($(".group").eq(9).find('h4')).on('click',function(){
+		var state=$(this).next().css('display');
+		if(state=='block'){
+			actMode(1,place);
+		};
+	})
+	//璇︽儏椤甸潰
+	$('.onDetail').click(function(){
+		$(this).attr('href','../index/detail.html?location='+$("#id").val());
+	});
+	//娲诲姩琛ㄦ牸
+	var actData=[{
+        "time": "2017-06-07",
+        
+        "content": "鎻愪氦鎶ュ悕琛紱鏌ョ湅鎶ュ悕琛�,
+        "state": "宸茶"
+    	},{
+        "time": "2017-06-08",
+        
+        "content": "涓诲姙鏂瑰闃呮姤鍚嶈〃锛屾姤鍚嶉�杩囧鏍�,
+        "state": "宸茶"
+    	},{
+        "time": "2017-06-09",
+        
+        "content": "涓诲姙鏂归�鐭ュ弬浼�,
+        "state": "宸茶"
+    	},{
+        "time": "2017-06-10",
+        
+        "content": "棰勫畾鏈虹エ",
+        "state": "宸茶"
+    	},
+    	{
+        "time": "2017-06-11",
+        
+        "content": "宸查瀹氶厭搴�,
+        "state": "宸茶"
+    	},
+    	{
+        "time": "2017-06-12",
+        
+        "content": "涓诲姙鏂瑰凡鏌ラ槄鎮ㄧ殑鏈虹エ閰掑簵淇℃伅锛岃鏌ラ槄涓绘柟鏂瑰競鍐呬氦閫氭彁绀�,
+        "state": "宸茶"
+    	}
+    	];
+    var actList=[
+    		{
+                field: 'time',
+                title: '鏃堕棿',
+                valign: 'middle',
+                align: 'left',
+                width: '130',
+            },
+            
+            {
+                field: 'content',
+                title: '娲诲姩娑堟伅',
+                width:  '500',
+                align: 'left',
+                valign: 'middle',
+            },
+            {
+                field: 'state',
+                title: '鐘舵�',
+                width:  '50',
+                align: 'left',
+                valign: 'middle',
+            }]
+   	table('#actTable',actData,actList);        
+	
+	//棣栭〉
+	$(document).on('click','.nav a',function(){
+		$(this).attr('href','../index/index.html');
+	});
+	//娉ㄩ攢
+	loginOut('#userinfo a');
+	//鏈虹エ鏌ヨ:
+	$('#airBtn').on('click',function(){
+		var formC=$('#cityid').val();
+		var toC=$('#getcityid').val();
+		var formT=$('#fDate').val();
+		if(seachValidation(formC,toC,formT)){
+			//鏈虹エ鏌ヨ
+			var oa=$('#cityid').val();
+			var aa=$('#getcityid').val();
+			var fDate=$('#fDate').val();
+			// var json = {oa:oa};
+			// json.oa = oa;
+			// sessionStorage.setItem('airData','{"oa":"'+oa+'"}');
+			// air();
+			// window.location.href="../index/air.html?oa="+oa+"&aa="+aa+"&fDate="+fDate;
+			window.location.href='http://www.ly.com/flight/flightunioncommonsearch.aspx?refid=9368888&t='+oa+'&q='+aa+'&type=1&date='+fDate+'&width=800&sider=0&show=0';
+			// console.log(oa)
+		};
+	});
+	//鐏溅鏌ヨ
+	// 11$('#trainBtn').on('click',function(){
+	// 	var formC=$('#traincityid').val();
+	// 	var toC=$('#traingetcityid').val();
+	// 	var formT=$('#trainDate').val();
+	// 	if(seachValidation(formC,toC,formT)){
+	// 		//鐏溅绁ㄦ煡璇�
+	// 		var oa=$('#traincityid').val();
+	// 		var aa=$('#traingetcityid').val();
+	// 		var fDate=$('#trainDate').val();
+	// 		window.location.href="../index/train.html?oa="+oa+"&aa="+aa+"&fDate="+fDate+"&actId="+$("#id").val();
+	// 	};
+	// });
+	//鏃堕棿
+	dateTime("#fDate");
+	dateTime("#trainDate");
+
+	//************ train ******************
+	//鏌ョ湅璁㈠崟
+	$(document).on('click','.lookOrder',function(){
+		$(this).parent().parent().next().toggleClass('active');
+	});
+	//鍒犻櫎璁㈠崟
+	$(document).on('click','.delOrder',function(){
+		var url=basePath+'user/trainorder/del.do';
+		var id=$(this).parents('.orderDetail').prev().prev().val();
+		$.myAjax({
+			url: url,
+			type: 'GET',
+			data:{id:id},
+			success: function(result) {
+				if (result.flag) {;
+					myAlert(result.msg);
+					$('.listboxModel').siblings().remove();;
+					actMode(5,train);
+				} else {
+					myAlert(result.msg);
+				};
+			},
+			error: function() {
+				myAlert('璇锋眰澶辫触');
+			}
+		});
+	});
+	//鍙栨秷璁㈠崟
+	$(document).on('click','.cancelOrder',function(){
+		var state=$(this).css('backgroundColor')=="rgb(204, 204, 204)";
+		if(state){
+			return
+		}else{
+			var url=basePath+'tc/train/cancelorder.do';
+			var id=$(this).parents('.orderDetail').prev().prev().val();
+			var passId=$(this).parents('.passenger').find('.passId').val();
+			// console.log(passId)
+			$.myAjax({
+				url: url,
+				type: 'GET',
+				data:{id:id,passengerId:passId},
+				success: function(result) {
+					if (result.flag) {
+						console.log(result);
+						myAlert(result.msg);
+						$('.listboxModel').siblings().remove();
+						actMode(5,train);
+					} else {
+						myAlert(result.msg);
+					};
+				},
+				error: function() {
+					myAlert('璇锋眰澶辫触');
+				}
+			});
+		};
+	});
+	//閫�エ
+	$(document).on('click','.cancelTicket',function(){
+		var url=basePath+'tc/train/refundorder.do';
+		var id=$(this).parents('.orderDetail').prev().prev().val();
+		var passId=$(this).parents('.passenger').find('.passId').val();
+		console.log(id)
+		console.log(passId)
+		$.myAjax({
+			url: url,
+			type: 'GET',
+			data:{id:id,passengerId:passId},
+			success: function(result) {
+				if (result.flag) {
+					console.log(result);
+					myAlert(result.msg);
+					actMode(5,train);
+				} else {
+					myAlert(result.msg);
+				};
+			},
+			error: function() {
+				myAlert('璇锋眰澶辫触');
+			}
+		});
+	});
+	//鏀粯
+	$(document).on('click','.payOrder',function(){
+		var state=$(this).css('backgroundColor')=="rgb(204, 204, 204)";
+		if(state){
+			return
+		}else{
+			var url=basePath+'tc/train/payurl.do';
+			var id=$(this).parents('.orderDetail').prev().prev().val();
+			$.myAjax({
+				url: url,
+				type: 'GET',
+				data:{id:id},
+				success: function(result) {
+					if (result.flag) {
+						console.log(result);
+						window.location.href=result.url;
+					} else {
+						myAlert(result.msg);
+					};
+				},
+				error: function() {
+					myAlert('璇锋眰澶辫触');
+				}
+			});
+		};
+	});
+	//************ train - END ******************
+});
+//table灏佽
+function table(id,data,list,fn){
+	$(id).bootstrapTable({
+		data: data,
+        dataType: 'json',
+        dataLocale: 'zh-US',               //琛ㄦ牸姹夊寲
+        toolbar: '#toolbar',                //宸ュ叿鎸夐挳鐢ㄥ摢涓鍣�
+        striped: true,                      //鏄惁鏄剧ず琛岄棿闅旇壊
+        cache: false,                       //鏄惁浣跨敤缂撳瓨锛岄粯璁や负true锛屾墍浠ヤ竴鑸儏鍐典笅闇�璁剧疆涓�笅杩欎釜灞炴�锛�锛�
+        pagination:false,                   //鏄惁鏄剧ず鍒嗛〉锛�锛�
+        sortable: false,                     //鏄惁鍚敤鎺掑簭
+        sortOrder: "asc",                   //鎺掑簭鏂瑰紡
+        //queryParams: oTableInit.queryParams,//浼犻�鍙傛暟锛�锛�
+        sidePagination: "client",           //鍒嗛〉鏂瑰紡锛歝lient瀹㈡埛绔垎椤碉紝server鏈嶅姟绔垎椤碉紙*锛�
+        pageNumber:1,                       //鍒濆鍖栧姞杞界涓�〉锛岄粯璁ょ涓�〉
+        pageSize: 10,                       //姣忛〉鐨勮褰曡鏁帮紙*锛�
+        pageList: [10, 15, 20],        //鍙緵閫夋嫨鐨勬瘡椤电殑琛屾暟锛�锛�
+        //search: true,                       //鏄惁鏄剧ず琛ㄦ牸鎼滅储锛屾鎼滅储鏄鎴风鎼滅储锛屼笉浼氳繘鏈嶅姟绔紝鎵�互锛屼釜浜烘劅瑙夋剰涔変笉澶�
+        strictSearch: false,
+        showColumns: false,                  //鏄惁鏄剧ず鎵�湁鐨勫垪
+        showRefresh: false,                  //鏄惁鏄剧ず鍒锋柊鎸夐挳
+        //minimumCountColumns: 2,             //鏈�皯鍏佽鐨勫垪鏁�
+        // clickToSelect: false,                //鏄惁鍚敤鐐瑰嚮閫変腑琛�
+        //height: 500,                        //琛岄珮锛屽鏋滄病鏈夎缃甴eight灞炴�锛岃〃鏍艰嚜鍔ㄦ牴鎹褰曟潯鏁拌寰楄〃鏍奸珮搴�
+        //uniqueId: "ID",                     //姣忎竴琛岀殑鍞竴鏍囪瘑锛屼竴鑸负涓婚敭鍒�
+        showToggle:false,                    //鏄惁鏄剧ず璇︾粏瑙嗗浘鍜屽垪琛ㄨ鍥剧殑鍒囨崲鎸夐挳
+        cardView: false,                    //鏄惁鏄剧ず璇︾粏瑙嗗浘
+        detailView: false,                   //鏄惁鏄剧ず鐖跺瓙琛�
+        columns: list,
+        onClickCell:fn
+    });
+};
+//妯″潡妯℃澘
+function actMode(num,fn){
+	$('.intro .message').css('display','block');
+	var url = basePath + "user/activity/get.do";
+	$.myAjax({
+		url: url,
+		type: 'GET',
+		data:{id:$("#id").val(),type:num},
+		success:fn,
+		error:function(){
+			alert('璇锋眰澶辫触');
+		}
+	});
+};
+//鍒濆鍖�
+function init(result){
+	if(result.flag){
+		if (result.status.nick) {
+			$('#user').html(result.status.nick);
+		};
+		$('.introduction').html(result.data.activity.introduction);
+	}
+}
+//鐭俊
+function note(result){
+	if(result.flag){
+		console.log(result)
+		var noteData=result.data.SMSRecording;
+		var	noteList=[
+			{
+                field: 'senderTime',
+                title: '鏃堕棿',
+                valign: 'middle',
+                align: 'left',
+                width: '300',
+			},{
+                field: 'senderName',
+                title: '鍙戜俊浜�,
+                width:  '500',
+                align: 'left',
+                valign: 'middle',
+            },{
+                field: 'senderValue',
+                title: '娲诲姩娑堟伅',
+                width:  '500',
+                align: 'left',
+                valign: 'middle',
+            },
+            {
+                field: 'state',
+                title: '鐘舵�',
+                width:  '50',
+                align: 'left',
+                valign: 'middle',
+			}
+		];
+		table('#noteTable',noteData,noteList);
+	};
+};
+//閭欢
+function email(result){
+	if(result.flag){
+		console.log(result)
+		var emailData=result.data.email;
+		var emailList=[
+	    		{
+	                field: 'senderTime',
+	                title: '鏃堕棿',
+	                valign: 'middle',
+	                align: 'left',
+	                width: '130',
+	            },
+	            {
+	                field: 'senderName',
+	                title: '鍙戜俊浜�,
+	                align: 'left',
+	                valign: 'middle',
+	                width: '130'
+	            }, 
+	            {
+	                field: 'senderTitle',
+	                title: '淇′欢',
+	                width:  '500',
+	                align: 'left',
+	                valign: 'middle',
+	                class:'emailTit',
+	            },
+	            {
+	                field: 'senderValue',
+	                title: '',
+	                width:  '50',
+	                align: 'left',
+	                valign: 'middle',
+	                formatter: function(value,row,index){
+                    	return "<input type='hidden' value='"+value+"'/>";
+                	}
+	            }
+	    ];
+	    table('#emailTable',emailData,emailList,emailClick);
+	    function emailClick(field,value,row,$element){
+			console.log(row);
+			$('#myModalLabel').html(row.senderTitle);
+			$('#myModalBody').html(row.senderValue);
+			$('#myModal').on('show.bs.modal', function (e) {  
+	            // 鍏抽敭浠ｇ爜锛屽娌″皢modal璁剧疆涓�block锛屽垯$modala_dialog.height() 涓洪浂  
+	            $(this).css('display', 'block');  
+	            var modalHeight=$(window).height() / 2 - $('#myModal .modal-dialog').height() / 2;  
+	            $(this).find('.modal-dialog').css({  
+	                'margin-top': modalHeight  
+            	}); 
+            });
+        	$('#myModal').modal({
+				keyboard: true
+			});
+		};
+	};
+};
+//绔欏唴淇�
+function stand(result){
+	if(result.flag){
+		console.log(result)
+		var standData=result.data.stationLetter;
+		var	standList=[
+			{
+                field: 'senderTime',
+                title: '鏃堕棿',
+                valign: 'middle',
+                align: 'left',
+                width: '300',
+			},{
+                field: 'senderName',
+                title: '鍙戜俊浜�,
+                width:  '500',
+                align: 'left',
+                valign: 'middle',
+            },{
+                field: 'senderValue',
+                title: '娲诲姩娑堟伅',
+                width:  '500',
+                align: 'left',
+                valign: 'middle',
+            },
+            {
+                field: 'state',
+                title: '鐘舵�',
+                width:  '50',
+                align: 'left',
+                valign: 'middle',
+            }
+		];
+		table('#standTable',standData,standList);
+	};
+};
+//鐏溅
+function train(result){
+	if(result.flag){
+		$$.module.address.source.tHote=result.data.trainStationAll;
+		var data = result.data.trainStationAbc;
+		(function(){
+			$$.module.address.source.tHote_hotData.鐑棬= data.鐑棬;
+			$$.module.address.source.tHote_hotData.A =data.A;
+			$$.module.address.source.tHote_hotData.B =data.B;
+			$$.module.address.source.tHote_hotData.C =data.C;
+			$$.module.address.source.tHote_hotData.D =data.D;
+			$$.module.address.source.tHote_hotData.E =data.E;
+			$$.module.address.source.tHote_hotData.F =data.F;
+			$$.module.address.source.tHote_hotData.G =data.G;
+			$$.module.address.source.tHote_hotData.H =data.H;
+			$$.module.address.source.tHote_hotData.I =data.I;
+			$$.module.address.source.tHote_hotData.J =data.J;
+			$$.module.address.source.tHote_hotData.K =data.K;
+			$$.module.address.source.tHote_hotData.L =data.L;
+			$$.module.address.source.tHote_hotData.M =data.M;
+			$$.module.address.source.tHote_hotData.N =data.N;
+			$$.module.address.source.tHote_hotData.O =data.O;
+			$$.module.address.source.tHote_hotData.P =data.P;
+			$$.module.address.source.tHote_hotData.Q =data.Q;
+			$$.module.address.source.tHote_hotData.R =data.R;
+			$$.module.address.source.tHote_hotData.S =data.S;
+			$$.module.address.source.tHote_hotData.T =data.T;
+			$$.module.address.source.tHote_hotData.U =data.U;
+			$$.module.address.source.tHote_hotData.V =data.V;
+			$$.module.address.source.tHote_hotData.W =data.W;
+			$$.module.address.source.tHote_hotData.X =data.X;
+			$$.module.address.source.tHote_hotData.Z =data.Z;
+			$$.module.address.source.tHote_hotData.Y =data.Y;
+		})();
+		//鐏溅鏌ヨ
+		$('#trainBtn').on('click',function(){
+			var formC=$('#traincityid').val();
+			var toC=$('#traingetcityid').val();
+			var formT=$('#trainDate').val();
+			if(seachValidation(formC,toC,formT)){
+				//鐏溅绁ㄦ煡璇�
+				var oa=$('#traincityid').val();
+				var aa=$('#traingetcityid').val();
+				var fDate=$('#trainDate').val();
+				window.location.href="../index/train.html?oa="+oa+"&aa="+aa+"&fDate="+fDate+"&actId="+$("#id").val();
+			};
+		});
+		//鍒ゆ柇浜ら�鐘舵�
+		if(result.data.trainOrder.length==0){
+			$('.traffic').css('display','block');
+		};
+		console.log(result);
+		//	鍒濆鍖杛esult
+		// var initResult=result;
+		// 鐢熸垚璁㈠崟鍒楄〃
+		var list=result.data.trainOrder;
+		for(var i=0;i<list.length;i++){
+			$('.listboxModel').before($('.listboxModel').html());
+			//璁㈠崟id
+			$('.listboxModel').prev().find('.orderId').val(list[i].id);
+			//杞︽
+			$('.listboxModel').prev().find('.trainNo').html(list[i].trainNo);
+			//鍑哄彂杞︾珯
+			$('.listboxModel').prev().find('.fromStation').html(list[i].fromStation);
+			//鍒拌揪杞︾珯
+			$('.listboxModel').prev().find('.toStation').html(list[i].toStation);
+			//鍑哄彂鏃堕棿
+			$('.listboxModel').prev().find('.departureTime').html(list[i].departureTime);
+			//鍒拌揪鏃堕棿
+			$('.listboxModel').prev().find('.arrivalTime').html(list[i].arrivalTime);
+			//璁㈠崟鍙�
+			$('.listboxModel').prev().find('.outOrderNo').html(list[i].outOrderNo);
+			//璁㈠崟閲戦
+			$('.listboxModel').prev().find('.price').html('锟�+list[i].orderPrice);
+			//鐘舵�
+			$('.listboxModel').prev().find('.tickMessage').html(list[i].orderStateValue);
+			//鑱旂郴浜�
+			$('.listboxModel').prev().find('.personName').html('鑱旂郴浜�'+list[i].person);
+			//鑱旂郴鐢佃瘽
+			// $('.listboxModel').prev().find('.cellPhone').html('鑱旂郴鐢佃瘽:'+list[i].cellphone);
+			
+			//鍙栨秷璁㈠崟
+			if(list[i].orderState==5||list[i].orderState==7||list[i].orderState==8){
+				$('.listboxModel').prev().find('.cancelOrder').css({
+					'background':'#ccc',
+					'border-color':'#ccc'
+				});
+			};
+			//鏀粯璁㈠崟
+			if(list[i].orderState==5||list[i].orderState==7||list[i].orderState==8){
+				$('.listboxModel').prev().find('.payOrder').css({
+					'background':'#ccc',
+					'border-color':'#ccc'
+				});
+			};
+			var detailList=list[i].lyTrainPassengerList;
+			for(var j=0;j<detailList.length;j++){
+				$('.listboxModel').prev().find('.passengerTit').after('<ul class="clearfix passenger"><input type="hidden" class="passId" value="'+detailList[j].id+'"><li class="fl passName">'+detailList[j].passengerName+'</li><li class="fl passSeat">'+detailList[j].seatClassName+detailList[j].seatNo+'</li><li class="fl passTicket">绁ㄤ环:<span class="num">锟�+detailList[j].ticketPrice+'</span></li><li class="fr"><a class="cancelTicket orderBtn" href="javascript:;">閫�エ</a></li></ul> ');
+			};
+		};
+		// 鐢熸垚璁㈠崟鍒楄〃**************end
+	};
+};
+//閰掑簵
+function hotel(result){
+	console.log(result)
+	if(result.flag){
+		var data = result.data.hotel
+		for (var i = 0; i < data.length; i++) {
+			var introStr = data[i].intro
+			introStr = introStr.split("<br")[0];
+			var width = "";
+			if(data[i].resGrade =="涓夋槦绾�){
+				width = "44px";
+			}else if(data[i].resGrade=="鍥涙槦绾�){
+				width = "60px";
+			}else if(data[i].resGrade=="浜旀槦绾�){
+				width = "74px";
+			};
+			var str =  '<div class="grogshopBox clearfix floatLeft">' + 
+						'<input type="hidden" id="hotelId" value="'+data[i].id+'"/>' +
+			    		'<div class="grogContent">' +
+			    			'<div class="grogName resName">' + data[i].resName + '</div>' +
+			    			'<div class="grogStar" style="width: '+width+'; height: 20px; margin: 0 auto;"></div>' +
+			    			'<div class="grogImg"><img src="' +data[i].imageUrl+ '"></div>' +
+			    			'<div class="grogBigBox remGrog">' +
+			    				'<div class="grogName resName" id="grogName">' +data[i].resName+ '</div>' +
+			    				'<div class="grogStar"></div>' +
+			    				'<div class="bigImgBox">' +
+			    					'<img class="BigImg" src="' +data[i].imageUrl+ '">' +
+			    				'</div>' +
+			    				'<div class="distance">鍦板潃:<span>' +data[i].address+ '</span></div>' +
+			    				'<div class="distance">绠�粙:<span>' +introStr+ '</span></div>' +
+			    				'<div class="distance">娓╅Θ鎻愮ず:<span>' +data[i].depositAndPrepaid+ '</span></div>' +
+			    				'<img class="leftImg addImg " src="../../img/index/left.jpg">' +
+			    			'</div>' +
+			    			'<div class="grogAddress">鍦板潃: ' +data[i].address+ '</div>' +
+			    			// '<div class="grogPrice"><span>楼' +data[i].showPiece+ '</span>璧�/div>' +
+			    			'<div class="reserve"><a target="_blank" href="../index/hotelDetails.html?ResId='+data[i].id+'">棰�nbsp;瀹�/a></div>' +
+			    		'</div>' +
+				  	'</div>';
+
+		  	if(data[i].showPiece=="鏆傛棤鎶ヤ环"){
+		  		$(".grogPrice span").text("鏆傛棤鎶ヤ环");
+		  	}
+		  	$(".referralsGrog").append(str); 
+	  		// if(i == 4 || i ==9 || i == 14 || i==19){
+	  		// 	$(".remGrog").eq(i).removeClass("grogBigBox").addClass("grogRightBox");
+	  		// 	$(".addImg").eq(i).removeClass("leftImg").addClass("rightImg");
+	  		// }	
+	  		$(".grogshopBox").each(function(i,e){
+	  			var distance = $(e).offset().left + $(".grogBigBox").width() + $(e).width();
+	  			var width = window.screen.width;
+	  			if(distance>width){
+	  				$(e).find(".remGrog").removeClass("grogBigBox").addClass("grogRightBox");
+	  				$(e).find(".addImg").removeClass("leftImg").addClass("rightImg");
+	  			}
+	  		});
+		};
+		// $(".referralsGrog").html(str);
+		// $(".grogshopBox").each(function(i,e){
+  // 			var distance = $(e).offset().left + $(".grogBigBox").width() + $(e).width();
+  // 			var width = window.screen.width;
+  // 			if(distance>width){
+  // 				$(e).find(".remGrog").removeClass("grogBigBox").addClass("grogRightBox");
+  // 				$(e).find(".addImg").removeClass("leftImg").addClass("rightImg");
+  // 			}
+	 //  	});
+		  	
+	};
+};
+//鍦扮偣
+function place(result){
+	console.log(result)
+	if(result.flag){
+		console.log(result.data.activity.longtitude)
+		//浼氳鍦板潃
+		initMap(result.data.activity.longtitude,result.data.activity.latitude);
+	};
+};
+</script>
+</html>
+

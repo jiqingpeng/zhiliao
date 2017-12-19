@@ -1,0 +1,25 @@
+// $(function(){
+// 	$('#userName').html(utilForJs.getUserLoginName());
+// 	$('#userPwd').html(utilForJs.getUserLoginPwd());
+// 	$('#userDateState').html(utilForJs.putValue('dataa','qweasd---111000'));
+// 	$('#userDate').html(utilForJs.getValue('dataa'));
+// 	$('#userDateDelState').html(utilForJs.delValue('dataa'));
+// 	$('#userDateDel').html(utilForJs.getValue('dataa'));
+// 	$('#locationData').html(utilForJs.getLocationData());
+// 	$('#lontitude').html(utilForJs.getLontitude());
+// 	$('#latitude').html(utilForJs.getLatitude());
+// });
+// var sss ;
+// function scanQRCode(){
+// 	document.getElementById('src').html
+// 	// 开始扫描二维码
+// 	  scanQrcode.scanQRCode();
+// }
+// // 二维码结果回调函数
+// function scanSuccess(val){
+// 	  $('#src').html(val);
+// }
+
+/**
+* 自动登录
+*/

@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0">
+<title>无标题文档</title>
+<script src="js/zepto.min.js"></script>
+<script src="js/touch.js"></script>
+<style>
+	html{ font-size:40px;}
+	body{ overflow:hidden;}
+	*{ padding:0; margin:0; list-style:none;}
+	li{ width:100%; border-bottom:1px solid #CCC; height:1rem; line-height:1rem; font-size:0.5rem; position:relative;}
+	a{ width:0px; height:100%; position:absolute; right:0; top:0; text-align:center; background:red; color:#FFF; text-decoration:none; transition:.3s;}
+</style>
+<script>
+	$(function(){
+		$('li').on('swipeLeft',function(){
+			$(this).find('a').css('width','100px');
+		})
+		$('li').on('swipeRight',function(){
+			$(this).find('a').css('width','0px');
+		})
+		
+		$('a').on('singleTap',function(){
+			$(this).parent().remove();
+		});
+	})
+</script>
+</head>
+
+<body>
+	<ul>
+    	<li>
+        	<span>小王：今天有空吗？</span>
+            <a href="#">删除</a>
+        </li>
+        <li>
+        	<span>小王：明天有空吗？</span>
+            <a href="#">删除</a>
+        </li>
+        <li>
+        	<span>小王：后天有空吗？</span>
+            <a href="#">删除</a>
+        </li>
+        <li>
+        	<span>小王：昨天有空吗？</span>
+            <a href="#">删除</a>
+        </li>
+    </ul>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

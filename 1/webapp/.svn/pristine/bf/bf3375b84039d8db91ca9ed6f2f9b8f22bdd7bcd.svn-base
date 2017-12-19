@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>登陆</title>
+	<link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+	<link rel="stylesheet" href="../../css/index/base.css">
+	<link rel="stylesheet" href="../../css/index/login.css">
+	<style type="text/css">
+		.active{
+			position: relative;
+		}
+	</style>
+</head>
+<body>
+	<div class="contains">
+		<div class="con_tit">
+			<a href="javascript:;">
+				<img src="../../img/index/logoandname.png" alt="login">
+			</a>
+		</div>
+		<div class="con_box clearfix">
+			<div class=" login_img fl">
+				<img class="" src="../../img/index/loginimg.png" alt="login_img">
+			</div>
+			<ul class="loginList">
+				<li class="login_box fl active" id="user">
+					<p class="loginName">参会方登陆</p>
+					手机号<div class="phone"></div><input class="user" type="text" placeholder="请输入账号(手机号)" maxlength="32">
+					<div class="pwd"></div>
+					密码<input class="password" type="password" placeholder="请输入密码" maxlength="32">
+					<p class="clearfix regCode">
+						<input class="fl regBox" type="text">
+						<img class="fl regImg" src="" alt="">
+						<a class="fl regText" href="javascript:;">换一张</a>
+					</p>
+					<p class="login_message">请输入正确的账号</p>
+					<a href="javascript:;" class="login_btn" id="userLogin">登&nbsp录</a>
+					<p class="login_footer clearfix">
+						<!-- <a class="fl a" href="javascript:;" style="color:#252525; font-size:12px;">免费注册</a> -->
+						<a class="fr color_000" href="resetPwd.html" style="color:#252525; font-size:12px;" >忘记密码?
+						</a>
+					</p>
+				</li>
+			</ul>
+		</div>
+		<div class="con_footer">
+			<ul class="clearfix foot_link">
+				<li class="fl">
+					<a href="indepPage/about.html" target="_blank">关于我们</a>
+				</li>
+				<li class="fl">
+					<a href="indepPage/contant.html" target="_blank">联系我们</a>
+				</li>
+				<li class="fl">
+					<a href="indepPage/help.html" target="_blank">帮助中心</a>
+				</li>
+				<li class="fl">
+					<a href="indepPage/declare.html" target="_blank">网站声明</a>
+				</li>
+				<li class="fl">
+					<a href="indepPage/companyNews.html" target="_blank">公司新闻</a>
+				</li>
+			</ul>
+			<p>未经gconfs.com同意，不得转发网站会议信息</p>
+			<p>京ICP备17018133号</p>
+		</div>
+		<a class="pay" href="javascript:;">支付</a>
+	</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/jQuery.md5.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script>
+	//获取验证码
+	function getCode(){
+		var url=basePath+"verification/get.do";
+		$.myAjax({
+			url: url,
+			type: 'GET',
+			success:function(result){
+				if(result.flag){
+					$('.regImg').attr('src','data:image/png;base64,'+result.data);
+				}else{
+					myAlert(result.msg);
+				};
+			}
+		});
+	};
+	getCode();
+	//参会方登陆验证
+	function userValidation(id){
+		var mobile=$(id+'.user').val();
+		var pwd=($(id+'.password').val());
+		// 验证手机号
+		if (mobile == null || mobile == '') {
+			myAlert('账号不能为空!','slow');
+			return false;
+		}else{
+			if(!(/^1[34578]\d{9}$/.test(mobile))){ 
+	        	myAlert("账号格式不正确！",'slow');  
+	        	return false; 
+	        };
+		};
+		// 验证密码
+		if (pwd == null || pwd == '') {
+			myAlert('密码不能为空!','slow');
+			return false;
+		};
+		return true;
+	};
+	
+	//参会方登陆
+	function Login(id,url,path){
+		if(userValidation(id)){
+			var url=basePath+url;
+			var mobile=$(id+'.user').val();
+			var pwd=$.md5($(id+'.password').val());
+			var code=$(id+'.regBox').val();
+			$.myAjax({
+				url: url,
+				data: {
+					mobile:mobile ,
+					pwd: pwd,
+					code:code
+				},
+				success:function(result){
+					if(result.flag){
+						window.location.href = path;
+					}else{
+						$(id+'.login_message').css('display','block');
+						$(id+'.login_message').html(result.msg);
+						codeChange();
+					};
+				}
+			});
+		};
+	};
+	$('#userLogin').click(function(){
+		Login('#user ','user/login/check.do','../user/myActivity.html');	
+	});
+	//更换验证码
+	$('.regText').click(codeChange);
+	function codeChange(){
+		$('.regBox').val(' ');
+		getCode();
+	};
+	//键盘登陆
+	$(document).keypress(function(e) {  
+		// 回车键事件  
+        if(e.which == 13) {
+        	Login('#user ','user/login/check.do','../user/myActivity.html');
+        };	  
+	});
+	function wxFn(){
+        $.post("../../wx/getjssign.do?url="+encodeURIComponent(location.href)+'&prepayId=wx2017082916473311e4e35c480731669748',function(json){
+            console.log(json)
+            var json=$.parseJSON( json);
+            // var 
+            wx.config({  
+                debug: true,  
+                appId: json.appId,  
+                timestamp: json.timestamp,  
+                nonceStr: json.noncestr,  
+                signature: json.sign,  
+                jsApiList: [  
+                    // 所有要调用的 API 都要加到这个列表中         
+                    'chooseWXPay'                      
+                ]  
+            });
+            wx.chooseWXPay({
+                "timestamp":json.timestamp,  
+                "nonceStr":json.noncestr,  
+                "signType":"MD5",
+                "package":json.packageStr,
+                "paySign":json.paySign,
+                success:function(){
+                	alert(1)
+                }
+       		});         
+        });
+    }
+    wxFn();
+    $('.pay').click(function(){
+    	wxFn();
+    })
+    
+</script>
+</html>

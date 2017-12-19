@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Swiper demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="invate.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../../css/common/bootstrap.min.css"> -->
+    <!-- Demo styles -->
+    <link rel="stylesheet" href="animation.css">
+<style>
+    
+</style>
+</head>
+<body>
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="music">
+            <img class="musicbg" src="img/music.jpg" alt="musicbg">
+            <audio src="music/hlw.mp3" autoplay="autoplay" loop="loop"></audio>
+        </div>
+        <div class="swiper-wrapper">
+            <div class="swiper-slide first-screen">
+                <div class="bord fullScreenZoom"></div>
+                <div class="miss-tit scale">第五期</div>
+                <div class="mess-item scale">
+                    <p class="mess-item-tit">基础设施项目</p>
+                    <p class="mess-item-count">投融资论坛</p>
+                </div>
+                <div class="mess-city scale">
+                   <span>中国</span>
+                   <span>.</span>
+                   <span>北京</span>
+                </div>
+                <div class="mess-time scale">
+                    <div>2017年9月30</div>
+                </div>
+                <div class="mess-org scale">
+                    主办单位：国家发展改革为国际合作中心
+                </div>
+            </div>
+            <div class="swiper-slide secont-screen">
+                <div class="title">论坛主题</div>
+                <div class="conent">
+                    <div class="info">国家权威政策法规解读</div>
+                    <div class="info">副省级省会城市重大项目连决推介</div>
+                    <div class="info">顶级专家团队深度把脉</div>
+                    <div class="info">经融机构，社会机构与项目当面对接</div>
+                </div>
+            </div>
+            <div class="swiper-slide three-screen">
+                <div class="title">拟邀深度点评嘉宾、专家</div>
+                <ul class="conent">
+                    <li class="guest">
+                        <img class="guest-img" src="" alt="">
+                        <div class="guest-message">
+                            <p class="guest-name">韩志峰</p>
+                            <p class="guest-info">国家发展改革委投资司副司长，清华大学ppp研究中心领导小组成员，经济学博士。长期从事金融投资管理工作。在投资宏观调控，投资体制改革，组经济明建投资，推广pp方面有着丰富的理论和实践经验</p>
+                        </div>
+                    </li>
+                   <li class="guest towardsLeft">
+                        <img class="guest-img" src="" alt="">
+                        <div class="guest-message">
+                            <p class="guest-name">韩志峰</p>
+                            <p class="guest-info">国家发展改革委投资司副司长，清华大学ppp研究中心领导小组成员，经济学博士。长期从事金融投资管理工作。在投资宏观调控，投资体制改革，组经济明建投资，推广pp方面有着丰富的理论和实践经验</p>
+                        </div>
+                    </li>
+                    <li class="guest">
+                        <img class="guest-img" src="" alt="">
+                        <div class="guest-message">
+                            <p class="guest-name">韩志峰</p>
+                            <p class="guest-info">国家发展改革委投资司副司长，清华大学ppp研究中心领导小组成员，经济学博士。长期从事金融投资管理工作。在投资宏观调控，投资体制改革，组经济明建投资，推广pp方面有着丰富的理论和实践经验</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="swiper-slide four-screen">
+                <div class="title">论坛报名</div>
+                <div class="count ">
+                    <form action="" class="sign">
+                        <input type="text">
+                        <input type="text">
+                        <input type="text">
+                        <input type="text">
+                        <button class="submit">提交</button>
+                    </form>
+                    <div class="info">
+                        <p>本次活动仅限200人参加，名额有限，额满为止。</p>
+                        <p>论坛会务组将对报名人员惊醒赛选、确认，最终能否参会情谊会务组短信通知为主</p>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide five-screen">
+                <div class="title">论坛特色</div>
+                <div class="content">
+                    <p class="message">这是副省级别的省会城市首次联袂想社会推荐基础设项目，参会城市的两道将参数当地基础设施建设规划和ppp政策环境，退出的项目规模大，质量高。</p>
+                    <p class="message">这是副省级别的省会城市首次联袂想社会推荐基础设项目，参会城市的两道将参数当地基础设施建设规划和ppp政策环境，退出的项目规模大，质量高。</p>
+                    <p class="message">这是副省级别的省会城市首次联袂想社会推荐基础设项目，参会城市的两道将参数当地基础设施建设规划和ppp政策环境，退出的项目规模大，质量高。</p>
+                </div>
+            </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+</body>
+<script src="jquery.min.js"></script>
+<script src="swiper.min.js"></script>
+<script src="swiper.animate1.0.2.min.js"></script>
+<script>
+$(function(){
+    var mySwiper = new Swiper ('.swiper-container', {
+        direction: 'vertical',
+        onInit: function(swiper){
+            swiperAnimateCache(swiper);
+            swiperAnimate(swiper);
+        },
+        onTransitionEnd: function(swiper){
+            var index=swiper.activeIndex;
+            if(index==0){
+                $('.first-screen .bord').addClass('fullScreenZoom');
+                $('.first-screen .mess-tit').addClass('scale');
+                $('.first-screen .mess-item').addClass('scale');
+                $('.first-screen .mess-city').addClass('scale');
+                $('.first-screen .mess-time').addClass('scale');
+                $('.first-screen .mess-org').addClass('scale');
+            }else{
+                $('.first-screen .bord').removeClass('fullScreenZoom');
+                $('.first-screen .mess-tit').removeClass('scale');
+                $('.first-screen .mess-item').removeClass('scale');
+                $('.first-screen .mess-city').removeClass('scale');
+                $('.first-screen .mess-time').removeClass('scale');
+                $('.first-screen .mess-org').removeClass('scale');
+            }
+            if(index==1){
+                $($('.secont-screen .conent').find('div')[0]).addClass('towardsLeft');
+              $($('.secont-screen .conent').find('div')[1]).addClass('towardsLeftDelay');
+              $($('.secont-screen .conent').find('div')[2]).addClass('towardsLeftDelay6');
+              $($('.secont-screen .conent').find('div')[3]).addClass('towardsLeftDelay7');
+            }else{
+               $($('.secont-screen .conent').find('div')[0]).removeClass('towardsLeft');
+              $($('.secont-screen .conent').find('div')[1]).removeClass('towardsLeftDelay');  
+            }
+            if(index==2){
+                $('.three-screen .title').addClass('towardsLeft');
+              
+                $($('.three-screen').find('.guest')[1]).addClass('towardsLeft');
+                $('.three-screen').find('.guest').addClass('towardsRight');
+                $($('.three-screen').find('.guest')[1]).removeClass('towardsRight');
+            }else{
+                $('.three-screen .title').removeClass('towardsLeft');
+                $($('.three-screen').find('.guest')[1]).removeClass('towardsLeft');
+                $('.three-screen').find('.guest').removeClass('towardsRight');
+            }
+            if(index==3){
+                $('.four-screen .title').addClass('characterZoom');
+                $('.four-screen .content').addClass('towardsRight');
+            }else{
+                $('.four-screen .title').removeClass('characterZoom');
+                $('.four-screen .content').removeClass('towardsRight');
+            }
+            if(index==4){
+                $('.five-screen .title').addClass('towardsLeft');
+                $('.five-screen .content').addClass('towardsRight');
+            }else{
+                $('.five-screen .title').removeClass('towardsLeft');
+                $('.five-screen .content').removeClass('towardsRight');
+            }
+        }
+    }); 
+    $('musicbg').click(function(){
+     
+      // 转成成js对象
+      var audio=$('audio').get(0);
+     
+      //音频控制
+      if(audio.paused){
+        audio.play();
+        console.log(1)
+      }else{
+        audio.pause();
+        console.log(2)
+      }
+    }) 
+});
+</script>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>市内交通</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="../../css/common/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../../css/weixin/style.css">
+	<style type="text/css">
+		.cityTraffic{
+			width: 100%;
+			padding: 10px 22px;
+		}
+	</style>
+</head>
+<body>
+	<script src="../../js/weixin/wxHeader.js"></script>
+	<div class="cityTraffic"></div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script type="text/javascript">
+var actId = '';
+$(function(){
+	$(".nav-title").html("市内交通");
+	loading();
+	actId = Request('actId');
+	$.myAjax({
+		url: basePath + "index/activity.do",
+		data: {id: actId, type: '16'},
+		success: function(result){
+			$(".loading").remove();
+
+			if(result.flag){
+				//判断市内交通信息是否为空
+				if(result.data.cityTraffic === null){
+					myAlert("暂无市内交通信息");
+					return;
+				}
+				$(".cityTraffic").html(result.data.cityTraffic);
+				if($('.cityTraffic img').width() > $('.introduction').width()){ 
+					// 重新设置图片宽高
+					var w = $('.cityTraffic img').width();
+					var h = $('.cityTraffic img').height();
+					var sw = $('.cityTraffic').width();
+					$('.cityTraffic img').css({'width':'100%','height':scale(w,h,sw)});
+				}
+			}else{
+				myAlert(result.msg, "slow");
+			}
+		},
+		error: function(){
+			$(".loading").remove();
+			myConfirm("请求失败!");
+		}
+	});
+});
+
+// 图片等比缩放
+function scale(width,height,swidth){
+	var h = (swidth/width * height);
+	return h + 'px';
+}
+</script>
+</html>

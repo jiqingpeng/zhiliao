@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>忘记密码</title>
+	<link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+	<link rel="stylesheet" href="../../css/index/base.css">
+	<link rel="stylesheet" href="../../css/index/login.css">
+	<link rel="stylesheet" href="../../css/style.css">
+	<link rel="stylesheet" href="../../css/common/bootstrap.min.css">
+	<style>
+		a{
+			text-decoration: none;
+		}
+		.register{
+			border:1px solid #ddd;
+			width:272px;
+			margin-top:76px;
+		}
+		.register .reg_head{
+			width:272px;
+			height:48px;
+			line-height:48px;
+			background: #ff9e00;
+			text-align:center;
+			color:#fff;
+		}
+		.register form{
+			width:252px;
+			margin-left:14px;
+			font-size:12px;
+		}
+		.register form table td{
+			width:240px;
+			display:inline-block;
+			height:26px;
+			line-height:26px;
+			margin-top:16px;
+			position: relative;
+			/*border:1px solid red;*/
+		}
+		.register form table .codeImg{
+			display: none;
+		}
+		.register form table #proving{
+			width:52px;
+			margin-left:20px;
+		}
+		.register form table #regbtn{
+			width:50px;
+		}
+		.register form table #regbtn{
+			width:50px;
+			margin-left:14px;
+		}
+		.register form table .reg{
+			text-align: center;
+			margin:10px 0;
+			
+		}
+		.tc{
+			text-align: center;
+		}
+		.mc{
+			margin:0 auto;
+		}
+		.register form table .m50{
+			margin-top:30px;
+		}
+		.register form .wInput{
+			width:164px;
+		}
+		input{
+			display:inline-block;
+			padding-left:4px;
+			height:24px;
+		}
+		.register form .btn{
+			width:104px;
+			text-align: center;
+			border:none;
+			background:#ff9e00;
+			color:#fff;
+			border-radius: 2px;
+			padding:3px;
+			margin-left:5px;
+		}
+		/*.register form .btn:hover{
+			cursor:pointer;
+		}*/
+		.register form #code{
+			
+			margin-top:-2px;
+		}
+		.register form .regImg{
+			width:60px;
+			height:24px;
+			margin-left:5px;
+		}
+		.register form .regText{
+			height:28px;
+			line-height: 28px;
+			margin-left:5px;
+			color:blue;
+			text-decoration: underline;
+		}
+		.register form .regBox{
+			width:50px;
+			margin-left:76px;
+		}
+		.register form .checkBox{
+			width:14px;
+			height:14px;
+			position:absolute;
+			left:16px;
+			top:2px;
+		}
+		.register form span,a{
+			display: inline-block;
+		}
+		.register form .active{
+			display:none;
+		}
+	</style>
+</head>
+<body>
+	<div class="contains">
+		<div class="con_tit">
+			<a href="index.html">
+				<img src="../../img/index/logoandname.png" alt="login">
+			</a>
+		</div>
+		<div class="con_box clearfix">
+			<div class=" login_img fl">
+				<img class="" src="../../img/index/loginimg.png" alt="login_img">
+			</div>
+			<div class="register fl">
+				<div class="reg_head">找回密码</div>
+					<form id="forgetFm">
+						<input type="hidden" name="type" class="loginType">
+						<table >
+							<tr>
+								<td class="m50 clearfix">
+									<label for="" class="fl">&nbsp&nbsp&nbsp&nbsp手机号:</label>
+									<input class="wInput mobile fr" type="text" placeholder="请输入手机号" name="mobile" maxlength="32">
+								</td>
+							</tr>
+							<tr>
+								<td class="clearfix">
+									<label class="fl" for="">&nbsp&nbsp&nbsp&nbsp新密码:</label>
+									<input class="pwdHide" type="hidden" name="pwd">
+									<input class="wInput userpwd pwdShow fr" type="password" placeholder="请输入新密码" maxlength="32">
+								</td>
+							</tr>
+							<tr>
+								<td class="clearfix">
+									<label for="" class="fl">确认密码:</label>
+									<input class="wInput confpwd fr" type="password" placeholder="请再次输入密码" maxlength="32">
+								</td>
+							</tr>
+							<tr class="codeImg">
+								<td class="clearfix">
+									<input class="wInput fl regBox imgProv" type="text" name="code" placeholder="验证码" maxlength="32">
+									<img class="regImg fl" src="" alt="regImg">
+									<a class="fl regText" href="javascript:;">换一张</a>
+								</td>
+							</tr>
+							<tr>
+								<td class="clearfix">
+									<label class="fl" for="">&nbsp&nbsp&nbsp&nbsp&nbsp验证码:</label>
+									<input class="w50 fl" id="proving" type="text" placeholder="验证码" maxlength="32" name="">
+									<button type="button" class="fr btn" id="code">免费获取验证码</button>
+								</td>
+							</tr>
+							<tr>
+								<td class="reg">
+									<button type="button" class="btn btndefult w50" id="regbtn" >保存</button>
+									<button type="reset" class="btn btndefult w50" id="regbtn">取消</button>
+								</td>
+							</tr>
+						</table>
+				    </form>
+			</div>
+		</div>
+		<div class="con_footer">
+			<ul class="clearfix foot_link">
+				<li class="fl">
+					<a href="javascript:;">关于我们</a>
+				</li>
+				<li class="fl">
+					<a href="javascript:;">联系我们</a>
+				</li>
+				<li class="fl">
+					<a href="javascript:;">帮助中心</a>
+				</li>
+				<li class="fl">
+					<a href="javascript:;">网站声明</a>
+				</li>
+				<li class="fl">
+					<a href="javascript:;">公司新闻</a>
+				</li>
+			</ul>
+			<p>未经gconfs.com同意，不得转发网站会议信息</p>
+			<p>京ICP备17018133号</p>
+		</div>
+	</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/jQuery.md5.js"></script>
+<script src="../../js/user/userMain.js"></script>
+<script>
+	$(function(){
+		//修改类型
+		var type=Request('type');
+		$('.loginType').val(type);
+		//图形验证码显示
+		$('.confpwd').focus(function(){
+			var mobile=$('.mobile').val();
+			var userpwd = $('.userpwd').val();
+			if(mobile!=''&&userpwd!=''){
+				$('.codeImg').css('display','block');
+			};
+		});
+		//获取图形验证码
+		function getCode(){
+			var url=basePath+"verification/get.do";
+			$.myAjax({
+				url: url,
+				success:function(result){
+					$('.regImg').attr('src','data:image/png;base64,'+result.data);
+				}
+			});
+		};
+		getCode();
+		//验证
+		var prov=function(){
+			var prov = $('#proving').val();
+			if (prov == '' || prov == null) {
+				myAlert('短信验证码不能为空');
+				return false;
+			};
+		};
+		function noteValidation(){
+			var mobile = $('.mobile').val();
+			var userpwd = $('.userpwd').val();
+			var confpwd = $('.confpwd').val();
+			var imgProv = $('.imgProv').val();
+			//验证手机号
+			if (mobile == null || mobile == '') {
+				myAlert('手机号不能为空!','slow');
+				return false;
+			}else{
+				if(!(/^1[34578]\d{9}$/.test(mobile))){ 
+		        	myAlert("手机号码有误，请重新输入！",'slow');  
+		        	return false; 
+		        };
+			};
+			//验证密码
+			if (userpwd == null || userpwd == '') {
+				myAlert('密码不能为空!','slow');
+				return false;
+			}else{
+				if(!(/^[a-zA-Z][a-zA-Z0-9_]{5,15}$/.test(userpwd))){ 
+		        	myAlert("密码是以英文字母开头，只能包含英文字母、数字、下划线，且长度为6~16位，请重新输入！",'slow');  
+		        	return false; 
+		        };
+			};
+			//验证确认密码
+			if (confpwd == null || confpwd == '') {
+				myAlert('确认密码不能为空!','slow');
+				return false;
+			}else{
+				if(userpwd != confpwd){ 
+		        	myAlert("两次填写密码不一致！",'slow');  
+		        	return false; 
+		        };
+			};
+			// if(prov1){
+			// 	prov1();
+			// };
+			//验证图形
+			//图形验证
+			if (imgProv == '' || imgProv == null) {
+				myAlert('图形验证码不能为空','slow');
+				return false;
+			};
+			return true;
+		};
+		function saveValidation(){
+			var mobile = $('.mobile').val();
+			var userpwd = $('.userpwd').val();
+			var confpwd = $('.confpwd').val();
+			var imgProv= $('.imgProv').val();
+			var prov= $('#proving').val();
+			//手机号
+			if (mobile == null || mobile == '') {
+				myAlert('手机号不能为空!','slow');
+				return false;
+			}else{
+				if(!(/^1[34578]\d{9}$/.test(mobile))){ 
+		        	myAlert("手机号码有误，请重新输入！",'slow');  
+		        	return false; 
+		        };
+			};
+			//密码
+			if (userpwd == null || userpwd == '') {
+				myAlert('密码不能为空!','slow');
+				return false;
+			}else{
+				if(!(/^[a-zA-Z][a-zA-Z0-9_]{5,15}$/.test(userpwd))){ 
+		        	myAlert("密码是以英文字母开头，只能包含英文字母、数字、下划线，且长度为6~16位，请重新输入！",'slow');  
+		        	return false; 
+		        };
+			};
+			//确认密码
+			if (confpwd == null || confpwd == '') {
+				myAlert('确认密码不能为空!','slow');
+				return false;
+			}else{
+				if(userpwd != confpwd){ 
+		        	myAlert("两次填写密码不一致！",'slow');  
+		        	return false; 
+		        };
+			};
+			// if(prov1){
+			// 	prov1();
+			// };
+			//图形验证
+			if (imgProv == '' || imgProv == null) {
+				myAlert('图形验证码不能为空','slow');
+				return false;
+			};
+			//短信验证
+			if (prov == '' || prov == null) {
+				myAlert('短信验证码不能为空','slow');
+				return false;
+			};
+			return true;
+		};
+		// 表单验证与提交
+		$('#regbtn').click(function() {
+			var mobile = $('.mobile').val();
+			var userpwd = $('.userpwd').val();
+			var confpwd = $('.confpwd').val();
+			var imgProv= $('.imgProv').val();
+			var unit = $('.unit').val();
+			var email = $('.mailbox').val();
+			var pwd=$.md5($('.pwdShow').val());
+			$('.pwdHide').val(pwd);
+			//保存
+			if(saveValidation()){
+				
+				var url=basePath+'user/safe/forget.do';
+				console.log(type)
+				if(type==7||type==8){
+					url=basePath+'admin/safe/forget.do';
+				};
+				if(type==9){
+					url=basePath+'super/safe/forget.do';
+				};
+				$('#proving').attr('name','');
+				$('.imgProv').attr('name','');
+				$('#proving').attr('name','code');
+				console.log($('#forgetFm').serialize());
+				console.log(url)
+				$.myAjax({
+					url: url,
+					data: $('#forgetFm').serialize(),
+					success: function (result) {
+						console.log(result);
+						if(result.flag) {
+							myAlert(result.msg,'slow');
+							downTime(url, 3000);
+							function url(){
+								window.location.href = basePath;
+							};
+							
+						} else {
+							myAlert("修改失败，" + result.msg,'slow');
+						};
+					},
+					error: function(result) {
+						myAlert("请求失败，请稍后再试！",'slow');
+					}
+				});
+			};
+		});
+	    //获取短信验证
+	    $('#code').click(function(){
+	 		if(noteValidation()){
+	    		//获取验证码
+	    		var url=basePath+"user/safe/forget/verification.do";
+				if(type==7||type==8){
+					url=basePath+'admin/safe/forget/verification.do';
+				};
+				if(type==9){
+					url=basePath+'super/safe/forget/verification.do';
+				};
+	    		var pwd=$.md5($('.pwdShow').val());
+	    		$('.pwdHide').val(pwd);
+	    		$.myAjax({
+						url: url,
+						data: $('#forgetFm').serialize(),
+						success:function(result){
+							// console.log(result)
+							if(result.flag){
+								//倒计时获取验证码
+						    	var i=60;
+						    	var timer=null;
+						    	function show(){
+									i--;
+									$('#code').html(i+'秒后获取');
+									$('#code').attr('disabled','disabled');
+									if(i<=0){
+										clearInterval(timer);
+										$('#code').html('免费获取验证码');
+										$('#code').removeAttr('disabled');
+									}
+								};
+								show();
+								timer=setInterval(show,1000);
+							}else{
+								myAlert(result.msg);
+								codeChange();
+							};
+						},
+						error:function(){
+							myAlert(result.msg)
+						}
+				});
+	    	};
+	    });
+	    //更换验证码
+		$('.regText').click(codeChange);
+	    function codeChange(){
+	    	$('.regBox').val("");
+			getCode();
+		};
+	})
+</script>
+</html>

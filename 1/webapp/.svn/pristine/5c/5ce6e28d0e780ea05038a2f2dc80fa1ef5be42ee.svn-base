@@ -1,0 +1,64 @@
+@charset "utf-8";
+
+/* reset */
+body,h1,h2,h3,h4,h5,p,dd,ul,ol,form,input,textarea,th,td,select,button { margin:0; padding:0; }
+em { font-style:normal; }
+li { list-style:none; }
+a { text-decoration:none; }
+img { border:none; vertical-align:top; }
+table { border-collapse:collapse; }
+input,textarea { outline:none; }
+textarea { resize:none; overflow:auto; }
+body { font-size:14px; font-family: "SimSun","宋体","Arial Narrow",HELVETICA; }
+/* end reset */
+html, body {
+	height: 100%;
+}
+.wx-box {
+	height: 100%;
+	width: 100%;
+}
+.detailImg {
+	width: 100%;
+	height: 30%;
+	position: relative;
+	overflow: hidden;
+	border-bottom: 2px solid #ddd;
+	border-radius: 4px;
+}
+.detailOption {
+	padding: 0 14px;
+	margin-bottom: 35px;
+}
+.optionImg {
+	height: 66px;
+	width: 66px;
+	margin: 20px auto;
+	background-color: #ff6100;
+	border-radius: 43px;
+	margin-bottom: 4px;
+	line-height: 66px;
+}
+.optionImg img {
+	height: 32px;
+	width: 32px;
+	margin: 17px 17px;
+	border: none;
+}
+.optionTil {
+	height: 30px;
+	width: 100%;
+	text-align: center;
+	line-height: 30px;
+}
+
+.img{width: 100%; height: 100%; position: absolute;top: 0;left: 0;}
+.img li{ float: left; width: 100%; height: 100%;}
+.img li img{ width: 100%; height: 100%; }
+.num{ position: absolute;bottom: 10px;width: 100%;text-align: center;font-size: 0;}
+.num li{width: 10px;height: 10px;background:rgba(0,0,0,0.5);border-radius: 100%;display: inline-block;margin: 0 5px;cursor: pointer;}
+/*.btn{display: none;}
+.btn span{display: block;width: 50px;height: 100px;background: rgba(0,0,0,0.6);color: #fff;font-size: 40px;line-height: 100px;text-align: center;cursor:pointer;}
+.btn .prev{position: absolute;left: 0;top: 50%;margin-top: -50px;}
+.btn .next{position: absolute;right: 0;top: 50%;margin-top: -50px;}*/
+.num .active{background-color: #fe6600;}

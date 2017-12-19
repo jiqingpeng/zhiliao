@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>嘉宾介绍</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="../../css/common/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../../css/weixin/style.css">
+	<style type="text/css">
+		.guestIntro{
+			width: 100%;
+			padding: 10px 22px;
+		}
+		.nick{
+			margin-right: 15px;
+		}
+	</style>
+</head>
+<body>
+	<iframe name="head" class="m-head" marginwidth="0" marginheight="0" width="100%" height="58" src="header.html" frameborder="0"></iframe>
+	<div class="guestIntro marginBottom">
+		<div class="name"></div>
+	</div>
+	<!-- <iframe name="footer" class="m-foot" marginwidth="0" marginheight="0" width="100%" height="30" src="footer.html" frameborder="0"></iframe> --> 
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script type="text/javascript">
+	var actId = '';
+	$(function(){
+		var url = "index/activity.do";
+		init(url, 11);
+	});
+	function init(url, type){
+		loading();
+		actId = Request('actId');
+		$.myAjax({
+			url: basePath + url,
+			data: {id: actId, type: type},
+			success: function(result){
+				$(".loading").remove();
+				console.log(result);
+				var str = '';
+				if(result.flag){
+					var expert = result.data.expert;
+					//判断嘉宾介绍是否为空
+					if(expert.length == 0){
+						myAlert("暂无嘉宾介绍内容");
+						return;
+					}
+					for(var i = 0; i < expert.length; i++){
+						str += '<div>' +
+								'<span class="nick">姓名:</span>' +
+								'<span>' + expert[i].expertName + '</span>' +
+								'</div>';
+					}
+					$(".name").html(str);
+				}else{
+					myAlert(result.msg, "slow");
+				}
+			},
+			error: function(){
+				$(".loading").remove();
+				myConfirm("请求失败!");
+			}
+		})
+	}
+</script>
+</html>

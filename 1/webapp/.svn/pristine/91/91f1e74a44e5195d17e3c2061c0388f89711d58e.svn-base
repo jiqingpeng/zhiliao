@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+	<meta charset="UTF-8">
+	<title>会议列表</title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="会议列表" />
+    <meta content="telephone=no" name="format-detection" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+    <link rel="stylesheet" href="css/bootstrap.css" />  
+	<link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <iframe name="head" class="m-head" 
+		marginwidth="0" marginheight="0" width="100%" height="50" src="header.html" frameborder="0"></iframe> 
+	<div class="order-box">	  
+	  <ul class="topic-list">	  
+		 
+	  </ul>
+	</div>
+	<div style="height:40px;">&nbsp;
+	</div>
+	<iframe name="footer" class="m-foot" 
+		marginwidth="0" marginheight="0" width="100%" height="30" src="footer.html" frameborder="0"></iframe> 
+  </body>   
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/jquery.form.js"></script>
+  <script type="text/javascript" src="js/jquery.cookie.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>  
+  <script type="text/javascript" src="js/pub.js"></script>  
+  <script>
+	 $(function(){		 
+		 getconflist(0);		 
+	 });
+
+	 function unloginlist(){
+		 $.post("../../index/confList.do",
+			  {			   
+				  pageNum:1,
+				  pageSize:30
+			  },
+			  function(json){
+				  for(var conf in json.confList){	
+					var li = '<li class="a-topic">'+
+						'<a class="topic-tutor-link" href="confdetail.html?id='+json.confList[conf].id+'">'+
+						'<hr style="margin-top:0px;margin-bottom:5px;"/>'+
+						'<p class="topic-title-txt">'+json.confList[conf].name+'</p>'+
+						'<p>'+json.confList[conf].stime+' <img src="images/icon-location.png"/> '+json.confList[conf].city+'</p>';						 
+					li += '<p>'+ json.confList[conf].organizer.replace(new RegExp(/(,)/g),' ') + "</p>";			 		 
+					li +=  '</a></li>';
+					$(".topic-list").append(li);
+				  }
+			  },
+			  'json');
+	 }
+
+	 function loginlist(){ 
+		 $.post("../../user/conf/list.do",
+			  {
+				  id:$.cookie("wx-user-id"),
+				  pageNum:1,
+				  pageSize:30
+			  },			 
+			  function(json){					   
+				  
+				 if(json.confList.length > 0){
+					var myconfid="";
+					for(var conf in json.confInfoList){
+						myconfid += json.confInfoList[conf].id + ",";
+					}
+					 
+					for(var conf in json.confList){	
+						var li = '<li class="a-topic">';
+						if(myconfid.indexOf(json.confList[conf].id) >= 0)
+						    li += '<a class="topic-tutor-link" href="myconfdetail.html?id='+json.confList[conf].id+'">';
+						else
+						    li += '<a class="topic-tutor-link" href="confdetail.html?id='+json.confList[conf].id+'">';
+						li +=						 
+							'<hr style="margin-top:0px;margin-bottom:5px;"/>'+
+							'<p class="topic-title-txt">'+json.confList[conf].name+'</p>'+
+							'<p>'+json.confList[conf].stime+' <img src="images/icon-location.png"/> '+json.confList[conf].city+'</p>';
+						li += '<p>'+ json.confList[conf].organizer.replace(new RegExp(/(,)/g),' ') + "</p>";
+						if(myconfid.indexOf(json.confList[conf].id) >= 0)
+							li += '<p style="color:#34B457">已报名</p>';
+						li +=  '</a></li>';
+						$(".topic-list").append(li);
+					}
+				 }
+			  },
+			  'json'
+		  );
+	 }
+
+	 function getconflist(page){     
+	  if(typeof($.cookie("wx-user-id")) == "undefined")
+		unloginlist();
+	  else{
+		  $.ajax({
+			 url:"../../index/wx/islogin.do",
+			 dataType: "text",
+			 success: function(data){
+				  
+				 if(data == "logined")
+					 loginlist();
+				 else
+				     unloginlist();	  			 			
+			}
+		 });
+	  }
+	   
+		   
+	  
+	}
+  </script>
+</html>

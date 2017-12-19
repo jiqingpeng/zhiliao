@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script src="js/zepto.min.js"></script>
+<script>
+	$(function(){
+		
+		var x=0;
+		var y=0;
+		$('div').mousedown(function(ev){
+			var disX=ev.clientX-x;
+			var disY=ev.clientY-y;
+			$(document).mousemove(function(ev){
+				x=ev.clientX-disX;
+				y=ev.clientY-disY;
+				$('div').css('transform','translate('+x+'px,'+y+'px)');	
+			});
+			$(document).mouseup(function(){
+				$(document).off('mousemove');
+				$(document).off('mouseup');
+			});	
+			
+			return false;
+		});
+	})
+</script>
+<style>
+	div{ width:100px; height:100px; background:red;}
+</style>
+</head>
+<body>
+	<div></div>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

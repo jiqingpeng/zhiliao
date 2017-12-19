@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>市内交通</title>
+<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+<link href="../../../css/common/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../../js/ueditor/themes/default/css/ueditor.css">
+<link href="../../../css/style.css" rel="stylesheet" />
+<link href="../../../css/main.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../../css/admin.css">
+</head>
+<body>
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="basicInfo.html">管理中心</a>
+		<a href="">-&gt;</a>
+		<a href="basicInfo.html">会议管理</a>
+		<a href="">-&gt;</a>
+		<a href="urbanTraffic.html">市内交通</a>
+	</div>
+	<div class="con-box">
+    <div id="subMenu"></div>
+    <div id="contentBody" class="mops-table">
+		<form class="trafficForm">
+            <input type="hidden" id="id" name="id" />
+			<div class="editorcon">
+				<textarea id="trafficEditor" name="cityTraffic"></textarea>
+			</div>
+            <div class="btncon">
+              <button type="button" class="btn btn-default btn-warning saveinfo">保&nbsp;存</button>
+              <button type="button" class="btn btn-default cancel">取&nbsp;消</button>
+            </div>
+		</form>
+    </div>
+	</div>
+</div>
+
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/ueditor/ueditor.config.js"></script>
+<script src="../../../js/ueditor/ueditor.all.js"></script>
+<script src="../../../js/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/main.js"></script>
+
+<script>
+	// 实例化编辑器
+	var editor = UE.getEditor('trafficEditor',{
+		toolbars:[[
+                'undo', //撤销
+                'redo', //重做
+                'preview', //预览
+                'selectall', //全选
+                'removeformat', //清除格式
+                'cleardoc', //清空文档
+                'bold', //加粗
+                'indent', //首行缩进
+                'italic', //斜体
+                'underline', //下划线
+                'strikethrough', //删除线
+                'subscript', //下标
+                'fontborder', //字符边框
+                'superscript', //上标
+                'formatmatch', //格式刷
+                'justifyleft', //居左对齐
+                'justifyright', //居右对齐
+                'justifycenter', //居中对齐
+                'justifyjustify', //两端对齐
+                'forecolor', //字体颜色
+                'backcolor', //背景色
+                'insertorderedlist', //有序列表
+                'insertunorderedlist', //无序列表
+                'imagenone', //默认
+                'imageleft', //左浮动
+                'imageright', //右浮动
+                'imagecenter', //居中
+                'rowspacingtop', //段前距
+                'rowspacingbottom', //段后距
+                'lineheight', //行间距
+                'edittip ', //编辑提示
+                'touppercase', //字母大写
+                'tolowercase', //字母小写
+                'autotypeset', //自动排版
+            ],[
+                'spechars', //特殊字符
+                'fontfamily', //字体
+                'fontsize', //字号
+                'paragraph', //段落格式
+                'customstyle', //自定义标题
+                'date', //日期
+                'time', //时间
+                'link', //超链接
+                'unlink', //取消链接
+            ]
+        ],
+		autoHeightEnabled: true,
+    	autoFloatEnabled: true
+	})
+
+	
+    function initPage(){
+        $.myAjax({
+            url: basePath + "admin/activity/get.do",
+            data: {id:$("#id").val()},
+            success: function(result){
+                editor.ready( function() { // 富文本实例化完成
+                    editor.setContent(result.data.activity.cityTraffic);
+                });
+            },
+            error: function(result){
+                myAlert("请求失败!", "slow");
+            }
+        })
+    }
+</script>
+<script>
+$(function(){
+	// 获取左侧菜单列表数据(参数为请求地址)
+	serialMenuAjax('admin/activity/menu.do','会议管理',sessionStorage.getItem('actId'), initPage);
+    setSubMenu('市内交通');
+    //获取id
+    $("#id").val(sessionStorage.getItem('actId'));
+
+    $(".saveinfo").click(function(){
+        $.myAjax({
+            url: basePath + "admin/activity/save.do",
+            data: $(".trafficForm").serialize(),
+            success: function(result){
+                if(result.flag){
+                    myAlert(result.msg)
+                }else{
+                    myConfirm(result.msg);
+                }
+            },
+            error: function(){
+                myAlert("请求失败!", "slow");
+            }
+        })
+    });
+
+    $(".cancel").click(function(){
+        initPage();
+    })
+
+    // initPage();
+});
+</script>
+</html>

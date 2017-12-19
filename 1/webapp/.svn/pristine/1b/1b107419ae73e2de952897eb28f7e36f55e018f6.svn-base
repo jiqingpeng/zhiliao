@@ -1,0 +1,255 @@
+/*
+监控页面基础样式
+*/
+body, #root {
+    margin: auto;
+    width: 100%;
+    min-height: 600px;
+    min-width: 1280px;
+    background-color: #ececec;
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, SimSun, sans-serif;
+    font-size: 14px;
+    position: absolute;
+    display: block;
+}
+
+a, a:hover, a:visited {
+    text-decoration: none;
+}
+
+#head {
+    width: 100%;
+    height: 60px;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    position: relative;
+    display: block;
+    overflow: hidden;
+}
+
+#foot {
+    padding: 15px 0;
+    color: #aaa;
+    text-align: center;
+    line-height: 1;
+    overflow: hidden;
+}
+
+.head-main {
+    height: 100%;
+    width: 100%;
+    font-size: 16px;
+    background-image: linear-gradient(to right, #fff, #f60, #ff6100);
+}
+
+.logo {
+    height: 60px;
+    width: 180px;
+    padding: 10px 0 10px 0;
+    position: relative;
+    float: left;
+    z-index: 999;
+}
+
+.logo-title {
+    position: absolute;
+    left: 114px;
+    top: 30px;
+}
+
+.head-tab {
+    height: 60px;
+    line-height: 60px;
+    overflow: hidden;
+    float: left;
+    margin: 0 0 0 40px;
+}
+
+.head-main .head-tab a {
+    position: relative;
+    display: inline-block;
+    padding: 0 10px;
+    margin: 0 8px;
+    color: #444;
+    background-color: transparent;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.head-main .head-tab a:hover {
+    color: #0f0f0f;
+    font-weight: bold;
+}
+
+.head-user {
+    height: 60px;
+    line-height: 60px;
+    position: relative;
+    float: right;
+    color: #fff;
+    margin-right: 10px;
+}
+
+.head-user span {
+    cursor: default;
+}
+
+.head-user a {
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.head-user .glyphicon {
+    font-size: 12px;
+}
+
+#menu {
+    height: 100%;
+    min-height: 300px;
+    display: block;
+    top: 60px;
+    left: 0;
+    float: left;
+    background-color: #fbfbfb;
+    border-right: 1px solid #e1e2e2;
+    border-bottom: 1px solid #e1e2e2;
+    position: absolute;
+}
+
+#menu a, #menu a:hover {
+    color: inherit;
+    cursor: pointer;
+}
+
+.menu-main {
+    overflow: hidden;
+    height: 100%;
+    width: 180px;
+    color: #666;
+    font-size: 14px;
+}
+
+.menu-main span {
+    vertical-align: top;
+    font-size: 12px;
+}
+
+.menu-title {
+    padding-left: 45px;
+    border-bottom: 1px solid #e1e3e4;
+    background-color: #f2f3f4;
+    height: 40px;
+    line-height: 40px;
+}
+
+.menu-title .glyphicon {
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    margin-right: 18px;
+    float: right;
+}
+
+.menu-content a {
+    color: #333;
+}
+
+.menu-content .glyphicon {
+    line-height: 16px;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.menu-main li a {
+    display: block;
+    line-height: 16px;
+}
+
+.menu-main li:hover {
+    background-color: #f3f3f3;
+    cursor: pointer;
+}
+
+#content {
+    display: block;
+    position: relative;
+    margin-left: 180px;
+}
+
+#content-body {
+    width: 100%;
+    display: block;
+    overflow: hidden;
+    position: relative;
+}
+
+.content-title {
+    position: relative;
+    background-color: #fff;
+    padding: 2px 20px 2px 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+}
+
+.content-title .title-bar {
+    height: 40px;
+    line-height: 40px;
+    display: block;
+}
+
+.content-main {
+    width: 100%;
+    display: block;
+}
+
+.content-main-body {
+    width: 100%;
+    min-width: 1024px;
+    height: 100%;
+    min-height: 522px;
+    display: block;
+    padding: 10px;
+}
+
+.progress {
+    margin: 0 auto;
+    display: none;
+    width: 70%;
+    color: #f60;
+}
+
+.sr-only {
+    width: 100px;
+    height: 14px;
+    z-index: 999;
+    position: inherit;
+}
+
+.arrow-left {
+    width: 0;
+    height: 0;
+    line-height: 40px;
+    display: inline-block;
+    border: 5px solid transparent;
+    border-right-color: #666;
+    position: absolute;
+    vertical-align: top;
+    top: 14px;
+    left: 9px;
+}
+
+.active {
+    color: #f60;
+}
+
+.active-head:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    bottom: 1px \9;
+    left: 0;
+    height: 4px;
+    width: 100%;
+    background-color: #fff;
+}

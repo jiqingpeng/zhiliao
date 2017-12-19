@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title class="title">互动交流</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="../../../css/app/style.css">
+<style type="text/css">
+*{box-sizing: border-box;}
+body {
+	background-color: #fff;
+}
+.img{
+	width: 100%;
+}
+.img img{
+	width: 100%;
+}
+.interactionTil {
+	height: 60px;
+	width: 100%;
+	line-height: 60px;
+	margin-top: 28px;
+}
+.intIcon {
+	margin: 0 8px 0 20px;
+	height: 34px;
+	width: 34px;
+	border-radius: 17px;
+	background-color: #d04745;
+	line-height: 34px;
+	display: inline-block;
+}
+.intIcon img {
+	width: 23px;
+	height: 23px;
+	margin: 5px;
+}
+.intTitle {
+	font-size: 22px;
+	color: #000;
+	line-height: 60px;
+	display: inline-block;
+}
+.optCon {
+	width: 100%;
+	padding: 0 20px;
+	font-size: 0;
+}
+.circle, .huiqian, .huizhong {
+	display: inline-block;
+	height: 116px;
+	width: 50%;
+	margin: 0;
+	padding: 0;
+	border: none;
+	vertical-align: top;
+}
+.huiqian img, .huizhong img {
+	width: 100%;
+	height: 100%;
+}
+.circle {
+	background-color: #67cd67;
+	padding: 6px 10px;
+}
+.curCircle{
+	background-color: #ff9726;
+}
+.circle div {
+	width: 100%;
+	height: 100%;
+	border: 1px solid #eee;
+	text-align: center;
+	line-height: 100px;
+	color: #fff;
+	font-size: 22px;
+}
+</style>
+</head>
+<body>
+	<div class="head">
+			<div class="navImg">
+				<img src="../../../img/app/arrowLeft-icon.png">
+			</div>
+			<div class="navDetail">会议讨论</div>
+		</div>
+	<div class="img">
+		<img src="../../../img/weixin/interAction.jpg">
+	</div>
+	<div class="interactionTil">
+		<span class="intIcon">
+			<img src="../../../img/weixin/interactIcon.png"/>
+		</span>
+		<span class="intTitle">互动交流</span>
+	</div>
+	<div class="optCon">
+		<div class="topcon">
+			<div class="huiqian">
+				<img src="../../../img/weixin/huiqian.png"/>
+			</div>
+			<div class="circle">
+				<input type="hidden" value="1">
+				<div>会前讨论</div>
+			</div>
+		</div>
+		<div class="bottomcon">
+			<div class="circle curCircle">
+				<input type="hidden" value="2">
+				<div>现场讨论</div>
+			</div>
+			<div class="huizhong">
+				<img src="../../../img/weixin/xianchang.png"/>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="../../../js/zepto.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<script type="text/javascript">
+var actId = '';
+var take = 'yes';
+$(function(){
+	actId = Request('actId');
+	$(".circle").on("click", function(){
+		var value = $(this).find("input").val();
+		window.location.href = "interactList.html?actId=" + actId +"&value=" + value;
+	});
+})
+</script>
+</html>

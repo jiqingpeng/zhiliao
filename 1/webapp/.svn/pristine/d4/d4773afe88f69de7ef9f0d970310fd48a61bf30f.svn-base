@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<link rel="stylesheet" type="text/css" href="../../../css/app/style.css">
+		<link rel="stylesheet" href="../../../css/app/mescroll.min.css">
+		<style type="text/css">
+		body{
+			position:relative;
+		}
+		.mescroll{
+			position:fixed;
+			top:48px;
+			bottom:40px;
+			height:auto;
+		}
+		.date{
+			text-align: center;
+			width: 100%;
+			margin-top: 15px;
+			color: #878787;
+			font-weight: 600;
+		}
+		.navTitle{
+			position: fixed;
+			top: 48px;
+			padding: 15px 0;
+			background-color: #ffffff;
+			color: #4b4b4b;
+			font-weight: 700;
+			box-shadow: 1px 1px 1.5px 1.5px #ccc;
+			width: 100%;
+			text-align: center;
+		}
+		.conDetail{
+			margin-top: 40px;
+		}
+		.contain{
+			padding: 5px 16px;
+		}
+		.content{
+			margin-top: 10px;
+			background-color: #ffffff;
+			padding: 18px;
+			border-radius: 6px;
+			color: #444444;
+		}
+		.distance{
+			position: fixed;
+			margin-top: 10px;
+			height: 100%;
+		}
+	</style>
+	</head>
+
+	<body>
+		<div>
+		<div class="head">
+			<div class="navImg">
+				<img src="../../../img/app/arrowLeft-icon.png">
+			</div>
+			<div class="navDetail">消息详情</div>
+		</div>
+		<div class="navTitle">
+			<!-- 中国教育后勤协会思想文化建设与人力资源管理专业委员会（2017）年会暨高校后勤文化建设与人力资源管理创新论坛 -->
+		</div>
+		<div class="distance">
+			<div class="mescroll conDetail" id="mescroll">
+			<div id="List" class="List">
+				
+			</div>
+			</div>
+		</div>
+		
+	</div>
+	
+</body>
+<script src="../../../js/app/mescroll.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="../../../js/zepto.js"></script>
+<script type="text/javascript" src="../../../js/app/mtCommon.js"></script>
+<script type="text/javascript" charset="utf-8">
+$(function(){
+	myLoading();
+	//创建MeScroll对象,内部已默认开启下拉刷新,自动执行up.callback,刷新列表数据;
+	var mescroll = new MeScroll("mescroll", {
+		//上拉加载的配置项
+		down: {
+			callback: downCallback , //上拉回调,此处可简写; 相当于 callback: function (page) { getListData(page);
+		}
+	});
+
+	var pageNum = '1';
+	var pageSize = 5;
+	//下拉刷新的回调
+	function downCallback() {
+		console.log(pageNum);
+		if(pageNum == 1){
+			$(".List").append('<a class="skip" name="skip"></a>');
+		}else{
+			$(".skip").remove();
+		}
+		$.myAjax({
+			url: basePath + "mt/user/message/activity/list.do",
+			data:{id:Request("actId"),pageNum:pageNum,pageSize:pageSize},
+			success: function(result) {
+				removeMyLoading();
+	    		if(result.flag){
+	    			if(result.data.messageList[pageSize-1]){
+	    				pageNum++;
+	    			} else {
+	    				mescroll.optDown.use = false;
+	    				mescroll.optDown.isLock = true;
+	    			}
+
+	    			$(".navTitle").html(result.data.activity.name);
+
+	    			//联网成功的回调,隐藏下拉刷新的状态;
+					mescroll.endSuccess(); //无参
+					//设置数据
+	    			setListData(result.data.messageList);
+	    		}else{
+	    			myConfirm(result.msg)
+	    		} 
+			},
+			error: function(data) {
+				removeMyLoading();
+				//联网失败的回调,隐藏下拉刷新的状态
+				mescroll.endErr();
+			}
+		});
+	}
+
+	/*设置列表数据*/
+	function setListData(curPageData){
+		var str = '';
+		for(var i = curPageData.length; i >= 0; i--){
+			if(curPageData[i]){
+				str += '<div class="contain">' +
+					'<div class="date">' +
+						'<span>' + curPageData[i].send_time + '</span>' +
+					'</div>' +
+					'<div class="content">' + curPageData[i].message_value + '</div>' +
+				'</div>';
+			}
+		}
+		// str = str +'<a name="skip"></a>';
+		$("#List").prepend(str);
+		window.location = "#skip";
+		$(".mescroll").css("top",$(".navTitle").height() + 20);
+		console.log($(".navTitle").height());
+	}	
+	//禁止PC浏览器拖拽图片,避免与下拉刷新冲突;如果仅在移动端使用,可删除此代码
+	document.ondragstart=function() {return false;}
+});
+
+</script>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8"/>
+	<meta content="text/html"/>
+	<title>配置管理说明</title>
+	<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+	<link rel="stylesheet" href="../../../css/index/base.css">
+	<link rel="stylesheet" href="../../../css/index/public.css">
+	<link rel="stylesheet" href="../../../css/index/indepPage.css">
+	<style type="text/css">
+		.indepcontent{
+			min-height: 439px;
+		}
+		.important{
+			color: red;
+			margin-bottom: 10px;
+		}
+		.retract{
+			margin-left: 20px;
+		}
+		table {
+			border-right: 1px solid #000;
+			border-bottom: 1px solid #000;
+		}
+		table td {
+			height: 30px;
+			text-align: center;
+			line-height: 30px;
+			border-left: 1px solid #000;
+			border-top: 1px solid #000;
+		}
+		table {
+			border-right: 1px solid #000;
+			border-bottom: 1px solid #000;
+			border-collapse:collapse;
+		}
+		table td {
+			border-left: 1px solid #000;
+			border-top: 1px solid #000;
+		}
+		table .email{
+			width: 150px;
+		}
+		table .port{
+			width: 150px;
+		}
+		table .address{
+			width: 293px;
+		}
+		.portNumber{
+			margin-bottom: 20px;
+		}
+		.authorizationCode img{
+			width: 600px;
+
+		}
+		.explain{
+			margin-bottom: 10px;
+			font-weight: 700;
+			font-size: 16px;
+		}
+		.distance{
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+		.test{
+			margin-top: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="head">
+		<div class="clearfix hnav">
+			<ul class="fl">
+				<li class="fl"><a href="../../index/index.html">首页</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="contain">
+		<div class="bannimg">
+			<a class="fl" href="../index/index.html">
+				<img class="logol" src="../../../img/index/logoandname.png" alt="logoname">
+			</a>
+			<img class="logor fr" src="../../../img/index/homenav.png" alt="homenav">
+		</div>
+		<div class="indepcontent">
+			<!-- <div class="">
+				<div>端口号说明:</div>
+				<div>
+					<div class="retract"">QQ邮箱SMTP服务器的端口号是465或587;</div>
+					<div ">网易邮箱(包括188.com, 163.com, 126.com, netease.com, yeah.net)SMTP服务器的端口号是25</div>
+					<div ">注:所有的SMTP服务器都需要身份验证</div>
+				</div>
+			</div> -->
+			<div class="important">
+			*推荐使用qq邮箱。
+			网易163、126邮箱存在配置不成功的情况。
+			其他邮箱正在适配中。</div>
+			<div class="portNumber">
+				<div class="explain">端口号以及SMTP服务器地址(建议使用qq邮箱)</div>
+				<table border="1">
+					<tr>
+						<td class="email">邮箱名称</td>
+						<td class="port">端口号</td>
+						<td class="address">SMTP服务器地址</td>
+					</tr>
+					<tr>
+						<td>QQ邮箱</td>
+						<td class="port">465或578</td>
+						<td >smtp.qq.com</td>
+					</tr>
+					<tr>
+						<td>网易邮箱(163.com)</td>
+						<td class="port">25</td>
+						<td >smtp.163.com</td>
+					</tr>
+					<tr>
+						<td>网易邮箱(126.com)</td>
+						<td class="port">25</td>
+						<td >smtp.126.com</td>
+					</tr>
+
+				</table>
+			</div>
+			<div class="authorizationCode">
+				<div class="explain">获取授权码(qq邮箱):登录qq邮箱进入首页->设置->帐户，按照以下流程操作。</div>
+				<div>
+					<div class="distance">步骤一:点击开启</div>
+					<div>
+						<img src="../../../img/config01.png">
+					</div>
+					<div class="distance">步骤二:验证密保</div>
+					<div>
+						<img src="../../../img/config02.jpeg">
+					</div>
+					<div class="distance">步骤三:验证密保</div>
+					<div>
+						<img src="../../../img/config03.jpeg">
+					</div>
+				</div>
+			</div>
+			<div class="test">
+				<div class="explain">邮箱测试</div>
+				<div>
+				例如:您配置的邮箱为XXX@qq.com,
+				点击邮箱测试,将使用您配置的XXX@qq.com发送一封测试邮件到XXX@qq.com。
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="foot">
+			<ul class="f-list clearfix">
+				<li class="fl"><a href="../conf/../index/indepPage/about.html">关于我们</a></li>
+				<li class="fl"><a href="../conf/../index/indepPage/contant.html">联系我们</a></li>
+				<li class="fl"><a href="../conf/../index/indepPage/help.html">帮助中心</a></li>
+				<li class="fl"><a href="javascript:;">会务商加盟</a></li>
+				<li class="fl"><a href="javascript:;">会展商加盟</a></li>
+				<li class="fl"><a href="javascript:;">媒体加盟</a></li>
+				<li class="fl"><a href="javascript:;">场馆加盟</a></li>
+				<li class="fl"><a href="javascript:;">旅游合作</a></li>
+			</ul>
+			<p class="p1">未经gconfs.com同意不得转发网站会议信息</p>
+			<p class="p2">京ICP备1708133号</p>
+	</div>
+</body>
+</html>

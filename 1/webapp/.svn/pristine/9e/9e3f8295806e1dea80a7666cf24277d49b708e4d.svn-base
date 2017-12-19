@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>活动指南</title>
+<link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="../../../css/common/bootstrap.css">
+<link rel="stylesheet" href="../../../css/common/bootstrap-table.min.css">
+<link href="../../../css/style.css" rel="stylesheet" />
+<link href="../../../css/main.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../../css/admin.css">
+<!-- 引入项目中每个模块的独立样式 : xxx.css -->
+</head>      
+<body>
+<!-- 引入页头 -->
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="activityGuide.html">活动指南</a>
+	</div>
+	<div class="con-box noSubMenu" style="width: 70%;">
+		<table id="texttable">
+  		</table>
+		<div class="btncon">
+			<button type="button" class="btn btn-default btn-warning guideSave">生成指南</button>
+		</div>     
+</div> 
+
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/bootstrap-table.min.js"></script>
+<script src="../../../js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../../js/bootstrapValidator.min.js"></script>
+<script src="../../../js/common/main.js"></script>
+<script src="../../../js/common/common.js"></script>
+
+<script src="../../../js/admin/userGovern.js"></script>
+
+<script type="text/javascript">
+	$(function(){
+		// 获取左侧菜单列表数据(参数为请求地址)
+		initMenu('../../../js/data/administrator.json','活动指南');
+		initTable(data);
+	})
+	var data=[
+		{
+			"activityGuide": "会议须知"
+		},
+		{
+			"activityGuide": "会议日程表"
+		},
+		{
+			"activityGuide": "参会人员名单"
+		},
+		{
+			"activityGuide": "会场安排"
+		},
+		{
+			"activityGuide": "住宿安排"
+		},
+		{
+			"activityGuide": "服务指南"
+		}
+	]
+	// var childData = [
+	// 	{
+	// 		"meetDisciplin": "会议日期"
+	// 	},
+	// 	{
+	// 		"meetDisciplin": "会议纪律"
+	// 	},
+	// 	{
+	// 		"meetDisciplin": "会议服务会议组联系方式"
+	// 	},
+	// 	{
+	// 		"meetDisciplin": "作息安排"
+	// 	},
+	// 	{
+	// 		"meetDisciplin": "会议天气预报"
+	// 	},
+	// 	{
+	// 		"meetDisciplin": "注意事项"
+	// 	}
+	// ]
+	function initTable(data){
+		$('#texttable').bootstrapTable({
+	            data: data,
+	            dataLocale: 'zh-CN',               //表格汉化
+	            toolbar: '#toolbar',                //工具按钮用哪个容器
+	            striped: true,                      //是否显示行间隔色
+	            cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+	            pagination: true,                   //是否显示分页（*）
+	            sortable: false,                     //是否启用排序
+	            sortOrder: "asc",                   //排序方式
+	            //queryParams: oTableInit.queryParams,//传递参数（*）
+	            sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
+	            pageNumber:1,                       //初始化加载第一页，默认第一页
+	            pageSize: 10,                       //每页的记录行数（*）
+	            //pageList: [10,15,20,25],        //可供选择的每页的行数（*）
+	            //search: true,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
+	            strictSearch: false,
+	            //showColumns: true,                  //是否显示所有的列
+	            //showRefresh: true,                  //是否显示刷新按钮
+	            //minimumCountColumns: 2,             //最少允许的列数
+	            clickToSelect: true,                //是否启用点击选中行
+	            //height: 560,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+	            //uniqueId: "ID",                     //每一行的唯一标识，一般为主键列
+	            //showToggle:true,                    //是否显示详细视图和列表视图的切换按钮
+	            //cardView: false,                    //是否显示详细视图
+	            //detailView: true,                   //是否显示父子表
+	            columns: [{
+                checkbox: true,
+                valign: 'middle'
+            	},
+	            {
+	                field: 'id',
+	                title: '会议邮箱id',
+	            },
+	            {
+	                field: 'activityGuide',
+	                title: '活动指南功能',
+	                align: 'center'
+	            },
+	            // {
+             //        field: 'option',
+             //        title: '操作',
+             //        width: 86,
+             //        align: 'center',
+             //        formatter: function(value,row,index){
+             //          return '<span class="glyphicon glyphicon-chevron-down cursor" style="color: green;"></span>';
+             //        },
+             //        events: {
+             //                'click .tabEdit': function (e, value, row, index) {
+             //                    //修改表单内容
+             //                    $(".modification").show(1000);	
+             //                    showTableForm(row);	      
+             //                },
+	            //     }
+	            // }
+	            ],
+	            onExpandRow: function (index, row, $detail) {
+           			initSubTable(index, row, $detail);
+        		}   
+	    });
+	    $('#texttable').bootstrapTable('hideColumn', 'id');
+	};
+
+	
+	// function initSubTable(index, row, $detail){
+	// 	var cur_table = $detail.html('<table></table>').find('table');
+ //        $(cur_table).bootstrapTable({
+	// 		data:childData,
+	// 		dataType: 'json',
+ //            pageSize: 10,
+ //            pageList: [10, 25],
+ //            columns: [{
+	//                 checkbox: true,
+	//                 valign: 'middle'
+ //            	},
+ //            	{
+	// 				field:"meetDisciplin",
+	// 				title:"会议须知详情"
+	// 		}]
+ //        });
+	// }
+</script>
+</html>
+

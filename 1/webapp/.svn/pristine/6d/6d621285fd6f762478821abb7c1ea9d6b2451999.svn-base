@@ -1,0 +1,59 @@
+// $(function(){
+// 	$('#userName').html(utilForJs.getUserLoginName());
+// 	$('#userPwd').html(utilForJs.getUserLoginPwd());
+// 	$('#userDateState').html(utilForJs.putValue('dataa','qweasd---111000'));
+// 	$('#userDate').html(utilForJs.getValue('dataa'));
+// 	$('#userDateDelState').html(utilForJs.delValue('dataa'));
+// 	$('#userDateDel').html(utilForJs.getValue('dataa'));
+// 	$('#locationData').html(utilForJs.getLocationData());
+// 	$('#lontitude').html(utilForJs.getLontitude());
+// 	$('#latitude').html(utilForJs.getLatitude());
+// });
+// var sss ;
+// function scanQRCode(){
+// 	document.getElementById('src').html
+// 	// 开始扫描二维码
+// 	  scanQrcode.scanQRCode();
+// }
+// // 二维码结果回调函数
+// function scanSuccess(val){
+// 	  $('#src').html(val);
+// }
+$(function(){
+    $(".code").click(function(){ // 点击签到按钮
+        scanQrcode.scanQRCode();
+    });
+})
+
+// 判断是pc还是移动
+function IsPC() {
+    var userAgentInfo = navigator.userAgent;
+    var Agents = ["Android", "iPhone",
+                "SymbianOS", "Windows Phone",
+                "iPad", "iPod"];
+    var flag = true;
+    for (var v = 0; v < Agents.length; v++) {
+        if (userAgentInfo.indexOf(Agents[v]) > 0) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
+}
+
+// 二维码结果回调函数
+function scanSuccess(val){
+    $.myAjax({
+        url: val+'&signType=2',
+        success: function(result){
+            if(result.flag){
+                myConfirm("签到成功！");
+            } else {
+                myConfirm(result.msg);
+            }
+        },
+        error: function(result){
+            myConfirm('请求失败！');
+        }
+    });
+}

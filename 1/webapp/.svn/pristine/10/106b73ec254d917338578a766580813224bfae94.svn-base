@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>管理员配置</title>
+<link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="../../css/common/bootstrap.css"/>
+<link rel="stylesheet" href="../../css/common/bootstrap-table.min.css"/>
+<link rel="stylesheet" href="../../css/common/bootstrapValidator.min.css"/>
+<link href="../../css/style.css" rel="stylesheet" />
+<link href="../../css/main.css" rel="stylesheet" />
+<link href="../../css/super.css" rel="stylesheet"/>
+
+</head>
+<body>
+<script type="text/javascript" src="../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="adminEdit.html">管理员配置</a>
+	</div>
+	<div class="con-box">
+		<!-- 以下为每个页面自己编写的部分 -->
+        <div class="tableAdd none">
+            <div class="tabAddTitle">添加/编辑管理员</div>
+            <form class="tabaddForm form-horizontal" id="tabaddForm">
+                <input type="hidden" name="id" id="adminId" value="c2db1ccb03f34d81b2a8629768ec56a7" />
+                <div class="form-group">
+                    <label for="" class="col-sm-2 control-label"><span style="color: red">* </span>姓名</label>
+                    <div class="col-sm-7">
+                        <input type="text" name="nick" class="form-control nick" placeholder="请输入管理员姓名"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-sm-2 control-label"><span style="color: red">* </span>手机号</label>
+                    <div class="col-sm-7">
+                      <input type="text" name="mobile" id="mobile" class="form-control mobile" placeholder="请填写手机号">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-sm-2 control-label">邮箱</label>
+                    <div class="col-sm-7">
+                      <input type="text" name="email" class="form-control email" placeholder="请填写邮箱地址">
+                    </div>
+                </div>
+                <div class="btncon">
+                    <button type="button" class="btn btn-default btn-warning adminSave">保&nbsp;存</button>
+                    <button type="button" class="btn btn-default adminCancel">取&nbsp;消</button>
+                </div>
+            </form>
+        </div>
+		<div class="adminEdit"> <!-- 建议用功能名为类名 -->
+            <div id="toolbar">
+                <button id="addAdmin" type="button" class="btn btn-sm btn-default">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+                </button>
+            </div>
+			<table id="adminTab" class="bootTable"></table>
+		</div>
+	</div>     
+</div> 
+
+
+<script type="text/javascript" src="../../js/common/footer.js"></script>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/bootstrap-table.min.js"></script>
+<script src="../../js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../js/bootstrapValidator.min.js"></script>
+<script src="../../js/common/main.js"></script>
+<script src="../../js/common/common.js"></script>
+<script type="text/javascript">
+$(function(){
+	// 获取左侧菜单列表数据(参数为请求地址)
+	initMenu('../../js/data/superMenu.json','管理员配置');
+	$("#submenumark").css('display','none');
+
+	// initPage();
+    initTable(data);
+
+    // 添加管理员
+    $("#addAdmin").click(function(){
+        showTableForm();
+    })
+    //表单验证
+    $("#tabaddForm").bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            nick: {
+                validators: {
+                    notEmpty: {
+                        message: '管理员姓名不能为空！'
+                    }
+                }
+            },
+            mobile: {
+                validators: {
+                    notEmpty: {
+                        message: '手机号不能为空！'
+                    },
+                    regexp: {
+                        regexp: /^1[34578]\d{9}$/,
+                        message: '请输入正确的手机号！'
+                    }
+                }
+            },
+            email: {
+                validators: {
+                    emailAddress: {
+                        message: '请输入正确的邮箱地址！'
+                    }
+                }
+            }
+        }
+    });
+    // 管理员信息保存
+    $(".adminSave").click(function(){
+        var bootValidator = $(".tabaddForm").data('bootstrapValidator');
+        bootValidator.validate();
+        if(bootValidator.isValid()){
+            $.ajax({
+                url: basePath + "admin/admin/save.do",
+                data: $("#tabaddForm").serialize(),
+                type: "POST",
+                dataType: "json",
+                xhrFields: {
+                    withCredentials: true
+                },
+                crossDomain: true,
+                success: function(result){
+                    if(result.flag){
+                        myAlert(result.msg);
+                        $(".tableAdd").hide(1000);
+                    }else{
+                        alert(result.msg);
+                    }
+                },
+                error: function(){
+                    alert("请求失败");
+                }
+            })
+        }
+    })
+    // 管理员信息保存
+    $(".adminCancel").click(function(){
+        $("#tabaddForm input").val('');
+        $('#tabaddForm').data('bootstrapValidator').resetForm(true);
+        $(".tableAdd").hide(1000);
+    })
+});
+
+var data = [
+    {
+        "id": "c2db1ccb03f34d81b2a8629768ec56a7",
+        "nick": "巩克春",
+        "mobile": "13601250514",
+        "email": "gkchun@163.com"
+    }, {
+        "id": "",
+        "nick": "张四田",
+        "mobile": "12456854788",
+        "email": "gkchun@163.com"
+    }
+]
+
+// 初始化页面
+function initPage(){
+    $.ajax({
+        type : 'post',
+        url : basePath + 'admin/admin/list.do',
+        data : {id: $("#id").val()},
+        dataType : 'json',
+        xhrFields: {
+           withCredentials: true
+        },
+        crossDomain: true,
+        success : function(result){
+            console.log(data);
+            // if(result.flag){
+            //     initTable(result);
+            // } else {
+            //     alert(result.msg);
+            // }
+            initTable(result);
+
+        },
+        error : function(result) {
+            alert("请求失败！！");
+        }
+    });
+}
+
+function showTableForm(data){
+    if(data){
+        $("#adminId").val(data.id);
+        $(".nick").val(data.nick);
+        $(".mobile").val(data.mobile);
+        $(".email").val(data.email);
+        $(".tableAdd").show(1000);
+    } else {
+        $("#tabaddForm input").val('');
+        $(".tableAdd").show(1000);
+    }
+}
+
+// 初始化表格
+function initTable(data){
+    $('#adminTab').bootstrapTable({
+        data: data,
+        dataLocale: 'zh-CN',               //表格汉化
+        toolbar: '#toolbar',                //工具按钮用哪个容器
+        striped: true,                      //是否显示行间隔色
+        cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+        cellStyle: true,
+        checkbox : true,
+        showRefresh: true,                  //是否显示刷新按钮
+        showColumns: true,
+        columns: [
+        {
+            align: 'center',
+            width: 50,
+            formatter: function(value,row,index){
+                return index+1;
+            }
+        }, {
+            field: 'id',
+            title: '管理员ID'
+        }, {
+            field: 'nick',
+            title: '姓名',
+            align: 'center',
+            sortable: true
+        }, {
+            field: 'mobile',
+            title: '手机号',
+            align: 'center',
+            sortable: true                  
+        }, {
+            field: 'email',
+            title: '邮箱',
+            align: 'left'                
+        }, {
+            title: '操作',
+            width: 80,
+            align: 'center',
+            formatter: function(value,row,index){
+                return '<span class="glyphicon glyphicon-pencil tabEdit adminedit" aria-hidden="true"></span>&nbsp'+
+                        '<span class="glyphicon glyphicon-trash tabDel admindel" aria-hidden="true"></span>';
+            },
+            events: {
+                    'click .adminedit': function (e, value, row, index) {
+                        showTableForm(row);
+                    },
+                    //删除操作
+                    'click .admindel' :function(e, value, row, index){
+                        var _this = this;
+                        console.log(row);
+                        $.ajax({
+                            type : 'post',
+                            url : basePath + 'admin/admin/del.do',
+                            data : {id:row.id},
+                            dataType : 'json',
+                            xhrFields: {
+                               withCredentials: true
+                            },
+                            crossDomain: true,
+                            success : function(result){
+                                console.log(result);
+                                if(result.flag){
+                                    $(_this).parent().parent().remove();
+                                }
+                            },
+                            error : function(result) {
+                                alert("请求失败！！");
+                            }
+                        });
+                        
+                    }
+                }
+        }]
+    });
+    $('#adminTab').bootstrapTable('hideColumn', 'id');
+}
+
+</script>
+</html>
+

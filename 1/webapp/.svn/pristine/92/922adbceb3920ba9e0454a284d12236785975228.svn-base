@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>新闻公告</title>
+<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+<link href="../../../css/common/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../../css/common/bootstrap-table.min.css">
+<link href="../../../css/style.css" rel="stylesheet" />
+<link href="../../../css/main.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../../css/admin.css">
+</head>
+<body>
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="news.html">新闻公告</a>
+		<a href="">-&gt;</a>
+		<a href="oleNews.html">已发布新闻</a>
+	</div>
+	<div class="con-box">
+	<div id="subMenu">
+        <div id="subMenuBody">
+            <ul>
+                <a href="news.html"><li>新闻发布</li></a>
+                <a href="notice.html"><li>公告发布</li></a>
+                <a href="oleNews.html"><li class="menuAct">已发布新闻</li></a>
+                <a href="oldNotice.html"><li>已发布公告</li></a>
+            </ul>
+        </div>
+    </div>
+    <div id="contentBody" class="mops-table">
+        <a href="#" style="display: none" id="simulate">新闻详情</a>
+		<table id="texttable">
+        </table>
+	</div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/bootstrap-table.min.js"></script>
+<script src="../../../js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/main.js"></script>
+<script>
+$(function(){
+    initPage();
+});
+function initPage(){
+    var activityId = sessionStorage.getItem('actId');
+    $.myAjax({
+        url: basePath + "admin/activitynews/list.do",
+        data: {id:activityId},
+        success: function(result){
+            if(result.flag){
+
+            }else{
+                myConfirm(result.msg);
+            }
+            initTable(result.data);
+        },
+        error: function(){
+            myAlert("请求失败", "slow")
+        }
+    })
+}
+//table表格
+function initTable(data){
+    $('#texttable').bootstrapTable({
+        //data: str,
+        dataType: 'json',                   //数据格式
+        dataLocale: 'zh-US',               //表格汉化
+        // toolbar: '#toolbar',
+        striped: true,                      //是否显示行间隔色
+        cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+        pagination: true,                   //是否显示分页（*）
+        sortable: true,                     //是否启用排序
+        sortOrder: "desc",                  //排序方式
+        // search: true,                  
+        // searchFormatter: false,
+        // showRefresh: true,                  //是否显示刷新按钮
+        cellStyle: true,
+        checkbox : true,
+        //height: 560,
+        sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
+        pageNumber:1,                       //初始化加载第一页，默认第一页
+        pageSize: 10,                       //每页的记录行数（*）
+        pageList: [10, 15, 20],        //可供选择的每页的行数（*）
+        columns: [
+        {
+            field: 'id',
+            align: 'center'
+        },{
+            field: 'num',
+            width: 40,
+            align: 'center',
+            formatter: function(value,row,index){
+                      return index+1;
+            }
+        }, {
+            field: 'title',
+            title: '新闻标题',
+            align: 'center',
+            sortable: true  //排序
+        },{
+            field: 'author',
+            title: '作者',
+            align: 'center',
+            sortable: true ,
+        },{
+            field: 'ctime',
+            title: '发布时间',
+            align: 'center'
+        },{
+            field: 'option',
+            title: '操作',
+            width: 86,
+            align: 'center',
+            formatter: function(value,row,index){
+              return '<span class="glyphicon glyphicon-trash tabDel cursor" aria-hidden="true"></span>';
+            },
+            events: {
+                'click .tabDel': function (e, value, row, index) {
+                        myConfirm("确定删除", function(){
+                            var clickThis = this;
+                            //删除本条数据
+                            url=basePath + "admin/activitynews/del.do";
+                            $.myAjax({
+                                url: url,
+                                data:{id:row.id},
+                                success:function(result){
+                                    console.log(result);
+                                    var data=result.data;
+                                    if(result.flag){
+                                        $(clickThis).parent().parent().remove();
+                                        setTimeout(function(){
+                                            location.reload();  
+                                        },20)
+                                    }else{
+                                        myConfirm(result.msg);
+                                    }
+                                },
+                                error:function(){
+                                    myAlert("请求失败!", "slow");
+                                }
+                            });
+                        });
+                    }
+                }
+        }],
+        onClickRow:function(row,field,$element){
+            if($element!="option"){
+                var href = '../../index/pressRelease.html?newsId=' + row.id + '&type=1';
+                $("#simulate").attr({"href":href, "target": "_blank"});
+                document.getElementById("simulate").click();
+            }  
+        }
+    });
+    $('#texttable').bootstrapTable('hideColumn', 'id');
+    
+    if(data){
+        $('#texttable').bootstrapTable("load",data);
+    }    
+}
+	
+</script>
+<script>
+$(function(){
+	// 获取左侧菜单列表数据(参数为请求地址)
+	initMenu('../../../js/data/administrator.json','新闻公告');
+
+});
+</script>
+</html>

@@ -1,0 +1,172 @@
+
+/*公共样式start*/
+.posBox{
+	position: fixed;
+	height: 100%;
+	/*max-height: 610px;*/
+	overflow-y: auto;
+	width: 100%;
+}
+.botBox{
+	height: 10px;
+}
+.commenHeight span img{
+	width: 15px;
+	vertical-align: middle;
+	margin-top: -2px;
+	margin-right: 4px;
+}
+.color{
+	color: #f36a1c;
+}
+/*公共样式end*/
+.spoImg, .meetImg{
+	display: inline-block;
+	vertical-align: top;
+}
+
+.organization, .status{
+	width: 90%;
+	display: inline-block;
+}
+.status{
+	vertical-align: top;
+	width: 64%;
+}
+.sponsor{
+	display: inline-block;
+	vertical-align: top;
+	/*width: 55px;*/
+}
+.spoContent{
+	display: inline-block;
+	/*width: 68%; */
+	margin-left: 7px;
+	width: 73%;
+}
+.issou{
+	overflow: hidden;
+}
+/*顶部标题start*/
+.sheet{
+	padding: 30px 31px 6px;
+	color: #aaaaaa;
+	margin-top: 38px;
+}
+.title{
+	font-size: 16px;
+	color: #5d5d5d;
+	font-weight: 700;
+}
+/*.status{
+	text-align: right;
+}*/
+.time{
+	margin-top: 18px;
+}
+.fold{
+	margin-left: 45%;
+	width: 10%;
+	display: block;
+	margin-top: 10px;
+}
+.fold img{
+	width: 20px;
+}
+/*顶部标题start*/
+
+/*九宫格start*/
+.list{
+	margin-top: 10px;
+	font-size: 0;
+}
+.listFlex{
+	display: flex;
+}
+.listFlex a{
+	flex: 1;
+}
+.img{
+	margin-top: 5px;
+	background-color: red;
+}
+.imgContent{
+	border-radius: 50%;
+	height: 50px;
+	width: 50px; 
+	background-color: #ff8450;
+	margin:3px auto;
+}
+.imgContent img{
+	height: 30px;
+	margin-top: 10px;
+}
+.grid{
+	height: 80px;
+	text-align: center;
+	font-size: 14px;
+	padding: 5px 0;
+	color: #5e5e5e;
+}
+.intro{
+	height: 80px;
+	text-align: center;
+	font-size: 14px;
+	padding: 5px 0;
+	color: #5e5e5e;
+}
+.intro, .guest, .institution, .guide{
+	border-right: 1px solid #e2e2e2;
+}
+.invitation{
+	border-right: 1px solid #e2e2e2;
+	border-bottom: 1px solid #e2e2e2;
+}
+.schedule, .institution, .intro{
+	border-bottom: 1px solid #e2e2e2;
+} 
+
+/*九宫格end*/
+
+/*酒店机票start*/
+
+.ticket{
+	margin-top: 10px;
+	display: block;
+}
+.distanceTop{
+	margin-top: 0;
+	border-top: 1px solid #e2e2e2;
+}
+.ticket img{
+	width: 16px;
+	vertical-align: middle;
+	margin-right: 6px;
+}
+
+/*酒店机票start*/
+
+/*底部列表start*/
+
+.information{
+	margin-top: 10px;
+}
+.information img{
+	width: 18px;
+	vertical-align: middle;
+	margin-right: 6px;
+}
+.comPadding{
+	padding:20px 31px;
+}
+.discuss{
+	border-top: 1px solid #e2e2e2;
+	border-bottom: 1px solid #e2e2e2;
+}
+.arrows img{
+	width: 10px;
+}
+.information a{
+	display: block;
+}
+/*底部列表end*/

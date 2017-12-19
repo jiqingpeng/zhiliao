@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>新闻公告</title>
+<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+<link href="../../../css/common/bootstrap.min.css" rel="stylesheet" />
+<link href="../../../css/style.css" rel="stylesheet" />
+<link href="../../../css/main.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../../css/admin.css">
+
+</head>
+<body>
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="news.html">新闻公告</a>
+		<a href="">-&gt;</a>
+		<a href="oleNews.html">历史公告</a>
+	</div>
+	<div class="con-box">
+	<div id="subMenu">
+        <div id="subMenuBody">
+            <ul>
+                <a href="news.html"><li>新闻发布</li></a>
+                <a href="notice.html"><li>公告发布</li></a>
+                <a href="oleNews.html"><li>历史新闻</li></a>
+                <a href="oldNotice.html"><li class="menuAct">历史公告</li></a>
+            </ul>
+        </div>
+    </div>
+    <div id="contentBody" class="mops-table">
+		<div class="edit">
+			<div class="editorcon">
+                <textarea id="newseditor" name=""></textarea>
+			</div>
+            <div class="btncon">
+              <button type="button" class="btn btn-default btn-warning saveinfo">保&nbsp存</button>
+              <button type="button" class="btn btn-default cancel">取&nbsp消</button>
+            </div>
+		</div>
+	</div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/main.js"></script>
+<script>
+$(function(){
+	
+});
+	
+</script>
+<script>
+$(function(){
+	// 获取左侧菜单列表数据(参数为请求地址)
+	initMenu('../../../js/data/administrator.json','新闻公告');
+});
+</script>
+</html>

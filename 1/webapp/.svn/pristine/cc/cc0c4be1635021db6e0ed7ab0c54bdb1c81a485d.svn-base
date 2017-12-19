@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>忘记密码</title>
+	<link rel="stylesheet" href="../../css/style.css">
+	<link rel="stylesheet" type="text/css" href="../../css/common/bootstrap.css"/>	
+	<link rel="stylesheet" href="../../css/index/login.css">
+</head>
+<style>
+	.nav{
+		width:100%;
+		height:100px;
+		background: #f0f0f0;
+		text-align:center;
+	}
+	.nav .navBox{
+		width:1030px;
+		margin:0 auto;
+	}
+	.nav .navBox .title{
+		height:26px;
+		font-size:25px;
+		margin-top:28px;
+		margin-left:22px;
+	}
+	.nav .navBox a{
+		margin-top:20px;
+	}
+	#defaultForm{
+		width:850px;
+		margin:66px 0px 66px 158px;
+	}
+	#defaultForm .form-group{
+		margin-top:20px;
+	}
+	#defaultForm .active{
+		display:none;
+	}
+	#defaultForm .btnc{
+		width:150px;
+		height:30px;
+		line-height: 30px;
+		margin-left:288px;
+		margin-top:40px;
+	}
+	#defaultForm .btnc #reset{
+		margin-left:10px;
+	}
+	#defaultForm .form-group img{
+		width:80px;
+		height:30px;
+		line-height: 30px;
+		
+	}
+	#defaultForm .form-group #code{
+		width:124px;
+		text-align:center;
+	}
+	#defaultForm .form-group .regBox{
+		margin-left:-72px;
+	}
+</style>
+<body>
+	<div class="nav clearfix">
+			<div class="navBox">
+				<a class="fl" href="index.html">
+					<img class="logo" src="../../img/index/logoandname.png" alt="logo">
+				</a>
+				<div class="title fl">找回密码</div>
+			</div>
+	</div>
+	<div class="contains">
+		
+		<form id="defaultForm" method="post" class="form-horizontal" action="target.php">
+	        <div class="form-group">
+	            <label class="col-lg-3 control-label ">手机号</label>
+	            <div class="col-lg-5">
+	                <input type="text" class="form-control mobile" name="mobile"/>
+	            </div>
+	        </div>
+	        <div class="form-group">
+	            <label class="col-lg-3 control-label">新密码</label>
+	            <div class="col-lg-5">
+	            	<input class="pwdHide" type="hidden" name="pwd">
+	                <input type="password" class="form-control userpwd pwdShow"/>
+	            </div>
+	        </div>
+			<div class="form-group">
+	            <label class="col-lg-3 control-label">确认密码</label>
+	            <div class="col-lg-5">
+	                <input type="password" class="form-control confpwd" name=""/>
+	            </div>
+	        </div>
+	        <div class="form-group active codeImg">
+	            <label class="col-lg-3 control-label">图形验证码</label>
+	            <div class="col-lg-2">
+	                <input type="password" class="form-control imgProv" name="" />
+	            </div>
+	            <div class="col-lg-3">
+	                <img class="regImg" src="" alt="imgCode">
+	            </div>
+	            <div class="col-lg-2">
+	            	<a class="regBox" href="javascript:;">换一张</a>
+	            </div>
+	        </div>
+	        <div class="form-group">
+	            <label class="col-lg-3 control-label">短信验证码</label>
+	            <div class="col-lg-2">
+	                <input type="password" class="form-control" name="" id="proving"/>
+	            </div>
+	            <div class="col-lg-3">
+	                <button id="code" class="btn btn-warning" type="button">免费获取验证码</button>
+	            </div>
+	        </div>
+	        <div class="form-group btnc">
+	        	<button class="btn btn-warning" type="button" id="save">保存</button>
+	        	<button class="btn btn-default" type="reset" id="reset">取消</button> 
+	        </div>
+		</form>
+		<div class="con_footer">
+				<ul class="clearfix foot_link">
+					<li class="fl">
+						<a href="javascript:;">关于我们</a>
+					</li>
+					<li class="fl">
+						<a href="javascript:;">联系我们</a>
+					</li>
+					<li class="fl">
+						<a href="javascript:;">帮助中心</a>
+					</li>
+					<li class="fl">
+						<a href="javascript:;">网站声明</a>
+					</li>
+					<li class="fl">
+						<a href="javascript:;">公司新闻</a>
+					</li>
+				</ul>
+				<p>未经gconfs.com同意，不得转发网站会议信息</p>
+				<p>京ICP备17018133号</p>
+		</div>
+	</div>
+	
+</body>
+<script type="text/javascript" src="../../js/jquery.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrapValidator.min.js">
+</script>
+<script src="../../js/jQuery.md5.js"></script>
+<script type="text/javascript" src="../../js/common/common.js">
+</script>
+<script>
+	$(function() {
+		////获取图形验证码
+		function getCode(){
+			var url=basePath+"verification/get.do";
+			$.ajax({
+					url: url,
+					type: 'POST',
+					dataType: 'json',
+					xhrFields: {
+		       			withCredentials: true
+		    		},
+		    		crossDomain: true,
+					success:function(result){
+						if(result.flag){
+							$('.regImg').attr('src','data:image/png;base64,'+result.data);
+						}else{
+							alert(result.msg)
+						};
+					},
+					error:function(){
+						alert('请求失败');
+					}
+			});
+		};
+		getCode();
+		//图形验证码显示
+		$('.confpwd').focus(function(){
+			var mobile=$('.mobile').val();
+			var userpwd = $('.userpwd').val();
+			if(mobile!=''&&userpwd!=''){
+				$('.codeImg').removeClass('active');
+			}
+		});
+		//更换验证码
+		$('.regBox').click(codeChange);
+	    function codeChange(){
+	    	$('.regBox').val(' ');
+			getCode();
+		};
+		//图形验证
+		function codeValidation(){
+			var mobile = $('.mobile').val();
+			var userpwd = $('.userpwd').val();
+			var confpwd = $('.confpwd').val();
+			var imgProv= $('.imgProv').val();
+			//验证手机号
+			if (mobile == null || mobile == '') {
+				alert('手机号不能为空!');
+				return false;
+			}else{
+				if(!(/^1[34578]\d{9}$/.test(mobile))){ 
+		        	alert("手机号码有误，请重新输入！");  
+		        	return false; 
+		        };
+			};
+			//验证密码
+			if (userpwd == null || userpwd == '') {
+				alert('密码不能为空!');
+				return false;
+			}else{
+				if(!(/^[a-zA-Z][a-zA-Z0-9_]{5,15}$/.test(userpwd))){ 
+		        	alert("密码是以英文字母开头，只能包含英文字母、数字、下划线，且长度为6~16位，请重新输入！");  
+		        	return false; 
+		        };
+			};
+			//验证确认密码
+			if (confpwd == null || confpwd == '') {
+				alert('确认密码不能为空!');
+				return false;
+			}else{
+				if(userpwd != confpwd){ 
+		        	alert("两次填写密码不一致！");  
+		        	return false; 
+		        };
+			};
+			// if(prov1){
+			// 	prov1();
+			// };
+			//验证图形
+			//图形验证
+			if (imgProv == '' || imgProv == null) {
+				alert('图形验证码不能为空');
+				return false;
+			};
+			return true;
+		};
+	    $('#code').click(function(){
+	    	if(codeValidation()){
+	    		//倒计时获取验证码
+		    	var i=60;
+		    	var timer=null;
+		    	function show(){
+					i--;
+					$('#code').html(i+'秒后获取');
+					$('#code').attr('disabled','disabled');
+					if(i<=0){
+						clearInterval(timer);
+						$('#code').html('免费获取验证码');
+						$('#code').removeAttr('disabled');
+					}
+				};
+				show();
+				timer=setInterval(show,1000);
+				//获取验证码
+				var url=basePath+"user/safe/forget/verification.do";
+				$('.imgProv').attr('name','');
+				$('#proving').attr('name','');
+				$('.imgProv').attr('name','code');
+	    		var pwd=$.md5($('.pwdShow').val());
+	    		$('.pwdHide').val(pwd);
+	    		console.log($('#defaultForm').serialize());
+	    		$.ajax({
+						url: url,
+						type: 'POST',
+						data: $('#defaultForm').serialize(),
+						xhrFields: {
+			       			withCredentials: true
+			    		},
+			    		crossDomain: true,
+						success:function(result){
+							console.log(result)
+						},
+						error:function(){
+							alert('请求失败');
+						}
+				});
+	    	};
+	    });
+	    //保存验证
+	    function saveValidation(){
+			var mobile = $('.mobile').val();
+			var userpwd = $('.userpwd').val();
+			var confpwd = $('.confpwd').val();
+			var imgProv= $('.imgProv').val();
+			var prov= $('#proving').val();
+			//手机号
+			if (mobile == null || mobile == '') {
+				alert('手机号不能为空!');
+				return false;
+			}else{
+				if(!(/^1[34578]\d{9}$/.test(mobile))){ 
+		        	alert("手机号码有误，请重新输入！");  
+		        	return false; 
+		        };
+			};
+			//密码
+			if (userpwd == null || userpwd == '') {
+				alert('密码不能为空!');
+				return false;
+			}else{
+				if(!(/^[a-zA-Z][a-zA-Z0-9_]{5,15}$/.test(userpwd))){ 
+		        	alert("密码是以英文字母开头，只能包含英文字母、数字、下划线，且长度为6~16位，请重新输入！");  
+		        	return false; 
+		        };
+			};
+			//确认密码
+			if (confpwd == null || confpwd == '') {
+				alert('确认密码不能为空!');
+				return false;
+			}else{
+				if(userpwd != confpwd){ 
+		        	alert("两次填写密码不一致！");  
+		        	return false; 
+		        };
+			};
+			// if(prov1){
+			// 	prov1();
+			// };
+			//图形验证
+			if (imgProv == '' || imgProv == null) {
+				alert('图形验证码不能为空');
+				return false;
+			};
+			//短信验证
+			if (prov == '' || prov == null) {
+				alert('短信验证码不能为空');
+				return false;
+			};
+			return true;
+		};
+	    $('#save').click(function() {
+			var mobile = $('.mobile').val();
+			var userpwd = $('.userpwd').val();
+			var confpwd = $('.confpwd').val();
+			var imgProv= $('.imgProv').val();
+			var unit = $('.unit').val();
+			var pwd=$.md5($('.pwdShow').val());
+			$('.pwdHide').val(pwd);
+			//保存
+			if(saveValidation()){
+				var url=basePath+'user/safe/forget.do';
+				$('#proving').attr('name','');
+				$('.imgProv').attr('name','');
+				$('#proving').attr('name','code');
+				console.log($('#defaultForm').serialize());
+				$.ajax({
+					type: "POST",
+					url: url,
+					dataType: 'json',
+					xhrFields: {
+		       			withCredentials: true
+		    		},
+		    		crossDomain: true,
+					data: $('#defaultForm').serialize(),
+					success: function (result) {
+						console.log($('#defaultForm').serialize())
+						if(result.flag) {
+							alert("修改成功！");
+							window.location.href="index.html";
+						} else {
+							alert("修改失败，" + result.msg);
+						}
+					},
+					error: function(result) {
+						alert("请求失败，请稍后再试！");
+					}
+				});
+			};
+		});
+	});
+</script>
+</html>

@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>活动日程</title>
+<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="../../../css/common/bootstrap.css" />
+<link rel="stylesheet" href="../../../css/common/bootstrap-table.min.css">
+<link rel="stylesheet" href="../../../css/common/bootstrap-datetimepicker.min.css">
+<link rel="stylesheet" href="../../../css/common/bootstrapValidator.min.css"/>
+<link href="../../../css/style.css" rel="stylesheet" />
+<link href="../../../css/main.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../../css/admin.css">
+<style type="text/css">
+.tableAdd {
+	min-height: 250px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	margin-bottom: 14px;
+	width: 950px;
+	padding-bottom: 14px;
+}
+.tabAddTitle {
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid #ddd;
+	padding-left: 14px;
+	font-weight: bold;
+	background-color: #f1f1f1;
+	margin-bottom: 14px;
+}
+.sTime, .eTime {
+	background-color: #fff !important;
+}
+.none {
+	display: none;
+}
+.addBtn{
+	/*margin-bottom:14px;*/
+}
+</style>
+
+</head>
+<body>
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="basicInfo.html">管理中心</a>
+		<a href="">-&gt;</a>
+		<a href="basicInfo.html">活动管理</a>
+		<a href="">-&gt;</a>
+		<a href="schedule.heml">活动日程</a>
+	</div>
+	<div class="con-box">
+		<div class="tableAdd none">
+			<div class="tabAddTitle">添加/编辑日程</div>
+			<form class="tabaddForm form-horizontal" id="tabaddForm">
+				<input type="hidden" id="scheduleId" name="id"/>
+                <input type="hidden" id="activityId" name="activityId"/>
+				<div class="form-group">
+				    <label for="" class="col-sm-2 control-label">时间</label>
+				    <div class="col-sm-3">
+						<input type="hidden" name="stime" class="startTime"/>
+				        <input type="text" name="startTime" class="form-control sTime" placeholder="请输入开始时间" readonly="readonly">
+				    </div>
+				    <div class="col-sm-1">&nbsp;&nbsp;至</div>
+				    <div class="col-sm-3">
+				    	<input type="hidden" name="etime" class="endTime"/>
+				    	<input type="text" name="endTime" class="form-control eTime" placeholder="请输入结束时间" readonly="readonly">
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="" class="col-sm-2 control-label">地点</label>
+				    <div class="col-sm-7">
+				      <input type="text" name="address" maxlength="128" class="form-control address" placeholder="请填写日程地点">
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="" class="col-sm-2 control-label">内容</label>
+				    <div class="col-sm-7">
+				      <input type="text" name="content" maxlength="128" class="form-control content" placeholder="请填写日程内容">
+				    </div>
+				</div>
+				<div class="btncon">
+					<button type="button" class="btn btn-default btn-warning scheduleSave">保&nbsp;存</button>
+					<button type="button" class="btn btn-default scheduleCancel">取&nbsp;消</button>
+			    </div>
+			</form>
+		</div>
+
+		<div id="toolbar">
+            <button id="btn_add" type="button" class="btn btn-sm btn-default">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+            </button> 
+        </div>
+		<table id="texttable">
+  		</table>
+	</div>     
+</div>
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/bootstrap-table.min.js"></script>
+<script src="../../../js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../../js/bootstrap-datetimepicker.min.js"></script>
+<script src="../../../js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../../../js/bootstrapValidator.min.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/main.js"></script>
+
+<script>
+$(function(){   
+	// 获取左侧菜单列表数据(参数为请求地址)
+	initMenu('../../../js/data/administrator.json','活动管理');
+	$("#activityId").val(sessionStorage.getItem('actId'));
+	initPage();
+	
+    // 日期插件初始化
+	$(".sTime, .eTime").datetimepicker({
+        language: 'zh-CN',//显示中文
+        format: 'yyyy-mm-dd hh:ii:00',//显示格式
+        minView: 0,//设置显示到秒
+        initialDate: new Date(),//初始化当前日期
+        autoclose: true,//选中自动关闭
+        todayBtn: true//显示今日按钮
+    });
+
+	//表单验证
+	$('.tabaddForm').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            startTime: {
+                validators: {
+                    notEmpty: {
+                        message: '开始时间不能为空！'
+                    }
+                }
+            },
+            endTime: {
+                validators: {
+                    notEmpty: {
+                        message: '结束时间不能为空！'
+                    }
+                }
+            },
+            address: {
+                validators: {
+                    notEmpty: {
+                        message: '日程地点不能为空！'
+                    }
+                }
+            },
+            content: {
+                validators: {
+                    notEmpty: {
+                        message: '日程内容不能为空！'
+                    }
+                }
+            }
+        }
+    });
+
+    // 确认保存
+    $('.scheduleSave').on('click',function(){
+        var sContent = $(".sTime").val();
+        var eContent = $(".eTime").val();
+        $("#activityId").val(sessionStorage.getItem('actId'));        
+            var bootValidator = $(".tabaddForm").data('bootstrapValidator');
+            bootValidator.validate();
+            if(bootValidator.isValid()){
+                if(getNowFormatDate()<sContent){
+                    if(eContent>sContent){
+                      	var url = basePath + "admin/activityschedual/save.do";
+                      	//时间赋值
+                      	$(".startTime").val(timeStamp($(".sTime").val()));
+            			$(".endTime").val(timeStamp($(".eTime").val()));
+                        console.log($("#tabaddForm").serialize());
+                        $.ajax({
+                          url: url,
+                          data:$("#tabaddForm").serialize(),
+                          type: 'POST',
+                          dataType: 'json',
+                          xhrFields: {
+                            withCredentials: true
+                          },
+                          crossDomain: true,
+                          success:function(result){
+                            //console.log(result);
+                            if(result.flag){
+                              myAlert("已保存");
+                              $('#tabaddForm').data('bootstrapValidator').resetForm(true);
+                              $(".tableAdd").hide(1000);
+                              setTimeout(function(){
+                                  location.reload();  
+                              },1200)
+                              
+                              //initPage('reload');
+                            }else{
+                              alert(result.msg);
+                            }
+                          },
+                          error:function(){
+                            alert("请求失败");
+                          }
+                        });
+                    }else{
+                        myConfirm("结束时间不能早于开始时间");
+                    }
+                }else{
+                    myConfirm("开始时间不能早于当前时间");
+                }
+            };
+    });
+
+    //取消
+    // 管理员信息取消
+    $(".scheduleCancel").click(function(){
+        $("#tabaddForm input").val('');
+        $("#activityId").val(sessionStorage.getItem('actId'));
+        $('#tabaddForm').data('bootstrapValidator').resetForm(true);
+        $(".tableAdd").hide(1000);
+    });
+    //添加
+    $("#btn_add").on("click", function(){
+        showTableForm();
+    });
+
+    
+});
+    //修改/新增
+    function showTableForm(data){
+        if(data){
+            $("#scheduleId").val(data.id);
+            $("#activityId").val(sessionStorage.getItem('actId'));
+            $(".tableAdd").show(1000);
+            $(".sTime").val(data.stime);
+            $(".eTime").val(data.etime);
+            $(".address").val(data.address);
+            $(".content").val(data.content);
+            $(".tableAdd").show(1000);
+        } else {
+            $("#tabaddForm input").val('');
+            $("#activityId").val(sessionStorage.getItem('actId'));
+            $(".tableAdd").show(1000);
+        }
+    }
+
+    //初始化
+    function initPage(option){
+        var url = basePath + "admin/activityschedual/list.do"; 
+        $.ajax({
+            url: basePath + "admin/activityschedual/list.do",
+            data:{id: $("#activityId").val()},
+            dataType: 'json',
+            type:'post',
+            success:function(result){
+                //console.log(result)
+                var data=result.data;
+                //console.log(data)
+                if(option){
+                    initTable(data,option);
+                } else {
+                    initTable(data);
+                }
+            },
+            error: function(){
+                myAlert("请求失败");
+                initTable(data);
+            }
+        });
+    }
+
+    //table表格
+    function initTable(str,option){
+        if(option){
+            $('#texttable').bootstrapTable("load",str);
+        } else {
+            $('#texttable').bootstrapTable({
+                //data: str,
+                dataType: 'json',                   //数据格式
+                dataLocale: 'zh-US',               //表格汉化
+                toolbar: '#toolbar',
+                striped: true,                      //是否显示行间隔色
+                cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+                pagination: true,                   //是否显示分页（*）
+                sortable: true,                     //是否启用排序
+                sortOrder: "desc",                  //排序方式
+                search: true,                  
+                searchFormatter: false,
+                showRefresh: true,                  //是否显示刷新按钮
+                cellStyle: true,
+                checkbox : true,
+                //height: 560,
+                sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
+                pageNumber:1,                       //初始化加载第一页，默认第一页
+                pageSize: 10,                       //每页的记录行数（*）
+                pageList: [10, 15, 20],        //可供选择的每页的行数（*）
+                columns: [
+                {
+                    field: 'id',
+                    width: 50,
+                    align: 'center'
+                },{
+                    field: 'num',
+                    width: 50,
+                    align: 'center',
+                    formatter: function(value,row,index){
+                              return index+1;
+                    }
+                }, {
+                    field: 'stime',
+                    title: '开始时间',
+                    align: 'center',
+                    width: 200,
+                    sortable: true ,//排序
+                },{
+                    field: 'etime',
+                    title: '结束时间',
+                    align: 'center',
+                    width: 200,
+                    sortable: true ,
+                },{
+                    field: 'address',
+                    title: '地点',
+                    align: 'center',
+                    width: 200
+                }, {
+                    field: 'content',
+                    title: '日程内容',
+                    align: 'center',                    // width: 600
+                },{
+                    field: 'option',
+                    title: '操作',
+                    width: 86,
+                    align: 'center',
+                    formatter: function(value,row,index){
+                      return '<span class="glyphicon glyphicon-pencil tabEdit" aria-hidden="true"></span>&nbsp'+'<span class="glyphicon glyphicon-trash tabDel" aria-hidden="true"></span>';
+                    },
+                    events: {
+                            'click .tabEdit': function (e, value, row, index) {
+                                //修改表单内容
+                                $(".tableAdd").show(1000);  
+                                showTableForm(row);  
+                            },
+                            'click .tabDel': function (e, value, row, index) {
+                                myConfirm("确定删除", function(){
+                                    //console.log(row.activityId);
+                                    var clickThis = this;
+                                    //删除本条数据
+                                    url=basePath + "admin/activityschedual/del.do";
+                                    $.ajax({
+                                        url: url,
+                                        data:{id:row.id},
+                                        type: 'POST',
+                                        dataType: 'json',
+                                        xhrFields: {
+                                        withCredentials: true
+                                        },
+                                        crossDomain: true,
+                                        success:function(result){
+                                            //console.log(result);
+                                            var data=result.data;
+                                            if(result.flag){
+                                                $(clickThis).parent().parent().remove();
+                                                setTimeout(function(){
+                                                    location.reload();  
+                                                },20)
+                                            }else{
+                                                myConfirm(result.msg);
+                                            }
+                                        },
+                                        error:function(){
+                                            myAlert("请求失败");
+                                        }
+                                    });
+                                });
+                            }
+                        }
+                }]
+            });
+            $('#texttable').bootstrapTable('hideColumn', 'id');
+        }
+        if(str){
+            $('#texttable').bootstrapTable("load",str);
+        }
+        
+    }
+
+    //获取当前日期
+    function getNowFormatDate() {
+                var date = new Date();
+                var seperator1 = "-";
+                var seperator2 = ":";
+                var month = date.getMonth() + 1;
+                var strDate = date.getDate();
+                if (month >= 1 && month <= 9) {
+                    month = "0" + month;
+                }
+                if (strDate >= 0 && strDate <= 9) {
+                    strDate = "0" + strDate;
+                }
+                var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
+                        + " " + date.getHours() + seperator2 + date.getMinutes()
+                        + seperator2 + date.getSeconds();
+                return currentdate;
+    }
+</script>
+</html>

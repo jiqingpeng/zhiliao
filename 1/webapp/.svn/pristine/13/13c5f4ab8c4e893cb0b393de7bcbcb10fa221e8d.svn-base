@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>登录</title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<meta content="telephone=no" name="format-detection" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+	<link rel="stylesheet" href="../../css/common/bootstrap.min.css"/> 	
+	<link rel="stylesheet" href="../../css/weixin/style.css" />
+</head>
+<body>     
+    <div>
+        <div class="m-bar">             
+            <img style="margin:6px 0 0 8px;" src="../../img/logoandname.png"/>
+        </div>            
+    </div>   
+	<div>
+	    <img src="../../img/index/homenav.png" style="width:100%;height: 88px;margin-top:10px;"/>
+	</div>
+    <div class="login-box">
+        <div class="wrap">
+            <div class="bd">
+              <form id="loginForm" method="post">	  
+				<div style="width:90%;margin:auto">
+                    <ul class="form-list">
+                      <li>用户：<input class="inp inp1 required" placeholder="用户名(手机号)" id="username" type="text"></li>
+                      <li>密码：<input class="inp inp2 required" placeholder="密码" type="password" id="password">
+                      </li>
+                    </ul>
+                </div>
+                <div style="width:90%;margin-top:30px;" class="login-btn">
+                    <input type="button" class="sub defaultbtn" value="登   录"  onclick="login()">
+					<a href="register.html">注  册</a>
+					<a href="forgetpass.html" style="background:none;font-size:14px;color:#315AAA">忘记密码</a>
+				</div>
+              </form>
+            </div>
+        </div>
+    </div>
+	<div style="clear:both"></div>
+	<div id="footer" style="position:fixed;bottom:0px;width:100%">
+	  <div class="con" style="text-align:center">		 
+		Copyright @2016    京ICP备17018133号
+	  </div>
+    </div>
+	<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" id="msgmodal">
+	  <div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">			 
+			<h4 class="modal-title">提示</h4>
+		  </div>
+		  <div class="modal-body">
+			<p id="msg"></p>
+		  </div>		   
+		</div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	<a href="javascript:;">支付</a>
+</body>    
+<script type="text/javascript" src="../../js/jquery.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../js/jQuery.md5.js"></script>
+<script type="text/javascript" src="../../js/common/common.js"></script>
+<script>
+var confid = '',
+	code = '';
+
+$(function(){
+	 confid = Request('id');
+	 code = Request('code');
+	 if(confid){			 
+		 $("a").each(function(){
+			 $(this).attr("href",$(this).attr("href")+"?id="+confid);
+		 });
+	 }
+	 var url = basePath + "wx/wxlogin.do";
+	 if(code)
+	   url += "?code="+code;		 
+	 $.myAjax({
+		 url:url,
+		 success: function(data){				  
+			 if(data.result == "logined") {				 
+				window.location.href="myconf.html";				  			 
+			 }
+		}
+	 });
+	function wxFn(){
+			$.getJSON("../../wx/getjssign.do?url="+encodeURIComponent(location.href),function(json){
+				console.log(json)
+				wx.config({  
+					debug: false,  
+					appId: json.appId,  
+					timestamp: json.timestamp,  
+					nonceStr: json.noncestr,  
+					signature: json.sign,  
+					jsApiList: [  
+						// 所有要调用的 API 都要加到这个列表中  		
+						'checkJsApi',					   
+						'onMenuShareTimeline',
+						'onMenuShareAppMessage',
+						'onMenuShareQQ',
+						'onMenuShareWeibo',
+						'startRecord', 
+						'stopRecord',
+						'translateVoice',
+						'scanQRCode'
+					]  
+				});			
+			});
+	}
+	function mypay(){
+		wx.chooseWXPay({
+				"timestamp":"1503982414",  
+				"nonceStr":"DF9A5F110BA7665ABC827ADAA329A1E6",  
+				"signature":"90C98C077F9744B4C0E33A5E727E8E08", 
+				"signType":"MD5",
+				"packagage":"prepay_id=wx20170828184609140fc7e0b40026463616",
+				"paySign":'B9FE622D6D82EFF2BEC1F8E3B2F0C52B',
+				success:function(){}
+		})
+	}
+});
+
+function msgshow(msg){
+	$("#msg").html(msg);
+	$("#msgmodal").modal("show");
+	setTimeout('$("#msgmodal").modal("hide")',3000);
+}
+
+function login(){			
+	if($("#username").val() == ""){
+		$("#username").focus();
+		msgshow("请输入用户名");
+		return;
+	}
+	if($("#password").val() == ""){
+		$("#password").focus();
+		msgshow("请输入密码");
+		return;
+	}	     
+	var param = {"mobile":$("#username").val(),"pwd":$.md5($("#password").val())};
+	$.myAjax({
+		url: basePath + 'user/login/check.do',
+		data:param,
+		success:function(data){			 
+			if(data.flag == true){				 					   
+				if(!confid){
+					window.location.href="myconf.html";
+				} else {
+					window.location.href="actDetail.html?id="+confid;		   
+				}
+			} else {
+				msgshow(data.msg);
+			}
+		}
+	});  
+}
+
+</script>   
+</html>

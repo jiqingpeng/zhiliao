@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>静态页面效果图</title>
+	<link href="../../css/common/bootstrap.min.css" rel="stylesheet">
+	<link href="../../css/common/jquery-confirm.css" rel="stylesheet">
+	<link href="../../css/style.css" rel="stylesheet">
+	<link href="../../css/main.css" rel="stylesheet">
+	<link href="../../css/userfiled.css" rel="stylesheet">
+</head>
+<body>
+<div id="header">
+	<span id="lineicon"></span>
+	<span class="hotline">客服热线：010-82363670</span>
+	<span id="userinfo">
+		<span id="usertil">欢迎您</span>
+		<span id="user">巩克春</span>
+		<a href="#">注销<span id="usericon"></span></a>
+	</span>
+</div>
+<div id="sysnav">
+	<div id="logo"><img src="../../img/logoandname.png" alt="群英汇：一体化会议系统" /></div>
+	<span class="nav">
+		<a href="=basePath">首页</a>
+	</span>
+</div>
+<div class="prejoincon">
+<form class="attendForm">
+	<input type="hidden" name="userId" value="asdzxcasd1qwe345ertflkjoiu987s99"/>
+	<input type="hidden" name="activityId" id="activityId"/>
+	<div class="activname">群英汇活动报名表 报名表</div>
+    <div class="jcon person">
+   		<div class="jconheader">
+   			<span class="jcontil">
+   				<span class="jconnum">1</span>个人信息
+   			</span>
+   		</div>
+   		<ul class="jcondetail personInfo">
+			<!-- <li>
+				<span class="til"><span class="red">* </span><label>姓名</label></span>
+				<input class="inp" type="text" name="name">
+			</li>
+			<li>
+				<span class="til"><span class="red">* </span><label>性别</label></span>
+				<input class="sex radioinp" type="radio" name="sex">男
+				<input class="sex radioinp" type="radio" name="sex">女
+			</li>
+			<li>
+				<span class="til"><label>出生年月</label></span>
+				<input class="inp" type="text" name="userid">
+			</li>
+			<li>
+				<span class="til"><label>民族</label></span>
+				<input class="inp" type="text" name="email">
+			</li>
+			<li>
+				<span class="til"><span class="red">* </span><label>证件类型</label></span>
+				<input class="inp" type="text" name="email">
+			</li>
+			<li>
+				<span class="til"><span class="red">* </span><label>证件号码</label></span>
+				<input class="inp" type="text" name="email">
+			</li>
+			<li>
+				<span class="til"><label>职业</label></span>
+				<input class="inp" type="text" name="email">
+			</li>
+			<li>
+				<span class="til"><label>手机</label></span>
+				<input class="inp" type="text" name="email">
+			</li>
+			<li>
+				<span class="til"><label>邮箱</label></span>
+				<input class="inp" type="text" name="email">
+			</li> -->
+   		</ul>
+    </div>
+    <div class="jcon unit">
+   		<div class="jconheader">
+   			<span class="jcontil">
+   				<span class="jconnum">2</span>单位信息
+   			</span>
+   		</div>
+   		<ul class="jcondetail unitInfo">
+			<!-- <li>
+				<span class="til"><label>单位名称</label></span>
+				<input class="inp" type="text" name="name">
+			</li>
+			<li>
+				<span class="til"><label>单位性质</label></span>
+				<input class="inp" type="text" name="phone">
+			</li>
+			<li>
+				<span class="til"><label>部门</label></span>
+				<input class="inp" type="text" name="userid">
+			</li>
+			<li>
+				<span class="til"><label>职务</label></span>
+				<input class="inp" type="text" name="userid">
+			</li>
+			<li>
+				<span class="til"><label>职称</label></span>
+				<input class="inp" type="text" name="userid">
+			</li>
+			<li>
+				<span class="til"><label>地址</label></span>
+				<input class="inp" type="text" name="userid">
+			</li>
+			<li>
+				<span class="til"><label>邮编</label></span>
+				<input class="inp" type="text" name="userid">
+			</li>
+			<li>
+				<span class="til"><label>联系电话</label></span>
+				<input class="inp" type="text" name="userid">
+			</li> -->
+			
+   		</ul>
+    </div>
+    <div class="jcon other">
+   		<div class="jconheader">
+   			<span class="jcontil">
+   				<span class="jconnum">3</span>其他信息
+   			</span>
+   		</div>
+   		<ul class="jcondetail otherInfo">
+			<!-- <li>
+				<span class="til"><label>备注</label></span>
+				<input class="inp" type="text" name="phone">
+			</li> -->
+   		</ul>
+    </div>
+    <div class="joinbtn btncon">
+   		<button type="button" class="btn btn-warning joinok">保&nbsp存</button>
+   		<button type="button" class="btn btn-default canclej">取&nbsp消</button>
+    </div>
+</form>
+</div>
+<div id="footer">
+	<div id="hytlink">
+		<span><a target="_blank" href="#">关于我们</a></span>
+		<span><a target="_blank" href="#">联系我们</a></span>
+		<span><a target="_blank" href="#">帮助中心</a></span>
+		<span><a target="_blank" href="#">网站声明</a></span>
+		<span><a target="_blank" href="#">公司新闻</a></span>
+	</div>
+	<p>未经gconfs.com同意，不得转发网站会议信息</p>
+	<p>京ICP备17018133号</p>
+</div> 
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/jquery-confirm.js"></script>
+<script src="../../js/common/common.js"></script>
+<script type="text/javascript">
+$(function(){
+
+	var id = '';
+	if(Request('actId')){
+		id = Request('actId');
+		$("#activityId").val(id);
+	} else if(sessionStorage.getItem('actId')) {
+		id = sessionStorage.getItem('actId');
+		$("#activityId").val(id);
+	}
+	getData();
+
+	$(".joinok").click(function(){
+		$.ajax({
+			type : 'post',
+			url : basePath + 'user/userattend/save.do',
+			data : $(".attendForm").serialize(),
+			dataType : 'json',
+
+			xhrFields: {
+	           withCredentials: true
+	        },
+	        crossDomain: true,
+
+			success : function(result){
+				if(result.flag){
+					myAlert(result.msg);
+				} else {
+					myConfirm(result.msg);
+				}
+			},
+			error : function(result) {
+				myConfirm("请求失败！！");
+			}
+		});
+	});
+	$(".canclej").click(function(){
+		getData();
+	});
+
+});
+
+function getData(){
+	var url = basePath + 'admin/activityregconfig/list.do';
+	$.ajax({
+		type : 'post',
+		url : url,
+		data : {activityId:$("#activityId").val()},
+		dataType : 'json',
+
+		xhrFields: {
+           withCredentials: true
+        },
+        crossDomain: true,
+
+		success : function(result){
+			if(result.flag){
+				$(".activname").html(result.data.activity.name+'&nbsp报名表');
+				initPage(result.data.activityRegConfig);
+			} else {
+				myConfirm(result.msg);
+			}
+			
+		},
+		error : function(data) {
+			alert("请求失败！！");
+		}
+	});
+}
+
+function initPage(data){
+	var personInfo = '',
+		unitInfo = '',
+		otherInfo = '';
+	for(var i=0; i<data.length; i++){
+		var val = data[i];
+		var str = '';
+		if(val.isNeeded == '1'){ // 必填
+			str += '<span class="til"><span class="red">* </span><label>'+ val.showname +'</label></span>';
+		} else { // 选填
+			str += '<span class="til"><label>'+ val.showname +'</label></span>';
+		}
+
+		if(val.type == '1'){ // 单行文本
+			str += '<input class="inp" type="text" name="'+ val.name +'"/>';
+		} else if(val.type == '2'){ // 多行文本
+			str += '<textarea class="area" name="'+ val.name +'"></textarea>';
+		} else if(val.type == '3'){ // 单选按钮
+			str += '<input class="radioinp" type="radio" selected name="'+ val.name +'">'+
+				'<input class="radioinp" type="radio" name="'+ val.name +'"/>';
+		} else if(val.type == '4'){ // 下拉列表
+			str += '<select class="sel" name="'+ val.name +'"></select>';
+		} else if(val.type == '5'){ // 多选按钮
+			str += '<input class="inp" type="text" name="'+ val.name +'"/>';
+		} else { // 文件
+			str += '<input class="fil" type="file" name="'+ val.name +'"/>';
+		}
+
+		if(val.family == '1'){ // 个人信息
+			personInfo += '<li>'+ str +'</li>';
+		} else if(val.family == '2') { // 单位信息
+			unitInfo += '<li>'+ str +'</li>';
+		} else { // 其他信息
+			otherInfo += '<li>'+ str +'</li>';
+		}
+	}
+
+	if(!personInfo){
+		$('.person').css('display','none');
+	}
+	if(!unitInfo){
+		$('.unit').css('display','none');
+	}
+	if(!otherInfo){
+		$('.other').css('display','none');
+	}
+	$('.personInfo').append(personInfo);
+	$('.unitInfo').append(unitInfo);
+	$('.otherInfo').append(otherInfo);
+}
+</script>
+
+</html>

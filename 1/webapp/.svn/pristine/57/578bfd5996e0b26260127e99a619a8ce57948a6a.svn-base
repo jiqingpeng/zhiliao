@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta content="text/html"/>
+<title>我的日程</title>
+<link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+<link href="../../css/common/bootstrap.min.css" rel="stylesheet" />
+<link href="../../css/style.css" rel="stylesheet" />
+<link href="../../css/main.css" rel="stylesheet" />
+<!-- 引入项目中每个模块的独立样式 : xxx.css -->
+<style>
+    ul.timeline {
+       list-style-type: none;
+       background: url("../../img/user/timeLine4.png") repeat-y 120px;
+       margin-left:20px;
+    }
+    ul.timeline li {
+       position: relative;
+       margin-bottom: 20px;
+    }
+    ul.timeline li .time {
+       position: absolute;
+        width: 90px;
+       text-align: right;
+        left: 0;
+        top: 10px;
+        color: #999;
+    }
+    ul.timeline li .version {
+        position: absolute;
+        width: 290px;
+        text-align: right;
+        left: -200px;
+        top: 30px;
+        font-size: 30px;
+       line-height: 50px;
+       color: #fe6600;
+        overflow: hidden;
+    }
+    ul.timeline li .number {
+        position: absolute;
+        background:#fe6600;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        left: 97px;
+        line-height: 56px;
+        text-align: center;
+        color: #fff;
+        font-size: 18px;
+    }
+    ul.timeline li.alt .number {
+        background:#cd7228;
+    }
+    ul.timeline li .content {
+        margin-left: 180px;
+        
+    }
+    ul.timeline li .content pre {
+        background-color:#fe6600;
+        padding: 20px;
+        color: #fff;
+        font-size: 13px;
+        line-height: 20px;
+    }
+    ul.timeline li.alt .content pre {
+        background-color: #cd7228;
+    }
+</style>
+</head>
+<body>
+<!-- 引入页头 -->
+<script type="text/javascript" src="../../js/common/header.js"></script>
+<div class="mops-con">
+  <div class="con-nav">
+    <a href="myActivity.html">我的日程</a>
+  </div>
+  <div class="con-box">
+    <!-- 以下为每个页面自己编写的部分 -->
+    <ul class="timeline">
+        <li>
+           <div class="time">2013-07-29</div>
+            <div class="version">我的日程</div>
+            <div class="number">1</div>
+            <div class="content">
+                <pre>
+                -将工具YUICompressor替换为Microsoft Ajax Minifier（需要指定-evals:immediate）。
+                ...        
+                </pre>
+           </div>
+        </li>
+        <li>
+           <div class="time">2013-07-29</div>
+            <div class="version">我的日程</div>
+            <div class="number">2</div>
+            <div class="content">
+                <pre>
+                -将工具YUICompressor替换为Microsoft Ajax Minifier（需要指定-evals:immediate）。
+                ...        
+                </pre>
+           </div>
+        </li>
+        <li>
+           <div class="time">2013-07-29</div>
+            <div class="version">我的日程</div>
+            <div class="number">3</div>
+            <div class="content">
+                <pre>
+                -将工具YUICompressor替换为Microsoft Ajax Minifier（需要指定-evals:immediate）。
+                ...        
+                </pre>
+           </div>
+        </li>
+        <li>
+           <div class="time">2013-07-29</div>
+            <div class="version">我的日程</div>
+            <div class="number">4</div>
+            <div class="content">
+                <pre>
+                -将工具YUICompressor替换为Microsoft Ajax Minifier（需要指定-evals:immediate）。
+                ...        
+                </pre>
+           </div>
+        </li>
+    </ul>
+  </div>     
+</div> 
+
+
+<script type="text/javascript" src="../../js/common/footer.js"></script>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/common/main.js"></script>
+<script type="text/javascript">
+$(function(){
+  // 获取左侧菜单列表数据(参数为请求地址)
+  initMenu('../../js/data/attend.json','我的活动');
+  $("#submenumark").css('display','none');
+  $(".group h4").on('click',function(){
+    $(this).next().toggle()
+  })
+});
+</script>
+<!-- <script>
+       $(function() {
+        var ulNode = $('ul.timeline');
+        function initLiNodes() {
+            var li=$('ul.timeline li');
+            for(i=0; i<li.length; i++) {
+                //隔行变色
+                if(i % 2 !== 0) {
+                    li.eq(i).addClass('alt');
+                } else {
+                    li.eq(i).removeClass('alt');
+                };
+                li.eq(i).find('.number').html(i);
+            };
+        };
+        // $('#fetchNextData').click(function() {
+        //     var $this = $(this);
+        //     $this.addClass('disabled').text('......');
+            
+        //    $.get('./version_data_' + nextDataNumber +'.txt', function(data) {
+        //        ulNode.append(data);
+        //        $this.removeClass('disabled').text('后二十条数据');
+        //        nextDataNumber--;
+               
+        //        if(nextDataNumber === 0) {
+        //            $this.hide();
+        //        }
+               
+        //        initLiNodes();
+        //    });
+        // });
+        initLiNodes();
+        });
+</script> -->
+</html>
+

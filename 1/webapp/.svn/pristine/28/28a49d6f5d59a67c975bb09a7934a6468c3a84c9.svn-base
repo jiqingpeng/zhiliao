@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>邀请函</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="./../../swipe/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/app/style.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/app/invitation.css">
+</head>
+<body>
+    <!-- Swiper -->
+    <div class="head">
+		<div class="navImg">
+			<img src="../../../img/app/arrowLeft-icon.png">
+		</div>
+		<div class="navDetail">邀请函</div>
+        <div class="share code">
+            <img  src="../../../img/app/share-icon.png">
+        </div>
+	</div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide first-screen">
+                <!-- <div class="swiper-button-prev swiper-button-white switcher"></div> -->
+                <div class="swiper-button-next swiper-button-white switcher"></div>
+                <div class="midContent">
+                    <div class="firstInvi">
+                        <div class="initTitle liebetween">
+                            <h5 class="homeTitle">2017中国昆山国际智能国际大会2017中国昆山国际智能国际大会</h5>
+                        </div>
+                        <!-- <div class="liebetween">
+                            <span>会议主题:</span><span class="homeTheme">一带一路重塑产业社会一带一路重塑产业社会</span>
+                        </div> -->
+                        <div class="liebetween inviTime">
+                            <span>会议时间:</span><span class="homeTime">11月30日</span>
+                        </div>
+                        <div class="liebetween">
+                            <span>会议地点:</span><span class="homeLocation">北京市海淀区北京市海淀区北京市海淀区北京市海淀区北京市海淀区</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide secont-screen">
+                <div class="swiper-button-prev swiper-button-white switcher"></div>
+                <div class="swiper-button-next swiper-button-white switcher"></div>
+                <div class="posBox">
+                    <h1 class="haeremai">欢迎辞</h1>
+                    <div class="articleBox">
+                    	<p class="article">2017年10月20日，中国民营科技创新峰会暨民营企业家年会分论坛合作筹备研讨会在新华网总部顺利召开。本次交流会由中国民营科技实业家协会组织，群英汇会议服务平台提供“跨界合作”的资源对接和平台搭建，中国民营科技实业家协会龚秘长主持。</p>
+                    </div>
+                </div>
+            </div>
+            <a name="institution"></a>
+            <div class="swiper-slide three-screen">
+                <div class="swiper-button-prev swiper-button-white switcher"></div>
+                <div class="swiper-button-next swiper-button-white switcher"></div>
+                <div class="posBox">
+                    <h1 class="haeremai">组织机构</h1>
+                    <div id="institution">
+                        <div class="institution">
+                            <!-- <h2 class="sponsor">主办方</h2>
+                            <div>
+                                <div>中国软件行业协会</div>
+                                <div>中国膜工业协会</div>
+                                <div>中国民营科技实业家协会</div>
+                                <div>中国软件行业协会</div>
+                                <div>中国软件行业协会</div>
+                                <div>中国软件行业协会</div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a name="schedule"></a>
+            <div class="swiper-slide four-screen">
+                
+                    <div class="swiper-button-prev swiper-button-white switcher"></div>
+                    <div class="swiper-button-next swiper-button-white switcher"></div>
+                    <!-- <div class="left_icon"><img src="../../../img/app/initLeft-icon.png"></div>
+                    <div class="right_icon"><img src="../../../img/app/initLeft-icon.png"></div> -->
+                <div class="posBox">
+                    <h1 class="haeremai">活动日程</h1>
+                	<div class="conBox">
+                        <!-- <div class="data">2017年10月19日</div>
+                        <div class="schedule">
+                            <span class="time">80:00-90:00</span>
+                            <span class="content">
+                                <div class="distance flight">领导与嘉宾发言领导与嘉宾打算发言领导与嘉宾发言领导与嘉宾发言领导与嘉宾发言</div>
+                                <div class="distance">领导与嘉宾发言</div>
+                                <div class="distance">领导与嘉宾发言</div>
+                            </span>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide five-screen">
+                <div class="swiper-button-prev swiper-button-white switcher"></div>
+                <div class="swiper-button-next swiper-button-white switcher"></div>
+              <!--   <div class="left_icon"><img src="../../../img/app/initLeft-icon.png"></div>
+                <div class="right_icon"><img src="../../../img/app/initLeft-icon.png"></div> -->
+                <div class="posBox">
+                    <h1 class="haeremai">嘉宾介绍</h1>
+                    <div id="guest">
+                        <!-- <div class="honoredGuest">
+                            <span class="guestImg"><img src="../../../img/app/invaImg.png"></span>
+                            <span class="gusetIntro">
+                                <div class="name">姚飞</div>
+                                <div class="intro">家发改委领导国家发改委领导
+                                </div>
+                            </span>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide six-screen">
+                <div class="swiper-button-prev swiper-button-white switcher"></div>
+                <div class="swiper-button-next swiper-button-white switcher"></div>
+               <!--  <div class="left_icon"><img src="../../../img/app/initLeft-icon.png"></div>
+                <div class="right_icon"><img src="../../../img/app/initLeft-icon.png"></div> -->
+                <div class="QRcode">
+                    <a class="apply" href="">立即报名</a>
+                    
+                    
+                    <div class="code">
+                        <img src="../../../img/app/QRcode.png">   
+                    </div>
+                    <div class="onesweep">XXX微信扫一扫&nbsp;关注更多</div>
+                    <div class="specially">盛情特邀您出席</div>
+                </div>
+            </div>      
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>   
+</body>
+<!-- <script src="../../../js/jquery.min.js"></script> -->
+<script src="../../../js/zepto.js"></script>
+<script src="../../swipe/swiper.min.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<!-- <script src="../."></script> -->
+<script>
+var confdesc = '';//分享的详情
+var result = '';
+var id = Request("id");
+var back = Request("back");
+var status = 'null'; // 标识是否报名（未报名为 字符串-‘null’）
+var url = basePath + "mt/user/activity/get.do";
+// var data = {};
+var data = {url:url,id:id,type:"base,introduction,org,schedual,guest,status"};
+$(function(){
+    myLoading();
+    initPage(url,data,getMessage);
+    $(".share").on("click", function(){
+        console.log(basePath + "page/app/activity/invitation.html?id="+id);
+        var title = $(".homeTitle").html();
+        var titleUrl = basePath + "page/app/activity/invitation.html?id="+id;
+        var text = confdesc;
+        var url = basePath + "page/app/activity/invitation.html?id="+id;
+        var comment = "";
+        var site = "群英汇会议服务平台";
+        var siteUrl = "http://www.gconfs.com/";
+        utilShare.showShare(title,titleUrl,text,url,comment,site,siteUrl);
+    });
+    var length = window.innerHeight - $(".haeremai").height() -48;
+    $(".posBox").height(length); 
+    $(".firstInvi").height(length);
+    console.log(back);
+    if(Request("back") == "back"){
+        change(2);
+    }
+    change(0);
+    // window.location ="#skip";
+    // $(".head").on("click",function(){
+    //     history.go(-1)
+    // })
+    // initPage(url,data,getMessage0);
+    $(".apply").on("click", function(){
+        if(status != 'null')return false;
+        var strHref = "../index/takepart.html";
+        var params = strHref + "?id="+ id;
+        $(this).attr("href", params);
+    });   
+});
+function change(data){
+        var mySwiper = new Swiper ('.swiper-container', {
+            autoHeight: true,
+            initialSlide :data,
+            // history: 'love',
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            // setWrapperSize :true,
+            height: '100%',
+            updateOnImagesReady : true,
+            // virtualTranslate : true,
+            // observer:true,
+            onInit: function(swiper){
+                // swiperAnimateCache(swiper);
+                // swiperAnimate(swiper);
+            },
+            onTransitionEnd: function(swiper){
+                // var id = Request("id");
+                // var id = "25812d45fc27441ebacb6f9e3fe70322";
+                // var index=swiper.activeIndex;
+                // if(index==0){
+                // }
+                // if(index == 1){
+                // }
+                // if(index==2){ 
+
+                //     data = {id:id,type:"org"};
+                //     initPage(url,data,getMessage2);
+                // }
+                // if(index==3){
+                //     data = {id:id,type:"schedual"}
+                //     initPage(url,data,getMessage3);
+                // }
+                // if(index==4){
+                //     data = {id:id,type:"guest"}
+                //     initPage(url,data,getMessage4);
+                // }
+            }
+        });   
+    }
+function initPage(url,data,fn){
+    $.myAjax({
+        url: url,
+        data: data,
+        success: function(result){
+            console.log(result)
+            removeMyLoading()
+            // console.log(result);
+            if(result.flag){
+                status = result.data.status;
+                if(status != 'null'){
+                    $(".apply").html("已报名");
+                }
+                if(fn){
+                   fn(result); 
+                }
+            }else{
+                myAlert(result.msg);
+            }
+        },
+        error: function(){
+            removeMyLoading()
+            myConfirm("请求失败!");
+        }
+    }) 
+}
+
+//初始化 index=0 页面
+// function getMessage0(result){
+// }
+//初始化 index=1 页面
+// function getMessage1(result){
+// }
+//初始化 index=2 组织机构页面
+// function getMessage2(result){
+//    console.log("组织机构");
+//    var str = '';
+//    var data = result.data.org;
+//    var string = '';
+//    var con = '';
+//    for(var i = 0; i < data.length; i++){
+//         str = '';
+//         str += '<div class="institution">' +
+//                     '<h2 class="sponsor">' + data[i].name + '</h2>';
+//         string = '';           
+//         for(var j = 0; j < data[i].value.length; j++){
+//             console.log(data[i].value[j]);
+//             string += '<div>' +
+//                         data[i].value[j]
+//                     '</div>' +
+//                 '</div>';
+//         };
+//         con += str + string;
+//    }
+//    $("#institution").html(con);
+// }
+//初始化 index=3 活动日程页面
+// function getMessage3(result){
+//     console.log("活动日程");
+//     var data = '';
+//     var string = '';
+//     var con = '';
+//     for(var key in result.data.schedual){
+//         var str = '<div class="data">'+ key +'</div>';
+//         // console.log(result.data.schedual[key].length);
+//         data = result.data.schedual[key];
+//         string='';
+//         for(var i = 0; i < data.length; i++){
+//             string +='<div class="schedule clearfix">' +
+//                     '<span class="time">'+ data[i].time +'</span>' +
+//                     '<span class="content">' +
+//                         '<div class="distance flight">'+ data[i].content +'</div>' +
+//                     '</span>' +
+//                 '</div>' ;
+//         }
+//         con += '<div class="contain">' + str + string + '</div>'
+//     }
+//     $(".conBox").html(con);
+// }
+//初始化 index=4 嘉宾介绍页面
+// function getMessage4(result){
+//     console.log("嘉宾介绍");
+//     var str = '';
+//     var data = result.data.guest;
+//     for(var i = 0; i < data.length; i++){
+//         str += '<div class="honoredGuest">' +
+//                     '<span class="guestImg">' +
+//                         '<img src="../../../img/app/invaImg.png">' +
+//                     '</span>' +
+//                     '<span class="gusetIntro">' +
+//                         '<div class="name">' + data[i].name + '</div>' +
+//                         '<div class="intro">' + data[i].introduction + '</div>' +
+//                     '</span>' +
+//                 '</div>';
+//     }
+//     $("#guest").html(str);
+// }
+//初始化 index=5 立即报名页面
+// function getMessage5(result){
+    
+// }
+
+function getMessage(result){
+    //添加邀请函首页数据
+
+    var data = result.data.base;
+    $(".homeTitle").html(data.name);
+    // $(".homeTheme").html(data);
+    $(".homeTime").html(data.stime);
+    $(".homeLocation").html(data.province +'-'+ data.city);
+    //欢迎辞添加数据
+    $(".article").html(result.data.introduction)
+    //添加数据到组织机构
+    confdesc = '地点：'+data.province +'-'+ data.city+'\n时间：'+data.stime;
+   var str = '';
+   data = result.data.org;
+    for(var i=0;i<data.length;i++){
+        if(data[i].name == "主办单位"){
+            confdesc = '主办单位：'+data[i].value[0]+'\n'+confdesc;
+        } 
+    }
+    console.log(confdesc);
+   var string = '';
+   var con = '';
+   for(var i = 0; i < data.length; i++){
+        str = '';
+        str += '<div class="institution">' +
+                    '<h2 class="sponsor">' + data[i].name + '</h2>';
+        string = '';           
+        for(var j = 0; j < data[i].value.length; j++){
+            string += '<div>' +
+                        data[i].value[j]
+                    '</div>' +
+                '</div>';
+        };
+        con += str + string;
+   }
+   $("#institution").html(con);
+   //添加数据到活动日程
+    data = '';
+    string = '';
+    con = '';
+    for(var key in result.data.schedual){
+        var str = '<div class="data">'+ key +'</div>';
+        // console.log(result.data.schedual[key].length);
+        data = result.data.schedual[key];
+        string='';
+        for(var i = 0; i < data.length; i++){
+            string +='<div class="schedule clearfix">' +
+                    '<span class="time">'+ data[i].time +'</span>' +
+                    '<span class="content">' +
+                        '<div class="flight">'+ data[i].title +'</div>' +
+                        '<div class="">'+ data[i].content +'</div>' +
+                    '</span>' +
+                '</div>' ;
+        }
+        con += '<div class="contain">' + str + string + '</div>'
+    }
+    $(".conBox").html(con);
+   //添加数据到嘉宾介绍
+    str = '';
+    data = result.data.guest;
+    for(var i = 0; i < data.length; i++){
+        if(data[i].image.length == 0){
+            data[i].image[0] = "../../../img/app/invaImg.png";
+        }
+        str += '<div class="honoredGuest">' +
+                    '<span class="guestImg">' +
+                        '<img src="'+ basePath + data[i].image[0]+'">' +
+                    '</span>' +
+                    '<span class="gusetIntro">' +
+                        '<div class="name">' + data[i].name + '</div>' +
+                        '<div class="intro">' + data[i].duty + '</div>' +
+                    '</span>' +
+                '</div>';
+    }
+    $("#guest").html(str);
+}
+</script>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta name="charset" content="UTF-8">
+<title>用户管理</title>
+<!-- webicon.ico为页面icon -->
+<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+<!-- 引入项目依赖框架css : bootstrap.min.css -->
+<link href="../../../css/common/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../../css/common/bootstrap-table.min.css">
+<link rel="stylesheet" href="../../../css/common/bootstrap-datetimepicker.min.css">
+<!-- 引入项目公共样式 : style.css -->
+<link href="../../../css/style.css" rel="stylesheet" />
+<!-- 引入项目中带有左侧菜单栏的公共样式 : main.css -->
+<link href="../../../css/main.css" rel="stylesheet" />
+<!-- 引入项目中每个模块的独立样式 : xxx.css -->
+<link href="../../../css/user.css" rel="stylesheet"/>
+<!-- <link rel="stylesheet" href="../../user/demo.css"> -->
+</head>
+<body>
+<!-- 引入页头 -->
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<!-- 以下为内容部分，内容部分分为导航头和主体内容 -->
+<div class="mops-con"><!-- 内容部分的class : mops-con (必须) -->
+	<div class="con-nav">
+		<a href="customer.html">管理中心</a>
+		<a href="">-&gt;</a>
+		<a href="customer.html">活动列表</a>
+	</div><!-- 内容部分导航头的class : con-nav (必须) -->
+	<div class="con-box"><!-- 内容部分主体内容的class : con-box (必须) -->
+		<!-- 以下为每个页面自己编写的部分 -->
+		
+	</div>
+<!-- 	<div class="new">new</div>  -->    
+</div>
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/bootstrap-table.min.js"></script>
+<script src="../../../js/bootstrap-table-zh-CN.min.js"></script>
+<!-- 引入项目中带有左侧菜单的公共js -->
+<script src="../../../js/common/main.js"></script>
+
+<script>
+$(function(){
+	// 获取左侧菜单列表数据(参数为请求地址)
+	initMenu('../../../js/data/controller.json','活动列表');
+});
+</script>
+</html>

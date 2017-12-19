@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>报名字段设置</title>
+<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+<link href="../../../css/common/bootstrap.min.css" rel="stylesheet" />
+<link href="../../../css/style.css" rel="stylesheet" />
+<link href="../../../css/main.css" rel="stylesheet" />
+<link href="../../../css/userfiled.css" rel="stylesheet"/>
+</head>
+<body>
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="message.html">后台管理</a>
+		<a href="">-&gt;</a>
+		<a href="message.html">活动管理</a>
+		<a href="">-&gt;</a>
+		<a href="userfiled.html">报名信息</a>
+	</div>
+	<div class="con-box">
+	<!-- 以下为每个页面自己编写的部分 -->
+
+		<!-- <div class="activname">《猴年河南南省病理技术研理技术研技术讨》 报名表</div> -->
+	    <div class="jcon person">
+	   		<div class="jconheader">
+	   			<span class="jcontil">
+	   				<span class="jconnum">1</span>个人信息
+	   			</span>
+	   		</div>
+	   		<ul class="jconeditdetail">
+				<li>
+					<span class="fieldcon">
+						<span class="til"><label>姓名</label></span>
+						<span class="type type-inp">单行文本框</span>
+						<!-- <input class="inp" type="text" name="name"> -->
+					</span>
+					<!-- <span class="filedopt">
+						<input type="checkbox" class="must checkinp"/>必填
+						<input type="checkbox" class="optional checkinp"/>选填
+						<input type="checkbox" class="noneed checkinp"/>不需要
+					</span>
+					<span class="moveopt">
+						<img src="../../../img/moveup.png" title="上移"/>
+						<img src="../../../img/movedown.png" title="下移"/>
+					</span> -->
+				</li>
+				<li>
+					<span class="til"><label>性别</label></span>
+					<span class="type type-radio">单选</span>
+					<!-- <input class="sex radioinp" type="radio" name="sex">男
+					<input class="sex radioinp" type="radio" name="sex">女 -->
+				</li>
+				<li>
+					<span class="til"><label>出生年月</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>民族</label></span>
+					<span class="type type-select">下拉列表</span>
+				</li>
+				<li>
+					<span class="til"><label>证件类型</label></span>
+					<span class="type type-select">下拉列表</span>
+				</li>
+				<li>
+					<span class="til"><label>证件号码</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>职业</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>手机</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>邮箱</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>qq</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>微信</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>现住址</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>头像</label></span>
+					<span class="type type-img">图片</span>
+				</li>
+				<li>
+					<span class="til"><label>家庭住址</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>籍贯</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>邮编</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>国籍</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>政治面貌</label></span>
+					<span class="type type-select">下拉列表</span>
+				</li>
+				<li>
+					<span class="til"><label>身高</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>体重</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>血型</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>学历</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>出生地</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>最高学位</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>最高毕业院校</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>毕业时间</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>参加工作时间</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>专业从业时间</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>行业从业时间</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>爱好</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>照片</label></span>
+					<span class="type type-img">图片</span>
+				</li>
+				<li>
+					<span class="til"><label>个人简介</label></span>
+					<span class="type type-text">多行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>星座</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>专业</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+	   		</ul>
+	   		<div class="morefiled">查看更多字段</div>
+	   		<div class="addfield">
+				<button class="addfieldbtn">+</button>
+			</div>
+	    </div>
+	    <div class="jcon">
+	   		<div class="jconheader">
+	   			<span class="jcontil">
+	   				<span class="jconnum">2</span>单位信息
+	   			</span>
+	   		</div>
+	   		<ul class="jconeditdetail">
+				<li>
+					<span class="til"><label>单位名称</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>单位性质</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>部门</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>职务</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>职称</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>地址</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>邮编</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>联系电话</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>传真</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>手机</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>电子邮箱</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+				<li>
+					<span class="til"><label>网址</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+	   		</ul>
+	    </div>
+	    <div class="jcon person">
+	   		<div class="jconheader">
+	   			<span class="jcontil">
+	   				<span class="jconnum">3</span>其他信息
+	   			</span>
+	   		</div>
+	   		<ul class="jconeditdetail">
+				<li>
+					<span class="til"><label>备注</label></span>
+					<span class="type type-inp">单行文本框</span>
+				</li>
+	   		</ul>
+	    </div>
+	    <div class="jcon joinbtn">
+	   		<button class="btn btn-warning joinok">保&nbsp存</button>
+	   		<button class="btn btn-default canclej">取&nbsp消</button>
+	   		<button class="btn btn-warning preview">
+	   			<a style="color: #fff;" href="../../index/previewFiled.html" target="_blank">预&nbsp览</a>
+	   		</button>
+	    </div>
+	</div>
+</div> 
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<!-- 引入项目中带有左侧菜单的公共js -->
+<script src="../../../js/common/main.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script type="text/javascript">
+$(function(){
+	// 获取左侧菜单列表数据(参数为请求地址)
+	initMenu('../../../js/data/administrator.json','活动管理');
+
+	var str = '<span class="filedopt">'+
+					'<input type="checkbox" class="must checkinp"/>必填'+
+					'<input type="checkbox" class="optional checkinp"/>选填'+
+					'<input type="checkbox" class="noneed checkinp"/>不需要'+
+				'</span>'+
+				'<span class="moveopt">'+
+					'<img src="../../../img/moveup.png" title="上移" class="moveup"/>'+
+					'<img src="../../../img/movedown.png" title="下移" class="movedown"/>'+
+				'</span>';
+	$(".jconeditdetail li").append(str);
+
+	var noNeed = $(".noneed");
+	noNeed.each(function(index){
+		var flag = true;
+		$(this).click(function(){
+			var parentE = $(this).parent().parent();
+			if(flag){
+				$(parentE).attr('class','notUse');
+				$(parentE).find('.type').css('color','#999');
+				$(parentE).find('img').attr('disabled','disabled').css('cursor','not-allowed');
+				flag = !flag;
+			} else {
+				$(parentE).removeClass('notUse');
+				$(parentE).find('img').attr('disabled',false).css('cursor','pointer');
+				$(parentE).find('.type').css('color','#333');
+				flag = !flag;
+			}
+		});
+	});
+
+	(function(){
+		var aUp = $(".moveup");
+		aUp.each(function(index){
+			$(this).click(function(){
+				var parentE = $(this).parent().parent();
+				if($(parentE).prev().is('li')){
+					var prevE = $(parentE).prev();
+					$(parentE).insertBefore($(prevE));
+				} else {
+					alert("已是第一个！");
+				}
+			});
+		});
+	})();
+	(function(){
+		var aUp = $(".movedown");
+		aUp.each(function(index){
+			$(this).click(function(){
+				var parentE = $(this).parent().parent();
+				if($(parentE).next().is('li')){
+					var nextE = $(parentE).next();
+					$(nextE).insertBefore($(parentE));
+				} else {
+					alert("已是最后一个！");
+				}
+			});
+		});
+	})();
+
+	$(".morefiled").click(function(){
+		if ($(this).html() == '收起') {
+			$(this).html('查看更多字段');
+			$(this).prev().css({'max-height':'500px','min-height':'100px','overflow':'hidden'});
+		} else {
+			$(this).html('收起');
+			$(this).prev().css({'max-height':'9999px','min-height':'500px'});
+		}
+	});
+	$(".addfieldbtn").click(function(){
+		alert('自定义添加字段！！');
+	});
+
+	var urltemp ='admin/activityregconfig/list   save    del  ';
+	var url = basePath + 'admin/activityregconfig/list.do';
+	$.ajax({
+			url: url,
+			type: "POST",
+			data: {id:'9c2d2f6a84e84ee882b73d66a7b8a7f6'},
+			dataType: "json",
+			xhrFields: {
+				withCredentials: true
+			},
+			crossDomain: true,
+			success: function(result){
+				console.log(result);
+				
+			},
+			error: function(){
+				console.log("请求失败");
+			}
+		})
+});
+</script>
+</html>

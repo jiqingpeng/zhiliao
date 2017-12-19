@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>交通住宿</title>
+	<link rel="stylesheet" href="../../css/style.css">
+	<link rel="stylesheet" href="reserVation.css">
+</head>
+<body>
+	<ul class="airDeta clearfix">
+		<li class="fl arrow"><</li>
+		<li class="fl">
+			<div>
+				<span>06-02</span>
+				<span>周五</span>
+			</div>
+			<div>
+				<span>￥</span>
+				<span>886</span>
+			</div>
+		</li>
+		<li class="fl">
+			<div>
+				<span>06-02</span>
+				<span>周五</span>
+			</div>
+			<div>
+				<span>￥</span>
+				<span>886</span>
+			</div>
+		</li>
+		<li class="fl">
+			<div>
+				<span>06-02</span>
+				<span>周五</span>
+			</div>
+			<div>
+				<span>￥</span>
+				<span>886</span>
+			</div>
+		</li>
+		<li class="fl">
+			<div>
+				<span>06-02</span>
+				<span>周五</span>
+			</div>
+			<div>
+				<span>￥</span>
+				<span>886</span>
+			</div>
+		</li>
+		<li class="fl">
+			<div>
+				<span>06-02</span>
+				<span>周五</span>
+			</div>
+			<div>
+				<span>￥</span>
+				<span>886</span>
+			</div>
+		</li>
+		<li class="fl">
+			<div>
+				<span>06-02</span>
+				<span>周五</span>
+			</div>
+			<div>
+				<span>￥</span>
+				<span>886</span>
+			</div>
+		</li>
+		<li class="fl">
+			<div>
+				<span>06-02</span>
+				<span>周五</span>
+			</div>
+			<div>
+				<span>￥</span>
+				<span>886</span>
+			</div>
+		</li>
+		<li class="fl arrow">></li>
+	</ul>
+	<ul class="airMess">
+		<h4>航班信息</h4>
+		<li class="clearfix">
+			<div class="fl">
+				<span>南方航空</span>
+				<span>空中客车A320(中型)</span>
+			</div>
+			<div class="fl">
+				<p class="fl">
+					<span>06:25</span>
+					<span>首都国际机场T2</span>
+				</p>
+				<p class="fl">></p>
+				<p class="fl">
+					<span>08:40</span>
+					<span>虹桥国际机场T2</span>
+				</p>
+			</div>
+			<p class="fl">准点率</p>
+			<div class="fl">
+				<span>￥</span>
+				<span>1240</span>
+				<span>起</span>
+				<span>订票</span>
+			</div>
+		</li>
+		<li></li>
+		<li>
+		</li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="../../css/index/base.css">
+	<link rel="stylesheet" href="../../css/index/login.css">
+	<!-- <link rel="stylesheet" href="../../css/common/bootstrap.min.css"> -->
+	<style>
+		.register{
+			border:1px solid #ddd;
+			width:272px;
+			height:400px;
+		}
+		.register .reg_head{
+			width:272px;
+			height:48px;
+			line-height:48px;
+			background: #ff9e00;
+			text-align:center;
+			color:#fff;
+		}
+		.register form{
+			width:252px;
+			padding:0 10px;
+			font-size:12px;
+		}
+		.register form table td{
+			width:252px;
+			display:inline-block;
+			height:26px;
+			line-height:26px;
+			margin-top:10px;
+			
+			position: relative;
+		}
+		.register form table .w50{
+			width:50px;
+		}
+		.tc{
+			text-align: center;
+		}
+		.mc{
+			margin:0 auto;
+		}
+		.register form table .m50{
+			margin-top:30px;
+		}
+		.wInput{
+			width:164px;
+		}
+		input{
+			display:inline-block;
+			padding-left:4px;
+			height:24px;
+		}
+		.btn{
+			border:none;
+			background:#ff9e00;
+			color:#fff;
+			border-radius: 2px;
+			padding:3px;
+		}
+		.btn:hover{
+			cursor:pointer;
+		}
+		.check_box{
+			position:absolute;
+			left:4px;
+			top:2px;
+		}
+		span,a{
+			display: inline-block;
+		}
+	</style>
+</head>
+<body>
+	<div class="contains">
+		<div class="con_tit">
+			<a href="javascript:;">
+				<img src="../../img/index/logoandname.png" alt="login">
+			</a>
+		</div>
+		<div class="con_box clearfix">
+			
+			<div class=" login_img fl">
+				<img class="" src="../../img/index/loginimg.png" alt="login_img">
+			</div>
+			<div class="register fl">
+				<div class="reg_head">用户注册</div>
+					<form>
+						<table class="">
+							<tr>
+								<td class="m50">
+									<label for="">&nbsp手机号:</label>
+									<input class="wInput" type="text" placeholder="请输入手机号">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label for="">&nbsp&nbsp密码:</label>
+									<input class="wInput" type="text" placeholder="请输入密码">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label for="">确认密码:</label>
+									<input class="wInput" type="text" placeholder="请再次输入密码">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label for="">单位名称:</label>
+									<input class="wInput" type="text" placeholder="请输入单位名称">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label for="">邮箱地址:</label>
+									<input class="wInput" type="text" placeholder="请输入邮箱">
+								</td>
+							</tr>
+							<tr>
+								<td class="clearfix">
+									<label class="fl" for="">&nbsp验证码:</label>
+									<input class="w50 fl" type="text" placeholder="验证码">
+									<button class="fr btn">免费获取验证码</button>
+								</td>
+							</tr>
+							<tr>
+								<td class="tc">
+									<input class="check_box" type="checkbox">
+									<span>我已阅读且同意</span>
+									<a href="javascirpt:;">《群英会协议》</a>
+								</td>
+							</tr>
+							<tr>
+								<td class="tc m50">
+									<button class="btn w50">注册</button>
+								</td>
+							</tr>
+						</table>
+				    </form>
+			</div>
+		</div>
+		<div class="con_footer">
+			<ul class="clearfix foot_link">
+				<li class="fl">
+					<a href="javascript:;">关于我们</a>
+				</li>
+				<li class="fl">
+					<a href="javascript:;">联系我们</a>
+				</li>
+				<li class="fl">
+					<a href="javascript:;">帮助中心</a>
+				</li>
+				<li class="fl">
+					<a href="javascript:;">网站声明</a>
+				</li>
+				<li class="fl">
+					<a href="javascript:;">公司新闻</a>
+				</li>
+			</ul>
+			<p>未经gconfs.com同意，不得转发网站会议信息</p>
+			<p>京ICP备17018133号</p>
+		</div>
+		
+	</div>
+</body>
+</html>

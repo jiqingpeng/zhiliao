@@ -1,0 +1,403 @@
+@charset "utf-8";
+
+.none {
+	display: none;
+}
+.red {
+	color: red;
+}
+
+#topiceditor {
+	min-height: 135px;
+	z-index: 1;
+}
+
+#trafficEditor {
+	z-index: 1;
+	min-height: 400px;
+}
+
+.wordIntro, .pictureIntro {
+	display: inline-block;
+	height: 24px;
+	width: 70px;
+	margin-right: 5px;
+	border: 1px solid #fadc96;
+	background-color: #fff5e1; 
+	font-size: 12px;
+	color: #333;
+	line-height: 24px;
+	text-align: center;
+	border-radius: 2px 2px 0 0;
+	cursor: pointer;
+}
+.introactive {
+	border: 1px solid #c90101;
+	background-color: #c90101;
+	color: #fff;
+}
+.editorcon, .picIntroCon {
+	z-index: 1;
+}
+.picIntroCon { 
+	border: 1px solid #ddd;
+}
+#introeditor, .picIntroCon { 
+	border-top: 2px solid #c90101;
+	border-radius: 4px 4px 0 0;
+	width: 76%;
+	min-height: 350px;
+	min-width: 880px;
+	margin-bottom: 24px;
+}
+.conferenceImg{
+	margin: 24px 0 0 44px;
+	z-index: 1;
+	display: inline-block;
+}
+.matter{
+	margin-left: 50px;
+}
+.uploadImg {
+	margin-top: 14px;
+}
+
+
+/* 活动管理基本信息页面 */
+
+.stime, .etime {
+	background-color: #fff;
+}
+
+.plus{
+	height: 43px;
+}
+.append{
+	width: 36px;
+	height: 30px;
+	line-height: 34px;
+	text-align: center;
+	background-color: #ccc;
+	position: absolute;
+	border-radius: 3px;
+	top: 2px;
+	right: 18px;
+}
+.industry{
+	position: relative;
+}
+.category{
+	min-width: 180px;
+	min-height: 300px;
+	border: 1px solid #ccc;
+	position: absolute;
+	top: -300%;
+	left: 75%;
+	display: none;
+	background-color: #f4960d;
+}
+.category a{
+	// color: #000;
+	cursor: pointer;
+	margin: 2px 0;
+	display: block;
+	text-align: center;
+}
+.category a:hover{
+	color: #fff;
+}
+.delIndustry{
+	width: 20px;
+	height: 22px;
+	border-radius: 3px;
+	border: 1px solid #ccc;
+}
+
+ /* 个人信息页面css样式 */
+.caption{
+
+	height: 40px;
+	line-height: 40px;
+	background-color: red;
+}
+.comStyle{
+	width: 120px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	color: #fff;
+	border-radius: 20px;
+	margin: 10px 0;
+}
+.caption .comStyle a{
+	font-size: 14px;
+}
+.caption .perDetails{
+	float: left;
+	margin-left: 300px;
+}
+.caption .perDetails a{
+	color: #fff;
+	cursor:pointer;
+}
+.caption .secSettings{
+	float: right;
+	margin-right: 300px;
+}
+.caption .secSettings a{
+	color: #000;
+	cursor:pointer;
+}
+.hasBgc{
+	background: url(../img/menulistbg.png) repeat-x;
+}
+.loseBgc{
+	background: "";
+}
+
+/* 用户管理-短信、邮件、站内信 */
+.tableModel {
+	min-height: 200px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+}
+.tableModelTitle {
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #ddd;
+    padding-left: 14px;
+    font-weight: bold;
+    background-color: #f1f1f1;
+    margin-bottom: 14px;
+}
+.modalfooter {
+	height: 48px;
+	line-height: 48px;
+	text-align: right;
+	padding-right: 18px;
+	border-top: 1px solid #ddd;
+}
+.modal-body { 
+	min-height: 200px;
+}
+.messagebody {
+	margin-top: 24px;
+	height: 280px;
+	width: 100%;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+}
+.messagemodel {
+	height: 35px;
+	border-bottom: 1px solid #ddd;
+}
+#msgmodelsel {
+	float: right;
+	margin: 4px 14px;
+	height: 26px;
+	width: 138px;
+	padding: 0 0 0 4px;
+	font-size: 12px;
+}
+.msgDetail, .emailDetail {
+	padding: 24px 8px;
+}
+.msgInp { 
+	min-width: 168px; 
+	height: 26px; 
+	padding: 0 6px; 
+	border: solid #dbdcde; 
+	border-width: 0 0 1px 0; 
+	background: none; 
+	color: #333; 
+}
+/* 用户管理-短信-end */
+.userListEmail {
+	/*padding-left: 40px;*/
+}
+.emailcon {
+	margin-top: 24px;
+}
+#emailthemecon { 
+	height: 34px; 
+	line-height: 34px; 
+	padding-left: 10px; 
+	border: 1px solid #dbdcde; 
+	background: #fff;
+	/*margin: 0 40px; */
+	color: #333;
+	border-radius: 3px;
+}
+#attachment {
+	height: 30px; 
+	line-height: 30px;
+	font-size: 12px;
+}
+#attachment img {
+	margin-top: 10px;
+	margin-left: 14px;
+}
+#attachbtn {
+	font-size: 12px;
+	color: #ee8400;
+	cursor: pointer;
+}
+#attachexplain {
+	font-size: 12px;
+}
+.attachName {
+	border: none;
+	padding-left: 14px;
+	color: #333;
+	width: 500px;
+}
+
+#emailtheme { 
+	height: 30px; 
+	width: 840px; 
+	border: none; 
+	color: #333;
+}
+#emailcontent {
+	margin-right: 14px;
+	min-height: 200px;
+}
+.noticeDetail {
+	margin-top: 24px;
+	min-height: 200px;
+	width: 100%;
+	line-height: 32px;
+	border: 1px solid #ddd;
+	color: #333;
+	border-radius: 3px;
+	padding: 8px 10px;
+}
+/* 用户管理-单个用户信息 */
+
+/* 用户管理-单个用户信息-end */
+
+#downexcel a, #downmodel a {
+	color: #666;
+}
+#downexcel a:hover, #downmodel a:hover {
+	color: #ff8400;
+}
+
+/* 活动流程部分样式开始 */
+.timeInstall{
+	width: 200px;
+	height: 32px;
+	text-align: center;
+	border-radius: 5px;
+	border: 1px solid #ddd;
+}
+/* 活动流程部分样式结束 */
+
+/* 新闻公告部分样式 */
+#newseditor, #noticeeditor {
+	border-radius: 4px 4px 0 0;
+	min-height: 350px;
+}
+/* 新闻公告部分样式-end */
+
+/* 活动基本信息开始 */
+.popover{
+		min-height: 400px;
+		min-width: 180px;
+		text-align: center;
+	}
+.popover a{
+	display: block;
+}
+.mapTitle{
+	width: 300px;
+	height: 200px;
+}
+.none1 {
+	display: none;
+}
+
+.SingleSpan{
+	margin: 0 auto;
+	display: inline-block;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	height: 24px;
+	background-color: #ccc;
+	margin-right: 10px;
+}
+.delindustry{
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	margin-left: 2px;
+	height: 22px;
+}
+/* 活动基本信息结束 */
+
+
+/* 工作人员页面开始 */
+.redStar{
+	color: red;
+}
+.modification{
+	min-height: 250px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	margin-bottom: 14px;
+	width: 950px;
+	padding-bottom: 14px;
+}
+.modification .modificationTitle{
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid #ddd;
+	padding-left: 14px;
+	font-weight: bold;
+	background-color: #f1f1f1;
+	margin-bottom: 14px;
+}
+/* 工作人员页面结束 */
+
+/*会场座次开始*/
+.seating{
+	max-width: 91.5%;
+	border: 1px solid #ff6100;
+	margin-left: 8.5%;
+	padding: 20px 40px;
+	overflow: auto;
+}
+.perSeat{
+	overflow: hidden;
+}
+.rostrumChild{
+	text-align: center;
+	margin: 10px auto;
+	height: 34px;
+	border: 1px solid #999;
+	background-color: #eee;
+	color: #ff8400;
+	line-height: 34px;
+	border-radius: 0 0 4px 4px;
+}
+.seatBox{
+	border: 1px solid #ccc;
+	/*padding: 20px;*/
+}
+.perSeat{
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 25px;
+	height: 52px;
+	text-align: center;
+	width: 70px; 
+	border: 1px solid #ccc;
+	font-size: 12px;
+}
+/*.rostrumBtn{
+	margin-left: 30%;
+}*/
+
+/*会场座次结束*/

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>酒店预订</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="../../css/index/hotelDetail.css">
+	<link rel="stylesheet" href="../../css/index/base.css">
+	<link rel="stylesheet" href="../../css/index/public.css">
+</head>
+<body>
+	<div class="head clearfix">
+		<div class="hnav  clearfix">
+			<ul class="fl">
+				<li class="fl"><a href="index.html">首页</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="detailContent clearfix">
+		<div class="detailConWid">
+			<div class="pictureTitle">
+				<div class="subName">北京云逸酒店</div>
+				<div class="address">
+					<span><a href="">[首都机场/新国展地区]</a> 地址：李天路环宇科技园近机场东路</span>
+					<span><a href="">查看地图</a></span>
+				</div>
+			</div>
+			<div class="grogImages clearfix">
+				<div class="grogImages-left"><img src="../../img/index/grogshop02.jpg"></div>
+				<div class="grogImages-right">
+					<img src="../../img/index/grogshop03.jpg">
+					<img src="../../img/index/grogshop04.jpg">
+					<img src="../../img/index/grogshop03.jpg" class="img">
+					<img src="../../img/index/grogshop04.jpg" class="img">
+					<img src="../../img/index/grogshop03.jpg" class="img">
+					<img src="../../img/index/grogshop04.jpg" class="img">
+					<img src="../../img/index/grogshop03.jpg" class="img">
+					<img src="../../img/index/grogshop04.jpg" class="img">
+				</div>
+				<div class="smallMap" id="map">		
+				</div>
+			</div>		
+			<div class="switchover">
+				<ul>
+					<li class="room"><a href="#a3">房型</a></li>
+					<li><a href="#a1">酒店信息</a></li>
+					<li><a href="#a2">交通</a></li>
+				</ul>
+			</div>
+			<div  name="a3" id="a3"></div>
+			<div>
+				<div class="roomDetail">
+					<div class="roomTitle">
+						<div class="roomContent">
+							<img src="../../img/index/grogshop05.jpg">
+							<div class="advanced">
+								<span class="advancedRoom">高级大床房</span>
+								<br>
+								<span>大床(1.8米)|免费有线|最多可住2人|面积24㎡|楼层1-4层</span>
+							</div>
+						</div>
+					</div>
+					<div class="roomNav">
+						<ul>
+							<li>名称</li>
+							<li>床型</li>
+							<li>早餐</li>
+							<li>窗户</li>
+							<li>取消规则</li>
+							<li>日均价</li>
+						</ul>
+					</div>
+					<div class="roomMatter">
+						<dl>
+							<dt>
+								<dd class="dd">同城自营</dd>
+								<dd>大床</dd>
+								<dd>无早</dd>
+								<dd>有窗</dd>
+								<dd>不可取消</dd>
+								<dd class="price">¥245</dd>
+							</dt>
+							<span class="predetermine">预&nbsp;定</span>
+							<br>
+							<span class="onLine">在线订</span>
+						</dl>
+						<!-- <dl>
+							<dt>
+								<dd>同城自营</dd>
+								<dd>大床</dd>
+								<dd>无早</dd>
+								<dd>有窗</dd>
+								<dd>不可取消</dd>
+								<dd>¥245</dd>
+							</dt>
+						</dl> -->
+					</div>
+					<div class="roomMatter">
+						<dl>
+							<dt>
+								<dd class="dd">同城自营</dd>
+								<dd>大床</dd>
+								<dd>无早</dd>
+								<dd>有窗</dd>
+								<dd>不可取消</dd>
+								<dd class="price">¥245</dd>
+							</dt>
+							<span class="predetermine">预&nbsp;定</span>
+							<br>
+							<span class="onLine">在线订</span>
+						</dl>
+					</div>
+					<div class="roomMatter">
+						<dl>
+							<dt>
+								<dd class="dd">同城自营</dd>
+								<dd>大床</dd>
+								<dd>无早</dd>
+								<dd>有窗</dd>
+								<dd>不可取消</dd>
+								<dd class="price">¥245</dd>
+							</dt>
+							<span class="predetermine">预&nbsp;定</span>
+							<br>
+							<span class="onLine">在线订</span>
+						</dl>
+					</div>
+					<div class="roomMatter">
+						<dl>
+							<dt>
+								<dd class="dd">同城自营</dd>
+								<dd>大床</dd>
+								<dd>无早</dd>
+								<dd>有窗</dd>
+								<dd>不可取消</dd>
+								<dd class="price">¥245</dd>
+							</dt>
+							<span class="predetermine">预&nbsp;定</span>
+							<br>
+							<span class="onLine">在线订</span>
+						</dl>
+					</div>
+					<div class="roomMatter">
+						<dl>
+							<dt>
+								<dd class="dd">同城自营</dd>
+								<dd>大床</dd>
+								<dd>无早</dd>
+								<dd>有窗</dd>
+								<dd>不可取消</dd>
+								<dd class="price">¥245</dd>
+							</dt>
+							<span class="predetermine">预&nbsp;定</span>
+							<br>
+							<span class="onLine">在线订</span>
+						</dl>
+					</div>
+					<div class="roomMatter">
+						<dl>
+							<dt>
+								<dd class="dd">同城自营</dd>
+								<dd>大床</dd>
+								<dd>无早</dd>
+								<dd>有窗</dd>
+								<dd>不可取消</dd>
+								<dd class="price">¥245</dd>
+							</dt>
+							<span class="predetermine">预&nbsp;定</span>
+							<br>
+							<span class="onLine">在线订</span>
+						</dl>
+					</div>
+				</div>
+				<div class="grogshopInfo">
+					<div  id="a1" name="a1"></div>
+					<div class="grogInfoTitle">酒店信息</div>
+					<div class="clearfix">
+						<div class="grogInfoIcon">
+						<div class="grogIconContent">
+							<div class="grogConCharImg grogConImg"></div>
+							<div class="grogConChar grogConDes">免费停车场</div>
+						</div>
+						</div>
+						<div class="grogInfoIcon">
+							<div class="grogIconContent">
+								<div class="grogConAirImg grogConImg"></div>
+								<div class="grogConAir grogConDes">接机服务</div>
+							</div>
+						</div>
+					</div>
+					<div class="grogInfoBasal">
+						<span class="spanColor">基本信息</span>&nbsp;
+						<span class="spanInfo">2012开业</span>
+						<span class="spanInfo">2012装修</span>
+						<span class="spanInfo"><a href="">联系电话</a></span>
+					</div>
+					<div class="grogFacility">
+						<span class="spanColor">酒店设施</span>&nbsp;
+						<span class="spanPark">停车场</span>
+						<span class="spanPark">免费停车</span>
+					</div>
+					<div class="grogTime">
+						<span class="spanColor">入离店时间</span>
+						&nbsp;
+						<span>入住时间:10:00以后</span>&nbsp;
+						<span>离店时间:12:00以前</span>
+					</div>
+					<div class="grogIntro">
+						<span class="spanColor">酒店简介</span>
+						<span class="grogIntroCon">北京云逸酒店距离首都机场T3航站楼车程约8分钟，距T2航站楼约12分钟</span>
+					</div>
+					<div class="grogCard">
+						<span class="spanColor">可接受信用卡</span>
+					</div>
+				</div>			
+				<div class="rimTraffic">
+					<div  id="a2" name="a2"></div>
+					<div class="rimTrafContent">交通</div>
+					<div class="rimTrafAtlas" id="bigMap">						
+					</div>
+					<div class="rimTraRefer">
+						<div class="rimTraReferTop">
+							<div class="origin"><input placeholder="输入起点"></div>
+							<div class="termina"><input placeholder="输入终点"></div>
+							<a href="#">查&nbsp;询</a>
+						</div>
+						<div class="rimTraReferBot"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+<script type="text/javascript" src="../../js/jquery.min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=FB6c98d828da5bf508fb357f9ee535ef"></script>
+</html>
+<script type="text/javascript">
+
+	$(function(){
+		document.onmousemove = function(e){
+			// console.log(document.body.scrollTop);
+			if(document.body.scrollTop>568){
+				$(".switchover").css("position","fixed");
+				$(".switchover").css("left", "200");
+				$(".switchover").css("top", "0");
+				$(".switchover").css("z-index", "100");
+				$(".switchover").css("backgroundColor", "#fff");
+			}
+			if(document.body.scrollTop<568){
+				$(".switchover").css("position","static");
+			}
+		};
+		$(".switchover li").on("click", function(){
+			$(this).css("backgroundColor", "#4c5a65").siblings().css("backgroundColor", "#fff");
+			$(this).children().css("color", "#fff").parents().siblings().children().css("color", "#000");
+		});
+	})
+</script>
+<script type="text/javascript">
+	 //创建和初始化地图函数：
+    function initMap(){
+      createMap();//创建地图
+      setMapEvent();//设置地图事件
+    }
+    function createMap(){ 
+      map = new BMap.Map("map"); 
+      map.setCurrentCity("北京"); 
+      map.centerAndZoom(new BMap.Point(116.394675,39.917545),11);
+      marker = new BMap.Marker(new BMap.Point(116.394675, 39.917545));
+      map.addOverlay(marker);
+    }
+    function setMapEvent(){
+      map.enableScrollWheelZoom();
+      map.enableKeyboard();
+      map.enableDragging();
+      map.enableDoubleClickZoom()
+    }
+    function addClickHandler(target,window){
+      target.addEventListener("click",function(){
+        target.openInfoWindow(window);
+      });
+    }
+    var map;
+      initMap();
+</script>
+<script type="text/javascript">
+	 //创建和初始化地图函数：
+    function initMap(){
+      createMap();//创建地图
+      setMapEvent();//设置地图事件
+    }
+    function createMap(){ 
+      map = new BMap.Map("bigMap"); 
+      map.setCurrentCity("北京"); 
+      map.centerAndZoom(new BMap.Point(116.394675,39.917545),11);
+      marker = new BMap.Marker(new BMap.Point(116.394675, 39.917545));
+      map.addOverlay(marker);
+    }
+    function setMapEvent(){
+      map.enableScrollWheelZoom();
+      map.enableKeyboard();
+      map.enableDragging();
+      map.enableDoubleClickZoom()
+    }
+    function addClickHandler(target,window){
+      target.addEventListener("click",function(){
+        target.openInfoWindow(window);
+      });
+    }
+    var map;
+      initMap();
+</script>

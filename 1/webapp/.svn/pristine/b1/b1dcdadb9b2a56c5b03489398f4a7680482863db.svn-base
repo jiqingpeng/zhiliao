@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>用户管理</title>
+	<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+	<link href="../../../css/common/bootstrap.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="../../../css/common/bootstrap-table.min.css">
+	<link href="../../../css/style.css" rel="stylesheet" />
+	<link href="../../../css/main.css" rel="stylesheet" />
+	<link rel="stylesheet" href="../../../css/admin.css">
+</head>
+<body>
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con"><!-- 内容部分的class : mops-con (必须) -->
+	<div class="con-nav">
+		<a href="customer.html">管理中心</a>
+		<a href="">-&gt;</a>
+		<a href="customer.html">个人信息</a>
+	</div><!-- 内容部分导航头的class : con-nav (必须) -->
+	<div class="con-box"><!-- 内容部分主体内容的class : con-box (必须) -->
+		<!-- 以下为每个页面自己编写的部分 -->
+		<div class="caption" style="height: 56px; width: 100%; background-color: #f5f5f5; margin-bottom: 40px;">
+			<div class="perDetails comStyle hasBgc">
+				<a>个人信息</a>
+			</div>
+			<div class="secSettings comStyle">
+				<a>安全信息</a>
+			</div>
+		</div>
+		<form id="detailform" class="form-horizontal perDetailsForm">
+			<input type="reset" style="display:none;"/>
+			<input type="hidden" id="id" name="id" value="9c2d2f6a84e84ee882b73d66a7b8a7f6"/>
+			<input type="hidden" id="type" name="type"/>
+			<div class="form-group">
+			    <label for="" class="col-sm-2 control-label"><span style="color: red"></span>昵称</label>
+			    <div class="col-sm-7">
+			      <input type="text" name="name" class="form-control conference" id="inputTell" placeholder="请输入昵称">
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label for="" class="col-sm-2 control-label">通信地址</label>
+			    <div class="col-sm-7">
+			      <input type="text" name="theme" class="form-control theme" id="inputTell" placeholder="请输入通信地址">
+			    </div>
+			</div>
+			<div class="form-group industry">
+			    <label for="" class="col-sm-2 control-label">传真</label>
+			    <div class="col-sm-7">
+			      	<input type="text" name="" class="form-control vocation" id="inputTell" placeholder="请输入传真号码">
+			    </div>
+			</div>
+		</form>
+
+		<form id="detailform" style="display: none" class="form-horizontal secSettingsForm">
+			<input type="reset" style="display:none;"/>
+			<input type="hidden" id="id" name="id" value="9c2d2f6a84e84ee882b73d66a7b8a7f6"/>
+			<input type="hidden" id="type" name="type"/>
+			<div class="form-group">
+			    <label for="" class="col-sm-2 control-label"><span style="color: red"></span>原密码</label>
+			    <div class="col-sm-7">
+			      <input type="text" name="name" class="form-control conference" id="inputTell" placeholder="请输入原始密码">
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label for="" class="col-sm-2 control-label">新密码</label>
+			    <div class="col-sm-7">
+			      <input type="text" name="theme" class="form-control theme" id="inputTell" placeholder="请输入新密码">
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label for="" class="col-sm-2 control-label">确认密码</label>
+			    <div class="col-sm-7">
+			      	<input type="text" name="" class="form-control vocation" id="inputTell" placeholder="请确认密码">
+			    </div>
+			</div>
+			<div class="form-group">
+			<label for="" class="col-sm-2 control-label"></label>
+			    <div class="col-sm-3">
+			      <input type="email" disabled="disabled" name="takepartNum" class="form-control people" id="inputTell" placeholder="输入验证码">
+			    </div>
+			    <div class="col-sm-1"></div>
+			    <div class="col-sm-3">
+			      <input type="button" name="takepartNum" class="form-control people" id="inputTell" value="获取手机验证码">
+			    </div>
+			</div>
+		</form>
+
+		<div class="btncon">
+				<button type="button" class="btn btn-default btn-warning edit">编&nbsp辑</button>
+		        <button type="button" class="btn btn-default btn-warning save" style="display: none">保&nbsp;存</button>
+		        <button type="button" class="btn btn-default cancel" style="display: none">取&nbsp;消</button>
+		       <!-- <button class="btn btn-default btn-danger">删&nbsp除</button> -->
+		    </div>
+	</div>
+<!-- 	<div class="new">new</div>  -->    
+</div>
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/bootstrap-table.min.js"></script>
+<!-- 引入项目中带有左侧菜单的公共js -->
+<script src="../../../js/common/main.js"></script>
+<script src="../../../js/admin/userGovern.js"></script>
+
+<script>
+$(function(){
+	// 获取左侧菜单列表数据(参数为请求地址)
+	initMenu('../../../js/data/controller.json','个人信息');
+});
+</script>
+</html>

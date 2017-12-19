@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+	<title>群英汇-专业会议管理、会议发布、大赛、培训，一站式支撑服务平台</title>
+	<meta name="description" content="群英汇是一个专业提供会议、会展、培训、大赛等一站式管理的技术支撑会议服务平台，为广大政府部门、协会、商会、联盟、行业组织等提供优质、免费的会议管理服务">
+	<meta name="keywords" content="会议，会议管理，会议服务，培训，大赛，会议活动，会议发布">
+	<link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+	<link rel="stylesheet" href="../../css/index/base.css">
+	<link rel="stylesheet" href="../../css/index/public.css">
+	<link rel="stylesheet" href="../../css/index/index.css">
+	<style type="text/css">
+		.login_box{
+			position: relative;
+		}
+		.commentImg{
+			width: 18px;
+			height: 24px;
+			background: url(../../img/index/mobile.png) no-repeat;
+			background-size: 10px;
+			position: absolute;
+			top: 38px;
+			left: 43px;
+		}
+		.pwdImg{
+			background: url(../../img/index/pwd.png) no-repeat;
+			background-size: 11px;
+			top: 89px;
+		}
+	</style>
+</head>
+<body>
+	<div class="head">
+		<div class="clearfix hnav">
+			<ul class="fl">
+				<li class="fl">
+					<a href="index.html">
+						<img class="imgTitle" src="../../img/index/logo.png">
+					</a>
+				</li>
+			</ul>
+			<!-- 登陆 -->
+			<ul class="fr log_group">
+				<li class="fl otherLogin">
+					<a href="javascript:;">主办方登录</a>
+					<div class="oLoginList active">
+						<a href="adminLogin.html" target="_blank">管理员登陆</a>
+						<a href="funcLogin.html" target="_blank">工作人员登陆</a>
+						<!-- <a href="login.html" target="_blank">参会方登陆</a> -->
+						<a href="superLogin.html" target="_blank">超级管理员</a>
+					</div>
+				</li>
+				<li class="fl login">
+					<a class="w60 logBtn" href="javascript:;">参会登陆</a>
+					<div class="login_box">
+						<div class="commentImg"></div>
+						<input class="user" type="text" placeholder="请输入账号(手机号)" maxlength="32">
+						<div class="commentImg pwdImg"></div>
+						<input class="password" type="password" placeholder="请输入密码" maxlength="32">
+						<p class="clearfix regCode active">
+							<input class="fl regBox" type="text">
+							<img class="fl regImg" src="" alt="">
+							<a class="fl regText" href="javascript:;">换一张</a>
+						</p>
+						<!-- <p class="login_message">错误信息</p> -->
+						<a id="login"  class="login_btn">登&nbsp;录</a>
+						<p class="login_footer clearfix">
+							<!-- <a class="fl a" href="javascript:;" style="color:#252525; font-size:12px;">十天内免登录</a> -->
+							<a class="fl a" href="register.html" style="color:#ff6100; font-size:12px;">立即注册</a>
+							<a class="fr color_000 forget" href="resetPwd.html" style="color:#252525; font-size:12px;" >忘记密码?
+							</a>
+						</p>
+					</div>
+				</li>
+				<li class="fl"><a id="aa" class="sponsor" href="register.html">参会注册</a></li>
+			</ul>
+			<!-- 登陆成功 -->
+			<ul class="fr log_group2 active">
+				<li class="fl">
+					<a class="userCenter" href="javascript:;">用户中心</a>
+				</li>
+				<li class="fl" id="user_name">
+				</li>
+				<li class="fl">
+					<a id="login_out" href="javascript:;">注销</a>
+				</li>
+			</ul>
+			<ul class="fr">
+				<li class="fl"><a class="sponsor" href="indepPage/applicant.html">申请主办方</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="contain">
+		<div class="bannimg">
+			<img class="logor fr" src="../../img/banner.png" alt="homenav">
+		</div>
+		<div class="group clearfix">
+			<div class="item fl">
+				<!-- 会议 -->
+				<div class="wrap h410">
+					<div class="title clearfix">
+						<div class="clearfix conBox">
+							<div class="fl conImg"><img src="../../img/index/meetLogin.png"></div>
+							<div class="fl ConNav">
+								<span class="conTitle">会议</span>
+								<span>
+									<span class="conLine">
+											
+									</span>
+									<span class="test">
+										
+									</span>
+								</span>
+							</div>
+						</div>
+						
+						<ul class="conferenceNav nav">
+							<!-- <li class="fl">
+								<a href="#">通信</a>
+							</li>
+							<li class="fl">
+								<a href="#">农|林|牧|渔</a>
+							</li> -->
+							
+							<li class="fr">
+								<span href="cation.html" class="mr more" dataType="1" dataTrade="0">
+									查看更多
+									<img  src="../../img/index/more.jpg" alt="more">
+								</span>
+								
+							</li>
+						</ul>
+					</div>
+					<div class="message conference">
+					</div>
+				</div>
+				
+				<!-- 学会动态 -->
+				<div class="wrap f1">
+					<div class="titlet clearfix">
+						<span class="fl">学会动态</span>
+						<a href="#" class="mr fr">
+							查看更多
+							<img  src="../../img/index/more.jpg" alt="more">
+						</a>
+					</div>
+					<ul class="messaget news">
+					</ul>	
+				</div>
+				<!-- 最新动态 -->
+				<div class="wrap ">
+				</div>
+			</div>
+			<div class="item fr">
+				<!-- 培训 -->
+				<div class="wrap h410">
+					<div class="title clearfix">
+						<!-- <div class="icon fl">
+							<img src="../../img/index/icon-index-hint.png" alt="icon" class="fl">
+							<span class="fl">培训</span>
+						</div> -->
+						<div class="clearfix conBox">
+							<div class="fl conImg"><img src="../../img/index/train.png"></div>
+							<div class="fl ConNav">
+								<span class="conTitle">培训</span>
+								<span>
+									<span class="conLine">
+											
+									</span>
+									<span class="test">
+										
+									</span>
+								</span>
+							</div>
+						</div>
+						<ul class="trainNav nav fl">
+							<!-- <li class="fr">
+								<span href="cation.html" class="mr more" dataType="3">
+									查看更多
+									<img  src="../../img/index/more.jpg" alt="more">
+								</span>
+							</li> -->
+						</ul>
+					</div>
+					<div class="message train">
+					</div>
+				</div>
+				<!-- 会展 -->
+				<!-- <div class="wrap h410">
+					<div class="title clearfix">
+						<div class="icon fl">
+							<img src="../../img/index/icon-index-hint.png" alt="icon" class="fl">
+							<span class="fl">会展</span>
+						</div>
+						<ul class="nav exhibitionNav fl">
+							<li class="fr">
+								<span href="cation.html" class="mr more" dataType="2">
+									查看更多
+									<img  src="../../img/index/more.jpg" alt="more">
+								</span>
+							</li>
+						</ul>
+					</div>
+					<div class="message exhibition">
+					</div>
+				</div> -->
+				<!-- 大赛 -->
+				<!-- <div class="wrap h410">
+					<div class="title clearfix">
+						<div class="icon fl">
+							<img src="../../img/index/icon-index-hint.png" alt="icon" class="fl">
+							<span class="fl">大赛</span>
+						</div>
+						<ul class="tounamentNav nav fl">
+							<li class="fr">
+								<span href="cation.html" class="mr more" dataType="4">
+									查看更多
+									<img  src="../../img/index/more.jpg" alt="more">
+								</span>
+							</li>
+						</ul>
+					</div>
+					<div class="message tounament">
+					</div>
+				</div> -->
+				<!-- 合作学会 -->
+				<div class="wrap ">
+					<div class="titlet clearfix">
+						<span class="fl">合作学会</span>
+						<a href="#" class="mr fr">
+							查看更多
+							<img  src="../../img/index/more.jpg" alt="more">
+						</a>
+					</div>
+					<ul class="messaget clearfix">
+						<li class="fl w224">
+							<a target="_blank" title="清华校友总会" href="http://www.tsinghua.org.cn/">清华校友总会</a>
+						</li>
+						<li class="fl w224">
+							<a target="_blank" title="中国产学研合作促进会" href="http://www.360cxy.cn/">中国产学研合作促进会</a>
+						</li>
+						<li class="fl w224">
+							<a target="_blank" title="中国软件行业协会" href="http://www.csia.org.cn/">中国软件行业协会</a>
+						</li>
+						<li class="fl w224">
+							<a target="_blank" title="中国交通运输协会" href="http://www.cctanet.org.cn/">中国交通运输协会</a>
+						</li>
+						<li class="fl w224">
+							<a target="_blank" title="中国灾害防御协会" href="http://www.zaihai.cn/">中国灾害防御协会</a>
+						</li>
+						<li class="fl w224">
+							<a target="_blank" title="中国保险学会" href="http://www.isc-org.cn/">中国保险学会</a>
+						</li>
+						<li class="fl w224">
+							<a target="_blank" title="中国无机盐工业协会" href="http://www.cisia.org/">中国无机盐工业协会</a>
+						</li>
+						<li class="fl w224">
+							<a target="_blank" title="中善公益促进中心" href="http://www.1g1.org.cn/">中善公益促进中心</a>
+						</li>
+						<li class="fl w224">
+							<a target="_blank" title="中国建材工业经济研究会" href="http://www.csbmie.com/">中国建材工业经济研究会</a>
+						</li>
+						<li class="fl w224">
+							<a target="_blank" title="中国建筑装饰装修材料协会" href="http://www.cadbm.com.cn/">中国建筑装饰装修材料协会</a>
+						</li>
+						<li class="fl w224">
+							<a target="_blank" title="中国石油流通协会" href="http://www.cpca.com.cn/">中国石油流通协会</a>
+						</li>
+						<li class="fl w224">
+							<a target="_blank" title="中国洗涤用品工业协会" href="http://www.ccia-cleaning.org/">中国洗涤用品工业协会</a>
+						</li>
+						<li class="fl w224">
+							<a target="_blank" title="中国建设会计学会" href="http://www.casc1986.com.cn/">中国建设会计学会</a>
+						</li>
+						<li class="fl w224">
+							<a target="_blank" title="中国技术创业协会" href="http://www.chinate.org/">中国技术创业协会</a>
+						</li>
+						<li class="fl w224">
+							<a target="_blank" title="中国膜工业协会" href="http://www.membranes.com.cn/">中国膜工业协会</a>
+						</li>
+						<li class="fl w224">
+							<a target="_blank" title="中国电子节能技术协会" href="http://www.ceesta.org/">中国电子节能技术协会</a>
+						</li>
+						<li class="fl w224">
+							<a target="_blank" title="中国教育后勤协会" href="http://www.chinacacm.org/">中国教育后勤协会</a>
+						</li>
+						<li class="fl w224">
+							<a target="_blank" title="中国指挥与控制学会" href="http://www.c2.org.cn/">中国指挥与控制学会</a>
+						</li>
+						<li class="fl w224">
+							<a target="_blank" title="中国对外经济贸易会计学会(国际商务财会)" href="http://kjxh.mofcom.gov.cn/">中国对外经济贸易会计学会(国际商务财会)</a>
+						</li>
+						<li class="fl w224">
+							<a target="_blank" title="中国民营科技促进会" href="#">中国民营科技促进会</a>
+						</li>
+						<li class="fl w224">
+							<a target="_blank" title="中国民营科技实业家协会" href="http://www.mykj.gov.cn/">中国民营科技实业家协会</a>
+						</li>
+						<li class="fl w224">
+							<a target="_blank" title="中国电子质量管理协会" href="http://www.cqae.com/">中国电子质量管理协会</a>
+						</li>
+						<li class="fl w224">
+							<a target="_blank" title="全联房地产商会" href="http://www.crecc.org/">全联房地产商会</a>
+						</li>
+						<li class="fl w224">
+							<a target="_blank" title="中国屈原学会" href="http://www.quyuan.biz/">中国屈原学会</a>
+						</li>
+						<li class="fl w224">
+							<a target="_blank" title="中国中小企业协会" href="http://www.ca-sme.org/">中国中小企业协会</a>
+						</li>
+						<li class="fl w224">
+							<a target="_blank" title="中国发明协会" href="http://www.cainet.org.cn/">中国发明协会</a>
+						</li>
+						<li class="fl w224">
+							<a target="_blank" title="中国抗衰老促进会" href="http://www.zgksl.org.cn/">中国抗衰老促进会</a>
+						</li>
+						<li class="fl w224">
+							<a target="_blank" title="清华PPP中心" href="http://www.ppp.tsinghua.edu.cn/">清华PPP中心</a>
+						</li>
+						<li class="fl w224">
+							<a target="_blank" title="国家建筑材料展贸中心" href="http://www.cbme.cn/">国家建筑材料展贸中心</a>
+						</li>
+						<li class="fl w224">
+							<a target="_blank" title="中国国际科学技术合作协会" href="http://www.caistc.com/">中国国际科学技术合作协会</a>
+						</li>
+					</ul>	
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="foot">
+			<ul class="f-list clearfix">
+				<!-- <li class="fl tell no">
+				</li> -->
+				<li class="fl"><a href="indepPage/about.html" target="_blank">关于我们</a></li>
+				<li class="fl"><a href="indepPage/contant.html" target="_blank">联系我们</a></li>
+				<li class="fl"><a href="indepPage/help.html" target="_blank">帮助中心</a></li>
+				<li class="fl"><a href="javascript:;">会务商加盟</a></li>
+				<li class="fl"><a href="javascript:;">会展商加盟</a></li>
+				<li class="fl"><a href="javascript:;">媒体加盟</a></li>
+				<li class="fl"><a href="javascript:;">场馆加盟</a></li>
+				<li class="fl"><a href="javascript:;">旅游合作</a></li>
+				<li class="fl"><a href="indepPage/companyNews.html" target="_blank">公司新闻</a></li>
+			</ul>
+			<p class="p1">未经gconfs.com同意不得转发网站会议信息</p>
+			<p class="p2">京ICP备1708133号</p>
+	</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/jQuery.md5.js"></script>
+<script src="../../js/user/userMain.js"></script>
+<script>
+	$(function(){
+		$(".w224 a").each(function(i,v){
+			if($(v).text().length > 14){
+				$(v).html($(v).html().substring(0,14) + "...");
+			}
+		});
+		$(".sponsor").on("mouseover", function(){
+			$('.login').children("a").css("color", "#fff");
+			$('.login_box').css('display','none');
+		})
+		//init获取页面信息
+		var url=basePath+"index/init.do";
+		//
+		$.myAjax({
+			url: url,
+			success:function(result){
+				//登陆状态
+				if(result.status.url){
+					$('.log_group').addClass('active');
+					$('.log_group2').removeClass('active');
+					$('#user_name').html(result.status.nick);
+					$('.userCenter').attr('href',basePath+result.status.url);
+				};
+				//循环行业类型
+				for(var i=0;i<9;i++){
+					//会议导航
+					$('.conferenceNav').prepend('<li class="fl"><input type="hidden" dataType="1" value="'+result.data.industy[i].value+'"/><span class="on_cat">'+result.data.industy[i].name+'</span></li>');
+					//会展导航
+					$('.exhibitionNav').prepend('<li class="fl"><input type="hidden" dataType="2" value="'+result.data.industy[i].value+'"><span class="on_cat">'+result.data.industy[i].name+'</span></li>');
+					//培训导航
+					$('.trainNav').prepend('<li class="fl"><input type="hidden" dataType="3" value="'+result.data.industy[i].value+'"><span class="">'+result.data.industy[i].name+'</span></li>');
+					
+					//大赛导航
+					$('.tounamentNav').append('<li class="fl"><input type="hidden" dataType="4" value="'+result.data.industy[i].value+'"><span class="on_cat">'+result.data.industy[i].name+'</span></li>');
+				};
+				//会议
+				for(var i=0;i<result.data.conference.length;i++){
+					if(i>=10){
+						break;
+					}
+					//截取时间
+					var stime=result.data.conference[i].stime.substr(0,11);
+					//填充数据
+					if(result.data.conference[i].type){ // 爬虫会议数据
+						var str='<li class="clearfix"><span class="fl dot"></span><input class="fl" type="hidden" value="'+result.data.conference[i].id+'"/><span class="time fl">'+stime+'</span><span class="city fl"><i>'+result.data.conference[i].city+'</i></span><a target="_blank" class="on_mess fl reptile" title="'+result.data.conference[i].name+'">'+result.data.conference[i].name+'</a></p></li>';
+
+					} else {	// 平台会议
+						var str='<li class="clearfix">' +
+									'<span class="fl dot"></span>' + 
+									'<input class="fr" type="hidden" value="'+result.data.conference[i].id+'"/>' +
+									'<a target="_blank" class="on_mess fl" title="'+result.data.conference[i].name+'">'
+										+result.data.conference[i].name+
+									'</a>' +
+									'<span class="city fl">' +
+										'<a title="'+result.data.conference[i].city+'">'+result.data.conference[i].city+'</a>' +
+									'</span>' +									
+									'<span class="time fr">'+stime+'</span>' + 
+									'</p>' + 
+								'</li>';						
+					};
+					$('.conference').append(str);
+				};
+				//会展
+				// for(var i=0;i<result.data.exhibition.length;i++){
+				// 	if(i>=10){
+				// 		break;
+				// 	}
+				// 	//截取时间
+				// 	var stime=result.data.exhibition[i].stime.substr(0,11);
+				// 	//填充数据
+				// 	var str='<li class="clearfix"><span class="fl dot"></span><input class="fl" type="hidden" value="'+result.data.exhibition[i].id+'"/><span class="time fl">'+stime+'</span><span class="city fl"><i>'+result.data.exhibition[i].city+'</i></span><a target="_blank" class="on_mess fl" >'+result.data.exhibition[i].name+'</a></p></li>';
+				// 	$('.exhibition').append(str);
+				// };
+				//培训
+				for(var i=0;i<result.data.train.length;i++){
+					if(i>=10){
+						break;
+					}
+					//截取时间
+					stime=result.data.train[i].stime.substr(0,11);
+					//填充数据
+					if(result.data.train[i].type){ // 爬虫会议数据
+						var str='<li class="clearfix"><span class="fl dot"></span><input class="fl" type="hidden" value="'+result.data.train[i].id+'"/><input class="mess-type" type="hidden" value="train"/><span class="time fl">'+stime+'</span><span class="city fl"><i>'+result.data.train[i].city+'</i></span><a target="_blank" class="on_mess fl reptile" title="'+result.data.train[i].name+'">'+result.data.train[i].name+'</a></li>';
+					} else {	// 平台会议
+						
+						var str='<li class="clearfix">' +
+									'<span class="fl dot"></span>' +
+									'<input class="fl" type="hidden" value="'+result.data.train[i].id+'"/>' +
+									'<input class="mess-type" type="hidden" value="train"/>' +
+									'<a target="_blank" class="on_mess fl" title="'+result.data.train[i].name+'">'
+								+result.data.train[i].name+
+									'</a>' +
+									'<span class="city fl">' +
+										'<a title="'+result.data.conference[i].city+'">'+result.data.train[i].city+'</a>' +
+									'</span>' +
+									'<span class="time fl">'+stime+'</span>' +
+									
+									
+								'</li>';
+					}
+					$('.train').append(str);
+				};
+				//大赛
+				// for(var i=0;i<result.data.tounament.length;i++){
+				// 	if(i>=10){
+				// 		break;
+				// 	}
+				// 	//截取时间
+				// 	var stime=result.data.tounament[i].stime.substr(0,11);
+				// 	//填充数据
+				// 	var str='<li class="clearfix"><span class="fl dot"></span><input class="fl" type="hidden" value="'+result.data.tounament[i].id+'"/><span class="time fl">'+result.data.tounament[i].stime.substr(0,11)+'</span><span class="city fl"><i>'+result.data.tounament[i].city+'</i></span><a target="_blank" class="on_mess fl" >'+result.data.tounament[i].name+'</a></p></li>';
+				// 	// var str='1'
+				// 	$('.tounament').append(str);
+				// };
+				//学会动态
+				for(var i=0; i<result.data.news.length; i++){
+					if(i>=10){
+						break;
+					}
+					var ctime=result.data.news[i].ctime.substr(0,11);
+					var str='<li>'+
+							'<input type="hidden" value="'+result.data.news[i].id+'"/>' +
+							'<a target="_blank" href="" class="on_detail" title="'+result.data.news[i].title+'"> '+getSubstring(result.data.news[i].title, 0,32)+
+							'</a>' +
+							'<span class="time conColor fr">'+ctime+
+							'</span>' +
+							'</li>';
+					$('.news').append(str);
+				}
+				
+			},
+			error:function(){
+				myAlert('请求失败');
+			}
+		});
+		//会议跳详情
+		$(document).on('click','.conference .on_mess',function(){
+			if($(this).hasClass('reptile')){ // 如果是爬虫数据
+				$(this).attr("href",'newsDetail.html?newsId='+$(this).prev().prev().prev().prev().val()+'&type='+$(this).prev().prev().prev().val());
+			} else {
+				$(this).attr("href",'detail.html?location='+$(this).prev().val());
+			};
+		});
+		//培训跳详情
+		$(document).on('click','.train .on_mess',function(){
+			if($(this).hasClass('reptile')){ // 如果是爬虫数据
+				$(this).attr("href",'newsDetail.html?newsId='+$(this).prev().prev().prev().prev().val()+'&type='+$(this).prev().prev().prev().val());
+			} else {
+				$(this).attr("href",'detail.html?location='+$(this).prev().prev().val()+'&type='+$(this).prev().val());
+			};
+		});
+		// 学会动态跳转
+		$(document).on('click', '.on_detail', function(){
+			var id = $(this).prev().val();
+			// return;
+			$(this).attr('href','newsDetail.html?newsId=' + id);
+		})
+		//跳活动分类页
+		$(document).on('click','.on_cat',function(){
+			// alert(1)
+			// $(this).attr('href','cation.html?val='+$(this).prev().val()+'&dataType='+$(this).prev().dataType())
+			window.location.href='cation.html?type='+$(this).prev().attr('dataType')+'&trade='+$(this).prev().val();
+		});
+		//查看更多
+		$(document).on('click','.more',function(){
+			window.location.href='cation.html?type='+$(this).attr('dataType')+'&trade='+$(this).attr('dataTrade');
+		});
+		//登陆样式
+		$('.login').on('mouseover',function(){
+			$(this).children("a").css("color", "#ff6100");
+			$('.login_box').css('display','block');
+		});
+		// $('.login').on('mouseout',function(){
+		// 	$('.login_box').css('display','none');
+		// });
+		$('.login').click(function(event){
+			$('.login_box').css('display','block');
+			 event.stopPropagation();
+		});
+		// 点击页面任意部分，登录框消失
+		$(document).click(function(event){
+			$('.login_box').css('display','none');
+			$('.login').children("a").css("color", "#fff")
+		});
+		//其他登陆
+		$('.otherLogin').on('mouseover',function(){
+			$('.login').children("a").css("color", "#fff")
+			$(this).children("a").css("color", "#ff6100")
+			$('.oLoginList').css('display','block');
+			$('.login_box').css('display','none');
+		});
+		$('.otherLogin').on('mouseout',function(){
+			$('.login').children("a").css("color", "#fff")
+			$(this).children("a").css("color", "#fff");
+			$('.oLoginList').css('display','none');
+		});
+		$('.otherLogin').on('click',function(){
+			$('.oLoginList').css('display','block');
+		});
+		//登陆
+		$('#login').click(function(){
+			login();
+		});
+		function login(){
+			url=basePath+"user/login/check.do";
+			var mobile = $('.user').val();
+			var pwd=$('.password').val();
+			var pwdMd5=$.md5($('.password').val());
+			// 验证手机号
+			if (mobile == null || mobile == '') {
+				myAlert('账号不能为空!','slow');
+				return false;
+			}else{
+				if(!(/^1[34578]\d{9}$/.test(mobile))){ 
+		        	myAlert('账号格式不正确！','slow');  
+		        	return false; 
+		        };
+			};
+			// 验证密码
+			if (pwd == null || pwd == '') {
+				myAlert('密码不能为空!','slow');
+				return false;
+			};
+			$.myAjax({
+				url: url,
+				data: {
+					mobile: mobile,
+					pwd:pwdMd5
+				},
+				success:function(result){
+					if(result.flag){
+						window.location.href='../user/myActivity.html';
+					}else{
+						// $('.login_message').css('display','block')
+						// $('.login_message').html(result.msg)
+						myAlert(result.msg,'slow');
+					};
+				}
+			});
+		};
+		//验证码显示
+		// $('.password').focus(function(){
+		// 	var user=$('.user').val();
+		// 	if(user!=''){
+		// 		$('.regCode').removeClass('active');
+		// 	}
+		// });
+		//键盘登陆
+		$(document).keypress(function(e) {  
+			// 回车键事件  
+	        if(e.which == 13) {
+	        	login(); 
+	        };	  
+		});
+		//注销
+		loginOut('#login_out');
+	});
+</script>
+</html>

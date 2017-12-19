@@ -1,0 +1,114 @@
+@charset "utf-8";
+
+/* 页头、页脚、左侧菜单公共样式 */
+body { background: #fff;  min-width: 1200px; }
+#header, #sysnav, #content, #footer { width: 100%; margin:0 auto; }
+
+#header { height: 30px; background: #f0f0ef; color: #333; line-height: 30px; font-size: 12px; }
+#lineicon { background: url(../img/hotline.png) no-repeat; display: inline-block; width: 16px; height: 12px; margin: 0 8px 0 20px; }
+#userinfo { float: right; }
+#user { margin: 0 20px 0 10px; }
+#userinfo a { color: #333; }
+#userinfo a:hover { color: #ff8400; text-decoration: underline; }
+#usericon { display: inline-block; width: 8px; height: 6px; margin: 0 10px 0 10px; }
+#sysnav { height: 60px; color: #4c4c4c; position: relative; background: #fff; }
+#logo { height: 43px; width: 131px; display: inline-block; margin: 8px 0 0 24px; }
+.nav { position: absolute; bottom: 25px; right: 10px; }
+.nav a, .nav a:link { margin-right: 30px; color:#4c4c4c; text-decoration: none; }
+
+#content { border-top: 2px solid #e37903; position: relative; min-height: 570px; vertical-align: top; }
+
+/* 左侧菜单样式 */
+#menu {
+	width: 17%;
+	height: 100%;
+  	min-width: 200px;
+  	min-height: 652px;
+  	
+	background-color: #eaeff3;
+	border-right: 1px solid #c6c9ce;
+	box-sizing: border-box;
+	position: relative;
+	display: inline-block;
+}
+#pagefunction { width: 100%; height: 44px; border-bottom: 1px solid #c99a4b; line-height: 44px; text-align: center; font-size: 16px; color: #a9a9a9; }
+
+#menulist {
+	position: relative;
+}
+#menulist .menubar { width:100%; height:40px; font-size: 14px; line-height: 40px; cursor:pointer; }
+#menulist span { color: #6d6c71; }
+#menulist .menulink, .menulink:link { color: #6d6c71; width: 100%; height: 40px; display: inline-block; }
+#menulist .decorate, .active01 { height: 16px; width: 16px; margin: 12px 24px 0 55px; }
+#menulist .active02 { color: #fff; }
+#menulist .indicate, .active03 { display: none; height: 10px; width: 8px; float: right; margin: 15px -1px 0 0; background: url(../img/indicate.png) no-repeat; }
+#menulist .active { color:#fff; background: url(../img/menulistbg.png) repeat-x; }
+#menulist .active03 { display: inline-block; }
+
+#menulist .decorate, .active01a { height: 16px; width: 16px;  display: inline-block; position: relative; top: 1px; color:#fff;}
+#menulist .active02a { color: #fff; }
+#menulist .indicate, .active03a { display: none; height: 10px; width: 8px; float: right; margin: 15px -1px 0 0; background: url(../img/indicate.png) no-repeat; }
+#menulist .activea { color:#fff; background: url(../img/menulistbg.png) repeat-x; }
+#menulist .active03a { display: inline-block; }
+
+/* 左侧二级菜单样式 */
+.submenu {
+	height: 320px;
+	width: 180px;
+	background-color: #eaeff3;
+	position: absolute;
+	top: 0px;
+	left: 100%;
+	display: none;
+	z-index: 10000;
+}
+/* 左侧二级菜单标记样式 */
+#submenumark {
+	position: absolute;
+	width: 20px;
+	height: 62px;
+	line-height: 62px;
+	background-color: #eaeff3;
+	font-size: 12px;
+	left: 100%;
+	top: 140px;
+	border-radius: 0 15px 15px 0 ;
+	text-align: center;
+	cursor: pointer;
+}
+.submenubar {
+	width:100%; 
+	height:40px; 
+	font-size: 14px; 
+	line-height: 40px; 
+	cursor:pointer;
+}
+.subdecorate {
+	height: 14px; width: 14px; margin: 12px 16px 0 28px;
+}
+
+
+/* 菜单图标，开发中用js实现 */
+#informationicon { background: url(../img/icon/super/informationicon.png) no-repeat; }
+#adminediticon { background: url(../img/icon/super/adminediticon.png) no-repeat; }
+#regmticon { background: url(../img/icon/super/regmticon.png) no-repeat; }
+#conflisticon { background: url(../img/icon/super/conflisticon.png) no-repeat; }
+#membericon { background: url(../img/icon/super/membericon.png) no-repeat; }
+#societyhomepageicon { background: url(../img/icon/super/societyhomeicon.png) no-repeat; }
+#safetyicon { background: url(../img/icon/super/safetyicon.png) no-repeat; }
+
+#main-contant {
+	display: inline-block;
+	width: 83%; 
+	background: #fff; 
+	min-height: 570px; 
+	min-width: 976px;
+	float: right;
+}
+.hide { display: none; }
+
+#footer { height: 130px; text-align: center; background: #fff; }
+#hytlink { height: 36px; background: #666; line-height: 36px; text-align: center; margin-bottom: 14px; }
+#hytlink span { display: inline-block; width: 110px; }
+#hytlink a { color: #fff; font-size: 14px; }
+#footer p { line-height: 26px; font-size: 12px; color: #444; }

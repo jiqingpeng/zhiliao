@@ -1,0 +1,897 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta content="text/html"/>
+<title>我的会议</title>
+<link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+<link href="../../css/common/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../css/common/bootstrap-table.min.css"/>
+<link href="../../css/style.css" rel="stylesheet" />
+<link href="../../css/main.css" rel="stylesheet" />
+<!-- 引入项目中每个模块的独立样式 : xxx.css -->
+<link href="../../css/user.css" rel="stylesheet"/>
+<style>
+	/*表格去边框*/
+	.bootstrap-table{
+		margin-left:20px;
+		border:none;
+	}
+	.fixed-table-container{
+		border:none;
+	}
+	#noteTable tr th{
+		border:none;
+	}
+	#noteTable tr td{
+		border:none;
+	}
+	#emailTable tr th{
+		border:none;
+	}
+	#emailTable tr td{
+		border:none;
+	}
+	#actTable tr th{
+		border:none;
+	}
+	#actTable tr td{
+		border:none;
+	}
+	#standTable tr th{
+		border:none;
+	}
+	#standTable tr td{
+		border:none;
+	}
+	.actBox{
+		/*border:1px solid red;*/
+		width:1060px;
+		
+	}
+	.actBox .actTit{
+		/*background:#fe6600;*/
+		text-align: center;
+		font-weight: bold;
+		color:#000;
+		
+	}
+	.actBox .actList{
+		margin-left:20px;
+		margin-top:20px;
+	}
+	.actBox .actList .group{
+		/*border:1px solid #ccc;*/
+		margin-top:10px;
+		border-radius:4px 4px 0 0;
+	}
+	.actBox .actList .group h4{
+		height:34px;
+		line-height:34px;
+		border-bottom:1px solid #2095f2;
+		color:#000;
+		font-weight:bold;
+		font-size:20px;
+	}
+	.actBox .actList .group .form-group{
+		width:100%;
+		margin-top:10px;
+	}
+	.actBox .actList .group .form-group #allmap{
+		margin-left:15px;
+		width:300px;
+		height:200px;
+	}
+	.actBox .actList .group .form-group .mapInfo{
+		
+		width:300px;
+		height:200px;
+	}
+	.actBox .actList .group .form-group label{
+		text-align:left;
+		margin-left:10px;
+	}
+	.actBox .actList .group .form-group button{
+		margin-left:-5px;
+		margin-top:5px;
+	}
+	.actBox .actList .group .paperMessage{
+		margin-left:-5px;
+		margin-top:7px;
+	}
+	.actBox .actList .group .form-group .invoiceText,.invoiceInput{
+		margin-top:5px;
+	}
+	.actBox .actList .group .form-group .invoiceMess{
+		
+	}
+	.actBox .actList .group .form-group .invoiceMess .type{
+		height:46px;
+		margin-right:5px;
+	}
+	.actBox .actList .group .form-group .invoiceMess .money{
+		border-bottom:1px solid #000;
+	}
+	.actBox .actList .group .message{
+		display:none;
+		position: relative;
+		/*border:1px solid red;*/
+	}
+	.actBox .actList .group .introduction{
+		width:1040px;
+		line-height: 15px;
+		line-height:24px;
+		text-indent: 2em;
+	}
+	.actBox .actList .group .message .more{
+		display: inline-block;
+		margin-top:10px;
+		margin-left:970px;
+	}
+	.actBox .actList .group .message .trAcc{
+		width:850px;
+		/*border:1px solid red;*/
+		margin-top:10px;
+	}
+	.actBox .actList .group .message .trAcc td{
+		padding:5px 10px;
+	}
+	
+	.actBox .actList .group .message .messInfo{
+		margin-top:10px;
+		margin-left:10px;
+	}
+	.actBox .actList .group tbody tr td{
+		border:1px solid #ccc;
+	}
+	.actBox .actList .group tbody .thead{
+		background:#666;
+	}
+	.progress{
+		/*width:200px;*/
+		margin:20px auto;
+		
+	}
+	.progress-bar{
+		border-right:1px solid #ccc;
+		/*margin-top:20px;*/
+	}
+	.ml20{
+		margin-left:20px;
+	}
+	/*机票*/
+	.actBox .actList .group .message .form-group .traffic{
+		/*border:1px solid red;*/
+	}
+	.actBox .actList .group .message .form-group .trafficBox{
+		width:300px;
+		height:261px;
+		border:2px solid #2095f2;
+		margin:10px 23px 0;
+	}
+	.actBox .actList .group .message .form-group .trafficBox button{
+		width:150px;
+		height:26px;
+		line-height: 26px;
+		margin-left:108px;
+		margin-bottom: 18px;
+		background:#e57c00;
+		color:#fff;
+		border:1px solid #e57c00;
+	}
+	.actBox .actList .group .message .form-group .trafficBox .traHead{
+		height:30px;
+		color:#fff;
+		line-height: 30px;
+		background:#2095f2;
+	}
+	.actBox .actList .group .message .form-group .trafficBox .traBody{
+		width:270px;
+		height:138px;
+		padding:0 15px;
+		margin:0 auto;
+	}
+	.actBox .actList .group .message .form-group .trafficBox .traBody #homecity_name,#getcity_name{
+		width:151px;
+	}
+	.actBox .actList .group .message .form-group .trafficBox .traBody li{
+		margin:10px 0;
+	}
+	.actBox .actList .group .message .form-group .trafficBox .traBody li span{
+		margin-right:16px;
+	}
+	.actBox .actList .group .message .form-group .trafficBox .traType{
+		width:150px;
+		height:20px;
+		margin-left:30px;
+		margin-top:10px;
+	}
+	.actBox .actList .group .message .form-group .trafficBox .active{
+		border-bottom:2px solid #6ab30b;
+	}
+	.trafficBox .traType li{
+		margin-right:15px;
+	}
+</style>
+</head>
+<body>
+<!-- 引入页头 -->
+<script type="text/javascript" src="../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="myActivity.html">我的会议</a>
+	</div>
+	<div class="con-box">
+		<!-- 以下为每个页面自己编写的部分 -->
+		<div class="actBox">
+			<h3 class="actTit">国际材联-亚洲材料大会</h3>
+			<div class="actList">
+				<div class="group intro">
+					<h4>一、活动简介</h4>
+					<div class="message">
+						<a class="more onDetail" href="">查看详情</a>
+						<div class="introduction">
+							IUMRS-ICA（国际材联-亚洲材料大会）是国际材联最重要的系列会议之一，由亚洲地区材料研究学会轮流承办，在国际材料学界具有重要影响。经由国际材联授权，第17届亚洲材料大会（IUMRS-ICA 2016）将由中国材料研究学会主办，中国材料科学学会（MRS-T）协办，于2016年10月20-24日在山东青岛市国际会展中心召开。本次大会共27个分会，主题涵盖能源与环境材料、先进结构材料、功能材料、生物材料、材料模拟-计算与设计等五大热点领域。此外，大会期间，将同期举办“先进材料、制造和测试设备展览会”。
+						</div>
+					</div>
+				</div>
+				<div class="group">
+					<h4>二、活动动态</h4>
+					<form class="form-horizontal message">
+						<div class="form-group ml">
+						    <label for="inputEmail3" class="col-sm-2 control-label">主办方提示：</label>
+						    <div class="paperMessage">
+						      	您有新的活动动态
+						    </div>
+						    <table id="actTable">
+            				</table>
+						</div>
+					</form>
+					<!-- <ul class="message">
+						<li class="messInfo">
+							<span class="time">2017-05-31</span>
+							<span class="time">提交报名表</span>
+							<a href="javascript:;">查看报名表</a>
+							<span class="time">已读</span>
+						</li>
+						<li class="messInfo">
+							<span class="time">2017-06-05</span>
+							<span class="time">主办方审阅报名表，报名通过审核</span>
+							<span class="time">已读</span>
+						</li>
+						<li class="messInfo">
+							<span class="time">2017-06-18</span>
+							<span class="time">主办方通知参会</span>
+							<span class="time">未读</span>
+						</li>
+						<li class="messInfo">
+							<span class="time">2017-06-19</span>
+							<span class="time">预定机票</span>
+							<span class="time">主办方已</span>
+							<span class="time">未读</span>
+						</li>
+						<li class="messInfo">
+							<span class="time">2017-06-19</span>
+							<span class="time">已预订酒店</span>
+							<span class="time">已读</span>
+						</li>
+						<li class="messInfo">
+							<span class="time">2017-06-20</span>
+							<span class="time">主办方已查阅您的机票酒店信息，请查阅主办方室内交通提示</span>
+							<span class="time">已读</span>
+						</li>
+						<!-- <li class="progress">
+							<div class="progress-bar progress-bar-success" style="width: 25%">
+							    <span class="sr-only">35% Complete (success)</span>已报名
+							</div>
+							<div class="progress-bar progress-bar-success" style="width: 25%">
+							  	<span class="sr-only">20% Complete (warning)</span>已审核
+							</div>
+							<div class="progress-bar progress-bar-success" style="width: 25%">
+							    <span class="sr-only">10% Complete (danger)</span>已通过审核
+							</div>
+							<div class="progress-bar progress-bar-defulit" style="width: 25%">
+							    <span class="sr-only">10% Complete (danger)</span>可参会
+							</div>
+						</li> -->
+					<!-- </ul>  -->
+				</div>
+				<div class="group">
+					<h4>三、提交论文</h4>
+					<form class="form-horizontal message">
+						  <div class="form-group ml">
+							    <label for="inputEmail3" class="col-sm-2 control-label">提交主办方论文提示：</label>
+							    <div class="paperMessage col-sm-2">
+							      	您的论文已可以提交
+							    </div>
+						  </div>
+						  <div class="form-group">
+							    <label for="inputPassword3" class="col-sm-2 control-label"></label>
+							    <div class="col-sm-3">
+							      <input type="password" class="form-control" id="inputPassword3"/>
+							    </div>
+							    <button>上传附件</button>
+							    <span>(仅限word,pdf文件)</span>
+						  </div>
+					</form>
+				</div>
+				<div class="group">
+					<h4>四、参会缴费</h4>
+					<form class="form-horizontal message">
+						<div class="form-group ml">
+						    <label for="inputEmail3" class="col-sm-2 control-label">提交主办方论文提示：</label>
+						    <div class="paperMessage col-sm-2">
+						      	您可以交费
+						    </div>
+						</div>
+						<div class="form-group ml">
+						    <label for="inputEmail3" class="col-sm-2 control-label"></label>
+						    <div class="paperType col-sm-4">
+								<span>
+									<i>&bull;</i>
+									<a href="javascript:;">微信转账</a>
+								</span>
+								<span>
+									<i>&bull;</i>
+									<a href="javascript:;">网银</a>
+								</span>
+								<span>
+									<i>&bull;</i>
+									<a href="javascript:;">支付宝</a>
+								</span>
+							</div>
+						</div>
+						<!-- <p class="paperType">
+							<span>
+								<i>&bull;</i>
+								<a href="javascript:;">微信转账</a>
+							</span>
+							<span>
+								<i>&bull;</i>
+								<a href="javascript:;">网银</a>
+							</span>
+							<span>
+								<i>&bull;</i>
+								<a href="javascript:;">支付宝</a>
+							</span>
+						</p> -->
+						<div class="form-group ml">
+						    <label for="inputEmail3" class="col-sm-2 control-label invoiceText">发票抬头</label>
+						    <div class="col-sm-2">
+							      <input type="password" class="form-control invoiceInput" id="inputPassword3"/>
+							</div>
+							<div class="clearfix invoiceMess col-sm-4">
+								<p class="fl type">类别</p>
+								<p class="fl">
+									<p>
+										<input type="radio" name="a">
+										<span>会议费</span>
+									</p>
+									<p>
+										<input type="radio" name="a">
+										<span>论文出版费</span>
+										<span class="money">1000元</span>
+									</p>
+								</p>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="group">
+					<h4>五、预定机票</h4>
+					<form class="form-horizontal message">
+						<div class="form-group ml">
+						    <label for="inputEmail3" class="col-sm-2 control-label">提交主办方论文提示：</label>
+						    <div class="paperMessage">
+						      	您可以预定机票
+						    </div>
+						    <div class="traffic clearfix">
+						    	<div class="trafficBox fl">
+						    		<div class="traHead">&nbsp&nbsp国内机票</div>
+						    		<ul class="clearfix traType">
+						    			<li class="fl active"></li>
+						    			<li class="fl"></li>
+						    			<li class="fl"></li>
+						    		</ul>
+						    		<ul class="traBody">
+						    			<li>
+						    				<div>
+											    <span>出发城市</span>
+											    <input type="text" value="" size="15" id="homecity_name" name="homecity_name" mod="address|notice" mod_address_source="hotel" mod_address_suggest="" mod_address_reference="cityid" mod_notice_tip="中文/拼音" />
+											    <input id="cityid" name="cityid" type="hidden" value="{$cityid}" />
+											</div>
+						    			</li>
+						    			<li>
+						    				<div>
+											    <span>到达城市</span>
+											    <input type="text" value="" size="15" id="getcity_name" name="getcity_name" mod="address|notice" mod_address_source="hotel"  mod_address_reference="getcityid" mod_notice_tip="中文/拼音" />
+											    <input id="getcityid" name="getcityid" type="hidden" value="{$getcityid}" />
+											</div>
+						    			</li>
+						    			<!-- <li>
+						    				<span>出发城市</span>
+						    				<input type="text"/>
+						    			</li>
+						    			<li>
+						    				<span>到达城市</span>
+						    				<input type="text"/>
+						    			</li> -->
+						    			<li>
+						    				<span>出发日期</span>
+						    				<input id="fDate" type="text"/>
+						    			</li>
+						    			<!-- <li>
+						    				<span>返回日期</span>
+						    				<input type="text"/>
+						    			</li> -->
+						    		</ul>
+						    		<button type="button" id="airBtn">搜&nbsp索</button>
+						    	</div>
+						    	<div class="trafficBox fl">
+						    		<div class="traHead">&nbsp&nbsp国内火车票</div>
+						    		<ul class="clearfix traType">
+						    			<li class="fl">单程</li>
+						    			<li class="fl">往返</li>
+						    			<li class="fl">连程</li>
+						    		</ul>
+						    		<ul class="traBody">
+						    			<li>
+						    				<span>出发城市</span>
+						    				<input type="text"/>
+						    			</li>
+						    			<li>
+						    				<span>到达城市</span>
+						    				<input type="text"/>
+						    			</li>
+						    			<li>
+						    				<span>出发日期</span>
+						    				<input type="text"/>
+						    			</li>
+						    			<li>
+						    				<span>返回日期</span>
+						    				<input type="text"/>
+						    			</li>
+						    		</ul>
+						    		<button type=button"">搜&nbsp索</button>
+						    	</div>
+						    	<div class="trafficBox fl">
+						    		<div class="traHead">&nbsp&nbsp自驾</div>
+						    		<ul class="clearfix traType">
+						    			<li class="fl"></li>
+						    			<li class="fl"></li>
+						    			<li class="fl"></li>
+						    		</ul>
+						    		<ul class="traBody">
+						    			<li>
+						    				<span>到达日期</span>
+						    				<input type="text"/>
+						    			</li>
+						    			<li>
+						    				<span>&nbsp车牌号</span>
+						    				<input type="text"/>
+						    			</li>
+						    			<!-- <li>
+						    				<span>出发日期</span>
+						    				<input type="text"/>
+						    			</li>
+						    			<li>
+						    				<span>返回日期</span>
+						    				<input type="text"/>
+						    			</li> -->
+						    		</ul>
+						    		<button type=button"">提&nbsp交</button>
+						    	</div>
+						    </div>
+						</div>
+					</form>
+				</div>
+				<div class="group">
+					<h4>六、预定酒店</h4>
+					<form class="form-horizontal message">
+						<div class="form-group ml">
+						    <label for="inputEmail3" class="col-sm-2 control-label">提交主办方论文提示：</label>
+						    <div class="paperMessage">
+						      	您可以预定酒店
+						    </div>
+						    <div class="traffic clearfix">
+						    	<div class="trafficBox fl">
+						    		<div class="traHead">&nbsp&nbsp酒店</div>
+						    		<ul class="clearfix traType">
+						    			<!-- <li class="fl active">单程</li>
+						    			<li class="fl">往返</li>
+						    			<li class="fl">连程</li> -->
+						    		</ul>
+						    		<ul class="traBody">
+						    			<li>
+						    				<span>&nbsp目的地</span>
+						    				<input type="text"/>
+						    			</li>
+						    			<li>
+						    				<span>入住时间</span>
+						    				<input type="text"/>
+						    			</li>
+						    			<li>
+						    				<span>退房时间</span>
+						    				<input type="text"/>
+						    			</li>
+						    			<li>
+						    				<span>酒店级别</span>
+						    				<input type="text"/>
+						    			</li>
+						    		</ul>
+						    		<button type=button"">搜&nbsp索</button>
+						    	</div>
+						  	</div>
+						</div>
+					</form>
+				</div>
+				<div class="group">
+					<h4>七、短信</h4>
+					<form class="form-horizontal message">
+						<div class="form-group ml">
+						    <label for="inputEmail3" class="col-sm-2 control-label">主办方提示：</label>
+						    <div class="paperMessage">
+						      	您有新的短信
+						    </div>
+						    <table id="noteTable">
+            				</table>
+						</div>
+					</form>
+				</div>
+				<div class="group">
+					<h4>八、邮件</h4>
+					<form class="form-horizontal message">
+						<div class="form-group ml">
+						    <label for="inputEmail3" class="col-sm-2 control-label">主办方提示：</label>
+						    <div class="paperMessage">
+						      	您有新的邮件
+						    </div>
+						    <table id="emailTable">
+            				</table>
+						</div>
+					</form>
+				</div>
+				<div class="group">
+					<h4>九、站内信</h4>
+					<form class="form-horizontal message">
+						<div class="form-group ml">
+						    <label for="inputEmail3" class="col-sm-2 control-label">主办方提示：</label>
+						    <div class="paperMessage">
+						      	您有新的站内信
+						    </div>
+						    <table id="standTable">
+            				</table>
+						</div>
+					</form>
+				</div>
+				<div class="group">
+					<h4>九、活动地点</h4>
+					<form class="form-horizontal message">
+						<div class="form-group ml">
+						    <div class="fl" id="allmap">
+						    </div>
+						    <div class="mapInfo fl"></div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>     
+</div> 
+<script type="text/javascript" src="../../js/common/footer.js"></script>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/common/main.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/bootstrap-table.min.js"></script>
+<script src="../../js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../js/bootstrap-datetimepicker.min.js"></script>
+<script src="../../js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=FB6c98d828da5bf508fb357f9ee535ef"></script>
+<script src="../../js/user/userMain.js"></script>
+<script src="../../js/user/fix.js"></script>
+<script src="../../js/user/address.js"></script>
+<script type="text/javascript">
+$(function(){
+	// 获取左侧菜单列表数据(参数为请求地址)
+	initMenu('../../js/data/attend.json', '我的活动');
+	$("#submenumark").css('display', 'none');
+	var id=Request('location');
+	function init(){
+		$('.intro .message').css('display','block');
+		var url=basePath+"user/activity/get.do";
+		$.ajax({
+			url: url,
+			type: 'GET',
+			data:{id:id},
+			dataType: 'json',
+			xhrFields: {
+       			withCredentials: true
+    		},
+    		crossDomain: true,
+			success:function(result){
+				if(result.flag){
+					// var str = '';
+					// for(var i=0;i<result.data.airport.B.length;i++){
+					// 	str += "@"+result.data.airport.B[i].code+"|"+result.data.airport.B[i].cityname;
+						
+					// 	// console.log(str)
+					// }
+					// console.log(str)
+					console.log(result)
+					if (result.data.user) {
+						$('#user').html(result.data.user.name);
+					};
+					$('.introduction').html(result.data.activity.introduction);
+					var noteData=result.data.SMSRecording;
+					var standData=result.data.stationLetter;
+					var	standList=[
+								{
+					                field: 'senderTime',
+					                title: '时间',
+					                valign: 'middle',
+					                align: 'left',
+					                width: '300',
+	            				},{
+					                field: 'senderName',
+					                title: '发信人',
+					                width:  '500',
+					                align: 'left',
+					                valign: 'middle',
+					            },{
+					                field: 'senderValue',
+					                title: '活动消息',
+					                width:  '500',
+					                align: 'left',
+					                valign: 'middle',
+					            },
+					            {
+					                field: 'state',
+					                title: '状态',
+					                width:  '50',
+					                align: 'left',
+					                valign: 'middle',
+					}];
+					var	noteList=[
+								{
+					                field: 'senderTime',
+					                title: '时间',
+					                valign: 'middle',
+					                align: 'left',
+					                width: '300',
+	            				},{
+					                field: 'senderName',
+					                title: '发信人',
+					                width:  '500',
+					                align: 'left',
+					                valign: 'middle',
+					            },{
+					                field: 'senderValue',
+					                title: '活动消息',
+					                width:  '500',
+					                align: 'left',
+					                valign: 'middle',
+					            },
+					            {
+					                field: 'state',
+					                title: '状态',
+					                width:  '50',
+					                align: 'left',
+					                valign: 'middle',
+					}];
+					table('#noteTable',noteData,noteList);
+					table('#standTable',standData,standList);
+					//会议地址
+					initMap(result.data.activity.longtitude,result.data.activity.latitude);
+				}else{
+					alert(result.msg);
+				};
+			},
+			error:function(){
+				alert('请求失败');
+			}
+		});
+	};
+	init();
+	//展开方式
+	$(".group h4").on('click',function(){
+		$(this).next().toggle();
+	});
+	//详情页面
+	$('.onDetail').click(function(){
+		$(this).attr('href','../index/detail.html?location='+id);
+	});
+	//活动表格
+	var actData=[{
+        "time": "2017-06-07",
+        
+        "content": "提交报名表；查看报名表",
+        "state": "已读"
+    	},{
+        "time": "2017-06-08",
+        
+        "content": "主办方审阅报名表，报名通过审核",
+        "state": "已读"
+    	},{
+        "time": "2017-06-09",
+        
+        "content": "主办方通知参会",
+        "state": "已读"
+    	},{
+        "time": "2017-06-10",
+        
+        "content": "预定机票",
+        "state": "已读"
+    	},
+    	{
+        "time": "2017-06-11",
+        
+        "content": "已预定酒店",
+        "state": "已读"
+    	},
+    	{
+        "time": "2017-06-12",
+        
+        "content": "主办方已查阅您的机票酒店信息，请查阅主方方市内交通提示",
+        "state": "已读"
+    	}
+    	];
+    var actList=[
+    		{
+                field: 'time',
+                title: '时间',
+                valign: 'middle',
+                align: 'left',
+                width: '130',
+            },
+            
+            {
+                field: 'content',
+                title: '活动消息',
+                width:  '500',
+                align: 'left',
+                valign: 'middle',
+            },
+            {
+                field: 'state',
+                title: '状态',
+                width:  '50',
+                align: 'left',
+                valign: 'middle',
+            }]
+   	table('#actTable',actData,actList);        
+	// 邮件表格
+    var noteData=[{
+        "time": "2017-06-07",
+        "sendPer": "杨豆豆",
+        "content": "主办方通知参会",
+        "state": "已读"
+    	},{
+        "time": "2017-06-08",
+        "sendPer": "于雪中",
+        "content": "主办方通知您有新的会议",
+        "state": "已读"
+    	},{
+        "time": "2017-06-09",
+        "sendPer": "王辽耀",
+        "content": "主办方已查阅您的机票酒店信息>",
+        "state": "已读"
+    	},{
+        "time": "2017-06-10",
+        "sendPer": "杨婷婷",
+        "content": "请查阅主方方市内交通提示",
+        "state": "已读"
+    	}];
+	var noteList=[
+    		{
+                field: 'time',
+                title: '时间',
+                valign: 'middle',
+                align: 'left',
+                width: '130',
+            },
+            {
+                field: 'sendPer',
+                title: '发信人',
+                align: 'left',
+                valign: 'middle',
+                width: '130'
+            }, 
+            {
+                field: 'content',
+                title: '信件内容',
+                width:  '500',
+                align: 'left',
+                valign: 'middle',
+            },
+            {
+                field: 'state',
+                title: '状态',
+                width:  '50',
+                align: 'left',
+                valign: 'middle',
+            }
+        ];
+    table('#emailTable',noteData,noteList);
+    //table封装
+	function table(id,data,list){
+		$(id).bootstrapTable({
+			data: data,
+            dataType: 'json',
+            dataLocale: 'zh-US',               //表格汉化
+            toolbar: '#toolbar',                //工具按钮用哪个容器
+            striped: true,                      //是否显示行间隔色
+            cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+            pagination:false,                   //是否显示分页（*）
+            sortable: false,                     //是否启用排序
+            sortOrder: "asc",                   //排序方式
+            //queryParams: oTableInit.queryParams,//传递参数（*）
+            sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
+            pageNumber:1,                       //初始化加载第一页，默认第一页
+            pageSize: 10,                       //每页的记录行数（*）
+            pageList: [10, 15, 20],        //可供选择的每页的行数（*）
+            //search: true,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
+            strictSearch: false,
+            showColumns: false,                  //是否显示所有的列
+            showRefresh: false,                  //是否显示刷新按钮
+            //minimumCountColumns: 2,             //最少允许的列数
+            // clickToSelect: false,                //是否启用点击选中行
+            //height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+            //uniqueId: "ID",                     //每一行的唯一标识，一般为主键列
+            showToggle:false,                    //是否显示详细视图和列表视图的切换按钮
+            cardView: false,                    //是否显示详细视图
+            detailView: false,                   //是否显示父子表
+            columns: list
+    	});
+	};
+	//首页
+	$(document).on('click','.nav a',function(){
+		$(this).attr('href','../index/index.html');
+	});
+	//注销
+	loginOut('#userinfo a');
+	function air(){
+		 var url=basePath+'tc/flight/flightPrice.do';
+		 var oa=$('#cityid').val();
+		 var aa=$('#getcityid').val();
+		 var fDate=$('#fDate').val();
+			$.ajax({
+				url: url,
+				type: 'GET',
+				data:{
+					oa:oa,
+					aa:aa,
+					fDate:fDate
+				},
+				dataType: 'json',
+				xhrFields: {
+           			withCredentials: true
+        		},
+        		crossDomain: true,
+				success:function(result){
+					console.log(result)
+					if(result.flag){
+						window.location.href="../index/air.html";
+					}else{
+						
+					};
+				}
+			});
+	};
+	$('#airBtn').on('click',function(){
+		air();
+		window.location.href="../index/air.html";
+	});
+	$("#fDate").datetimepicker({
+        language: 'zh-CN',//显示中文
+        format: 'yyyy-mm-dd',//显示格式
+        minView: 0,//设置显示到秒
+        initialDate: new Date(),//初始化当前日期
+        autoclose: true,//选中自动关闭
+        todayBtn: true//显示今日按钮
+    });
+});
+</script>
+</html>
+

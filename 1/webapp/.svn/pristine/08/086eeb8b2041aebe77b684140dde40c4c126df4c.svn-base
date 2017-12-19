@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>注册活动</title>
+<!-- webicon.ico为页面icon -->
+<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+<!-- 引入项目依赖框架css : bootstrap.min.css -->
+<link href="../../../css/common/bootstrap.min.css" rel="stylesheet" />
+<!-- 引入项目公共样式 : style.css -->
+<link href="../../../css/style.css" rel="stylesheet" />
+<!-- 引入项目中带有左侧菜单栏的公共样式 : main.css -->
+<link href="../../../css/main.css" rel="stylesheet" />
+<style>
+	.btncon a{
+		color: #fff;
+	}
+	.content{
+		color: red;
+	}
+	label{
+		font-weight: 100;
+	}
+	.essay{
+		font-weight: 700;
+		font-size: 16px;
+	}
+	.meeting{
+		font-weight: 700;
+	}
+</style>
+</head>
+<body>
+<!-- 引入页头 -->
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<!-- 以下为内容部分，内容部分分为导航头和主体内容 -->
+<div class="mops-con"><!-- 内容部分的class : mops-con (必须) -->
+	<div class="con-nav">
+		<a href="register.html">管理中心</a>
+		<a href="">-></a>
+		<a href="register.html">注册活动</a>
+	</div><!-- 内容部分导航头的class : con-nav (必须) -->
+	<div class="con-box"><!-- 内容部分主体内容的class : con-box (必须) -->
+		<!-- 以下为每个页面自己编写的部分 -->
+		<div>
+			<!-- 
+			<input type="radio"><h5>小型会议模板:	</h5> -->
+						<p class="essay">请选择活动模板</p>
+						<br>
+				<label for="">
+					<input type="radio" checked="checked" type="hidden">
+					<span class="meeting">小型会议模板: </span>包括会议管理,用户管理,新闻公告,嘉宾管理,交通管理,报道管理(会议签到,会议群)等6个功能,推荐200人以下使用
+					<span class="content">没有会场和会议指南功能,如需分会场功能推荐使用中型会议模板。</span>
+					查看,管理后台模板,会议主页<br>
+					<br>
+					<input type="radio">
+					<span class="meeting">模型学术会议模板: </span>包括会议管理,用户管理,新闻公告,嘉宾管理,交通管理,报道管理(会议签到,会议群)等6个功能,推荐200人以下使用
+					<span class="content">没有会场和会议指南功能,如需分会场功能推荐使用中型会议模板。</span>
+					查看,管理后台模板,会议主页<br>
+					<br>
+					<input type="radio">
+					<span class="meeting">中型会议模板: </span>包括会议管理,用户管理,新闻公告,嘉宾管理,交通管理,报道管理(会议签到,会议群)等9个功能,推荐1000人以下使用
+					查看,管理后台模板,会议主页<br>
+					<br>
+					<input type="radio">
+					<span class="meeting">中型学术会议模板: </span>包括会议管理,用户管理,新闻公告,嘉宾管理,交通管理,报道管理(会议签到,会议群)等10个功能,推荐500人以下使用
+					查看,管理后台模板,会议主页<br>
+					<br>
+					<input type="radio">
+					<span class="meeting">小型培训模板: </span>包括会议管理,用户管理,新闻公告,嘉宾管理,交通管理,报道管理(会议签到,会议群)等6个功能,推荐200人以下使用
+					查看,管理后台模板,会议主页<br>
+					<br>
+					<input type="radio">
+					<span class="meeting">小型比赛模板: </span>包括比赛信息,比赛通知,比赛管理,嘉宾管理,交通管理,报道管理(会议签到,会议群)等6个功能,推荐小型比赛使用
+					查看,管理后台模板,会议主页<br>
+					<br>
+					<input type="radio">
+					<span class="meeting">中小型会展模板 </span>包括会议管理,用户管理,新闻公告,嘉宾管理,交通管理,报道管理(会议签到,会议群)等6个功能,推荐中小型会展使用
+					查看,管理后台模板,会议主页
+				</label><br>
+				<div class="btncon">
+					<a type="button" class="btn btn-default btn-warning save" href="submit.html">下一步</a>
+				</div>
+			</div>
+	</div>     
+</div>
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<!-- 引入项目中带有左侧菜单的公共js -->
+<script src="../../../js/common/main.js"></script>
+<script type="text/javascript">
+$(function(){
+	// 获取左侧菜单列表数据(参数为请求地址)
+	initMenu('../../../js/data/controller.json', '注册活动');
+});
+</script>
+</html>

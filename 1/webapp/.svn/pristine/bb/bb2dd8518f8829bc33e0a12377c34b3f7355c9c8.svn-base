@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>酒店配置</title>
+<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="../../../css/common/bootstrap.css" />
+<link rel="stylesheet" href="../../../css/common/bootstrap-table.min.css">
+<link href="../../../css/style.css" rel="stylesheet" />
+<link href="../../../css/main.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../../css/admin.css">
+</head>
+<body>
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="trafficInfo.html">交通住宿</a>
+		<a href="">-&gt;</a>
+		<a href="hotelEdit.html">酒店配置</a>
+	</div>
+
+	<div class="con-box">
+        <div id="subMenu">
+            <div id="subMenuBody">
+                <ul>
+                    <a href="trafficInfo.html"><li>交通住宿</li></a>
+                    <a href="hotelEdit.html"><li class="menuAct">酒店配置</li></a>
+                    <li class="">接送安排</li>
+                    <li class="">餐饮安排</li>
+                </ul>
+            </div>
+        </div>
+        <div id="contentBody" class="mops-table">
+            <input type="hidden" id="id"/>
+    		<form class="tabaddForm form-horizontal" id="tabaddForm">
+                <span>1.平台推荐酒店</span>
+                <div style="margin-top: 25px;">
+        			<table id="texttable">
+                    </table>
+                </div>
+                <br>
+                <div class="content">
+                    <span style="color: red">*</span>
+                    <span>以上向参会人员推荐的酒店,距离会场位置较近,交通便利,参会人员可直接预订,主办方可去列表随时查看预订信息,便于主办方掌握参会用户到达率</span>
+                </div>
+                <div class="btncon">
+                    <button type="button" class="btn btn-default btn-warning systemSave">保&nbsp;存</button>
+                    <button type="button" class="btn btn-default systemCancel">取&nbsp;消</button>
+                </div>
+                <br><br>		
+    		</form>
+
+        <span>2.自定义酒店</span>
+        <div class="modification none">
+            <div class="modificationTitle">添加/编辑工作人员</div>
+            <form class="tabaddForm form-horizontal" id="tabaddForm">
+                <div class="form-group">
+                    <label for="" class="col-sm-2 control-label"><span class="redStar">*</span> &nbsp;酒店名称</label> 
+                    <div class="col-sm-7">
+                     <input type="text" name="nick" maxlength="32" class="form-control nick" placeholder="请填写酒店名称">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-sm-2 control-label"><span class="redStar">*</span> &nbsp;酒店地址</label>
+                    <div class="col-sm-7">
+                      <input type="text" name="location" maxlength="64" class="form-control location" placeholder="请填写酒店地址">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-sm-2 control-label"><span class="redStar">*</span> &nbsp;酒店联系人</label>
+                    <div class="col-sm-7">
+                      <input type="text" name="people" maxlength="32" class="form-control people" placeholder="请填写酒店联系人">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-sm-2 control-label"><span class="redStar">*</span> &nbsp;酒店联系电话</label>
+                    <div class="col-sm-7">
+                      <input type="text" name="phone"  maxlength="32" class="form-control phone" placeholder="请填写酒店联系电话">
+                    </div>
+                </div>
+                <div class="btncon">
+                    <button type="button" class="btn btn-default btn-warning costomSave">保&nbsp;存</button>
+                    <button type="button" class="btn btn-default costomCancel">取&nbsp;消</button>
+                </div>
+            </form>
+        </div>   
+
+        <form class="detailForm form-horizontal" id="detailForm">
+            <div id="toolbar">
+                <div class="btn-group">
+                    <button id="btn_add" type="button" class="btn btn-sm btn-default">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+                    </button>
+                </div> 
+                &nbsp;<span class="red none">如需使用本功能，请与本站工作人员联系</span>
+            </div>
+            <div style="margin-top: 15px;">
+                <table id="customtable"></table>
+            </div>
+            <br>
+            <div class="content">
+                <span style="color: red">*</span>
+                <span>手工录入后与平台不兼容, 需要主办方与参会人员电话联系后手动录入参会人员酒店预定信息</span>
+            </div>
+        </form>
+    	</div>
+    </div>     
+</div>
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/bootstrap-table.min.js"></script>
+<script src="../../../js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/main.js"></script>
+<script>
+$(function(){   
+	// 获取左侧菜单列表数据(参数为请求地址)
+	// initMenu('../../../js/data/administrator.json','交通住宿');
+    serialMenuAjax('admin/activity/menu.do', '交通住宿', sessionStorage.getItem('actId'), initPage);
+
+    //获取id
+    $("#id").val(sessionStorage.getItem('actId'));
+
+    // initPage();
+
+    //自定义添加
+    $("#btn_add").on("click", function(){
+        $(this).parent().next().removeClass("none");
+    });
+
+    // 取消
+    // $(".costomCancel").on("click", function(){
+    //     $("#tabaddForm input").val('');
+    //     $(".modification").hide(1000);
+    // }) 
+
+    // 保存选择的系统推荐的酒店
+    $(".systemSave").on("click", function(){
+        var elems = $("#texttable").bootstrapTable('getSelections');
+        if(elems.length <= 0){
+            myAlert("请选择酒店",'slow');
+            return false;
+        }
+        var hotelIds = '';
+        for(var i=0;i<elems.length;i++){
+            hotelIds += '&id='+elems[i].id;
+        }
+        var postData = 'activityId='+$("#id").val() + hotelIds;
+        $.myAjax({
+            url: basePath + 'admin/activity/hotel/save.do',
+            data: postData,
+            success: function(result){
+                myAlert(result.msg);
+            },
+            error: function(result){
+                myAlert("请求失败，请重试！","slow");
+            }
+        })
+        
+    })
+    // 取消选择的酒店
+    $(".systemCancel").on("click", function(){
+        initPage();
+    })
+});
+
+// 页面初始化
+function initPage(){
+    $.myAjax({
+        url: basePath + 'admin/activity/hotel/list.do',
+        data: {id: $("#id").val()},
+        success:function(result){
+            if(result.flag){
+                var data = result.data.hotel;
+            } else {
+                var data = null;
+            }
+            initSystemTable(data);
+        },
+        error:function(){
+            myAlert("请求失败，请重试！","slow");
+        }
+    });
+}
+
+// 初始化推荐酒店table表格
+function initSystemTable(data){
+    $('#texttable').bootstrapTable({
+        // data: data,
+        dataType: 'json',
+        dataLocale: 'zh-CN',               //表格汉化
+        striped: true,                      //是否显示行间隔色
+        cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+        // pagination: true,                   //是否显示分页（*）
+        sortable: true,                     //是否启用排序
+        sortOrder: "desc",                   //排序方式
+        cellStyle: true,
+        checkbox : true,
+        sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
+        // pageNumber:1,                       //初始化加载第一页，默认第一页
+        // pageSize: 20,                       //每页的记录行数（*）
+        // pageList: [10, 15, 20],        //可供选择的每页的行数（*）                   
+        columns: [
+        {
+            field: 'id',
+            title: 'id'
+        },{
+            align: 'center',
+            width: 30,
+            formatter: function(value,row,index){
+                return index+1;
+            }
+        },{
+            checkbox: true,
+            width: 30,
+            formatter: function(value,row,index){
+                if(row.checked == 'true'){
+                    return {
+                        checked : true//设置选中
+                    };
+                }
+            }
+        },
+        {
+            field: 'resName',
+            title: '酒店名称',
+            align: 'center',
+            sortable: true
+        },
+        {
+            field: 'resGrade',
+            title: '星级',
+            align: 'center',
+            sortable: true,
+            width: 80
+        },
+        {
+            field: 'address',
+            title: '地址',
+            align: 'center'
+        }]
+        // onPageChange: function(number, size){
+        //     console.log(size);
+        // }
+    });
+    $("#texttable").bootstrapTable('hideColumn', 'id');
+    $("#texttable").bootstrapTable('load', data);
+};
+// 初始化自定义酒店
+function initCustomTable(result){
+    $('#customtable').bootstrapTable({
+            data: result,
+            dataLocale: 'zh-CN',                //表格汉化               
+            striped: true,                      //是否显示行间隔色
+            cache: false,  
+            toolbar: '#toolbar',                      
+            pagination: true,                   //是否显示分页（*）
+            sortable: true,                     //是否启用排序
+            sortOrder: "asc",                   //排序方式
+            sidePagination: "client",           
+            strictSearch: false,
+            pageNumber:1,                       //初始化加载第一页，默认第一页
+            pageSize: 10,                       
+            columns: [ {
+                field: 'nick',
+                title: '酒店名称',
+                align: 'center'
+            },
+            {
+                field: 'location',
+                title: '酒店地址',
+                align: 'center',
+                sortable: true
+            },
+            {
+                field: 'people',
+                title: '酒店联系人',
+                align: 'center'
+            },{
+                field: 'phone',
+                title: '酒店联系电话',
+                align: 'center'
+            },{
+                    field: 'option',
+                    title: '操作',
+                    width: 86,
+                    align: 'center',
+                    formatter: function(value,row,index){
+                      return '<span class="glyphicon glyphicon-pencil tabEdit cursor" aria-hidden="true"></span>&nbsp'+'<span class="glyphicon glyphicon-trash tabDel cursor" aria-hidden="true"></span>';
+                    },
+                    events: {
+                            'click .tabEdit': function (e, value, row, index) {
+                                //修改表单内容
+                                $(".modification").show(1000);  
+                                showTableForm(row);       
+                            },
+                            'click .tabDel': function (e, value, row, index) {
+                                     
+                            }
+                    }
+                }],
+    });
+};
+
+//修改/新增
+function showTableForm(result){
+    if(result){
+        $(".nick").val(result.nick);
+        $(".location").val(result.location);
+        $(".people").val(result.people);
+        $(".phone").val(result.phone);
+        $(".modification").show(1000); 
+    } else {
+        $("#tabaddForm input").val('');
+        $(".modification").show(1000);
+    }
+}
+
+</script>
+</html>

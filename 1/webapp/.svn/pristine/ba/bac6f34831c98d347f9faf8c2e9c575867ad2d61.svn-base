@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>现场交流</title>
+	<!--[if lte IE 9]>
+		<script src="../../../js/respond.min.js"></script>
+		<script src="../../../js/html5.js"></script>
+	<![endif]-->
+	<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+	<link href="../../../css/style.css" rel="stylesheet"/>
+	<link href="../../../css/main.css" rel="stylesheet"/>
+	<style>
+		.interList{
+			width: 800px;
+			/*border: 1px solid #ff6100;*/
+		}
+		.conList:hover .testTil{
+			color: #000;
+		} 
+		.conList{
+			display: block;
+			margin-bottom: 10px;
+			min-height: 40px;
+			width: 100%;
+			background-color: #f1f1f1;
+			padding: 5px 7px;
+		}
+		.test{
+			margin-bottom: 6px;
+		}
+		.comment img, .like img{
+			width: 15px;
+			vertical-align: middle;
+			margin-right: 10px;
+		}
+		.like img{
+			width: 17px;
+			margin-top: -6px;			
+		}
+		.like{
+			margin-left: 30px;
+		}
+	</style>
+</head>
+<body>	
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<!-- 以下为内容部分，内容部分分为导航头和主体内容 -->
+<div class="mops-con">
+	<div class="con-nav"> 
+		<a href="interactList.html">互动交流</a>
+		<a href="">-&gt;</a>
+		<a href="intersceneList.html">现场交流</a>
+	</div><!-- 内容部分导航头的class : con-nav (必须) -->
+	<div class="con-box" id="box"><!-- 内容部分主体内容的class : con-box (必须) -->
+		<!-- 以下为每个页面自己编写的部分 -->
+		<input id="id" type="hidden" value="">
+		<div id="subMenu">
+		<div id="subMenuBody">
+			<ul>
+				<a href="interactList.html"><li>会前预热</li></a>
+				<a href="intersceneList.html"><li class="menuAct">现场交流</li></a>
+			</ul>
+		</div>
+	</div>
+		<div id="contentBody" class="mops-table">
+			<div class="interList">
+				<!-- <div class="conList">
+					<div class="test"></div>
+					<div class="testTil"> 
+						<span class="comment"><img src="../../../img/weixin/comment.png">12</span>
+						<span><img src="../../../img/weixin/like_hi.png">16</span>
+					</div>
+				</div> -->
+			</div>
+		</div>		
+	</div>     
+</div>
+
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/main.js"></script>
+<script type="text/javascript">
+	// 获取左侧菜单列表数据,菜单加载成功后 调用initPage方法
+	$(function(){
+		$("#id").val(sessionStorage.getItem('actId'));
+		serialMenuAjax('admin/activity/menu.do', '互动交流', sessionStorage.getItem('actId'), initPage);
+		loading();
+		// $(document).on("click", ".conList", function(){
+		// 	id = $(this).find("input").val();
+		// 	window.location.href = "messPrevBoard.html?id=" + id; 
+		// });	
+	});
+	function initPage(){
+		actId = $('#id').val();
+		$.myAjax({
+			url: basePath + "admin/activity/issue/list.do",
+			data: {id: actId,field: "2"},
+			success: function(result){
+				$(".loading").remove();
+				if(result.flag){
+					console.log(result)
+					var data = result.data.activityIssue;
+					if(data == null || data.length == 0){
+						myConfirm("暂无议题!");
+						$(".interList").css("display", "none");
+						return;
+					};				
+					var str = '';
+					for(var i = 0; i < data.length; i++){
+						if(data[i].thumbsUp < 0){
+							data[i].thumbsUp = 0;
+						};
+						if(data[i].totalComment < 0){
+							data[i].totalComment = 0;
+						};
+						str += '<a class="conList" target="_blank" href="ismessBoard.html?id='+data[i].id+'">' +
+								'<div class="test">' + data[i].name + '</div>' +
+									'<div class="testTil">'  +
+										'<span class="comment">' + 
+											'<img src="../../../img/weixin/comment.png">' +
+												data[i].totalComment +
+										'</span>' +
+										'<span class="like">' + 
+											'<img src="../../../img/weixin/like_hi.png">' + 
+												data[i].thumbsUp +
+										'</span>' +
+									'</div>' +
+								'</div>' +
+							'</a>';
+					};
+					$(".interList").html(str);
+				}else{
+					myAlert(result.msg, "slow");
+				}			
+			},
+			error: function(){
+				$(".loading").remove();
+				myAlert("请求失败!");
+			}
+		});
+	}
+</script>
+		
+</html>

@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>联系方式</title>
+<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+<link href="../../../css/common/bootstrap.css" rel="stylesheet" />
+<link href="../../../css/common/bootstrapValidator.min.css" rel="stylesheet" />
+<link href="../../../css/style.css" rel="stylesheet" />
+<link href="../../../css/main.css" rel="stylesheet" />
+<style>
+    .m-loca{
+        margin-left:20px;
+        margin-top:44px;
+    }   
+   .ml70{
+            margin-left:70px;
+        }
+    .ml60{
+        margin-left:60px;
+    }
+    .mt20{
+      margin-top:20px;
+    }
+    .mt40{
+      margin-top:40px;
+    }
+    #preview_wrapper
+    {
+        display: inline-block;
+        width: 300px;
+        height: 200px;
+        background-color: #CCC;
+        margin-left:14px;
+    }
+    
+    #preview_fake
+    {
+        /* 该对象用户在IE下显示预览图片 */
+        filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale);
+    }
+    #preview_size_fake
+    {
+        /* 该对象只用来在IE下获得图片的原始尺寸，无其它用途 */
+        filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=image);
+        visibility: hidden;
+    }
+    #preview
+    {
+        /* 该对象用户在FF下显示预览图片 */
+        width: 300px;
+        height: 200px;
+    }
+    .btn-location{
+  		width:300px;
+  		display: block;
+  		margin:0 auto;
+  		margin-bottom:20px;
+  	}
+    .cred{
+      color:red;
+    }
+</style>
+</head>
+<body>
+<!-- 引入页头 -->
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<!-- 以下为内容部分，内容部分分为导航头和主体内容 -->
+<div class="mops-con"><!-- 内容部分的class : mops-con (必须) -->
+	<div class="con-nav">
+    <a href="basicInfo.html">管理中心</a>
+    <a href="">-&gt;</a>
+    <a href="basicInfo.html">会议管理</a>
+    <a href="">-&gt;</a>
+    <a href="contact.html">联系方式</a>
+  </div><!-- 内容部分导航头的class : con-nav (必须) -->
+	<div class="con-box"><!-- 内容部分主体内容的class : con-box (必须) -->
+		<!-- 以下为每个页面自己编写的部分 -->
+    <div id="subMenu"></div>
+    <div id="contentBody" class="mops-form">
+		<form id="detailform" class="form-horizontal mops-form">
+        <input type="hidden" id="id" name="id"/>
+        <div class="form-group form-bott">
+           <label for="contactUser" class="col-sm-2 control-label">&nbsp;<span class="cred">* </span>联系人</label>
+           <div class="col-sm-7">
+             <input class="form-control" id="contactUser" name="contactUser" placeholder="请输入姓名" maxlength="32" />
+           </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-sm-2 control-label"><span class="cred">* </span>联系电话</label>
+            <div class="col-sm-7">
+              <input class="form-control" maxlength="32" id="phone" name="contactPhone" placeholder="请输入电话号码">
+            </div>
+        </div>  
+        <div class="form-group">
+            <label for="" class="col-sm-2 control-label"><span class="cred">* </span>联系邮箱</label>
+            <div class="col-sm-7">
+              <input class="form-control" maxlength="32" id="email" name="contactEmail" placeholder="请输入邮箱">
+            </div>
+        </div>
+        <div class="form-group">
+          <label for="" class="col-sm-2 control-label">&nbsp;联系地址</label>
+          <div class="col-sm-7">
+            <input class="form-control"  maxlength="128" id="address" name="contactAddress" placeholder="请输入联系地址">
+          </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-sm-2 control-label">&nbsp;联系邮编</label>
+            <div class="col-sm-7">
+              <input class="form-control" maxlength="32" id="code" name="contactZipcode" placeholder="请输入邮编">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-sm-2 control-label">&nbsp;主办方网址</label>
+            <div class="col-sm-7">
+              <input class="form-control" maxlength="64" id="orgUrl" name="organizerUrl" placeholder="请输入网址">
+            </div>
+        </div>
+         
+        <!-- <button type="button" class="btn btn-default btn-warning btn-location">用户群(如设置,报名用户可进会议群)
+        </button> --> 
+        <div class="btncon">
+            <button type="button" class="btn btn-warning save">保&nbsp;存</button>
+            <button type="button" class="btn btn-default off">取&nbsp;消</button>
+            <!-- <button class="btn btn-default btn-danger">删&nbsp除</button> -->
+        </div>
+    </form>
+    </div>
+  </div>     
+</div>
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+
+<!-- 引入项目中带有左侧菜单的公共js -->
+
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/bootstrapValidator.min.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/main.js"></script>
+<script>
+  $(function(){
+      
+      $("#id").val(sessionStorage.getItem('actId'));
+
+      // 获取左侧菜单列表数据(参数为请求地址)
+      serialMenuAjax('admin/activity/menu.do','会议管理',sessionStorage.getItem('actId'), initPage);
+      setSubMenu('联系方式');
+      // initPage();
+      //初始化页面
+      function initPage(){
+        var url=basePath+'admin/activity/get.do';
+        $.myAjax({
+            url: url,
+            data:{id:$("#id").val()},
+            success:function(result){
+              if(result.flag){
+                if(result.data.activity.contactUser){
+                $("#contactUser").val(result.data.activity.contactUser);
+                }
+                if(result.data.activity.contactPhone){
+                  $("#phone").val( result.data.activity.contactPhone);
+                }
+                if(result.data.activity.contactEmail){
+                  $("#email").val(result.data.activity.contactEmail);
+                }
+                if(result.data.activity.contactAddress){
+                  $("#address").val(result.data.activity.contactAddress);
+                }
+                if(result.data.activity.contactZipcode){
+                  $("#code").val(result.data.activity.contactZipcode);
+                }
+                if(result.data.activity.organizerUrl){
+                  $("#orgUrl").val(result.data.activity.organizerUrl);
+                }
+              }else{
+                myConfirm(result.msg);
+              }
+              
+            },
+            error:function(){
+                myAlert("请求失败!");
+            }
+        });
+      }
+      
+      //保存按钮点击事件
+      $('.save').on('click',function(){
+          var bootValidator = $('#detailform').data('bootstrapValidator');
+          bootValidator.validate();
+          if(bootValidator.isValid()){
+            var address = basePath + "admin/activity/save.do"
+            // console.log($("#detailform").serialize());
+            // return;
+            $.myAjax({
+              url: address,
+              data:$("#detailform").serialize(),
+              success:function(result){
+                if(result.flag){
+                  myAlert("已保存");
+                }else{
+                  myConfirm(result.msg);
+                }
+              },
+              error:function(){
+                myAlert("请求失败", "slow");
+              }
+            });
+          };
+      });
+
+      $(".off").on("click", function(){
+        initPage();
+        $('#detailform').data('bootstrapValidator').resetForm(true);
+      });
+      $('#detailform').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            contactUser: {
+                validators: {
+                    notEmpty: {
+                        message: '联系人不能为空'
+                    }
+                }
+            },
+            contactPhone: {
+                validators: {
+                    notEmpty: {
+                        message: '联系电话不能为空'
+                    },
+                    regexp: {
+                          regexp: /^1[34578]\d{9}$/,
+                          message: '请输入正确的手机号！'
+                    }
+                }
+            },
+            contactEmail: {
+                validators: {
+                    notEmpty: {
+                        message: '邮箱不能为空'
+                    },
+                    emailAddress: {
+                        message: '请输入正确的邮箱地址'
+                    }
+                }
+            },
+            contactZipcode: {
+                validators: {
+                    regexp: {
+                        regexp: /^[1-9][0-9]{5}$/,
+                        message: '请输入正确的邮政编码'
+                    }
+                }
+            }
+        }
+    });
+  });
+</script>
+<!-- <script type="text/javascript" language="javascript">
+    function onUploadImgChange(sender, p, pf, psf,width,height) {
+        if (!sender.value.match(/.jpg|.gif|.png|.bmp/i)) //忽略大小写
+        {
+            alert('图片格式无效！');
+            return false;
+        }
+        var objPreview = document.getElementById(p); //图片1
+        var objPreviewFake = document.getElementById(pf); //图片2
+        var objPreviewSizeFake = document.getElementById(psf); //外套1
+        if (sender.files && sender.files[0]) 
+        {
+            objPreview.style.display = 'block';
+            objPreview.style.width = 'auto';
+            objPreview.style.height = 'auto';
+           objPreview.src = window.URL.createObjectURL(sender.files[0]);
+     
+     
+        }
+        else if (objPreviewFake.filters) 
+        {
+            // IE7,IE8 在设置本地图片地址为 img.src 时出现莫名其妙的后果        
+            //（相同环境有时能显示，有时不显示），因此只能用滤镜来解决        
+            // IE7, IE8因安全性问题已无法直接通过 input[file].value 获取完整的文件路径        
+            sender.select();
+            var imgSrc = document.selection.createRange().text;
+            objPreviewFake.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = imgSrc;
+            objPreviewSizeFake.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = imgSrc;
+            autoSizePreview(objPreviewFake, width, height);
+            objPreview.style.display = 'none';
+        }  
+    }
+    function autoSizePreview(objPre, originalWidth, originalHeight) {
+        objPre.style.width = originalWidth + 'px';
+        objPre.style.height = originalHeight + 'px';
+        objPre.style.marginTop = 0 + 'px';
+        objPre.style.marginLeft = 0 + 'px';
+    }
+</script> -->
+</html>

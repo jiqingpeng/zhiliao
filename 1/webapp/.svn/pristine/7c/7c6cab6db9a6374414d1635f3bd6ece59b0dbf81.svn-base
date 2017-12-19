@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>留言板</title>
+	<meta name="description" content="留言板" />
+    <meta content="telephone=no" name="format-detection" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+    <link rel="stylesheet" href="../../css/common/bootstrap.min.css" />  
+	<link rel="stylesheet" href="../../css/weixin/style.css" />
+	<style>
+		body{
+			position:relative;
+		}
+		.message-box{
+			/*border:1px solid red;*/
+			width:100%;
+			padding:0 20px;
+		}
+		.message-box .mess-head .mess-tit{
+			width:86%;
+		}
+		.message-box .mess-head .mess-icon{
+			width:30px;
+			padding:0;
+		}
+		.message-box .mess-head .mess-icon img{
+			width:30px;
+			height:30px;
+		}
+		.message-box .mess-head .mess-tit .mess-time{
+			
+		}
+		.message-box .mess-group{
+			margin:10px 0;
+			border-bottom:1px solid #ccc;
+		}
+		.message-box .tit-cont{
+			margin-left:14%;
+		}
+		.message-box .mess-foot{
+			padding:10px 0;
+		}
+		.message-box .mess-foot .item{
+			padding:0;
+			float:right;
+		}
+		.message-box .mess-foot .item img{
+			/*border:1px solid red;*/
+			display: inline-block;
+			width:18px;
+			height:20px;
+			vertical-align: top;
+		}
+		
+		.mess-talk{
+			width:100%;
+			position:fixed;
+			left:0;
+			bottom:0;
+			border-bottom:1px solid #ccc;
+			border:1px solid red;
+			display:none;
+		}
+		.mess-talk .mess-txt{
+			width:100%;
+		}
+		.mess-talk .mess-txt img{
+			width:30px;
+			height:30px;
+			padding:0;
+		}
+		.mess-talk .mess-txt input{
+			height:30px;
+			padding:0;
+		}
+		.message-box .mess-foot .mess-time{
+			padding:0;
+		}
+		.mess-talk-group{
+			border-bottom:1px solid #ccc;
+		}
+		.mess-talk-group img{
+			width:30px;
+			height:30px;
+		}
+		.mess-talk-group .talk-txt{
+			width:86%;
+			/*overflow:hidden;*/
+		}
+		/*.mess-talk-group .talk-txt .mess-cont{
+			width:86%;
+		}*/
+		.mess-talk-group .mess-foot .mess-time{
+			margin-left:14%;
+		}
+		.talk-btn{
+			display: inline-block;
+			width:64px;
+			height:20px;
+			background:#f60;
+			color:#fff;
+			text-align:center;
+			border-radius:2px;
+			float:right;
+			margin-top:5px;
+			margin-bottom:10px;
+		}
+		.message-box .mess-child{
+			width:86%;
+			/*margin:10px;*/
+			background:#ccc;
+			margin-left:14%;
+		}
+		.message-box .mess-child .child-floorw{
+			width:98%;
+			padding:2%;
+		}
+		.message-box .mess-child .child-floorw .talk-txt{
+			width:86%;
+			word-wrap:break-word ;
+		}
+		.message-box .mess-child .mess-foot{
+			border-bottom:1px solid #fff;
+		}
+	</style>
+	<!-- <script src="../../js/weixin/iscroll.js"></script>
+	<script>
+		var myscroll;
+		function loaded(){
+			myscroll=new iScroll("wrapper",{
+				topOffset:50,
+				onscrollEnd:init()
+			});
+		}
+		window.addEventListener("DomcontentLoaded",loaded,false)
+	</script> -->
+</head>
+<body>
+	<div id="wrapper">
+		<div id="pullDown">
+			<span class="pullDownIcon"></span>
+			<span class="pullDownLabel">下拉刷新...</span>
+		</div>
+		<div class="order-box">
+			<!-- <div class="message-box">
+				<div class="mess-group">
+					<div class="mess-head clearfix">
+						<div class="mess-icon fl">
+							<img src="../../img/weixin/head-icon.png" alt="">
+						</div>
+						<div class="mess-tit fr">
+							<p class="mess-name">环球网</p>
+							<p class="mess-time">9:08</p>
+						</div>
+					</div>
+					<div class="mess-cont tit-cont">
+						在中国和东盟外长签署谅解备忘录，顺利通过南海行为框架文件，为男孩的稳定奠定了基础
+					</div>
+					<div class="mess-foot clearfix">
+						<a class="col-xs-2 fr item" href="javascript:;">
+							<img src="../../img/weixin/up.png" alt="up">
+							<span class="num">80</span>
+						</a>
+						<a class="col-xs-2 fr item" href="javascript:;">
+							<img src="../../img/weixin/talk.png" alt="talk">
+							<span class="num">89</span>
+						</a>	
+					</div>
+				</div>
+				<div class="mess-talk-group">
+					<div class="clearfix">
+						<img class="fl" src="../../img/weixin/head-icon.png" alt="">
+						<div class="talk-txt fr">
+							<span class="mess-name">李老头：</span>
+							<span class="mess-cont">在中国和东盟外长签署谅解备忘录，顺利通过南海行为框架文件，为男孩的稳定奠定了基础在中国和东盟外长签署谅解备忘录，顺利通过南海行为框架文件，为男孩的稳定奠定了基础</span>
+						</div>
+					</div>
+					<div class="mess-foot clearfix">
+						<p class="clearfix">
+							<span class="mess-time col-xs-2 fl">9:20</span>
+							<a class="col-xs-2 fr item" href="javascript:;">
+								<img src="../../img/weixin/up.png" alt="up">
+								<span class="num">80</span>
+							</a>
+							<a class="col-xs-2 fr item" href="javascript:;">
+								
+								<span class="num">回复</span>
+							</a>
+						</p>
+						<div class="mess-talk-group mess-child">
+							<div class="clearfix">
+								<img class="fl" src="../../img/weixin/head-icon.png" alt="">
+								<div class="talk-txt fr">
+									<span class="mess-name">李老头：</span>
+									<span class="mess-cont">在中国和东盟外长签署谅解备忘录，顺利通过南海行为框架文件，为男孩的稳定奠定了基础在中国和东盟外长签署谅解备忘录，顺利通过南海行为框架文件，为男孩的稳定奠定了基础</span>
+								</div>
+							</div>
+							<div class="mess-foot clearfix">
+								<p class="clearfix">
+									<span class="mess-time col-xs-2 fl">9:20</span>
+									<a class="col-xs-3 fr item" href="javascript:;">
+										<img src="../../img/weixin/up.png" alt="up">
+										<span class="num">80</span>
+									</a>
+									<a class="col-xs-3 fr item" href="javascript:;">
+										
+										<span class="num">回复</span>
+									</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div> -->
+		</div>
+		<div id="pullUp">
+			<span class="pullUpIcon"></span>
+			<span class="pullUpLabel">上拉加载更多...</span>
+		</div>
+		<div class="mess-talk">
+			<input type="hidden" class="activity-issueComment-id">
+			<p class="mess-txt clearfix">
+				<!-- <img class="col-xs-2" src="../../img/weixin/head-icon.png" alt="head-icon"> -->
+				<input type="hidden" class="statu" value="1">
+				<input type="txt" class="col-xs-8 fl comment-cont">
+				<a class="talk-btn fr" href="javascript:;">评论</a>
+			</p>
+			<p class="clearfix"></p>
+		</div>
+	</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/common/main.js"></script>
+<script src="../../js/user/userMain.js"></script>
+<!-- <script src="../../js/weixin/zepto.js"></script> -->
+<!-- <script src="../../js/weixin/touch.js"></script>
+<script src="../../js/weixin/fx.js"></script> -->
+<!-- <script src="../../js/weixin/dropload.min.js"></script> -->
+<script src="../../js/weixin/iscroll.js"></script>
+<script src="../../js/weixin/board.js"></script>
+
+<script>
+	$(function(){
+		// init(0,10)
+		// $('.order-box').dropload({
+	 //        scrollArea : window,
+	 //        domDown : {
+	 //            domClass   : 'dropload-down',
+	 //            domRefresh : '<div class="dropload-refresh">↑上拉加载更多-自定义内容</div>',
+	 //            domLoad    : '<div class="dropload-load"><span class="loading"></span>加载中-自定义内容...</div>',
+	 //            domNoData  : '<div class="dropload-noData">暂无数据-自定义内容</div>'
+	 //        },
+	 //        loadDownFn : function(me){
+	 //            init();
+	 //            // me.resetload();
+	 //            // alert(1)
+	 //            // $.ajax({
+	 //            //     type: 'GET',
+	 //            //     url: 'json/more.json',
+	 //            //     dataType: 'json',
+	 //            //     success: function(data){
+	 //            //         var result = '';
+	 //            //         counter++;
+	 //            //         pageEnd = num * counter;
+	 //            //         pageStart = pageEnd - num;
+
+	 //            //         for(var i = pageStart; i < pageEnd; i++){
+	 //            //             result +=   '<a class="item opacity" href="'+data.lists[i].link+'">'
+	 //            //                             +'<img src="'+data.lists[i].pic+'" alt="">'
+	 //            //                             +'<h3>'+data.lists[i].title+'</h3>'
+	 //            //                             +'<span class="date">'+data.lists[i].date+'</span>'
+	 //            //                         +'</a>';
+	 //            //             if((i + 1) >= data.lists.length){
+	 //            //                 // 锁定
+	 //            //                 me.lock();
+	 //            //                 // 无数据
+	 //            //                 me.noData();
+	 //            //                 break;
+	 //            //             }
+	 //            //         }
+	 //            //         // 为了测试，延迟1秒加载
+	 //            //         setTimeout(function(){
+	 //            //             $('.lists').append(result);
+	 //            //             // 每次数据加载完，必须重置
+	 //            //             me.resetload();
+	 //            //         },1000);
+	 //            //     },
+	 //            //     error: function(xhr, type){
+	 //            //         alert('Ajax error!');
+	 //            //         // 即使加载出错，也得重置
+	 //            //         me.resetload();
+	 //            //     }
+	 //            // });
+  //       	},
+  //   	});
+		
+		$(document).on('click','.first-comment',function(){
+			$('.statu').val(0);
+		});
+		$(document).on('click','.comment',function(){
+			var str=$(this).prev().val();
+			console.log(str)
+			$('.activity-issueComment-id').val(str);
+			$('.mess-talk').css('display','block');
+		});
+		$('.talk-btn').on('click',function(){
+			var statu=$('.statu').val();
+			console.log(statu)
+			comment(statu);
+		})
+		$(document).on('click','.thumbsUp',function(){
+			var type =$(this).prev().val();
+			if(type){
+				thumbsUp(3);
+			}else{
+				thumbsUp(1);
+			};
+		});
+	})
+	function init(num,size){
+		// var url=basePath+'user/activity/issue/list.do';
+		// var id='25812d45fc27441ebacb6f9e3fe70322';
+		var url=basePath+'user/activity/issue/comment/list.do';
+		var id='cff1f4ad2e6a416bab10ab11b74b186q';
+		var pageNum=num;
+		var pageSize=size;
+		var field=2;
+		$.myAjax({
+			url: url,
+			data:{id:id,field:field,pageNum:pageNum,pageSize:pageSize},
+			// data:{id:id},
+			success: function(result) {
+				console.log(result);
+				if (result.flag) {
+					var data=result.data;
+					var str=
+					'<div class="message-box">'+
+						'<input id="id" type="hidden"/>'+
+						'<div class="mess-group">'+
+							'<div class="mess-cont tit-cont">'+
+								 data.issue.name+
+							'</div>'+
+							'<div class="mess-foot clearfix">'+
+								'<input type="hidden" value="'+data.issue.click+'"/>'+
+								'<a class="col-xs-2 fr item thumbsUp" href="javascript:;">'+
+									'<img src="../../img/weixin/up.png" alt="up">'+
+									'<span class="num">'+ data.issue.thumbsUp+'</span>'+
+								'</a>'+
+								'<input type="hidden" value="'+data.issue.id+'"/>'+
+								'<a class="col-xs-2 fr item comment first-comment" href="javascript:;">'+
+									'<img src="../../img/weixin/talk.png" alt="talk">'+
+									'<span class="num">'+ data.issue.totalComment+'</span>'+
+								'</a>'+	
+							'</div>'+
+						'</div>'+
+						'<div class="mess-talk-group floor-list">'+
+						'</div>'+
+					'</div>';
+					$('.order-box').append(str);
+					$('#id').val(result.data.issue.id);
+					//楼层
+					for(var i=0;i< data.issueComment.length;i++){
+						var str=
+						'<div class="clearfix floor">'+
+								'<img class="fl" src="../../img/weixin/head-icon.png" alt="">'+
+								'<div class="talk-txt fr">'+
+									'<span class="mess-name">'+result.data.issueComment[i].nick+'：</span>'+
+									'<span class="mess-cont">'+
+										result.data.issueComment[i].content+
+									'</span>'+
+								'</div>'+
+								'<div class="mess-foot clearfix">'+
+									'<p class="clearfix">'+
+										'<span class="mess-time col-xs-5 fl">'+result.data.issueComment[i].ctime+'</span>'+
+										'<input type="hidden" value="'+result.data.issueComment[i].id+'"/>'+
+										'<a class="col-xs-2 fr item comment" href="javascript:;">'+
+											'<span class="num">回复</span>'+
+										'</a>'+
+									'</p>'+
+									'<div class="mess-talk-group mess-child child-floor">'+
+									'</div>'+
+								'</div>'+
+						'</div>';
+						$('.floor-list').append(str);
+						var commentVal = data.issueComment[i].activityIssueCommentList;
+						if(commentVal){
+							for(var j=0;j<commentVal.length;j++){
+								var str=
+								'<div class="clearfix child-floorw">'+
+									'<img class="fl" src="../../img/weixin/head-icon.png" alt="">'+
+									'<div class="talk-txt fr">'+
+										commentVal[j].nick+commentVal[j].content+
+									'</div>'+
+								'</div>'+
+								'<div class="mess-foot clearfix">'+
+									'<p class="clearfix">'+
+										'<span class="mess-time col-xs-6 fl">'+result.data.issueComment[i].ctime+'</span>'+
+										'<input type="hidden" value="'+commentVal[j].id+'"/>'+
+										'<a class="col-xs-3 fr item comment" href="javascript:;">'+
+											'<span class="num">回复</span>'+
+										'</a>'+
+									'</p>'+
+								'</div>';
+								
+								$($('.floor')[$('.floor').length-1]).find('.child-floor').append(str);
+							};
+						};
+					};
+				} else {
+					myAlert(result.msg);
+				};
+			},
+			error: function() {
+				myAlert('请求失败');
+			}
+		});
+	}
+	function comment(statu){
+		var url=basePath+'user/activity/issue/comment/save.do';
+		var activityIssueId=$('#id').val();
+		var activityIssueCommentId=$('.activity-issueComment-id').val();
+		var content=$('.comment-cont').val();
+		console.log(statu)
+		if(statu==1){
+			console.log(2)
+			var data={activityIssueId:activityIssueId,activityIssueCommentId:activityIssueCommentId,content:content,type:3};
+		}else{
+			var data={activityIssueId:activityIssueId,content:content,type:3};
+			console.log(3)
+		};
+		$.myAjax({
+			url:url,
+			data:data,
+			success:function(result){
+				console.log(result)
+				if(result.flag){
+					$('.order-box').html('');
+					init();
+				}else{
+					myAlert(result.msg);
+				}
+			},
+			error:function(reslut){
+				myAlert(result.msg);
+			}
+		})
+	}
+	function thumbsUp(type){
+		var url=basePath+'user/activity/issue/laud.do';
+		var id=$('#id').val();
+		$.myAjax({
+			url:url,
+			data:{id:id,type:type},
+			success:function(result){
+				console.log(result)
+				if(result.flag){
+					$('.order-box').html('');
+					init();
+				}else{
+					myAlert(result.msg);
+				}
+			},
+			error:function(reslut){
+				myAlert(result.msg);
+			}
+		})
+	}
+
+</script>
+</html>

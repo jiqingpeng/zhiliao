@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>群英汇-座次安排</title>
+<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="../../../css/common/bootstrap.css">
+<link rel="stylesheet" href="../../../css/common/bootstrap-table.min.css">
+    <link rel="stylesheet" href="../../../css/common/bootstrapValidator.min.css"/>
+<link href="../../../css/style.css" rel="stylesheet" />
+<link href="../../../css/main.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../../css/admin.css">
+</head>
+<body>
+<!-- 引入页头 -->
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="venueList.html">会场管理</a>
+		<a href="">-&gt;</a>
+		<a href="venueUser.html">座次安排</a>
+	</div>
+	<div class="con-box" id="box">
+    	<!-- 以下为每个页面自己编写的部分 -->
+    	<div id="subMenu">
+    		<div id="subMenuBody">
+    			<ul>
+    				<a href="venueList.html"><li>会场列表</li></a>
+    				<a href="venueSchedule.html"><li>会场日程</li></a>
+    				<a href="venueUser.html"><li>会场人员</li></a>
+    				<a href="venueAffairs.html"><li>会务保障</li></a>
+                    <a href="venueSeat.html"><li class="menuAct">场地座次</li></a>
+                    <a href="venueSign.html"><li>会场签到</li></a>
+                    <a href="venueSignDetail.html"><li>签到人员</li></a>
+    			</ul>
+    		</div>
+    	</div>
+        <div id="contentBody" class="mops-form">
+            <form id="detailform" class="form-horizontal">
+                <input type="hidden" id="actId" name="activityId">
+                <input type="hidden" id="venueId" name="id" />
+                <div class="form-group">
+                    <label for="" class="col-sm-2 control-label"><span style="color: red">* </span>座位排数</label>
+                    <div class="col-sm-7">
+                      <input type="text" name="rowCount" class="form-control rank" placeholder="请填写座位排数">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-sm-2 control-label"><span style="color: red">* </span>座位列数</label>
+                    <div class="col-sm-7">
+                      <input type="text" name="colCount" class="form-control list" placeholder="请填写座位列数">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-sm-2 control-label"><span style="color: red">* </span>预留排数</label>
+                    <div class="col-sm-7">
+                      <input type="text" name="reservedRow" class="form-control reservedRows" placeholder="请填写预留排数">
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <label for="" class="col-sm-2 control-label"><span style="color: red">* </span>座位号生成方式</label>
+                    <div class="col-sm-7" style="margin-top: 6px;">
+                        <input type="radio" name="seatRole" value="1" checked="checked">按报名顺序
+                        <input type="radio" name="seatRole" value="2">按签到顺序
+                    </div>
+                </div>
+                <div class="btncon">
+                    <button type="button" class="btn btn-default btn-warning" id="preserve">保&nbsp;存</button>
+                    <!-- <button type="button" class="btn btn-default" id="cancel">取&nbsp;消</button> -->
+                    <button type="button" class="btn btn-default" id="preview">预&nbsp;览</button>
+                </div>
+            </form>
+
+            <!-- 座位区 -->
+            <div class="none seatNone">
+                <div class="seating">
+                    <span class="numRank"></span>排 <span class="numList"></span>列  
+                    <div class="rostrum">
+                        <div class="rostrumChild">主&nbsp;席&nbsp;台&nbsp;</div>
+                    </div>
+                    <div class="seatBox">
+                        <div class="perSeat">尼古拉斯</div>
+                    </div>
+                </div>
+                <div class="rostrum rostrumBtn">
+                    <a type="button" type="button" id="shut">关&nbsp;闭</a>
+                </div>  
+            </div>
+    	</div>
+
+
+	</div>    
+</div> 
+
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/bootstrap-table.min.js"></script>
+<script src="../../../js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../../js/bootstrapValidator.min.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/main.js"></script>
+<script type="text/javascript">
+$(function(){
+
+	//获取左侧菜单列表数据(参数为请求地址)
+	//initMenu('../../../js/data/administrator.json','会场管理');
+    serialMenuAjax('admin/activity/menu.do', '会场管理', sessionStorage.getItem('actId'));
+	//会场id获取和保存
+	if(Request("venueId") && Request("venueId").length == 32){ 
+    // 链接地址中id有值，且值正确
+		sessionStorage.setItem('venueId',Request("venueId"));   
+    }
+    $("#venueId").val(sessionStorage.getItem('venueId'));
+    $("#actId").val(sessionStorage.getItem('actId'));
+    //gainSeat();
+    //保存操作
+    $("#preserve").on("click", function(){
+        var bootValidator = $("#detailform").data('bootstrapValidator');
+            bootValidator.validate();
+        if(bootValidator.isValid()){
+            initSeat(arr);
+            return;
+            saveSeat();
+        }
+    });
+    //预览操作
+    $("#preview").on("click", function(){
+        initSeat();
+    });
+    $("#shut").on("click", function(){
+        $("#detailform").removeClass("none");
+        $(".seatNone").addClass("none");
+    });    
+});
+
+//生成座位表
+//rank列
+var str = '';
+var list = '';
+var rank = '';
+function initSeat(data){
+    $("#detailform").addClass("none");
+    $(".seatNone").removeClass("none");
+    $(".seatBox").html("");
+    if(data){
+        //生成座次表
+        str = '';
+        list = 5 ;
+        rank = 7;
+        var string = '';
+        for(var i = 0; i < list; i++){
+            string += '<div class="listSeat"></div>';
+            $(".seatBox").html(string); 
+            for(var j = 0; j < rank; j++){
+                str ='<div class="perSeat" style="display:inline-block;">' + 
+                    '<div></div>' + 
+                    '<div></div>' + 
+                '</div>';
+                $(".listSeat").append(str); 
+            }     
+        };
+        
+        var divs = $(".perSeat");
+        var location = '';
+        for(var j = 0; j < arr.length; j++){
+            location =  parseInt((arr[j].x - 1) * rank) + parseInt(arr[j].y);
+            $($(divs[location-1]).children()[0]).html(arr[j].x + "排" + arr[j].y + "列");
+            $($(divs[location-1]).children()[1]).html(arr[j].name);
+        };
+        var width = 70 * rank;
+        // var widthRank = 21 * rank;
+        $(".rostrumChild").width(width * 0.8 + 'px');
+        $(".rostrumChild").css('margin-left',width * 0.08 + 'px');
+        $(".seatBox").width(width + "px");
+        $(".numList").html(rank);
+        $(".numRank").html(list);
+    }else{
+        var str = '';
+        var list = $(".list").val();
+        var rank = $(".rank").val();
+        for(var i = 0; i < rank; i++){
+            for(var j = 0; j < list; j++){
+                str +='<div class="perSeat"></div>';   
+            }     
+        };
+        $(".seatBox").html(str);
+        var width = 70 * list;
+        // $(".rostrum").width(width);
+        $(".rostrumChild").width(width * 0.8 + 'px');
+        $(".rostrumChild").css('margin-left',width * 0.08 + 'px');
+        $(".seatBox").width(width + 'px');
+        $(".numList").html(list);
+        $(".numRank").html(rank);
+    } 
+}
+var arr = [
+    {"x":"1", "y":"2", "name": "张三"},
+    {"x":"2", "y":"2", "name": "李珊"},
+    {"x":"3", "y":"2", "name": "黎明"},
+    {"x":"4", "y":"1", "name": "张宇"},
+    {"x":"4", "y":"2", "name": "张晗"},
+    {"x":"4", "y":"3", "name": "甄晓华"},
+    {"x":"4", "y":"4", "name": "李露"},
+    {"x":"4", "y":"5", "name": "张小凡"}
+];
+function saveSeat(){
+    console.log($("#detailform").serialize());
+    // return;
+    $.myAjax({
+        url: basePath + "admin/activity/venue/save.do",
+        data: $("#detailform").serialize(),
+        success: function (result) {
+            console.log(result);
+            if(result.flag){
+                gainSeat();
+            }else{
+                myConfirm(result.msg);
+            }
+        },
+        error: function(){
+            myAlert("请求失败!", "slow");
+        }
+    });
+};
+function gainSeat(){
+    $.myAjax({
+        url: basePath + "admin/activity/venue/seat/list.do",
+        data: {id: $("#venueId").val()},
+        success: function (result) {
+            console.log(result);
+            if(result.flag){
+                return;
+                initSeat(result);
+            }else{
+                myConfirm(result.msg);
+            }
+        },
+        error: function(){
+            myAlert("请求失败!", "slow");
+        }
+    });
+};
+$("#detailform").bootstrapValidator({
+    message: 'This value is not valid',
+    feedbackIcons: {
+        valid: 'glyphicon glyphicon-ok',
+        invalid: 'glyphicon glyphicon-remove',
+        validating: 'glyphicon glyphicon-refresh'
+    },
+    fields: {
+        rowCount: {
+            validators: {
+                notEmpty: {
+                    message: '座位排数不能为空！'
+                },
+                regexp: {
+                    regexp:  /^[0-9]*[1-9][0-9]*$/,
+                    message: '座位排数只能是大于0的整数'
+                }
+            }
+        },
+        colCount: {
+            validators: {
+                notEmpty: {
+                    message: '座位列数不能为空！'
+                },
+                regexp: {
+                    regexp:  /^[0-9]*[1-9][0-9]*$/,
+                    message: '座位列数只能是大于0的整数'
+                }
+            }
+        },
+        reservedRow: {
+            validators: {
+                notEmpty: {
+                    message: '预留排数不能为空！'
+                },
+                regexp: {
+                    regexp:  /^\d+$/,
+                    message: '预留排数只能大于等于0的整数'
+                }
+            }
+        },
+    }
+});
+</script>
+</html>

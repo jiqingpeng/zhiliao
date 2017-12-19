@@ -1,0 +1,27 @@
+[
+	{
+		"icon" : "../../../../img/icon/super/conflisticon.png",
+		"name" : "基本信息",
+		"link" : "conncilInfo.html"
+	},
+	{
+		"icon" : "../../../../img/icon/super/adminediticon.png",
+		"name" : "会场日程",
+		"link" : "conncilSchedule.html"
+	},
+	{
+		"icon" : "../../../../img/icon/super/informationicon.png",
+		"name" : "人员管理",
+		"link" : "personal.html"
+	},
+	{
+		"icon" : "../../../../img/icon/super/informationicon.png",
+		"name" : "座次安排",
+		"link" : "personal.html"
+	},
+	{
+		"icon" : "../../../../img/icon/super/informationicon.png",
+		"name" : "会务保障",
+		"link" : "conncilSafeguard.html"
+	}
+]

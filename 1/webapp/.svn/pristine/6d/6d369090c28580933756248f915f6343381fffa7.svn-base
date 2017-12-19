@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" charset="UTF-8">
+<title>api-接口测试</title>
+<style type="text/css">
+.content {
+	height: 200px;
+	width: 100%;
+	background-color: #eee;
+}
+.blk {
+	display: inline-block;
+}
+.success, .error {
+	height: 150px;
+	width: 500px;
+	margin: 40px 40px;
+	border: 1px solid #ddd;
+
+}
+
+</style>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/common/common.js"></script>
+<script type="text/javascript">
+
+$(function(){
+
+	$(".setdata").click(function(){
+		var jsond = {};
+		jsond.duty = 'aaa';
+		var arr = [];
+		
+		var a = [{name:"name1",type:"type1"},{name:"name2",type:"type2"}];
+		for (var i = 0; i < a.length; i++) {
+			var aaa = {};
+			aaa.name = a[i].name;
+			aaa.type = a[i].type;
+			arr.push(aaa);
+		}
+		jsond.info = arr;
+		console.log(jsond);
+		
+		// var href = "passdata.html?obj="+setUrlJson(jsond);
+		
+ 	// 	console.log(getUrlJson("obj"));
+	})
+
+});
+</script>
+</head>
+<body>
+	<div class="content"></div>
+	<div class="blk success">
+		<label>success</label>
+		<div></div>
+	</div>
+	<div class="blk error">
+		<label>error</label>
+		<div></div>
+	</div>
+	<button class="setdata">设置URL</button>
+	<a href="passdata.html" target="_blank" class="passpage">页面传值测试</a>
+</body>
+</html>

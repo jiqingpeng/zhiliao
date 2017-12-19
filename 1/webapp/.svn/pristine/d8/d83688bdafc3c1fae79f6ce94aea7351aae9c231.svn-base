@@ -1,0 +1,24 @@
+@charset "utf-8";
+
+.user-nav {
+    font-size:18px;
+	color:#333;
+	height: 45px;
+	line-height: 45px;
+	border-bottom:1px #c9924b solid; 
+	margin-bottom: 20px;
+	padding-left: 14px;
+}
+
+.democon {
+	font-size: 14px;
+	color: #333;
+}
+
+.btncon {
+	margin-top: 26px;
+	text-align: center;
+}
+.btncon .btn {
+	margin-right: 14px;
+}

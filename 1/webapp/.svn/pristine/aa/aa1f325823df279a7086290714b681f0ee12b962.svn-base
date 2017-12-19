@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>会议详情</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+	<link rel="stylesheet" type="text/css" href="../../../css/app/style.css">
+	<link rel="stylesheet" type="text/css" href="../../../css/app/meetdetail.css">
+</head>
+<body>
+	<div>
+		<div class="head">
+			<div class="navImg">
+				<img src="../../../img/app/arrowLeft-icon.png">
+			</div>
+			<div class="navDetail">会议详情</div>
+			<div class="signIn code">
+				<img  src="../../../img/app/code.png">
+			</div>
+		</div>
+		<div class="posBox">	
+			<div class="sheet white">
+				<div class="title"></div>
+				<div>
+					<div class="time commenHeight">
+						<span><img src="../../../img/app/time-icon.png"></span>
+						<span>时间&nbsp;:</span>
+						<span id="time" class="time commenLeft"></span>
+					</div>
+					<div class="location commenHeight">
+						<span class="locaImg"><img src="../../../img/app/site-icon.png"></span>
+						<span class="detLocation">地点&nbsp;:</span>
+						<span class="address commenLeft"></span>
+					</div>
+				</div>
+				<div class="site commenHeight">
+						<span class="meetImg"><img src="../../../img/app/state-icon.png"></span>
+						<span class="meetState">参会状态&nbsp;:</span>
+						<span class="status">
+							<span id="status1" class="state commenLeft ">待审核</span>
+							<span id="status2" class="state ">- 审核通过</span>
+							<span id="status3" class="state ">- 预订酒店</span>
+							<span id="status4" class="state ">- 已签到</span>
+							<span id="status5" class="state ">- 结束</span>
+						</span>
+					</div>
+				<div class="switchover hide">	
+					<div class="commenHeight">
+						<span class="spoImg"><img src="../../../img/app/sponsor-icon.png"></span>
+						<span class="organization">
+							<div class="sponsor">主办方&nbsp;:</div>
+							<div class="spoContent">
+								
+							</div>
+						</span>
+					</div>
+				</div>
+				<span class="fold">
+					<img src="../../../img/app/downward.png">
+					<img src="../../../img/app/upward.png" class="hide">
+				</span>
+			</div>
+			<div class="list white">
+				<div class="listFlex">
+					<!-- <a href="introduction.html" class="intro">
+						<div class="imgContent">
+							<img src="../../../img/app/intro.png">
+						</div>
+						<div>简介</div>
+					</a> -->
+					<a href="invitation.html" class="grid invitation">
+						<div class="imgContent">
+							<img src="../../../img/app/invitation.png">
+						</div>
+						<div>邀请函</div>
+					</a>
+					<a href="organ.html" class="grid institution">
+						<div class="imgContent">
+							<img src="../../../img/app/institution.png">
+						</div>
+						<div>组织机构</div>
+					</a>
+					<a href="schedule.html" class="grid schedule">
+						<div class="imgContent">
+							<img src="../../../img/app/schedule.png">
+						</div>
+						<div>日程</div>
+					</a>
+				</div>
+				<div class="listFlex">
+					<a href="guest.html" class="grid guest">
+						<div class="imgContent">
+							<img src="../../../img/app/guest.png">
+						</div>
+					<div>嘉宾</div>
+					</a>
+					<a href="contact.html" class="grid guide">
+						<div class="imgContent">
+							<img src="../../../img/app/fingerpost.png">
+						</div>
+						<div>联系主办方</div>
+					</a>
+					<a  class="">
+						<!-- <div class="imgContent">
+							<img src="../../../img/app/intro.png">
+						</div>
+						<div>简介</div> -->
+					</a>
+				</div>	
+			</div>
+			<div>
+				<a href="../hotel/hotelList.html" class="ticket poscircle white comPadding params">
+					<span><img src="../../../img/app/ticket-icon.png"></span>
+					<span>酒店</span>
+					<span class="arrows fr"><img src="../../../img/app/arrowRigth-icon.png"></span>
+					<span class="circle fr"></span>
+					<span class="fr hotelInfo">
+						<div><span>入住时间:</span><span class="hotelTime"></span></div>
+						<div class="hotelTitle"></div>
+					</span>
+				</a>
+				<div class="reminder">
+					<span>*&nbsp;</span>
+					<span>主办方提示您:为避免大会期间酒店紧张,您可通过平台提前预定酒店;以便主办方及时确认您的参会行程和后期通知的推送</span>
+				</div>
+				<a href="search.html" class="ticket white comPadding params distanceTop">
+					<span><img src="../../../img/app/train_icon.png"></span>
+					<span>高铁/机票</span>
+					<span class="arrows fr"><img src="../../../img/app/arrowRigth-icon.png"></span>
+				</a>
+				<a href="myOrder.html" class="ticket white comPadding params">
+					<span><img src="../../../img/app/myorder.png"></span>
+					<span>我的订单</span>
+					<span class="arrows fr"><img src="../../../img/app/arrowRigth-icon.png"></span>
+				</a>
+			</div>
+			<div class="information white">
+				<a href="../message/newsDetail.html" class="inform comPadding params">
+					<span><img src="../../../img/app/apply-icon.png"></span>
+					<span>活动通知</span>
+					<span class="arrows fr"><img src="../../../img/app/arrowRigth-icon.png"></span>
+				</a>
+				<a href="interaction.html" class="discuss comPadding params">
+					<span><img src="../../../img/app/discussion-icon.png"></span>
+					<span>会议讨论</span>
+					<span class="arrows fr"><img src="../../../img/app/arrowRigth-icon.png"></span>
+				</a>
+				<a href="applyInfo.html" class="apply comPadding params">
+					<span><img class="infoImg" src="../../../img/app/information_icon.png"></span>
+					<span>报名信息</span>
+					<span class="arrows fr"><img src="../../../img/app/arrowRigth-icon.png"></span>
+				</a>
+			</div>
+		</div>
+		<div class="botBox"></div>
+	</div>
+</body>
+<script src="../../../js/zepto.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<script type="text/javascript" src="../../../js/app/mtTool.js"></script>
+<script type="text/javascript">
+var status = '';
+var id = Request("id");
+var time = '';
+var title = '';
+var status = ''; // 参会状态
+$(function(){
+	initPage();
+	setInterval("changeColor()",600);
+	$(".fold").on("click", function(){
+		$(".switchover").toggleClass("hide");
+	});
+	$(".fold").on("click", function(){
+		$(".fold img").toggleClass("hide");
+	});
+	$(".grid").on("click", function(){
+		var strHref = $(this).attr("href");
+		var params = strHref + "?id="+ id
+		$(this).attr("href", params)
+	});
+	$(".params").on("click", function(){
+		var strHref = $(this).attr("href");
+		var params = strHref + "?actId="+ id;
+		if($(this).hasClass("apply")){
+			params = strHref + "?actId="+ id +"&status="+status;
+		}
+		$(this).attr("href", params);
+	});
+	$(".intro").on("click", function(){
+		var params = "introduction.html?id="+id+"&title="+setUrlJson(title)+"&time="+setUrlJson(time); 
+		$(this).attr("href", params);
+	});
+})
+function initPage(){
+	myLoading();
+	$.myAjax({
+		url: basePath + "mt/user/activity/get.do",
+		data: {id:id,type:"base,org,status,hotelorder"},
+		success: function(result){
+			if(result.flag){
+				if(result.data.hotelorder.length == 0){
+					// $(".hotelInfo").addClass("hide");
+					$(".hotelInfo").html('<span id="blink" class="marketing">预定推荐</span>');
+				}
+				if(result.data.hotelorder.length == 1){
+					$(".circle").addClass("hide");
+					$(".hotelTime").html(result.data.hotelorder[0].inTime)
+					$(".hotelTitle").html(result.data.hotelorder[0].hotelName)
+				}
+				status = result.data.status;
+				if(result.data.base.state == 1 || result.data.base.state == 2){
+					if(status == "4"){
+						//已报到=> 已签到
+						$("#status4").addClass("color").siblings().removeClass("color");
+					}
+					if(status == "2" || status == "3"){
+						$("#status3").addClass("color").siblings("color");
+					}
+					if(status == "8" || status == "9"){
+						$(".status").html('<span class="state commenLeft">待审核</span><span id="status2" class="state color">- 审核未通过</span>');
+					}
+					if(status == "1"){
+						$("#status1").addClass("color").siblings().removeClass("color")
+					}
+				} else {
+					$("#status5").addClass("color").siblings().removeClass("color");
+				}
+				var data = result.data.base
+				time = data.stime;
+				title = data.name
+				$("#time").text(time.substring(0,11)+' '+'到'+' ' +data.etime.substring(0,11));
+				$(".title").text(title)
+				$(".address").text(data.province + data.city + data.location);
+				var str = '';
+				for(var i = 0; i < result.data.org[0].value.length; i++){
+					str += '<div>' + result.data.org[0].value[i] + '</div>'
+				}
+				$(".spoContent").html(str);
+			}else{
+				myAlert(result.msg)
+			}
+		},
+		error: function(){
+			myConfirm("请求失败!");
+		}
+	})
+}
+//酒店闪烁提示
+var sum = 0;
+function changeColor(){
+	var color="#f9752b|blue";
+	color=color.split("|");
+	document.getElementById("blink").style.color=color[sum * (color.length-1)];
+	if(sum == 0){
+		sum = 1;
+	} else {
+		sum = 0;
+	}
+}
+</script>
+</html>

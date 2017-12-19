@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>会议详情</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+	<link rel="stylesheet" type="text/css" href="../../../css/app/meetdetail.css">
+	<link rel="stylesheet" type="text/css" href="../../../css/app/style.css">
+	<!-- <script src="../../../js/jquery.min.js"></script> -->
+	<!-- <script type="text/javascript">
+		(function (doc, win) {
+	        var docEl = doc.documentElement,
+	            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+	            recalc = function () {
+	                var clientWidth = docEl.clientWidth;
+	                if (!clientWidth) return;
+	                if(clientWidth>=640){
+	                    docEl.style.fontSize = '100px';
+	                }else{
+	                    docEl.style.fontSize = 100 * (clientWidth / 640) + 'px';
+	                }
+	            };
+
+	        if (!doc.addEventListener) return;
+	        win.addEventListener(resizeEvt, recalc, false);
+	        doc.addEventListener('DOMContentLoaded', recalc, false);
+	    })(document, window);
+	</script> -->
+</head>
+<body>
+	<div>
+
+		<div class="head">
+			<div class="navImg">
+				<img src="../../../img/app/arrowLeft-icon.png">
+			</div>
+			<div class="navDetail">会议详情</div>
+		</div>
+		<div class="sheet white">
+			<div class="title">2017中国东盟企业峰会</div>
+			<div>
+				<div class="time commenHeight">
+					<span><img src="../../../img/app/time-icon.png"></span>
+					<span>时间&nbsp;:</span>
+					<span id="time" class="time commenLeft"></span>
+				</div>
+				<div class="location commenHeight">
+					<span><img src="../../../img/app/site-icon.png"></span>
+					<span>地点&nbsp;:</span>
+					<span class="address commenLeft"></span>
+				</div>
+			</div>
+			<div class="switchover hide">
+				<div class="site commenHeight">
+					<span><img src="../../../img/app/state-icon.png"></span>
+					<span>参会状态&nbsp;:</span>
+					<span class="state commenLeft color">待审核</span>
+					<span class="state color">- 审核通过</span>
+					<span class="state ">- 参会</span>
+				</div>
+				<div class="commenHeight">
+					<span class="spoImg"><img src="../../../img/app/sponsor-icon.png"></span>
+					<span class="organization">
+						<div class="sponsor">主办方&nbsp;:</div>
+						<div class="spoContent">
+							<div>泽财汇中科技有限公司泽财汇中科技有限公司</div>
+							<div>泽财汇中科技财汇中科技有限公司泽财汇中科财汇中科技有限公司泽财汇中科技技有限公司</div>
+							<div>泽财汇中财汇中科技有限公司泽财汇中科技财汇中科技有限公司泽财汇中科技科技有限公司</div>
+						</div>
+					</span>
+				</div>
+			</div>
+			
+			<span class="fold">
+				<img src="../../../img/app/downward.png">
+				<img src="../../../img/app/upward.png" class="hide">
+			</span>
+		</div>
+		<div class="list white">
+			<div class="listFlex">
+				<a href="introduction.html" class="intro">
+					<div class="imgContent">
+						<img src="../../../img/app/intro.png">
+					</div>
+					<div>简介</div>
+				</a>
+				<a href="organ.html" class="grid institution">
+					<div class="imgContent">
+						<img src="../../../img/app/institution.png">
+					</div>
+					<div>组织机构</div>
+				</a>
+				<a href="schedule.html" class="grid schedule">
+					<div class="imgContent">
+						<img src="../../../img/app/schedule.png">
+					</div>
+					<div>日程</div>
+				</a>
+			</div>
+			<div class="listFlex">
+				<a href="" class="grid guest">
+					<div class="imgContent">
+						<img src="../../../img/app/guest.png">
+					</div>
+				<div>嘉宾</div>
+				</a>
+				<a href="../index/register.html" class="grid guide">
+					<div class="imgContent">
+						<img src="../../../img/app/fingerpost.png">
+					</div>
+					<div>会议指南</div>
+				</a>
+				<a href="invitation.html" class="grid invitation">
+					<div class="imgContent">
+						<img src="../../../img/app/invitation.png">
+					</div>
+					<div>邀请函</div>
+				</a>
+			</div>
+			
+		</div>
+		<div>
+			<a href="" class="ticket white comPadding">
+				<span><img src="../../../img/app/ticket-icon.png"></span>
+				<span>酒店/机票</span>
+				<span class="arrows fr"><img src="../../../img/app/arrowRigth-icon.png"></span>
+			</a>
+		</div>
+		<div class="information white">
+			<a href="" class="inform comPadding">
+				<span><img src="../../../img/app/inform-icon.png"></span>
+				<span>活动通知</span>
+				<span class="arrows fr"><img src="../../../img/app/arrowRigth-icon.png"></span>
+			</a>
+			<a href="" class="discuss comPadding">
+				<span><img src="../../../img/app/discussion-icon.png"></span>
+				<span>会议讨论</sarrowspan>
+				<span class="arrows fr"><img src="../../../img/app/arrowRigth-icon.png"></span>
+			</a>
+			<a href="" class="apply comPadding">
+				<span><img src="../../../img/app/apply-icon.png"></span>
+				<span>报名信息</span>
+				<span class="arrows fr"><img src="../../../img/app/arrowRigth-icon.png"></span>
+			</a>
+		</div>
+	</div>
+</body>
+<script src="../../../js/zepto.js"></script>
+<!-- <script src="../../../js/app/zepto-cookie.js"></script> -->
+<script src="../../../js/app/mtCommon.js"></script>
+<script type="text/javascript">
+	// var time = $(".time").val();
+	// var title = $(".title").val();
+	var id = "d0298c8663614bc9aadff8a9d7860692";
+	// var id = Request("id");
+	var time = '';
+	var title = '';
+	$(function(){
+		// initPage();
+		$(".head").on("click",function(){
+			history.go(-1)
+		})
+		$(".fold").on("click", function(){
+			$(".switchover").toggleClass("hide");
+		});
+		$(".fold").on("click", function(){
+			$(".fold img").toggleClass("hide");
+		});
+		$(".grid").on("click", function(){
+			var strHref = $(this).attr("href");
+			var params = strHref + "?id="+ id
+			$(this).attr("href", params)
+		});
+		$(".intro").on("click", function(){
+			var params = "introduction.html?id="+id+"&title="+setUrlJson(title)+"&time="+setUrlJson(time); 
+			$(this).attr("href", params);
+		});
+	})
+	function initPage(){
+		$.myAjax({
+			url: basePath + "mt/user/activity/get.do",
+			data: {id:id,type:"base"},
+			type: "POST",
+			success: function(result){
+				if(result.flag){
+					console.log(result)
+					var data = result.data.activity
+					time = data.stime;
+					title = data.name
+					$("#time").text(time.substring(0,11));
+					$(".title").text(title)
+					$(".address").text(data.province);
+					var str = '';
+					for (var i = 0; i < result.data.activityOrgList.length; i++){
+						if(result.data.activityOrgList[i].name == "主办单位"){
+							for(var j = 0; j < result.data.activityOrgList[i].value.length; j++){
+								console.log(111);
+								console.log(result.data.activityOrgList[i].value[j])
+								str += '<div>' +result.data.activityOrgList[i].value[j] + '</div>'
+							}
+						};
+					};
+					$(".spoContent").html(str);
+				}else{
+					myAlert(result.msg)
+				}
+			},
+			error: function(){
+				myConfirm("请求失败!");
+			}
+
+		})
+	}
+</script>
+</html>

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>注册活动</title>
+<!-- webicon.ico为页面icon -->
+<link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+<link href="../../css/common/bootstrap.min.css" rel="stylesheet" />
+<link href="../../css/style.css" rel="stylesheet" />
+<link href="../../css/main.css" rel="stylesheet" />
+<style>
+	.btncon a{
+		color: #fff;
+	}
+	.content{
+		color: red;
+	}
+	label{
+		font-weight: 100;
+	}
+	.essay{
+		font-weight: 700;
+		font-size: 16px;
+	}
+	.meeting{
+		font-weight: 700;
+	}
+</style>
+</head>
+<body>
+<script type="text/javascript" src="../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="register.html">注册活动</a>
+	</div>
+	<div class="con-box noSubMenu">
+		<div>
+			<p class="essay">请选择活动模板</p>
+			<br>
+			<label for="">
+				<input type="radio" checked="checked" name="activityType" value="1000" class="input">
+				<input type="hidden" class="type" value="1"/>
+				<span class="meeting">小型会议模板: </span>包括会议管理,嘉宾管理,交通住宿,用户管理,新闻公告,配置管理,会议指南等7个功能,推荐200人以下使用
+				<span class="content">没有会场管理功能,如需分会场功能推荐使用中型会议模板。</span>
+				<br>
+				<br>
+				<input type="radio" name="activityType" value="1100">
+				<input type="hidden" class="type" value="1"/>
+				<span class="meeting">小型学术会议模板: </span>包括会议管理,嘉宾管理,交通住宿,用户管理,新闻公告,论文管理,配置管理,会议指南等8个功能,推荐200人以下使用
+				<span class="content">没有会场管理功能,如需分会场功能推荐使用中型学术会议模板。</span>
+				<br>
+				<br>
+				<input type="radio" name="activityType" value="2000">
+				<input type="hidden" class="type" value="1"/>
+				<span class="meeting">中型会议模板: </span>包括会议管理,工作人员,会场管理,嘉宾管理,交通住宿,用户管理,新闻公告,配置管理,会议指南等9个功能,推荐200人以上使用<br>
+				<br>
+				<input type="radio" name="activityType" value="2100">
+				<input type="hidden" class="type" value="1"/>
+				<span class="meeting">中型学术会议模板: </span>包括会议管理,工作人员,会场管理,嘉宾管理,交通住宿,用户管理,新闻公告,论文管理,配置管理,会议指南等10个功能,推荐200人以上使用
+				<br><br>
+				<input type="radio" name="activityType" value="1000">
+				<input type="hidden" class="type" value="3"/>
+				<span class="meeting">小型培训模板：</span>包括会议管理,嘉宾管理,交通住宿,用户管理,新闻公告,配置管理,会议指南等7个功能,推荐200人以下使用
+				<br>
+				<!-- <br>
+				<input type="radio" name="type" value="5">
+				<span class="meeting">小型培训模板: </span>包括会议管理,用户管理,新闻公告,嘉宾管理,交通管理,报道管理(会议签到,会议群)等6个功能,推荐200人以下使用
+				查看,管理后台模板,会议主页<br>
+				<br>
+				<input type="radio" name="type" value="6">
+				<span class="meeting">小型比赛模板: </span>包括比赛信息,比赛通知,比赛管理,嘉宾管理,交通管理,报道管理(会议签到,会议群)等6个功能,推荐小型比赛使用
+				查看,管理后台模板,会议主页<br>
+				<br>
+				<input type="radio" name="type" value="7">
+				<span class="meeting">中小型会展模板 </span>包括会议管理,用户管理,新闻公告,嘉宾管理,交通管理,报道管理(会议签到,会议群)等6个功能,推荐中小型会展使用
+				查看,管理后台模板,会议主页 -->
+			</label><br>
+			<div class="btncon">
+				<a type="button" class="btn btn-default btn-warning save next">下一步</a>
+			</div>
+		</div>
+	</div>     
+</div>
+<script type="text/javascript" src="../../js/common/footer.js"></script>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/common/main.js"></script>
+<script type="text/javascript">
+$(function(){
+	// 获取左侧菜单列表数据(参数为请求地址)
+	initMenu('../../js/data/adminMenu.json', '注册活动');
+	$(".next").click(function(){
+		var activityType = $("input[name='activityType']:checked").val();
+		var actType = $("input[name='activityType']:checked").next().val();
+		window.location.href = "submit.html?activityType=" + activityType+"&actType="+actType;
+	});
+});
+</script>
+</html>

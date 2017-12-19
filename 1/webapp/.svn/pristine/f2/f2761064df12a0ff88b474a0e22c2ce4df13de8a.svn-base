@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>活动列表</title>
+<link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+<link href="../../css/common/bootstrap.min.css" rel="stylesheet" />
+<link href="../../css/style.css" rel="stylesheet" />
+<link href="../../css/main.css" rel="stylesheet" />
+</head>
+<body>
+<script type="text/javascript" src="../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="submit.html">后台管理</a>
+		<a href="">-&gt;</a>
+		<a href="submit.html">注册活动</a>
+		<a href="">-&gt;</a>
+		<a href="submit.html">基本信息</a>
+	</div>
+	<div class="con-box noSubMenu">
+		<form id="detailform" class="form-horizontal">
+			<input type="hidden" name="type" id="type" />
+			<div class="form-group">
+			    <label for="" class="col-sm-2 control-label">请选择会议语言</label>
+			    <div class="col-sm-2">
+			      	<select class="form-control" name="language">
+						<option selected value="zh">中文</option>
+						<option value="en">英文</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+			    <label for="" class="col-sm-2 control-label">是否公开报名</label>
+			     <div class="col-sm-2">
+			      	<select class="form-control" name="isPublic">
+						<option selected value="2">是</option>
+						<option value="1">否</option>
+					</select>
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label for="" class="col-sm-2 control-label">会议名称</label>
+			    <div class="col-sm-7">
+			      <input name="name" class="form-control" id="inputTell" placeholder="请填写会议名称"/>
+			    </div>
+			</div>
+		    <div class="btncon">
+		      <button type="button" id="btn" class="btn btn-default btn-warning save">提&nbsp交</button>
+		    </div>
+		</form>
+	</div>     
+</div>
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/common/main.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#type").val(Request("type"));
+	// 获取左侧菜单列表数据(参数为请求地址)
+	initMenu('../../js/data/superMenu.json',"注册活动");
+	$("#submenumark").css('display','none');
+	$("#btn").click(function(data){
+		var url = basePath + 'admin/activity/save.do';
+		$.myAjax({
+			url: url,
+			data: $("#detailform").serialize(),
+			success: function(result){
+				if(result.flag){
+					console.log(result);
+					douAlert("保存成功，是否跳转到活动配置页面？", function(){
+						window.location.href = '../admin/conf/basicInfo.html?' + result.url;
+					},function(){
+						window.location.href = "activityList.html"
+					});
+				} else {
+					douAlert(result.msg);
+				}
+			},
+			error: function(){
+				console.log('请求失败！');
+			}
+		});
+	});
+});
+</script>
+ 
+</html>

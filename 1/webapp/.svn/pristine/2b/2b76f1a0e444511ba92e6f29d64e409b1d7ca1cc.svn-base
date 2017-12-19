@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+	<link rel="stylesheet" type="text/css" href="../../../css/app/style.css">
+	<script src="../../../js/jquery.min.js"></script>
+</head>
+<style type="text/css">
+	.date{
+		text-align: center;
+		width: 100%;
+		margin-top: 15px;
+		color: #878787;
+		font-weight: 600;
+	}
+	.navTitle{
+		padding: 15px 10px;
+		background-color: #ffffff;
+		color: #4b4b4b;
+		font-weight: 700;
+		box-shadow: 1px 1px 1.5px 1.5px #ccc;
+		margin-top: 48px;
+	}
+	.contain{
+		padding: 5px 16px;
+	}
+	.content{
+		margin-top: 10px;
+		background-color: #ffffff;
+		padding: 18px;
+		border-radius: 6px;
+		color: #444444;
+	}
+</style>
+<body>
+	<div>
+		<div class="head">
+			<div class="navImg">
+				<img src="../../../img/app/arrowLeft-icon.png">
+			</div>
+			<div class="navDetail">消息详情</div>
+		</div>
+		<div class="navTitle">
+			中国教育后勤协会思想文化建设与人力资源管理专业委员会（2017）年会暨高校后勤文化建设与人力资源管理创新论坛
+		</div>
+		<div class="conDetail">
+			<div class="contain">
+				<div class="date">
+					<span>10月30号</span>
+					<span>6:00</span>
+				</div>
+				<div class="content">
+					为服务“保险姓保”的行业职能，帮助各会员单位克服竞争压力，不断变革创新，加强对中高端人才核心管理能力的培养，化领导力为可衡量的行动，全面提升管理效能，以管理效能提升促进保险公司价值稳健成长。中国保险学会将联合美国管理协会共同举办“全国保险公司高阶领导力提升专题研修班”。培训内容涵盖了领导力领域的高阶内容及最新成果，从领导能力、领导力开发、成功领导者的特质、当代领导力面临的挑战和领导力的延伸等多个方面进行全面、深刻的剖析
+				</div>
+			</div>
+			<div class="contain">
+				<div class="date">
+					<span>10月30号</span>
+					<span>6:00</span>
+				</div>
+				<div class="content">
+					为服务“保险姓保”的行业职能，帮助各会员单位克服竞争压力，不断变革创新，加强对中高端人才核心管理能力的培养，化领导力为可衡量的行动，全面提升管理效能，以管理效能提升促进保险公司价值稳健成长。中国保险学会将联合美国管理协会共同举办“全国保险公司高阶领导力提升专题研修班”。培训内容涵盖了领导力领域的高阶内容及最新成果，从领导能力、领导力开发、成功领导者的特质、当代领导力面临的挑战和领导力的延伸等多个方面进行全面、深刻的剖析
+				</div>
+			</div>
+			<div class="contain">
+				<div class="date">
+					<span>10月30号</span>
+					<span>6:00</span>
+				</div>
+				<div class="content">
+					为服务“保险姓保”的行业职能，帮助各会员单位克服竞争压力，不断变革创新，加强对中高端人才核心管理能力的培养，化领导力为可衡量的行动，全面提升管理效能，以管理效能提升促进保险公司价值稳健成长。中国保险学会将联合美国管理协会共同举办“全国保险公司高阶领导力提升专题研修班”。培训内容涵盖了领导力领域的高阶内容及最新成果，从领导能力、领导力开发、成功领导者的特质、当代领导力面临的挑战和领导力的延伸等多个方面进行全面、深刻的剖析
+				</div>
+			</div>
+			<div class="contain">
+				<div class="date">
+					<span>10月30号</span>
+					<span>6:00</span>
+				</div>
+				<div class="content">
+					为服务“保险姓保”的行业职能，帮助各会员单位克服竞争压力，不断变革创新，加强对中高端人才核心管理能力的培养，化领导力为可衡量的行动，全面提升管理效能，以管理效能提升促进保险公司价值稳健成长。中国保险学会将联合美国管理协会共同举办“全国保险公司高阶领导力提升专题研修班”。培训内容涵盖了领导力领域的高阶内容及最新成果，从领导能力、领导力开发、成功领导者的特质、当代领导力面临的挑战和领导力的延伸等多个方面进行全面、深刻的剖析
+				</div>
+			</div>
+		</div>
+	</div>
+	<a name="skip"></a>
+</body>
+<script type="text/javascript">
+	$(document).ready(function(){
+		window.location ="#skip";
+		// $('.conDetail').scrollTop($('.conDetail')[0].scrollHeight);
+		// $('.conDetail').offset().bottom;
+		// var s = window.screen.availHeight ;
+		// console.log(s)
+		// $(".conDetail").offset().top = window.screen.availHeight ;
+	})
+	 // window.onload=function(){ 
+		//  document.documentElement.scrollTop=0;
+		//  }
+</script>
+</html>

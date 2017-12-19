@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>超级管理员登陆</title>
+	<link rel="stylesheet" href="../../css/index/base.css">
+	<link rel="stylesheet" href="../../css/index/login.css">
+	<style type="text/css">
+		.active{
+			position: relative;
+		}
+	</style>
+</head>
+<body>
+	<div class="contains">
+		<div class="con_tit">
+			<a href="javascript:;">
+				<img src="../../img/index/logoandname.png" alt="login">
+			</a>
+		</div>
+		<div class="con_box clearfix">
+			<div class=" login_img fl">
+				<img class="" src="../../img/index/loginimg.png" alt="login_img">
+			</div>
+			<ul class="loginList">
+				<li class="login_box fl active" id="user">
+					<p class="loginName">超级管理员登陆</p>
+					<div class="phone"></div>
+					手机号<input class="user" type="text" placeholder="请输入账号(手机号)" maxlength="32">
+					<div class="pwd"></div>
+					密码<input class="password" type="password" placeholder="请输入密码" maxlength="32">
+					<p class="login_message">请输入正确的账号</p>
+					<a href="javascript:;" class="login_btn" id="userLogin">登&nbsp录</a>
+					<p class="login_footer clearfix">
+						<a class="fr color_000" href="resetPwd.html?type=9" style="color:#252525; font-size:12px;" >忘记密码?
+						</a>
+					</p>
+				</li>
+			</ul>
+		</div>
+		<div class="con_footer">
+			<ul class="clearfix foot_link">
+				<li class="fl">
+					<a href="indepPage/about.html" target="_blank">关于我们</a>
+				</li>
+				<li class="fl">
+					<a href="indepPage/contant.html" target="_blank">联系我们</a>
+				</li>
+				<li class="fl">
+					<a href="indepPage/help.html" target="_blank">帮助中心</a>
+				</li>
+				<li class="fl">
+					<a href="indepPage/declare.html" target="_blank">网站声明</a>
+				</li>
+				<li class="fl">
+					<a href="indepPage/companyNews.html" target="_blank">公司新闻</a>
+				</li>
+			</ul>
+			<p>未经gconfs.com同意，不得转发网站会议信息</p>
+			<p>京ICP备17018133号</p>
+		</div>
+	</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/jQuery.md5.js"></script>
+<script>
+	// 登陆验证
+	function userValidation(id){
+		var mobile=$(id+'.user').val();
+		var pwd=($(id+'.password').val());
+		// 验证手机号
+		if (mobile == null || mobile == '') {
+			myAlert('账号不能为空!','slow');
+			return false;
+		}else{
+			if(!(/^1[34578]\d{9}$/.test(mobile))){ 
+	        	myAlert("账号格式不正确！",'slow');  
+	        	return false; 
+	        };
+		};
+		// 验证密码
+		if (pwd == null || pwd == '') {
+			myAlert('密码不能为空!','slow');
+			return false;
+		};
+		return true;
+	};
+	
+	// 登陆
+	function Login(id,url,path){
+		if(userValidation(id)){
+			var url=basePath+url;
+			var mobile=$(id+'.user').val();
+			var pwd=$.md5($(id+'.password').val());
+			$.myAjax({
+				url: url,
+				data: {
+					mobile:mobile ,
+					pwd: pwd
+				},
+				success:function(result){
+					console.log(result);
+					// return;
+					if(result.flag){
+						window.location.href = path;
+						// window.location.href = basePath+path;
+					}else{
+						$(id+'.login_message').css('display','block');
+						$(id+'.login_message').html(result.msg);
+					};
+				}
+			});
+		};
+	};
+	$('#userLogin').click(function(){
+		Login('#user ','super/login/check.do', '../super/activityList.html');	
+	});
+	
+	//键盘登陆
+	$(document).keypress(function(e) {  
+		// 回车键事件  
+        if(e.which == 13) {
+        	Login('#user ','super/login/check.do','../super/activityList.html');
+        };	  
+	});
+</script>
+</html>

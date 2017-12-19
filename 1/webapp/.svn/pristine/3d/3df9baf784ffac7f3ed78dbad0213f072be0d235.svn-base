@@ -1,0 +1,12 @@
+[
+	{
+		"icon" : "../../img/icon/admin/actListIcon.png",
+		"name" : "活动列表",
+		"url" : "activityList.html?isFuncLogin=1"
+	},
+	{
+		"icon" : "../../img/icon/admin/personal.png",
+		"name" : "个人信息",
+		"url" : "personal.html?isFuncLogin=1"
+	}
+]

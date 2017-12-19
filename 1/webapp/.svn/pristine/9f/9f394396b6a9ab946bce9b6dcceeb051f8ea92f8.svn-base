@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>会议简介</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+	<link rel="stylesheet" type="text/css" href="../../../css/app/style.css">
+</head>
+<style type="text/css">
+	.contain{
+		padding: 15px 10px;
+		
+		margin-top: 48px;
+	}
+	.content{
+		background-color: #ffffff;
+		padding: 0 15px 10px 15px; 
+	}
+	.conTitle{
+		border-bottom: 1px solid #e2e2e2;
+		margin: 0 -15px;
+		padding: 15px;
+	}
+	.title{
+		font-weight: 600;
+		color: #4a4a4a;
+	}
+	.timeBox{
+		margin-top: 10px;
+		font-size: 12px;
+		color: #878787;		
+	}
+	.timeBox img{
+		width: 12px;
+		vertical-align: middle;
+		margin-top: -2px;
+	}
+	.time{
+		margin-right: 3px;
+	}
+	.date{
+		margin-right: 5px;
+	}
+	.textContent{
+		color: #444444;
+		margin-top: 15px;
+	}
+</style>
+<body>
+	<div>
+		<div class="head">
+			<div class="navImg">
+				<img src="../../../img/app/arrowLeft-icon.png">
+			</div>
+			<div class="navDetail">会议简介</div>
+		</div>
+		<div class="contain">
+			<div class="content">
+				<div class="conTitle">
+					<div class="title">
+						中国教育后勤协会安全管理专业委员会
+					</div>
+					<div class="timeBox">
+						<span class="timeIcon"><img src="../../../img/app/time.png"></span>
+						<span class="time">时间:</span>
+						<span class="date">2017-11-20</span>
+						<span class="second">16:00</span>
+					</div>
+				</div>
+				
+				<div class="textContent">
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>今年我国社会经济发展将经历新的历史结点，党的十九大即将召开，学校安全稳定工作至关重要，后勤系统责任重大。为充分发挥行业组织的功能，学习贯彻党的十九大精神，积极配合有关主管部门，促进教育后勤系统开展隐患排查、矛盾化解，健全人防、物防、技防措施和各项制度，完善突发事件处理应急预案，提高后勤系统特殊时期、紧急情况下应对突发事件和解决处理问题的能力，为维护校园安全稳定做出贡献，经批准决定召开“中国教育后勤协会安全管理专业委员会（2016-2017）年会暨学校后勤安全管理交流研讨会”。同期还将召开本专委会主任秘书长工作会议。现将有关事项通知如下：
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+// 调用方法
+// alert(GetQueryString("time"));
+// alert(GetQueryString("title"));	
+// function GetQueryString(name){
+//      var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+//      var r = window.location.search.substr(1).match(reg);
+//      if(r!=null)return  unescape(r[2]); return null;
+// }
+</script>
+</html>

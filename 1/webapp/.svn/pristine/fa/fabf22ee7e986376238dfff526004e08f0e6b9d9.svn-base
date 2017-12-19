@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+	<title>actList</title>
+	<link rel="stylesheet" href="../../../css/app/base.css">
+	<link rel="stylesheet" href="../../../css/app/actList.css">
+</head>
+<body>
+	<header class="head">
+		群英会会议
+		<img class="code" src="../../../img/app/code.png" alt="code">
+	</header>
+	<!-- <nav class="nav">
+		<div class="nav-list">
+			<span class="nav-txt"><i>全部会议(12)</i></span>
+			<span class="nav-line"><i></i></span>
+		</div>
+		<div class="nav-line"></div>
+		<div class="nav-list">
+			<span class="nav-txt">已报名(20)</span>
+			<span ></span>
+		</div>
+	</nav> -->
+	<section class="act" id="wrapper">
+		<article id="scroller">
+		 	<div id="pullDown">
+		    	<span class="pullDownIcon"></span><span class="pullDownLabel">下拉刷新...</span>
+		    </div>
+			<div id="thelist">
+			
+				<!-- <article class="act-list" >
+					<header class="act-tit">20178届世界增强现实欧洲博览</header>
+					<section class="act-cont">
+						<div class="act-group">
+							<p class="act-item">
+								<img class="icon" src="../../../img/app/time.png"/>
+								<span class="time">时间：</span>
+								<span class="txt">2017-10-20</span>
+							</p>
+							<p class="act-item">
+								<img class="icon" src="../../../img/app/address.png"/>
+								<span class="address">地点:</span>
+								<span class="txt">昆明市</span>
+							</p>
+						</div>
+						<div class="act-atten">
+							<img class="atten" src="../../../img/app/no-atten.png" alt="">
+							<span class="txt">未关注</span>
+						</div>
+						<div class="act-state">
+							已报名
+						</div>
+					</section>
+				</article> -->
+			</div>
+			<div id="pullUp">
+			    <span class="pullUpIcon"></span><span class="pullUpLabel">上拉加载更多...</span>
+			</div>
+			<!-- <div id="aa">11</div> -->
+		</article>
+		
+	</section>
+</body>
+
+<script src="../../../js/zepto.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<!-- <script src="../../../js/app/mtTool.js"></script> -->
+<script src="../../../js/weixin/iscroll.js"></script>
+<script src="../../../js/app/pullLoad.js"></script>
+<script src="../../../js/user/userMain.js"></script>
+<script>
+	$(function(){
+		// autoLogin(); // 自动登录
+		login();
+		setTimeout(init,3000)
+		// init();
+		$(document).on('click','.act-list',function(e){
+			var id = $(this).find('.id').val();
+			console.log(id)
+			window.location.href="meetDetail.html?id="+id;
+		})
+	})
+	function init(){
+		$('#thelist').html(' ');
+		add(1,2)
+	}
+	function add(num,size){
+		var url = 'http://192.168.1.112:8080/mt/user/activity/list.do';
+		$.myAjax({
+			url: url,
+			data: {pageNum:num,pageSize:size,type:2},
+			success: function(result){
+				console.log(result.data.activityList)
+				if(result.flag){
+					console.log(result)
+					var data = result.data.activityList
+					if(data.length<2){
+						key=true	
+					};
+					for(var i = 0; i < data.length; i ++){
+						var str = 
+						'<article class="act-list">'+
+							'<input class="id" type="hidden" value="'+data[i].id+'"/>'+
+							'<header class="act-tit">'+data[i].name+'</header>'+
+							'<section class="act-cont">'+
+								'<div class="act-group">'+
+									'<p class="act-item">'+
+										'<img class="icon" src="../../../img/app/time.png"/>'+
+										'<span class="time">时间：</span>'+
+										'<span class="txt">'+getSubstring(data[i].stime, 0, 11)+'</span>'+
+									'</p>'+
+									'<p class="act-item">'+
+										'<img class="icon" src="../../../img/app/address.png"/>'+
+										'<span class="address">地点:</span>'+
+										'<span class="txt">'+data[i].province+'</span>'+
+									'</p>'+
+								'</div>'+
+								'<div class="act-atten">'+
+									'<img class="atten" src="../../../img/app/no-atten.png" alt="">'+
+									'<span class="txt">未关注</span>'+
+								'</div>'+
+								'<div class="act-state">'+
+									''+data[i].attend_state+''+
+								'</div>'+
+							'</section>'+
+						'</article>';
+						$('#thelist').append(str);
+					};
+					myScroll.refresh();
+				}else{
+					console.log("请求失败");
+				}
+
+				console.log(result)
+			},
+			error: function(){
+				console.log("登录失败,请重新登录");
+			}
+		})
+	}
+	function login(){
+		var url = 'http://192.168.1.112:8080/user/login/check.do';
+		var data = {"mobile": '18201571705',"pwd":'b9a4d247f24b94857118b4e321bb48c5'}
+		console.log(data);
+		$.myAjax({
+			url: url,
+			data: data,
+			xhrFields: { // 解决跨域session不一致问题，上线删除，只开发使用
+			   withCredentials: true
+			},
+			crossDomain: true,
+			success: function(result){
+				if(result.flag == true){
+					
+				}else{
+					alert(result.msg);
+				}
+			},
+			error: function(){
+				alert("登录失败,请重新登录");
+			}
+		})
+	}
+</script>
+</html>
+

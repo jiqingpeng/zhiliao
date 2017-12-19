@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<!-- <meta charset="UTF-8"> -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>签到配置</title>
+<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="../../../css/common/bootstrap.css">
+<link rel="stylesheet" href="../../../css/common/bootstrap-table.min.css">
+<link href="../../../css/style.css" rel="stylesheet" />
+<link href="../../../css/main.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../../css/admin.css">
+<style type="text/css">
+.signCheckbox {
+	height: 18px;
+	width: 18px;
+	position: relative;
+	top: 4px;
+	left: -8px;
+}
+#qrcode {
+	width: 160px;
+	height: 160px;
+	margin-left: 40%;
+	position: absolute;
+	top: 80px;
+}
+#qrcode img {
+	width: 160px;
+	height: 160px;
+}
+.btncon {
+	margin-top: 120px;
+}
+</style>
+</head>      
+<body>
+<!-- 引入页头 -->
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="basicInfo.html">管理中心</a>
+		<a href="">-&gt;</a> 
+		<a href="basicInfo.html">会议管理</a>
+		<a href="">-&gt;</a>
+		<a href="actSign.html">签到配置</a>
+	</div>
+	<div class="con-box" id="box">
+		<div id="subMenu">
+		</div>
+
+		<div id="contentBody" class="mops-form">
+
+		<form id="detailform" class="form-horizontal">
+			<input type="hidden" name="activityId" id="activityId"/>
+			<div class="form-group">
+			    <label for="" class="col-sm-3 control-label">请选择会议支持的签到方式：</label>
+			</div>
+			<div class="form-group">
+			    <label for="" class="col-sm-2 control-label">01</label>
+			    <div class="col-sm-3">
+			      <input type="checkbox" class="signCheckbox weixin"/>微信扫码签到
+			    </div>
+			</div>
+			<!-- <div class="form-group">
+			    <label for="" class="col-sm-2 control-label">02</label>
+			    <div class="col-sm-3">
+			      	<input type="checkbox" class="signCheckbox app"/>App签到
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label for="" class="col-sm-2 control-label">03</label>
+			    <div class="col-sm-3">
+			      	<input type="checkbox" class="signCheckbox smartCard"/>智能卡签到
+			    </div>
+			</div> -->
+			<div class="form-group">
+			    <label for="" class="col-sm-2 control-label">02</label>
+			    <div class="col-sm-3">
+			      	<input type="checkbox" class="signCheckbox carpet"/>地毯签到
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label for="" class="col-sm-2 control-label">03</label>
+			    <div class="col-sm-3">
+			      	<input type="checkbox" class="signCheckbox other"/>其他
+			    </div>
+			</div>
+		    <div class="btncon">
+		      <button type="button" class="btn btn-default btn-warning signSave">保&nbsp;存</button>
+		      <button type="button" class="btn btn-default" id="cancel">取&nbsp;消</button>
+		    </div>
+		</form>
+		<div id="qrcode" class="none">
+			<img src="" alt="签到二维码"/>
+		</div>
+		</div>	 
+	</div>
+</div>
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/main.js"></script>               
+<script type="text/javascript">
+$(function(){
+	// 获取左侧菜单列表数据(参数为请求地址)
+	serialMenuAjax('admin/activity/menu.do', '会议管理', sessionStorage.getItem('actId'),initPage);
+	// 设置页面二级菜单
+	setSubMenu('签到配置');
+
+	$("#activityId").val(sessionStorage.getItem('actId'));
+
+	$(".weixin").click(function(){
+		if($(this).is(':checked') == true){
+			$("#qrcode").removeClass("none");
+		} else {
+			$("#qrcode").addClass("none");
+		}
+	})
+
+	$(".signSave").click(function(){
+		var signType = '';
+		if($(".weixin").is(':checked') == true){
+			signType += '1,';
+		}
+		if($(".carpet").is(':checked') == true){
+			signType += '4,';
+		}
+		if($(".other").is(':checked') == true){
+			signType += '5,';
+		}
+		var postData = 'activityId='+$("#activityId").val()+'&activityType=10'+
+				'&signType='+signType;
+		$.myAjax({
+			url: basePath + 'admin/activity/signconfig/save.do',
+			data: postData,
+			success: function(result){
+				myAlert(result.msg);
+			},
+			error: function(){
+				myAlert("请求失败!","slow");
+			}
+		})
+	})
+
+})
+
+function initPage(){
+	$.myAjax({
+		url: basePath + 'admin/activity/signconfig/list.do',
+		data: {id:$("#activityId").val()},
+		success: function(result){
+			if(result.flag){
+				for(var i=0;i<result.data.length;i++){
+					var signType = result.data[i].signType;
+					if(signType == '1'){
+						$(".weixin").attr('checked',true);
+						$("#qrcode").removeClass("none");
+						continue;
+					}
+					if(signType == '4'){
+						$(".carpet").attr('checked',true);
+						continue;
+					}
+					if(signType == '5'){
+						$(".other").attr('checked',true);
+						continue;
+					}
+				}
+			} else {
+				myAlert(result.msg);
+			}
+			initQrcode();
+		},
+		error: function(){
+			myAlert("请求失败!","slow");
+		}
+	})
+}
+
+function initQrcode(){
+	$.myAjax({
+		url: basePath + 'admin/activity/sign/QRCode.do',
+		data: {id:$("#activityId").val(),type:'10'},
+		success: function(result){
+			if(result.flag){
+				var src = 'data:image/jpg;base64,'+result.data;
+				$("#qrcode img").attr('src',src);
+			} else {
+				myAlert(result.msg);
+			}
+		},
+		error: function(){
+			myAlert("请求失败!","slow");
+		}
+	})
+}
+</script> 
+</html>

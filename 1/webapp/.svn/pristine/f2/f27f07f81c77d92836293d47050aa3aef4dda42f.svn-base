@@ -1,0 +1,17 @@
+<html lang="zh">
+<head>
+</head>
+<body>
+  <form action="http://114.215.68.122/mops/login.do" method="post">
+    <input type="text" name="name" value="13810670427">
+	<input type="text" name="pwd" value="fd3d8982e3c9e0e360ecc81dccb9a87d">
+	<input type="text" name="property" value="0">
+	<input type="submit" value="提交">
+  </form>
+  <form action="http://114.215.68.122/mops/conf/get/confList.do" method="post">
+    <input type="text" name="adminId" value="gltwocues60zb0so5fu8e3h6diw3cwmw">	 
+	<input type="text" name="property" value="0">
+	<input type="submit" value="提交">
+  </form>
+</body>
+</html>

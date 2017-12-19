@@ -1,0 +1,33 @@
+	[{
+        "id": "报名开始时间",
+        "name": "",
+        "price": "<input type='date' />"
+    },{
+        "id": "报名截止时间",
+        "name": "",
+        "price": "<input type='date' />"
+    },{
+        "id": "论文提交截止时间",
+        "name": "",
+        "price": "<input type='date' />"
+    },{
+        "id": "论文审核截止时间",
+        "name": "",
+        "price": "<input type='date' />"
+    },{
+        "id": "缴费开始时间",
+        "name": "",
+        "price": "<input type='date' />"
+    },{
+        "id": "缴费截止时间",
+        "name": "",
+        "price": "<input type='date' />"
+    },{
+        "id": "报道开始时间",
+        "name": "",
+        "price": "<input type='date' />"
+    },{
+        "id": "报道截止时间",
+        "name": "",
+        "price": "<input type='date' />"
+    }]

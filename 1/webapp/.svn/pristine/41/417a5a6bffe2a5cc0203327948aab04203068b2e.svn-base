@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>邀请函</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="./../../swipe/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/app/style.css">
+    <!-- <link rel="stylesheet" type="text/css" href="invate.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="../../css/common/bootstrap.min.css"> -->
+    <!-- Demo styles -->
+    <!-- <link rel="stylesheet" href="animation.css"> -->
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    html,body{
+        height: auto;
+        color: #ffffff;
+    }
+    .swiper-slide{
+        min-height: 632px;
+        /*border: 1px solid red;*/
+        box-sizing: border-box;
+        padding: 40px;
+        width: 100%;
+        background: url("../../../img/app/invite.png");
+        margin-top: 48px;
+    }
+    .swiper-container{
+        width: 100%;
+    }
+    .swiper-wrapper{
+        height: 100%;
+        width: 100%;
+    }
+    .swiper-slide{
+        
+    }
+    /*第一屏start*/
+    .invitation{
+    	color: #ffffff;
+    }
+    /*第一屏end*/
+
+    /*第二屏start*/
+    .haeremai{
+    	text-align: center;
+    	margin-bottom: 20px;
+    	color: #ffad30;
+        font-weight: 100;
+    }
+    /*.articleBox{
+        padding: 0 20px;
+    }*/
+    .article{
+    	text-indent: 2em;
+    	line-height: 22px;
+    }
+    /*第二屏end*/
+
+    /*第三屏start*/
+    .institution{
+    	text-align: center;
+    	line-height: 24px;
+    	margin-top: 20px;
+    }
+    .sponsor{
+    	color: #ffad30;
+    	margin-bottom: 10px;
+    }
+    /*第三屏end*/
+
+    /*第四屏start*/
+    .invitation{
+    	margin-bottom: 20px;
+    	margin-top: 20px;
+    	text-align: center;
+    }
+    .contain{
+        margin-top: 20px;
+    }
+    .schedule{
+    	/*margin-top: 20px;*/
+    }
+    .data{
+    	margin-bottom: 21px;
+    	color: #ffad30;
+    }
+    .time, .content{
+    	float: left;
+    	vertical-align: top;
+    }
+    .time{
+    	width: 35%;
+    	margin-right: 5%;
+    	color: #ffad30;
+    }
+    .content{
+    	width: 60%;
+    	line-height: 21px;
+    }
+    .distance{
+    	margin-bottom: 10px;
+
+    }
+    .flight{
+    	color: #ffad30;
+    }
+    /*第四屏end*/ 
+
+    /*第五屏start*/
+    .honoredGuest{
+        display: flex;
+        margin-top: 20px;
+        /*line-height: 20px;*/
+    }
+    .guestImg{
+    	flex: 1;
+        margin-top: -5px;
+    }
+    .guestImg img{
+        width: 100%;
+        /*vertical-align: bottom;*/
+        /*margin-top: -18%;*/
+    }
+    .gusetIntro{
+    	/*display: flex;*/
+        flex: 3;
+    	/*width: 75%;*/
+        margin-left: 10px;
+    }
+    .name{
+        color: #ffad30;
+    }
+    .intro{
+        overflow: hidden;
+        height: 40px;
+        /*line-height: 22px;*/
+        margin-top: 16px;
+    }
+    /*第五屏end*/ 
+
+    /*第六屏start*/
+    .code{
+        margin-top: 20px;
+    }
+    .QRcode{
+        text-align: center;
+        margin-top: 50px;
+    }
+    .QRcode img{
+        width: 50%;
+        margin-top: 20px;
+    }
+    .onesweep{
+        margin-top: 28px;
+    }
+    .specially{
+        font-size: 24px;
+        color: #c49a18;
+        margin-top: 90px;
+    }
+    .apply{
+        display: inline-block;
+        width: 52%;
+        height: 40px;
+        line-height: 40px;
+        border-radius: 50px;
+        color: #ffffff;
+        background-color: #ffbe1f;
+        font-weight: 700;
+        font-size: 16px;
+        /*margin-top: 34px;*/
+    }
+    /*第六屏end*/ 
+    .left_icon img, .right_icon img{
+        width: 30px;
+        transform:rotate(270deg);
+        position: absolute;
+        top: 40%;
+        right: 10px;
+        opacity: 0.3;
+    }
+    .right_icon img{
+        right: auto;
+        left: 10px;
+        transform:rotate(90deg);
+    }
+    /*第七屏start*/ 
+    /*第七屏end*/ 
+
+</style>
+</head>
+<body>
+    <!-- Swiper -->
+    <div class="head">
+		<div class="navImg">
+			<img src="../../../img/app/arrowLeft-icon.png">
+		</div>
+		<div class="navDetail">邀请函</div>
+	</div>
+    <div class="swiper-container">
+        <!-- <div class="music">
+            <img class="musicbg" src="img/music.jpg" alt="musicbg">
+            <audio src="music/hlw.mp3" autoplay="autoplay" loop="loop"></audio>
+        </div> -->
+        
+        <div class="swiper-wrapper">
+            <div class="swiper-slide first-screen">
+                <div class="left_icon"><img src="../../../img/app/initLeft-icon.png"></div>
+            	<h1 class="haeremai">邀请函</h1>
+            	
+            </div>
+            <div class="swiper-slide secont-screen">
+                <div class="left_icon"><img src="../../../img/app/initLeft-icon.png"></div>
+                <div class="right_icon"><img src="../../../img/app/initLeft-icon.png"></div>
+                <h1 class="haeremai">欢迎辞</h1>
+                <div class="articleBox">
+                	<p class="article">2017年10月20日，中国民营科技创新峰会暨民营企业家年会分论坛合作筹备研讨会在新华网总部顺利召开。本次交流会由中国民营科技实业家协会组织，群英汇会议服务平台提供“跨界合作”的资源对接和平台搭建，中国民营科技实业家协会龚秘长主持。</p>
+                	<p class="article">本次活动以中国民营科技创新新峰会筹备会议为主题，深入交流并探讨本次峰会将举办的分论坛合作及筹备相关事项。中国民营科技实业家协会龚秘书长、中国建设会计学会王秘书长、中国建材工业经济研究会周秘书长、中国技术创业协会裴秘书长、中国国际科学技术合作协会孙秘书长、中国教育后勤协会张主任、新华网战略合作事业部刘总经理等相关领导出席本次筹备合作研讨会。</p>
+                </div>
+            </div>
+            <div class="swiper-slide three-screen">
+                <div class="left_icon"><img src="../../../img/app/initLeft-icon.png"></div>
+                <div class="right_icon"><img src="../../../img/app/initLeft-icon.png"></div>
+                <h1 class="haeremai">组织机构</h1>
+                <div id="institution">
+                    <div class="institution">
+                        <h2 class="sponsor">主办方</h2>
+                        <div>
+                            <div>中国软件行业协会</div>
+                            <div>中国膜工业协会</div>
+                            <div>中国民营科技实业家协会</div>
+                            <div>中国软件行业协会</div>
+                            <div>中国软件行业协会</div>
+                            <div>中国软件行业协会</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide four-screen">
+                <!-- <h1 class="haeremai">活动日程</h1> -->
+                <div class="left_icon"><img src="../../../img/app/initLeft-icon.png"></div>
+                <div class="right_icon"><img src="../../../img/app/initLeft-icon.png"></div>
+                <h1 class="haeremai">活动日程</h1>
+            	<div class="conBox">
+                    <div class="data">2017年10月19日</div>
+                    <div class="schedule">
+                        <span class="time">80:00-90:00</span>
+                        <span class="content">
+                            <div class="distance flight">领导与嘉宾发言领导与嘉宾打算发言领导与嘉宾发言领导与嘉宾发言领导与嘉宾发言</div>
+                            <div class="distance">领导与嘉宾发言</div>
+                            <div class="distance">领导与嘉宾发言</div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide five-screen">
+                <div class="left_icon"><img src="../../../img/app/initLeft-icon.png"></div>
+                <div class="right_icon"><img src="../../../img/app/initLeft-icon.png"></div>
+               	<h1 class="haeremai">嘉宾介绍</h1>
+                <div>
+                    <div class="honoredGuest">
+                        <span class="guestImg"><img src="../../../img/app/invaImg.png"></span>
+                        <span class="gusetIntro">
+                            <div class="name">姚飞</div>
+                            <div class="intro">家发改委领导国家发改委领导
+                            </div>
+                        </span>
+                    </div>
+                    <div class="honoredGuest">
+                        <span class="guestImg"><img src="../../../img/app/invaImg.png"></span>
+                        <span class="gusetIntro">
+                            <div class="name">姚飞</div>
+                            <div class="intro">国家发改委领导国家发改委领导国家发改委领导国家发改委领导国家发改委国家发改委领导国家发改委领导国家发改委领导国家发改委领导
+                            </div>
+                        </span>
+                    </div>
+                    <div class="honoredGuest">
+                        <span class="guestImg"><img src="../../../img/app/invaImg.png"></span>
+                        <span class="gusetIntro">
+                            <div class="name">姚飞</div>
+                            <div class="intro">国家发改委领导国家发改委领导国家发改委领导国家发改委领导国家发改委国家发改委领导国家发改委领导国家发改委领导国家发改委领导
+                            </div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide six-screen">
+                <div class="left_icon"><img src="../../../img/app/initLeft-icon.png"></div>
+                <div class="right_icon"><img src="../../../img/app/initLeft-icon.png"></div>
+                <div class="QRcode">
+                    <a class="apply" href="">立即报名</a>
+                    
+                    
+                    <div class="code">
+                        <img src="../../../img/app/QRcode.png">   
+                    </div>
+                    <div class="onesweep">XXX微信扫一扫&nbsp;关注更多</div>
+                    <div class="specially">盛情特邀您出席</div>
+                </div>
+            </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+</body>
+<!-- <script src="../../../js/jquery.min.js"></script> -->
+<script src="../../../js/zepto.js"></script>
+<script src="../../swipe/swiper.min.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<!-- <script src="../."></script> -->
+<script>
+var result = '';
+var id = "25812d45fc27441ebacb6f9e3fe70322";
+var url = "http://192.168.1.112:8080/" + "mt/user/activity/get.do";
+var data = {id:id,type:"schedual"};
+$(function(){
+    // initPage(url,data,getMessage0);
+    $(".apply").on("click", function(){
+        var strHref = "../index/takepart.html";
+        var params = strHref + "?id="+ id;
+        $(this).attr("href", params);
+    });
+    var mySwiper = new Swiper ('.swiper-container', {
+        autoHeight: true,
+        // observer:true,
+        onInit: function(swiper){
+            // swiperAnimateCache(swiper);
+            // swiperAnimate(swiper);
+        },
+        onTransitionEnd: function(swiper){
+            
+            // var id = Request("id");
+            // var id = "25812d45fc27441ebacb6f9e3fe70322";
+            
+            
+            var index=swiper.activeIndex;
+            if(index==0){
+                // initPage(url,data,getMessage0);
+            }
+            if(index==1){
+                // initPage(url,data,getMessage1);
+            }
+            if(index==2){
+                data = {id:id,type:"org"};
+                initPage(url,data,getMessage2);
+            }
+            if(index==3){   
+                data = {id:id,type:"schedual"};
+                initPage(url,data,getMessage3);
+            }
+            if(index==4){
+                // initPage(url,data,getMessage4);
+            }
+            if(index==5){
+                // initPage(url,data,getMessage5);
+            }
+        }
+    }); 
+});
+function initPage(url,data,fn){
+    $.myAjax({
+        url: url,
+        data: data,
+        success: function(result){
+            // console.log(result);
+            if(result.flag){
+                fn(result);
+            }else{
+                myAlert(result.msg);
+            }
+        },
+        error: function(){
+            myConfirm("请求失败!");
+        }
+    }) 
+}
+
+
+//初始化 index=0 页面
+function getMessage0(result){
+    // alert(1)
+}
+//初始化 index=1 页面
+function getMessage1(result){
+    // alert(2)
+}
+//初始化 index=2 组织机构页面
+function getMessage2(result){
+   console.log(result);
+   console.log(result.data.org);
+   var str = '';
+   var data = result.data.org;
+   var string = '';
+   var con = '';
+   for(var i = 0; i < data.length; i++){
+        str = '';
+        str += '<div class="institution">' +
+                    '<h2 class="sponsor">' + data[i].name + '</h2>';
+        string = '';           
+        for(var j = 0; j < data[i].value.length; j++){
+            console.log(data[i].value[j]);
+            string += '<div>' +
+                        data[i].value[j]
+                    '</div>' +
+                '</div>';
+        };
+        con += str + string;
+   }
+   $("#institution").html(con);
+}
+//初始化 index=3 活动日程页面
+function getMessage3(result){
+    var data = '';
+    var string = '';
+    var con = '';
+    for(var key in result.data.schedual){
+        var str = '<div class="data">'+ key +'</div>';
+        console.log(result.data.schedual[key].length);
+        data = result.data.schedual[key];
+        string='';
+        for(var i = 0; i < data.length; i++){
+            string +='<div class="schedule clearfix">' +
+                    '<span class="time">'+ data[i].time +'</span>' +
+                    '<span class="content">' +
+                        '<div class="distance flight">'+ data[i].content +'</div>' +
+                    '</span>' +
+                '</div>' ;
+        }
+        con += '<div class="contain">' + str + string + '</div>'
+    }
+    $(".conBox").html(con);
+}
+//初始化 index=4 嘉宾介绍页面
+function getMessage4(result){
+    
+}
+//初始化 index=5 立即报名页面
+function getMessage5(result){
+    alert(6)
+}
+</script>
+</html>

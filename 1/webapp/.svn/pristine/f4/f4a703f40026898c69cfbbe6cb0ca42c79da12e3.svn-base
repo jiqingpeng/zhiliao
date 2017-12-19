@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>新闻发布</title>
+<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+<link href="../../../css/common/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../../js/ueditor/themes/default/css/ueditor.css">
+<link href="../../../css/style.css" rel="stylesheet" />
+<link href="../../../css/main.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../../css/admin.css">
+
+</head>
+<body>
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="news.html">新闻公告</a>
+		<a href="">-&gt;</a>
+		<a href="news.html">新闻发布</a>
+	</div>
+	<div class="con-box">
+	<div id="subMenu">
+        <div id="subMenuBody">
+            <ul>
+                <a href="news.html"><li class="menuAct">新闻发布</li></a>
+                <a href="notice.html"><li>公告发布</li></a>
+                <a href="oleNews.html"><li>已发布新闻</li></a>
+                <a href="oldNotice.html"><li>已发布公告</li></a>
+            </ul>
+        </div>
+    </div>
+    <div id="contentBody" class="mops-table">
+    <form class="form-horizontal">
+        <input type="hidden" name="activityId">
+        <!-- <input type="hidden" name="id" id="id"> -->
+        <div class="form-group">
+            <label class="col-sm-1 control-label">标题</label>
+            <div class="col-sm-7">
+                <input type="text" name="title" class="form-control title" placeholder="请输入标题">
+            </div>  
+        </div>
+        <div class="form-group"> 
+            <label class="col-sm-1 control-label">作者</label>
+            <div class="col-sm-7">
+                <input type="text" name="author" class="form-control author" placeholder="请输入作者">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-1 control-label">正文</label>
+            <div class="col-sm-7">
+                <textarea id="newseditor"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-1 control-label"></label>
+            <div class="col-sm-7">
+                <div class="btncon">
+                    <button type="button" class="btn btn-default btn-warning saveinfo">发&nbsp布</button>
+                </div>
+            </div>
+        </div>
+    </form>
+	</div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/ueditor/ueditor.config.js"></script>
+<script src="../../../js/ueditor/ueditor.all.js"></script>
+<script src="../../../js/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/main.js"></script>
+
+<script>
+// 实例化编辑器
+var editor = UE.getEditor('newseditor',{
+	toolbars:[[
+            'undo', //撤销
+            'redo', //重做
+            'preview', //预览
+            'selectall', //全选
+            'removeformat', //清除格式
+            'cleardoc', //清空文档
+            'bold', //加粗
+            'indent', //首行缩进
+            'italic', //斜体
+            'underline', //下划线
+            'strikethrough', //删除线
+            'subscript', //下标
+            'fontborder', //字符边框
+            'superscript', //上标
+            'formatmatch', //格式刷
+            'justifyleft', //居左对齐
+            'justifyright', //居右对齐
+            'justifycenter', //居中对齐
+            'justifyjustify', //两端对齐
+            'forecolor', //字体颜色
+            'backcolor', //背景色
+            'insertorderedlist', //有序列表
+            'insertunorderedlist', //无序列表
+            'imagenone', //默认
+            'imageleft', //左浮动
+            'imageright', //右浮动
+            'imagecenter', //居中
+            'rowspacingtop', //段前距
+            'rowspacingbottom', //段后距
+            'lineheight', //行间距
+            'edittip ', //编辑提示
+            'touppercase', //字母大写
+            'tolowercase', //字母小写
+            'autotypeset', //自动排版
+        ],[
+            'spechars', //特殊字符
+            'fontfamily', //字体
+            'fontsize', //字号
+            'paragraph', //段落格式
+            'customstyle', //自定义标题
+            'inserttable', //插入表格
+            'insertrow', //前插入行
+            'insertcol', //前插入列
+            'mergeright', //右合并单元格
+            'mergedown', //下合并单元格
+            'deleterow', //删除行
+            'deletecol', //删除列
+            'splittorows', //拆分成行
+            'splittocols', //拆分成列
+            'splittocells', //完全拆分单元格
+            'deletecaption', //删除表格标题
+            'inserttitle', //插入标题
+            'mergecells', //合并多个单元格
+            'deletetable', //删除表格
+            'insertparagraphbeforetable', //"表格前插入行"
+            'edittable', //表格属性
+            'edittd', //单元格属性
+            'date', //日期
+            'time', //时间
+            'link', //超链接
+            'unlink', //取消链接
+            'simpleupload', //单图上传
+        ]
+    ],
+	autoHeightEnabled: true,
+	autoFloatEnabled: true
+})
+
+$(function(){
+    // 获取左侧菜单列表数据(参数为请求地址)
+    initMenu('../../../js/data/administrator.json','新闻公告');
+
+	$(".saveinfo").click(function(){
+        var activityId = sessionStorage.getItem('actId');
+        var uedContent = editor.getContent();
+        var title = $(".title").val();
+        var author = $(".author").val();
+        var data = 'activityId='+ activityId +
+                    '&title=' + title +
+                    '&author=' + author +
+                    '&content=' + uedContent;
+        if(title){
+            if(uedContent){
+                $.myAjax({
+                    url: basePath + "admin/activitynews/save.do",
+                    data: data,
+                    success: function(result){
+                        myAlert(result.msg);
+                    },
+                    error: function(){
+                        myAlert(result.msg,"slow");
+                    }
+                }) 
+            }else{
+                myAlert("新闻内容不能为空");
+            }
+        }else{
+            myAlert("新闻标题不能为空");
+        }
+        
+    });
+});
+	
+</script>
+</html>

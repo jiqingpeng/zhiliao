@@ -1,0 +1,369 @@
+<%@ page language="java" import="java.util.*"
+	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="com.sjxd.gconfs.util.UtilLinux"%>
+<%@page import="com.sjxd.gconfs.util.Util"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>sysinfo</title>
+<link rel="shortcut icon" href="../../img/webicon.ico"
+	type="image/x-icon" />
+
+<link href="../../css/common/bootstrap.min.css" rel="stylesheet">
+<link href="../../css/common/bootstrap-table.min.css" rel="stylesheet">
+<link href="../../css/style.css" rel="stylesheet" />
+<link href="../../css/main.css" rel="stylesheet" />
+<style type="text/css">
+body {
+	font-size: 14px;
+}
+
+.name {
+	width: 95px;
+	text-align: left;
+}
+
+.value {
+	max-width: 260px;
+}
+
+.btn {
+	padding: 6px;
+	background-color: #f0ad4e;
+}
+
+#CPU, #Mem, #Os, #Swap, #Fs, #Other, #If, #Who, #CPULength {
+	margin-bottom: 4px;
+}
+
+.ele {
+	margin-bottom: 4px;
+	display: inline-block;
+}
+
+.list {
+	min-width: 800px;
+}
+
+}
+.btn-group, .commonele {
+	width: 275px;
+	float: left;
+}
+
+.dropdown-menu, .panel-body, .list-group-item {
+	width: 384px;
+	padding: 0px;
+}
+
+.label {
+	font-size: 14px;
+	font: 100%;
+}
+
+.tab {
+	min-width: 1100px;
+	display: block;
+}
+
+.panel-collapse {
+	margin-top: 8px;
+}
+</style>
+<style type="text/css">
+.mops-table .nav {
+	position: relative;
+	bottom: 0px;
+	right: 0px;
+	padding-bottom: 0px;
+	width: -webkit-fill-available;
+}
+
+.nav a, .nav a:link {
+	margin-right: auto;
+}
+
+.tab-content>.active {
+	margin-top: 5px;
+}
+
+.jumbotron {
+	padding-top: 0px;
+	padding: 4px;
+}
+
+.dropdown-menu {
+	min-width: auto;
+	z-index: auto;
+}
+
+.mops-table .nav .navbar-nav li, .list-group-item {
+	width: 25%;
+	max-width: 100%;
+	min-width: 240px;
+}
+
+#bs-example-navbar-collapse-1, #bs-example-navbar-collapse-2,
+	.mops-table .container-fluid {
+	padding-right: 0px!import;
+	padding-left: 0px;
+}
+
+.list-group-item {
+	width: 100%;
+}
+
+.list-group-item span {
+	width: 100%;
+	z-index: 1000;
+}
+
+.detail-div {
+	min-height: 460px;
+	background-color: #eaeee3;
+	padding: 4px 0 4px 6px;
+	margin: 0 2px 4px 2px;
+}
+
+.container-fluid, .navbar-collapse {
+	padding-right: 0;
+}
+
+.input-group .form-control {
+	display: inline;
+}
+
+.row {
+	padding: 0;
+	margin: auto;
+}
+
+.input-group {
+	width: 100%;
+	min-width: 240px;
+}
+</style>
+</head>
+<body>
+	<span id="data" style="display: none"><%=Util.convJSONObject(UtilLinux.getLinuxSysInfo())%></span>
+	<!-- 引入页头 -->
+	<script type="text/javascript" src="../../js/common/header.js"></script>
+	<div class="mops-con">
+		<div class="con-nav">
+			<a href="log.jsp">系统信息</a>
+		</div>
+		<!-- 内容部分导航头的class : con-nav (必须) -->
+		<div class="con-box">
+			<!-- 内容部分主体内容的class : con-box (必须) -->
+			<!-- 以下为每个页面自己编写的部分 -->
+			<div id="subMenu">
+				<div id="subMenuBody" class="btn-group-vertical dropdown-menu"
+					role="group">
+					<ul>
+						<a href="pcu.jsp"><li>在线用户列表</li></a>
+						<a href="log.jsp"><li>实时日志</li></a>
+						<a href="sysinfo.jsp"><li class="menuAct">系统信息</li></a>
+					</ul>
+				</div>
+			</div>
+			<div id="contentBody" class="mops-table" style="max-width: 1180px;">
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs " role="tablist">
+					<li role="presentation" class="active"><a href="#Info_div"
+						aria-controls="home" role="tab" data-toggle="tab">Info</a></li>
+					<li role="presentation"><a href="#CPU_div"
+						aria-controls="profile" role="tab" data-toggle="tab">CPU</a></li>
+					<li role="presentation"><a href="#User_div"
+						aria-controls="messages" role="tab" data-toggle="tab">User</a></li>
+					<li role="presentation"><a href="#Net_div"
+						aria-controls="settings" role="tab" data-toggle="tab">Net</a></li>
+				</ul>
+				<!-- Tab panes -->
+				<div class="tab-content jumbotron">
+					<div role="tabpanel" class="tab-pane active" id="Info_div">
+						<div>
+							<ul class="nav nav-pills nav-justified">
+								<nav class="navbar navbar-default">
+									<div class="container-fluid">
+										<div class="collapse navbar-collapse"
+											id="bs-example-navbar-collapse-1">
+											<ul class="nav navbar-nav list-group">
+												<li><a href="#" class="list-group-item "
+													onclick="return false">Os</a>
+													<div id="Os" class="detail-div"></div></li>
+												<li><a href="#" class="list-group-item "
+													onclick="return false">Swap</a>
+													<div id="Swap" class=" detail-div"></div></li>
+												<li><a href="#" class="list-group-item "
+													onclick="return false">Mem</a>
+													<div id="Mem" class=" detail-div"></div></li>
+												<li><a href="#" class="list-group-item "
+													onclick="return false">CPULength</a>
+													<div id="CPULength" class=" detail-div"></div></li>
+											</ul>
+										</div>
+									</div>
+								</nav>
+							</ul>
+						</div>
+					</div>
+					<div role="tabpanel" class="tab-pane" id="CPU_div">
+						<div>
+							<ul class="nav nav-pills nav-justified">
+								<nav class="navbar navbar-default">
+									<div class="container-fluid">
+										<div class="collapse navbar-collapse"
+											id="bs-example-navbar-collapse-2">
+											<ul class="nav navbar-nav list-group">
+												<li><a href="#" class="list-group-item "
+													onclick="return false">CPU</a>
+													<div id="CPU" class=" detail-div"></div></li>
+												<li><a href="#" class="list-group-item "
+													onclick="return false">CPUList</a>
+													<div id="CPUList" class=" detail-div"></div></li>
+												<li><a href="#" class="list-group-item "
+													onclick="return false">CPULength</a>
+													<div id="CPULength" class=" detail-div"></div></li>
+											</ul>
+										</div>
+									</div>
+								</nav>
+							</ul>
+						</div>
+					</div>
+					<div role="tabpanel" class="tab-pane" id="User_div">...</div>
+					<div role="tabpanel" class="tab-pane" id="Net_div">...</div>
+				</div>
+				<div id="first">
+
+					<div id="Other"></div>
+				</div>
+				<div id="second">
+					<div class="btn-group dropup"></div>
+					<div id="CPU" class="btn-group dropup"></div>
+					<div id="Mem" class="btn-group dropup"></div>
+					<div id="Swap" class="btn-group dropup"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="../../js/common/footer.js"></script>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/bootstrap-table.min.js"></script>
+<script src="../../js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/common/main.js"></script>
+<script type="text/javascript">
+	$(function() {
+		init();
+	})
+	function init() {
+		var data = $.parseJSON($("#data").html());
+		var str = '';
+		var cpu = getJsonHtml(data.CPU);
+		var cpuLength = getKeyValueData(data.CPU);
+		var mem = getKeyValueData(data.Mem, str);
+		var os = getKeyValueData(data.OS);
+		var swap = getKeyValueData(data.Swap);
+		var fs = getJsonListHtml(data.FileSystem, 'FileSystem');
+		var ifc = getKeyValueData(data.Net, 'Net');
+		var who = getJsonListHtml(data.Who, 'Who');
+		var other = "";
+
+		$("#Mem").html(mem);
+		$("#CPULength").html(cpuLength);
+		$("#Swap").html(swap);
+		$("#Os").html(os);
+		$("#Fs").html(fs);
+		$("#If").html(ifc);
+		$("#Who").html(who);
+		$("#Other").html(other);
+	}
+	function getJsonHtml(data, showstr) {
+		var str = '';
+		for ( var i in data) {
+			if (i != "FileSystem" & i != "0" & i != "Net") {
+				if (i == 'Ip' | i == 'MemUsed' | i == 'SwapFree'
+						| i == 'CPULength') {
+					var instr = '<ul class="dropdown-menu">';
+					str += '<button type="button" class="btn btn-danger dropdown-toggle commonele " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'
+							+ '<div class="ele"><span>'
+							+ i
+							+ ':'
+							+ data[i]
+							+ '</span><span class="caret"></span></div></button>';
+				} else {
+					if (i == 'CPUList') {
+						instr += '<li><div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title">CPUList</h3>'
+								+ '</div><ul class="list-group">';
+						var ininstr = '';
+						for (var s = 0; s < data[i].length; s++) {
+							var x = data[i][s];
+							var inininstr = '<li class="list-group-item">';
+							for ( var k in x) {
+								inininstr += '<div class="ele"><button class="name btn btn-sm btn-default">'
+										+ k
+										+ '</button>'
+										+ '<button class="value btn btn-sm btn-default">'
+										+ x[k] + '</button></div>';
+							}
+							ininstr += inininstr + '<li></div>';
+						}
+						instr += ininstr + '</ul></li>';
+					} else if (i != 'CPU') {
+						instr += '<li><div class="ele list-group-item "><button class="name btn btn-sm btn-default">'
+								+ i
+								+ '</button>'
+								+ '<span class="value label label-info">'
+								+ data[i] + '</span></div></li>';
+					}
+				}
+			} else {
+				str += '<div style="display:block;" class="ele"><button class="name btn btn-sm btn-default" style="vertical-align: top;">'
+						+ i
+						+ '</button>'
+						+ '<div style="display:inline-block;" class="ele"><div class="list">';
+				for (var s = 0; s < data[i].length; s++) {
+					var x = data[i][s];
+					str += '<div style="float:left;width:400px;" class="ele">';
+					for ( var k in x) {
+						str += '<button class="name btn btn-sm btn-default">'
+								+ k
+								+ '</button>'
+								+ '<button class="value btn btn-sm btn-default">'
+								+ x[k] + '</button>';
+					}
+					str += '</div>';
+				}
+				str += '</div></button></div></div>';
+			}
+		}
+		return str + instr + '</ul>';
+	}
+	function getJsonListHtml(data, showstr) {
+		var str = '<div style="display:block;" class="ele"><button class="name btn btn-sm btn-default" style="vertical-align: top;">'
+				+ showstr
+				+ '</button>'
+				+ '<div style="display:inline-block;" class="ele"><div class="list list-group">';
+		for (var i = 0; i < data.length; i++) {
+			str += getJsonHtml(data[i], getJsonHtml);
+		}
+		return str + '</div></button></div></div>';
+	}
+	function getKeyValueData(data) {
+		var str = '<ul >';
+		for ( var i in data) {
+			if (i != 'CPUList' & i != 'CPU') {
+				str += '<li><div class="row"><div class="input-group col-lg-16"><span class="input-group-btn"><button class="name btn btn-danger" type="button">'
+						+ i
+						+ '</button></span><input type="text" class="form-control" value="'
+								+ data[i] + '"></div></div></li>';
+			}
+		}
+		return str + '</ul>';
+	}
+</script>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>订单详情</title>
+	<link rel="stylesheet" href="../../css/index/base.css">
+	<link rel="stylesheet" href="../../css/index/orderDetail.css">
+	<link rel="stylesheet" href="../../css/index/public.css">
+</head>
+<body>
+	<div class="head">
+		<div class="clearfix hnav">
+			<ul class="fl">
+				<li class="fl"><a href="index.html">首页</a></li>
+				<!-- <li class="fl"><a href="detail.html">解决方案</a></li>
+				<li class="fl"><a href="second.html">合作单位</a></li>
+				<li class="fl"><a href="cation.html">关于我们</a></li> -->
+			</ul>
+			<ul class="fr">
+				<li class="fl"><a id="user_center" href="../user/activityList.html"></a></li>
+				<li class="fl" id="user_name"></li>
+				<li class="fl"><a id="login_out" href="javascript:;"></a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="wrap">
+		<div class="orderList">
+			<div class="listHead fSize16">车次信息</div>
+			<div class="listBody clearfix">
+				<div class="station fl">
+					<ul class="fl stationList">
+						<li class="fSize14 fromStation">北京</li>
+						<li class="fSize18 bold fromTime">00:18</li>
+						<li class="date">07-15周六</li>
+					</ul>
+					<div class="arrow fl trainNo">2603</div>
+					<ul class="fl stationList txtR">
+						<li class="fSize14 toStation">张家口南</li>
+						<li class="fSize18 bold toTime">00:18</li>
+						<li class="date">07-15周六</li>
+					</ul>
+				</div>
+				<div class="price fl">
+					<p class="num">
+						<span class="fSize16">总额:</span>
+						<span class="fSize18 f60 bold">￥<em class="countPrice">31.5</em></span>
+						<span>明细</span>
+					</p>
+					<p class="time">预定时间:2017-06-26 10:10:43</p>
+				</div>
+				<div class="ticket fl">
+					<p class="ticketState fSize16">订单状态:<span class="f60 state">出票中</span></p>
+					<a class="ticketBtn" href="javascript:;">继续预订</a>
+				</div>
+			</div>
+		</div>
+		<div class="orderList">
+			<div class="listHead fSize16">乘客信息</div>
+			<div class="listBody clearfix passenger">
+				<!-- <ul class="passengersMess clearfix">
+					<li class="fl passName">吉庆鹏</li>
+					<li class="fl passCode">身份证号:130724199212241113</li>
+					<li class="fl passSeat">硬座</li>
+					<li class="fl passTicket">票价:<span>￥26.5</span></li>
+					<li class="fl passState">未出票</span></li>
+				</ul> -->
+			</div>
+		</div>
+		<div class="orderList">
+			<div class="listHead fSize16">取票信息</div>
+			<div class="listBody clearfix">
+				<ul class="getTicketMess clearfix">
+					<!-- <li>取票方式:车站自取</li> -->
+					<li class="person">联系人:吉庆鹏</li>
+					<li class="cellphone">联系电话:18201571705</li>
+				</ul>
+			</div>
+		</div>
+		<div class="clearfix">
+			<a class="orderDetail fl" href="javascript:;"><<返回订单列表</a>
+			<ul class="fr">
+				<li class="fl"><button>立即支付</button></li>
+				<li class="fl"><button>取消订单</button></li>
+				<li class="fl"><button>删除订单</button></li>
+			</ul>
+		</div>
+		<ul class="refunt">
+			<li>退票规定</li>
+			<li>1、网上退票受理时间:6:00-23:00,</li>
+			<li>
+				<p>2、退票手续费根据退票时间阶梯收费:</p>
+				<p>开车前十五天(不含)以上退票,不收取退票费;48小时以上，收取票价的10%退票费;24小时以内的,收取20%退票费。</p>
+			</li>
+			<li>3、如遇以下情况之一，需乘客携带购票时的有效证件原件自行前往火车站退票窗口办理退票:以换取纸质车票,在工作时间之外,列车开车40分钟以内。</li>
+			<li>4、如需退票报销凭证，请持乘车人购票时的有效证件原件和取票单号(E开头的号码),在办理退票之日起10个日内到车站退票口获取。</li>
+		</ul>
+	</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script>
+	$(function(){
+		function Init(){
+			var url=basePath+'user/trainorder/get.do';
+			$.myAjax({
+				url: url,
+				type: 'GET',
+				data:{id:'15784303f9f84c5d89400e35713e996a'},
+				success: function(result) {
+					console.log(result)
+					if (result.flag) {
+						if (result.status.nick) {
+							$('#user_name').html(result.status.nick);
+							$('#user_center').html('用户中心');
+							$('#login_out').html('注销');
+							//出发站
+							$('.fromStation').html(result.data.fromStation);
+							//到达站
+							$('.toStation').html(result.data.toStation);
+							//出发时间
+							$('.fromTime').html();
+							//到达时间
+							$('.fromStation').html(result.data.fromStation);
+							//出发日期
+							$('.date').html(result.data.trainDate);
+							//预定时间
+							$('.time').html('预定时间：'+result.data.bookTime);
+							//价格
+							$('.countPrice').html(result.data.lyTrainPassengerList[0].ticketPrice);
+							//订单状态
+							$('.state').html(result.data.state);
+							//乘客信息
+							var passenger=result.data.lyTrainPassengerList;
+							console.log(passenger)
+							for(var i=0;i<passenger.length;i++){
+								$('.passenger').append('<ul class="passengersMess clearfix"><li class="fl passName">'+passenger[i].passengerName+'</li><li class="fl passCode">身份证号:'+passenger[i].idCard+'</li><li class="fl passSeat">'+passenger[i].seatClassName+passenger[i].seatNo+'</li><li class="fl passTicket">票价:<span>￥'+passenger[i].ticketPrice+'</span></li><li class="fl passState">'+passenger[i].state+'</span></li></ul>');
+							};
+							//联系人
+							$('.person').html('联系人:'+result.data.person);
+							//联系电话cellphone
+							$('.cellphone').html('联系电话:'+result.data.cellphone);
+						};
+					} else {
+						myAlert(result.msg);
+					};
+				},
+				error: function() {
+					myAlert('请求失败');
+				}
+			});
+		};
+		Init()
+	})
+</script>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>详情</title>
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/public.css">
+	<link rel="stylesheet" href="index.css">
+
+</head>
+<body>
+	<div class="head">
+		<div class="clearfix hnav">
+			<ul class="fl">
+				<li class="fl"><a href="javascript:;">首页</a></li>
+				<li class="fl"><a href="javascript:;">解决方案</a></li>
+				<li class="fl"><a href="javascript:;">合作单位</a></li>
+				<li class="fl"><a href="javascript:;">关于我们</a></li>
+			</ul>
+			<ul class="fr">
+				<li class="fl">1032074996@qq.com</li>
+				<li class="fl"><a href="javascript:;">退出</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="contain">
+		<div class="bannimg">
+			<img src="image/logo.png" alt="">
+			<img src="image/banner.png" alt="">
+		</div>
+		<h3 class="clearfix">
+			<a href="javascript:;" class="fl">首页</a>
+			<span class="fl navl">></span>
+			<span class="fl navr">会议详情</span>
+		</h3>
+		<!-- <div class="hlist clearfix">
+			<a class="fl afirst" href="javascript:;">行业分类:</a>
+			<ul class="fl">
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a class="org" href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a class="org" href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a class="org" href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+				<li class="fl"><a href="javascript:;">行业分类:</a></li>
+			</ul>
+		</div>
+		<ul class="list-message">
+			<li class="listme">
+				<img class="fl" src="image/time.png" alt="time">
+				<ul class="fl">
+					<li class="cblue">2018亚太地区肾脏病学术会议</li>
+					<li class="m18">2018年4月03-07日</li>
+					<li class="m12">北京国家会议中心</li>
+				</ul>
+				<span>北京市-北京市</span>
+				<a href="javascript:;">查看详情</a>
+			</li>
+			<li class="listme">
+				<img class="fl" src="image/time.png" alt="time">
+				<ul class="fl">
+					<li class="cblue">2018亚太地区肾脏病学术会议</li>
+					<li class="m18">2018年4月03-07日</li>
+					<li class="m12">北京国家会议中心</li>
+				</ul>
+				<span>北京市-北京市</span>
+				<a href="javascript:;">查看详情</a>
+			</li>
+			<li class="listme">
+				<img class="fl" src="image/time.png" alt="time">
+				<ul class="fl">
+					<li class="cblue">2018亚太地区肾脏病学术会议</li>
+					<li class="m18">2018年4月03-07日</li>
+					<li class="m12">北京国家会议中心</li>
+				</ul>
+				<span>北京市-北京市</span>
+				<a href="javascript:;">查看详情</a>
+			</li>
+			<li class="listme">
+				<img class="fl" src="image/time.png" alt="time">
+				<ul class="fl">
+					<li class="cblue">2018亚太地区肾脏病学术会议</li>
+					<li class="m18">2018年4月03-07日</li>
+					<li class="m12">北京国家会议中心</li>
+				</ul>
+				<span>北京市-北京市</span>
+				<a href="javascript:;">查看详情</a>
+			</li>
+			<li class="listme">
+				<img class="fl" src="image/time.png" alt="time">
+				<ul class="fl">
+					<li class="cblue">2018亚太地区肾脏病学术会议</li>
+					<li class="m18">2018年4月03-07日</li>
+					<li class="m12">北京国家会议中心</li>
+				</ul>
+				<span>北京市-北京市</span>
+				<a href="javascript:;">查看详情</a>
+			</li>
+		</ul>
+		<div class="page clearfix">
+			<ul class="pcen">
+				<li class="fl">共1930条</li>
+				<li class="fl">首页</li>
+				<li class="fl border">上一页</li>
+				<li class="fl">
+					<ul class="clearfix">
+						<li class="fl org">1</li>
+						<li class="fl">2</li>
+						<li class="fl">3</li>
+						<li class="fl">4</li>
+						<li class="fl">5</li>
+						<li class="fl">6</li>
+						<li class="fl">7</li>
+						<li class="fl">8</li>
+						<li class="fl">9</li>
+					</ul>
+				</li>
+				<li class="fl border">下一页</li>
+				<li class="fl">尾页</li>
+				<li class="fl">10条/页</li>
+				<li class="fl">转到第<input type="text" value="1">页</li>
+			</ul>
+		</div> -->
+	</div>
+	<div class="foot">
+		<ul class="f-list clearfix">
+			<li class="fl tell no">
+				
+			</li>
+			<li>
+				
+			</li>
+			<li class="fl">
+				<ul class="foot-message">
+					<li class="font24">关于我们</li>
+					<li>关于群英会</li>
+					<li>加入我们</li>
+					<li>免责申明</li>
+				</ul>
+			</li>
+			<li class="fl">
+				<ul class="foot-message">
+					<li class="font24">联系我们</li>
+					<li>电话</li>
+					<li>官方微信</li>
+					<li>新浪微博</li>
+				</ul>
+			</li>
+			<li class="fl">
+				<ul class="foot-message">
+					<li class="font24">新闻中心</li>
+					<li>公司新闻</li>
+					<li>合作伙伴</li>
+					<li>知名客户</li>
+				</ul>
+			</li>
+			<li class="fl">
+				<ul class="foot-message">
+					<li class="font24">合作</li>
+					<li>主办方合作</li>
+					<li>媒体合作</li>
+					<li>资助合作</li>
+				</ul>
+			</li>
+			<li class="fl font24 la">公司新闻</li>
+		</ul>
+		<p class="p1">未经gconfs.com同意不得转发网站会议信息</p>
+		<p class="p2">京ICP备1708133号</p>
+	</div>
+</body>
+</html>

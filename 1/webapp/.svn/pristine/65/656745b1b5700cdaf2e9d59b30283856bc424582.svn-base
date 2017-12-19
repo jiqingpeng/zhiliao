@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>交通住宿基本信息</title>
+<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="../../../css/common/bootstrap.min.css">
+<link rel="stylesheet" href="../../../css/common/bootstrap-table.min.css">
+<link href="../../../css/style.css" rel="stylesheet" />
+<link href="../../../css/main.css" rel="stylesheet" />
+<!-- <link rel="stylesheet" href="../../../css/admin.css"> -->
+<!-- 引入项目中每个模块的独立样式 : xxx.css -->
+</head>
+<body>
+<!-- 引入页头 -->
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="trafficInfo.html">交通住宿</a>
+		<a href="">-&gt;</a>
+		<a href="trafficInfo.html">交通住宿信息</a>
+
+	</div>
+	<div class="con-box">
+	<!-- 以下为每个页面自己编写的部分 -->
+	<div id="subMenu">
+        <div id="subMenuBody">
+            <ul>
+            	<a href="trafficInfo.html"><li class="menuAct">交通住宿</li></a>
+                <a href="hotelEdit.html"><li>酒店配置</li></a>
+                <li class="">接送安排</li>
+                <li class="">餐饮安排</li>
+                <li class="message">短&nbsp;信</li>
+                <li class="email">邮&nbsp;件</li>
+                <li class="notice">站内信</li>
+                <li id="downexcel"><a href="#">导出数据</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="contentBody" class="mops-table">
+		<table id="texttable">
+  		</table>
+	</div>
+	</div>   
+</div> 
+
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/bootstrap-table.min.js"></script>
+<script src="../../../js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/main.js"></script>
+<script type="text/javascript">
+
+	$(function(){	
+		// 获取左侧菜单列表数据(参数为请求地址);
+		initMenu('../../../js/data/administrator.json','交通住宿');
+	});
+
+	//模拟数据
+	var data = [
+		{
+			"status": "已预定",
+			"name":"杨波",
+			"phone":"13658456954",
+			"identity": "嘉宾",
+			"inboundJourney": "高铁/G210",
+			// "timeAddress": "2017-6-12 16:30 / 北京南站",
+			"outwardVoyage": "航班/C920",
+			"grogshop": "北京酒店",
+			// "noticeTime": "2017-06-01 12:00",
+			"hotelTime": "2017-06-12",
+			"days": "2天",
+			// "remark": "由主办方预定"
+		},{
+			"status": "已预定",
+			"name":"李文俊",
+			"phone":"13241418629",
+			"identity": "普通用户",
+			"inboundJourney": "高铁/G210",
+			"outwardVoyage": "航班/C920",
+			"grogshop": "盘古大酒店",
+			"hotelTime": "2017-06-12",
+			"days": "2天"
+		},
+		{
+			"status": "未通知",
+			"name":"巩克春",
+			"phone":"13601250514",
+			"identity": "工作人员",
+			"inboundJourney": "",
+			"outwardVoyage": "",
+			"grogshop": ""
+		},
+		{
+			"status": "已通知",
+			"name":"吉庆鹏",
+			"phone":"13658456954",
+			"identity": "嘉宾",
+			"inboundJourney": "",
+			"outwardVoyage": "",
+			"grogshop": ""
+		}
+	];
+
+	//初始化表格
+	initTable(data);
+
+	//table表格
+	function initTable(data){
+		$('#texttable').bootstrapTable({
+	            data: data,
+	            dataLocale: 'zh-CN',                //表格汉化               
+	            striped: true,                      //是否显示行间隔色
+	            cache: false,                       
+	            pagination: true,                   //是否显示分页（*）
+	            sortable: true,                     //是否启用排序
+	            sortOrder: "asc",                   //排序方式
+	            sidePagination: "client",           
+	            strictSearch: false,
+	            pageNumber:1,                       //初始化加载第一页，默认第一页
+	            pageSize: 10, 
+	            search: true,                       
+	            showRefresh: true,                  //是否显示刷新按钮
+	            showColumns: true,
+	            columns: [
+	            {
+		            align: 'center',
+		            width: 30,
+		            formatter: function(value,row,index){
+		                return index+1;
+		            }
+        		},{
+	            	checkbox: true
+	            },
+	            {
+	                field: 'status',
+	                title: '状态',
+	                align: 'center',
+	                width: 80
+	            },
+	            {
+	                field: 'name',
+	                title: '姓名',
+	                align: 'center',
+	                sortable: true,
+	                width: 88
+	            },
+	            {
+	                field: 'phone',
+	                title: '电话',
+	                align: 'center',
+	                sortable: true,
+	                width: 100
+	            },
+	            {
+	                field: 'identity',
+	                title: '身份',
+	                align: 'center',
+	                sortable: true,
+	                width: 78
+	            },{
+	                field: 'grogshop',
+	                title: '酒店名称',
+	                align: 'center',
+	                sortable: true
+	            },{
+	                field: 'hotelTime',
+	                title: '入住时间',
+	                align: 'center',
+	                sortable: true
+	            },{
+	                field: 'days',
+	                title: '入住天数',
+	                align: 'center',
+	                sortable: true,
+	                width: 85
+	            },
+	            {
+	                field: 'inboundJourney',
+	                title: '来程',
+	                align: 'center'
+	            }, {
+	                field: 'outwardVoyage',
+	                title: '去程',
+	                align: 'center'
+	            }],
+	    });
+	};
+</script>
+</html>

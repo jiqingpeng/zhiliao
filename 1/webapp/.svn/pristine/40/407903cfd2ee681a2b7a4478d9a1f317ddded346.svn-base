@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>会议简介</title>
+<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+<link href="../../../css/common/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../../js/ueditor/themes/default/css/ueditor.css">
+<link href="../../../css/style.css" rel="stylesheet" />
+<link href="../../../css/main.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../../css/admin.css">
+</head>
+<body>
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="basicInfo.html">管理中心</a>
+		<a href="">-&gt;</a>
+		<a href="basicInfo.html">会议管理</a>
+		<a href="">-&gt;</a>
+		<a href="intro.html">会议简介</a>
+	</div>
+	<div class="con-box">
+    <div id="subMenu"></div>
+    <div id="contentBody" class="mops-table">
+        <input type="hidden" id="id" />
+        <span class="wordIntro introactive">文字简介</span><span class="pictureIntro">图片简介</span>
+		<div class="edit">
+			<div class="editorcon">
+				<script id="introeditor" type="text/plain"></script>
+				<!-- <label style="color: #666;">上传简介附件：</label>
+				<input type="" name="" class="filename">
+				<input type="file" name="" class="upfile" /> -->
+			</div>
+            <div class="btncon">
+              <button type="button" class="btn btn-default btn-warning saveinfo">保&nbsp;存</button>
+              <button type="button" class="btn btn-default cancel">取&nbsp;消</button>
+            </div>
+		</div>
+        <div class="picIntroCon none">
+        <form id="picIntroform" method="post" enctype="multipart/form-data" target="hidden_frame">
+            <input type="hidden" name="resourcesId" class="resourcesId" />
+            <div class="conferenceImg">
+                <label class="matter">会议图片一</label><br>
+                <img id="confimg01" style="width: 200px; height: 180px;"/>
+                <input class="img01id imgid" name="id" type="hidden"/>
+                <input type="file" class="uploadImg imgup01" name="file" accept="image/jpeg,image/png,imag/jpg"/>
+                <p class="btncon">
+                    <button id="img01save" class="btn btn-warning btn-xs" type="button">上 传</button>
+                    <button id="img01cancle" class="btn btn-cancel btn-xs" type="button">删 除</button>
+                </p>
+            </div>
+            <div class="conferenceImg">
+                <label class="matter">会议图片二</label><br>
+                <img id="confimg02" style="width: 200px; height: 180px;"/>
+                <input class="img02id imgid" name="id" type="hidden"/>
+                <input type="file" class="uploadImg imgup02" name="file" accept="image/jpeg,image/png,imag/jpg"/>
+                <p class="btncon">
+                    <button id="img01save" class="btn btn-warning btn-xs" type="button">上 传</button>
+                    <button id="img01cancle" class="btn btn-cancel btn-xs" type="button">删 除</button>
+                </p>
+            </div>
+            <div class="conferenceImg">
+                <label class="matter">会议图片三</label><br>
+                <img id="confimg03" style="width: 200px; height: 180px;"/>
+                <input class="img03id imgid" name="id" type="hidden"/>
+                <input type="file" class="uploadImg imgup03" name="file" accept="image/jpeg,image/png,imag/jpg"/>
+                <p class="btncon">
+                    <button id="img01save" class="btn btn-warning btn-xs" type="button">上 传</button>
+                    <button id="img01cancle" class="btn btn-cancel btn-xs" type="button">删 除</button>
+                </p>
+            </div>
+        </form>
+        <iframe name='hidden_frame' id="hidden_frame" style="display: none;"></iframe>
+        </div>
+    </div>
+	</div>
+</div>
+
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/ueditor/ueditor.config.js"></script>
+<script src="../../../js/ueditor/ueditor.all.js"></script>
+<script src="../../../js/common/uploadPreview.js"></script>
+<script src="../../../js/common/jquery.form.js"></script>
+<script src="../../../js/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/main.js"></script>
+
+<script>
+    loading();
+    $("#uploadImg").uploadPreview({ Img: "perImg", ImgType: ["jpeg", "jpg", "png"]});
+	// 实例化编辑器
+	var editor = UE.getEditor('introeditor',{
+		toolbars:[[
+                'undo', //撤销
+                'redo', //重做
+                'preview', //预览
+                'selectall', //全选
+                'removeformat', //清除格式
+                'cleardoc', //清空文档
+                'bold', //加粗
+                'indent', //首行缩进
+                'italic', //斜体
+                'underline', //下划线
+                'strikethrough', //删除线
+                'subscript', //下标
+                'fontborder', //字符边框
+                'superscript', //上标
+                'formatmatch', //格式刷
+                'justifyleft', //居左对齐
+                'justifyright', //居右对齐
+                'justifycenter', //居中对齐
+                'justifyjustify', //两端对齐
+                'forecolor', //字体颜色
+                'backcolor', //背景色
+                'insertorderedlist', //有序列表
+                'insertunorderedlist', //无序列表
+                'imagenone', //默认
+                'imageleft', //左浮动
+                'imageright', //右浮动
+                'imagecenter', //居中
+                'rowspacingtop', //段前距
+                'rowspacingbottom', //段后距
+                'lineheight', //行间距
+                'edittip ', //编辑提示
+                'touppercase', //字母大写
+                'tolowercase', //字母小写
+                'autotypeset', //自动排版
+            ],[
+                'spechars', //特殊字符
+                'fontfamily', //字体
+                'fontsize', //字号
+                'paragraph', //段落格式
+                'customstyle', //自定义标题
+                'inserttable', //插入表格
+                'insertrow', //前插入行
+                'insertcol', //前插入列
+                'mergeright', //右合并单元格
+                'mergedown', //下合并单元格
+                'deleterow', //删除行
+                'deletecol', //删除列
+                'splittorows', //拆分成行
+                'splittocols', //拆分成列
+                'splittocells', //完全拆分单元格
+                'deletecaption', //删除表格标题
+                'inserttitle', //插入标题
+                'mergecells', //合并多个单元格
+                'deletetable', //删除表格
+                'insertparagraphbeforetable', //"表格前插入行"
+                'edittable', //表格属性
+                'edittd', //单元格属性
+                'date', //日期
+                'time', //时间
+                'link', //超链接
+                'unlink', //取消链接
+                'simpleupload', //单图上传
+                'attachment', //附件
+                // 'anchor', //锚点
+                // 'snapscreen', //截图
+                // 'source', //源代码
+                // 'blockquote', //引用
+                // 'pasteplain', //纯文本粘贴模式
+                // 'print', //打印
+                // 'horizontal', //分隔线
+                // 'insertcode', //代码语言
+                // 'insertimage', //多图上传
+                // 'emotion', //表情
+                // 'searchreplace', //查询替换
+                // 'map', //Baidu地图
+                // 'gmap', //Google地图
+                // 'insertvideo', //视频
+                // 'help', //帮助
+                // 'fullscreen', //全屏
+                // 'directionalityltr', //从左向右输入
+                // 'directionalityrtl', //从右向左输入
+                // 'pagebreak', //分页
+                // 'insertframe', //插入Iframe
+                // 'wordimage', //图片转存
+                // 'webapp', //百度应用
+                // 'background', //背景
+                // 'template', //模板
+                // 'scrawl', //涂鸦
+                // 'music', //音乐
+                // 'drafts', // 从草稿箱加载
+                // 'charts', // 图表
+            ]
+        ],
+		autoHeightEnabled: true,
+    	autoFloatEnabled: true
+	})
+
+	$(".saveinfo").click(function(){
+		var uedContent = editor.getContent();
+		
+		var postData = 'id=' + $("#id").val() +	'&introduction=' + uedContent;
+		$.myAjax({
+			url: basePath + "admin/activity/save.do",
+			data: postData,
+			success: function(result){
+                if(result.flag){
+                    myAlert(result.msg)
+                }else{
+                    myConfirm(result.msg);
+                }
+			},
+			error: function(){
+				myAlert("请求失败!", "slow");
+			}
+		})
+		
+	});
+
+    $(".cancel").click(function(){
+        initPage();
+    })
+    function initPage(){
+
+        $.myAjax({
+            url: basePath + "admin/activity/get.do",
+            data: {id:$("#id").val()},
+            success: function(result){
+                $(".loading").remove();
+                editor.ready( function() { // 富文本实例化完成
+                    editor.setContent(result.data.activity.introduction);
+                });
+                initImg(result.data.imageUrl);
+            },
+            error: function(result){
+                $(".loading").remove();
+                myAlert("请求失败!", "slow");
+            }
+        })
+    }
+</script>
+<script>
+$(function(){
+	// 获取左侧菜单列表数据(参数为请求地址)
+	serialMenuAjax('admin/activity/menu.do','会议管理',sessionStorage.getItem('actId'), initPage);
+    setSubMenu('会议简介');
+    //获取id
+    $("#id, .resourcesId").val(sessionStorage.getItem('actId'));
+
+    // initPage();
+
+    $(".wordIntro, .pictureIntro").click(function(){
+        if($(this).hasClass('wordIntro')){
+            $(this).addClass('introactive');
+            $(".pictureIntro").removeClass('introactive');
+            $('.edit').removeClass('none');
+            $('.picIntroCon').addClass('none');
+        }
+        if($(this).hasClass('pictureIntro')){
+            $(this).addClass('introactive');
+            $(".wordIntro").removeClass('introactive');
+            $('.picIntroCon').removeClass('none');
+            $('.edit').addClass('none');
+        }
+    });
+
+    // 单张上传图片
+    $(".imgup01").uploadPreview({ Img: "confimg01", ImgType: ["jpg", "bmp", "png"] });
+    $(".imgup02").uploadPreview({ Img: "confimg02", ImgType: ["jpg", "bmp", "png"] });
+    $(".imgup03").uploadPreview({ Img: "confimg03", ImgType: ["jpg", "bmp", "png"] });
+    $("#img01save, #img02save, #img03save").click(function(){
+        var _this = this;
+        if(!$(this).parent().prev().val()){
+            myAlert('请选择图片！');
+            return false;
+        }
+        $(".conferenceImg input[type=file]").attr('name','');
+        $(this).parent().prev().attr('name','file');
+        
+        $(".imgid").attr('name','');
+        $(this).parent().prevAll(".imgid").attr('name','id');
+        
+        var actionurl = basePath + 'admin/activity/image/save.do';
+        $("#picIntroform").attr("action",actionurl);
+        
+        
+        // 上传文件回显提示
+        var options = {
+            success: function (result) {
+                var data = $.parseJSON(result);
+                if(data.flag){
+                    //ajaxImg();
+                    myAlert(data.msg);
+                    $(_this).parent().prev().val('');
+                    initPage();
+                } else {
+                    myAlert(data.msg);
+                }
+            },
+            error: function (result) {
+                myAlert('请求失败！', 'slow');
+            }
+        };
+        $("#picIntroform").ajaxForm(options);
+        $("#picIntroform").submit();
+        
+    });
+    $("#img01cancle, #img02cancle, #img03cancle").click(function(){
+        var _this = this;
+        if(!$(this).parent().prevAll(".imgid").val()){
+            $(_this).parent().prevAll("img").attr('src','');
+            $(_this).parent().prev().val('');
+            return false;
+        };
+        $.myAjax({
+            url: basePath + "admin/activity/image/del.do",
+            data: {id:$(_this).parent().prevAll(".imgid").val()},
+            success: function(result) {
+                if(result.flag){
+                    $(_this).parent().prevAll(".imgid").val('');
+                    $(_this).parent().prevAll("img").attr('src','');
+                    myAlert(result.msg);
+                } else {
+                    myAlert(result.msg);
+                }
+            },
+            error: function(result) {
+                myAlert('删除失败，请稍后再试！', 'slow');
+            }
+        });    
+    });
+});
+
+function initImg(data){
+    if(data.length<=0){
+        return false;
+    }
+    var img01url = basePath + data[0].url,
+    id01 = data[0].id;
+    // img01url = img01url.replace(/[\\]/g,"\/");
+    $("#confimg01").attr('src',img01url);
+    $(".img01id").val(id01);
+    
+    if(data.length>1){
+        var img02url = basePath + data[1].url,
+        id02 = data[1].id;
+        // img02url = img02url.replace(/[\\]/g,"\/");
+        $("#confimg02").attr('src',img02url);
+        $(".img02id").val(id02);
+    }
+    if(data.length>2){
+        var img03url = basePath + data[2].url,
+        id03 = data[2].id;
+        // img03url = img03url.replace(/[\\]/g,"\/");
+        $("#confimg03").attr('src',img03url);
+        $(".img03id").val(id03);
+    }   
+}
+</script>
+</html>

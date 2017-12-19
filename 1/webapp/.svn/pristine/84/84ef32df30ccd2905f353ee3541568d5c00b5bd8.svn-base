@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title class="title">酒店预订</title>
+<meta content="telephone=no" name="format-detection" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="../../../css/app/style.css"/>
+<link rel="stylesheet" href="../../../css/app/hotel.css"/>
+</head>
+<body>
+	<div class="head">
+		<div class="navImg">
+			<img src="../../../img/app/arrowLeft-icon.png">
+		</div>
+		<div class="navDetail">酒店列表</div>
+	</div>
+	<div class="order-box">
+		<div class="hd">
+			<ul id="hotelList">
+			</ul>
+		</div>
+	</div>
+</body>   
+<script src="../../../js/zepto.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<script>
+var actId = '';
+$(function(){
+	actId = Request('actId');
+	$.myAjax({
+		url: basePath + "user/activity/get.do",
+		data: {id: actId,type: '6'},
+		success: function(result) {
+			if(!result.flag){
+				myConfirm(result.msg);
+				return false;
+			}
+			if(!result.data.hotel){
+				myConfirm("主办方未推荐酒店！");
+				return false;
+			}
+			var hotelList = result.data.hotel;
+			var hotelStr = '';
+			for(var i=0;i<hotelList.length;i++){
+				if(hotelList[i].imageUrl){
+					var imgUrl = hotelList[i].imageUrl[0];
+				} else {
+					var imgUrl = "http://www.gconfs.com/img/hotelIcon.png";
+				}
+				hotelStr += '<li class="oneHotel">'+
+								'<a href="hotelDetail.html?resId='+hotelList[i].id+'&actId='+actId+'" target="_blank">'+
+								'<div class="hotelImgcon">'+
+									'<img class="hotelImg" src="'+imgUrl+'"/>'+
+								'</div>'+
+								'<div class="hotelIntrocon">'+
+									'<div class="hotelName">'+hotelList[i].resName+'</div>'+
+									'<div class="hotelAddress">'+hotelList[i].address+','+hotelList[i].location+'</div>'+
+									'<div class="hotelLevel">'+hotelList[i].resGrade+'</div>'+
+								'</div>'+
+								'</a>'+
+							'</li>';
+			}
+			if(hotelStr){
+				$("#hotelList").html(hotelStr);
+			} else {
+				myConfirm("主办方未推荐酒店！",function(){
+					history.back(-1);
+				},function(){
+					history.back(-1);
+				});
+			}
+		},
+		error: function(result){
+			myAlert("请求失败！");
+		}
+	});
+});
+
+</script>
+</html>

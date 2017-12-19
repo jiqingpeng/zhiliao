@@ -1,0 +1,215 @@
+/*
+* 公众号酒店详情页样式
+*/
+.hoteltime {
+	height: 36px;
+	margin-top: 10px;
+}
+.hsearch {
+	display: inline-block;
+	width: 40px;
+	height: 26px;
+	line-height: 26px;
+	margin-top: 4px;
+	background-color: #ff5b25;
+	color: #fff;
+	text-align: center;
+	border-radius: 3px;
+}
+
+#roomdiv {
+	margin-top: 10px;
+	border-bottom: 1px solid #ddd;
+}
+.roomDetail{
+	width: 100%;
+	border: 1px solid #ddd;
+	border-bottom-width: 0px;
+	position: relative;
+}
+.roomTitle{
+	height: 100px;
+	background-color: #f4f7fd;
+	border-bottom: 1px solid #ddd;
+	font-size: 0;
+	margin: auto;
+}
+.roomImg{
+	width: 80px;
+	height: 80px;
+	margin-top: 10px;
+}
+.roomTxt {
+	height: 100px;
+	padding: 0 0 !important;
+}
+.roomIntroCon {
+	height: 100px;
+}
+
+.roomType{
+	font-size: 16px;
+	color: #333;
+	margin-top: 20px;
+}
+.roomIntro {
+	font-size: 12px;
+	color: #333;
+	margin-top: 8px;
+}
+.roomPriceCon {
+	height: 100%;
+    font-size: 12px;
+    color: #999;
+    padding: 0 0 !important;
+    text-align: left;
+}
+.roomPrice {
+	margin: 20px 0 4px 0;
+}
+.priceBig {
+	font-size: 16px;
+}
+.orange {
+	color: #fd6633;
+}
+.triangle-down {
+	width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 8px solid #999;
+    border-bottom: none;
+    position: relative;
+	top: 12px;
+}
+.triangle-up {
+	width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 8px solid #999;
+    border-top: none;
+    position: relative;
+	bottom: 12px;
+}
+
+.hideRoomList {
+	height: 0px;
+	border: none;
+	overflow: hidden;
+}
+.roomList {
+	padding-bottom: 24px;
+	font-size: 12px;
+}
+.roomMatter {
+	height: 80px;
+	border-bottom: 1px dashed #ddd;
+	color: #333;
+}
+.roominfo p {
+	max-height: 40px;
+	line-height: 20px;
+	margin-top: 16px;
+}
+.roominfo span {
+	height: 20px;
+	color: #666;
+}
+
+.roomMatter .roominfo{
+	padding-right: 8px;
+	padding-left: 10px;
+}
+
+.roomMatter .pricecon {
+	padding-right: 10px;
+	padding-left: 10px;
+}
+.roomMatter .price{
+	color: red;
+	font-size: 16px;
+	display: inline-block;
+	line-height: 80px;
+}
+.predete {
+	text-align: right;
+	padding-right: 4px;
+	padding-left: 8px;
+}
+.predetermine{
+	margin-top: 20px;
+	width: 50px;
+	display: inline-block;
+	line-height: 25px;
+	text-align: center;
+	background-color: #ff5b25;
+	color: #fff;
+	font-size: 16px;
+	border-radius: 3px 3px 0 0;
+}
+.hotelPay{
+	display: inline-block;
+	width: 50px;
+	line-height: 18px;
+	text-align: center;
+	border: 1px solid #ff5b25;
+	font-size: 12px;
+	color: #ff5b25;
+	border-radius: 0 0 3px 3px;
+}
+
+/* 房间预定页面 */
+.resroom {
+	height: 100px;
+	width: 100%;
+	background-color: #546c86;
+	border-radius: 6px 6px 0 0;
+	padding: 0 20px;
+	color: #fff;
+}
+.rmType {
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px dashed #eee;
+}
+.rmDetail {
+	height: 59px;
+	line-height: 29px;
+}
+.ins, .invoice {
+	height: 40px;
+	line-height: 40px;
+	width: 100%;
+	background-color: #fff;
+	border-radius: 0 0 6px 6px;
+	margin-bottom: 12px;
+}
+.personInfo, .cardInfo {
+	width: 100%;
+	background-color: #fff;
+	border-radius: 4px;
+	margin-bottom: 12px;
+	padding: 16px 10px 8px 10px;
+}
+
+.invoice {
+	border-radius: 6px;
+}
+.hotelInvoice {
+	float: right;
+}
+.deposit {
+	height: 90px;
+	width: 100%;
+	margin-bottom: 44px;
+}
+
+.rmfooter {
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+}
+

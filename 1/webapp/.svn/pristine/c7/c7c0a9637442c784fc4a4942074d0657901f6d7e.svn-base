@@ -1,0 +1,17 @@
+[
+	{
+		"icon" : "../../../img/icon/super/conflisticon.png",
+		"name" : "活动列表",
+		"link" : "controller.html"
+	},
+	{
+		"icon" : "../../../img/icon/super/adminediticon.png",
+		"name" : "注册活动",
+		"link" : "register.html"
+	},
+	{
+		"icon" : "../../../img/icon/super/informationicon.png",
+		"name" : "个人信息",
+		"link" : "personal.html"
+	}
+]

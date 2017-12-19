@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<!-- <meta charset="UTF-8"> -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>会议指南</title>
+<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+<link href="../../../css/style.css" rel="stylesheet" />
+<link href="../../../css/main.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../../css/admin.css">
+<!-- 引入项目中每个模块的独立样式 : xxx.css -->
+</head>      
+<body>
+<!-- 引入页头 -->
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav" style="background-color: #fff;">
+		<a href="activityGuide.html">会议指南</a>
+	</div>
+	<div class="con-box noSubMenu bigBox" style="background-color: #fff; margin-left: 200px;">
+		<input type="hidden" name="id" id="id">
+ 		<!-- <div style="width: 220px; margin: 200px auto;"><img width="220px" src="../../../img/coming.png"></div> -->
+
+	</div> 
+</div>
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/main.js"></script>
+                                   
+<script type="text/javascript">
+	$(function(){
+		// $(function(){
+		// 	$("#main-contant").height($("#content").height())
+		// 	$("#main-contant").css("backgroundColor", "#ededed");
+		// })
+		loading();
+		// 获取ID值
+		if(Request("id") && Request("id").lengtd == 32){ // 链接地址中id有值，且值正确
+		    sessionStorage.setItem('actId',Request("id"));
+		}
+		// 获取左侧菜单列表数据(参数为请求地址)
+		// initMenu('../../../js/data/administrator.json','会议指南');
+		serialMenuAjax('admin/activity/menu.do', '会议指南', sessionStorage.getItem('actId'));
+		$("#id").val(sessionStorage.getItem('actId'));
+		$.myAjax({
+			url: basePath + "admin/activity/guide.do",
+			data: {id: $("#id").val()}, 
+			success: function(result){
+				$(".loading").remove();
+				console.log(result.data.activityGuide);
+				if(result.flag){
+					$(".bigBox").append(result.data.activityGuide);
+				}else{
+					myAlert(result.msg);
+				}	
+			},
+			error: function(){
+				$(".loading").remove();
+				myAlert("请求失败!", "slow");
+			}
+		})
+	})
+
+	
+</script> 
+
+</html>

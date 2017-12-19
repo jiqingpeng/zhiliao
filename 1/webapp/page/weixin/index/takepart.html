@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title class="title">参会报名</title>
+<meta content="telephone=no" name="format-detection" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="../../../css/app/style.css"/>
+<style type="text/css">
+.head {
+	height: 48px;
+	line-height: 48px;
+	background-color: #f9752b;
+	text-align: center;
+	font-size: 16px;
+	color: #fff;
+	font-weight: bold;
+}
+.backIcon {
+	display: inline-block;
+	height: 48px;
+	width: 40px;
+	float: left;
+}
+.backIcon img {
+	width: 12px;
+	margin: 14px 11px;
+}
+.container {
+	margin: 10px 8px;
+	background-color: #fff;
+	border-radius: 4px;
+}
+.form-box li {
+	height: 48px;
+	line-height: 48px;
+	border-bottom: 1px solid #e2e2e2;
+	font-size: 14px;
+}
+.form-box i {
+	color: red;
+	float: right;
+	margin-right: 4px;
+	font-weight: bold;
+}
+.inp-label {
+	display: inline-block;
+	color: #4a4a4a;
+	font-weight: bold;
+	margin-left: 8px;
+	max-width: 120px;
+	vertical-align: top;
+	overflow-x: auto;
+	white-space:nowrap;
+}
+.inp-box {
+	display: inline-block;
+	color: #333;
+}
+.inp-text {
+	height: 30px;
+	border: none;
+	width: 190px;
+	float: left;
+	margin-top: 9px;
+	padding-left: 4px;
+	color: #666;
+}
+.sel {
+	height: 28px;
+	width: 246px;
+	border: 1px solid #f9752b;
+	border-radius: 4px;
+	float: left;
+	margin-top: 9px;
+	color: #666;
+	background-color: #fff;
+}
+
+.takepartin {
+	width: 80%;
+	height: 36px;
+	color: #fff;
+	border: none;
+	background-color: #f9752b;
+	border-radius: 4px;
+	margin-left: 10%;
+	margin-top: 10px;
+	font-size: 16px;
+}
+</style>
+</head>
+<body>  
+<div>
+	<div class="modal_box hide">
+		<div class="modal_header">
+			<span class="box_til">提示</span>
+			<button class="box_cancle">X</button>
+		</div>
+		<!-- <div class="modal_mess onceTake">
+			<div class="qrcodecon">
+				<span class="orange">您的报名信息已提交主办方，请等待主办方审核！</span><br/><br/>请关注公众号，以及时了解您的审核状态或主办方后续会议通知，以避免会议调整而影响您的参会行程。<br/>
+				<img src="../../../img/index/public.jpg"/>
+			</div>
+		</div>
+		<div class="modal_mess hasTake hide">
+			<p id="msg">您已报名本次活动</p>
+			<div class="qrcodecon"><br/>
+				<span>您可通过关注群英汇公众号，以进一步了解您的报名状态或主办方后续会议通知，以避免会议调整而影响您的参会行程。</span>
+				<br/>
+				<img src="../../../img/index/public.jpg"/>
+			</div>
+		</div> -->
+		<div class="modal_mess">
+			<p id="msg"></p>
+			<div class="qrcodecon">
+				<span class="orangeSpan orange">您的报名信息已提交主办方，请等待主办方审核！<br/><br/></span>
+				<span class="bSpan">请关注公众号，以及时了解您的审核状态或主办方后续会议通知，以避免会议调整而影响您的参会行程。</span>
+				<br/>
+				<img src="../../../img/index/public.jpg"/><br/>
+				<span class="aSpan"></span>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+	    <form id="userform">                		
+			<div class="sign-box">   
+			    <input type="hidden" name="userId" id="userId">		
+			    <input type="hidden" name="activityId" id="activityId">
+			    <input type="hidden" name="attendWay" value="2"/>
+				<ul class="form-box">
+				</ul> 
+				<input type="button" class="takepartin" value="立 即 报 名" onclick="takepartin()">
+			</div>				 
+		</form>			   
+	</div>
+</div>
+<script src="../../../js/zepto.js"></script>
+<script src="../../../js/app/form.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<script>
+var actId = '';
+var defaultAuditStatus = '1'; // 是否需要审核 1-需要，2-不需要
+$(function(){
+	actId = Request('actId');
+	if(actId){
+		$("#activityId").val(actId);
+		if(!sessionStorage.getItem('token')){
+			myLoading();
+			$.ajax({
+				url: basePath + 'mt/token/get.do',
+				type: 'post',
+				dataType: 'json',
+				success: function(result){
+					if(result.flag){
+						sessionStorage.setItem('token', result.data);
+						initPage();
+					} else {
+						myConfirm(result.msg);
+					}
+				},
+				error: function(){
+					myConfirm("请求失败,请重试！");
+				}
+			});
+		} else {
+			myLoading();
+			initPage();
+		}	
+	}
+
+	$(".backIcon").on('click',function(){
+		goBack();
+	});
+});
+// 页面初始化
+function initPage(){
+	$.myAjax({
+		url: basePath + 'mt/user/attend/get.do',
+		data: {"id":actId},
+		success: function(result){
+			defaultAuditStatus = result.data.activity.defaultAuditStatus;
+		    var json = result.data.attendList,
+		    	personLi = '',
+		    	unitLi = '';
+			for(var o in json){						 
+				var obj = json[o];
+				var li = '<li><div class="inp-label">'+ obj.showName+"：</div>";
+				if(obj.name == "gender"){
+					li += '<div class="inp-box" style="line-height:36px"><input type="radio" name="gender" value="1" checked> 男 &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="gender" value="2"> 女 </div>';
+				}else{
+					if(obj.type.substring(0,1) == '2'){
+						if(obj.type.substring(1,2) == '2'){
+							li += '<div class="inp-box"><input class="inp inp-diy" type="text" name="'+obj.name+'" value="'+obj.value+'"></div>';
+						}else if(obj.type.substring(1,2) == '4'){
+							li += '<div class="inp-box"><select class="inp inp-diy sel" type="text" name="'+obj.name+'" value="'+obj.value+'"></select></div>';
+							
+						}else {
+							li += '<div class="inp-box"><input class="inp inp-diy inp-text" type="text" name="'+obj.name+'" value="'+obj.value+'"></div>';
+						}
+					} else {
+						if(obj.type.substring(1,2) == '2'){
+							li += '<div class="inp-box"><input class="inp" type="text" name="'+obj.name+'" value="'+obj.value+'"></div>';
+						}else if(obj.type.substring(1,2) == '4'){
+							if(obj.dict.length>0){
+								li += '<div class="inp-box"><select class="inp sel" type="text" name="'+obj.name+'" value="'+obj.value+'">'+getOption(obj.dict)+'</select></div>';
+							}
+						}else {
+							li += '<div class="inp-box"><input class="inp inp-text" type="text" name="'+obj.name+'" value="'+obj.value+'" placeholder="请输入'+obj.showName+'"></div>';
+						}
+					}
+					if(obj.isNeeded == 1)
+						li += '<span><i>*</i></span>';
+				}
+				
+				li += '</li>';
+				
+				if(obj.family == '1'){
+					personLi += li;
+				} else if(obj.family == '2') {
+					unitLi += li;
+				}
+			}
+			$(".form-box").html( personLi + unitLi );
+			if($("input[name=mobile]").val()) {
+				// 手机号不可更改
+				$("input[name=mobile]").attr("readonly","readonly");
+			}
+		}
+	});
+}
+// 输入验证
+function inputcheck(){
+	var aInput = $(".inp");		 
+	for(var i=0; i<aInput.length; i++){					 
+		if($(aInput[i]).parent().parent().find("span").html() == '<i>*</i>'){
+			if($(aInput[i]).val() == '' || $(aInput[i]).val() == null){
+				myConfirm("标星字段为必填项，请准确填写信息！！");
+				return false; 
+			} else if($(aInput[i]).attr("name") == "mobile"){
+				if(!(/^1[34578]\d{9}$/.test($(aInput[i]).val()))){ 
+					myConfirm("手机号码有误，请重新输入！");
+					return false; 
+				}
+			} else if($(aInput[i]).attr("name") == "email"){
+				if(!/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test($(aInput[i]).val())){
+					myConfirm("请输入正确的邮箱!");
+					return false;
+				}
+			}
+		}
+	}
+	return true;
+}
+// 报名参会
+function takepartin(){
+    if(inputcheck(".inp input") == false) return false;
+	// 选择自定义的字段
+	var aInp = $(".inp-diy");
+	var str = '{';
+	aInp.each(function(index){
+		if(index == 0){
+			str += '"'+$(this).attr("name")+'":"'+$(this).val()+'"';
+		} else {
+			str += ',"'+$(this).attr("name")+'":"'+$(this).val()+'"';
+		}
+	});
+	str += '}';
+	var postData = $('form').serialize() + '&family=1,2&extendInformation='+str;
+	myLoading();
+	$.myAjax({
+		url: basePath + "user/userattend/nosignsave.do",
+		data: postData,
+        success: function(result) {
+	    	if(result.flag) {
+				if(result.msg.indexOf("已报名") >= 0){
+	    			successModal("3");
+	    		} else {
+	    			if(defaultAuditStatus == 1){
+	    				successModal("1");
+	    			} else if(defaultAuditStatus == 2){
+	    				successModal("2");
+	    			}
+	    		}
+	    	} else {
+	    		if(result.msg.indexOf("已报名") >= 0){
+	    			successModal("3");
+	    		} else if(result.msg.indexOf("截止") >= 0) {
+	    			successModal("4");
+	    		} else {
+	    			myConfirm(result.msg);
+	    		}
+	    	}
+        },
+        error: function(result) {
+	        myConfirm("请求失败，请稍后再试！");
+        }
+	});
+}
+// 生成下拉列表方法
+function getOption(data){
+	var innerstr = "<option>--请选择--</option>";
+	$.each(data, function(i, val) {
+		innerstr += "<option value='" + val.value + "'>" + val.name + "</option>"
+	});
+	return innerstr;
+}
+// 成功提示框 type-提示类型：1-报名成功,需要审核，2-报名成功,不需要审核，3-已报名，4-报名截止
+function successModal(type){
+	$("body").prepend('<div id="mask"></div>');
+	if(type == "2"){
+		$(".orangeSpan").html("报名成功，请准时参会<br/>");
+		$(".bSpan").html("请关注公众号，以及时了解主办方后续会议通知，以避免会议调整而影响您的参会行程。");
+		$(".aSpan").html("如果您是初次报名参会，您的帐号已自动生成，帐号名为手机号，默认密码为手机后六位；关注后点击“我的会议”进行登录，查看报名审核状态。").addClass("orange");
+	} else if(type == "3"){
+		$("#msg").html("您已报名本次活动");
+		$(".orangeSpan").remove();
+		$(".bSpan").html("您可通过关注群英汇公众号，以进一步了解您的报名状态或主办方后续会议通知，以避免会议调整而影响您的参会行程。");
+	} else if(type == "4"){
+		$(".orangeSpan").html("对不起，您所报名的这场活动，主办方已截止报名");
+		$(".bSpan").html("如有疑问请电话咨询主办方或群英汇会议服务平台客服。<br/>主办方联系方式请在邀请函中查询。");
+		$(".aSpan").html("如有操作上的疑问，请关注群英汇会议服务平台。");
+	}
+	$('.modal_box').removeClass('hide');
+	// 不同类型跳转不同
+	$(".box_cancle").click(function(){
+		if(type == "1" || type == "2"){
+			sessionStorage.setItem('isLogin', "isLogin");
+			location.replace('../activity/meetDetail.html?actId='+actId);
+		} else if(type == "3"){
+			// 一般分享的链接才运行此部分链接，需要跳转到微信的登录
+			window.location ='../../weixin/index/login.html?actId='+actId;
+		}
+		$("#mask").remove();
+		$(".modal_box").addClass("hide");
+	})
+}
+
+</script>
+</body>
+</html>

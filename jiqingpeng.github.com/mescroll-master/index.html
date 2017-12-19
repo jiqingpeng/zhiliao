@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="dist/mescroll.min.css">
+</head>
+<body>
+	<div id="mescroll" class="mescroll"> //id可以改,而"mescroll"的class不能删
+	    //列表内容,如:<ul>列表数据</ul> ...
+	</div>
+</body>
+<script src="dist/mescroll.min.js"></script>
+<script>
+		var mescroll = new MeScroll("mescroll", { //第一个参数"mescroll"对应上面布局结构div的id
+	       		//如果您的下拉刷新是重置列表数据,那么down完全可以不用配置,具体用法参考第一个基础案例
+	       		//解析: down.callback默认调用mescroll.resetUpScroll(),而resetUpScroll会将page.num=1,再触发up.callback
+				
+				up: {
+					callback: a //上拉加载的回调
+				}
+			});
+		function a(){
+			console.log(1)
+		}
+</script>
+</html>

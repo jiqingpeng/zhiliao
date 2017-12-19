@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>用户中心</title>
+	<link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+	<link href="../../css/common/bootstrap.css" rel="stylesheet" />
+	<link href="../../css/common/bootstrap-table.min.css" rel="stylesheet" >
+	<link href="../../css/style.css" rel="stylesheet" />
+	<link href="../../css/main.css" rel="stylesheet" />
+	<link href="../../css/admin.css" rel="stylesheet" >
+</head>
+<body>
+<script type="text/javascript" src="../../js/common/header.js"></script>
+<div class="mops-con"><!-- 内容部分的class : mops-con (必须) -->
+	<div class="con-nav">
+		<a href="personal.html">用户中心</a>
+	</div><!-- 内容部分导航头的class : con-nav (必须) -->
+	<div class="con-box"><!-- 内容部分主体内容的class : con-box (必须) -->
+		<!-- 以下为每个页面自己编写的部分 -->
+		<div class="caption" style="height: 56px; width: 100%; background-color: #f5f5f5; margin-bottom: 40px;">
+			<div class="perDetails comStyle hasBgc">
+				<a>个人信息</a>
+			</div>
+			<div class="secSettings comStyle">
+				<a>安全信息</a>
+			</div>
+		</div>
+
+		<!-- 个人信息 -->
+		<div class="perDetailsForm">
+			<form id="personForm" class="form-horizontal" method="post" enctype="multipart/form-data" target="hidden_frame">
+				<div class="form-group">
+				    <label for="" class="col-sm-2 control-label"><span style="color: red">* </span>单位名称</label>
+				    <div class="col-sm-7">
+				      <input type="text" name="name" class="form-control userName" placeholder="请输入姓名" maxlength="32">
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="" class="col-sm-2 control-label">昵称</label>
+				    <div class="col-sm-7">
+				      <input type="text" name="nick" class="form-control nick" placeholder="请输入昵称" maxlength="32">
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="" class="col-sm-2 control-label">民族</label>
+				    <div class="col-sm-2">
+				      	<select class="form-control nation" name="nation" placeholder="请选择民族">
+						</select>
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="" class="col-sm-2 control-label">党派</label>
+				    <div class="col-sm-2">
+				      	<select class="form-control party" placeholder="请选择党派" name="party">
+						</select>
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="" class="col-sm-2 control-label">性别</label>
+				    <div class="col-sm-7">
+				      	<label class="radio-inline">
+  							<input type="radio" name="gender" id="men" value="1" checked> 男
+						</label>
+						<label class="radio-inline">
+  							<input type="radio" name="gender" id="women" value="2"> 女
+						</label>
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="" class="col-sm-2 control-label">出生日期</label>
+				    <div class="col-sm-2">
+				      <input type="text" class="form-control birthday" placeholder="请输入出生日期" maxlength="32" readonly="readonly">
+				      <input type="hidden" name="birthday" class="hiddenBirthday">
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="" class="col-sm-2 control-label">证件类型</label>
+				    <div class="col-sm-2">
+				      	<select class="form-control idcardType" name="idcardType" placeholder="请选择证件类型">
+						</select>
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="" class="col-sm-2 control-label">证件号码</label>
+				    <div class="col-sm-7">
+				      <input type="text" name="idcard" class="form-control idcard" placeholder="请输入证件号码" maxlength="32">
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="" class="col-sm-2 control-label">电话</label>
+				    <div class="col-sm-7">
+				      <input type="text" name="phone" class="form-control phone" placeholder="请输入电话" maxlength="32">
+				    </div>
+				</div>			
+				<div class="form-group">
+				    <label for="" class="col-sm-2 control-label">传真</label>
+				    <div class="col-sm-7">
+				      <input type="text" name="fax" class="form-control fax" placeholder="请输入传真" maxlength="32">
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="" class="col-sm-2 control-label">邮箱</label>
+				    <div class="col-sm-7">
+				      <input type="text" name="email" class="form-control email" placeholder="请输入邮箱" maxlength="32">
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="" class="col-sm-2 control-label">地址</label>
+				    <div class="col-sm-7">
+				      <input type="text" name="address" class="form-control address" placeholder="请输入通信地址" maxlength="32">
+				    </div>
+				</div>
+				<!-- <div class="form-group">
+				    <label for="" class="col-sm-2 control-label">头像</label>
+				    <div class="col-sm-7">
+						<img id="perImg" style="width: 200px; height: 180px;" />
+			    	</div>  
+			    </div>
+			    <div class="form-group "> 
+					<label for="" class="col-sm-2 control-label"></label>
+				    <div class="col-sm-7">
+						<input type="file" class="uploadFiles" value="image.png"/>
+						<input type="file" id="uploadImg" name="file" accept="image/jpeg,image/png,image/jpg"/>
+			    	</div>  
+				</div> -->
+				<div class="btncon">
+			        <button type="button" class="btn btn-default btn-warning preserve">保&nbsp;存</button>
+			        <input type="submit" class="hidden sub">
+			        <button type="button" class="btn btn-default abolish">取&nbsp;消</button>
+				</div>
+			</form>
+			<iframe name='hidden_frame' id="hidden_frame" style="display: none;">
+				
+			</iframe>
+		</div>
+
+		<!-- 安全信息 -->
+		<div style="display: none" class="secSettingsForm">
+			<form id="detailform" class="form-horizontal ">
+				<input id="res" name="res" type="reset" style="display:none;" /> 
+				<input type="hidden" id="secId" name="id"/>
+				<div class="form-group">
+				    <label for="" class="col-sm-2 control-label">原密码</label>
+				    <div class="col-sm-7">
+				      <input type="password" name="pwd" class="form-control" id="originalPwd" placeholder="请输入原始密码"/>
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="" class="col-sm-2 control-label">新密码</label>
+				    <div class="col-sm-7">
+				      <input type="password" name="newPwd" class="form-control " placeholder="请输入新密码"/>
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="" class="col-sm-2 control-label">确认密码</label>
+				    <div class="col-sm-7">
+				      	<input type="password" name="surePwd" class="form-control surePwd" placeholder="请确认新密码"/>
+				    </div>
+				</div>
+				<div class="form-group">
+					<label for="" class="col-sm-2 control-label"></label>
+					    <div class="col-sm-3">
+					      <input type="text" disabled="disabled" name="code" class="form-control verificationCode" placeholder="输入验证码">
+					    </div>
+					    <div class="col-sm-1"></div>
+					    <div class="col-sm-3">
+					      <input type="button" class="form-control gainMobile" value="获取手机验证码">
+				    </div>
+				</div>
+			</form>
+			<div class="btncon btnSafety">
+		        <button type="button" class="btn btn-default btn-warning save">保&nbsp;存</button>
+		        <button type="button" class="btn btn-default cancel">取&nbsp;消</button>
+			</div>
+		</div>
+	</div>
+<!-- 	<div class="new">new</div>  -->    
+</div>
+<script type="text/javascript" src="../../js/common/footer.js"></script>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/bootstrap-table.min.js"></script>
+<!-- 引入项目中带有左侧菜单的公共js -->
+
+<script src="../../js/admin/userGovern.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/common/main.js"></script>
+<script src="../../js/common/uploadPreview.js"></script>
+<script src="../../js/common/jquery.form.js"></script>
+<script src="../../js/jQuery.md5.js"></script>
+<script src="../../js/bootstrapValidator.min.js"></script>
+<script src="../../js/bootstrap-datetimepicker.min.js"></script>
+<script src="../../js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../../js/user/userMain.js"></script>
+<script>
+$(function(){
+	//页面init
+	userInit();
+	// 获取左侧菜单列表数据(参数为请求地址)
+    // initMenu('common/menu.do','用户中心');
+    serialMenuAjax('common/menu.do','用户中心',null,initPage);
+
+	//个人信息操作
+	// initPage();
+	
+	$("#uploadImg").uploadPreview({ Img: "perImg", ImgType: ["jpeg", "jpg", "png"]});
+	
+	//取消操作
+	$(".abolish").on('click', function(){
+		initPage();
+		$('#personForm').data('bootstrapValidator').resetForm(true);
+	})
+	//修改/保存信息
+	$('.preserve').on('click',function(){
+		var bootValidator = $("#detailform").data('bootstrapValidator');
+        bootValidator.validate();
+        if(bootValidator.isValid()){
+        	var actionUrl = basePath + "user/user/save.do";
+			var birthday=$(".birthday").val();
+			$(".hiddenBirthday").val(timeStamp(birthday));
+			$("#personForm").attr("action", actionUrl);
+			$("#personForm").submit();
+			$(".sub").click();
+        };
+	});
+	// 上传文件回显提示
+	var options = {
+		success: function (result) {
+			console.log(result);
+			var data = $.parseJSON(result);
+			if(data.flag){
+				myAlert("保存成功!");
+				$("#detailform").data('bootstrapValidator').resetForm(true);
+				initPage();
+			} else {
+				myAlert(data.msg,'slow');
+			};
+		},
+		error: function(){
+			alert("请求失败")
+		}
+	};
+	$("#personForm").ajaxForm(options);
+	
+	//安全信息操作
+	//修改信息
+	$(".gainMobile").on("click", function(){
+		//表单验证
+	    var bootValidator = $("#detailform").data('bootstrapValidator');
+        bootValidator.validate();
+        if(bootValidator.isValid()){
+			var password = $.md5($("#originalPwd").val());
+			$.myAjax({
+				url: basePath + "user/safe/change/verification.do",
+				data:　{ pwd: password},
+				type: "POST",
+			    success: function(result){
+			    	console.log(result)
+			    	if(result.flag){
+			    		console.log(result);
+			    		//倒计时获取验证码
+				    	var i=60;
+				    	var timer=null;
+				    	function show(){
+							i--;
+							$('.gainMobile').val(i+'秒后获取');
+							$('.gainMobile').attr('disabled','disabled');
+							if(i<=0){
+								clearInterval(timer);
+								$('.gainMobile').val('获取手机验证码');
+								$('.gainMobile').removeAttr('disabled');
+							};
+						};
+						show();
+						timer=setInterval(show,1000);
+			    		$(".verificationCode").removeAttr("disabled");
+			    	}else{
+			    		myAlert("原密码输入错误",'solw');
+			    	};
+				}
+			})
+		}
+	})
+	//保存信息
+	$(".save").on("click", function(){
+		var bootValidator = $("#detailform").data('bootstrapValidator');
+        bootValidator.validate();
+		if(bootValidator.isValid()){
+			$.myAjax({
+				url: basePath + "user/safe/change.do",
+				data: {
+					pwd: $.md5($(".surePwd").val()),
+					code: $(".verificationCode").val()
+				},
+				type: "POST",
+				success: function(result){
+					console.log(result);
+					if(result.flag){
+						myAlert(result.msg);
+						$('.logout').click();
+					}else{
+						alert(result.msg);
+					};
+				},
+				error: function(){
+					alert("请求失败");
+				}
+			});
+		};
+	});
+	//取消信息
+	$(".cancel").on("click", function(){
+		$('#detailform').data('bootstrapValidator').resetForm(true);
+		$("input[name='res']").click();
+	});
+	$('.birthday').datetimepicker({
+		language: 'zh-CN', //显示中文
+		format: 'yyyy-mm-dd', //显示格式
+		minView: 2, //设置显示到秒
+		initialDate: new Date(), //初始化当前日期
+		autoclose: true, //选中自动关闭
+		todayBtn: true //显示今日按钮
+	});
+});
+//初始化页面函数initPage
+function initPage() {
+	$.myAjax({
+		url: basePath + "user/user/info.do",
+		// type: "GET",
+		success: function(result){
+			console.log(result);
+			if(result.flag){
+				var data = result.data;
+				$(".userName").val(data.user.name);
+				$(".nick").val(data.user.nick);
+				$(".gender").val(data.user.gender);
+				var birthday=data.user.birthday;
+				$(".hiddenBirthday").val(timeStamp(birthday));
+				$(".birthday").val(getSubstring(data.user.birthday, 0, 10));
+				$(".idcard").val(data.user.idcard);
+				$(".phone").val(data.user.phone);
+				$(".fax").val(data.user.fax);
+				$(".email").val(data.user.email);
+				$(".address").val(data.user.address);
+				// if(result.data.imageUrl){
+				// 	var imgUrl = basePath + result.data.imageUrl;
+				// 	// imgUrl = imgUrl.replace(/[\\]/g,"\/");
+				// 	$("#perImg").attr("src",imgUrl);
+				// }
+				//性别
+				if(data.user.gender==1){
+					$("#men").attr("checked","checked");
+					$("#women").removeAttr("checked");
+				}else{
+					$("#women").attr("checked","checked");
+					$("#men").removeAttr("checked");
+				};
+				//民族
+				$(".nation").mopsSelect(data.national);
+				//党派
+				$(".party").mopsSelect(data.party);
+				//证件类型
+				$(".idcardType").mopsSelect(data.idType);
+
+				$(".nation").val(data.user.nation);
+				$(".party").val(data.user.party);
+				$(".idcardType").val(data.user.idcardType);
+				//用户登陆状态信息
+				if(result.data.user){
+					$('#user').html(result.data.user.name);
+				};
+			}else{
+				alert(result.msg);
+			};
+		},
+		error: function(){
+			alert("参数错误");
+		}
+	})
+}
+//个人信息表单验证
+$("#personForm").bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+        		name: {
+	                validators: {
+	                    notEmpty: {
+	                        message: '姓名不能为空'
+	                    }
+                	}
+            	},
+	            birthday: {
+	                validators: {
+	                    regexp: {
+	                        regexp:/^(19|20)\d{2}-(1[0-2]|0?[1-9])-(0?[1-9]|[1-2][0-9]|3[0-1])$/ ,
+	                        message: '生日格式不正确'
+                    	}                   
+                	}
+            	},
+	            mobile: {
+	                validators: {
+	                    notEmpty: {
+	                        message: '手机不能为空'
+	                    },
+	                    regexp: {
+	                        regexp: /^1[34578]\d{9}$/,
+	                        message: '请输入正确的手机号！'
+                    	}
+	                }
+	            },
+	            email: {
+                	validators: {
+                		// notEmpty: {
+	                 //        message: '邮箱不能为空'
+	                 //    },
+                    	emailAddress: {
+                    		regexp: /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/,
+                        	message: '请输入正确的邮箱地址！'
+                    	}
+                	}
+            	}
+            	// ,
+	            // address: {
+	            //     validators: {
+	            //         notEmpty: {
+	            //             message: '地址不能为空'
+	            //         }
+	            //     }
+	            // }
+	    }
+});
+//安全管理表单验证
+$("#detailform").bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+        		pwd: {
+	                validators: {
+	                    notEmpty: {
+	                        message: '密码不能为空'
+	                    }
+                	}
+            	},
+	            newPwd: {
+	                validators: {
+	                    notEmpty: {
+	                        message: '密码不能为空'
+	                    },
+	                    regexp: {
+                         regexp: /^[a-zA-Z][a-zA-Z0-9_]{5,15}$/,
+                         message: '密码是以英文字母开头，只能包含英文字母、数字、下划线，且长度为6~16位，请重新输入！'
+                    	},
+	                    different: {
+                         field: 'pwd',
+                         message: '新密码不能和旧密码相同'
+                     	}                 
+                	}
+            	},
+	            surePwd: {
+	                validators: {
+	                    notEmpty: {
+	                        message: '密码不能为空'
+	                    },
+	                    identical: {
+	                        field: 'newPwd',
+	                        message: '2次输入的密码不一样'
+	                    }
+	                }
+	            },
+	            code: {
+	                validators: {
+	                    notEmpty: {
+	                        message: '验证码不能为空'
+	                    }
+	                }
+	            }
+	    }
+});
+
+</script>
+</html>

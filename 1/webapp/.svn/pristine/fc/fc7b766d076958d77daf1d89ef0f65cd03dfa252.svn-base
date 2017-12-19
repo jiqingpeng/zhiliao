@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8"/>
+	<meta content="text/html"/>
+	<title>首页</title>
+	<link rel="stylesheet" href="../../css/index/base.css">
+	<link rel="stylesheet" href="../../css/index/public.css">
+	<link rel="stylesheet" href="../../css/index/index.css">
+</head>
+<body>
+	<div class="head">
+		<div class="clearfix hnav">
+			<ul class="fl">
+				<li class="fl"><a href="index.html">首页</a></li>
+				<li class="fl"><a href="detail.html">解决方案</a></li>
+				<li class="fl"><a href="second.html">合作单位</a></li>
+				<li class="fl"><a href="cation.html">关于我们</a></li>
+			</ul>
+			<!-- 登陆 -->
+			<ul class="fr log_group">
+				<li class="fl"><a href="login.html" target="_blank">其他登录</a></li>
+				<li class="fl login">
+					<a class="w60" href="javascript:;">登陆</a>
+					<div class="login_box">
+						<input class="user" type="text" placeholder="请输入账号">
+						<input class="password" type="password" placeholder="请输入密码">
+						<p class="login_message">错误信息</p>
+						<a id="login"  class="login_btn">登&nbsp录</a>
+						<p class="login_footer clearfix">
+							<a class="fl a" href="javascript:;" style="color:#252525; font-size:12px;">十天内免登录</a>
+							<a class="fr color_000" href="javascript:;" style="color:#252525; font-size:12px;" >忘记密码?
+							</a>
+						</p>
+					</div>
+				</li>
+				<li class="fl"><a id="aa" href="register.html">注册</a></li>
+			</ul>
+			<!-- 登陆成功 -->
+			<ul class="fr log_group2 active">
+				<li class="fl">
+					<a href="../user/activitylist.html" target="_blank">用户中心</a>
+				</li>
+				<li class="fl">
+					<a id="user_name" href="javascript:;" "></a>
+				</li>
+				<li class="fl">
+					<a id="login_out" href="javascript:;">注销</a>
+				</li>
+			</ul>
+			<ul class="fr">
+				<li class="fl"><a href="javascript:;">主办方</a></li>
+			</ul>
+			
+		</div>
+	</div>
+	<div class="contain">
+		<div class="bannimg">
+			<a class="fl" href="#"><img class="logol" src="../../img/index/logoandname.png" alt="logoname"></a>
+			<img class="logor fr" src="../../img/index/homenav.png" alt="homenav">
+		</div>
+		<div class="group clearfix">
+			<div class="item fl">
+				<!-- 会议 -->
+				<div class="wrap">
+					<div class="title clearfix">
+						<div class="icon fl">
+							<img src="../../img/index/icon-index-hint.png" alt="icon" class="fl">
+							<span class="fl">会议</span>
+						</div>
+						<ul class="nav fl">
+							<!-- <li class="fl">
+								<a href="#">通信</a>
+							</li>
+							<li class="fl">
+								<a href="#">电子</a>
+							</li>
+							<li class="fl">
+								<a href="#">互联网</a>
+							</li>
+							<li class="fl">
+								<a href="#">金融业</a>
+							</li>
+							<li class="fl">
+								<a href="#">交通</a>
+							</li>
+							<li class="fl">
+								<a href="#">工艺美术</a>
+							</li>
+							<li class="fl">
+								<a href="#">生产</a>
+							</li>
+							<li class="fl">
+								<a href="#">加工制造</a>
+							</li>
+							<li class="fl">
+								<a href="#">非盈利机构</a>
+							</li>
+							<li class="fl">
+								<a href="#">农|林|牧|渔</a>
+							</li> -->
+							
+							<li class="fr">
+								<a href="cation.html" class="mr">
+									查看更多
+									<img  src="../../img/index/more.jpg" alt="more">
+								</a>
+								
+							</li>
+						</ul>
+					</div>
+					<div class="message mess">
+						<!-- <li >
+							<p class="clearfix">
+								<span class="time fl">2017/12/31</span>
+								<span class="city fl"><i>成都市</i></span>
+								<a class="fl" href="#">2017年四川省成都市关于医疗合作的常开会议</a>
+							</p>
+						</li> -->
+						<!-- <li>
+							<span class="time">2017/2/5</span>
+							<span class="city"><i>呼和浩特市</i></span>
+							<a href="#">2017年内蒙省呼和浩特市经济发展研讨会</a>
+						</li>
+						<li>
+							<span class="time">2017/2/5</span>
+							<span class="city"><i>北京</i></span>
+							<a href="#">2017年北京市发展周边城区会议</a>
+						</li>
+						<li>
+							<span class="time">2017/12/31</span>
+							<span class="city"><i>成都市</i></span>
+							<a href="#">2017年四川省成都市关于医疗合作的常开会议</a>
+						</li>
+						<li>
+							<span class="time">2017/2/5</span>
+							<span class="city"><i>呼和浩特市</i></span>
+							<a href="#">2017年内蒙省呼和浩特市经济发展研讨会</a>
+						</li>
+						<li>
+							<span class="time">2017/2/5</span>
+							<span class="city"><i>北京</i></span>
+							<a href="#">2017年北京市发展周边城区会议</a>
+						</li>
+						<li>
+							<span class="time">2017/12/31</span>
+							<span class="city"><i>成都市</i></span>
+							<a href="#">2017年四川省成都市关于医疗合作的常开会议</a>
+						</li>
+						<li>
+							<span class="time">2017/2/5</span>
+							<span class="city"><i>呼和浩特市</i></span>
+							<a href="#">2017年内蒙省呼和浩特市经济发展研讨会</a>
+						</li>
+						<li>
+							<span class="time">2017/2/5</span>
+							<span class="city"><i>北京</i></span>
+							<a href="#">2017年北京市发展周边城区会议</a>
+						</li>
+						<li>
+							<span class="time">2017/2/5</span>
+							<span class="city"><i>北京</i></span>
+							<a href="#">2017年北京市发展周边城区会议</a>
+						</li> -->
+					</div>
+				</div>
+				<!-- 培训 -->
+				<div class="wrap">
+					<div class="title clearfix">
+						<div class="icon fl">
+							<img src="../../img/index/icon-index-hint.png" alt="icon" class="fl">
+							<span class="fl">培训</span>
+						</div>
+						<ul class="nav fl">
+							<!-- <li class="fl">
+								<a href="#">通信</a>
+							</li>
+							<li class="fl">
+								<a href="#">电子</a>
+							</li>
+							<li class="fl">
+								<a href="#">互联网</a>
+							</li>
+							<li class="fl">
+								<a href="#">金融业</a>
+							</li>
+							<li class="fl">
+								<a href="#">交通</a>
+							</li>
+							<li class="fl">
+								<a href="#">工艺美术</a>
+							</li>
+							<li class="fl">
+								<a href="#">生产</a>
+							</li>
+							<li class="fl">
+								<a href="#">加工制造</a>
+							</li>
+							<li class="fl">
+								<a href="#">非盈利机构</a>
+							</li>
+							<li class="fl">
+								<a href="#">农|林|牧|渔</a>
+							</li> -->
+							
+							<li class="fr">
+								<a href="cation.html" class="mr">
+									查看更多
+									<img  src="../../img/index/more.jpg" alt="more">
+								</a>
+								
+							</li>
+						</ul>
+					</div>
+					<div class="message training">
+						<!-- <li>
+							<span class="time">2017/12/31</span>
+							<span class="city"><i>成都市</i></span>
+							<a href="#">2017年四川省成都市关于医疗合作的常开会议</a>
+						</li>
+						<li>
+							<span class="time">2017/2/5</span>
+							<span class="city"><i>呼和浩特市</i></span>
+							<a href="#">2017年内蒙省呼和浩特市经济发展研讨会</a>
+						</li>
+						<li>
+							<span class="time">2017/2/5</span>
+							<span class="city"><i>北京</i></span>
+							<a href="#">2017年北京市发展周边城区会议</a>
+						</li>
+						<li>
+							<span class="time">2017/12/31</span>
+							<span class="city"><i>成都市</i></span>
+							<a href="#">2017年四川省成都市关于医疗合作的常开会议</a>
+						</li>
+						<li>
+							<span class="time">2017/2/5</span>
+							<span class="city"><i>呼和浩特市</i></span>
+							<a href="#">2017年内蒙省呼和浩特市经济发展研讨会</a>
+						</li>
+						<li>
+							<span class="time">2017/2/5</span>
+							<span class="city"><i>北京</i></span>
+							<a href="#">2017年北京市发展周边城区会议</a>
+						</li>
+						<li>
+							<span class="time">2017/12/31</span>
+							<span class="city"><i>成都市</i></span>
+							<a href="#">2017年四川省成都市关于医疗合作的常开会议</a>
+						</li>
+						<li>
+							<span class="time">2017/2/5</span>
+							<span class="city"><i>呼和浩特市</i></span>
+							<a href="#">2017年内蒙省呼和浩特市经济发展研讨会</a>
+						</li>
+						<li>
+							<span class="time">2017/2/5</span>
+							<span class="city"><i>北京</i></span>
+							<a href="#">2017年北京市发展周边城区会议</a>
+						</li>
+						<li>
+							<span class="time">2017/2/5</span>
+							<span class="city"><i>北京</i></span>
+							<a href="#">2017年北京市发展周边城区会议</a>
+						</li> -->
+					</div>
+				</div>
+				<!-- 学会动态 -->
+				<div class="wrap ">
+					<div class="titlet clearfix">
+						<span class="fl">学会动态</span>
+						<a href="cation.html" class="mr fr">
+							查看更多
+							<img  src="../../img/index/more.jpg" alt="more">
+						</a>
+					</div>
+					<ul class="messaget">
+						<li>
+							<a href="#">我会“第二十一届大会污染防治技术研讨会”在杭州召开</a>
+
+						</li>
+						<li>
+							<a href="#">关于举办排污许可证挤排污权管理培训班的通知</a>
+						</li>
+						<li>
+							<a href="#">年度国家自然科学奖、技术发明奖、国家科学技术进步奖受理项目公示</a>
+						</li>
+						<li>
+							<a href="#">我会召开推选院士候选人专家委员会评审会议</a>
+						</li>
+						<li>
+							<a href="#">环境保护部科技发展中心辛志伟主任一行到我会交流座谈 </a>
+						</li>
+						<li>
+							<a href="#">我会秘书处召开2016工作总结和2017工作部署会议</a>
+						</li>
+						<li>
+							<a href="#">我会组织召开两项成果鉴定会</a>
+						</li>
+						<li>
+							<a href="#">环境保护部科技发展中心辛志伟主任一行到我会交流座谈 </a>
+						</li>
+						<li>
+							<a href="#"> “2017有机废弃物处理和资源化研讨会”在西安召开
+							</a>
+						</li>
+						<li>
+							<a href="#">中国营养学会什么动员大会</a>
+						</li>
+					</ul>	
+				</div>
+				<!-- 最新动态 -->
+				<div class="wrap ">
+					<div class="titlet clearfix">
+						<span class="fl">最新动态</span>
+						<a href="detail.html" class="mr fr">
+							查看更多
+							<img  src="../../img/index/more.jpg" alt="more">
+						</a>
+					</div>
+					<ul class="messaget">
+						<li>
+							<a href="#">中国科学技术大学学生自然保护协会</a>
+						</li>
+						<li>
+							<a href="#">中国科学技术协会</a>
+						</li>
+						<li>
+							<a href="#">中国全国青年联合会</a>
+						</li>
+						<li>
+							<a href="#">中国全国工商业联合会</a>
+						</li>
+						<li>
+							<a href="#">中国信鸽协会</a>
+						</li>
+						<li>
+							<a href="#">中国投资协会</a>
+						</li>
+						
+					</ul>	
+				</div>
+			</div>
+			<div class="item fr">
+				<!-- 会展 -->
+				<div class="wrap min_h400">
+					<div class="title clearfix">
+						<div class="icon fl">
+							<img src="../../img/index/icon-index-hint.png" alt="icon" class="fl">
+							<span class="fl">会展</span>
+						</div>
+						<ul class="nav fl">
+							<!-- <li class="fl">
+								<a href="#">通信</a>
+							</li>
+							<li class="fl">
+								<a href="#">电子</a>
+							</li>
+							<li class="fl">
+								<a href="#">互联网</a>
+							</li>
+							<li class="fl">
+								<a href="#">金融业</a>
+							</li>
+							<li class="fl">
+								<a href="#">交通</a>
+							</li>
+							<li class="fl">
+								<a href="#">工艺美术</a>
+							</li>
+							<li class="fl">
+								<a href="#">生产</a>
+							</li>
+							<li class="fl">
+								<a href="#">加工制造</a>
+							</li>
+							<li class="fl">
+								<a href="#">非盈利机构</a>
+							</li>
+							<li class="fl">
+								<a href="#">农|林|牧|渔</a>
+							</li> -->
+							
+							<li class="fr">
+								<a href="cation.html" class="mr">
+									查看更多
+									<img  src="../../img/index/more.jpg" alt="more">
+								</a>
+								
+							</li>
+						</ul>
+					</div>
+					<div class="message messShow">
+						<!-- <li>
+							<span class="time">2017/12/31</span>
+							<span class="city"><i>成都市</i></span>
+							<a href="#">2017年四川省成都市关于医疗合作的常开会议</a>
+						</li>
+						<li>
+							<span class="time">2017/2/5</span>
+							<span class="city"><i>呼和浩特市</i></span>
+							<a href="#">2017年内蒙省呼和浩特市经济发展研讨会</a>
+						</li>
+						<li>
+							<span class="time">2017/2/5</span>
+							<span class="city"><i>北京</i></span>
+							<a href="#">2017年北京市发展周边城区会议</a>
+						</li>
+						<li>
+							<span class="time">2017/12/31</span>
+							<span class="city"><i>成都市</i></span>
+							<a href="#">2017年四川省成都市关于医疗合作的常开会议</a>
+						</li>
+						<li>
+							<span class="time">2017/2/5</span>
+							<span class="city"><i>呼和浩特市</i></span>
+							<a href="#">2017年内蒙省呼和浩特市经济发展研讨会</a>
+						</li>
+						<li>
+							<span class="time">2017/2/5</span>
+							<span class="city"><i>北京</i></span>
+							<a href="#">2017年北京市发展周边城区会议</a>
+						</li>
+						<li>
+							<span class="time">2017/12/31</span>
+							<span class="city"><i>成都市</i></span>
+							<a href="#">2017年四川省成都市关于医疗合作的常开会议</a>
+						</li>
+						<li>
+							<span class="time">2017/2/5</span>
+							<span class="city"><i>呼和浩特市</i></span>
+							<a href="#">2017年内蒙省呼和浩特市经济发展研讨会</a>
+						</li>
+						<li>
+							<span class="time">2017/2/5</span>
+							<span class="city"><i>北京</i></span>
+							<a href="#">2017年北京市发展周边城区会议</a>
+						</li> -->
+						
+					</div>
+				</div>
+				<!-- 大赛 -->
+				<div class="wrap min_h400">
+					<div class="title clearfix">
+						<div class="icon fl">
+							<img src="../../img/index/icon-index-hint.png" alt="icon" class="fl">
+							<span class="fl">大赛</span>
+						</div>
+						<ul class="nav fl">
+							<!-- <li class="fl">
+								<a href="#">通信</a>
+							</li>
+							<li class="fl">
+								<a href="#">电子</a>
+							</li>
+							<li class="fl">
+								<a href="#">互联网</a>
+							</li>
+							<li class="fl">
+								<a href="#">金融业</a>
+							</li>
+							<li class="fl">
+								<a href="#">交通</a>
+							</li>
+							<li class="fl">
+								<a href="#">工艺美术</a>
+							</li>
+							<li class="fl">
+								<a href="#">生产</a>
+							</li>
+							<li class="fl">
+								<a href="#">加工制造</a>
+							</li>
+							<li class="fl">
+								<a href="#">非盈利机构</a>
+							</li>
+							<li class="fl">
+								<a href="#">农|林|牧|渔</a>
+							</li> -->
+							
+							<li class="fr">
+								<a href="cation.html" class="mr">
+									查看更多
+									<img  src="../../img/index/more.jpg" alt="more">
+								</a>
+								
+							</li>
+						</ul>
+					</div>
+					<div class="message competition">
+						<!-- <li>
+							<span class="time">2017/12/31</span>
+							<span class="city"><i>成都市</i></span>
+							<a href="#">2017年四川省成都市关于医疗合作的常开会议</a>
+						</li>
+						<li>
+							<span class="time">2017/2/5</span>
+							<span class="city"><i>呼和浩特市</i></span>
+							<a href="#">2017年内蒙省呼和浩特市经济发展研讨会</a>
+						</li>
+						<li>
+							<span class="time">2017/2/5</span>
+							<span class="city"><i>北京</i></span>
+							<a href="#">2017年北京市发展周边城区会议</a>
+						</li>
+						<li>
+							<span class="time">2017/12/31</span>
+							<span class="city"><i>成都市</i></span>
+							<a href="#">2017年四川省成都市关于医疗合作的常开会议</a>
+						</li>
+						<li>
+							<span class="time">2017/2/5</span>
+							<span class="city"><i>呼和浩特市</i></span>
+							<a href="#">2017年内蒙省呼和浩特市经济发展研讨会</a>
+						</li>
+						<li>
+							<span class="time">2017/2/5</span>
+							<span class="city"><i>北京</i></span>
+							<a href="#">2017年北京市发展周边城区会议</a>
+						</li>
+						<li>
+							<span class="time">2017/12/31</span>
+							<span class="city"><i>成都市</i></span>
+							<a href="#">2017年四川省成都市关于医疗合作的常开会议</a>
+						</li>
+						<li>
+							<span class="time">2017/2/5</span>
+							<span class="city"><i>呼和浩特市</i></span>
+							<a href="#">2017年内蒙省呼和浩特市经济发展研讨会</a>
+						</li>
+						<li>
+							<span class="time">2017/2/5</span>
+							<span class="city"><i>北京</i></span>
+							<a href="#">2017年北京市发展周边城区会议</a>
+						</li>-->
+						<!-- <li>
+							<span class="time">2017/2/5</span>
+							<span class="city"><i>北京</i></span>
+							<a href="#">2017年北京市发展周边城区会议</a>
+						</li> --> 
+					</div>
+				</div>
+				<!-- 合作学会 -->
+				<div class="wrap ">
+					<div class="titlet clearfix">
+						<span class="fl">合作学会</span>
+						<a href="ca.html" class="mr fr">
+							查看更多
+							<img  src="../../img/index/more.jpg" alt="more">
+						</a>
+					</div>
+					<ul class="messaget clearfix">
+						<li class="fl w224">
+							<a href="#">中国大学生自然保护协会</a>
+						</li>
+						<li class="fl w224">
+							<a href="#">中国科学技术协会</a>
+						</li>
+						<li class="fl w224">
+							<a href="#">中国全国青年联合会</a>
+						</li>
+						<li class="fl w224">
+							<a href="#">中国全国工商业联合会</a>
+						</li>
+						<li class="fl w224">
+							<a href="#">中国建筑设计协会</a>
+						</li>
+						<li class="fl w224">
+							<a href="#">中国勘测设计学会</a>
+						</li>
+						<li class="fl w224">
+							<a href="#">世界大都市协会</a>
+						</li>
+						<li class="fl w224">
+							<a href="#">中国新闻文化促进协会</a>
+						</li>
+						<li class="fl w224">
+							<a href="#">中国橡胶工业协会</a>
+						</li>
+						<li class="fl w224">
+							<a href="#">国际图书馆预览协会</a>
+						</li>
+						<li class="fl w224">
+							<a href="#">中国农业银行协会</a>
+						</li>
+						<li class="fl w224">
+							<a href="#">中国工商业联盟系会</a>
+						</li>
+						<li class="fl w224">
+							<a href="#">中国橡胶工业协会</a>
+						</li>
+						<li class="fl w224">
+							<a href="#">国际图书馆预览协会</a>
+						</li>
+						<li class="fl w224">
+							<a href="#">中国农业银行协会</a>
+						</li>
+						<li class="fl w224">
+							<a href="#">中国工商业联盟系会</a>
+						</li>
+						<li class="fl w224">
+							<a href="#">中国橡胶工业协会</a>
+						</li>
+						<li class="fl w224">
+							<a href="#">国际图书馆预览协会</a>
+						</li>
+						<li class="fl w224">
+							<a href="#">中国农业银行协会</a>
+						</li>
+						<li class="fl w224">
+							<a href="#">中国工商业联盟系会</a>
+						</li>
+					</ul>	
+				</div>
+				<!-- 嘉宾简绍 -->
+				<div class="wrap ">
+					<div class="titlet clearfix">
+						<span class="fl">嘉宾简绍</span>
+						<a href="detail.html" class="mr fr">
+							查看更多
+							<img  src="../../img/index/more.jpg" alt="more">
+						</a>
+					</div>
+					<ul class="messaget">
+						<li class="fl lno">
+							<a href="#" class="person">于雪忠</a>
+						</li>
+						<li class="fl lno">
+							<a href="#" class="person">俄日勒和克</a>
+						</li>
+						<li class="fl lno">
+							<a href="#" class="person">拉克申</a>
+						</li>
+						<li class="fl lno">
+							<a href="#" class="person">巴特尔</a>
+						</li>
+						<li class="fl lno">
+							<a href="#" class="person">李白</a>
+						</li>
+						<li class="fl lno">
+							<a href="#" class="person">于雪忠</a>
+						</li>
+						<li class="fl lno">
+							<a href="#" class="person">俄日勒和克</a>
+						</li>
+						<li class="fl lno">
+							<a href="#" class="person">拉克申</a>
+						</li>
+						<li class="fl lno">
+							<a href="#" class="person">巴特尔</a>
+						</li>
+						<li class="fl lno">
+							<a href="#" class="person">李白</a>
+						</li>
+						<li class="fl lno">
+							<a href="#" class="person">于雪忠</a>
+						</li>
+						<li class="fl lno">
+							<a href="#" class="person">于雪忠</a>
+						</li>
+						<li class="fl lno">
+							<a href="#" class="person">于雪忠</a>
+						</li>
+						<li class="fl lno">
+							<a href="#" class="person">于雪忠</a>
+						</li>
+						<li class="fl lno">
+							<a href="#" class="person">于雪</a>
+						</li>
+						<li class="fl lno">
+							<a href="#" class="person">于雪忠</a>
+						</li>
+						<li class="fl lno">
+							<a href="#" class="person">于雪忠</a>
+						</li>
+						<li class="fl lno">
+							<a href="#" class="person">于雪忠</a>
+						</li>
+						<li class="fl lno">
+							<a href="#" class="person">于雪忠</a>
+						</li>
+						<li class="fl lno">
+							<a href="#" class="person">于雪忠</a>
+						</li>
+						<li class="fl lno">
+							<a href="#" class="person">于雪忠</a>
+						</li>
+						<li class="fl lno">
+							<a href="#" class="person">于雪忠</a>
+						</li>
+						<li class="fl lno">
+							<a href="#" class="person">于雪忠</a>
+						</li>
+						<li class="fl lno">
+							<a href="#" class="person">于雪忠</a>
+						</li>
+						
+					</ul>	
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="foot">
+			<ul class="f-list clearfix">
+				<li class="fl tell no">
+				</li>
+				<li class="fl">
+					<ul class="foot-message">
+						<li class="font24"><a href="#">关于我们</a></li>
+						<li><a href="#">关于群英会</a></li>
+						<li><a href="#">加入我们</a></li>
+						<li><a href="#">免责申明</a></li>
+					</ul>
+				</li>
+				<li class="fl">
+					<ul class="foot-message">
+						<li class="font24"><a href="#">联系我们</a></li>
+						<li><a href="#">电话</a></li>
+						<li><a href="#">官方微信</a></li>
+						<li><a href="#">新浪微博</a></li>
+					</ul>
+				</li>
+				<li class="fl">
+					<ul class="foot-message">
+						<li class="font24"><a href="#">新闻中心</a></li>
+						<li><a href="#">公司新闻</a></li>
+						<li><a href="#">合作伙伴</a></li>
+						<li><a href="#">知名客户</a></li>
+					</ul>
+				</li>
+				<li class="fl">
+					<ul class="foot-message">
+						<li class="font24"><a href="#">合作</a></li>
+						<li><a href="#">主办方合作</a></li>
+						<li><a href="#">媒体合作</a></li>
+						<li><a href="#">资助合作</a></li>
+					</ul>
+				</li>
+				
+				<li class="fl font24 la"><a href="#">公司新闻</a></li>
+			</ul>
+			<p class="p1">未经gconfs.com同意不得转发网站会议信息</p>
+			<p class="p2">京ICP备1708133号</p>
+	</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script>
+	$(function(){
+		//init获取页面信息
+		var url=basePath+"index/init.do"
+		$.ajax({
+			url: url,
+			type: 'POST',
+			dataType: 'json',
+			xhrFields: {
+       			withCredentials: true
+    		},
+    		crossDomain: true,
+			success:function(result){
+				console.log(result)
+				//循环行业类型
+				for(var i=0;i<9;i++){
+					$('.nav').append('<li class="fl"><a href="#">'+result.data.industy[i].name+'</a></li>')
+				};
+				//限制条数
+				var typeOne = 0;
+				var typeTwo = 0;
+				var typeThree = 0;
+				var typeFour = 0;
+				//分类信息
+				for(var i=0;i<result.data.activity.length;i++){
+					//截取时间
+					var stime=result.data.activity[i].stime.substr(0,11);
+					//填充数据
+					var str='<li class="clearfix"><input class="fl" type="hidden" value="'+result.data.activity[i].id+'"/><span class="time fl">'+stime+'</span><span class="city fl"><i>'+result.data.activity[i].city+'</i></span><span class="on_mess fl" >'+result.data.activity[i].name+'</span></li>';
+					//会议
+					if(result.data.activity[i].type=='1'){
+						if(typeOne>9){
+							continue;
+						} else {
+							typeOne++;
+							$('.mess').append(str);
+						};
+					};
+					//会展
+					if(result.data.activity[i].type=='2'){
+						if(typeTwo>9){
+							continue;
+						} else {
+							typeTwo++;
+							$('.messShow').append(str);
+						};
+					};
+					//培训
+					if(result.data.activity[i].type=='3'){
+						if(typeThree>9){
+							continue;
+						} else {
+							typeThree++;
+							$('.training').append(str);
+						};
+					};
+					//大赛
+					if(result.data.activity[i].type=='4'){
+						if(typeThree>9){
+							continue;
+						} else {
+							typeThree++;
+							$('.competition').append(str);
+						};
+					};
+				};
+				//登陆状态
+				if(result.data.user){
+					$('.log_group').addClass('active');
+					$('.log_group2').removeClass('active');
+					$('#user_name').html(result.data.user.name);
+				};
+			}
+		});
+		//链接跳活动详情
+		$(document).on('click','.on_mess',function(){
+			window.location.href='detail.html?location='+$(this).prev().prev().prev().val();
+		});
+		//登陆
+		$('#login').click(function(){
+			url=basePath+"user/login/check.do";
+			$.ajax({
+				url: url,
+				data: {
+					mobile: $('.user').val(),
+					pwd:$('.password').val() 
+					// phone: '13633334444',
+					// pwd:'asd' 
+				},
+				type: 'POST',
+				dataType: 'json',
+				xhrFields: {
+           			withCredentials: true
+        		},
+        		crossDomain: true,
+				success:function(result){
+					console.log(result)
+					if(result.flag){
+						window.location.href='../user/activitylist.html'
+					}else{
+						$('.login_message').css('display','block')
+						$('.login_message').html(result.msg)
+					};
+				}
+			});
+		});
+		//注销
+		$('#login_out').click(function(){
+			url=basePath+"login/out.do";
+			$.ajax({
+				url: url,
+				type: 'GET',
+				dataType: 'json',
+				xhrFields: {
+           			withCredentials: true
+        		},
+        		crossDomain: true,
+				success:function(result){
+					console.log(result)
+					if(result.flag){
+						window.location.href='index.html'
+					};
+				}
+			});
+		});
+	});
+</script>
+</html>

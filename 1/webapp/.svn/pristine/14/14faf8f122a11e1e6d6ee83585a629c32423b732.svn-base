@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>活动简介</title>
+<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+<link href="../../../css/common/bootstrap.min.css" rel="stylesheet" />
+<link href="../../../css/style.css" rel="stylesheet" />
+<link href="../../../css/main.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../js/ueditor/themes/default/css/ueditor.css">
+<link rel="stylesheet" href="../../../css/admin.css">
+
+</head>
+<body>
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="activitylist mops-con">
+	<div class="con-nav">
+		<a href="message.html">管理中心</a>
+		<a href="">-></a>
+		<a href="message.html">活动管理</a>
+		<a href="">-></a>
+		<a href="intro.html">活动简介</a>
+	</div>
+	<div class="con-box">
+	<!-- 以下为每个页面自己编写的部分 -->
+		<div class="introview">	
+			<div class="editorcon">
+				<span class="zh introactive">中文简介</span><span class="en">英文简介</span>
+				<div id="viewcon">
+					<img src="../../../img/haha.png" style="height: 120px;width: 120px; margin: 24px 24px; display: inline-block; float: left;" />
+					北京泽财汇中科技有限公司位于北京中关村自主创新园区—创业广场，是一家专业从事会议、会展、培训、大赛等一站式信息服务的互联网企业，还为会议主办方提供的赞助商、会展商、会务商、媒体、航线、交通、酒店、场地等服务资源。原公司世纪协达，与中国科协及多家全国性学会、协会长期合作，具有8年的大型会议信息服务经验，为新公司泽财汇中会议业务提供了坚实的技术和经验保障。
+
+公司专业会议服务平台---群英汇---具有核心创新技术，具备并发支撑上万场会议的服务能力，以任务中心构建会议会展人联网和物联网，实现会议会展服务的智能化和科学化。
+
+泽财汇中拥有丰富的高端客户资源和市场团队、专业技术研发团队、实战的网络运营团队；通过一站式会议管理服务，一站式技术培训服务，一站式技术咨询服务，为广大政府部门、协会、商会、联盟、行业组织等提供优质、免费的会议管理服务。有效的降低会议组办方工作人员 60%的劳动强度，减少失误率，提高服务质量。
+
+泽财汇中本着专业、创新、诚信、合作的精神理念和为广大客户提供一流的产品与服务的奋斗目标，与各位合作伙伴一起携手并进，共创辉煌。
+				</div>
+				<label style="color: #666;">简介附件：</label>
+				<input type="" name="" class="filename" value="xxx学会简介.doc" />
+			</div>
+			<button class="btn btn-warning editinfo"> 编 辑 </button>
+		</div>
+		<div class="edit none">
+			<div class="editorcon">
+				<div name="content" id="editor"></div>
+				<label style="color: #666;">上传简介附件：</label>
+				<input type="" name="" class="filename">
+				<input type="file" name="" class="upfile" />
+			</div>
+			<button class="btn btn-warning saveinfo"> 保 存 </button>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/ueditor/ueditor.config.js"></script>
+<script src="../../../js/ueditor/ueditor.all.min.js"></script>
+<script src="../../../js/ueditor/lang/zh-cn/zh-cn.js"></script>
+
+<script src="../../../js/common/main.js"></script>
+
+<script>
+	var ue = UE.getEditor('editor');
+	$(".editinfo").click(function(){
+		$(this).parent().addClass("none");
+		$(this).parent().next().removeClass("none");
+
+	});
+	$(".saveinfo").click(function(){
+		myAlert("已保存");
+		$(this).parent().addClass("none");
+		$(this).parent().prev().removeClass("none");
+		
+	});
+</script>
+<script>
+$(function(){
+	// 获取左侧菜单列表数据(参数为请求地址)
+	initMenu('../../../js/data/administrator.json','活动管理');
+});
+</script>
+</html>

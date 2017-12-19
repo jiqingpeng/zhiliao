@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="../../css/index/base.css">
+	<link rel="stylesheet" href="../../css/index/login.css">
+</head>
+<body>
+	<div class="contains">
+		<div class="con_tit">
+			<a href="javascript:;">
+				<img src="../../img/index/logoandname.png" alt="login">
+			</a>
+		</div>
+		<div class="con_box clearfix">
+			
+			<div class=" login_img fl">
+				<img class="" src="../../img/index/loginimg.png" alt="login_img">
+			</div>
+			<div class="login_box fl">
+				<input class="user" type="text" placeholder="请输入账号" maxlength="32">
+				<input class="password" type="password" placeholder="请输入密码" maxlength="32">
+				<p class="clearfix regCode">
+					<input class="fl regBox" type="text">
+					<img class="fl regImg" src="" alt="">
+					<a class="fl regText" href="javascript:;">换一换</a>
+				</p>
+				<p class="login_message">请输入正确的账号</p>
+				<a href="javascript:;" class="login_btn" id="login">登&nbsp录</a>
+				<p class="login_footer clearfix">
+					<a class="fl a" href="javascript:;" style="color:#252525; font-size:12px;">免费注册</a>
+					<a class="fr color_000" href="javascript:;" style="color:#252525; font-size:12px;" >忘记密码?
+					</a>
+				</p>
+			</div>
+		</div>
+		<div class="con_footer">
+			<ul class="clearfix foot_link">
+				<li class="fl">
+					<a href="javascript:;">关于我们</a>
+				</li>
+				<li class="fl">
+					<a href="javascript:;">联系我们</a>
+				</li>
+				<li class="fl">
+					<a href="javascript:;">帮助中心</a>
+				</li>
+				<li class="fl">
+					<a href="javascript:;">网站声明</a>
+				</li>
+				<li class="fl">
+					<a href="javascript:;">公司新闻</a>
+				</li>
+			</ul>
+			<p>未经gconfs.com同意，不得转发网站会议信息</p>
+			<p>京ICP备17018133号</p>
+		</div>
+		<div class="position_box">
+			<ul>
+				<li><a href="javascript:;">主办方</a></li>
+				<li><a href="javascript:;">参会方</a></li>
+				<li><a href="javascript:;">酒店管理</a></li>
+				<li><a href="javascript:;">机场管理</a></li>
+				
+			</ul>
+		</div>
+	</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/jQuery.md5.js"></script>
+<script>
+	function getCode(){
+		var url=basePath+"verification/get.do"
+		$.ajax({
+				url: url,
+				type: 'POST',
+				xhrFields: {
+	       			withCredentials: true
+	    		},
+	    		crossDomain: true,
+				success:function(result){
+					$('.regImg').attr('src',url);
+				}
+		});
+	}
+	getCode();
+	function login(){
+		var url=basePath+"admin/login/check.do";
+		var mobile=$('.user').val();
+		var pwd=$.md5($('.password').val());
+		var code=$('.regBox').val();
+		$.ajax({
+			url: url,
+			data: {
+				mobile:mobile ,
+				pwd: pwd,
+				code:code
+				// phone: '13633334444',
+				// pwd:'asd' 
+			},
+			type: 'POST',
+			dataType: 'json',
+			xhrFields: {
+       			withCredentials: true
+    		},
+    		crossDomain: true,
+			success:function(result){
+				console.log(result)
+				if(result.flag){
+					window.location.href='../admin/conf/activitylist.html'
+				}else{
+					$('.login_message').css('display','block')
+					$('.login_message').html(result.msg);
+					codeChange();
+				};
+			}
+		});
+	}
+	//更换验证码
+	$('.regText').click(codeChange);
+	function codeChange(){
+		$('.regBox').val(' ');
+		getCode();
+	}
+	//登陆
+	$('#login').click(function(){
+		login();	
+	});
+	//键盘登陆
+	$(document).keypress(function(e) {  
+		// 回车键事件  
+        if(e.which == 13) {
+        	login(); 
+        }	  
+	});
+</script>
+</html>

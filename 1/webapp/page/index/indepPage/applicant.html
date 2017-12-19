@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8"/>
+	<meta content="text/html"/>
+	<title>申请主办方</title>
+	<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+	<link rel="stylesheet" type="text/css" href="../../../css/common/bootstrap.css">
+	<link rel="stylesheet" href="../../../css/index/base.css">
+	<link rel="stylesheet" href="../../../css/index/public.css">
+	<link rel="stylesheet" href="../../../css/style.css">
+	<link rel="stylesheet" href="../../../css/index/indepPage.css">
+</head>
+<body>
+	<div class="head">
+		<div class="clearfix hnav">
+			<ul class="fl">
+				<li class="fl">
+					<a href="../index.html">
+						<img class="imgTitle" src="../../../img/index/logo.png">
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="contain">
+		<div class="bannimg">
+			<!-- <a class="fl" href="../index.html">
+				<img class="logol" src="../../../img/index/logoandname.png" alt="logoname">
+			</a> -->
+			<img class="logor fr" src="../../../img/banner.png" alt="homenav">
+		</div>
+		<div class="indepcontent" style="width: 1100px; margin-top: 51px;border-top: 1px solid #ff6100;">
+			<div class="indeContent">
+				<br><br>
+			 	<form class="form-horizontal" id="detailform">
+					<div class="form-group">
+					    <label for="" class="col-sm-3 control-label"><span style="color: red">* </span>申请人</label>
+					    <div class="col-sm-7">
+					      <input type="text" name="contactUser" class="form-control contactUser" placeholder="请填写申请人">
+					    </div>
+					</div>
+					<div class="form-group">
+					    <label for="" class="col-sm-3 control-label"><span style="color: red">* </span>申请人手机</label>
+					    <div class="col-sm-7">
+					      <input type="text" name="contactMobile" class="form-control contactMobile" placeholder="请填写申请人手机">
+					    </div>
+					</div>
+					<div class="form-group">
+					    <label for="" class="col-sm-3 control-label"><span style="color: red">* </span>申请人职务</label>
+					    <div class="col-sm-7">
+					      <input type="text" name="contactDuty" class="form-control contactDuty" placeholder="请填写申请人职务">
+					    </div>
+					</div>
+					<div class="form-group">
+					    <label for="" class="col-sm-3 control-label"><span style="color: red">* </span>单位名称</label>
+					    <div class="col-sm-7">
+					      <input type="text" name="name" class="form-control name" placeholder="请填写申请人单位">
+					    </div>
+					</div>
+					<div class="form-group">
+					    <label for="" class="col-sm-3 control-label"><span style="color: red">* </span>单位地址</label>
+					    <div class="col-sm-7">
+					      <input type="text" name="address" class="form-control address" placeholder="请填写申请人单位地址">
+					    </div>
+					</div>
+					<div class="form-group">
+					    <label for="" class="col-sm-3 control-label"><span style="color: red">* </span>邮箱</label>
+					    <div class="col-sm-7">
+					      <input type="text" name="contactEmail" class="form-control contactEmail" placeholder="请填写申请人邮箱">
+					    </div>
+					</div>
+					<div class="btnApply">
+				     	<button type="button" class="btn applyFor" style="background-color: #ff6100; color: #fff;">立即申请</button>
+				     </div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="foot">
+		<ul class="f-list clearfix">
+			<li class="fl"><a href="about.html" target="_blank">关于我们</a></li>
+			<li class="fl"><a href="contant.html" target="_blank">联系我们</a></li>
+			<li class="fl"><a href="help.html" target="_blank">帮助中心</a></li>
+			<li class="fl"><a href="javascript:;">会务商加盟</a></li>
+			<li class="fl"><a href="javascript:;">会展商加盟</a></li>
+			<li class="fl"><a href="javascript:;">媒体加盟</a></li>
+			<li class="fl"><a href="javascript:;">场馆加盟</a></li>
+			<li class="fl"><a href="javascript:;">旅游合作</a></li>
+			<li class="fl"><a href="companyNews.html" target="_blank">公司新闻</a></li>
+		</ul>
+		<p class="p1">未经gconfs.com同意不得转发网站会议信息</p>
+		<p class="p2">京ICP备1708133号</p>
+	</div>
+</body>
+<script type="text/javascript" src="../../../js/jquery.min.js"></script>
+<script type="text/javascript" src="../../../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../../js/bootstrapValidator.min.js"></script>
+<script type="text/javascript" src="../../../js/common/common.js"></script>
+<script type="text/javascript">
+$(function(){
+	setFootBottom($(".contain"));
+	$(".applyFor").on("click", function(){
+		var bootValidator = $("#detailform").data("bootstrapValidator");
+		bootValidator.validate();
+		if(bootValidator.isValid()){	
+			$.myAjax({
+				url: basePath + "super/regist/check.do",
+				data: $("#detailform").serialize(),
+				success: function(result){
+					if(result.flag){
+						myConfirm("申请成功,请保持电话24小时畅通", function(){
+							window.location.href = "../../index/index.html";
+						});
+						$(".applyFor").attr("disabled", true);
+					}else{
+						myConfirm(result.msg);
+					}
+				},
+				error: function(){
+					myAlert("请求失败!", "slow")
+				}
+			})
+		}
+	})
+})
+//表单验证
+$("#detailform").bootstrapValidator({
+    message: 'This value is not valid',
+    feedbackIcons: {
+        valid: 'glyphicon glyphicon-ok',
+        invalid: 'glyphicon glyphicon-remove',
+        validating: 'glyphicon glyphicon-refresh'
+    },
+    fields: {
+        contactUser: {
+            validators: {
+                notEmpty: {
+                    message: '申请人不能为空'
+                }
+            }
+        },
+        contactMobile: {
+            validators: {
+                notEmpty: {
+                    message: '手机不能为空'
+                },
+                regexp: {
+                    regexp: /^1[34578]\d{9}$/,
+                    message: '请输入正确的手机号！'
+                }
+            }
+        },
+        contactDuty: {
+            validators: {
+                notEmpty: {
+                    message: '职务不能为空'
+                }
+            }
+        },
+        name: {
+            validators: {
+                notEmpty: {
+                    message: '单位不能为空'
+                }
+            }
+        },
+        address: {
+            validators: {
+                notEmpty: {
+                    message: '单位地址不能为空'
+                }
+            }
+        },
+        contactEmail: {
+            validators: {
+                notEmpty: {
+                    message: '邮箱不能为空'
+                },
+                emailAddress: {
+                    message: '请输入正确的邮箱地址！'
+                }
+            }
+        }
+    }
+});
+</script>
+</html>

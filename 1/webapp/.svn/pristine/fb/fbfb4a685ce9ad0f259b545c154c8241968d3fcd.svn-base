@@ -1,0 +1,127 @@
+.imgTitle{
+  height: 30px;
+    margin-top: 3px;
+}
+.contain .cation_box {
+  width: 1200px;
+}
+.contain .cation_box .cation_mess {
+  margin-top: 20px;
+  width: 69%;
+}
+.messTitle{
+  width:1160px;
+  height:30px;
+  line-height: 30px;
+}
+.messTitle .line{
+  height:30px;
+  border-left:10px solid #ff6600;
+}
+.messTitle .second-nav{
+    width:794px;
+    padding-left:10px;
+    margin-left:6px;
+    border-bottom:2px solid #ff6600;
+}
+.contain .cation_box .cation_mess .hlist {
+  width: 100%;
+}
+.contain .cation_box .cation_mess .hlist .afirst {
+  width: 76px;
+  height: 100%;
+  display: inline-block;
+}
+.contain .cation_box .cation_mess .hlist .hlist_message {
+  width: 712px;
+  margin-left: 10px;
+}
+.contain .cation_box .cation_mess .hlist .hlist_message li {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.contain .cation_box .cation_mess .hlist .hlist_message li a {
+  color: #999;
+}
+.contain .cation_box .cation_mess .hlist .hlist_message li a:hover {
+  color: #ff6100;
+}
+.contain .cation_box .cation_mess .hlist .hlist_message .org {
+  color: #f0ad4e;
+}
+.contain .cation_box .cation_mess .actdetail {
+  width: 100%;
+  margin-top:20px;
+  min-height:390px;
+}
+.contain .cation_box .cation_mess .actdetail li {
+  width:100%;
+  list-style-type: disc;
+  color:#f60;
+  height: 40px;
+  line-height:40px;
+  margin-left:14px;
+}
+.contain .cation_box .cation_mess .actdetail li .time {
+  display: inline-block;
+  height:40px;
+  line-height: 40px;
+  margin-left:50px;
+  color:#000;
+}
+.contain .cation_box .cation_mess .actdetail li .mess {
+  display: inline-block;
+  width:374px;
+  height:40px;
+  line-height: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+.contain .cation_box .cation_mess .actdetail li .mess:hover{
+  color: #ff6100;
+}
+.contain .cation_box .cation_mess .actdetail li .place {
+  width:80px;
+  display: inline-block;
+  height:40px;
+  line-height: 40px;
+  text-align:center;
+  margin-left:188px;
+  color:#000;
+  vertical-align: middle;
+}
+.contain .cation_box .cation_mess .page {
+  width: 100%;
+  margin: 15px auto;
+}
+.contain .cation_box .cation_mess .page .org {
+  color: #ff8600;
+}
+.contain .cation_box .cation_mess .page .pcen {
+  width: 600px;
+  margin: 0 auto;
+}
+.contain .cation_box .cation_mess .page .pcen li {
+  margin: 0 5px;
+}
+.contain .cation_box .cation_mess .page .pcen .border {
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  padding: 0 4px;
+}
+.contain .cation_box .cation_mess .page .pcen input {
+  width: 34px;
+  text-align: center;
+}
+.contain .cation_box .cation_banner {
+  width: 30%;
+  height: 588px;
+}
+.contain .cation_box .cation_banner img {
+  width: 100%;
+  height: 272px;
+  margin-top: 2px;
+  border-radius: 3px;
+}

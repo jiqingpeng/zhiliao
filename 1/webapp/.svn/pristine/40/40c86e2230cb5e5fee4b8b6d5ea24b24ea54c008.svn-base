@@ -1,0 +1,25 @@
+.content{
+	width: 69%;
+	min-height: 390px;
+}
+.content .mainContent{
+	width: 90%;
+	margin: 0 auto;	
+	margin-top: 20px;
+}
+.mainContent .contentTitle{
+	font-size: 28px;
+	font-weight: 700;
+	color: #333;
+}
+.mainContent .author{
+	margin-top: 10px;
+}
+.mainContent .contentTheme{
+	margin-top: 20px;
+}
+.contentImg img{
+	margin-top: 20px;
+	width: 348px;
+	height: 548px;
+}

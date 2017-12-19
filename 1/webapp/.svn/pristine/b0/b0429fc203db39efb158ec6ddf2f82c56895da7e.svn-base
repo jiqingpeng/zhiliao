@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>活动日程</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+	<link rel="stylesheet" type="text/css" href="../../../css/app/style.css">
+</head>
+<style type="text/css">
+	.contain{
+        margin-bottom: 20px;
+		padding: 15px;
+		/*background-color: #fff;*/
+        margin-top: 48px;
+        width: 100%;
+        box-sizing: border-box;
+	}
+    .guestBox{
+        width: 100%;
+    }
+	.invitation{
+    	margin-bottom: 20px;
+    	margin-top: 20px;
+    	text-align: center;
+    }
+    .schedule{
+    	/*margin-top: 20px;*/
+    	background-color: #ffffff;
+    	padding: 6px 10px;
+    	/*border:1px solid red;*/
+        word-wrap: break-word;
+    }
+    .data{
+    	margin-bottom: 21px;
+    	/*color: #ffad30;*/
+    	/*background-color: #ffffff;*/
+    	text-align: center;
+    	font-size: 16px;
+    }
+    .time, .content{
+    	float: left;
+    	vertical-align: top;
+    }
+    .time{
+    	width: 30%;
+    	margin-right: 3%;
+    	color: #f9752b;
+    }
+    .distance{
+        margin-top: 10px;
+    }
+    .content{
+    	width: 65%;
+    }
+    .distance .flight{
+    	font-weight: bold;
+    }
+</style>
+<body>
+	<div>
+		<div class="head">
+			<div class="navImg">
+				<img src="../../../img/app/arrowLeft-icon.png">
+			</div>
+			<div class="navDetail">活动日程</div>
+		</div>
+        <div class="guestBox">
+    		<div class="conBox">
+    		</div>
+        </div>
+	</div>
+</body>
+<script src="../../../js/zepto.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<script type="text/javascript">
+$(function(){
+    myLoading();
+	var url = basePath + "mt/user/activity/get.do";
+	var id = Request("actId");
+	var data= {id:id,type:"schedual"};
+	initPage(url,data)
+});
+function initPage(url, data){
+	$.myAjax({
+		url: url,
+		data: data,
+		success: function(result){
+			if(result.flag){
+                if(JSON.stringify(result.data.schedual)=='{}'){
+                    myConfirm("暂无日程内容",function(){
+                        history.back(-1);
+                    },"nocancle");
+                    return;
+                }
+                var data = '';
+                var string = '';
+                var con = '';
+                for(var key in result.data.schedual){
+                    var str = '<div class="data">'+ key +'</div>'
+                    data = result.data.schedual[key];
+                    string='';
+                    for(var i = 0; i < data.length; i++){
+                        string +=
+                        // '<div>' + str +
+                            '<div class="schedule clearfix">' +
+                                '<span class="time distance">'+ data[i].time +'</span>' +
+                                '<span class="content distance">' +
+                                    '<div class="flight">'+ data[i].title +'</div>' +
+                                    '<div class="">'+ data[i].content +'</div>' +
+                                '</span>' +
+                            '</div>' ;
+                        // '</div>' ;
+                    }
+                    con += '<div class="contain">' + str + string + '</div>'
+                }
+                $(".conBox").html(con);
+			}else{
+				myAlert(result.msg);
+			}
+		},
+		error: function(){
+			myConfirm("请求失败!");
+		}
+	})
+}
+</script>
+</html>
