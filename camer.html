@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Tencent-TGideas">
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>捕捉用户摄像头</title>
+<style>
+	body,dl,dd,ul,li{margin: 0;padding: 0;font-size: 12px;line-height: 22px;font-family: arial}
+	body{width: 100%;overflow-x: hidden;}
+	h2,h3{margin: 0;padding: 0;}
+	h1{text-align: center;}
+	h2{margin-top: 10px;}
+	table{width: 100%;}
+	table td, table th{padding: 3px;}
+	table th{background-color: #cee;}
+	dl{margin-top: 10px;}
+	dl{padding: 3px;}
+	dt{font-weight: bold;}
+	dl dt{padding: 5px;background-color: #cee;}
+	video{display: block;height: 100px;margin: 10px auto;}
+	.video-wrap{padding: 10px;background-color: #eee;text-align: center;}
+	.btn-capture{width: 70px;margin-top: 5px;}
+	canvas{-webkit-transform-origin: 0 0;border-radius: 10px;}
+	.styles{text-align: center;}
+	.styles li{display: inline-block;padding: 0 10px;border: 1px solid #eee;}
+	.styles .current{background-color: #fff;border: 1px solid #ccc}
+	.grayscale{-webkit-filter: grayscale(1);}
+	.sepia {-webkit-filter: sepia(1);}
+	.blur {-webkit-filter: blur(3px);}
+
+
+</style>
+<!-- 设计：brucewan | 重构：brucewan | 创建：2015-05-12 10:04:45 | 更新：| 团队博客：http://tgideas.qq.com/ -->
+</head>
+<body>
+<h1>捕捉用户摄像头</h1>
+<div class="video-wrap">
+	<ul class="styles">
+		<li class="current" data-style="none">无</li>
+		<li  data-style="sepia">怀旧</li>
+		<li  data-style="grayscale">黑白</li>
+		<li  data-style="blur">模糊</li>
+	</ul>
+	<video autoplay></video>
+	<button class="btn-capture">拍照</button>
+</div>
+
+<img src="" id="img" ></img>
+<canvas  id="canvas" width="320" ></canvas>
+<script>
+	// lib
+	var $ = function(selector){return document.querySelector(selector)};
+	var $$ = function(selector){return document.querySelectorAll(selector)};
+
+	var video = $('video');
+	var canvas = $ ('canvas');
+	var btnCapture = $('.btn-capture');
+	var ctx = canvas.getContext('2d');
+	var localMediaStream = null;
+	var btnStyles = $$('.styles li');
+	var width = 160;
+	var height = 427;
+
+	for(var j = 0; j < btnStyles.length; j++) {
+		btnStyles[j].addEventListener('touchend', function(){
+			for(var i = 0; i < btnStyles.length; i++) {
+				btnStyles[i].className = '';
+			}
+			this.className = 'current';
+			video.className = this.getAttribute('data-style');
+		})
+
+	}
+
+
+	btnCapture.addEventListener('touchend', function(){
+		if (localMediaStream) {
+			height = video.widthHeight / (video.clientHeight/width);
+			canvas.setAttribute('width', video.videoWidth);
+			canvas.setAttribute('height', video.videoHeight);
+			canvas.style.webkitTransform = 'scale('+ width/video.videoWidth+')'
+			canvas.style.marginLeft = (document.documentElement.offsetWidth - width)/2 + 'px';
+			canvas.style.marginTop = '10px';
+			canvas.style.border = '8px solid #ddd'; 
+			
+			ctx.drawImage(video, 0, 0);
+
+			// alert(video.videoHeight);
+			// alert(width+':'+height);
+			// canvas.style.width = 5000 + 'px';
+			// canvas.style.height = 4000 + 'px';
+
+			// document.getElementById('img').src = canvas.toDataURL('image/png');
+		}
+	}, false);
+
+
+	navigator.webkitGetUserMedia ({video: true}, function(stream) {
+		video.src = window.URL.createObjectURL(stream);
+		localMediaStream = stream;
+	}, function(e){
+
+	});
+</script>	
+</body>
+</html>
