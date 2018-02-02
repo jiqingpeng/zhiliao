@@ -54,14 +54,12 @@
 		    fetchData() {
 		        axios.get('/aa')
 			      .then(data => {
-			      	console.log(data)
-			        this.actList=data.data.articles
-			        console.log(this.actList)
-			      })
+			      	this.actList=data.data.articles
+			       })
 			      .catch((error) => {
 			        console.log(error);
 			    });
-		    },
+			},
 		    add(){
 		    	var length = this.actList.length
 				for(var i=length+1;i<length+11;i++){
@@ -81,11 +79,8 @@
 			},
 			//详情页
 			goDetail(item){
-				// console.log(item.id)
-				console.log(this.$store.state.getMessDetail)
 				this.$store.dispatch('getMessDetail',item);
-				
-        		router.push({ name:'Detail', params:{ id:item.id }});
+				router.push({ name:'Detail', params:{ id:item.id }});
 			}
 		},
 		components:{
@@ -95,11 +90,13 @@
 </script>
 	<style scoped>
 	.actList{
-		position:absolute;
+		position:fixed;
 		top:48px;
 		width:96%;
+		bottom:40px;
 		padding:0 2%;
 		font-size:14px;
+		overflow-x: auto;
 	}
 	.act-list{
 		width:96%;

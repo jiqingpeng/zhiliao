@@ -13,6 +13,8 @@ import LazyLoad from '@/components/LazyLoad/LazyLoad'
 import Inform from '@/components/Inform/Inform'
 import My from '@/components/My/My'
 import Info from '@/components/Info/Info'
+import Pay from '@/components/Pay/Pay'
+import PaySure from '@/components/Pay/PaySure'
 Vue.use(Router)
 export default new Router({
 	routes: [{
@@ -63,6 +65,14 @@ export default new Router({
 		path: '/Info',
 		name: 'Info',
 		component: Info
+	}, {
+		path: '/Pay',
+		name: 'Pay',
+		component: Pay
+	}, {
+		path: '/PaySure',
+		name: 'PaySure',
+		component: PaySure
 	}],
 	linkActiveClass: 'active'
 })

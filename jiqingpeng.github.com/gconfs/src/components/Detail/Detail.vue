@@ -1,8 +1,8 @@
 <template>
 	<div class="detail">
 		<v-header></v-header>
-		<section class="detail-box">
-			<section class="intro">
+		<section class="detail-box content">
+			<section class="intro dist">
 				<header class="tit">{{item.name}}</header>
 				<article>
 					<div class="int-list">
@@ -50,7 +50,7 @@
 					</div>
 				</article>
 			</section>
-			<section class="latex">
+			<section class="latex dist">
 				<div class="latex-col">
 					
 						<div class="latex-box latex-l" @click="goInvite()">
@@ -72,17 +72,17 @@
 						<span class="round"><img src="../../../static/intro.png" alt=""></span>
 						<span class="txt">嘉宾</span>
 					</div>
-					<div class="latex-box">
+					<div class="latex-box" @click="goEchart()">
 						<span class="round"><img src="../../../static/fingerpost.png" alt=""></span>
 						<span class="txt">会议指南</span>
 					</div>
-					<div class="latex-box latex-r" @click="goEchart()">
+					<div class="latex-box latex-r" @click="goPay()">
 						<span class="round"><img src="../../../static/intro.png" alt=""></span>
-						<span class="txt">联系我们</span>
+						<span class="txt">缴费</span>
 					</div class="latex-box">
 				</div>	
 			</section>
-			<section class="fnav">
+			<section class="fnav dist">
 				<section class="fnav-list">
 					<div>
 						<img src="" alt="">
@@ -118,7 +118,6 @@
 <script>
 	import Header from '@/components/Header/Header.vue'
 	import router from '../../router/index'
-	
 	export default{
 		name:"Detail",
 		data () {
@@ -142,6 +141,7 @@
 		    },
 			init(){
 				this.item=this.$store.state.getMessDetail
+				console.log(this.item)
 			},
 			toggle(){
 				this.isActive=!this.isActive
@@ -163,6 +163,9 @@
 			},
 			goInform(){
 				router.push({ name:'Inform', params:{ id:2 }})
+			},
+			goPay(){
+				router.push({ name:'Pay', params:{ id:2 }})
 			}
 		},
 		// computed:{
@@ -184,15 +187,7 @@
 		.f60
 			color #f60
 		.detail-box
-			position fixed
-			top 48px
-			width 92%
-			padding 0 4%
-			bottom 1px
-			overflow-y auto
 			.intro
-				width 100%
-				
 				font-size 16px
 				.tit
 					font-size 18px

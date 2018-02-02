@@ -24,6 +24,8 @@
 		            return '会议详情'
 		          case 'Invite':
 		            return '邀请函'
+		          case 'Pay':
+		            return '缴费'
 		          case 'Org':
 		            return '组织机构'
 		          case 'actDate':
@@ -36,6 +38,8 @@
 		            return "我的"
 		          case 'Info' :
 		          	return"消息"
+		          case 'PaySure' :
+		          	return"确认订单"
 		        }
 	      }
     	}
