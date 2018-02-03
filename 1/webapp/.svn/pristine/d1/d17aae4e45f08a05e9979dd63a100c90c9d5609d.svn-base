@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>邮寄管理</title>
+<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="../../../css/common/bootstrap.min.css">
+<link rel="stylesheet" href="../../../css/common/bootstrap-table.min.css">
+<link href="../../../css/style.css" rel="stylesheet" />
+<link href="../../../css/main.css" rel="stylesheet" />
+<style type="text/css">
+.tableAdd {
+    min-height: 250px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 14px;
+    width: 950px;
+    padding-bottom: 14px;
+}
+.tabAddTitle {
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #ddd;
+    padding-left: 14px;
+    font-weight: bold;
+    background-color: #f1f1f1;
+    margin-bottom: 14px;
+}
+</style>
+</head>
+<body>
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="payInfo.html">缴费管理</a>
+		<a href="">-&gt;</a>
+		<a href="mailInfo.html">邮寄管理</a>
+	</div>
+	<div class="con-box">
+	<div id="subMenu">
+        <div id="subMenuBody">
+            <ul>
+                <a href="generalFee.html"><li>费用配置</li></a>
+            	<a href="payInfo.html"><li>缴费信息</li></a>
+                <a href="invoiceInfo.html"><li>发票管理</li></a>
+                <a href="mailInfo.html"><li class="menuAct">邮寄管理</li></a>
+            </ul>
+        </div>
+    </div>
+    <div id="contentBody" class="mops-table">
+        <div class="tableAdd none">
+            <div class="tabAddTitle">编辑邮寄管理</div>
+            <form class="tabaddForm form-horizontal" id="tabaddForm">
+                <input type="hidden" id="mailId" name="id"/>
+                <div class="form-group">
+                    <label for="" class="col-sm-2 control-label"><span class="redStar">*</span> &nbsp;是否邮寄</label>
+                    <div class="col-sm-7">
+                        <div class="form-control">
+                            <input type="radio" value="2" name="mailState" maxlength="8" class="mailState2" placeholder="请填写邮寄状态(是或者否)"><span>是</span>
+                            <input type="radio" value="1" name="mailState" maxlength="8" class="mailState1" placeholder="请填写邮寄状态(是或者否)"><span>否</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="btncon">
+                    <button type="button" class="btn btn-default btn-warning mailSave">保&nbsp;存</button>
+                    <button type="button" class="btn btn-default mailCancel">取&nbsp;消</button>
+                </div>
+            </form>
+        </div>
+        <input type="hidden" id="id"/>
+		<table id="texttable">
+  		</table>
+	</div>
+	</div>   
+</div> 
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/bootstrap-table.min.js"></script>
+<script src="../../../js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../../js/tableExport.js"></script>
+<script src="../../../js/bootstrap-table-export.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/main.js"></script>
+<script type="text/javascript">
+var mailStateName = '';
+$(function(){
+    loading();
+    serialMenuAjax('admin/activity/menu.do', '缴费管理', sessionStorage.getItem('actId'), initPage);
+    $("#id").val(sessionStorage.getItem('actId'));
+    $(".mailCancel").click(function(){
+        $(".tableAdd").hide(1000);
+    });
+    $(".mailSave").click(function(){
+        if(mailStateName == 1){
+            if($(".mailState2").prop("checked") == true){
+                mailSave();
+            }else{
+                myConfirm("您未修改任何信息,请不要重复提交")
+            }
+        } 
+        if(mailStateName == 2){
+            if($(".mailState1").prop("checked") == true){
+                mailSave();
+            }else{
+                myConfirm("您未修改任何信息,请不要重复提交")
+            }
+        } 
+    })
+})
+function mailSave(){
+    $.myAjax({
+        url: basePath + "admin/activity/fee/mail/save.do",
+        data: $("#tabaddForm").serialize(),
+        success: function(result){
+            if(result.flag){
+                myAlert("保存成功");
+                $(".tableAdd").hide(1000);
+                setTimeout(function(){
+                    location.reload();  
+                },1200)
+            }else{
+                myConfirm(result.msg)
+            }
+        },
+        error: function(){
+            myAlert("请求失败,请重试!", "slow")
+        }
+    })
+}
+//初始化页面
+function initPage(){
+    $.myAjax({
+        url: basePath + 'admin/activity/fee/list.do',
+        data: {id:$("#id").val(), type: "2"},
+        success: function(result){
+            if(result.flag){
+                initTable(result.data.fee);
+            }
+        },
+        error: function(result){
+            myAlert("请求失败!",'slow');
+        }
+    });
+}
+//table表格
+function initTable(data){
+	$('#texttable').bootstrapTable({
+        dataLocale: 'zh-CN',                //表格汉化        
+        toolbar: '#toolbar',                //工具按钮用哪个容器       
+        striped: true,                      //是否显示行间隔色
+        cache: false,   
+        showExport:true,                    
+        pagination: true,                   //是否显示分页（*）
+        sortable: true,                     //是否启用排序
+        sortOrder: "asc",                   //排序方式
+        sidePagination: "client",           
+        strictSearch: false,
+        pageNumber:1,                       //初始化加载第一页，默认第一页
+        pageSize: 10, 
+        pageList: [10, 20, 30, 40, 50],
+        search: true,                       
+        showRefresh: true,                  //是否显示刷新按钮
+        columns: [
+            {
+                align: 'center',
+                formatter: function(value,row,index){
+                    return index+1;
+                }
+    		},
+            {
+                field: 'invoice_payment',
+                title: '是否邮寄',
+                align: 'center',
+                formatter: function(value,row,index){
+                    if(value == 1){
+                        return "会后邮寄";
+                    } else if(value == 2){
+                        return "会后自取";
+                    } else {
+                        return "-";
+                    }
+                }
+            },
+            {
+                field: 'name',
+                title: '姓名',
+                align: 'center',
+                sortable: true
+            },
+            {
+                field: 'corporation',
+                title: '单位',
+                align: 'center',
+                sortable: true
+            },
+            {
+                field: 'mail_name',
+                title: '收件人',
+                align: 'center',
+                sortable: true
+            },
+            {
+                field: 'mail_contact',
+                title: '收件人电话',
+                align: 'center',
+                sortable: true
+            },
+            {
+                title: '邮寄地址',
+                align: 'center',
+                sortable: true,
+                formatter: function(value,row,index){
+                    return row.mail_province+row.mail_city+row.mail_area+row.mail_location;
+                }
+            },
+            {
+                field: 'option',
+                title: '操作',
+                width: 86,
+                align: 'center',
+                formatter: function(value,row,index){
+                  return '<span class="glyphicon glyphicon-pencil tabEdit cursor" aria-hidden="true"></span>';
+                },
+                events: {
+                    'click .tabEdit': function (e, value, row, index) {
+                        //修改表单内容
+                        $(".tableAdd").show(1000);
+                        $("#mailId").val(row.id);
+                        console.log(row.id);
+                        if(row.mail_state == 1){
+                            mailStateName =1;
+                            $(".mailState1").prop("checked","checked");
+                        }
+                        if(row.mail_state == 2){
+                            mailStateName =2;
+                            $(".mailState2").prop("checked","checked");
+                        }  
+                    }
+                }
+            }
+        ]
+    });
+    $("#texttable").bootstrapTable('load', data);
+};
+</script>
+</html>

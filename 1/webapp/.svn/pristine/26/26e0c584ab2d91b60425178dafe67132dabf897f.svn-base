@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>缴费</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="stylesheet" type="text/css" href="../../../css/app/style.css">
+<style>
+    .cont{
+        width:100%;
+        position: absolute;
+        top:48px;
+        left:0;
+        overflow-y: auto;
+    }
+    .cont .mess h4{
+        padding:10px 3%;
+    }
+    .mess-item{
+        width:94%;
+        height:40px;
+        line-height: 40px;
+        padding:0 3%;
+        border-bottom: 1px solid #eee;
+        background-color: #fff;
+    }
+    .btm-space{
+        margin-bottom: 10px;
+        border-bottom: none;
+    }
+    .mess-item .txt{
+        display: inline-block;
+        width:28%;
+    }
+    .mess-item .inp{
+        display: inline-block;
+        width:60%;
+        border:none;
+        outline:none;
+    }
+    .mess-item .star{
+        margin-left:4%;
+        color:red;
+    }
+    .invoiceType {
+        padding: 0 3px;
+    }
+    .send-group{
+        display: none;
+    }
+    .cxselect{
+        width:20%;
+    }
+    .btn{
+        width:80%;
+        height:40px;
+        background:#f60;
+        margin:0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color:#fff;
+        border-radius:4px;
+        margin:20px auto;
+    }
+    .location{
+        border:none;
+        outline:none;
+        margin-left:28%;
+        width:60%;
+    }
+</style>
+</head>
+<body>
+    <div class="head">
+        <div class="navImg">
+            <img src="../../../img/app/arrowLeft-icon.png">
+        </div>
+        <div class="navDetail">设置发票信息</div>
+    </div>
+    <div class="cont">
+        <form class="mess" id="inoviceForm">
+            <div lass="mess-group">
+                <h4>请设置您的发票信息</h4>
+                <div class="mess-item btm-space">
+                    <span>是否需要发票</span>
+                    <input class="need" type="radio" name="inovice" checked="">  
+                    <span>需要</span> 
+                    <input class="need-no" type="radio" name="inovice" checked="checked"> 
+                    <span>不需要</span> 
+                </div>
+            </div>
+            <div class="mess-box">
+                <div class="mess-group">
+                    <div class="mess-item">
+                        <span class="txt">开票类型</span>
+                        <select name="invoiceType" class="invoiceType">
+                            <option value="1">增值税普票</option>
+                            <option value="2">增值税专票</option>
+                        </select>
+                    </div>
+                    <div class="mess-item btm-space">
+                        <span class="txt">开票项目</span>
+                        <input class="inp content" type="text" placeholder="开票项目" name="content">
+                    </div>
+                    <div class="mess-item">
+                        <span class="txt">单位名称</span>
+                        <input class="inp taxpayerName" type="text" placeholder="请输入单位名称" name="taxpayerName">
+                        <span class="star">*</span>
+                    </div>
+                    <div class="mess-item">
+                        <span class="txt">纳税人识别号</span>
+                        <input class="inp taxpayerId" type="text" placeholder="请输入纳税人识别号" name="taxpayerId">
+                    </div>
+                    <div class="mess-item">
+                        <span class="txt">地址</span>
+                        <input class="inp address" type="text" placeholder="请输入地址" name="address">
+                    </div>
+                    <div class="mess-item">
+                        <span class="txt">电话</span>
+                        <input class="inp mobile" type="text" placeholder="请输入电话" name="mobile">
+                    </div>
+                    <div class="mess-item">
+                        <span class="txt">开户行</span>
+                        <input class="inp bankName" type="text" placeholder="请输入开户行" name="bankName">
+                    </div>
+                    <div class="mess-item">
+                        <span class="txt">账号</span>
+                        <input class="inp accountNumber" type="text" placeholder="请输入账号" name="accountNumber">
+                    </div>
+                </div>
+                <div class="mess-group mess-address">
+                    <h4>请设置您的邮寄地址</h4>
+                    <div class="mess-item">
+                        <span>是否需要发票</span>
+                        <input class="send" type="radio" name="payment" value="1" checked="">
+                        <span>会后邮寄</span> 
+                        <input class="send-no" type="radio" name="payment" value="2" checked="checked">
+                        <span>自取</span> 
+                    </div>
+                    <div class="send-group">
+                        <div class="mess-item">
+                            <span class="txt">收件人</span>
+                            <input class="inp name" type="text" placeholder="收件人" name="name">
+                            <span class="star">*</span>
+                        </div>
+                        <div class="mess-item">
+                            <span class="txt">联系方式</span>
+                            <input class="inp contact" type="text" placeholder="联系方式" name="contact">
+                            <span class="star">*</span>
+                        </div>
+                        <div class="mess-item" id="city-address">
+                            <span class="txt">地址</span>
+                            <select class="prov cxselect" disabled="disabled" name="mailProvince">
+                            </select>
+                            <select class="city cxselect" disabled="disabled" name="mailCity">
+                            </select>
+                            <select class="area cxselect" disabled="disabled" name="mailArea">
+                            </select>
+                        </div>
+                        <div class="mess-item">
+                            <input class="location" type="text" placeholder="请输入详细地址" name="mailLocation">
+                            <span class="star">*</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn">
+                    <span>保存</span>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+<script src="../../../js/zepto.js"></script>
+<script src="../../../js/app/form.js"></script>
+<script src="../../../js/zepto.md5.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<script src="../../../js/common/zepto.cxselect.min.js"></script>
+<script>
+    $(function(){
+        init();
+        $('#city-address').cxSelect({
+            url: '../../../js/common/cityData.min.json',
+            selects: ['prov', 'city', 'area']
+        });
+        $(".need").on("click",function(){
+            need();
+        });
+        $(".need-no").on("click",function(){
+            need();
+        });
+        $(document).on("click",".send",function(){
+            sendData();
+            send();
+        });
+        $(document).on("click",".send-no",function(){
+            send();
+        });
+        $(".btn").on("click",function(){
+            save();
+        });
+    });
+    function init(){
+        need();
+        var url = basePath+"user/invoice/list.do";
+        $.myAjax({
+            url: url,
+            success: function (result) {
+                if (result.flag) {
+                    console.log(result)
+                    var data = result.data.invoice;
+                    $('.content').val(sessionStorage.getItem("invoiceContent"));
+                    $('.address').val(data[0].address);
+                    $('.mobile').val(data[0].telephone);
+                    $('.nameOfAccountBank').val(data[0].nameOfAccountBank);
+                    $('.numberOfAccountBank').val(data[0].numberOfAccountBank);
+                    $('.taxpayerName').val(data[0].unitName);
+                    $('.taxpayerId').val(data[0].taxpayerIdentificationNumber);
+                    $('.bankName').val(data[0].nameOfAccountBank);
+                    $('.accountNumber').val(data[0].numberOfAccountBank);
+                } else {
+                    myConfirm("请求错误")
+                };
+            },
+            error:function(){
+                myConfirm("请求错误")
+            }
+        });
+    };
+    function Login(){
+        var url=basePath+"user/login/check.do";
+        var pwd=$.md5("a122424");
+        var mobile="18201571705"
+        $.myAjax({
+            url: url,
+            data: {
+              mobile:mobile ,
+              pwd: pwd,
+            },
+            success:function(result){
+              console.log(result)
+            }
+        });
+    };
+    function save(){
+        var url = basePath+"user/activity/invoice/save.do?activityId=2a2f132432544aa581d94c7e3fd44cc8&type";
+        $.myAjax({
+            url: url,
+            type: 'POST',
+            data:$('#inoviceForm').serialize(),
+            success:function(result){
+                if(result.flag){
+                    
+                }else{
+                    myAlert(result.msg);
+                };
+            },
+            error:function(){
+                myConfirm('请求失败');
+            }
+        });
+    };
+    function send(){
+        var send = $('.send').prop("checked");
+        console.log(send)
+        if(send){
+            $('.send-group').css("display","block");
+        }else{
+            $('.send-group').css("display","none");
+        }
+    };
+    function need(){
+        var need = $('.need').prop("checked");
+        //是否需要发票
+        if(!need){
+           $('.mess-box').css('display',"none");
+        }else{
+           $('.mess-box').css('display',"block"); 
+        }
+    };
+    function sendData(){
+            var url = basePath+"user/mailaddress/list.do";
+            $.myAjax({
+                url: url,
+                success: function (result) {
+                    if (result.flag) {
+                        console.log(result)
+                        var data = result.data.mailAddress
+                        $('.name').val(data[0].name);
+                        $('.contact').val(data[0].contact);
+                        if(data[0].mailProvince){
+                            $(".prov").val(data[0].mailProvince);
+                            $(".prov").trigger("change");
+                        }
+                        if(data[0].mailCity){
+                            $(".city").val(data[0].mailCity);
+                            $(".city").trigger("change");
+                        }
+                        if(data[0].mailArea){
+                            $(".area").val(data[0].area);
+                        }
+                        $('.location').val(data[0].mailLocation);
+                    } else {
+                        myConfirm("请求错误")
+                    };
+                },
+                error:function(){
+                    myConfirm("请求错误")
+                }
+            });
+    };
+</script>
+</html>

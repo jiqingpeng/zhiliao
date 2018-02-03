@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>缴费信息</title>
+<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="../../../css/common/bootstrap.min.css">
+<link rel="stylesheet" href="../../../css/common/bootstrap-table.min.css">
+<link href="../../../css/style.css" rel="stylesheet"/>
+<link href="../../../css/main.css" rel="stylesheet"/>
+</head>
+<body>
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="payInfo.html">缴费管理</a>
+		<a href="">-&gt;</a>
+		<a href="payInfo.html">缴费信息</a>
+	</div>
+	<div class="con-box">
+    	<div id="subMenu">
+            <div id="subMenuBody">
+                <ul>
+                    <a href="generalFee.html"><li>费用配置</li></a>
+                	<a href="payInfo.html"><li class="menuAct">缴费信息</li></a>
+                    <a href="invoiceInfo.html"><li>发票管理</li></a>
+                    <a href="mailInfo.html"><li>邮寄管理</li></a>
+                </ul>
+            </div>
+        </div>
+        <div id="contentBody" class="mops-table">
+            <input type="hidden" id="id"/>
+    		<table id="texttable">
+      		</table>
+    	</div>
+	</div>   
+</div> 
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/bootstrap-table.min.js"></script>
+<script src="../../../js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../../js/tableExport.js"></script>
+<script src="../../../js/bootstrap-table-export.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/main.js"></script>
+<script type="text/javascript">
+$(function(){
+    loading();
+    serialMenuAjax('admin/activity/menu.do', '缴费管理', sessionStorage.getItem('actId'), initPage);
+    $("#id").val(sessionStorage.getItem('actId'));
+});
+//初始化页面
+function initPage(){
+    $.myAjax({
+        url: basePath + 'admin/activity/fee/list.do',
+        data: {id: $("#id").val()},
+        success: function(result){
+            if(result.flag){
+                initTable(result.data);
+            }
+        },
+        error: function(result){
+            myAlert("请求失败!",'slow');
+        }
+    });
+}
+//table表格
+function initTable(data){
+    var columns = getColumn(data);
+	$('#texttable').bootstrapTable({
+        dataLocale: 'zh-CN',                //表格汉化        
+        toolbar: '#toolbar',                //工具按钮用哪个容器       
+        striped: true,                      //是否显示行间隔色
+        cache: false,   
+        showExport:true,                    
+        pagination: true,                   //是否显示分页（*）
+        sortable: true,                     //是否启用排序
+        sortOrder: "asc",                   //排序方式
+        sidePagination: "client",           
+        strictSearch: false,
+        pageNumber:1,                       //初始化加载第一页，默认第一页
+        pageSize: 10, 
+        pageList: [10, 20, 30, 40, 50],
+        search: true,                       
+        showRefresh: true,
+        // showColumns: true,
+        columns: columns
+    });
+    $("#texttable").bootstrapTable('load', data.fee);
+}
+function getColumn(data){
+    var feeType = data.feeType,
+        fee = data.fee;
+    var column1 = [];
+    var backA = [],
+        weixinA = [];
+    for(var i=0;i<feeType.length;i++){
+        var bank = {},
+            weixin = {};
+        bank.field = 'bank'+i;
+        weixin.field = 'weixin'+i;
+        weixin.title = bank.title = feeType[i];
+        weixin.align = bank.align = 'center';
+        weixin.valign = bank.valign = 'middle';
+        bank.formatter = function(value,row,index){
+            var val = row.bank_transfer_trade_info;
+            for(var i=0;i<val.length;i++){
+                if(val[i].good_name == this.title){
+                    return val[i].good_count + ' 张';
+                }
+            }
+            return '-';
+        }
+        weixin.formatter = function(value,row,index){
+            var val = row.weixin_trade_info;
+            for(var i=0;i<val.length;i++){
+                if(val[i].good_name == this.title){
+                    return val[i].good_count + ' 张';
+                }
+            }
+            return '-';
+        }
+        backA.push(bank);
+        weixinA.push(weixin);
+    };
+    column1.push.apply(column1,backA.concat(weixinA));
+    column1.push({
+        field: 'weixin_total_fee',
+        title: '缴费金额(元)',
+        align: 'center',
+        sortable: true,
+        formatter: function(value,row,index){
+            if(value == '' || value == null){
+                return '-';
+            } else {
+                return value;
+            }
+        }
+    });
+    var columns = [[
+        {
+            align: 'center',
+            rowspan: 2,
+            valign: 'middle',
+            formatter: function(value,row,index){
+                return index+1;
+            }
+        },{
+            field: 'state',
+            title: '审核状态',
+            align: 'center',
+            rowspan: 2,
+            valign: 'middle',
+            sortable: true,
+            formatter: function(value,row,index){
+                if(value == 1){
+                    return "待审核"
+                }
+                if(value == 2){
+                    return "审核通过"
+                }
+                if(value == 8 || value == 9){
+                    return "已拒绝"
+                }
+                if(value == 4){
+                    return "未审核"
+                }
+            }
+        },{
+            field: 'name',
+            title: '姓名',
+            align: 'center',
+            rowspan: 2,
+            valign: 'middle',
+            sortable: true
+        },{
+            field: 'ctime',
+            title: '缴费时间',
+            align: 'center',
+            rowspan: 2,
+            valign: 'middle',
+            sortable: true
+        },{
+            field: 'corporation',
+            title: '单位',
+            align: 'center',
+            rowspan: 2,
+            valign: 'middle',
+            sortable: true
+        },{
+            field: 'mobile',
+            title: '联系电话',
+            align: 'center',
+            rowspan: 2,
+            valign: 'middle',
+            sortable: true
+        },{ 
+            field: 'bank_transfer_trade_info',
+            title: '银行转账',
+            colspan: feeType.length,
+            align: 'center'
+        },{ 
+            field: 'weixin_trade_info',
+            title: '平台缴费',
+            colspan: feeType.length+1,
+            align: 'center'
+        }],column1];
+    return columns;
+}
+</script>
+</html>

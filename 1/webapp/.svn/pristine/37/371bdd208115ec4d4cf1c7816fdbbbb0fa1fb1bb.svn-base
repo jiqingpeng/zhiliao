@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>缴费说明</title>
+	<meta content="telephone=no" name="format-detection" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="../../../css/app/style.css">
+	<style type="text/css">
+		.contain{
+			margin-top: 48px;
+			padding: 2%;
+			background-color: #ffffff;
+			font-size: 14px;
+		}
+		.contain p{
+			margin-top: 10px;
+		}
+		.retract{
+			text-indent: 2em;
+		}
+		.overstriking{
+			font-weight: 700;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<div class="head">
+			<div class="navImg" id="navImg">
+				<img src="../../../img/app/arrowLeft-icon.png">
+			</div>
+			<div class="navDetail">缴费说明</div>
+		</div>
+		<div class="contain">
+			<p class="retract">
+				声明：以下各项缴费类型均为活动主办方实际设置，参会用户在报名后可根据活动实际情况进行相应缴费操作。用户在缴纳相应的款项前请仔细查看权益回报（普通参会费或报名费，可能不涉及额外的权益回报），权益回报为活动主办方设置并提供服务。
+			</p>
+			<p class="retract">
+				<span class="overstriking">“平台支付”</span>
+				<span>
+					是指用户通过平台在线支付功能，向活动主办方缴纳相应款项，目前支持微信支付。支付成功后用户可通过所报名活动“我的订单”查看订单详情。
+				</span>
+			</p>
+			<p class="retract overstriking">通过平台在线支付有什么好处：</p>
+			<p class="retract">
+				1）、支付快捷：参会用户通过平台可一键在线支付；无需再为去银行排队转帐而耗费时间。
+			</p>
+			<p class="retract">
+				2）、缴费信息实时反馈：用户通过平台在线支付成功后，主办方后台可实时同步的展示用户的缴费信息。
+			</p>
+			<p class="retract">
+				3）、发票信息一键提交，缩短报销周期：参会用户通过平台在线支付成功后，可直接通过平台提交发票信息给主办方，无需后期反复电话沟通确认；同时方便主办方提前打印发票，现场领取；避免传统的会议结束很长时间才能收到发票的情况。
+			</p>
+			<p class="retract">
+				4）、邮寄地址一键提交：需要邮寄发票的参会用户，可直接通过平台提交邮寄地址，主办方轻松查看（前提是主办方提供发票邮寄服务）；
+			</p>
+			<p class="retract">
+				5）、多种缴费方式自由选择，方便灵活：根据活动主办方设置的各种收费标准，用户可根据实际情况自由选择并支付。
+			</p>
+			<p class="retract">
+				6）积分奖励：通过平台在线支付成功的用户，将获得平台积分奖励
+			</p>
+			<p class="retract">
+				<span class="overstriking">“已通过银行转帐”</span>
+				<span>操作是指平台为用户提供一个缴费信息提交活动主办方的入口，平台本身并不提供银行转帐的功能操作。若用户已通过线下银行转帐成功的，可通过此操作将相应的转帐信息提交给主办方；若用户未通过银行转帐支付的，点击“取消”。此功能操作的所有信息均为用户自主编辑并提交，提交之前请确保信息的真实性和完整性，平台不承担任何责任。</span>
+			</p>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	document.getElementById("navImg").onclick = function(){
+		history.go(-1);
+	} 
+</script>
+</html>

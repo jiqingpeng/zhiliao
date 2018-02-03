@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>邀请函</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="../../../css/app/style.css">
+    <style>
+        .content{
+            width:100%;
+            position: fixed;
+            top:48px;
+            left:0;
+            
+        }
+        .content .title{
+            align-items: center;
+            justify-content: center;
+            border-bottom:2px solid #ccc;
+        }
+        .content .spaceing{
+            width:94%;
+            padding:3%;
+        }
+        .content .pay-item{
+           margin:10px 5px 0;
+        }
+        .content .pay-item .pay-num{
+            display: inline-block;
+            width:80px;
+        }
+        .content .pay-item .pay-nl{
+            display: inline-block;
+            width:60px;
+            text-align: right;
+        }
+        .content .pay-item .pay-nr{
+            margin-left:5%;
+        }
+        .content .pay-item .pay-ir{
+            margin-left:30%;
+        }
+        .content .invoice{
+            display: flex;
+            padding:3%;
+            justify-content: space-between;
+            align-items: center;
+            border-top:1px solid #ccc;
+            border-bottom:1px solid #ccc;
+        }
+        .content .pay-btnlist{
+            display: flex;
+        }
+        .content .pay-btnlist .pay-btn{
+            width:50%;
+            height:40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border:1px solid red;
+        }
+        .pay-list{
+            margin-left:3%;
+        }
+        .note-cont{
+            margin-left:5%;
+        }
+    </style>
+</head>
+<body>
+    <div class="head">
+        <div class="navImg">
+            <img src="../../../img/app/arrowLeft-icon.png">
+        </div>
+        <div class="navDetail">缴费</div>
+    </div>
+    <div class="content">
+        <h2 class="title spaceing"><span>中国民营科技有限公司中国民营科技有限公司中国民营科技有限公司</span></h2>
+        <div class="pay-intructions spaceing">
+            <h3 class="tit">缴费说明:</h3>
+            <ul class="pay-list">
+                <li class="pay-item">
+                    <span class="pay-num">￥800.00</span>
+                    <span class="pay-ir">&nbsp&nbsp&nbsp会员</span>
+                </li>
+                <li class="pay-item">
+                    <span class="pay-num">￥1000.00</span>
+                    <span class="pay-ir">非会员</span>
+                </li>
+            </ul>
+        </div>
+        <div class="note spaceing">
+            <h3 class="tit">备注:</h3>
+            <div class="note-cont">
+                <p class="pay-item">如果选择银行卡转账，汇款信息如下:</p>
+                <p class="pay-item">
+                    <span class="pay-nl">账户名称:</span>
+                    <span class="pay-nr">北京世纪协达科技有些公司</span>
+                </p>
+                <p class="pay-item">
+                    <span class="pay-nl">账户号:</span>
+                    <span class="pay-nr">100012548663255</span>
+                </p>
+                <p class="pay-item">
+                    <span class="pay-nl">开户号:</span>
+                    <span class="pay-nr">中国中商银行</span>
+                </p>
+            </div>
+        </div>
+        <h3 class="invoice">
+            <span>发票</span>
+            <span></span>
+        </h3>
+        <div class="pay-btnlist">
+            <div class="pay-btn">已通过银行转账</div>
+            <div class="pay-btn">平台缴费</div>
+        </div>
+    </div>
+</body>
+<script src="../../../js/zepto.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<script>
+</script>
+</html>

@@ -1,0 +1,974 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>系统监控</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+    <link href="../../css/common/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/common/bootstrap-table.min.css" rel="stylesheet">
+    <link href="../../css/mng/monitor-base.css" rel="stylesheet">
+    <style type="text/css">
+        .title-bar div {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #url-tree, .less-time {
+            display: flex;
+        }
+
+        #sys-div, #sys-graph {
+            display: flex;
+            width: 100%;
+        }
+
+        #sys-graph {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        #sys-graph .sys-graph {
+            display: flex;
+            justify-content: space-between;
+            margin: 0 0 5px 0;
+        }
+
+        #sys-graph .sys-graph .graph-explain {
+            display: flex;
+            width: 22.3%;
+            min-width: 240px;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff !important;
+            border-radius: 6px 0 0 6px;
+        }
+
+        #sys-graph .sys-graph .graph-explain .graph-explain-head,
+        #sys-graph .sys-graph .graph-explain .graph-explain-body,
+        #sys-graph .sys-graph .graph-explain .graph-explain-foot {
+            display: flex;
+        }
+
+        #sys-graph .sys-graph .graph-explain .graph-explain-body {
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        #sys-graph .sys-graph #cpu-graph-explain .graph-explain-body div {
+            height: 24px;
+            line-height: 24px;
+            display: flex;
+            font-size: 24px !important;
+            margin: 10px 0 10px 0;
+        }
+
+        #sys-graph .sys-graph .graph-explain .graph-explain-body div span {
+            color: #f00;
+        }
+
+        #sys-graph .sys-graph .graph-explain .graph-explain-head {
+            width: 100%;
+            height: 35px;
+            line-height: 35px;
+            padding: 0 0 0 10px;
+            border-bottom: 3px solid #ececec;
+            justify-content: space-between;
+        }
+
+        .graph-explain-head t {
+            display: flex;
+        }
+
+        #mem-all-graph, #net-all-graph, #jvm-all-graph {
+            height: 186px;
+            width: 100%;
+            min-width: 240px;
+            display: flex;
+        }
+
+        #sys-graph .graph-view {
+            display: flex;
+            width: 77.5%;
+            height: 220px;
+            background-color: #fff !important;
+            border-radius: 0 6px 6px 0;
+        }
+
+        #less-time, #cpu-max, #mem-max {
+            color: #f00;
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="root">
+    <div id="head">
+        <div class="head-main">
+            <div class="logo">
+                <a href="http://www.gconfs.com">
+                    <img class="" src="../../img/logoandname.png" title="群英汇：一体化会议系统" alt="群英汇：一体化会议系统"/>
+                </a>
+                <span class="logo-title">网站监控</span>
+            </div>
+            <div class="head-tab ">
+                <a href="sysmonitor.html" target="_top" class="active-head">主页</a>
+            </div>
+            <div class="head-user">
+                <span>Hi </span>
+                <span id="user-name"></span>
+                <a onclick="loginout();">登出<span class="glyphicon glyphicon-log-out"></span></a>
+            </div>
+        </div>
+    </div>
+    <div id="menu">
+        <div class="menu-main">
+            <div class="menu-title">
+                <span class="hide-able">网站导航</span>
+                <a class="hideMenu">
+                    <span class="glyphicon glyphicon-menu-hamburger ">
+                        <span class="arrow-left"></span>
+                    </span>
+                </a>
+            </div>
+            <ul class="menu-content list-group">
+                <li class="list-group-item">
+                    <a href="usermonitor.html">
+                        <span class="glyphicon glyphicon-list-alt active"></span>
+                        <span class="hide-able active">实时信息</span>
+                    </a>
+                </li>
+                <!--<li class="list-group-item">-->
+                <!--<a href="usertransformmonitor.html">-->
+                <!--<span class="glyphicon glyphicon-list-alt"></span>-->
+                <!--<span class="hide-able">用户转化</span>-->
+                <!--</a>-->
+                <!--</li>-->
+                <!-- <li class="list-group-item">
+                    <a href="activityconversion.html">
+                        <span class="glyphicon glyphicon-hourglass"></span>
+                        <span class="hide-able">转化概况</span>
+                    </a>
+                </li>-->
+            </ul>
+        </div>
+    </div>
+    <div id="content">
+        <div id="content-body">
+            <div class="content-title">
+                <div class="title-bar">
+                    <div>
+                        <a id="url-tree" href="javaScript:void(0);">系统信息</a><span class="less-time"><span
+                            id="less-time"></span>秒后更新数据</span>
+                    </div>
+                </div>
+            </div>
+            <div class="content-main">
+                <div class="content-main-body">
+                    <div id="sys-div">
+                        <div id="sys-graph">
+                            <div class="sys-graph">
+                                <div id="jvm-graph-explain" class="graph-explain">
+                                    <div class="graph-explain-head">
+                                        <div class="t">JVM&nbsp;&nbsp;<span id="jvm-sersion">1.7</span></div>
+                                        <div class="t">核心：&nbsp;<span id="jvm-cpu-num">0</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="graph-explain-body">
+                                        <div id="jvm-all-graph"></div>
+                                    </div>
+                                </div>
+                                <div id="jvm-graph" class="graph-view"></div>
+                            </div>
+                            <div class="sys-graph">
+                                <div id="cpu-graph-explain" class="graph-explain">
+                                    <div class="graph-explain-head">
+                                        <div class="t">CPU&nbsp;&nbsp;</div>
+                                        <div class="t">峰值：&nbsp;<span id="cpu-max">0</span>%&nbsp;&nbsp;</div>
+                                    </div>
+                                    <div class="graph-explain-body">
+                                        <div>运行：<span id="uptime">--</span>&nbsp;天</div>
+                                        <div>空闲：<span id="freetime">--</span>&nbsp;天</div>
+                                        <div>负载：<span id="loadtime">--</span>&nbsp;%</div>
+                                    </div>
+                                    <div class="graph-explain-foot">
+                                    </div>
+                                </div>
+                                <div id="cpu-graph" class="graph-view"></div>
+                            </div>
+                            <div class="sys-graph">
+                                <div id="mem-graph-explain" class="graph-explain">
+                                    <div class="graph-explain-head">
+                                        <div class="t">MEM&nbsp;&nbsp;</div>
+                                        <div class="t">峰值：&nbsp;<span id="mem-max">0</span>%&nbsp;&nbsp;</div>
+                                    </div>
+                                    <div class="graph-explain-body">
+                                        <div id="mem-all-graph"></div>
+                                    </div>
+                                </div>
+                                <div id="mem-graph" class="graph-view"></div>
+                            </div>
+                            <div class="sys-graph">
+                                <div id="net-graph-explain" class="graph-explain">
+                                    <div class="graph-explain-head">
+                                        <div class="t">NET&nbsp;&nbsp;</div>
+                                        <div class="t">峰值：&nbsp;↓<span id="net-in-max">0KB/s</span>&nbsp;&nbsp;↑<span
+                                                id="net-out-max">0KB/s</span>&nbsp;&nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="graph-explain-body">
+                                        <div id="net-all-graph"></div>
+                                    </div>
+                                </div>
+                                <div id="net-graph" class="graph-view"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="foot"><span>© 京备17018133</span></div>
+    </div>
+</div>
+<div class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-warning active" role="progressbar" aria-valuenow="100"
+         aria-valuemin="0"
+         aria-valuemax="100" style="width: 100%">
+        <span class="sr-only">loding...</span>
+    </div>
+</div>
+<div id="model-div"></div>
+<div id="toast_" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+     href="#toast_">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="mySmallModalLabel">群英汇</h4>
+            </div>
+            <div class="modal-body" id="toast_msg">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../../js/jquery.min.js" type="application/javascript"></script>
+<script src="../../js/bootstrap.min.js" type="application/javascript"></script>
+<script src="../../js/bootstrap-table.min.js" type="application/javascript"></script>
+<script src="../../js/bootstrap-table-zh-CN.min.js" type="application/javascript"></script>
+<script src="../../js/mng/echarts.min.js" type="application/javascript"></script>
+<script src="../../js/mng/mng.js" type="application/javascript"></script>
+<script src="../../js/mng/monitor-base.js" type="application/javascript"></script>
+<script type="application/javascript">
+    var times;
+    var myJvmChart;
+    var myJvmAllChart;
+    var myCpuChart;
+    var myMemChart;
+    var myMemAllChart;
+    var myNetChart;
+    var myNetAllChart;
+    var isFirst = true;
+    var isJvmFirst = true;
+    var isCpuFirst = true;
+    var isMemFirst = true;
+    var isNetFirst = true;
+    var lessSecond = 5;
+    var loadFinish = 0;
+    var width;
+    $(function () {
+        width = $('body').width();
+        myJvmChart = echarts.init(document.getElementById('jvm-graph'));
+        myJvmAllChart = echarts.init(document.getElementById('jvm-all-graph'));
+        myCpuChart = echarts.init(document.getElementById('cpu-graph'));
+        myMemChart = echarts.init(document.getElementById('mem-graph'));
+        myMemAllChart = echarts.init(document.getElementById('mem-all-graph'));
+        myNetChart = echarts.init(document.getElementById('net-graph'));
+        myNetAllChart = echarts.init(document.getElementById('net-all-graph'));
+        loding();
+        init();
+        setInterval(lessTime, 1000);
+    });
+
+    function init() {
+        loadFinish = 0;
+        var type;
+        if (isFirst === true) {
+            isFirst = false;
+            type = "version,cpu,mem,uptime,net,jvm,server";
+        } else {
+            type = "cpu,mem,uptime,net,jvm";
+        }
+        $.myAjax({
+            url: basePath + "sys/monitor/linux/get.do",
+            data: {"type": type},
+            success: function (result) {
+                lodingDown();
+                if (result.flag) {
+                    jvm(result.data.jvm);
+                    jvmAllGraph(result.data.jvm.memory_free, result.data.jvm.memory_total);
+                    times = getNowFormatDate();
+                    times = times.substring(times.indexOf(" ") + 1, times.lastIndexOf(":"));
+                    jvmGraph(result.data.jvm.memory_free, result.data.jvm.memory_total, times);
+                    cpuGraph(result.data.cpu, times);
+                    memGraph(result.data.mem.memUsedPoint, times);
+                    upTime(result.data.uptime);
+                    var legendData = [];
+                    for (var i = 0; i < result.data.mem.all.length; i++) {
+                        var memD = result.data.mem.all[i];
+                        legendData[i] = memD.name;
+                    }
+                    memAllGraph(legendData, result.data.mem.all);
+                    netGraph(result.data.net.statistic, times, result.data.net.totalReceive,
+                        result.data.net.totalTransmit);
+                    lessTime();
+                    loadFinish = 1;
+                } else {
+                    toastMsg(result.msg);
+                }
+            },
+            error: function () {
+                lodingDown();
+                toastMsg("连接失败！请稍后再试！");
+            }
+        });
+    }
+
+    function lessTime() {
+        if (loadFinish === 1) {
+            if (lessSecond > 1) {
+                lessSecond--;
+            } else {
+                lessSecond = 5;
+                init();
+            }
+        }
+        $("#less-time").html(lessSecond);
+        if (width != $('body').width()) {
+            try {
+                myJvmChart.resize();
+            } catch (e) {
+            }
+            try {
+                myJvmAllChart.resize();
+            } catch (e) {
+            }
+            try {
+                myCpuChart.resize();
+            } catch (e) {
+            }
+            try {
+                myMemChart.resize();
+            } catch (e) {
+            }
+            try {
+                myMemAllChart.resize();
+            } catch (e) {
+            }
+            try {
+                myNetChart.resize();
+            } catch (e) {
+            }
+            try {
+                myNetAllChart.resize();
+            } catch (e) {
+            }
+        }
+    }
+
+    function jvm(jvm) {
+        $("#jvm-sersion").html(jvm.java_specification_version);
+        $("#jvm-cpu-num").html(jvm.processor_avaliable);
+    }
+
+    var jvmOption = {
+        tooltip: {
+            trigger: 'axis'
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            top: '20',
+            containLabel: true
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: [null]
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [{
+            type: 'line',
+            data: [0]
+        }]
+    };
+
+    function jvmGraph(memory_free, memory_total, xAxisData) {
+        var d = (1 - ( parseFloat(memory_free) / parseFloat(memory_total))) * 100;
+        var servicesData = String(d).substring(0, String(d).indexOf(".") + 3);
+        if (isJvmFirst === true) {
+            isJvmFirst = false;
+            jvmOption.xAxis.data[0] = xAxisData;
+            jvmOption.series[0].data[0] = servicesData;
+            myJvmChart.setOption(jvmOption);
+        } else {
+            jvmOption.xAxis.data.push(xAxisData);
+            jvmOption.series[0].data.push(servicesData);
+            myJvmChart.setOption(jvmOption);
+        }
+    }
+
+    function jvmAllGraph(memory_free, memory_total) {
+        var t = String(parseFloat(memory_total) / 1024 / 1024 / 1024);
+        t = t.substring(0, t.indexOf(".") + 3);
+        var d = (1 - ( parseFloat(memory_free) / parseFloat(memory_total))) * 100;
+        d = String(d).substring(0, String(d).indexOf(".") + 3);
+        var option = {
+            tooltip: {
+                formatter: "{a} <br/>{b} : {c} %"
+            },
+            legend: {
+                type: 'scroll',
+                x: 'top',
+                y: 'center',
+                orient: 'vertical'
+            },
+            series: [{
+                name: 'JVM内存',
+                type: 'gauge',
+                min: 0,
+                max: 100,
+                radius: '100%',
+                axisLine: {            // 坐标轴线
+                    lineStyle: {       // 属性lineStyle控制线条样式
+                        width: 5
+                    }
+                },
+                axisTick: {
+                    length: 10,
+                    lineStyle: {       // 属性lineStyle控制线条样式
+                        color: 'auto'
+                    }
+                },
+                splitLine: {
+                    length: 16,
+                    lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                        color: 'auto'
+                    }
+                },
+                detail: {
+                    // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    formatter: function (value) {
+                        return "\n\n共" + t + "GB\n\n" + value + "%";
+                    },
+                    color: '#f00',
+                    fontSize: 16
+                },
+                data: [{
+                    name: "已用内存",
+                    value: d
+                }]
+            }]
+        };
+        myJvmAllChart.setOption(option);
+    }
+
+    var cpuOption = {
+        tooltip: {
+            trigger: 'axis'
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            top: '20',
+            containLabel: true
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: [null]
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [{
+            type: 'line',
+            data: [0]
+        }]
+    };
+
+    function cpuGraph(servicesData, xAxisData) {
+        if ((parseFloat(servicesData) - parseFloat($("#cpu-max").html()) ) > 0) {
+            $("#cpu-max").html(servicesData);
+        }
+        if (isCpuFirst === true) {
+            isCpuFirst = false;
+            cpuOption.xAxis.data[0] = xAxisData;
+            cpuOption.series[0].data[0] = servicesData;
+            myCpuChart.setOption(cpuOption);
+        } else {
+            cpuOption.xAxis.data.push(xAxisData);
+            cpuOption.series[0].data.push(servicesData);
+            myCpuChart.setOption(cpuOption);
+        }
+    }
+
+    var memOption = {
+        tooltip: {
+            trigger: 'axis'
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            top: '20',
+            containLabel: true
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: [null]
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [{
+            type: 'line',
+            data: [0]
+        }]
+    };
+
+    function memGraph(servicesData, xAxisData) {
+        if ((parseFloat(servicesData) - parseFloat($("#mem-max").html()) ) > 0) {
+            $("#mem-max").html(servicesData);
+        }
+        if (isMemFirst === true) {
+            isMemFirst = false;
+            memOption.xAxis.data[0] = xAxisData;
+            memOption.series[0].data[0] = servicesData;
+            myMemChart.setOption(memOption);
+        } else {
+            memOption.xAxis.data.push(xAxisData);
+            memOption.series[0].data.push(servicesData);
+            myMemChart.setOption(memOption);
+        }
+    }
+
+    function memAllGraph(legendData, memAll) {
+        var option = {
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                type: 'scroll',
+                x: 'top',
+                y: 'center',
+                orient: 'vertical',
+                data: legendData
+            },
+            series: [{
+                name: '内存、swap',
+                type: 'pie',
+                label: {
+                    normal: {
+                        show: false
+                    },
+                    emphasis: {
+                        show: true
+                    }
+                },
+                lableLine: {
+                    normal: {
+                        show: false
+                    },
+                    emphasis: {
+                        show: true
+                    }
+                },
+                radius: [0, 40],
+                center: ['80%', '50%'],
+                data: memAll
+            }]
+        };
+        myMemAllChart.setOption(option);
+    }
+
+    function upTime(upTime) {
+        $("#uptime").html(upTime.uptime);
+        $("#freetime").html(upTime.freetime);
+        var loadStr = String((1 - (parseFloat(upTime.freetime) / parseFloat(upTime.uptime))) * 100);
+        $("#loadtime").html(loadStr.substring(0, loadStr.indexOf(".") + 3));
+    }
+
+    var netOption = {
+        tooltip: {
+            trigger: 'axis'
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            top: '20',
+            containLabel: true
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: [null]
+        },
+        yAxis: {
+            axisLabel: {
+                formatter: function (value, index) {
+                    var val = String(parseFloat(value) / 1024);
+                    return val.substring(0, val.indexOf(".") + 2);
+                }
+            },
+            type: 'value'
+        },
+        series: [{
+            name: "",
+            type: 'line',
+            data: []
+        }, {
+            name: "",
+            type: 'line',
+            data: []
+        }]
+    };
+
+    function netGraph(statistic, times, totalReceive, totalTransmit) {
+        if (isNetFirst === true) {
+            isNetFirst = false;
+            netOption.xAxis.data[0] = times;
+            for (var i = 0; i < statistic.length; i++) {
+                var data = statistic[i];
+                var a = {};
+                a.name = "接收";// + data.name;
+                a.type = "line";
+                a.data = [];
+                a.data[i] = data.value.receiveBytes;
+                netOption.series[0] = a;
+                var b = {};
+                b.name = "发送";// + data.name;
+                b.type = "line";
+                b.data = [];
+                b.data[i] = data.value.transmitBytes;
+                netOption.series[1] = b;
+                netMax(data.value.receiveBytes, data.value.transmitBytes);
+            }
+            myNetChart.setOption(netOption);
+        } else {
+            netOption.xAxis.data.push(times);
+            for (var i = 0; i < statistic.length; i++) {
+                var data = statistic[i];
+                netOption.series[0].data.push(data.value.receiveBytes);
+                netOption.series[1].data.push(data.value.transmitBytes);
+                netMax(data.value.receiveBytes, data.value.transmitBytes);
+            }
+            myNetChart.setOption(netOption);
+        }
+        var option = {
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            grid: {
+                left: '1%',
+                right: '1%',
+                bottom: '-12%',
+                top: '-3%',
+                containLabel: true
+            },
+            xAxis: {
+                splitLine: {show: false},
+                type: 'value'
+            },
+            yAxis: {
+                type: 'category',
+                data: ['发送', '接收']
+            },
+            series: [
+                {
+                    name: 'bytes',
+                    type: 'bar',
+                    stack: '总量',
+                    data: [totalReceive.bytes, totalTransmit.bytes]
+                },
+                {
+                    name: 'packets',
+                    type: 'bar',
+                    stack: '总量',
+                    data: [totalReceive.packets, totalTransmit.packets]
+                },
+                {
+                    name: 'errs',
+                    type: 'bar',
+                    stack: '总量',
+                    data: [totalReceive.errs, totalTransmit.errs]
+                },
+                {
+                    name: 'drop',
+                    type: 'bar',
+                    stack: '总量',
+                    data: [totalReceive.drop, totalTransmit.drop]
+                }
+            ]
+        };
+        myNetAllChart.setOption(option);
+    }
+
+    function netMax(receiveBytes, transmitBytes) {
+        var inmax = $("#net-in-max").html().substring(0, $("#net-in-max").html().indexOf("KB/s"));
+        var outmax = $("#net-out-max").html().substring(0, $("#net-out-max").html().indexOf("KB/s"));
+        receiveBytes = String(parseFloat(receiveBytes) / 1024);
+        receiveBytes = receiveBytes.substring(0, receiveBytes.indexOf(".") + 3);
+        transmitBytes = String(parseFloat(transmitBytes) / 1024);
+        transmitBytes = transmitBytes.substring(0, transmitBytes.indexOf(".") + 3);
+        if ((parseFloat(receiveBytes) - inmax) > 0) {
+            $("#net-in-max").html(receiveBytes + "KB/s");
+        }
+        if ((parseFloat(transmitBytes) - outmax ) > 0) {
+            $("#net-out-max").html(transmitBytes + "KB/s");
+        }
+    }
+
+    //    function userGraph(cpu, mem, net) {
+    //        if (isFirst === true) {
+    //            isFirst = false;
+    //            var option = {
+    //                title: {
+    //                    text: '系统信息',
+    //                    x: 'center'
+    //                },
+    //                tooltip: {
+    //                    formatter: "{a} <br/>{c} {b}"
+    //                },
+    //                series: [
+    //                    {
+    //                        name: 'CPU',
+    //                        type: 'gauge',
+    //                        z: 3,
+    //                        min: 0,
+    //                        max: 100,
+    //                        splitNumber: 10,
+    //                        radius: '70%',
+    //                        axisLine: { // 坐标轴线
+    //                            lineStyle: { // 属性lineStyle控制线条样式
+    //                                width: 5
+    //                            }
+    //                        },
+    //                        axisTick: { // 坐标轴小标记
+    //                            length: 17, // 属性length控制线长
+    //                            lineStyle: { // 属性lineStyle控制线条样式
+    //                                color: 'auto'
+    //                            }
+    //                        },
+    //                        splitLine: { // 分隔线
+    //                            length: 8, // 属性length控制线长
+    //                            lineStyle: { // 属性lineStyle（详见lineStyle）控制线条样式
+    //                                color: 'auto'
+    //                            }
+    //                        },
+    //                        axisLabel: {
+    //                            backgroundColor: 'auto',
+    //                            borderRadius: 2,
+    //                            color: '#eee',
+    //                            padding: 3,
+    //                            textShadowBlur: 2,
+    //                            textShadowOffsetX: 1,
+    //                            textShadowOffsetY: 1,
+    //                            textShadowColor: '#222'
+    //                        },
+    //                        title: {
+    //                            // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+    //                            fontWeight: 'bolder',
+    //                            fontSize: 10,
+    //                            fontStyle: 'italic'
+    //                        },
+    //                        detail: {
+    //                            // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+    //                            formatter: function (value) {
+    //                                value = (value + '').split('.');
+    //                                value.length < 2 && (value.push('00'));
+    //                                return ('00' + value[0]).slice(-2) + '.'
+    //                                    + (value[1] + '00').slice(0, 2);
+    //                            },
+    //                            fontWeight: 'bolder',
+    //                            borderRadius: 3,
+    //                            backgroundColor: '#444',
+    //                            borderColor: '#aaa',
+    //                            shadowBlur: 5,
+    //                            shadowColor: '#333',
+    //                            shadowOffsetX: 0,
+    //                            shadowOffsetY: 3,
+    //                            borderWidth: 1,
+    //                            textBorderColor: '#000',
+    //                            textBorderWidth: 2,
+    //                            textShadowBlur: 2,
+    //                            textShadowColor: '#fff',
+    //                            textShadowOffsetX: 0,
+    //                            textShadowOffsetY: 0,
+    //                            fontFamily: 'Arial',
+    //                            width: 100,
+    //                            color: '#eee',
+    //                            rich: {}
+    //                        },
+    //                        data: [{
+    //                            value: cpu,
+    //                            name: '%'
+    //                        }]
+    //                    }, {
+    //                        name: '内存',
+    //                        type: 'gauge',
+    //                        center: ['20%', '58%'], // 默认全局居中
+    //                        radius: '44%',
+    //                        min: 0,
+    //                        max: 100,
+    //                        endAngle: 25,
+    //                        splitNumber: 10,
+    //                        axisLine: { // 坐标轴线
+    //                            lineStyle: { // 属性lineStyle控制线条样式
+    //                                width: 8
+    //                            }
+    //                        },
+    //                        axisTick: { // 坐标轴小标记
+    //                            length: 10, // 属性length控制线长
+    //                            lineStyle: { // 属性lineStyle控制线条样式
+    //                                color: 'auto'
+    //                            }
+    //                        },
+    //                        splitLine: { // 分隔线
+    //                            length: 7, // 属性length控制线长
+    //                            lineStyle: { // 属性lineStyle（详见lineStyle）控制线条样式
+    //                                color: 'auto'
+    //                            }
+    //                        },
+    //                        pointer: {
+    //                            width: 5
+    //                        },
+    //                        title: {
+    //                            offsetCenter: [0, '-30%'], // x, y，单位px
+    //                            fontSize: 10,
+    //                            fontStyle: 'italic'
+    //                        },
+    //                        detail: {
+    //                            // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+    //                            fontWeight: 'bolder'
+    //                        },
+    //                        data: [{
+    //                            value: mem,
+    //                            name: '%'
+    //                        }]
+    //                    }, {
+    //                        name: '网络上行',
+    //                        type: 'gauge',
+    //                        center: ['79%', '58%'], // 默认全局居中
+    //                        radius: '42%',
+    //                        min: 0,
+    //                        max: 10,
+    //                        startAngle: 145,
+    //                        endAngle: 25,
+    //                        splitNumber: 5,
+    //                        axisLine: { // 坐标轴线
+    //                            lineStyle: { // 属性lineStyle控制线条样式
+    //                                width: 8
+    //                            }
+    //                        },
+    //                        axisTick: { // 坐标轴小标记
+    //                            splitNumber: 5,
+    //                            length: 10, // 属性length控制线长
+    //                            lineStyle: { // 属性lineStyle控制线条样式
+    //                                color: 'auto'
+    //                            }
+    //                        },
+    //                        splitLine: { // 分隔线
+    //                            length: 15, // 属性length控制线长
+    //                            lineStyle: { // 属性lineStyle（详见lineStyle）控制线条样式
+    //                                color: 'auto'
+    //                            }
+    //                        },
+    //                        pointer: {
+    //                            width: 4
+    //                        },
+    //                        title: {
+    //                            show: true,
+    //                            fontSize: 10,
+    //                            fontStyle: 'italic'
+    //                        },
+    //                        detail: {
+    //                            show: false
+    //                        },
+    //                        data: [{
+    //                            value: 2,
+    //                            name: 'Kbps'
+    //                        }]
+    //                    }, {
+    //                        name: '磁盘',
+    //                        type: 'gauge',
+    //                        center: ['79%', '58%'], // 默认全局居中
+    //                        radius: '42%',
+    //                        min: 0,
+    //                        max: 100,
+    //                        startAngle: 335,
+    //                        endAngle: 205,
+    //                        splitNumber: 5,
+    //                        axisLine: { // 坐标轴线
+    //                            lineStyle: { // 属性lineStyle控制线条样式
+    //                                width: 8
+    //                            }
+    //                        },
+    //                        axisTick: { // 坐标轴小标记
+    //                            show: false
+    //                        },
+    //                        splitLine: { // 分隔线
+    //                            length: 15, // 属性length控制线长
+    //                            lineStyle: { // 属性lineStyle（详见lineStyle）控制线条样式
+    //                                color: 'auto'
+    //                            }
+    //                        },
+    //                        pointer: {
+    //                            width: 5
+    //                        },
+    //                        title: {
+    //                            show: false
+    //                        },
+    //                        detail: {
+    //                            show: false
+    //                        },
+    //                        data: [{
+    //                            value: 50,
+    //                            name: '%'
+    //                        }]
+    //                    }]
+    //            };
+    //            // 使用刚指定的配置项和数据显示图表。
+    //            myChart.setOption(option);
+    //        } else {
+    //            // 填入数据
+    //            myChart.setOption({
+    //                series: [{
+    //                    data: [{value: cpu, name: '%'}]
+    //                }, {
+    //                    data: [{value: mem, name: '%'}]
+    //                }, {
+    //                    data: [{value: "", name: '%'}]
+    //                }, {
+    //                    data: [{value: "", name: '%'}]
+    //                }]
+    //            });
+    //        }
+    //    }
+
+</script>
+</html>

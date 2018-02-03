@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>缴费</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="stylesheet" type="text/css" href="../../../css/app/style.css">
+<link rel="stylesheet" href="../../../css/weixin/pay.css">
+</head>
+<body>
+    <div class="head">
+        <div class="navImg">
+            <img src="../../../img/app/arrowLeft-icon.png">
+        </div>
+        <div class="navDetail">确认订单</div>
+    </div>
+    <div class="content sure">
+        <input type="hidden" class="pay-type">
+        <section class='pay-tit list bord'>
+            <h2 class="title">
+                <span class="tit-con"></span>
+            </h2>
+            <div class="addressdate">
+                <span class="space-between addressbox">
+                    <img class="icon" src="../../../img/app/site-icon.png" alt="site-icon">
+                    <span class="address"></span>
+                </span>
+                <span class="date space-between">
+                    <img class="icon" src="../../../img/app/time-icon.png"" alt="time-icon">
+                    <span class="stime"></span>
+                    <span>-</span>
+                    <span class="etime"></span>
+                </span>
+            </div>
+        </section>
+        <section class="user-info space-between list bord">
+            <div class="user"></div>
+            <div class="mobile"></div>
+        </section>
+        <section class="invo-info list bord">
+            <li class="space-between">
+                <span class="fee-name">
+                    
+                </span>
+                <span class="total-fee">
+                    
+                </span>
+            </li>
+        </section>
+        <section class="instructions">
+        </section>
+        <section class="list active pay-msg">
+            <h4>支付说明</h3>
+            <div>
+                <p>通过平台在线支付，主办方将立即收到您的缴费信息；缴费成功后，请及时安排参会议行程；您可通过群英汇平台预定官方活动指定酒店，增加更多与参会代表交流机会。</p>
+                <p>缴费成功后如特殊原因无法参加，需要退款，请联系主办方。</p>
+            </div>
+        </section>
+        <section class="list active bank-msg"> 
+            <h4>银行转账</h3>
+            <div class="bank-no"></div>
+        </section>
+        <section class="list active bank-msg"> 
+            <h4>备注说明：</h3>
+            <div>
+                <p>“银行转帐”是平台为您提供的缴费信息提交入口。若您确定已通过线下银行转帐成功，请点击“确认已通过银行转帐”向主办方提交转帐信息。</p>
+                <p>由于银行转帐存在一定的到帐延时，您需要电话联系主办方核实到帐信息。请确保提交信息的真实性，平台不承担任何责任。
+                </p>
+            </div>
+        </section>
+    </div>
+    <div class="pay-btnlist pay-group">
+        <div class="pay-platform  active space-between">
+            <span class="pay-calc allMoney">
+                <span>合计：</span>
+                <span class="num count"></span>
+            </span>
+            <span class="pay-btn space-center">
+                <span>立即支付</span>
+            </span>
+        </div>
+        <div class="pay-bank active space-between">
+            <span class="pay-calc space-between allMoney">
+                <span>合计：</span>
+                <span class="num count"></span>
+            </span>
+            <span class="pay-btn space-center">
+                <span>确认已通过银行转账</span>
+            </span>
+        </div>
+    </div>
+</body>
+<script src="../../../js/zepto.js"></script>
+<script src="../../../js/zepto.md5.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<script>
+var invoiceContent = null,
+    invoice = null,
+    invoiceType = '', // 开票类型
+    invoiceTakeType = ''; // 获取发票方式
+var id = Request("actId");
+$(function(){
+    var feeName = decodeURI(Request("feeName"));
+    var totalFee = Request("totalFee");
+    var count= Request("count");
+    var payType= Number(Request("payType"));
+    var str = totalFee+'*'+count;
+    var countNum = totalFee*count
+    $('.fee-name').html(feeName);
+    $('.total-fee').html(str);
+    $('.pay-calc .num').html('￥'+countNum);
+    //缴费方式
+    if(payType){
+        $('.pay-msg').removeClass('active');
+        $('.pay-platform').removeClass('active')
+    }else{
+        $('.bank-msg').removeClass('active');
+        $('.pay-bank').removeClass('active')
+    };
+    init();
+    //平台缴费
+    $('.pay-platform').on("click",function(){
+        save();
+    });
+    //银行转账
+    $('.pay-bank').on("click",function(){
+        save();
+    });
+});
+function init(){
+    var url = basePath+"mt/user/activity/get.do?id="+id+"&type=paymentconfirm,base";
+    $.myAjax({
+        url: url,
+        success: function (result) {
+            if (result.flag) {
+                console.log(result)
+                var base = result.data.base;
+                //地点时间
+                $('.tit-con').html(base.name);
+                var stime = base.stime.substring(5,10);
+                nstime = stime.replace(/-/,"/");
+                $('.stime').html(nstime);
+                var etime = base.etime.substring(5,10);
+                netime = etime.replace(/-/,"/");
+                $('.etime').html(netime);
+                $('.address').html(base.city);
+                //userInfo
+                var userInfo = result.data.userInfo;
+                $('.user').html(userInfo.name);
+                $('.mobile').html(userInfo.mobile);
+                // if(data.userPaymentOrder){ // 缴费数据
+                //     console.log(data.userPaymentOrder)
+                //     var str = '';
+                //     for(var i = 0; i < data.userPaymentOrder.length; i ++){
+                //         str += 
+                //         '<li class="space-between">'+
+                //             '<span>'+
+                //                 data.userPaymentOrder[i].good_name+
+                //             '</span>'+
+                //             '<span>￥'+
+                //                 data.userPaymentOrder[i].total_fee+
+                //                 '*'+
+                //                 data.userPaymentOrder[i].good_count+
+                //             '</span>'+
+                //         '</li>';
+                //     }
+                //     $('.invo-info').html(str)
+                // } 
+                // if(data.payment.invoiceTakeType.length == 1){ // 获取发票方式判断
+                //     invoiceType = data.payment.invoiceTakeType[0].type;
+                // } else if(data.payment.invoiceType.length == 2){
+                //     invoiceType = "1,2";
+                // }
+                //银行转账信息
+                var payType = result.data.paymentconfirm.payType
+                for(var i = 0;i<payType.length;i++){
+                    if(2==payType[i].type){
+                        var str = 
+                        '<li class="item">'+
+                            '<span>如果选择银行转账：汇款信息如下</span>'+
+                        '</li>'+
+                        '<li class="item">'+
+                            '<span>账户名称：</span>'+
+                            '<span>'+
+                                payType[i].accountName+
+                            '</span>'+
+                        '</li>'+
+                        '<li class="item">'+
+                            '<span>账户号：<span>'+
+                            '<span>'+
+                                payType[i].accountNumber+
+                            '</span>'+
+                        '</li>'+
+                        '<li class="item">'+
+                            '<span>账户行：</span>'+
+                            '<span>'+
+                                payType[i].bankName+
+                            '</span>'+
+                        '</li>';
+                    }
+                }
+                $('.bank-no').html(str)
+            };
+        },
+        error:function(){
+            myConfirm("请求错误");
+        }
+    });
+};
+function isWeixin() { 
+    var ua = window.navigator.userAgent.toLowerCase(); 
+    if (ua.match(/MicroMessenger/i) == 'micromessenger') { 
+        return true; 
+    } else { 
+        return false;
+    } 
+};
+function save(){
+    var feeName = decodeURI(Request("feeName"));
+    var totalFee = Request("totalFee");
+    var num= Request("count");
+    var payType= Number(Request("payType"));
+    var payId = Request("payId");
+    var money = num*totalFee;
+    console.log()
+    if(payType){
+        window.location.href="../index.html?actId="+id+"&num="+num+"&payId="+payId+"&money="+money+"&invoType="+feeName+"&monum="+totalFee;
+    }else{
+        var fee=[{"count":num,"id":payId}];
+        fee = JSON.stringify(fee);
+        myConfirm("如果您确认已通过线下银行转帐给主办方指定帐户，请点击“确认”；如果您尚未通过线下银行转帐给主办方，请点击“取消”。请确保提交信息的真实性，平台不承担任何责任。",function(){
+            $.myAjax({
+                url: basePath+"user/activity/pay/admissionfee/banktransfer.do?id="+id+"&type=1",
+                data:{"fee":fee},
+                success: function (result) {
+                    if (result.flag) {
+                        // 页面提示
+                        myConfirm("缴费状态：已通过银行转账",function(){
+                            var feeName = decodeURI(Request("feeName"));
+                            var totalFee = Request("totalFee");
+                            var num= Request("count");
+                            var payType= Number(Request("payType"));
+                            var payId = Request("payId");
+                            var money = num*totalFee;
+                            window.location.href="invoice.html?actId="+id;
+                        });
+                        // $(".payState").html("").css("display","block")
+                    } else {
+                        if(result.msg.indexOf("重复") >= 0){
+                            myConfirm("您已提交过银行转账信息，如有变动，请线下联系主办方",function(){
+                                window.location.href="invoice.html?actId="+id;
+                            });
+                            
+                        } else {
+                            myConfirm(result.msg);
+                        }
+                    };
+                },
+                error:function(){
+                    myConfirm("请求错误!");
+                }
+            });
+            // $(".platform-pos").addClass("active");
+            // $(".mask").addClass("active");
+        });
+    }
+}
+</script>
+</html>

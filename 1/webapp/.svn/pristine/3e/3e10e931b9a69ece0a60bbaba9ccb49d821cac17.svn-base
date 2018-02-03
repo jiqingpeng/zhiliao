@@ -1,0 +1,1039 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>网站PV</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+    <link href="../../css/common/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/common/bootstrap-table.min.css" rel="stylesheet">
+    <link href="../../css/mng/font-awesome.min.css" rel="stylesheet">
+    <link href="../../css/mng/monitor-base.css" rel="stylesheet">
+    <style type="text/css">
+        #pv-div, .pv-div, .pv-div .pv-div-head, .pv-div .pv-div-body, .pv-div .pv-div-foot,
+        .pv-div .pv-div-head-title {
+            display: flex;
+        }
+
+        #pv-div, #pv-div .pv-div {
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pv-div {
+            width: 100%;
+            font-size: 14px;
+            margin: 0 0 20px 0;
+            background-color: #fff;
+            border-radius: 6px 6px 0 0;
+        }
+
+        .pv-div .pv-div-head {
+            width: 100%;
+            height: 34px;
+            line-height: 36px;
+            padding: 0 0 0 20px;
+        }
+
+        .pv-div-head-title {
+            font-weight: bold;
+        }
+
+        .pv-div-body .today-th, .pv-div-body .today-td, .pv-div-body .today-th .today-td span {
+            display: flex;
+        }
+
+        .pv-div-body {
+            width: 100%;
+            margin: 0 0 10px 0;
+            padding: 0 20px 0 20px;
+            font-size: 12px;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pv-div-body .today-th {
+            width: 100%;
+            height: 36px;
+            line-height: 36px;
+            justify-content: space-between;
+        }
+
+        .pv-div-body .today-th .today-td:last-child {
+            border-right: 0 solid #eee;
+        }
+
+        .pv-div-body .today-td {
+            width: 146px;
+            justify-content: center;
+            text-align: right;
+            border-right: 1px solid #eee;
+        }
+
+        .pv-div-foot span {
+            display: flex;
+            height: 18px;
+            background-color: #fff;
+            align-items: center;
+            margin-top: -2px;
+            cursor: pointer;
+            padding: 12px 10px 12px 10px;
+            border-bottom: 1px solid #eee;
+            border-left: 1px solid #eee;
+            border-right: 1px solid #eee;
+        }
+
+        .pv-div-foot {
+            width: 100%;
+            justify-content: center;
+            font-size: 16px;
+            border-top: 1px solid #eee;
+        }
+
+        .pv-div .pv-div-half-div, .pv-div .pv-div-half-div .pv-div-half, .pv-div .pv-div-body .pv-div-body-l {
+            display: flex;
+        }
+
+        .pv-div .pv-div-half-div {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            background-color: #ececec;
+        }
+
+        .pv-div .pv-div-half-div .pv-div-half:first-child {
+            margin-right: 6px;
+        }
+
+        .pv-div .pv-div-half-div .pv-div-half:last-child {
+            margin-left: 6px;
+        }
+
+        .pv-div .pv-div-half-div .pv-div-half {
+            width: 100%;
+            background-color: #fff;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pv-div .body-l {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .pv-div .pv-div-body .pv-div-body-l {
+            width: 100%;
+            height: 30px;
+            line-height: 22px;
+            padding: 4px 0 4px 0;
+        }
+
+        .pv-div .pv-div-body .pv-div-body-l:last-child {
+            line-height: 22px;
+            justify-content: space-around;
+        }
+
+        .pv-div .pv-div-body .pv-div-body-l .checkbox {
+            margin: 0 0 0 0;
+        }
+
+        .pv-div-body-l div {
+            display: flex;
+        }
+
+        #daily-graph {
+            height: 370px;
+            width: 100%;
+        }
+
+        #rank-refer-table, #rank-refer-table .rank-tr, #rank-refer-table .rank-td,
+        #rank-norefer-table, #rank-norefer-table .rank-tr, #rank-norefer-table .rank-td {
+            display: flex;
+        }
+
+        #rank-refer-table, #rank-norefer-table {
+            height: 410px;
+            width: 100%;
+            flex-direction: column;
+        }
+
+        .pv-div-body .rank-tr {
+            width: 100%;
+            height: 18px;
+            line-height: 18px;
+            margin: 10px 0 10px 0;
+            font-size: 14px;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .pv-div-body .rank-tr i {
+            display: flex;
+            width: 100%;
+            height: 18px;
+            color: #fe6600;
+        }
+
+        .pv-div-body .rank-tr .rank-td-1 {
+            flex: 0 0 6%;
+        }
+
+        .pv-div-body .rank-tr .rank-td-2 {
+            flex: 0 0 18%;
+        }
+
+        .pv-div-body .rank-tr .rank-td-3 {
+            flex: 0 0 50%;
+        }
+
+        .pv-div-body .rank-tr .rank-td-4 {
+            flex: 0 0 16%;
+        }
+
+        .pv-div-body .rank-tr .rank-td-5 {
+            flex: 0 0 10%;
+        }
+    </style>
+</head>
+<body>
+<div id="root">
+    <div id="head">
+        <div class="head-main">
+            <div class="logo">
+                <a href="http://www.gconfs.com">
+                    <img class="" src="../../img/logoandname.png" title="群英汇：一体化会议系统" alt="群英汇：一体化会议系统"/>
+                </a>
+                <span class="logo-title">网站统计</span>
+            </div>
+            <div class="head-tab ">
+                <a href="index.html" target="_top">主页</a>
+                <a href="activitypvmonitor.html" target="_top" class="active-head">PV</a>
+                <a href="activitymonitor.html" target="_top">活动概览</a>
+                <a href="activityadminmonitor.html" target="_top">活动管理员概览</a>
+                <a href="activityhotelmonitor.html" target="_top">活动酒店</a>
+                <!--<a href="index.html" target="_top">主页</a>-->
+            </div>
+            <div class="head-user">
+                <span>Hi </span>
+                <span id="user-name"></span>
+                <a onclick="loginout();">登出<span class="glyphicon glyphicon-log-out"></span></a>
+            </div>
+        </div>
+    </div>
+    <div id="menu">
+        <div class="menu-main">
+            <div class="menu-title">
+                <span class="hide-able">网站导航</span>
+                <a class="hideMenu">
+                    <span class="glyphicon glyphicon-menu-hamburger ">
+                        <span class="arrow-left"></span>
+                    </span>
+                </a>
+            </div>
+            <ul class="menu-content list-group">
+                <li class="list-group-item">
+                    <a href="pvmonitor.html">
+                        <span class="glyphicon glyphicon-list-alt active"></span>
+                        <span class="hide-able active">网站概况</span>
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="activitypvmonitor.html">
+                        <span class="glyphicon-ft fa-users"></span>
+                        <span class="hide-able">活动PV</span>
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="classifypvmonitor.html">
+                        <span class="glyphicon-ft fa-cubes"></span>
+                        <span class="hide-able">其它PV</span>
+                    </a>
+                </li>
+                <!-- <li class="list-group-item">
+                     <a href="activityconversion.html">
+                         <span class="glyphicon glyphicon-hourglass"></span>
+                         <span class="hide-able">转化概况</span>
+                     </a>
+                 </li>-->
+            </ul>
+        </div>
+    </div>
+    <div id="content">
+        <div id="content-body">
+            <div class="content-title">
+                <div class="title-bar">
+                    <div>
+                        <a>网站PV</a>
+                    </div>
+                </div>
+            </div>
+            <div class="content-main">
+                <div class="content-main-body">
+                    <div id="pv-div">
+                        <div class="pv-div">
+                            <div class="pv-div-head"><span class="pv-div-head-title">今日流量</span></div>
+                            <div id="flow-table" class="pv-div-body">
+                                <div class="today-th">
+                                    <div class="today-td"></div>
+                                    <div class="today-td"><span>浏览量(PV)</span></div>
+                                    <div class="today-td"><span>访客数(UV)</span></div>
+                                    <div class="today-td"><span>IP数</span></div>
+                                    <div class="today-td"><span>跳出率</span></div>
+                                    <div class="today-td"><span>平均访问时长</span></div>
+                                    <div class="today-td"><span>转化次数</span></div>
+                                </div>
+                                <div class="today-th">
+                                    <div class="today-td"><span>今日</span></div>
+                                    <div class="today-td" style="font-size: 18px;font-weight: bold;"><span>--</span>
+                                    </div>
+                                    <div class="today-td" style="font-size: 18px;font-weight: bold;"><span>--</span>
+                                    </div>
+                                    <div class="today-td" style="font-size: 18px;font-weight: bold;"><span>--</span>
+                                    </div>
+                                    <div class="today-td" style="font-size: 18px;font-weight: bold;"><span>--</span>
+                                    </div>
+                                    <div class="today-td" style="font-size: 18px;font-weight: bold;"><span>--</span>
+                                    </div>
+                                    <div class="today-td" style="font-size: 18px;font-weight: bold;"><span>--</span>
+                                    </div>
+                                </div>
+                                <div class="today-th">
+                                    <div class="today-td"><span>昨日</span></div>
+                                    <div class="today-td"><span>--</span></div>
+                                    <div class="today-td"><span>--</span></div>
+                                    <div class="today-td"><span>--</span></div>
+                                    <div class="today-td"><span>--</span></div>
+                                    <div class="today-td"><span>--</span></div>
+                                    <div class="today-td"><span>--</span></div>
+                                </div>
+                            </div>
+                            <!--<div class="pv-div-body"></div>-->
+                            <div class="pv-div-foot">
+                                <span class="glyphicon glyphicon-chevron-down"></span>
+                            </div>
+                        </div>
+                        <div class="pv-div">
+                            <div class="pv-div-head"><span class="pv-div-head-title">趋势图</span></div>
+                            <div class="pv-div-body body-l">
+                                <div class="pv-div-body-l">
+                                    <button type="button" class="btn btn-xs btn-danger">浏览量(PV)</button>
+                                    <button type="button" class="btn btn-xs btn-default">访客数(UV)</button>
+                                </div>
+                                <div class="pv-div-body-l">
+                                    <div>对比:</div>
+                                    <div class="checkbox"><label>
+                                        <input class="type-data checked" type="checkbox" checked="checked"
+                                               data="yesterday">前一日
+                                    </label>
+                                    </div>
+                                    <div class="checkbox"><label>
+                                        <input class="type-data" type="checkbox" data="lastweek">上周同期
+                                    </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pv-div-body">
+                                <loading><i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom"></i></loading>
+                                <div id="daily-graph"></div>
+                            </div>
+                        </div>
+                        <div class="pv-div">
+                            <div class="pv-div-half-div">
+                                <div class="pv-div-half">
+                                    <div class="pv-div-head"><span class="pv-div-head-title">Top10受访页面</span></div>
+                                    <div class="pv-div-body">
+                                        <div id="rank-refer-table">
+                                            <div class="rank-tr">
+                                                <div class="rank-td rank-td-1">类型</div>
+                                                <div class="rank-td rank-td-2">页面名称</div>
+                                                <div class="rank-td rank-td-3">入口页面</div>
+                                                <div class="rank-td rank-td-4">浏览量(PV)</div>
+                                                <div class="rank-td rank-td-5">占比</div>
+                                            </div>
+                                            <loading><i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom"></i>
+                                            </loading>
+                                            <div class="rank-tr">
+                                                <div class="rank-td rank-td-1"></div>
+                                                <div class="rank-td rank-td-2"></div>
+                                                <div class="rank-td rank-td-3" style="color: #1276e5;"></div>
+                                                <div class="rank-td rank-td-4"></div>
+                                                <div class="rank-td rank-td-5"></div>
+                                            </div>
+                                            <div class="rank-tr">
+                                                <div class="rank-td rank-td-1"></div>
+                                                <div class="rank-td rank-td-2"></div>
+                                                <div class="rank-td rank-td-3" style="color: #1276e5;"></div>
+                                                <div class="rank-td rank-td-4"></div>
+                                                <div class="rank-td rank-td-5"></div>
+                                            </div>
+                                            <div class="rank-tr">
+                                                <div class="rank-td rank-td-1"></div>
+                                                <div class="rank-td rank-td-2"></div>
+                                                <div class="rank-td rank-td-3" style="color: #1276e5;"></div>
+                                                <div class="rank-td rank-td-4"></div>
+                                                <div class="rank-td rank-td-5"></div>
+                                            </div>
+                                            <div class="rank-tr">
+                                                <div class="rank-td rank-td-1"></div>
+                                                <div class="rank-td rank-td-2"></div>
+                                                <div class="rank-td rank-td-3" style="color: #1276e5;"></div>
+                                                <div class="rank-td rank-td-4"></div>
+                                                <div class="rank-td rank-td-5"></div>
+                                            </div>
+                                            <div class="rank-tr">
+                                                <div class="rank-td rank-td-1"></div>
+                                                <div class="rank-td rank-td-2"></div>
+                                                <div class="rank-td rank-td-3" style="color: #1276e5;"></div>
+                                                <div class="rank-td rank-td-4"></div>
+                                                <div class="rank-td rank-td-5"></div>
+                                            </div>
+                                            <div class="rank-tr">
+                                                <div class="rank-td rank-td-1"></div>
+                                                <div class="rank-td rank-td-2"></div>
+                                                <div class="rank-td rank-td-3" style="color: #1276e5;"></div>
+                                                <div class="rank-td rank-td-4"></div>
+                                                <div class="rank-td rank-td-5"></div>
+                                            </div>
+                                            <div class="rank-tr">
+                                                <div class="rank-td rank-td-1"></div>
+                                                <div class="rank-td rank-td-2"></div>
+                                                <div class="rank-td rank-td-3" style="color: #1276e5;"></div>
+                                                <div class="rank-td rank-td-4"></div>
+                                                <div class="rank-td rank-td-5"></div>
+                                            </div>
+                                            <div class="rank-tr">
+                                                <div class="rank-td rank-td-1"></div>
+                                                <div class="rank-td rank-td-2"></div>
+                                                <div class="rank-td rank-td-3" style="color: #1276e5;"></div>
+                                                <div class="rank-td rank-td-4"></div>
+                                                <div class="rank-td rank-td-5"></div>
+                                            </div>
+                                            <div class="rank-tr">
+                                                <div class="rank-td rank-td-1"></div>
+                                                <div class="rank-td rank-td-2"></div>
+                                                <div class="rank-td rank-td-3" style="color: #1276e5;"></div>
+                                                <div class="rank-td rank-td-4"></div>
+                                                <div class="rank-td rank-td-5"></div>
+                                            </div>
+                                            <div class="rank-tr">
+                                                <div class="rank-td rank-td-1"></div>
+                                                <div class="rank-td rank-td-2"></div>
+                                                <div class="rank-td rank-td-3" style="color: #1276e5;"></div>
+                                                <div class="rank-td rank-td-4"></div>
+                                                <div class="rank-td rank-td-5"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pv-div-half">
+                                    <div class="pv-div-head"><span class="pv-div-head-title">Top10入口页面</span></div>
+                                    <div class="pv-div-body">
+                                        <div id="rank-norefer-table">
+                                            <div class="rank-tr">
+                                                <div class="rank-td rank-td-1">类型</div>
+                                                <div class="rank-td rank-td-2">页面名称</div>
+                                                <div class="rank-td rank-td-3">入口页面</div>
+                                                <div class="rank-td rank-td-4">浏览量(PV)</div>
+                                                <div class="rank-td rank-td-5">占比</div>
+                                            </div>
+                                            <loading><i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom"></i>
+                                            </loading>
+                                            <div class="rank-tr">
+                                                <div class="rank-td rank-td-1"></div>
+                                                <div class="rank-td rank-td-2"></div>
+                                                <div class="rank-td rank-td-3" style="color: #1276e5;"></div>
+                                                <div class="rank-td rank-td-4"></div>
+                                                <div class="rank-td rank-td-5"></div>
+                                            </div>
+                                            <div class="rank-tr">
+                                                <div class="rank-td rank-td-1"></div>
+                                                <div class="rank-td rank-td-2"></div>
+                                                <div class="rank-td rank-td-3" style="color: #1276e5;"></div>
+                                                <div class="rank-td rank-td-4"></div>
+                                                <div class="rank-td rank-td-5"></div>
+                                            </div>
+                                            <div class="rank-tr">
+                                                <div class="rank-td rank-td-1"></div>
+                                                <div class="rank-td rank-td-2"></div>
+                                                <div class="rank-td rank-td-3" style="color: #1276e5;"></div>
+                                                <div class="rank-td rank-td-4"></div>
+                                                <div class="rank-td rank-td-5"></div>
+                                            </div>
+                                            <div class="rank-tr">
+                                                <div class="rank-td rank-td-1"></div>
+                                                <div class="rank-td rank-td-2"></div>
+                                                <div class="rank-td rank-td-3" style="color: #1276e5;"></div>
+                                                <div class="rank-td rank-td-4"></div>
+                                                <div class="rank-td rank-td-5"></div>
+                                            </div>
+                                            <div class="rank-tr">
+                                                <div class="rank-td rank-td-1"></div>
+                                                <div class="rank-td rank-td-2"></div>
+                                                <div class="rank-td rank-td-3" style="color: #1276e5;"></div>
+                                                <div class="rank-td rank-td-4"></div>
+                                                <div class="rank-td rank-td-5"></div>
+                                            </div>
+                                            <div class="rank-tr">
+                                                <div class="rank-td rank-td-1"></div>
+                                                <div class="rank-td rank-td-2"></div>
+                                                <div class="rank-td rank-td-3" style="color: #1276e5;"></div>
+                                                <div class="rank-td rank-td-4"></div>
+                                                <div class="rank-td rank-td-5"></div>
+                                            </div>
+                                            <div class="rank-tr">
+                                                <div class="rank-td rank-td-1"></div>
+                                                <div class="rank-td rank-td-2"></div>
+                                                <div class="rank-td rank-td-3" style="color: #1276e5;"></div>
+                                                <div class="rank-td rank-td-4"></div>
+                                                <div class="rank-td rank-td-5"></div>
+                                            </div>
+                                            <div class="rank-tr">
+                                                <div class="rank-td rank-td-1"></div>
+                                                <div class="rank-td rank-td-2"></div>
+                                                <div class="rank-td rank-td-3" style="color: #1276e5;"></div>
+                                                <div class="rank-td rank-td-4"></div>
+                                                <div class="rank-td rank-td-5"></div>
+                                            </div>
+                                            <div class="rank-tr">
+                                                <div class="rank-td rank-td-1"></div>
+                                                <div class="rank-td rank-td-2"></div>
+                                                <div class="rank-td rank-td-3" style="color: #1276e5;"></div>
+                                                <div class="rank-td rank-td-4"></div>
+                                                <div class="rank-td rank-td-5"></div>
+                                            </div>
+                                            <div class="rank-tr">
+                                                <div class="rank-td rank-td-1"></div>
+                                                <div class="rank-td rank-td-2"></div>
+                                                <div class="rank-td rank-td-3" style="color: #1276e5;"></div>
+                                                <div class="rank-td rank-td-4"></div>
+                                                <div class="rank-td rank-td-5"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pv-div">
+                        <table id="activity-table">
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="foot"><span>© 京备17018133</span></div>
+</div>
+</div>
+<div class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-warning active" role="progressbar" aria-valuenow="100"
+         aria-valuemin="0"
+         aria-valuemax="100" style="width: 100%">
+        <span class="sr-only">loding...</span>
+    </div>
+</div>
+<div id="model-div"></div>
+<div id="toast_" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+     href="#toast_">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="mySmallModalLabel">群英汇</h4>
+            </div>
+            <div class="modal-body" id="toast_msg">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../../js/jquery.min.js" type="application/javascript"></script>
+<script src="../../js/bootstrap.min.js" type="application/javascript"></script>
+<script src="../../js/bootstrap-table.min.js" type="application/javascript"></script>
+<script src="../../js/bootstrap-table-zh-CN.min.js" type="application/javascript"></script>
+<script src="../../js/mng/echarts.min.js" type="application/javascript"></script>
+<script src="../../js/mng/mng.js" type="application/javascript"></script>
+<script src="../../js/mng/monitor-base.js" type="application/javascript"></script>
+<script type="application/javascript">
+    var secondD;
+    var myChart = echarts.init(document.getElementById('daily-graph'));
+    $(function () {
+        loding();
+        flowInit();
+        //tableInit();
+    });
+
+    function init() {
+
+    }
+
+    function flowInit() {
+        $.myAjax({
+            url: basePath + "sys/monitor/html/flow.do",
+            success: function (result) {
+                trendInit("yesterday");
+                lodingDown();
+                if (result.flag) {
+                    var th1 = $("#flow-table").children(".today-th")[1];
+                    var th2 = $("#flow-table").children(".today-th")[2];
+                    for (var i = 1; i < $("#flow-table").children(".today-th").length + 1; i++) {
+                        $($(th1).children(".today-td")[i]).html(result.data.today[i - 1]);
+                        $($(th2).children(".today-td")[i]).html(result.data.yesterday[i - 1]);
+                    }
+                    //$("#activity-table").bootstrapTable('load', result.data.activityList);
+                } else {
+                    toastMsg(result.msg);
+                }
+            },
+            error: function (result) {
+                trendInit("yesterday");
+                toastMsg(result.msg);
+            }
+        });
+    }
+
+    function trendInit(type) {
+        if (type === "yesterday") {
+            secondD = "昨日浏览量";
+        }
+        if (type === "lastweek") {
+            secondD = "上周同期";
+        }
+        $.myAjax({
+            url: basePath + "sys/monitor/html/trend.do",
+            data: {"type": "pv," + type},
+            success: function (result) {
+                $("#daily-graph").prev("loading").hide();
+                lodingDown();
+                if (result.flag) {
+                    myChart.clear();
+                    trendGraph(result.data.today, result.data.other);
+                } else {
+                    toastMsg(result.msg);
+                }
+                rankInit("today");
+            },
+            error: function (result) {
+                rankInit("today");
+                toastMsg(result.msg);
+            }
+        });
+    }
+
+    function rankInit(type) {
+        rankNoRefer(type);
+    }
+
+    function rankNoRefer(type) {
+        $.myAjax({
+            url: basePath + "sys/monitor/html/rank.do",
+            data: {"type": type, "pageNum": 0},
+            success: function (result) {
+                rankRefer(type);
+                $($("#rank-norefer-table").children("loading")).hide();
+                lodingDown();
+                if (result.flag) {
+                    if (result.data) {
+                        for (var i = 1; i < result.data.length + 1; i++) {
+                            var data = $("#rank-norefer-table").children(".rank-tr")[i];
+                            var resData = result.data[i - 1];
+                            if (resData.type.indexOf("android") >= 0) {
+                                $($(data).children(".rank-td")[0]).html('<i class="fa-android">');
+                            }
+                            if (resData.type.indexOf("PC") >= 0) {
+                                $($(data).children(".rank-td")[0]).html('<i class="fa-desktop">');
+                            }
+                            if (resData.type.indexOf("WeChat") >= 0) {
+                                $($(data).children(".rank-td")[0]).html('<i class="fa-wechat">');
+                            }
+                            $($(data).children(".rank-td")[1]).html(resData.name);
+                            $($(data).children(".rank-td")[2]).html(resData.url);
+                            $($(data).children(".rank-td")[3]).html(resData.pv);
+                            $($(data).children(".rank-td")[4]).html(resData.percent + "%");
+                        }
+                    }
+                } else {
+                    toastMsg(result.msg);
+                }
+            },
+            error: function (result) {
+                rankRefer(type);
+                toastMsg(result.msg);
+            }
+        });
+    }
+
+    function rankRefer(type) {
+        type = type + ",refer";
+        $.myAjax({
+            url: basePath + "sys/monitor/html/rank.do",
+            data: {"type": type, "pageNum": 0},
+            success: function (result) {
+                $($("#rank-refer-table").children("loading")).hide();
+                lodingDown();
+                if (result.flag) {
+                    if (result.data) {
+                        for (var i = 1; i < result.data.length + 1; i++) {
+                            var data = $("#rank-refer-table").children(".rank-tr")[i];
+                            var resData = result.data[i - 1];
+                            if (resData.type.indexOf("android") >= 0) {
+                                $($(data).children(".rank-td")[0]).html('<i class="fa-android">');
+                            }
+                            if (resData.type.indexOf("PC") >= 0) {
+                                $($(data).children(".rank-td")[0]).html('<i class="fa-desktop">');
+                            }
+                            if (resData.type.indexOf("WeChat") >= 0) {
+                                $($(data).children(".rank-td")[0]).html('<i class="fa-wechat">');
+                            }
+                            $($(data).children(".rank-td")[1]).html(resData.name);
+                            $($(data).children(".rank-td")[2]).html(resData.url);
+                            $($(data).children(".rank-td")[3]).html(resData.pv);
+                            $($(data).children(".rank-td")[4]).html(resData.percent + "%");
+                        }
+                    }
+                } else {
+                    toastMsg(result.msg);
+                }
+            },
+            error: function (result) {
+                toastMsg(result.msg);
+            }
+        });
+    }
+
+    function trendGraph(first, second) {
+        var xAxisData = [];
+        var firstData = [];
+        var secondData = [];
+        for (var i = 0; i < first.length; i++) {
+            var d = first[i];
+            xAxisData[i] = d.name;
+            firstData[i] = d.value;
+            try {
+                secondData[i] = second[i].value;
+            } catch (e) {
+            }
+        }
+        var option = {
+            tooltip: {
+                trigger: 'axis',
+                padding: 10,
+                backgroundColor: '#222',
+                borderColor: '#777',
+                borderWidth: 1,
+                formatter: function (obj) {
+                    if (2 === obj.length) {
+                        return '<div style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 14px;'
+                            + 'padding-bottom: 7px;margin-bottom: 7px;display: flex; flex-direction: column;'
+                            + 'justify-content: space-between;">'
+                            + obj[0].axisValue + '&nbsp;&nbsp;&nbsp;浏览量(PV)</div>'
+                            + '<span style="display: flex;justify-content: space-between;">'
+                            + '<span style="display: flex;">' + obj[0].seriesName + '</span>'
+                            + '<span style="display: flex;">' + obj[0].data + '</span>' + '</span>'
+                            + '<span style="display: flex;justify-content: space-between;">'
+                            + '<span style="display: flex;">' + obj[1].seriesName + '</span>'
+                            + '<span style="display: flex;">' + obj[1].data + '</span>' + '</span>'
+                            + '';
+                    } else {
+                        return '<div style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 14px;'
+                            + 'padding-bottom: 7px;margin-bottom: 7px;display: flex; flex-direction: column;'
+                            + 'justify-content: space-between;">'
+                            + obj[0].axisValue + '&nbsp;&nbsp;&nbsp;浏览量(PV)</div>'
+                            + '<span style="display: flex;justify-content: space-between;">'
+                            + '<span style="display: flex;">' + obj[0].seriesName + '</span>'
+                            + '<span style="display: flex;">' + obj[0].data + '</span>' + '</span>'
+                            + '';
+                    }
+                }
+            },
+            legend: {
+                bottom: 1,
+                data: ["今日浏览量", secondD]
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: 30,
+                top: '20',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: xAxisData//[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+            },
+            yAxis: {
+                // splitLine: {show: false},
+                type: 'value'
+            },
+            series: [{
+                name: "今日浏览量",
+                type: 'line',
+                areaStyle: {
+                    normal: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                            offset: 0,
+                            color: '#d68262'
+                        }, {
+                            offset: 1,
+                            color: '#ffe'
+                        }])
+                    }
+                },
+                data: firstData
+            }, {
+                name: secondD,
+                type: 'line',
+                areaStyle: {
+                    normal: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                            offset: 0,
+                            color: '#8ec6ad'
+                        }, {
+                            offset: 1,
+                            color: '#ffe'
+                        }])
+                    }
+                },
+                data: secondData
+            }]
+        };
+        if (!$(".checkbox input").hasClass("checked")) {
+            option.legend.data = ["今日浏览量"];
+            option.series = {
+                name: "今日浏览量",
+                type: 'line',
+                data: firstData
+            };
+        }
+        myChart.setOption(option);
+    }
+
+    $(".checkbox input").click(function () {
+        loding();
+        var _this = this;
+        if (!$(_this).hasClass("checked")) {
+            $(".checkbox input").attr("checked", false);
+            $(".checkbox input").removeAttr("checked");
+            $(".checkbox input").removeClass("checked");
+            $(_this).addClass("checked");
+            $(_this).prop("checked", "checked");
+            trendInit($(_this).attr("data"));
+            return;
+        }
+        if ($(_this).hasClass("checked")) {
+            $(".checkbox input").attr("checked", false);
+            $(".checkbox input").removeAttr("checked");
+            $(".checkbox input").removeClass("checked");
+            $(_this).removeClass("checked");
+            trendInit("");
+            return;
+        }
+    });
+
+    function tableInit() {
+        $('#activity-table').bootstrapTable({
+            dataType: 'json', //数据格式
+            dataLocale: 'zh-US', //表格汉化
+            toolbar: '#toolbar',
+            striped: true, //是否显示行间隔色
+            cache: false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+            pagination: true, //是否显示分页（*）
+            sortable: true, //是否启用排序
+            sortOrder: "desc", //排序方式
+            search: true,
+            showExport: true,
+            searchFormatter: false,
+            showRefresh: false, //是否显示刷新按钮
+            cellStyle: true,
+            checkbox: true,
+            sidePagination: "client", //分页方式：client客户端分页，server服务端分页（*）
+            pageNumber: 1, //初始化加载第一页，默认第一页
+            pageSize: 50, //每页的记录行数（*）
+            pageList: [50, 100, 200], //可供选择的每页的行数（*）
+            formatLoadingMessage: function () {
+                return "请稍等，正在加载中。。。";
+            },
+            columns: [{
+                field: 'id',
+                title: 'ID',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'stime',
+                title: '开始时间',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'location',
+                title: '地点',
+                valign: 'middle',
+                sortable: true,
+                align: 'center',
+                formatter: function (value, row, index) {
+                    return '<span title="' + row.location_info + '">' + value + '</span>';
+                }
+            }, {
+                field: 'location_info',
+                title: '地点详情',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'name',
+                title: '名称',
+                valign: 'middle',
+                sortable: true,
+                height: '40px',
+                align: 'center',
+                formatter: function (value, row, index) {
+                    return '<a style="display: inline-block;line-height: 24px" href="' +
+                        basePath + 'page/admin/conf/basicInfo.html?id=' + row.id + '"' + 'title="' + value +
+                        '&nbsp;&nbsp;&nbsp;点击进入活动信息编辑页面" target="_blank">' + value + '</a>';
+                }
+            }, {
+                field: 'unit_host',
+                title: '主办/指导单位',
+                valign: 'middle',
+                sortable: true,
+                align: 'center',
+                formatter: function (value, row, index) {
+                    return '<span title="' + row.unit_info + '" ><h>' + value + '</h><br><h>' + row.unit_guidance + '</h></span>';
+                }
+            }, {
+                field: 'unit_guidance',
+                title: '指导单位',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'unit_info',
+                title: '全部单位',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'schedual',
+                title: '日程',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'expert_total',
+                title: '嘉宾',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'activity_reg_config_family',
+                title: '报名字段',
+                valign: 'middle',
+                sortable: true,
+                align: 'center',
+                formatter: function (value, row, index) {
+                    return '<span title="一段：总: ' + value + ' ,必/选:' + row.activity_reg_config_family_ +
+                        '。二段：总: ' + row.activity_reg_config_family3 + ' ,必/选:' + row.activity_reg_config_family3_ +
+                        '" >' + value + '</span>';
+                }
+            }, {
+                field: 'activity_reg_config_family3',
+                title: '二次报名字段',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'activity_reg_config_family_',
+                title: '一段报名字段',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'activity_reg_config_family3_',
+                title: '二段报名字段',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'contact',
+                title: '联系方式',
+                valign: 'middle',
+                sortable: true,
+                align: 'center',
+                formatter: function (value, row, index) {
+                    return '<span title="' + row.contact_info + '" >' + value + '</span>';
+                }
+            }, {
+                field: 'contact_info',
+                title: '联系方式',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'option',
+                title: '操作',
+                width: 86,
+                valign: 'middle',
+                align: 'center',
+                formatter: function (value, row, index) {
+                    return '<span class="glyphicon glyphicon-ok do-release" style="display: none" title="点击发布" aria-hidden="true"></span>' +
+                        '<span class="glyphicon glyphicon-remove cancel-release" title="取消发布" aria-hidden="true"></span>';
+                },
+                events: {
+                    'click .do-release': function (e, value, row, index) {
+                        var _this = this;
+                        $.myAjax({
+                            url: basePath + "admin/activity/save.do",
+                            data: {id: row.id, state: 2},
+                            success: function (result) {
+                                if (result.flag) {
+                                    $($(_this).parent().children(".cancel-release")).show();
+                                    $(_this).hide();
+                                    toastMsg(result.msg);
+                                } else {
+                                    toastMsg(result.msg);
+                                }
+                            },
+                            error: function () {
+                                toastMsg("请求失败!");
+                            }
+                        });
+                    },
+                    'click .cancel-release': function (e, value, row, index) {
+                        var _this = this;
+                        $.myAjax({
+                            url: basePath + "admin/activity/save.do",
+                            data: {id: row.id, state: 1},
+                            success: function (result) {
+                                if (result.flag) {
+                                    $(_this).hide();
+                                    $($(_this).parent().children(".do-release")).show();
+                                    toastMsg(result.msg);
+                                } else {
+                                    toastMsg(result.msg);
+                                }
+                            },
+                            error: function () {
+                                toastMsg("请求失败!");
+                            }
+                        });
+                    }
+                }
+            }]
+        });
+        $('#activity-table').bootstrapTable('hideColumn', 'id');
+        $('#activity-table').bootstrapTable('hideColumn', 'location_info');
+        $('#activity-table').bootstrapTable('hideColumn', 'unit_guidance');
+        $('#activity-table').bootstrapTable('hideColumn', 'unit_info');
+        $('#activity-table').bootstrapTable('hideColumn', 'activity_reg_config_family3');
+        $('#activity-table').bootstrapTable('hideColumn', 'activity_reg_config_family_');
+        $('#activity-table').bootstrapTable('hideColumn', 'activity_reg_config_family3_');
+        $('#activity-table').bootstrapTable('hideColumn', 'contact_info');
+    }
+</script>
+</html>

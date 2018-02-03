@@ -1,0 +1,130 @@
+@charset "utf-8";
+
+.red {
+	color: red;
+}
+.none {
+	display: none;
+}
+
+.instruction {
+	width: 960px;
+	height: 60px;
+	border-bottom: 1px solid #ddd;
+}
+.agreement {
+	height: 30px;
+	line-height: 30px;
+	margin: 10px 0;
+}
+.agree {
+	height: 16px;
+	width: 16px;
+	margin: 6px 10px 0 30px !important;
+	vertical-align: top;
+}
+.editCon {
+	width: 800px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	padding: 10px 0;
+	margin-bottom: 14px;
+}
+.incEditCon {
+	position: relative;
+}
+.adminRnterTil {
+	vertical-align: top;
+}
+.til {
+	display: inline-block;
+	width: 108px;
+	height: 38px;
+	line-height: 38px;
+	text-align: right;
+}
+.payInp{
+	margin-left: 10px;
+	height: 28px;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+	width:200px;
+	padding-left: 4px;
+}
+.feeNameShow, .totalFeeShow {
+	border: none;
+	color: #333;
+	width:120px;
+}
+.editPayType, .addPayType, .cutPayType{
+	cursor: pointer;
+}
+.rnterInfo{
+	margin-left: 8px;
+	color: #ff8400;
+}
+.rnterInfo:hover{
+	cursor: pointer;
+}
+.plantRnter{
+	display: inline-block;
+	border:1px solid #ccc;
+	width: 630px;
+	border-radius: 4px;
+	margin-left: 10px;
+}
+
+.adminRnterCon {
+	/*position: absolute;
+	top: 2px;
+	left: 325px;*/
+	display: inline-block;
+	margin-left: 10px;
+}
+.arrow {
+	width: 9px;
+    height: 16px;
+    background-image: url(../../img/arrow.png);
+    float: left;
+    position: relative;
+    right: -2px;
+    top: 10px;
+}
+.rnterCon {
+	padding: 6px 4px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	width: 630px;
+	/*float: left;*/
+	background-color: #fff;
+}
+.rnterTil {
+	font-weight: bold;
+	height: 30px;
+	line-height: 30px;
+}
+.rnterCon li {
+	width: 600px;
+	line-height: 28px;
+	margin-left: 4px;
+	border: 1px solid #ddd;
+	margin-bottom: 4px;
+	border-radius: 3px;
+	padding-left: 4px;
+}
+.rnterCon .selRnter {
+	border: 1px solid #ff8400;
+}
+.rnterDiy {
+	border: none;
+	width: 100%;
+	height: 100%;
+	line-height: 30px;
+}
+.rnterBtn {
+	text-align: center;
+	margin: 10px auto;
+}
+.rnterBtn .btn {
+	margin-right: 14px;
+}

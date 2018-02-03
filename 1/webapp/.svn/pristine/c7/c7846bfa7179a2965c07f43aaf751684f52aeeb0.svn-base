@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title class="title">酒店预订</title>
+<meta content="telephone=no" name="format-detection" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="../../../css/app/style.css"/>
+<link rel="stylesheet" href="../../../css/app/hotel.css"/>
+</head>
+<body>
+	<div class="head">
+		<div class="navImg">
+			<img src="../../../img/app/arrowLeft-icon.png">
+		</div>
+		<div class="navDetail">酒店列表</div>
+	</div>
+	<div class="order-box">
+		<div class="hd">
+			<ul id="hotelList">
+				<div style="line-height: 40px;font-size: 18px;color:#ff6100;">正在为您加载会场附近的酒店，请稍等······</div>
+			</ul>
+		</div>
+	</div>
+</body>   
+<script src="../../../js/zepto.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<script>
+var actId = '';
+$(function(){
+	myLoading();
+	actId = Request('actId');
+	$.myAjax({
+		url: basePath + "mt/user/activity/get.do",
+		data: {id: actId,type: "hotel"},
+		success: function(result) {
+			if(!result.flag){
+				myConfirm(result.msg);
+				return false;
+			}
+			if(!result.data.hotel){
+				myConfirm("主办方未推荐酒店！",function(){
+					history.back(-1);
+				},"nocancle");
+				return false;
+			}
+			var hotelList = result.data.hotel;
+			var hotelStr = '';
+			for(var i=0;i<hotelList.length;i++){
+				if(hotelList[i].imageUrl){
+					var imgUrl = hotelList[i].imageUrl[0];
+					// 使用缩略图
+					imgUrl = imgUrl.replace(/.jpg/, "_100x75_02.jpg");
+				} else {
+					var imgUrl = "http://www.gconfs.com/img/hotelIcon.png";
+				}
+				if(hotelList[i].distance != '-1'){ // ‘-1’没查到
+					var distanceStr = '<div class="range">'+'距离会场 '+(hotelList[i].distance >= 0 ?"大约"+hotelList[i].distance+"公里":"小于1公里")+'</div>'
+				}
+				hotelStr += '<li class="oneHotel">'+
+								'<a href="hotelDetail.html?resId='+hotelList[i].id+'&actId='+actId+'" target="_blank">'+
+								'<div class="hotelImgcon">'+
+									'<img class="hotelImg" src="'+imgUrl+'"/>'+
+								'</div>'+
+								'<div class="hotelIntrocon">'+
+									'<div class="hotelName">'+hotelList[i].resName+'</div>'+
+									'<div class="hotelAddress">'+hotelList[i].address+','+hotelList[i].location+'</div>'+
+									'<div class="hotelLevel">'+hotelList[i].resGrade+'</div>'+distanceStr
+									// '<div class="range">'+'距离会场 '+(hotelList[i].distance > 0 ?"大约"+hotelList[i].distance+"公里":"小于1公里")+'</div>'+
+								'</div>'+
+								'</a>'+
+							'</li>';
+			}
+			if(hotelStr){
+				$("#hotelList").html(hotelStr);
+			} else {
+				myConfirm("主办方未推荐酒店！",function(){
+					history.back(-1);
+				},"nocancle");
+			}
+		},
+		error: function(result){
+			myAlert("请求失败！");
+		}
+	});
+});
+
+</script>
+</html>

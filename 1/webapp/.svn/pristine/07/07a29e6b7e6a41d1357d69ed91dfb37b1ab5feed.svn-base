@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>发票管理</title>
+<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="../../../css/common/bootstrap.min.css">
+<link rel="stylesheet" href="../../../css/common/bootstrap-table.min.css">
+<!-- <link rel="stylesheet" href="../../../js/ueditor/themes/default/css/ueditor.css"> -->
+<link href="../../../css/style.css" rel="stylesheet" />
+<link href="../../../css/main.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../../css/admin.css">
+<!-- 引入项目中每个模块的独立样式 : xxx.css -->
+</head>
+<body>
+<!-- 引入页头 -->
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="payInfo.html">缴费管理</a>
+		<a href="">-&gt;</a>
+		<a href="invoiceInfo.html">发票信息</a>
+	</div>
+	<div class="con-box">
+	<!-- 以下为每个页面自己编写的部分 -->
+	<div id="subMenu">
+        <div id="subMenuBody">
+            <ul>
+            	<a href="payInfo.html"><li>缴费信息</li></a>
+                <a href="invoiceInfo.html"><li class="menuAct">发票管理</li></a>
+                <a href="mailInfo.html"><li>邮寄管理</li></a>
+                <!-- <li id="downexcel"><a href="#">导出数据</a></li> -->
+            </ul>
+        </div>
+    </div>
+    <div id="contentBody" class="mops-table">
+        <input type="hidden" id="id"/>
+    	<!-- 短信 -->
+        <div class="tableModel messagecon none">
+            <div class="tableModelTitle">发送短信</div>
+            <div>
+                <div class="modal-body">
+                    <div class="userListMsg"></div>
+                    <div class="messagebody">
+                        <!-- <div class="messagemodel">
+                            <select id="msgmodelsel" class="form-control">
+                                 <option value="">--请选择短信模板--</option>
+                                 <option value="auditPass">审核通过</option>
+                                 <option value="confPay">通知缴费</option>
+                            </select>
+                        </div> -->
+                        <div class="msgDetail">
+                            <span>您参加的</span>
+                                <input name="confName" class="msgInp" id="msgInp" />
+                            <span>，主办方提醒您：为更方便您参加本次活动，请您通过报名平台预定机票酒店。</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modalfooter">
+                    <button type="button" class="btn btn-primary sendmsg">发送</button>
+                    <button type="button" class="btn btn-default msgCancel">取消</button>
+                </div>
+            </div>
+        </div>
+        <!-- 邮件 -->
+        <div class="tableModel emailcon none">
+            <div class="tableModelTitle">发送邮件</div>
+            <div>
+                <div class="modal-body">
+                    <form id="emailform" action="#" method="post" enctype="multipart/form-data">
+                        <div class="userListEmail"></div>
+                        <input type="hidden" name="id" class="activityId" />
+                        <div class="emailcon">
+                            <div id="emailthemecon">
+                                <label>主题:</label>
+                                <input id="emailtheme" name="subject" maxlength="26"/>
+                            </div>
+                            <div id="attachment">
+                                <img src="../../../img/attachment.png">
+                                <span id="attachbtn">附件</span>
+                                <label id="attachexplain">(最大<span class="red">2M</span>)|</label>
+                                <input name="file" type="file" class="attachFile" style="display: none"/>
+                                <input type="text" class="attachName"/>
+                            </div>
+                            <textarea id="emailcontent" name="content" placeholder="内容:"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modalfooter">
+                    <button type="button" class="btn btn-primary sendemail">发送</button>
+                    <button type="button" class="btn btn-default emailCancel">取消</button>
+                </div>
+            </div>
+        </div>
+        <!-- 站内信 -->
+        <div class="tableModel noticecon none">
+            <div class="tableModelTitle">发送站内信</div>
+            <div>
+                <div class="modal-body">
+                    <form id="noticeForm">
+                        <div class="userListNotice"></div>
+                        <input type="hidden" name="id" class="actId"/>
+                        <input type="hidden" name="title" class="noticeTitle"/>
+                        <input type="hidden" name="type" value="1" />
+                        <div class="noticebody">
+                            <textarea class="noticeDetail" name="message"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modalfooter">
+                    <button type="button" class="btn btn-primary sendNotice">发送</button>
+                    <button type="button" class="btn btn-default NoticeCancel">取消</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="toolbar">
+            <div class="btn-group">
+                <button id="" type="button" class="btn btn-warning btn-sm">
+                信息通知:
+                </button>
+                <button type="button" class="btn btn-default btn-sm message">短信</button>
+                <button type="button" class="btn btn-default btn-sm email">邮件</button>
+                <button type="button" class="btn btn-default btn-sm notice">站内信</button>
+            </div>
+        </div>
+		<table id="texttable">
+  		</table>
+	</div>
+	</div>   
+</div> 
+
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<!-- <script src="../../../js/common/jquery.form.js"></script> -->
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/bootstrap-table.min.js"></script>
+<script src="../../../js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../../js/tableExport.js"></script>
+<script src="../../../js/bootstrap-table-export.js"></script>
+<!-- <script src="../../../js/ueditor/ueditor.config.js"></script> -->
+<!-- <script src="../../../js/ueditor/ueditor.all.js"></script> -->
+<!-- <script src="../../../js/ueditor/lang/zh-cn/zh-cn.js"></script> -->
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/main.js"></script>
+<script type="text/javascript">
+//初始化页面
+initPage();
+function initPage(){
+    $.myAjax({
+        url: 'http://192.168.1.151:8080/admin/activity/fee/list.do',
+        data: {id:"25812d45fc27441ebacb6f9e3fe70322", type: "1"},
+        success: function(result){
+            // console.log(result);
+            if(result.flag){
+                initTable(result.data.fee);
+            }
+        },
+        error: function(result){
+            myAlert("请求失败!",'slow');
+        }
+    });
+}
+//table表格
+function initTable(data){
+	$('#texttable').bootstrapTable({
+        dataLocale: 'zh-CN',                //表格汉化        
+        toolbar: '#toolbar',                //工具按钮用哪个容器       
+        striped: true,                      //是否显示行间隔色
+        cache: false,   
+        showExport:true,                    
+        pagination: true,                   //是否显示分页（*）
+        sortable: true,                     //是否启用排序
+        sortOrder: "asc",                   //排序方式
+        sidePagination: "client",           
+        strictSearch: false,
+        pageNumber:1,                       //初始化加载第一页，默认第一页
+        pageSize: 10, 
+        pageList: [10, 20, 30, 40, 50],
+        search: true,                       
+        showRefresh: true,                  //是否显示刷新按钮
+        // showColumns: true,
+        columns: [
+            {
+                align: 'center',
+                // width: 30,
+                formatter: function(value,row,index){
+                    return index+1;
+                }
+    		},
+            {
+                field: 'name',
+                title: '姓名',
+                align: 'center',
+                sortable: true,
+                // width: 88
+            },
+            {
+                field: 'corporation',
+                title: '单位',
+                align: 'center',
+                sortable: true,
+                // width: 78,
+            },
+            {
+                field: 'invoice_mobile',
+                title: '联系方式',
+                align: 'center',
+                sortable: true
+            },
+            {
+                field: 'transfer_state',
+                title: '缴费方式',
+                align: 'center',
+                sortable: true,
+                formatter: function(value,row,index){
+                    if(value == 1){
+                        return "银行缴费"
+                    }
+                    if(value == 2){
+                        return "平台缴费"
+                    }
+                }
+            },
+            {
+                field: 'weixin_total_fee',
+                title: '缴费状态',
+                align: 'center',
+                sortable: true,
+                formatter: function(value,row,index){
+                    if(value !== ""){
+                        return "已缴费"
+                    }else{
+                        return "未缴费"
+                    }
+                }
+            },
+            {
+                field: 'invoice_type',
+                title: '是否需要发票',
+                align: 'center',
+                sortable: true,
+                formatter: function(value,row,index){
+                    if(value == 1 || value == 2){
+                        return "需要发票"
+                    }else{
+                        return "不需要发票"
+                    }
+                }
+                // width: 85
+            },
+            {
+                field: 'invoice_type',
+                title: '发票类型',
+                align: 'center',
+                sortable: true,
+                formatter: function(value,row,index){
+                    if(value == 1){
+                        return "普通发票"
+                    }
+                    if(value == 2){
+                        return "专职税发票"
+                    }
+                }
+                // width: 85
+            },
+            {
+                field: 'invoice_content',
+                title: '开票项目',
+                align: 'center',
+                sortable: true,
+                // width: 85
+            },
+            {
+                field: 'invoice_taxpayer_name',
+                title: '单位名称',
+                align: 'center',
+                sortable: true,
+                // width: 85
+            },
+            {
+                field: 'invoice_taxypayer_id',
+                title: '纳税人识别号',
+                align: 'center',
+                sortable: true,
+                // width: 85
+            },
+            {
+                field: 'invoice_bank_name',
+                title: '开户行',
+                align: 'center',
+                sortable: true,
+                // width: 85
+            },
+            {
+                field: 'invoice_account_number',
+                title: '开会行账号',
+                align: 'center',
+                sortable: true,
+                // width: 85
+            },
+            {
+                field: 'invoice_address',
+                title: '地址',
+                align: 'center',
+                sortable: true,
+                // width: 85
+            },
+            {
+                field: 'invoice_mobile',
+                title: '电话',
+                align: 'center',
+                sortable: true,
+                // width: 85
+            }
+        ]
+    });
+    $("#texttable").bootstrapTable('load', data);
+};
+
+//获取文本宽度
+var textWidth = function(text){ 
+    var sensor = $('<pre>'+ text +'</pre>').css({display: 'none'}); 
+    $('body').append(sensor); 
+    var width = sensor.width();
+    sensor.remove(); 
+    return width;
+};
+</script>
+</html>

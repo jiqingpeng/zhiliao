@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>管理收货地址</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+	<link rel="stylesheet" type="text/css" href="../../../css/app/style.css">
+</head>
+<style type="text/css">
+	.shipBox{
+		margin-top: 48px;
+	}
+	.contain{
+		background-color: #fff;
+		padding: 4% 3% 0 3%;
+	}
+	.shipTheme, .operation{
+		display: flex;
+	}
+	.shipName{
+		flex: 2;
+		text-align: left;
+	}
+	.shipMobile{
+		flex: 1;
+		text-align: right;
+	}
+	.shipAddress{
+		margin: 10px 0;
+	}
+	.operation{
+		margin: 0 -3%;
+		padding: 3% 3%;
+		border-top: 1px solid #ccc;
+	}
+	.operation img{
+		vertical-align: middle;
+		width: 14px;
+	}
+	.setDefault{
+		flex: 1.4;
+	}
+	.setDefault input{
+		vertical-align: middle;
+	}
+	.compile, .delete{
+		text-align: right;
+		flex: 0.4;
+	}
+</style>
+<body>
+	<div>
+		<div class="head">
+			<div class="navImg">
+				<img src="../../../img/app/arrowLeft-icon.png">
+			</div>
+			<div class="regulator">管理收货地址</div>
+		</div>
+		<div class="shipBox">
+			<div class="contain">
+				<div class="shipTheme">
+					<div class="shipName">杨波</div>
+					<div class="shipMobile">15734742257</div>
+				</div>
+				<div class="shipAddress">
+					<span>北京市海淀区北京市海淀区北京市海淀区北京市海淀区北京市海淀区北京市海淀区</span>
+				</div>
+				<div class="operation">
+					<div class="setDefault">
+						<input class="default" type="checkbox" name="">
+						<span>设为默认地址</span>
+					</div>
+					<div class="compile">
+						<img src="../../../img/app/address.png">
+						<span id="copyreader">编辑</span>
+					</div>
+					<div class="delete">
+						<img src="../../../img/app/address.png">
+						<span id="delete">删除</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="../../../js/zepto.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#copyreader").on("click", function(){
+		window.location.href = "editAddress.html"
+	})
+	if($(".default").prop("ckecked") == true){
+		$(".default").next().html("默认地址");
+	}
+	$("#delete").on("click", function(){
+		myConfirm("确定删除", function(){
+			$.myAjax({
+				url: basePath + "user/mailaddress/del.do",
+				data: "",
+				success: function (result){
+					if (result.flag) {
+						myAlert("删除成功");
+					} else {
+						myConfirm(result.flag);
+					}
+				},
+				error: function (){
+					myAlert("删除失败,请稍后重试!", "slow")
+				}
+			})
+		});
+	})
+});
+function initPage(){
+	$.myAjax({
+		url: basePath + "user/mailaddress/list.do",
+		data: {},
+		success: function(result){
+			if(result.flag){
+				$(".shipName").html();
+				$(".shipMobile").html();
+				$(".shipAddress").html();
+			}else{
+				myConfirm(result.msg);
+			}
+		},
+		error: function(){
+			myConfirm("请求失败!");
+		}
+	})
+}
+
+</script>
+</html>

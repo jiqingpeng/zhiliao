@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>支付</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="stylesheet" type="text/css" href="../../css/app/style.css">
+<style>
+    body{
+        background: #f0f0f0;
+    }
+    .note{
+        position: absolute;
+        right:0;
+        top:0;
+        width:53px;
+    }
+    .content{
+        width:100%;
+        position: fixed;
+        top:48px;
+    }
+    .btn{
+        width:80%;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background:#f60;
+        margin: 0 auto;
+        color:#fff;
+        border-radius:4px;
+    }
+    .c-item{
+        width:94%;
+        padding:2% 3%;
+        height:26px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #fff;
+    }
+    .c-margin20{
+        margin-top:20px;
+    }
+    .bord{
+        border-bottom:1px solid #ccc;
+    }
+    .c-item input{
+        width:70%;
+        height:100%;
+        margin-left:4%;
+        border-radius: 2px;
+        border: 1px solid #ccc;
+        padding-left: 4px;
+    }
+    .c-item .num{
+        border:none;
+        text-align: right;
+        font-weight: bold;
+    }
+    .c-item .i-mess{
+        display: inline-block;
+        width:60px;
+    }
+    .c-item .c-mess{
+        color: #999;
+        font-size: 12px;
+    }
+    .c-num{
+        display: flex;
+        height:40px;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    .pay-nav{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 53px;
+        z-index:2;
+    }
+</style>
+</head>
+<body>
+    <div class="head">
+        <div class="navImg">
+            <img src="../../img/app/arrowLeft-icon.png">
+        </div>
+        <!-- <div class="pay-nav">
+            <img src="../../img/app/arrowLeft-icon.png">
+        </div> -->
+        <div class="navDetail">支付</div>
+        <!-- <div class="note">
+            <img  src="../../img/app/share-icon.png">
+        </div> -->
+    </div>
+    <div class="content">
+        <div class="c-item bord c-margin20">
+            <span class="i-mess">缴纳金额</span>
+            <input class="num" type="text" placeholder="请填写金额" readonly="readonly">
+            <span>元</span>
+        </div>
+        <div class="c-item">
+            <span class="i-mess"></span>
+            <span class="c-mess"></span>
+        </div>
+        <div class="c-item c-margin20">
+            <span class="i-mess">备注</span>
+            <input type="text" class="remark" placeholder="请填写备注">
+        </div>
+        <div class="btn c-margin20">
+            <span>立即缴费</span>
+        </div>
+    </div>
+</body>
+<script src="../../js/zepto.js"></script>
+<script src="../../js/zepto.md5.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="../../js/app/mtCommon.js"></script>
+<script>
+var id = Request("actId");
+$(function(){
+    var payId = Request("payId");
+    var number = parseInt(Request("num"));
+    var money = Request("money");
+    var monum = Request("monum");
+    var invoType = decodeURI(Request("invoType"));
+    $(".num").val(money);
+    var str = invoType+'  '+monum+'元 * '+number;
+    $(".c-mess").html(str)
+    // listenNum();
+    $('.btn').on("click",function(){
+        myLoading();
+        var fee = [{"count":number,"id":payId}];
+        fee = JSON.stringify(fee);
+        if(isWeixin()){
+            innergetUrl(id,fee);
+        }else{
+            getUrl(id,1,fee);
+        };
+    }); 
+    $('.pay-nav').on("click",function(){
+        if(document.referrer.indexOf("http://www.gonfs.")==-1 || !document.referrer){
+            history.go(-1);
+        }else{
+            history.go(-1);
+        }
+    }); 
+});
+function listenNum() {
+    $(".num").on('input propertychange',function(){
+        var str = "￥" + $(".num").val();
+        $(".num-txt").html(str);
+    });
+};
+function getUrl(id,val,fee) {
+    var backUrl = basePath + "page/weixin/activity/payCost.html?actId=" + id;
+    $.myAjax({
+        url:basePath + "user/activity/pay/admissionfee.do",
+        data:{id:id,type:val,fee:fee,remark:$(".remark").val()},
+        success:function(json){
+            if (json.flag) {
+                if (1 == val) {
+                    window.location = json.data + "&redirect_url=" + encodeURIComponent(backUrl);
+                }
+                // if (2 == val) {
+                //     gconfsUtil.weixinPay(json.data.toString());
+                // }
+            }else{
+                myAlert(json.msg);
+            }
+        },
+        error:function() {
+            
+        }
+    })
+};
+function valit(val) {
+    if (!val) {
+        myAlert("金额不能为空");
+        return false;
+    };
+    return true;
+};
+function isWeixin() { 
+    var ua = window.navigator.userAgent.toLowerCase(); 
+    if (ua.match(/MicroMessenger/i) == 'micromessenger') { 
+        return true; 
+    } else { 
+        return false;
+    } 
+};
+//微信支付
+function innergetUrl(id,fee) {
+    var backUrl = basePath + "page/weixin/activity/payCost.html?actId=" + id;
+    $.myAjax({
+        url:basePath + "user/activity/pay/admissionfee.do",
+        data:{id:id,type:3,url:encodeURIComponent(backUrl),fee:fee,remark:$(".remark").val()},
+        success:function(result){
+
+            json = result.data;
+            wx.config({
+                appId: json.appId,
+                timestamp: json.timestamp,
+                nonceStr: json.noncestr,
+                signature: json.signature,
+                jsApiList: ['chooseWXPay']
+            });
+            wx.chooseWXPay({
+                "timestamp": json.timestamp,
+                "nonceStr": json.nonceStr,
+                "signType": json.signType,
+                "package": json.package,
+                "paySign": json.paySign,
+                success: function (res) {},
+                error:function (res) {},
+                cancel:function (res) {}
+            });
+        },
+        error:function(result) {
+            alert(result.msg);
+        }
+    })
+};
+</script>
+</html>

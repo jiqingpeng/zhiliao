@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>收入统计</title>
+<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="../../../css/common/bootstrap.min.css">
+<link rel="stylesheet" href="../../../css/common/bootstrap-table.min.css">
+<link href="../../../css/style.css" rel="stylesheet" />
+<link href="../../../css/main.css" rel="stylesheet" />
+</head>
+<body>
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="payInfo.html">增值服务</a>
+		<a href="">-&gt;</a>
+		<a href="invoiceInfo.html">收入统计</a>
+	</div>
+	<div class="con-box">
+	<div id="subMenu">
+        <div id="subMenuBody">
+            <ul>
+            	<a href="incrementEdit.html"><li>配置管理</li></a>
+                <a href="incrementPayinfo.html"><li class="menuAct">收入统计</li></a>
+            </ul>
+        </div>
+    </div>
+    <div id="contentBody" class="mops-table">
+        <input type="hidden" id="id"/>
+		<table id="texttable">
+  		</table>
+	</div>
+	</div>   
+</div> 
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/bootstrap-table.min.js"></script>
+<script src="../../../js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../../js/tableExport.js"></script>
+<script src="../../../js/bootstrap-table-export.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/main.js"></script>
+<script type="text/javascript">
+//初始化页面
+$(function(){
+    loading();
+    serialMenuAjax('admin/activity/menu.do', '增值服务', sessionStorage.getItem('actId'), initPage);
+    $("#id").val(sessionStorage.getItem('actId')); 
+});
+function initPage(){
+    $.myAjax({
+        url: basePath + 'admin/activity/fee/list.do',
+        data: {id:$("#id").val(), type: "1"},
+        success: function(result){
+            if(result.flag){
+                initTable(result.data.fee);
+            }
+        },
+        error: function(result){
+            myAlert("请求失败!",'slow');
+        }
+    });
+}
+//table表格
+function initTable(data){
+	$('#texttable').bootstrapTable({
+        dataLocale: 'zh-CN',                //表格汉化        
+        toolbar: '#toolbar',                //工具按钮用哪个容器       
+        striped: true,                      //是否显示行间隔色
+        cache: false,   
+        showExport:true,                    
+        pagination: true,                   //是否显示分页（*）
+        sortable: true,                     //是否启用排序
+        sortOrder: "asc",                   //排序方式
+        sidePagination: "client",           
+        strictSearch: false,
+        pageNumber:1,                       //初始化加载第一页，默认第一页
+        pageSize: 10, 
+        pageList: [10, 20, 30, 40, 50],
+        search: true,                       
+        showRefresh: true,                  //是否显示刷新按钮
+        columns: [
+            {
+                align: 'center',
+                formatter: function(value,row,index){
+                    return index+1;
+                }
+    		},{
+                field: 'name',
+                title: '姓名',
+                align: 'center',
+                sortable: true
+            },{
+                field: 'ctime',
+                title: '缴费日期',
+                align: 'center',
+                sortable: true
+            },{
+                field: 'corporation',
+                title: '单位',
+                align: 'center',
+                sortable: true
+            },{
+                field: 'invoice_mobile',
+                title: '联系方式',
+                align: 'center',
+                sortable: true
+            },{
+                field: 'transfer_state',
+                title: '费用类型',
+                align: 'center',
+                sortable: true
+            },{
+                field: 'weixin_total_fee',
+                title: '缴费金额',
+                align: 'center',
+                sortable: true
+            },{
+                field: 'remark',
+                title: '备注',
+                align: 'center',
+                sortable: true
+            }
+        ]
+    });
+    $("#texttable").bootstrapTable('load', data);
+};
+</script>
+</html>

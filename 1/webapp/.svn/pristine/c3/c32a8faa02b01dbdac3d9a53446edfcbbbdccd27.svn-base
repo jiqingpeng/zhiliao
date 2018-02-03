@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>缴费</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="stylesheet" type="text/css" href="../../../css/app/style.css">
+<link rel="stylesheet" href="../../../css/weixin/pay.css">
+</head>
+<body>
+    <div class="head">
+        <div class="navImg">
+            <img src="../../../img/app/arrowLeft-icon.png">
+        </div>
+        <div class="navDetail">发票信息</div>
+    </div>
+    <div class="content">
+        <input type="hidden" class="pay-type">
+        <section class='pay-tit'>
+            <h2 class="title list">
+                <span class="tit-con"></span>
+            </h2>
+            <div class="addressdate list">
+                <span class="address">
+                    <img src="" alt="">
+                    <span class="address">海淀区创业广场</span>
+                </span>
+                <span class="date">
+                    <img src="" alt="">
+                    <span class="stime"></span>
+                    <span>-</span>
+                    <span class="etime"></span>
+                </span>
+            </div>
+        </section>
+        <section class="invo-type">
+            <div class="list  space-between">
+                <span>发票类型</span>
+                <span class="invo-show"></span>
+            </div>
+        </section>
+        <section class="invo-msg list">
+            
+        </section>
+        <section class="invo-take">
+            
+        </section>
+    </div>
+    <div class="food">
+        <div class="f-nav go-hotel">确定并预定酒店</div>
+        <div class="f-nav go-cost">返回到缴费</div>
+    </div>
+</body>
+<script src="../../../js/zepto.js"></script>
+<script src="../../../js/zepto.md5.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<script>
+var id = Request("actId");
+$(function(){
+    init(id);
+    $('.go-hotel').on("click",function(){
+        window.location.href="../hotel/hotelList.html?actId="+id;
+    });
+    $('.go-cost').on("click",function(){
+        window.location.href="payCost.html?actId="+id;
+    });
+});
+function init(id){
+    var url = basePath+"user/activity/invoice/get.do?id="+id+"&type=1";
+    $.myAjax({
+        url: url,
+        success: function (result) {
+            if (result.flag) {
+                console.log(result)
+                var base = result.data.activity;
+                //地点时间
+                $('.tit-con').html(base.name);
+                var stime = base.stime.substring(5,10);
+                nstime = stime.replace(/-/,"/");
+                $('.stime').html(nstime);
+                var etime = base.etime.substring(5,10);
+                netime = etime.replace(/-/,"/");
+                $('.etime').html(netime);
+                var activityInvoice = result.data.activityInvoice;
+                if(activityInvoice){
+                    //不需要发票
+                    if(activityInvoice[0].invoiceType){
+                        var str = '';
+                        if(activityInvoice[0].taxpayerId){
+                            str += '<p class="taxpayerName">'+
+                                activityInvoice[0].taxpayerId+
+                            '</p>';
+                        };
+                        if(activityInvoice[0].address){
+                            console.log(1)
+                            str += '<p class="address">'+
+                                activityInvoice[0].address+
+                            '</p>';
+                        };
+                        if(activityInvoice[0].mobile){
+                            str += '<p class="mobile">'+
+                                activityInvoice[0].mobile+
+                            '</p>';
+                        };
+                        if(activityInvoice[0].bankName){
+                            str += '<p class="bankName">'+
+                                activityInvoice[0].bankName+
+                            '</p>';
+                        };
+                        if(activityInvoice[0].accountNumber){
+                            str += '<p class="accountNumber">'+
+                                activityInvoice[0].accountNumber+
+                            '</p>';
+                        };
+                        $('.invo-msg').append(str); 
+                        if(1==activityInvoice[0].invoiceType){
+                            $('.invo-show').html("增值税普通发票");
+                        }else{
+                            $('.invo-show').html("增值税专用发票");
+                        };
+                    }else{
+                        $('.invo-show').html("不需要发票"); 
+                    };
+                    //1自取
+                    if(2==activityInvoice[0].payment){
+                        var str = 
+                        '<div class="list">'+
+                            '<p class="space-between">'+
+                                '<span>收票人信息</span>'+
+                                '<span></span>'+
+                            '</p>'+
+                            '<p class="name">'+
+                                activityInvoice[0].name+
+                            '</p>'+
+                            '<p class="mobile">'+
+                                activityInvoice[0].contact+
+                            '</p>'+
+                            '<p class="address">'+
+                                activityInvoice[0].mailProvince+
+                                activityInvoice[0].mailArea+
+                                activityInvoice[0].mailCity+
+                                activityInvoice[0].mailLocation+
+                            '</p>'+
+                        '</div>';
+                        $('.invo-take').append(str); 
+                    }; 
+                }
+            };
+        },
+        error:function(){
+            myConfirm("请求错误");
+        }
+    });
+};
+
+
+</script>
+</html>

@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>缴费</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="stylesheet" type="text/css" href="../../../css/app/style.css">
+<link rel="stylesheet" href="../../../css/weixin/pay.css">
+<style>
+    body{
+        color: #333;
+    }
+    .content .pay-item{
+       display: flex;
+       justify-content: flex-start;
+    }
+    .content .pay-item .pay-num{
+        display: inline-block;
+        width:80px;
+    }
+    .content .pay-item .pay-nl{
+        min-width: 80px;
+        text-align: right;
+    }
+    .content .pay-item .pay-nr{
+        margin-left:8px;
+    }
+    .content .pay-item .pay-ir{
+        margin-left:30%;
+    }
+    .content .invoice{
+        display: flex;
+        padding:3%;
+        justify-content: space-between;
+        align-items: center;
+        margin: 14px 0;
+        background-color: #fff;
+    }
+    .payState{
+        padding: 3%;
+        color: #ff8400;
+        background-color: #fff;
+        margin-bottom: 14px;
+    }
+    .pay-btnlist{
+        width:100%;
+        position: fixed;
+        left:0;
+        bottom:0;
+        display: flex;
+        align-items: center;
+    }
+    .pay-btnlist .pay-platform,.pay-bank{
+       background:red;
+       flex: 1;
+    }
+    .pay-btn{
+        height:40px;
+        line-height: 40px;
+        text-align:center;
+        background:#f60;
+        color:#fff;
+        border-left:1px solid #ccc;
+    }
+    .pay-pos{
+        position: fixed;
+        left:0;
+        bottom:0;
+    }
+    .pay-btnlist{
+        width:100%;
+        position: fixed;
+        left:0;
+        bottom:0;
+    }
+    .note-cont{
+        margin-left:5%;
+    }
+    .payp-box{
+        width:90%;
+        padding:0 5%;
+    }
+    .payp-box .payp-tit{
+       height:40px;
+       line-height: 40px; 
+    }
+    .payp-item{
+        width:100%;
+        display: flex;
+        align-items: center;
+        height:34px;
+        justify-content: space-between;
+        border-top: 1px solid #ccc;
+        margin-top: 6px;
+        padding: 6px 0;
+        font-size: 12px;
+        color: #666;
+    }
+    .payp-box .payp-bord{
+        border:1px solid #ccc;
+        border-radius:6px;
+    }
+    .payp-btn{
+        display: flex;
+        width:100%;
+        height:40px;
+        align-items: center;
+        justify-content: center;
+        background:red;
+        color:#fff;
+        margin-top:10px;
+    }
+    .payp-box .pay-list{
+        margin-left:0;
+    }
+    .pay-list .pay-itembox{
+        width:92%;
+        padding: 8px 4%;
+        border:1px solid #ccc;
+        border-radius:6px;
+        min-height: 40px;
+        margin:10px 0;
+        background-color: #fff;
+    }
+    .pay-list .pay-item{
+        width:100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between; 
+        margin-bottom: 4px;
+    }
+    .payp-inp{
+        width:20px;
+        height: 16px;
+        margin: 0 4px;
+        text-align:center;
+        border:none;
+    }
+    .pnum-add, .pnum-redu {
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        background: none;
+        border: 1px solid #bbb;
+    }
+    .pnum-add{
+        border:1px solid #ff6c1a;
+        color: #ff6c1a;
+    }
+    .pay-list .check{
+        border:1px solid #ff6c1a;
+        border-radius: 6px;
+    }
+    .pmess-item{
+        width:100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 4px 0;
+    }
+    .mask{
+        position: absolute;
+        left:0;
+        top:0;
+        width:100%;
+        height:100%;
+        z-index:998;
+        background:#000;
+        opacity: 0.6;
+    }
+    .note {
+        float: right;
+        margin-right: 6px;
+    }
+    .feeIns {
+        height: 18px;
+        width: 18px;
+        border: 1px solid #fff;
+        color: #fff;
+        line-height: 18px;
+        text-align: center;
+        border-radius: 10px;
+        display: inline-block;
+    }
+    .hot{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border:1px solid #ff6c1a;
+        border-radius: 4px;
+        padding: 1px 3px;
+        font-size: 12px;
+        color: #ff6c1a;
+    }
+    .money {
+        color: #ff6100;
+    }
+    .address {
+        margin-right: 6px;
+    }
+    .addressIcon, .dataIcon {
+        width: 15px;
+        vertical-align: middle;
+        margin-right: 4px;
+    }
+    .active{
+        display: none;
+    }
+</style>
+</head>
+<body>
+    <div class="head">
+        <div class="navImg">
+            <img src="../../../img/app/arrowLeft-icon.png">
+        </div>
+        <div class="navDetail">支付+缴费</div>
+        <div class="note">
+            <a href="feeIns.html" class="feeIns">?</a>
+        </div>
+    </div>
+    <div class="content">
+        <input type="hidden" class="pay-type">
+        <section class='pay-tit list'>
+            <h2 class="title">
+                <span class="tit-con"></span>
+            </h2>
+            <div class="addressdate">
+                <span class="space-between addressbox">
+                    <img class="icon" src="../../../img/app/site-icon.png" alt="site-icon">
+                    <span class="address"></span>
+                </span>
+                <span class="date space-between">
+                    <img class="icon" src="../../../img/app/time-icon.png"" alt="time-icon">
+                    <span class="stime"></span>
+                    <span>-</span>
+                    <span class="etime"></span>
+                </span>
+            </div>
+        </section>
+        <div class="pay-mess list">
+            <ul class="on1line-mess">
+                <li class="pmess-item">
+                    <span class="">
+                        <span class="">
+                            缴费状态：
+                        </span >
+                        <span class="pay-status">
+                            未缴费
+                        </span >
+                    </span >
+                    <a class="go-paymsg" href="javascript:;">
+                       
+                    </a>
+                </li>
+                <li class="pmess-item">
+                    <span class="">
+                        <span class="">
+                            发票填写：
+                        </span >
+                        <span class="invo-write">
+                            未填写
+                        </span >
+                    </span >
+                    <span class="invo-write-link" data-take="">
+                       立即填写
+                    </span>
+                </li>
+                <li class="pmess-item">
+                    <span class="">
+                        <span class="">
+                            发票领取：
+                        </span >
+                        <span class="invo-take">
+                            未填写
+                        </span >
+                    </span >
+                    <span class="invo-take-link" data-take="">
+                       立即填写
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div class="pay-intructions list">
+            <!-- <h3 class="tit">缴费类型:</h3> -->
+            <div class="pay-list">
+                <ul class="feeGeneral">
+                    
+                    <!-- <li class="pay-itembox" data-id="">
+                        <p class="pay-item">
+                            <span>VIP嘉宾</span>
+                            <span class="hot">
+                                <span>报名人数众多，请尽快缴费</span>
+                            </span>
+                            <span class="pay-calc active">
+                                <span>
+                                    <button class="pnum-redu">-</button>
+                                    <input type="text" class="payp-inp" value="1" readonly="readonly">
+                                    <button class="pnum-add">+</button>
+                                </span>
+                            </span>
+                        </p>
+                        <p class="pay-num">￥0.01</p>
+                        <p class="payp-item active">
+                            <span class="pay-interests">
+                                权益保障
+                            </span>
+                        </p>
+                    </li>  -->
+                </ul>
+                <!-- <ul class="feeSpecial"></ul>
+                <ul class="feeGeneral"></ul> -->
+            </div>
+        </div>
+        <!-- <div class="note spaceing active">
+            <h3 class="tit">备注:</h3>
+            <div class="note-cont">
+                <p class="pay-item">如果选择银行线下转账，汇款信息如下:</p>
+                <p class="pay-item">
+                    <span class="pay-nl">账户名称:</span>
+                    <span class="pay-nr pay-company"></span>
+                </p>
+                <p class="pay-item">
+                    <span class="pay-nl">账户号:</span>
+                    <span class="pay-nr pay-accunt"></span>
+                </p>
+                <p class="pay-item">
+                    <span class="pay-nl">开户号:</span>
+                    <span class="pay-nr pay-bankname"></span>
+                </p>
+            </div>
+        </div> -->
+        <!-- <h3 class="invoice">
+            <span>发票</span>
+            <img src="../../../img/app/date_right.png">
+        </h3> -->
+        <h3 class="payState hide">
+        </h3>
+    </div>
+    <div class="pay-btnlist pay-group">
+            <div class="allMoney">
+                <span>合计：</span>
+                <span class="count"></span>
+            </div>
+            <div class="pay-btn pay-platform active">在线支付</div>
+            <div class="pay-btn pay-bank active">银行转账</div>
+    </div>
+    <!-- <div class="pay-pos pay-btn pay-platform active">
+        <span class="count"></span class=""><span>在线支付</span>
+    </div>
+    <div class="pay-pos pay-btn pay-bank active">
+        <span class="count"></span><span>银行转账</span>
+    </div> -->
+    
+</body>
+<script src="../../../js/zepto.js"></script>
+<script src="../../../js/zepto.md5.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<script>
+var invoiceContent = null,
+    invoice = null,
+    invoiceType = '', // 开票类型
+    invoiceTakeType = ''; // 获取发票方式
+
+var id = Request("actId");
+$(function(){
+    init();
+    var count = $('.count').html();
+    $('.pay-list').on("click",'.pnum-redu',function(e){
+        var num = $(this).next().val();
+        if(num<2){
+            num=1
+        }else{
+            num--;
+            $(this).next().val(num);
+        };
+        //count
+        var count = $(this).parents('.pay-itembox').find('.pay-num').html();
+        $('.count').html("￥" + count*num);
+        e.stopPropagation();
+    });
+    $('.pay-list').on("click",'.pnum-add',function(e){
+        var num = $(this).prev().val();
+        num++;
+        $(this).prev().val(num);
+        //count
+        var count = $(this).parents('.pay-itembox').find('.pay-num').html();
+        $('.count').html("￥" + count*num);
+        e.stopPropagation()
+    });
+    $('.go-paymsg').on("click",function(){
+       window.location.href="payMsg.html?actId="+id+"&actId=id"; 
+    });
+    //缴费类型
+    $(document).on("click",'.pay-itembox',function(){
+        $(this).siblings('.pay-itembox').find('.payp-inp').val(1);
+        $(this).parent().siblings().find('.payp-inp').val(1);
+        var num = $('.payp-inp').val();
+        $('.pay-itembox').removeClass('check');
+        $(this).addClass('check');
+        $('.payp-item').addClass('active');
+        $(this).find('.payp-item').removeClass('active');
+        //hot
+        $('.pay-calc').addClass('active');
+        $(this).find('.pay-calc').removeClass('active');
+        $('.hot').removeClass('active');
+        $(this).find('.hot').addClass('active');
+        //count
+        var count = $(this).find('.pay-num').html();
+        $('.count').html("￥" + count);
+    });
+    // var feeName = $('.check .fee-name').html();
+    // var totalFee = $(document).on('.check .pay-num').html();
+    // var count= parseInt($(document).on(".check .payp-inp").val());
+    //平台缴费
+    $('.pay-platform').on("click",function(){
+        // if(!isCheck()){
+        //     myConfirm("请选择转账的款项和数量，以便于主办方确认您的信息");
+        //     return;
+        // }
+        // $(".pay-type").val("1");
+        // var num = parseInt($(".check").find(".payp-inp").val());
+        var feeName = $('.check .fee-name').html();
+        var totalFee = $('.check .pay-num').html();
+        var count= $(".check .payp-inp").val();
+        var payId= $(".check").data("id");
+        window.location.href="paySure.html?actId="+id+"&payType=1&feeName="+feeName+"&totalFee="+totalFee+"&count="+count+"&payId="+payId;
+    });
+    //银行转账
+    $('.pay-bank').on("click",function(){
+        var feeName = $('.check .fee-name').html();
+        var totalFee = $('.check .pay-num').html();
+        var count= $(".check .payp-inp").val();
+        var payId= $(".check").data("id");
+       window.location.href="paySure.html?actId="+id+"&payType=0&feeName="+feeName+"&totalFee="+totalFee+"&count="+count+"&payId="+payId; 
+    });
+    $(document).on("click",".pay-pos .pay-item",function(){
+        $(".pay-pos .pay-item").css("border","1px solid #ccc");
+        $(this).css("border","1px solid red");
+        $(".pay-pos .pay-item").removeClass("check");
+        $(this).addClass("check");
+        payId =$(this).data('id') ;
+    });
+    $('.invoice').on("click",function(){
+        if(invoice){
+            window.location.href="invoice.html?actId="+id+"&invoiceType="+invoiceType+"&invoiceTakeType="+invoiceTakeType;
+        }else{
+            $('.invoice').off();
+            myConfirm("主办方不提供发票");
+        }
+    });
+    $('.invo-write-link').on("click",function(){
+        var take = $(this).data("take");
+        if(take){
+            window.location.href="invoMsg.html?actId="+id;
+        }else{
+            window.location.href="invoice.html?actId="+id;
+        }
+        
+    });
+    $('.invo-take-link').on("click",function(){
+        var take = $(this).data("take");
+        if(take){
+            window.location.href="invoMsg.html?actId="+id;
+        }else{
+            window.location.href="invoice.html?actId="+id;
+        }
+    });
+});
+function init(){
+    myLoading()
+    var url = basePath+"mt/user/activity/get.do?id="+id+"&type=payment,base";
+    $.myAjax({
+        url: url,
+        success: function (result) {
+            if (result.flag) {
+                console.log(result)
+                var base = result.data.base;
+                //地点时间
+                $('.tit-con').html(base.name);
+                var stime = base.stime.substring(5,10);
+                nstime = stime.replace(/-/,"/");
+                $('.stime').html(nstime);
+                var etime = base.etime.substring(5,10);
+                netime = etime.replace(/-/,"/");
+                $('.etime').html(netime);
+                $('.address').html(base.city);
+                var payment = result.data.payment;
+                //状态
+                if(payment.userPayment){
+                    //缴费状态
+                    if(payment.userPayment.status){
+                        $('.pay-status').html("已缴费");  
+                        $('.go-paymsg').css("color","#009966"); 
+                        $('.go-paymsg').html("查看详情");  
+                    }else{
+                        var time = Date.parse(base.etime)-Date.parse(new Date());
+                        if(time>0){
+                            var html = $('.go-paymsg');
+                            Timer(base.etime,html) 
+                        };
+                        $('.go-paymsg').off();  
+                    };
+                    if(payment.userPayment.invoiceType){
+                        $('.invo-write').html("已填写");
+                        $('.invo-write-link').html("查看详情");
+                        $('.invo-write-link').attr("data-take","take");
+                    }else{
+                        if(!payment.userPayment.status){
+                            $('.invo-write-link').off();
+                            $('.invo-take-link').off();
+                            $('.invo-write-link').css("color","#ccc");
+                            $('.invo-take-link').css("color","#ccc");
+                        }else{
+                            $('.invo-write-link').attr("href","invoice.html?actId="+id);
+                            $('.invo-take-link').attr("href","invoice.html?actId="+id);
+                        };
+                    };
+                    //发票状态
+                    if(payment.userPayment.invoiceTakeType){
+                        $('.invo-take').html("已填写");
+                        $('.invo-take-link').html("查看详情");
+                        $('.invo-take-link').attr("data-take","take");
+                    }else if("不需要"==payment.userPayment.invoiceType){
+                        $('.invo-take').html("已填写");
+                        $('.invo-take-link').html("查看详情");
+                        $('.invo-take-link').attr("data-take","take");
+                    }else{
+                        $('.invo-take-link').attr("href","invoice.html?actId="+id);
+                    };
+                };
+                //show msg
+                if(payment.onlinepayment){
+                    var str = '';
+                    for(var i = 0;i<onlinepayment.order_list.length;i++){
+                        str += 
+                        '<li class="pmess-item">'+
+                            '<span class="">已通过平台缴费</span >'+
+                            '<span class="">'+
+                                data.payment.onlinepayment.order_list[i].good_name+'*'+data.payment.onlinepayment.order_list[i].good_count
+                            '</span>'+
+                        '</li>';
+                    }
+                    $('.online-mess').html(str)
+                };
+                if(payment.banktrasfer){
+                    var str = '';
+                    for(var i = 0;i<data.payment.banktrasfer.order_list.length;i++){
+                        str += 
+                        '<li class="pmess-item">'+
+                            '<span class="">已通过线下银行转账</span >'+
+                            '<span class="">'+
+                               data.payment.banktrasfer.order_list[i].good_name+'*'+data.payment.banktrasfer.order_list[i].good_count+
+                            '</span>'+
+                        '</li>'
+                    }
+                    $('.bank-mess').html(str)
+                }
+                if(!(payment.fee.length==0)){
+                    var str = ''
+                    for(var i = 0; i < payment.fee.length; i ++){
+                        str += 
+                        '<li class="pay-itembox" data-id="'+payment.fee[i].id+'">'+
+                            '<p class="pay-item">'+
+                                '<span class="fee-name">'+payment.fee[i].feeName+'</span>'+
+                                '<span class="hot">'+
+                                    '<i>报名人数众多，请尽快缴费</i>'+
+                                '</span>'+
+                                '<span class="pay-calc active">'+
+                                    '<span>'+
+                                        '<button class="pnum-redu">-</button>'+
+                                        '<input type="text" class="payp-inp" value="1" readonly="readonly">'+
+                                        '<button class="pnum-add">+</button>'+
+                                    '</span>'+
+                                '</span>'+
+                            '</p>'+
+                            '<p class="money">'+
+                                '<span>￥</span>'+
+                                '<span class="pay-num">'+
+                                    payment.fee[i].totalFee+
+                                '</span>'+
+                            '</p>'+
+                            '<p class="payp-item active">'+
+                                '<span class="pay-interests">备注说明：可获得参会代表资格；请参会代表按身份选择合适的缴费类型；在线缴费成功后请准时出席。</span>'+
+                            '</p>'+
+                        '</li>';
+                    };
+                    $('.feeGeneral').append(str)
+                    $($('.pay-list .pay-itembox')[0]).addClass('check');
+                    $($('.pay-list .pay-itembox')[0]).find('.hot').addClass('active');
+                    $($('.pay-list .pay-itembox')[0]).find('.pay-calc').removeClass('active');
+                    $($('.pay-list .pay-itembox')[0]).find('.payp-item').removeClass('active');
+                    var count =  $($('.pay-list .pay-itembox')[0]).find('.pay-num').html();
+                    $('.count').html("￥" + count);
+                    //2种情况
+                    if(2==payment.payType.length){
+                        $(".pay-bank").removeClass("active");
+                        $(".pay-bankname").removeClass("active");
+                        
+                    }else{
+                        console.log(payment.payType[0])
+                        if("2"==payment.payType[0]){
+                            $(".pay-bank").removeClass("active");
+                            $(".pay-platform").addClass("active");
+                        }else{
+                            $(".pay-platform").removeClass("active");
+                        }
+                    };
+                }else{
+                    myConfirm("本次活动免费或主办方未配置，如有疑问请联系主办方。",function(){
+                        window.history.go(-1);
+                    },function(){
+                        window.history.go(-1);
+                    });
+                };
+            };
+        },
+        error:function(){
+            myConfirm("请求错误");
+        }
+    });
+};
+function isWeixin() { 
+    var ua = window.navigator.userAgent.toLowerCase(); 
+    if (ua.match(/MicroMessenger/i) == 'micromessenger') { 
+        return true; 
+    } else { 
+        return false;
+    } 
+};
+function isCheck(){
+    var document = $(".pay-itembox");
+    if (document.hasClass('check')) { 
+        return true; 
+    } else { 
+        return false;
+    } 
+}
+function save(){
+    var payId = $(".check").data("id");
+    var str = $(".check").find('.pay-num').html();
+    var monum = str.substring(1,str.length);
+    var num = parseInt($(".check").find(".payp-inp").val());
+    var payType= $(".pay-type").val();
+    var invoType= $(".check").find('.pay-ir').html();
+    var money = num*monum;
+    if(payType){
+        window.location.href="../index.html?actId="+id+"&num="+num+"&\="+payId+"&money="+money+"&invoType="+invoType+"&monum="+monum;
+    }else{
+        var fee=[{"count":num,"id":payId}];
+        fee = JSON.stringify(fee);
+        myConfirm("如果您确认已通过银行转帐或其他方式转帐成功，请点击‘确定’，并联系主办方核实到帐信息；如未转帐请点击‘取消’，转帐成功后再提交。",function(){
+            $.myAjax({
+                url: basePath+"user/activity/pay/admissionfee/banktransfer.do?id="+id+"&type=1",
+                data:{"fee":fee},
+                success: function (result) {
+                    if (result.flag) {
+                        // 页面提示
+                        myConfirm("缴费状态：已通过银行转账");
+                        // $(".payState").html("").css("display","block")
+                    } else {
+                        if(result.msg.indexOf("重复") >= 0){
+                            myConfirm("您已提交过银行转账信息，如有变动，请线下联系主办方");
+                        } else {
+                            myConfirm(result.msg);
+                        }
+                    };
+                },
+                error:function(){
+                    myConfirm("请求错误!");
+                }
+            });
+            // $(".platform-pos").addClass("active");
+            // $(".mask").addClass("active");
+        });
+    };
+};
+function Timer(etime,html){
+    var timer=null;
+    clearInterval(timer);
+    var stime = new Date()
+    stime = (Date.parse(stime))/1000;
+    etime = (Date.parse(etime))/1000;
+    var i = etime - stime;
+    function show(){
+        var s = i;
+        var d = parseInt(s/86400);
+        s %= 86400;
+        var h = parseInt(s/3600);
+        s %= 3600;
+        var m = parseInt(s/60);
+        s %= 60;
+        s = parseInt(s);
+        var t = d+'天'+Dou(h)+':'+Dou(m)+':'+Dou(s);
+        html.html(t);
+        if(i <= 0){
+            clearInterval(timer);
+        };
+        i --;
+    };
+    // show()
+    timer = setInterval(show,1000);
+};
+function Dou(n){
+    return n<10 ?'0'+n :''+n; 
+};
+</script>
+</html>

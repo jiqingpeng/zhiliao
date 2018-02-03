@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>会议详情</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+	<link rel="stylesheet" type="text/css" href="../../../css/app/style.css">
+	<link rel="stylesheet" type="text/css" href="../../../css/app/meetdetail.css">
+</head>
+<body>
+	<div>
+		<div class="head">
+			<div class="navImg">
+				<img src="../../../img/app/arrowLeft-icon.png">
+			</div>
+			<div class="navDetail">会议详情</div>
+			<div class="signIn code">
+				<img  src="../../../img/app/code.png">
+			</div>
+		</div>
+		<div class="posBox">	
+			<div class="sheet white">
+				<div class="title"></div>
+				<div>
+					<div class="time commenHeight">
+						<span><img src="../../../img/app/time-icon.png"></span>
+						<span>时间&nbsp;:</span>
+						<span id="time" class="time commenLeft"></span>
+					</div>
+					<div class="location commenHeight">
+						<span><img src="../../../img/app/site-icon.png"></span>
+						<span>地点&nbsp;:</span>
+						<span class="address commenLeft"></span>
+					</div>
+				</div>
+				<div class="site commenHeight">
+						<span class="meetImg"><img src="../../../img/app/state-icon.png"></span>
+						<span class="meetState">参会状态&nbsp;:</span>
+						<span class="status">
+							<span id="status1" class="state commenLeft ">待审核</span>
+							<span id="status2" class="state ">- 审核通过</span>
+							<span id="status3" class="state ">- 预订酒店</span>
+							<span id="status4" class="state ">- 已签到</span>
+							<span id="status5" class="state ">- 结束</span>
+						</span>
+					</div>
+				<div class="switchover hide">	
+					<div class="commenHeight">
+						<span class="spoImg"><img src="../../../img/app/sponsor-icon.png"></span>
+						<span class="organization">
+							<div class="sponsor">主办方&nbsp;:</div>
+							<div class="spoContent">
+								
+							</div>
+						</span>
+					</div>
+				</div>
+				<span class="fold">
+					<img src="../../../img/app/downward.png">
+					<img src="../../../img/app/upward.png" class="hide">
+				</span>
+			</div>
+			<div class="list white">
+				<div class="listFlex">
+					<a name="invitation.html" class="grid invitation">
+						<div class="imgContent">
+							<img src="../../../img/app/invitation.png">
+						</div>
+						<div>邀请函</div>
+					</a>
+					<a name="organ.html" class="grid institution">
+						<div class="imgContent">
+							<img src="../../../img/app/institution.png">
+						</div>
+						<div>组织机构</div>
+					</a>
+					<!-- <a href="schedule.html" class="grid schedule"> -->
+					<a name="schedule.html" class="grid schedule">
+						<div class="imgContent">
+							<img src="../../../img/app/schedule.png">
+						</div>
+						<div>日程</div>
+					</a>
+				</div>
+				<div class="listFlex">
+					<a name="guest.html" class="grid guest">
+						<div class="imgContent">
+							<img src="../../../img/app/guest.png">
+						</div>
+					<div>嘉宾</div>
+					</a>
+					<a name="contact.html" class="grid guide">
+						<div class="imgContent">
+							<img src="../../../img/app/fingerpost.png">
+						</div>
+						<div>联系主办方</div>
+					</a>
+					<a name="payCost.html" class="grid">
+						<div class="imgContent">
+							<img src="../../../img/app/payInto.png">
+						</div>
+						<div>缴费</div>
+					</a>
+				</div>	
+			</div>
+			<div>
+				<a name="../hotel/hotelList.html" class="ticket poscircle white comPadding params">
+					<span><img src="../../../img/app/ticket-icon.png"></span>
+					<span>酒店</span>
+					<span class="arrows fr"><img src="../../../img/app/arrowRigth-icon.png"></span>
+					<span class="circle fr"></span>
+					<span class="fr hotelInfo">
+						<div><span>入住时间:</span><span class="hotelTime"></span></div>
+						<div class="hotelTitle"></div>
+					</span>
+				</a>
+				<div class="reminder">
+					<span>*&nbsp;</span>
+					<span>主办方提示您:为避免大会期间酒店紧张,您可通过平台提前预定酒店;以便主办方及时确认您的参会行程和后期通知的推送</span>
+				</div>
+				<a name="search.html" class="ticket white comPadding params distanceTop">
+					<span><img src="../../../img/app/train_icon.png"></span>
+					<span>高铁/机票</span>
+					<span class="arrows fr"><img src="../../../img/app/arrowRigth-icon.png"></span>
+				</a>
+				<a name="myOrder.html" class="ticket white comPadding applyInfo">
+					<span><img src="../../../img/app/myorder.png"></span>
+					<span>我的订单</span>
+					<span class="arrows fr"><img src="../../../img/app/arrowRigth-icon.png"></span>
+				</a>
+			</div>
+			<div class="information white">
+				<a name="newsDetail.html" class="inform comPadding params">
+					<span><img src="../../../img/app/apply-icon.png"></span>
+					<span>活动通知</span>
+					<span class="arrows fr"><img src="../../../img/app/arrowRigth-icon.png"></span>
+				</a>
+				<a name="interaction.html" class="discuss comPadding params">
+					<span><img src="../../../img/app/discussion-icon.png"></span>
+					<span>会议讨论</span>
+					<span class="arrows fr"><img src="../../../img/app/arrowRigth-icon.png"></span>
+				</a>
+				<a name="applyInfo.html" class="apply comPadding applyInfo">
+					<span><img src="../../../img/app/information_icon.png"></span>
+					<span>报名信息</span>
+					<span class="arrows fr"><img src="../../../img/app/arrowRigth-icon.png"></span>
+				</a>
+			</div>
+		</div>
+		<div class="botBox"></div>
+	</div>
+</body>
+<script src="../../../js/zepto.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<script type="text/javascript">
+var id = Request("actId");
+var time = '';
+// 签到显示的名字
+var attendname = '';
+// 用于分享的字段
+var title = '',confdesc='',imgurl=''; 
+var isLogin = false; //是否登录
+var status = ''; // 参会状态
+$(function(){
+	initPage();
+	$(".fold").on("click", function(){
+		$(".switchover").toggleClass("hide");
+	});
+	$(".fold").on("click", function(){
+		$(".fold img").toggleClass("hide");
+	});
+	$(".grid").on("click", function(){
+		var strHref = $(this).attr("name");
+			strHref = strHref.substring(0,strHref.indexOf(".html")+5);
+		var params = strHref + "?actId="+ id;
+		$(this).attr("href", params);
+	});
+	$(".params").on("click", function(){
+		var strHref = $(this).attr("name");
+			strHref = strHref.substring(0,strHref.indexOf(".html")+5);
+		var params = strHref + "?actId="+ id;
+		$(this).attr("href", params);
+	});
+	$(".intro").on("click", function(){
+		var params = "introduction.html?actId="+id+"&title="+setUrlJson(title)+"&time="+setUrlJson(time); 
+		$(this).attr("href", params);
+	});
+	$(".applyInfo").on("click", function(){ // 报名信息
+		var strHref = $(this).attr("name");
+			strHref = strHref.substring(0,strHref.indexOf(".html")+5);
+		var params = strHref + "?actId="+ id + '&status='+status;
+		$(this).attr("href", params);
+	});
+	// 微信签到
+	$(".signIn").click(function(){
+		checkin();
+	});
+})
+
+//酒店闪烁提示
+var sum = 0;
+function changeColor(){
+	var color="#f9752b|blue";
+	color=color.split("|");
+	document.getElementById("blink").style.color=color[sum * (color.length-1)];
+	if(sum == 0){
+		sum = 1;
+	} else {
+		sum = 0;
+	}
+}
+function initPage(){
+	myLoading();
+	$.myAjax({
+		url: basePath + "mt/user/activity/get.do",
+		data: {id:id,type:"base,org,status,hotelorder"},
+		success: function(result){
+			if(result.flag){
+				$(".posBox").removeClass("hide");
+				attendname = result.status.nick;
+				confdesc = '地点：'+result.data.base.province+'-'+result.data.base.city+'\n时间：'+result.data.base.stime;
+				// if(result.data.imageUrl.length > 0){
+				// 	imgurl = result.data.imageUrl[0];
+				// } else {
+					imgurl = 'img/shareIcon.png';
+				// }
+
+				if(result.data.hotelorder.length <= 0){
+					$(".hotelInfo").html('<span id="blink" class="marketing">预定推荐</span>');
+					setInterval("changeColor()",600);
+				} else {
+					$(".circle").addClass("hide");
+					$(".hotelTime").html(result.data.hotelorder[0].inTime)
+					$(".hotelTitle").html(result.data.hotelorder[0].hotelName)
+				}
+				status = result.data.status;
+				if(result.data.base.state == 1 || result.data.base.state == 2){
+					if(status == "4"){
+						$("#status4").addClass("color").siblings().removeClass("color");
+					}
+					if(status == "2" || status == "3"){
+						$("#status3").addClass("color").siblings("color");
+					}
+					if(status == "8" || status == "9"){
+						$(".status").html('<span class="state commenLeft">待审核</span><span id="status2" class="state color">- 审核未通过</span>');
+					}
+					if(status == "1"){
+						$("#status1").addClass("color").siblings().removeClass("color")
+					}
+				} else {
+					$("#status5").addClass("color").siblings().removeClass("color");
+				}
+				
+				var data = result.data.base
+				time = data.stime;
+				title = data.name;
+				$("#time").text(time.substring(0,11)+' '+'到'+' '+data.etime.substring(0,11));
+				$(".title").text(title)
+				$(".address").text(data.province + data.city + data.location);
+				var str = '';
+			    data = result.data.org;
+			    for(var i=0;i<data.length;i++){
+			        if(data[i].name == "主办单位"){
+			            confdesc = '主办单位：'+data[i].value[0]+'\n'+confdesc;
+			            for(var j = 0; j < data[i].value.length; j++){
+							str += '<div>' + data[i].value[j] + '</div>';
+						}
+						$(".spoContent").html(str);
+			        }
+			    }
+				// 微信相关功能
+				wxFn();
+			}else{
+				myConfirm(result.msg)
+			}
+		},
+		error: function(){
+			myConfirm("请求失败!");
+		}
+
+	})
+}
+// 微信相关功能
+function wxFn(){
+	$.getJSON(basePath+"wx/getjssign.do?url="+encodeURIComponent(location.href),function(json){
+		wx.config({  
+			debug: false,  
+			appId: json.appId,  
+			timestamp: json.timestamp,  
+			nonceStr: json.noncestr,  
+			signature: json.sign,  
+			jsApiList: [  
+				// 所有要调用的 API 都要加到这个列表中  		
+				'checkJsApi',					   
+				'onMenuShareTimeline',
+				'onMenuShareAppMessage',
+				'onMenuShareQQ',
+				'onMenuShareWeibo',
+				'startRecord', 
+				'stopRecord',
+				'translateVoice',
+				'scanQRCode'
+			]
+		});			
+	});
+}
+wx.ready(function () {		 	
+	share = {
+		title:title,
+		link: basePath + "page/weixin/activity/invitation.html?actId="+id,
+		desc:confdesc,
+		imgUrl: basePath+imgurl,
+		success:function(){
+			$.myAjax({
+                url: basePath + 'user/integral/share/save.do',
+                data: {type: "share"}
+            });
+		}	   
+	};
+	wx.onMenuShareTimeline(share);
+	wx.onMenuShareAppMessage(share);
+	wx.onMenuShareQQ(share);
+	wx.onMenuShareWeibo(share);	
+});
+
+//签到
+function checkin(){
+	wx.scanQRCode({
+		needResult: 1, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
+		scanType: ["qrCode","barCode"], // 可以指定扫二维码还是一维码，默认二者都有
+		success: function (res) {
+			var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果;
+			$.getJSON(result+"&signType=1" ,function(json){
+				if(json.flag == true){
+					// checkinmsg("<div class='text-center' style='font-size:24px;margin-top:10px'>"+title+"<br/>签到成功<br/><br/><font style='font-family:黑体;font-weight:bold'>参会代表："+attendname+"</font></div>", false);
+					myConfirm("签到成功！\n"+attendname);
+				} else {
+					checkinmsg("<div class='text-center' style='font-size:24px;margin-top:60px'>"+json.msg+"</div>", true);
+				}
+			});			 
+		}
+	});
+};
+</script>
+</html>

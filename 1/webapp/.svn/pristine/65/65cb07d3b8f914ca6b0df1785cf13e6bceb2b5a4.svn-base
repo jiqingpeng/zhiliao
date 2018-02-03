@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>缴费配置</title>
+<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+<link href="../../../css/common/bootstrap.min.css" rel="stylesheet" />
+<link href="../../../css/style.css" rel="stylesheet" />
+<link href="../../../css/main.css" rel="stylesheet" />
+<link href="../../../css/userfiled.css" rel="stylesheet"/>
+<style type="text/css">
+.feeIns{
+	color: #666;
+	height: 36px;
+	line-height: 36px;
+	cursor: pointer;
+}
+.mops-con {
+	position: relative;
+}
+.InsMask {
+	height: 100%;
+	width: 100%;
+	background-color: rgba(51,51,51,0.4);
+    position: absolute;
+    top: 0px;
+	left: 0;
+	z-index: 999;
+}
+.feeInsCon {
+	position: absolute;
+	top: 80px;
+	left: 12%;
+	background: #fff;
+	z-index: 1000;
+	width: 80%;
+	border-radius: 4px;
+}
+.closeIns {
+	height: 38px;
+	line-height: 38px;
+	width: 100%;
+	padding-left: 14px;
+	font-weight: bold;
+	border-bottom: 1px solid #ccc;
+}
+.closeInsBtn{
+	float: right;
+	margin: 4px 14px;
+	border: 1px solid #ddd;
+	background-color: #fff;
+	width: 56px;
+	height: 28px;
+	line-height: 28px;
+	color: red;
+}
+</style>
+</head>
+<body>
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="basicInfo.html">后台管理</a>
+		<a href="">-&gt;</a>
+		<a href="basicInfo.html">缴费管理</a>
+		<a href="">-&gt;</a>
+		<a href="userfiled.html">费用配置</a>
+	</div>
+	<div class="con-box">
+		<div id="subMenu">
+			<div id="subMenuBody">
+	            <ul>
+	            	<a href="generalFee.html"><li class="menuAct">费用配置</li></a>
+	            	<a href="payInfo.html"><li>缴费信息</li></a>
+	                <a href="invoiceInfo.html"><li>发票管理</li></a>
+	                <a href="mailInfo.html"><li>邮寄管理</li></a>
+	            </ul>
+	        </div>
+		</div>
+	    <div id="contentBody">
+		<form id="filedForm">
+			<input type="hidden" id="id"/>
+		    <div class="jcon unit">
+		   		<div class="jconheader">
+		   			<span class="jcontil">
+		   				<span class="jconnum">1</span>支付及发票信息
+		   			</span>
+		   			<span class="feeIns">
+		   				（使用说明）
+		   			</span>
+		   		</div>
+		   		<div class="payInfo">
+		   			<ul>
+		   				<li>
+		   					<label class="til">费用类型</label>
+		   					<select class="payInp feeName">
+		   					</select>
+		   					<label class="til">费用金额</label>
+		   					<input type="text" class="payInp totalFee" placeholder="费用类型对应的金额"/>&nbsp;元
+		   					<button type="button" class="addPayType">+</button>
+		   					<button type="button" class="cutPayType">-</button>
+		   				</li>
+		   				<li>
+		   					<label class="til">支付方式</label>
+		   					<input class="payCheckbox plantform" name="payType" value="1" type="checkbox"/>平台缴费
+		   					<input class="payCheckbox bank" name="payType" value="2" type="checkbox"/>银行转账
+		   				</li>
+		   				<li>
+		   					<div class="account">
+		   						<label class="til">账户名称</label>
+		   						<input type="text" class="payInp accountName" placeholder="请输入账户名称"/><br/>
+		   						<label class="til">账户号</label>
+		   						<input type="text" class="payInp accountNumber" placeholder="请输入账户号"/><br/>
+		   						<label class="til">开户行</label>
+		   						<input type="text" class="payInp bankName" placeholder="请输入开户行"/><br/>
+		   						<label class="til">备注</label>
+		   						<input type="text" class="payInp remark" placeholder="请输入备注"/>
+		   					</div>
+		   				</li>
+		   				<li>
+		   					<label class="til">是否提供发票</label>
+		   					<input class="payCheckbox proBill" name="bill" type="radio"/>是
+		   					<input class="payCheckbox noBill" name="bill" type="radio"/>否
+		   				</li>
+		   				<li class="bill none">
+		   					<label class="til">可提供发票类型</label>
+		   					<input class="payCheckbox norInvoice" name="invoiceType" value="1" type="checkbox"/>增值税普票
+		   					<input class="payCheckbox speInvoice" name="invoiceType" value="2" type="checkbox"/>增值税专票
+		   					<br/>
+		   					<!-- <label class="til">开票项目</label>
+		   					<input class="payInp content" type="text" name="content" placeholder="请输入可提供的开票项目"/><br/> -->
+		   					<label class="til">发票领取方式</label>
+		   					<input class="payCheckbox postal" name="invoiceTakeType" value="1" type="checkbox"/>邮寄
+		   					<input class="payCheckbox TakeByself" name="invoiceTakeType" value="2" type="checkbox"/>自取
+		   				</li>
+		   			</ul>
+		   		</div>
+		    </div>
+		    <div class="jcon joinbtn payInfobtn none">
+		   		<button type="button" class="btn btn-warning savePayInfo">保&nbsp存</button>
+		   		<button type="button" class="btn btn-default canclePayInfo">取&nbsp消</button>
+		    </div>
+		</form>
+		</div>
+	</div>
+	<div class="InsMask none"></div>
+	<div class="feeInsCon none">
+		<div class="closeIns">
+			<span>缴费管理模块使用说明</span>
+			<button class="closeInsBtn">关 闭</button>
+		</div>
+		<p>支付及发票信息模块是群英汇会议服务平台为满足主办方收费需求而新增的在线支付功能。不但为缴费用户节省时间带来便利，更能为主办方节省大量的时间和精力。</p>
+<pre>
+平台在线支付具有以下优势：
+1、支付快捷：参会用户通过平台可快速完成在线支付，提高缴费率；
+2、轻松查帐：主办方通过帐号后台可直接查看报名缴费的收入和统计数据，一目了然； 
+3、发票信息同步提交，省时省力省钱：1）参会用户缴纳参会费后，可直接通过平台提交发票信息给主办方，无需主办方后期反复电话沟通确认，可节省90%的工作时间；2）发票信息智能化提交，大幅度降低传统沟通方式的信息失误率和错误率；3）通过用户提交的发票信息提前打印发票，现场领取，可最大程度节省主办方邮寄发票的快递支出；
+4、邮寄地址一键提交：确实需要邮寄发票的参会用户，也可直接通过平台提交邮寄地址，主办方轻松查看；
+5）、缴费金额自定义设置，方便灵活：活动主办方根据实际需求，自定义设置多种收费标准，满足不同类型的活动收费。
+6）、统一结算，方便省心：群英汇会议服务平台根据参会用户通过平台缴纳的参会费总额，活动结束后统一结算并转入主办方指定银行帐户。
+</pre>
+<p>在线支付结算说明</p>
+<pre>目前平台的在线支付方式支持微信支付，参会用户通过平台缴纳参会费后，主办方管理员可以通过帐号后台查看。
+此页面所配置的所有收费项目均为参会费类型，根据参会用户通过平台支付的实际缴费总额（非银行转帐操作），平台将收取相应的手续费：线下签约合作单位，收取1%的手续费，网签合作单位收取3%手续费。
+每个自然月的5号为群英汇会议服务平台统一对帐日，财务部门将对上一个自然月结束的所有活动（有在线缴费款项发生的），进行统一核对帐目，核对无误后，当月15号以银行转帐的方式将核对后的款项金额（扣除手续费），统一转帐至主办方指定银行帐户。
+主办方如因特殊原因，需要提前结算款项，可与群英汇工作人员取得联系。结算流程：提交提现申请表—双方核对帐目―提交财务审核—转帐。
+备注：如有“已通过银行转帐”栏目内容，其中所显示的缴费信息为参会用户自主编辑并提交，实际交易行为并未通过平台发生，主办方需要自行核实并查证，平台不保证参会用户所提交信息的真实性，不承担任何法律责任。
+活动管理员在配置并使用 “支付及发票信息”功能时，表示已仔细阅读并同意平台的收费标准及结算方式。</pre>
+<p>支付功能配置及免责说明</p>
+<pre>为了更好的满足主办方与参会用户缴费信息的交互需求，平台提供了两种支付方式的操作选择，管理员可根据实际需求进行配置。
+平台缴费是指参会用户通过平台进行缴费操作并支付成功的一种缴费方式，管理员可通过在“缴费管理—缴费信息”页面进行查看，同时群英汇会议服务平台与主办方之间结算的款项也是以参会用户通过平台缴费操作所涉及的款项。
+银行转帐仅仅是指平台为参会用户提供一个将缴费信息提交给主办方的入口，本身并不提供实际银行转帐功能。选择配置此功能后，主办方管理员后台“缴费管理—缴费信息”页面所对应的“已通过银行转帐”的缴费信息均为参会用户个人手动编辑并提交，实际是否已通过银行转帐将款项打入主办方指定的帐户，主办方需要自行核实并查证，平台不保证参会用户所提交信息的真实性，不承担任何法律责任。管理员在选择配置支付方式的过程中，可根据实际情况进行选择性配置。</pre>
+</p>
+	</div>
+</div> 
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/main.js"></script>
+<script type="text/javascript">
+$(function(){
+	// 获取左侧菜单列表数据(参数为请求地址)
+	serialMenuAjax('admin/activity/menu.do','缴费管理',sessionStorage.getItem('actId'), initPage);
+	$("#id").val(sessionStorage.getItem('actId'));
+	// 添加费用类型
+	$(".addPayType").click(function(){
+		var eLi = $(this).parent();
+	    $(eLi).after($(eLi).clone(true));
+	    $(eLi).next().find(".feeName, .totalFee").val('');
+	})
+	// 删除费用类型
+	$(".cutPayType").click(function(){
+		if($(".feeName").length>1){
+			$(this).parent().remove();
+		}
+	})
+	// 选择支付方式
+	$(".bank").click(function(){
+		if($(this).is(':checked')){
+			$(this).attr('checked','checked');
+			$(".account").show('slow');
+		} else {
+			$(".account").hide('slow');
+		}
+	})
+	// 提供发票
+	$(".proBill").click(function(){
+		if($(this).is(':checked')){
+			$(".bill").show('slow');
+		}
+	})
+	// 不提供发票
+	$(".noBill").click(function(){
+		if($(this).is(':checked')){
+			$(".bill").hide('slow');
+		}
+	})
+	// 保存支付信息
+	$(".savePayInfo").click(function(){
+		if(!validatePayInfo()){
+			return false;
+		} else if(validatePayInfo()== 'free'){
+			myConfirm("请设置费用类型和对应的金额，如未设置，系统默认不收取费用。",function(){
+				var postData = {id:$("#id").val(),fee:'{}'};
+				$.myAjax({
+					url : basePath + 'admin/activity/config/fee/save.do',
+					data : postData,
+					success : function(result){
+						if(result.flag){
+							myAlert(result.msg);
+						} else {
+							myConfirm(result.msg);
+						}
+					},
+					error : function(result) {
+						myAlert("请求失败!","slow");
+					}
+				});
+			})
+		} else {
+			var postData = {id:$("#id").val()};
+			var fee = [],
+				invoiceType = [],
+				payType = [],
+				invoiceTakeType = [];
+			var elArry = $(".feeName");
+			for(var i=0;i<elArry.length;i++){
+				var oJson = {};
+				oJson.feeType = $(elArry[i]).val();
+				oJson.totalFee = $(elArry[i]).nextAll(".totalFee").val();
+				fee.push(oJson);
+			}
+			if($(".plantform").is(':checked')){
+				payType.push({type:'1'});
+			}
+			if($(".bank").is(':checked')){
+				payType.push({
+					type:'2',
+					accountName:$(".accountName").val(),
+					accountNumber:$(".accountNumber").val(),
+					bankName:$(".bankName").val(),
+					remark:$(".remark").val()
+				});
+			}
+			if($(".proBill").is(':checked')){
+		    	if($('.norInvoice').is(':checked')){
+		    		invoiceType.push({
+		    			type:'1',
+		    			// content: $(".content").val()
+		    		});
+		    	}
+		    	if($('.speInvoice').is(':checked')){
+		    		invoiceType.push({
+		    			type:'2',
+		    			// content: $(".content").val()
+		    		});
+		    	}
+		    }
+		    if($(".postal").is(':checked')){
+	    		invoiceTakeType.push({
+	    			type:$(".postal").val()
+	    		});
+	    	}
+	    	if($(".TakeByself").is(':checked')){
+	    		invoiceTakeType.push({
+	    			type:$(".TakeByself").val()
+	    		});
+	    	}
+	    	if(invoiceType.length > 0){
+	    		postData.fee = {
+		    		fee: fee,
+		    		payType: payType,
+		    		invoiceType: invoiceType,
+		    		invoiceTakeType: invoiceTakeType
+		    	}
+	    	} else {
+	    		postData.fee = {
+		    		fee: fee,
+		    		payType: payType
+		    	}
+	    	}
+	    	postData.fee = JSON.stringify(postData.fee);
+	    	$.myAjax({
+				url : basePath + 'admin/activity/config/fee/save.do',
+				data : postData,
+				success : function(result){
+					if(result.flag){
+						myAlert(result.msg);
+					} else {
+						myConfirm(result.msg);
+					}
+				},
+				error : function(result) {
+					myAlert("请求失败!","slow");
+				}
+			});
+		}
+	});
+	// 取消支付信息
+	$(".canclePayInfo").click(function(){
+		var elArry = $(".feeName");
+		for(var i=elArry.length;i>0;i--){
+			$(elArry[i]).parent().remove();
+		}
+		initPage();
+	});
+	// 查看使用说明
+	$(".feeIns").click(function(){
+		$(".InsMask, .feeInsCon").show();
+	});
+	// 关闭使用说明
+	$(".closeInsBtn").click(function(){
+		$(".InsMask, .feeInsCon").hide();
+	});
+});
+
+function initPage(){
+	$.myAjax({
+		url : basePath + 'admin/activity/config/fee/list.do',
+		data : {id:$("#id").val()},
+		success : function(result){
+			if(result.flag){
+				initFeePage(result.data);
+			} else {
+				myConfirm(result.msg);
+			}
+		},
+		error : function(result) {
+			myAlert("请求失败!","slow");
+		}
+	});
+}
+// 初始化支付及发票部分页面
+function initFeePage(data){
+	var feeType = data.feeType;
+	var innerstr = "<option value=''>--请选择--</option>";
+	$.each(feeType, function(i, val) {
+		innerstr += "<option value='" + val.value + "'>" + val.name + "</option>";
+	});
+	$(".feeName").html(innerstr);
+	if(data.fee.length > 0) { // 配置过此模块
+		$(".payInfobtn").show('slow');
+		var fee = data.fee;
+		for(var i=0;i<fee.length;i++){
+			if(i>0){
+				var eLi = $($(".feeName")[$(".feeName").length-1]).parent();
+			    $(eLi).after($(eLi).clone(true));
+			} 
+			$($(".feeName")[$(".feeName").length-1]).val(fee[i].feeType);
+			$($(".totalFee")[$(".totalFee").length-1]).val(fee[i].totalFee);
+		}
+		var payType = data.payType;
+		for(var i=0;i<payType.length;i++){
+			if(payType[i].type == 1){
+				$(".plantform").prop("checked",true);
+			} else if(payType[i].type == 2){
+				$(".bank").prop("checked",true);
+				$(".accountName").val(payType[i].accountName),
+				$(".accountNumber").val(payType[i].accountNumber),
+				$(".bankName").val(payType[i].bankName),
+				$(".remark").val(payType[i].remark);
+				$(".account").show('slow');
+			}
+		}
+		if(data.invoiceType.length>0){
+			$(".proBill").prop('checked',true);
+			$(".bill").show('slow');
+			var invoiceType = data.invoiceType;
+			for(var i=0;i<invoiceType.length;i++){
+				if(invoiceType[i].type == 1){
+					$(".norInvoice").prop('checked',true);
+					// $(".content").val(invoiceType[i].content);
+				} else if(invoiceType[i].type == 2){
+					$(".speInvoice").prop('checked',true);
+					// $(".content").val(invoiceType[i].content);
+				}
+			}
+			var invoiceTakeType = data.invoiceTakeType;
+			for(var i=0;i<invoiceTakeType.length;i++){
+				if(invoiceTakeType[i].type == 1){
+					$(".postal").prop('checked',true);
+				} else if(invoiceTakeType[i].type == 2){
+					$(".TakeByself").prop('checked',true);
+				}
+			}
+		}
+	}
+}
+// 验证支付信息保存
+function validatePayInfo(){
+	if(isHollow($(".feeName")) || isHollow($(".totalFee"))){
+		if($(".feeName").length == 1){
+			return 'free';
+		} else {
+			myConfirm("请选择费用类型和对应的金额");
+		}
+		return false;
+	}
+    if($('input[name=payType]:checked').length <= 0){
+    	myConfirm("请选择支付方式");
+		return false;
+    } else if($(".bank").is(':checked')){
+    	if(!$(".accountName").val()){
+    		myConfirm("请输入账户名称");
+    		return false;
+    	}
+    	if(!$(".accountNumber").val()){
+    		myConfirm("请输入账户号");
+    		return false;
+    	}
+    	if(!$(".bankName").val()){
+    		myConfirm("请输入开户行名称");
+    		return false;
+    	}
+    }
+	if($('input[name=bill]:checked').length <= 0){
+    	myConfirm("请选择是否提供发票");
+		return false;
+    } else if($(".proBill").is(':checked')){
+    	if($('input[name=invoiceType]:checked').length <= 0){
+    		myConfirm("请选择可提的供发票类型");
+    		return false;
+    	}
+    	// if(!$(".content").val()){
+    	// 	myConfirm("请输入可提供的开票项目");
+    	// 	return false;
+    	// }
+    	if($('input[name=invoiceTakeType]:checked').length <= 0){
+    		myConfirm("请选择发票领取方式");
+    		return false;
+    	}
+    }
+	return true;
+}
+// 工具方法 - 判断相同类名的所有元素是否为空
+function isHollow(elem){
+	var elArry = $(elem);
+	for(var i=0;i<elArry.length;i++){
+		if(!$(elArry[i]).val()){
+			return true;
+		}
+	}
+	return false;
+}
+</script>
+</html>

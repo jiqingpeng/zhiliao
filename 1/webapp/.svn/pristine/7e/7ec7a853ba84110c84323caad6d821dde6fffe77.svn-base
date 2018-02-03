@@ -1,0 +1,162 @@
+body{
+    position: relative;
+}
+.content{
+    width:100%;
+    position: fixed;
+    top:48px;
+    left:0;
+    bottom:40px;
+    overflow-y: auto;
+}
+.content .pay-tit{
+    border-bottom: 2px solid #ccc;
+}
+.content .icon{
+    width:14px;
+    margin-right:10px;
+}
+.content .list{
+    width:94%;
+    padding:10px 3%;
+}
+.content .addressdate{
+    height: 30px;
+    margin-top:10px;
+    display: flex;
+    align-items: center;
+}
+.content .addressdate .date{
+    margin-left:10px;
+}
+.content .date{
+    margin-left:-5px;
+}
+.content .bord{
+    border-bottom:1px solid #ccc;
+}
+.space-center{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+}
+.space-between{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+/*paysure*/
+.pay-btnlist{
+        width:100%;
+        position:fixed;
+        left:0;
+        bottom:0;
+    }
+.sure .pay-calc{
+    width:50%;
+}
+.pay-btn{
+    width:50%;
+    height:40px;
+    background:#f60;
+    color:#fff;
+}
+.note-cont{
+    margin-left:5%;
+}
+.food{
+    width:100%;
+    position:fixed;
+    bottom:0;
+    left:0;
+    display: flex;
+    align-items: center;
+}
+.food .f-nav{
+    width:50%;
+    height:40px;
+    line-height: 40px;
+    text-align:center;
+    background:#f60;
+    color:#fff;
+}
+/*payMsg*/
+.pay-msg .item{
+    margin:5px 0;
+}
+/*invoice*/
+.content{
+    width:100%;
+    position: fixed;
+    top:48px;
+    left:0;
+    overflow-y: auto;
+}
+.invoice  .mess{
+    /*position: fixed;
+    bottom:40px;
+    left:0;
+    overflow-y: auto;*/
+}
+.invoice  .mess-item{
+    width:94%;
+    height:40px;
+    line-height: 40px;
+    padding:0 3%;
+    /*border-bottom: 1px solid #eee;*/
+    background-color: #fff;
+}
+.invoice .btm-space{
+    margin-bottom: 10px;
+    border-bottom: none;
+}
+.invoice .mess-item .txt{
+    display: inline-block;
+    width:28%;
+}
+.invoice .mess-item .inp{
+    display: inline-block;
+    width:60%;
+    border:none;
+    outline:none;
+}
+.invoice .mess-item .star{
+    margin-left:4%;
+    color:red;
+}
+.invoice .invoiceType {
+    padding: 0 3px;
+}
+.invoice .send-group{
+    display: none;
+}
+.invoice .cxselect{
+    width:20%;
+}
+.invoice .mess-box{
+    display: none;
+}
+.invoice .btn{
+    width:100%;
+    height:40px;
+    position: fixed;
+    bottom:0;
+    left:0;
+    background:#f60;
+    margin:0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#fff;
+    border-radius:4px;
+}
+.location{
+    border:none;
+    outline:none;
+    margin-left:28%;
+    width:60%;
+}
+.active{
+    display: none;
+}
+

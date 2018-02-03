@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>配置管理</title>
+<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="../../../css/common/bootstrap.min.css">
+<link rel="stylesheet" href="../../../css/common/bootstrap-table.min.css">
+<link href="../../../css/style.css" rel="stylesheet"/>
+<link href="../../../css/main.css" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../css/admin/increment.css"/>
+</head>
+<body>
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="payInfo.html">增值服务</a>
+		<a href="">-&gt;</a>
+		<a href="invoiceInfo.html">配置管理</a>
+	</div>
+	<div class="con-box">
+	<div id="subMenu">
+        <div id="subMenuBody">
+            <ul>
+            	<a href="incrementEdit.html"><li class="menuAct">配置管理</li></a>
+                <a href="incrementPayinfo.html"><li>收入统计</li></a>
+            </ul>
+        </div>
+    </div>
+    <div id="contentBody" class="mops-table">
+        <div class="incEdit">
+        	<input type="hidden" id="id"/>
+        	<div class="instruction">
+        		增值服务模块功能说明
+        	</div>
+        	<div class="agreement">
+        		<span class="red">注：使用增值服务功能，需同意</span>
+        		<a href="#">《增值服务使用协议》</a>
+        		<span>是否同意？</span>
+        		<input type="checkbox" class="agree"/>同意
+        	</div>
+        	<div class="editCon none">
+        		<input type="hidden" class="feeId"/>
+				<label class="til">费用类型</label>
+				<select class="payInp feeName">
+				</select>
+				<input type="text" class="payInp diyName none" placeholder="请输入自定义类型"/>
+				<br/>
+				<label class="til">费用金额</label>
+				<input type="text" class="payInp totalFee" placeholder="费用类型对应的金额"/>&nbsp;元
+				<br/>
+				<label class="til adminRnterTil">费用权益</label>
+				<div class="adminRnterCon">
+	   				<div class="rnterCon">
+	   					<span class="rnterTil">嘉宾权益配置</span>(点击选择)
+	   					<div>
+	   						<ul>
+	   							<li class="rnterText">
+	   								1、主办方提供的权益；
+	   							</li>
+	   							<li class="rnterText">
+	   								2、主办方提供的权益；
+	   							</li>
+	   							<li class="rnterText">
+	   								3、主办方提供的权益；
+	   							</li>
+	   							<li class="rnterText">
+	   								4、主办方提供的权益；
+	   							</li>
+	   							<li class="rnterDiyText">
+	   								<textarea class="rnterDiy" placeholder="请输入自定义权益(最多不超过200个字)"></textarea>
+	   							</li>
+	   						</ul>
+	   					</div>
+	   				</div>
+	   			</div>
+				<div class="rnterBtn">
+					<button type="button" class="btn btn-warning saveincInfo">保&nbsp;存</button>
+					<button type="button" class="btn btn-default cancleincInfo">取&nbsp;消</button>
+				</div>
+        	</div>
+        	<div class="incEditCon">
+        		<span class="addPayType">添加</span>
+        		<ul>
+	   				<li>
+	   					<input type="hidden" class="feeIdShow"/>
+	   					<label class="til">费用类型</label>
+	   					<input class="payInp feeNameShow" readonly value="嘉宾"/>
+	   					<input type="hidden" class="feeTypeShow"/>
+	   					<span class="rnterInfo">费用权益</span>
+	   					<input type="hidden" class="adminRnterShow"/>
+	   					<label class="til">费用金额</label>
+	   					<input value="999元" class="payInp totalFeeShow" readonly/>
+	   					<span class="editPayType">编辑</span>&nbsp;/&nbsp;<span class="cutPayType">删除</span>
+	   				</li>
+	   				
+	   			</ul>
+				<label class="til">平台权益说明</label>
+				<div class="plantRnter">
+					平台权益说明内容
+				</div>
+	   			<div class="adminRnterCon hide">
+	   				<div class="arrow"></div>
+	   				<div class="rnterCon">
+	   					<span class="rnterTil">嘉宾权益配置</span>(点击选择)
+	   					<div>
+	   						<ul>
+	   							<li class="rnterText">
+	   								1、主办方提供的权益；
+	   							</li>
+	   							<li class="rnterText">
+	   								2、主办方提供的权益；
+	   							</li>
+	   							<li class="rnterText">
+	   								3、主办方提供的权益；
+	   							</li>
+	   							<li class="rnterText">
+	   								4、主办方提供的权益；
+	   							</li>
+	   							<li class="rnterDiyText">
+	   								<textarea class="rnterDiy" placeholder="请输入自定义权益(最多不超过200个字)"></textarea>
+	   							</li>
+	   							<div class="rnterBtn">
+	   								<button type="button" class="btn btn-xs btn-warning saveRnter">保存</button>
+									<button type="button" class="btn btn-xs btn-default cancleRnter">取消</button>
+	   							</div>
+	   						</ul>
+	   					</div>
+	   				</div>
+	   			</div>
+        	</div>
+        </div>
+	</div>
+	</div>   
+</div> 
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/bootstrap-table.min.js"></script>
+<script src="../../../js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../../js/tableExport.js"></script>
+<script src="../../../js/bootstrap-table-export.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/main.js"></script>
+<script type="text/javascript">
+var feeType = []; //存储费用类型字典表
+$(function(){
+    loading();
+    serialMenuAjax('admin/activity/menu.do', '增值服务', sessionStorage.getItem('actId'), initPage);
+    $("#id").val(sessionStorage.getItem('actId')); 
+    // 添加费用类型
+	$(".addPayType").click(function(){
+		$(".editCon").show('slow');
+	})
+	// 编辑费用类型
+	$(".editPayType").click(function(){
+		var elemLi = $(this).parent();
+		var feeType = $(elemLi).find(".feeTypeShow").val();
+		if(feeType){
+			$(".feeName").val(feeType);
+		} else {
+			$(".diyName").val($(elemLi).find(".feeNameShow").val());
+			$(".feeName").val("diy");
+			$(".diyName").removeClass("none");
+		}
+		$(".feeId").val($(elemLi).find(".feeIdShow").val());
+		$(".totalFee").val($(elemLi).find(".totalFeeShow").val());
+		remark($(elemLi).find(".adminRnterShow").val());
+		$(".editCon").show('slow');
+	})
+	// 删除费用类型
+	$(".cutPayType").click(function(){
+		var _this = this;
+		$.myAjax({
+			url : basePath + 'admin/activity/valueadded/del.do',
+			data : {id:$(_this).prevAll(".feeIdShow").val()},
+			success : function(result){
+				if(result.flag){
+					$(_this).parent().remove();
+				} else {
+					myConfirm(result.msg);
+				}
+			},
+			error : function(result) {
+				myAlert("请求失败!","slow");
+			}
+		});
+	})
+	// 费用类型自定义
+	$(".feeName").change(function(){
+		if($(this).val() == 'diy'){
+			$(".diyName").removeClass("none");
+		} else{
+			$(".diyName").addClass("none");
+		}
+		// var elemY = $(this).position().top,
+		// 	elemX = $(this).position().left + 210;
+		// $(".adminRnterCon").css({top:elemY+'px',left:elemX+'px'}).removeClass("none");
+	})
+	// 查看费用权益
+	$(".rnterInfo").click(function(){
+		elemLi = $(this).parent();
+		var rnterInfo = $(this).next().val().split("##");
+		var ed = rnterInfo[0].split(",");
+		for(var i=0;i<ed.length;i++){
+			if(!ed[i]){
+				continue;
+			}
+			$($(".rnterText")[ed[i]]).addClass("selRnter");
+		}
+		$(".rnterDiy").val(rnterInfo[1]);
+		var elemY = $(this).position().top - 6,
+			elemX = $(this).position().left - 6;
+		$(".adminRnterCon").css({top:elemY+'px',left:elemX+'px'}).removeClass("none");
+	})
+	// 主办方配置权益
+	$(".rnterText").click(function(){
+		if($(this).hasClass("selRnter")){
+			$(this).removeClass("selRnter");
+		} else {
+			$(this).addClass("selRnter");
+		}
+	})
+	// 取消配置
+	$(".cancleincInfo").click(function(){
+		$(".editCon").hide('slow');
+		clearEditCon();
+	})
+	// 保存配置
+	$(".saveincInfo").click(function(){
+		if(!validatePayInfo()){
+			return false;
+		} else {
+			var postData = {
+					activityId: $("#id").val(),
+					id: $(".feeId").val(),
+					totalFee: $(".totalFee").val()
+				};	
+			if($(".feeName").val() == 'diy'){
+				if($(".diyName").val()){
+					postData.feeName = $(".diyName").val();
+				} else {
+					myConfirm("请输入自定义的费用类型！");
+					return false;
+				}
+			} else {
+				postData.feeType = $(".feeName").val();
+			}
+			postData.remark = remark();
+	    	$.myAjax({
+				url : basePath + 'admin/activity/valueadded/save.do',
+				data : postData,
+				success : function(result){
+					if(result.flag){
+						myAlert(result.msg);
+						$(".editCon").hide('slow');
+						clearEditCon();
+						initPage();
+					} else {
+						myConfirm(result.msg);
+					}
+				},
+				error : function(result) {
+					myAlert("请求失败!","slow");
+				}
+			});
+		}
+	})
+});
+// 清空编辑区域
+function clearEditCon(){
+	$(".feeId, .feeName, .diyName, .totalFee, .rnterDiy").val('');
+	$(".diyName").addClass("none");
+	$(".rnterText").removeClass("selRnter");
+}
+// 页面初始化
+function initPage(){
+	$.myAjax({
+		url : basePath + 'admin/activity/valueadded/list.do',
+		data : {id:$("#id").val()},
+		success : function(result){
+			if(result.flag){
+				initFeePage(result.data)
+			} else {
+				myConfirm(result.msg);
+			}
+		},
+		error : function(result) {
+			myAlert("请求失败!","slow");
+		}
+	})
+}
+// 初始化支付及发票部分页面
+function initFeePage(data){
+	feeType = data.feeType;
+	var innerstr = "<option value=''>--请选择--</option>";
+	$.each(feeType, function(i, val) {
+		innerstr += "<option value='" + val.value + "'>" + val.name + "</option>";
+	});
+	innerstr += "<option value='diy' class='diy'>自定义</option>";
+	$(".feeName").html(innerstr);
+	if(data.fee.length > 0) { // 配置过此模块
+		// 同意协议（不可点击）
+		$(".agree").attr("checked",true);
+		$(".agree").attr('disabled',"true");
+		$(".incEditCon li:first").nextAll().remove(); // 初始化之前，只保留一个li
+		var fee = data.fee;
+		for(var i=0;i<fee.length;i++){
+			if(i>0){
+				var eLi = $($(".feeNameShow")[$(".feeNameShow").length-1]).parent();
+			    $(eLi).after($(eLi).clone(true));
+			}
+			$($(".feeIdShow")[$(".feeIdShow").length-1]).val(fee[i].id);
+			if(fee[i].feeType){
+				$($(".feeTypeShow")[$(".feeTypeShow").length-1]).val(fee[i].feeType);
+				$($(".feeNameShow")[$(".feeNameShow").length-1]).val(getFeename(fee[i].feeType));
+			} else {
+				$($(".feeNameShow")[$(".feeNameShow").length-1]).val(fee[i].feeName);
+			}
+			$($(".totalFeeShow")[$(".totalFeeShow").length-1]).val(fee[i].totalFee);
+			$($(".adminRnterShow")[$(".adminRnterShow").length-1]).val(fee[i].remark);
+		}
+	}
+}
+// 获取（或配置）费用权益
+function remark(data){
+	if(data){ // data有值为设置（初始化）
+		var rnterInfo = data.split("##");
+		var ed = rnterInfo[0].split(",");
+		for(var i=0;i<ed.length;i++){
+			if(!ed[i]){
+				continue;
+			}
+			$($(".rnterText")[ed[i]]).addClass("selRnter");
+		}
+		$(".rnterDiy").val(rnterInfo[1]);
+	} else { // data为空为获取费用权益
+		var elem = $(".rnterText");
+		var remark = '';
+		for(var i=0;i<elem.length;i++){
+			if($(elem[i]).hasClass("selRnter")){
+				remark += i + ',';
+			}
+		}
+		if($(".rnterDiy").val()){
+			remark += '##'+ $(".rnterDiy").val();
+		}
+		return remark;
+	}
+}
+// 根据类型获取费用名称
+function getFeename(type){
+	for(var i=0;i<feeType.length;i++){
+		if(feeType[i].value == type){
+			return feeType[i].name;
+		}
+	}
+}
+// 输入验证信息
+function validatePayInfo(){
+	// 是否同意协议
+	if(!$(".agree").is(':checked')){
+		myConfirm("使用增值服务功能，需同意《增值服务使用协议》");
+		return;
+	}
+	if(!$(".feeName").val() || !$(".totalFee").val()){
+		myConfirm("请选择费用类型和对应的金额");
+		return false;
+	}
+	return true;
+}
+</script>
+</html>

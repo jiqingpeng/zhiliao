@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>支付</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="../../css/app/style.css">
+    <style>
+        .note{
+            position: absolute;
+            right:0;
+            top:0;
+            width:53px;
+        }
+        .content{
+            width:100%;
+            position: fixed;
+            top:48px;
+        }
+        .btn{
+            width:80%;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background:#f60;
+            margin: 0 auto;
+            color:#fff;
+            border-radius:4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="head">
+        <div class="navImg">
+            <img src="../../img/app/arrowLeft-icon.png">
+        </div>
+        <div class="navDetail">支付</div>
+        <div class="note">
+            <img  src="../../img/app/share-icon.png">
+        </div>
+    </div>
+    <div class="content">
+        <div>
+            <span>缴纳金额</span>
+            <input type="text">
+        </div>
+        <div>
+            <span>备注</span>
+            <input type="text">
+        </div>
+        <div></div>
+        <div class="btn">
+            <span>立即缴费</span>
+        </div>
+    </div>
+</body>
+<script src="../../js/zepto.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="../../js/app/mtCommon.js"></script>
+<script>
+    $(function(){
+        $('.btn').on("click",function(){
+            alert(1)
+            // getUrl(1);
+        });
+        function getUrl(val) {
+        $.get(basePath + "user/activity/pay/admissionfee.do?id=25812d45fc27441ebacb6f9e3fe70322&totalFee=0.01&type="+val, function (json) {
+                var json = $.parseJSON(json);
+                if (json.flag) {
+                    if (1 == val) {
+                        window.location = json.data + "&redirect_url=" + encodeURIComponent(location.href);
+                    }
+                    // if (2 == val) {
+                    //     gconfsUtil.weixinPay(json.data.toString());
+                    // }
+                }else{
+                    myAlert(json.msg);
+                }
+            });
+        };
+    });
+</script>
+</html>

@@ -1,0 +1,639 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>其它PV</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="shortcut icon" href="../../img/webicon.ico" type="image/x-icon"/>
+    <link href="../../css/mng/datepicker/datepicker.css" rel="stylesheet">
+    <link href="../../css/common/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/common/bootstrap-table.min.css" rel="stylesheet">
+    <link href="../../css/mng/font-awesome.min.css" rel="stylesheet">
+    <link href="../../css/mng/monitor-base.css" rel="stylesheet">
+    <style type="text/css">
+        #pv-div, .pv-div, .pv-div .pv-div-head, .pv-div .pv-div-body, .pv-div .pv-div-foot,
+        .pv-div .pv-div-head-title {
+            display: flex;
+        }
+
+        #pv-div, #pv-div .pv-div {
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #pv-div .pv-div:first-child {
+            z-index: 1;
+            margin-top: -10px;
+            width: 102%;
+            border-radius: 0 0 0 0;
+        }
+
+        .pv-div {
+            width: 100%;
+            font-size: 14px;
+            margin: 0 0 20px 0;
+            background-color: #fff;
+            border-radius: 6px 6px 0 0;
+        }
+
+        .pv-div .pv-div-head {
+            width: 100%;
+            height: 34px;
+            line-height: 36px;
+            padding: 0 0 0 20px;
+        }
+
+        .pv-div-body {
+            width: 100%;
+            margin: 0 0 10px 0;
+            padding: 0 20px 0 20px;
+            font-size: 12px;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pv-div-body .body-tool, .pv-div-body .body-tool .body-tool-div {
+            display: flex;
+        }
+
+        .pv-div-body .body-tool {
+            width: 100%;
+            height: 36px;
+            line-height: 30px;
+            padding: 3px 0 3px 0;
+            flex-flow: row wrap;
+            align-content: flex-start;
+        }
+
+        .pv-div-body .body-tool .body-tool-div {
+            height: 30px;
+            line-height: 30px;
+            margin: 0 4px 0 10px;
+        }
+
+        .pv-div-foot span {
+            display: flex;
+            height: 18px;
+            background-color: #fff;
+            align-items: center;
+            margin-top: -2px;
+            cursor: pointer;
+            padding: 12px 10px 12px 10px;
+            border-bottom: 1px solid #eee;
+            border-left: 1px solid #eee;
+            border-right: 1px solid #eee;
+        }
+
+        .pv-div-foot {
+            width: 100%;
+            justify-content: center;
+            font-size: 16px;
+            border-top: 1px solid #eee;
+        }
+
+        .pv-div-body-l div {
+            display: flex;
+        }
+
+        .datepicker-div {
+            width: 158px;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .datepicker-div, .datepicker {
+            display: flex !important;
+        }
+
+        .datepicker {
+            align-self: flex-start;
+        }
+
+        #classify-total-graph {
+            height: 370px;
+            width: 100% !important;
+        }
+
+        .time-group {
+            width: 158px;
+            height: 30px;
+            display: block;
+            justify-content: space-between;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .time-group timespan {
+            position: relative;
+            width: 4px;
+            height: 32px;
+            line-height: 30px;
+            float: left;
+        }
+
+        #stime, #etime {
+            width: 76px;
+            padding: 0 6px 0 6px;
+            border-radius: 4px;
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            user-select: none;
+        }
+
+        #classify-total-table {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="root">
+    <div id="head">
+        <div class="head-main">
+            <div class="logo">
+                <a href="http://www.gconfs.com">
+                    <img class="" src="../../img/logoandname.png" title="群英汇：一体化会议系统" alt="群英汇：一体化会议系统"/>
+                </a>
+                <span class="logo-title">网站统计</span>
+            </div>
+            <div class="head-tab ">
+                <a href="index.html" target="_top">主页</a>
+                <a href="pvmonitor.html" target="_top" class="active-head">PV</a>
+                <a href="activitymonitor.html" target="_top">活动概览</a>
+                <a href="activityadminmonitor.html" target="_top">活动管理员概览</a>
+                <a href="activityhotelmonitor.html" target="_top">活动酒店</a>
+                <!--<a href="index.html" target="_top">主页</a>-->
+            </div>
+            <div class="head-user">
+                <span>Hi </span>
+                <span id="user-name"></span>
+                <a onclick="loginout();">登出<span class="glyphicon glyphicon-log-out"></span></a>
+            </div>
+        </div>
+    </div>
+    <div id="menu">
+        <div class="menu-main">
+            <div class="menu-title">
+                <span class="hide-able">网站导航</span>
+                <a class="hideMenu">
+                    <span class="glyphicon glyphicon-menu-hamburger ">
+                        <span class="arrow-left"></span>
+                    </span>
+                </a>
+            </div>
+            <ul class="menu-content list-group">
+                <li class="list-group-item">
+                    <a href="pvmonitor.html">
+                        <span class="glyphicon glyphicon-list-alt"></span>
+                        <span class="hide-able">网站概况</span>
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="activitypvmonitor.html">
+                        <span class="glyphicon-ft fa-users"></span>
+                        <span class="hide-able">活动PV</span>
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="classifypvmonitor.html">
+                        <span class="glyphicon-ft fa-cubes active"></span>
+                        <span class="hide-able active">其它PV</span>
+                    </a>
+                </li>
+                <!-- <li class="list-group-item">
+                     <a href="activityconversion.html">
+                         <span class="glyphicon glyphicon-hourglass"></span>
+                         <span class="hide-able">转化概况</span>
+                     </a>
+                 </li>-->
+            </ul>
+        </div>
+    </div>
+    <div id="content">
+        <div id="content-body">
+            <div class="content-title">
+                <div class="title-bar">
+                    <div>
+                        <a>分类PV</a>
+                    </div>
+                </div>
+            </div>
+            <div class="content-main">
+                <div class="content-main-body">
+                    <div id="pv-div">
+                        <div class="pv-div">
+                            <div class="pv-div-body">
+                                <div class="body-tool">
+                                    <div class="body-tool-div">时间:</div>
+                                    <div class="body-tool-div btn-group" role="group">
+                                        <button type="button" id="today" class="btn btn-xs btn-default btn-danger">
+                                            &nbsp;今日&nbsp;
+                                        </button>
+                                        <button type="button" id="yesterday" class="btn btn-xs btn-default">
+                                            &nbsp;昨日&nbsp;
+                                        </button>
+                                        <button type="button" id="week" class="btn btn-xs btn-default">
+                                            &nbsp;近7天&nbsp;
+                                        </button>
+                                        <button type="button" id="month" class="btn btn-xs btn-default">
+                                            &nbsp;近30天&nbsp;
+                                        </button>
+                                    </div>
+                                    <div class="body-tool-div datepicker-div">
+                                        <div class="time-group">
+                                            <timespan id="stime"></timespan>
+                                            <timespan></timespan>
+                                            <timespan id="etime"></timespan>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pv-div">
+                            <div id="classify-total-graph"></div>
+                        </div>
+                        <div class="pv-div">
+                            <div class="pv-div-body"></div>
+                            <div class="pv-div-body" style="display: block">
+                                <table id="classify-total-table"></table>
+                            </div>
+                        </div>
+                        <div class="pv-div"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="foot"><span>© 京备17018133</span></div>
+</div>
+</div>
+<div class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-warning active" role="progressbar" aria-valuenow="100"
+         aria-valuemin="0"
+         aria-valuemax="100" style="width: 100%">
+        <span class="sr-only">loding...</span>
+    </div>
+</div>
+<div id="model-div"></div>
+<div id="toast_" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+     href="#toast_">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="mySmallModalLabel">群英汇</h4>
+            </div>
+            <div class="modal-body" id="toast_msg">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../../js/jquery.min.js" type="application/javascript"></script>
+<script src="../../js/bootstrap.min.js" type="application/javascript"></script>
+<script src="../../js/bootstrap-table.min.js" type="application/javascript"></script>
+<script src="../../js/bootstrap-table-zh-CN.min.js" type="application/javascript"></script>
+<script src="../../js/tableExport.js" type="application/javascript"></script>
+<script src="../../js/bootstrap-table-export.js" type="application/javascript"></script>
+<script src="../../js/mng/datepicker/datepicker.js" type="application/javascript" charset="UTF-8"></script>
+<script src="../../js/mng/echarts.min.js" type="application/javascript"></script>
+<script src="../../js/mng/mng.js" type="application/javascript"></script>
+<script src="../../js/mng/monitor-base.js" type="application/javascript"></script>
+<script type="application/javascript">
+    var isDatepickerOpen = false;
+    var datepickerNum = 2;
+    var stimeHtml;
+    var etimeHtml;
+    var stime;
+    var etime;
+    var myChart = echarts.init(document.getElementById('classify-total-graph'));
+    $(function () {
+        loding();
+        init();
+        tableInit();
+    });
+
+    function init() {
+        stime = Date.parse(new Date(stimeHtml));
+        etime = Date.parse(new Date(etimeHtml));
+        $.myAjax({
+            url: basePath + "sys/monitor/html/withoutactpv.do",
+            data: {"stime": stime, "etime": etime},
+            success: function (result) {
+                lodingDown();
+                if (result.flag) {
+                    $("#classify-total-table").bootstrapTable('load', result.data);
+                    var data = [];
+                    for (var i = 0; i < result.data.length; i++) {
+                        var d = [];
+                        d[0] = result.data[i].PV;
+                        d[1] = result.data[i].IPMap;
+                        d[2] = result.data[i].name;
+                        d[3] = result.data[i].url;
+                        d[4] = result.data[i].type;
+                        data[i] = d;
+                    }
+                    classifyGraph(data);
+                } else {
+                    toastMsg(result.msg);
+                }
+            },
+            error: function (result) {
+                toastMsg(result.msg);
+            }
+        });
+    }
+
+    function classifyGraph(data) {
+        var option = {
+            title: {
+                text: '活动无关页面PV分布',
+                left: 'center',
+                top: '18'
+            },
+            backgroundColor: '#fff',
+            grid: {
+                top: 30,
+                bottom: 30,
+                left: 30,
+                right: 30
+            },
+            tooltip: {
+                axisPointer: {},
+                formatter: function (obj) {
+                    var st;
+                    if (obj.data[4].indexOf("android") >= 0) {
+                        st = '安卓：';
+                    }
+                    if (obj.data[4].indexOf("PC") >= 0) {
+                        st = 'PC：';
+                    }
+                    if (obj.data[4].indexOf("WeChat") >= 0) {
+                        st = '微信：';
+                    }
+                    return '<div style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 14px;'
+                        + 'padding-bottom: 7px;margin-bottom: 7px;display: flex; flex-direction: column;'
+                        + 'justify-content: space-between;">'
+                        + st + obj.data[2] + '&nbsp;<br>&nbsp;' + obj.data[3] + '</div>'
+                        + '<span style="display: flex;justify-content: space-between;">'
+                        + '<span style="display: flex;">PV</span>'
+                        + '<span style="display: flex;">' + obj.data[0] + '</span>' + '</span>'
+                        + '<span style="display: flex;justify-content: space-between;">'
+                        + '<span style="display: flex;">IP数</span>'
+                        + '<span style="display: flex;">' + obj.data[1] + '</span>' + '</span>'
+                        + '';
+                }
+            },
+            xAxis: {
+                splitLine: {
+                    lineStyle: {
+                        type: 'dashed'
+                    }
+                }
+            },
+            yAxis: {
+                splitLine: {
+                    lineStyle: {
+                        type: 'dashed'
+                    }
+                },
+                scale: true
+            },
+            series: [{
+                data: data,
+                type: 'scatter',
+                label: {
+                    emphasis: {
+                        show: true,
+                        formatter: function (param) {
+                            return param.data[2];
+                        },
+                        position: 'top'
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        shadowBlur: 10,
+                        shadowColor: 'rgba(120, 36, 50, 0.5)',
+                        shadowOffsetY: 5,
+                        color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [{
+                            offset: 0,
+                            color: 'rgb(251, 118, 123)'
+                        }, {
+                            offset: 1,
+                            color: 'rgb(204, 46, 72)'
+                        }])
+                    }
+                }
+            }]
+        };
+        myChart.setOption(option);
+    }
+
+    $(".checkbox input").click(function () {
+        loding();
+        var _this = this;
+        if (!$(_this).hasClass("checked")) {
+            $(".checkbox input").attr("checked", false);
+            $(".checkbox input").removeAttr("checked");
+            $(".checkbox input").removeClass("checked");
+            $(_this).addClass("checked");
+            $(_this).prop("checked", "checked");
+            trendInit($(_this).attr("data"));
+            return;
+        }
+        if ($(_this).hasClass("checked")) {
+            $(".checkbox input").attr("checked", false);
+            $(".checkbox input").removeAttr("checked");
+            $(".checkbox input").removeClass("checked");
+            $(_this).removeClass("checked");
+            trendInit("");
+            return;
+        }
+    });
+
+    function tableInit() {
+        $('#classify-total-table').bootstrapTable({
+            dataType: 'json', //数据格式
+            dataLocale: 'zh-US', //表格汉化
+            // toolbar: '#toolbar',
+            striped: true, //是否显示行间隔色
+            cache: false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+            pagination: true, //是否显示分页（*）
+            sortable: true, //是否启用排序
+            sortOrder: "desc", //排序方式
+            // search: true,
+            showExport: true,
+            searchFormatter: false,
+            showRefresh: false, //是否显示刷新按钮
+            cellStyle: true,
+            checkbox: true,
+            sidePagination: "client", //分页方式：client客户端分页，server服务端分页（*）
+            pageNumber: 1, //初始化加载第一页，默认第一页
+            pageSize: 50, //每页的记录行数（*）
+            pageList: [50, 100, 200], //可供选择的每页的行数（*）
+            formatLoadingMessage: function () {
+                return "请稍等，正在加载中。。。";
+            },
+            columns: [{
+                title: '',
+                valign: 'middle',
+                sortable: true,
+                align: 'center',
+                formatter: function (value, row, index) {
+                    return index + 1;
+                }
+            }, {
+                field: 'type',
+                title: '类型',
+                valign: 'middle',
+                sortable: true,
+                align: 'center',
+                formatter: function (value, row, index) {
+                    if (value.indexOf("android") >= 0) {
+                        return '<i class="fa-android">';
+                    }
+                    if (value.indexOf("PC") >= 0) {
+                        return '<i class="fa-desktop">';
+                    }
+                    if (value.indexOf("WeChat") >= 0) {
+                        return '<i class="fa-wechat">';
+                    }
+                }
+            }, {
+                field: 'name',
+                title: '名称',
+                valign: 'middle',
+                sortable: true,
+                align: 'center',
+                formatter: function (value, row, index) {
+                    return '<a title="' + row.url + '">' + value + '</a>';
+                }
+            }, {
+                field: 'url',
+                title: 'URL',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }, {
+                field: 'PV',
+                title: '浏览量(PV)',
+                valign: 'middle',
+                sortable: true,
+                height: '40px',
+                align: 'center'
+            }, {
+                field: 'IPMap',
+                title: 'IP数',
+                valign: 'middle',
+                sortable: true,
+                align: 'center'
+            }]
+        });
+        $('#activity-table').bootstrapTable('hideColumn', 'url');
+    }
+
+    $("#today").click(function () {
+        btnGroupDef();
+        $("#today").addClass("btn-danger");
+        $("#stime").html(stimeHtml);
+        $("#stime").next().html("");
+        $("#etime").html("");
+        init(stimeHtml, etimeHtml);
+    });
+    $("#yesterday").click(function () {
+        btnGroupDef();
+        $("#yesterday").addClass("btn-danger");
+        stimeHtml = getPaseDate(1);
+        etimeHtml = getNowFormatDate().substring(0, 10);
+        $("#stime").html(stimeHtml);
+        $("#stime").next().html("");
+        $("#etime").html("");
+        init($("#stime").html(), etimeHtml);
+    });
+    $("#week").click(function () {
+        btnGroupDef();
+        $("#week").addClass("btn-danger");
+        stimeHtml = getPaseDate(7);
+        etimeHtml = getNowFormatDate().substring(0, 10);
+        $("#stime").html(stimeHtml);
+        $("#stime").next().html("-");
+        $("#etime").html(etimeHtml);
+        init();
+    });
+    $("#month").click(function () {
+        btnGroupDef();
+        $("#month").addClass("btn-danger");
+        stimeHtml = getPaseDate(30);
+        etimeHtml = getNowFormatDate().substring(0, 10);
+        $("#stime").html(stimeHtml);
+        $("#stime").next().html("-");
+        $("#etime").html(etimeHtml);
+        init($("#stime").html(), $("#etime").html());
+    });
+
+    function btnGroupDef() {
+        stimeHtml = getNowFormatDate().substring(0, 10);
+        etimeHtml = getNowFormatDate().substring(0, 8) + (parseInt(getNowFormatDate().substring(8, 12)) + 1);
+        $("#today").removeClass("btn-danger");
+        $("#yesterday").removeClass("btn-danger");
+        $("#week").removeClass("btn-danger");
+        $("#month").removeClass("btn-danger");
+        $(".datepicker").remove();
+        isDatepickerOpen = false;
+        loding();
+    }
+
+    $('.time-group').click(function () {
+        if (isDatepickerOpen == false) {
+            isDatepickerOpen = true;
+            $(".datepicker-div").DatePicker({
+                flat: true,
+                date: [stimeHtml, etimeHtml],
+                current: stimeHtml,
+                calendars: datepickerNum,
+                mode: 'range',
+                starts: 1,
+                onChange: function (formated, dates) {
+                    stimeHtml = formated[0];
+                    etimeHtml = formated[1];
+                }
+            });
+            var str = '<div class="datepicker" style="display:flex;position: relative;top:150px;left:4px;' +
+                'height: 48px;padding:8px 4px 4px 4px;' +
+                'width: ' + (datepickerNum * 160 + (datepickerNum - 1) * 20) + 'px;' +
+                'background-color: #eee;border-radius: 0 0 4px 4px;' +
+                'justify-content: right;padding-right: 20px;' +
+                'box-shadow: 3px 3px #f60;border-left: 2px solid #f60">' +
+                '<div style="display:flex;align-self: flex-end;" role="group">' +
+                '<button type="button" class="btn btn-xs btn-danger" onclick="updataDatepickerVal();" style="margin-right:10px; ">&nbsp;确定&nbsp;</button>\t' +
+                '<button type="button" class="btn btn-xs btn-default" onclick="$(\'.datepicker\').remove();">&nbsp;取消&nbsp;</button></div>' +
+                '</div>';
+            $('.datepicker').parent().append(str);
+        } else {
+            $(".datepicker").remove();
+            isDatepickerOpen = false;
+        }
+    });
+
+    function updataDatepickerVal() {
+        $("#stime").html(stimeHtml);
+        $("#etime").html(etimeHtml);
+        $(".datepicker").remove();
+        isDatepickerOpen = false;
+        init(stimeHtml, etimeHtml);
+        btnGroupDef();
+        loding();
+    }
+
+    (function () {
+        stimeHtml = getNowFormatDate().substring(0, 10);
+        etimeHtml = getNowFormatDate().substring(0, 8) + (parseInt(getNowFormatDate().substring(8, 10)) + 1);
+        $("#stime").html(stimeHtml);
+        $("#stime").next().html("");
+    })();
+</script>
+</html>

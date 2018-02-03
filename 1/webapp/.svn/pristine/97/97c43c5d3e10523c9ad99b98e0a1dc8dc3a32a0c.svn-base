@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>管理收货地址</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+	<link rel="stylesheet" type="text/css" href="../../../css/app/style.css">
+</head>
+<style type="text/css">
+	.detailBox{
+		background-color: #fff;
+		margin-top: 48px;
+	}
+	.modificationBox input{
+		border: none;
+	}
+	.distance{
+		padding: 3%;
+	}
+	.borderStyle{
+		border-top: 1px solid #eeeeee;
+		border-bottom: 1px solid #eeeeee;
+	}
+	.styleInput{
+		margin-left: 10px;
+		width: 70%;
+	}
+	.detailInput{
+		width: 100%;
+	}
+	.deteleAdress{
+		margin-top: 10px;
+		background-color: #fff;
+		color: red;
+	}
+	.regulator{
+		float: left;
+		margin-left: 53px;
+	}
+	.addressSave{
+		float: right;
+		margin-right: 20px;
+	}
+	.cxselect{
+        width:25%;
+        vertical-align: middle;
+    }
+</style>
+<body>
+	<div>
+		<div class="head">
+			<div class="navImg">
+				<img src="../../../img/app/arrowLeft-icon.png">
+			</div>
+			<div class="regulator">管理收货地址</div>
+			<div class="addressSave">保存</div>
+		</div>
+		<div class="modificationBox">
+			<form action="" id="editAddressForm">
+				<div class="detailBox">
+					<div class="consignee distance">
+						<span>收货人</span>
+						<input class="styleInput" type="text" name="name">
+					</div>
+					<div class="contant distance borderStyle">
+						<span>联系电话</span>
+						<input class="styleInput" type="text" name="contact">
+					</div>
+					<div class="location distance" id="cityLocation">
+						<span>所在地区</span>
+						<select class="prov cxselect" disabled="disabled" name="mailProvince">
+	                    </select>
+	                    <select class="city cxselect" disabled="disabled" name="mailCity">
+	                    </select>
+	                    <select class="area cxselect" disabled="disabled" name="mailArea">
+	                    </select>
+					</div>
+					<div class="street distance borderStyle">
+						<span>街道</span>
+						<input class="styleInput" type="text" name="mail_location">
+					</div>
+					<div class="detailAddress distance">
+						<input class="detailInput" type="text" name="" value="北京市海淀区北京市海淀区北京市海淀区北京市海淀区北京市海淀区">
+					</div>				
+				</div>
+				<div class="deteleAdress">
+					<div class="distance">删除地址</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+<script src="../../../js/zepto.js"></script>
+<script src="../../../js/app/form.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<script src="../../../js/common/zepto.cxselect.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#cityLocation').cxSelect({
+        url: '../../../js/common/cityData.min.json',
+        selects: ['prov', 'city', 'area']
+    });
+    $(".addressSave").on("click", function(){
+    	console.log($("#editAddressForm").serialize());
+    	$.myAjax({
+    		url: basePath + "user/mailaddress/save.do",
+    		data: $("#editAddressForm").serialize(),
+    		success: function(result){
+    			if (result.flag) {
+    				myAlert("保存成功")
+    			}else{
+    				myConfirm(result.flag)
+    			}
+    		},
+    		error: function(){
+    			myAlert("请求失败,请稍后重试!", "slow");
+    		}
+    	})
+    });
+ 	$(".deteleAdress").on("click", function(){
+		myConfirm("确定删除", function(){
+			$.myAjax({
+				url: basePath + "user/mailaddress/del.do",
+				data: "",
+				success: function (result){
+					if (result.flag) {
+						myAlert("删除成功");
+					} else {
+						myConfirm(result.flag);
+					}
+				},
+				error: function (){
+					myAlert("删除失败,请稍后重试!", "slow")
+				}
+			})
+		});
+	})
+});
+function initPage(){
+	var str = '';
+	$.myAjax({
+		url: basePath + "mt/user/activity/get.do",
+		data: {id:Request("actId"),type:"guest"},
+		success: function(result){
+			if(result.flag){
+				
+			}else{
+				myConfirm(result.msg);
+			}
+		},
+		error: function(){
+			myConfirm("请求失败!");
+		}
+	})
+}
+</script>
+</html>

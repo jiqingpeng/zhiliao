@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>缴费</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="stylesheet" type="text/css" href="../../../css/app/style.css">
+<link rel="stylesheet" href="../../../css/weixin/pay.css">
+<style>
+    
+    .content .list{
+        width:94%;
+        padding:3%;
+        border:1px solid red;
+    }
+    .content .spaceing{
+        width:94%;
+        padding:3%;
+    }
+    
+    .space-center{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .space-between{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .content .pay-item{
+       margin: 10px 5px 0 0;
+       display: flex;
+       justify-content: flex-start;
+    }
+    .content .pay-item .pay-num{
+        display: inline-block;
+        width:80px;
+    }
+    .content .pay-item .pay-nl{
+        min-width: 80px;
+        text-align: right;
+    }
+    .content .pay-item .pay-nr{
+        margin-left:8px;
+    }
+    .content .pay-item .pay-ir{
+        margin-left:30%;
+    }
+    .content .invoice{
+        display: flex;
+        padding:3%;
+        justify-content: space-between;
+        align-items: center;
+        margin: 14px 0;
+        background-color: #fff;
+    }
+    .payState{
+        padding: 3%;
+        color: #ff8400;
+        background-color: #fff;
+        margin-bottom: 14px;
+    }
+    .pay-btnlist{
+        width:100%;
+        display: flex;
+        position:fixed;
+        left:0;
+        bottom:0;
+    }
+    .pay-calc{
+        width:50%;
+    }
+    .pay-btn{
+        width:50%;
+        height:40px;
+        background:#f60;
+        color:#fff;
+    }
+    .note-cont{
+        margin-left:5%;
+    }
+    .mask{
+        position: absolute;
+        left:0;
+        top:0;
+        width:100%;
+        height:100%;
+        z-index:998;
+        background:#000;
+        opacity: 0.6;
+    }
+    .note {
+        float: right;
+        margin-right: 6px;
+    }
+    .feeIns {
+        height: 18px;
+        width: 18px;
+        border: 1px solid #fff;
+        color: #fff;
+        line-height: 18px;
+        text-align: center;
+        border-radius: 10px;
+        display: inline-block;
+    }
+    .hot{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border:1px solid red;
+        border-radius: 4px;
+        padding:4px;
+    }
+    .active{
+        display: none;
+    }
+</style>
+</head>
+<body>
+    <div class="head">
+        <div class="navImg">
+            <img src="../../../img/app/arrowLeft-icon.png">
+        </div>
+        <div class="navDetail">缴费详情</div>
+        <div class="note">
+            <a href="feeIns.html" class="feeIns">?</a>
+        </div>
+    </div>
+    <div class="content">
+        <input type="hidden" class="pay-type">
+        <section class='pay-tit'>
+            <h2 class="title list">
+                <span class="tit-con"></span>
+            </h2>
+            <div class="addressdate list">
+                <span class="address">
+                    <img src="" alt="">
+                    <span>海淀区创业广场</span>
+                </span>
+                <span class="date">
+                    <img src="" alt="">
+                    <span class="stime"></span>
+                    <span>-</span>
+                    <span class="etime"></span>
+                </span>
+            </div>
+        </section>
+        <section class="user-info space-between list">
+            <div class="user"></div>
+            <div class="mobile"></div>
+        </section>
+        <section class="invo-info list">
+            <li class="space-between">
+                <span class="fee-name">
+                    
+                </span>
+                <span class="total-fee">
+                    
+                </span>
+            </li>
+        </section>
+        <section class="instructions list">
+        </section>
+        <section class="list  pay-msg">
+            <h4>支付说明</h3>
+            <div></div>
+        </section>
+        <section class="list active bank-msg"> 
+            <h4>银行转账</h3>
+            <div></div>
+        </section>
+        <!-- <div class="note spaceing active">
+            <h3 class="tit">备注:</h3>
+            <div class="note-cont">
+                <p class="pay-item">如果选择银行线下转账，汇款信息如下:</p>
+                <p class="pay-item">
+                    <span class="pay-nl">账户名称:</span>
+                    <span class="pay-nr pay-company"></span>
+                </p>
+                <p class="pay-item">
+                    <span class="pay-nl">账户号:</span>
+                    <span class="pay-nr pay-accunt"></span>
+                </p>
+                <p class="pay-item">
+                    <span class="pay-nl">开户号:</span>
+                    <span class="pay-nr pay-bankname"></span>
+                </p>
+            </div>
+        </div> -->
+        <!-- <h3 class="invoice">
+            <span>发票</span>
+            <img src="../../../img/app/date_right.png">
+        </h3> -->
+        <h3 class="payState hide">
+        </h3>
+    </div>
+    <div class="pay-btnlist pay-group">
+        <div class="space-center pay-btn">
+            <span class="go-hotel">确认并预定酒店</span>
+        </div>
+        <div class="space-center pay-btn">
+            <span class="go-payCost">返回到缴费页</span>
+        </div>
+        <!-- <div class="pay-platform   space-between">
+            <span class="pay-calc">
+                <span>合计</span>
+                <span class="num"></span>
+            </span>
+            <span class="pay-btn space-center">
+                <span>立即支付</span>
+            </span>
+        </div>
+        <div class="pay-bank active space-between">
+            <span class="pay-calc space-between">
+                <span>合计</span>
+                <span>￥570</span>
+            </span>
+            <span class="pay-btn space-center">
+                <span>确认已通过银行转账</span>
+            </span>
+        </div> -->
+    </div>
+</body>
+<script src="../../../js/zepto.js"></script>
+<script src="../../../js/zepto.md5.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<script>
+var invoiceContent = null,
+    invoice = null,
+    invoiceType = '', // 开票类型
+    invoiceTakeType = ''; // 获取发票方式
+var id = Request("actId");
+$(function(){
+    var feeName = decodeURI(Request("feeName"));
+    var totalFee = Request("totalFee");
+    var count= Request("count");
+    var payType= Number(Request("payType"));
+    var str = totalFee+'*'+count;
+    var countNum = totalFee*count
+    $('.fee-name').html(feeName);
+    $('.total-fee').html(str);
+    $('.pay-calc .num').html('￥'+countNum);
+    init();
+    //平台缴费
+    $('.pay-platform').on("click",function(){
+        save();
+    });
+    //银行转账
+    $('.pay-bank').on("click",function(){
+        save();
+    });
+    $('.payp-btn').on("click",function(){
+    });
+    $(document).on("click",".pay-pos .pay-item",function(){
+        $(".pay-pos .pay-item").css("border","1px solid #ccc");
+        $(this).css("border","1px solid red");
+        $(".pay-pos .pay-item").removeClass("check");
+        $(this).addClass("check");
+        payId =$(this).data('id') ;
+    });
+    $('.invoice').on("click",function(){
+        if(invoice){
+            window.location.href="invoice.html?actId="+id+"&invoiceType="+invoiceType+"&invoiceTakeType="+invoiceTakeType;
+        }else{
+            $('.invoice').off();
+            myConfirm("主办方不提供发票");
+        }
+    });
+    $('.go-hotel').on("click",function(){
+        window.location.href="../hotel/hotelList.html?actId="+id;
+    });
+    $('.go-payCost').on("click",function(){
+        window.location.href="payCost.html?actId="+id;
+    });
+});
+function init(){
+    var url = basePath+"mt/user/activity/get.do?id="+id+"&type=paymentconfirm,base";
+    $.myAjax({
+        url: url,
+        success: function (result) {
+            if (result.flag) {
+                console.log(result)
+                var base = result.data.base;
+                //地点时间
+                $('.tit-con').html(base.name);
+                var stime = base.stime.substring(5,10);
+                nstime = stime.replace(/-/,"/");
+                $('.stime').html(nstime);
+                var etime = base.etime.substring(5,10);
+                netime = etime.replace(/-/,"/");
+                $('.etime').html(netime);
+                //userInfo
+                var userInfo = result.data.userInfo;
+                $('.user').html(userInfo.name);
+                $('.mobile').html(userInfo.mobile);
+                var data = result.data.paymentconfirm;
+                if(data.userPaymentOrder){ // 缴费数据
+                    console.log(data.userPaymentOrder)
+                    var str = '';
+                    for(var i = 0; i < data.userPaymentOrder.length; i ++){
+                        str += 
+                        '<li class="space-between">'+
+                            '<span>'+
+                                data.userPaymentOrder[i].good_name+
+                            '</span>'+
+                            '<span>￥'+
+                                data.userPaymentOrder[i].total_fee+
+                                '*'+
+                                data.userPaymentOrder[i].good_count+
+                            '</span>'+
+                        '</li>';
+                    }
+                    $('.invo-info').html(str)
+                } 
+            };
+        },
+        error:function(){
+            myConfirm("请求错误");
+        }
+    });
+};
+function isWeixin() { 
+    var ua = window.navigator.userAgent.toLowerCase(); 
+    if (ua.match(/MicroMessenger/i) == 'micromessenger') { 
+        return true; 
+    } else { 
+        return false;
+    } 
+};
+
+</script>
+</html>

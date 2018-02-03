@@ -1,0 +1,38 @@
+body{
+    position: relative;
+}
+.content{
+    width:100%;
+    position: fixed;
+    top:48px;
+    left:0;
+    bottom:40px;
+    overflow-y: auto;
+}
+.content .pay-tit{
+    border-bottom: 2px solid #ccc;
+}
+.content .pay-tit .title{
+    align-items: center;
+    justify-content: center;
+}
+.content .list{
+    width:94%;
+    padding:3%;
+}
+.space-center{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+}
+.space-between{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+/*cost*/
+.pay-mess{
+    width:94%;
+    padding:0 3%;
+    color:red;
+}

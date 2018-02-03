@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>管理收货地址</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+	<link rel="stylesheet" type="text/css" href="../../../css/app/style.css">
+</head>
+<style type="text/css">
+	.shipBox{
+		margin-top: 48px;
+		margin-bottom: 40px;
+	}
+	.contain{
+		background-color: #fff;
+		padding: 4% 3% 0 3%;
+		margin-bottom: 10px;
+	}
+	.shipTheme, .operation{
+		display: flex;
+	}
+	.shipName{
+		flex: 2;
+		text-align: left;
+	}
+	.shipMobile{
+		flex: 1;
+		text-align: right;
+	}
+	.shipAddress{
+		margin: 10px 0;
+	}
+	.operation{
+		margin: 0 -3%;
+		padding: 3% 3%;
+		border-top: 1px solid #ccc;
+	}
+	.operation img{
+		vertical-align: middle;
+		width: 14px;
+	}
+	.setDefault{
+		flex: 1.4;
+	}
+	.setDefault input{
+		vertical-align: middle;
+	}
+	.compile, .delete{
+		text-align: right;
+		flex: 0.4;
+	}
+	.newAdd{
+		position: fixed;
+		bottom: 0;
+		height: 40px;
+		line-height: 40px;
+		background-color: #f9752b;
+		width: 100%;
+		text-align: center;
+		color: #fff;
+	}
+
+
+
+	.detailBox{
+		background-color: #fff;
+		margin-top: 48px;
+	}
+	.modificationBox input{
+		border: none;
+	}
+	.distance{
+		padding: 3%;
+	}
+	.borderStyle{
+		border-top: 1px solid #eeeeee;
+		border-bottom: 1px solid #eeeeee;
+	}
+	.styleInput{
+		margin-left: 10px;
+		width: 70%;
+	}
+	.detailInput{
+		width: 100%;
+	}
+	.deteleAdress{
+		margin-top: 10px;
+		background-color: #fff;
+		color: red;
+	}
+	.regulator{
+		float: left;
+		margin-left: 53px;
+	}
+	.addressSave{
+		float: right;
+		margin-right: 20px;
+	}
+	.cxselect{
+        width:25%;
+        vertical-align: middle;
+    }
+    .none{
+    	display: none !important;
+    }
+    .navImg1{
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 53px;
+	}
+
+</style>
+<body>
+	<div>
+		<div class="head">
+			<div class="navImg1">
+				<img src="../../../img/app/arrowLeft-icon.png">
+			</div>
+			<div class="regulator">管理收货地址</div>
+			<div class="addressSave none">保存</div>
+		</div>
+		<div class="shipBox">
+			<!-- <div class="contain">
+				<div class="shipTheme">
+					<div class="shipName">杨波</div>
+					<div class="shipMobile">15734742257</div>
+				</div>
+				<div class="shipAddress">
+					<span>北京市海淀区北京市海淀区北京市海淀区北京市海淀区北京市海淀区北京市海淀区</span>
+				</div>
+				<div class="operation">
+					<div class="setDefault">
+						<input class="default" type="checkbox" name="">
+						<span>设为默认地址</span>
+					</div>
+					<div class="compile">
+						<img src="../../../img/app/address.png">
+						<span id="copyreader">编辑</span>
+					</div>
+					<div class="delete">
+						<img src="../../../img/app/address.png">
+						<span id="delete">删除</span>
+					</div>
+				</div>
+			</div> -->
+		</div>
+		<div class="newAdd">添加新地址</div>
+		<div class="modificationBox hide">
+			<form action="" id="editAddressForm">
+				<input type="hidde" id="actId" name="id">
+				<div class="detailBox">
+					<div class="consignee distance">
+						<span>联系人</span>
+						<input class="styleInput recipients" maxlength="16" type="text" name="name">
+					</div>
+					<div class="contant distance borderStyle">
+						<span>联系电话</span>
+						<input class="styleInput recipiPhone" maxlength="11" type="text" name="contact">
+					</div>
+					<div class="location distance" id="cityLocation">
+						<span>所在地区</span>
+						<select class="prov cxselect" disabled="disabled" name="mailProvince">
+	                    </select>
+	                    <select class="city cxselect" disabled="disabled" name="mailCity">
+	                    </select>
+	                    <select class="area cxselect" disabled="disabled" name="mailArea">
+	                    </select>
+					</div>
+					<div class="street distance borderStyle">
+						<span>街道</span>
+						<input class="styleInput recipiLocation" maxlength="64" type="text" name="mailLocation">
+					</div>
+					<!-- <div class="detailAddress distance">
+						<input class="detailInput" type="text" name="" value="北京市海淀区北京市海淀区北京市海淀区北京市海淀区北京市海淀区">
+					</div> -->				
+				</div>
+				<div class="deteleAdress">
+					<div class="distance">删除地址</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+<script src="../../../js/zepto.js"></script>
+<script src="../../../js/app/form.js"></script>
+<script src="../../../js/app/mtCommon.js"></script>
+<script src="../../../js/common/zepto.cxselect.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	//初始化页面
+	initPage();
+	$(".navImg1").on("click", function(){
+		if($(".addressSave").hasClass("none")){
+			history.go(-1);
+		}
+		if(!$(".addressSave").hasClass("none")){
+			$(".modificationBox").addClass("hide");
+			$(".shipBox").removeClass("hide");
+			$(".addressSave").addClass("none");
+			$('.newAdd').removeClass("hide");
+			return false;
+		}
+	})
+	//初始化省市级控件
+	$('#cityLocation').cxSelect({
+        url: '../../../js/common/cityData.min.json',
+        selects: ['prov', 'city', 'area']
+    });
+
+    //添加新地址操作
+    $('.newAdd').on("click", function(){
+    	$(this).addClass("hide")
+    	$(".modificationBox").removeClass("hide");
+		$(".shipBox").addClass("hide");
+		$(".addressSave").removeClass("none")
+		$("#actId").removeAttr("name");
+		$(".recipients").val('');
+		$(".recipiPhone").val('');
+		$(".prov").val('');
+		$(".prov").trigger("change");
+		$(".city").val('');
+		$(".city").trigger("change");
+		$(".area").val('');
+		$(".recipiLocation").val('');
+    });
+
+    //展示地址---编辑操作
+	$(document).on("click", "#copyreader", function(){
+		$("#actId").attr("name", "id");
+		$(".newAdd").addClass("hide");
+		$(".addressSave").removeClass("none");
+		$(".modificationBox").removeClass("hide");
+		$(".shipBox").addClass("hide");
+		$(".actId").val($(this).parents(".contain").find(".mailProvince").val())
+		$(".recipients").val($(this).parents(".contain").find(".shipName").html());
+		$(".recipiPhone").val($(this).parents(".contain").find(".shipMobile").html());
+		$(".prov").val($(this).parents(".contain").find(".mailProvince").val());
+		$(".prov").trigger("change");
+		$(".city").val($(this).parents(".contain").find(".mailCity").val());
+		$(".city").trigger("change");
+		$(".area").val($(this).parents(".contain").find(".mailArea").val());
+		$(".recipiLocation").val($(this).parents(".contain").find(".mailLocation").val());
+		$("#actId").val($(this).parents(".contain").find(".shipId").val());
+	});
+	// if($(".default").prop("ckecked") == true){
+	// 	$(".default").next().html("默认地址");
+	// }
+
+	//展示地址---删除操作
+	$(".deteleAdress").on("click", function(){
+		var id = $(this).prev().prev().val();
+		delAddress(id);
+	})
+
+	//修改地址---删除操作
+	$(document).on("click", "#delete", function(){
+		var id = $(this).parents(".contain").find(".shipId").val();
+		delAddress(id);
+	})
+
+	//保存操作
+	$(".addressSave").on("click", function(){
+		if(verify()){
+			compileSave();
+		}
+	});
+});
+
+//初始化获取页面
+function initPage(){
+	$.myAjax({
+		url: basePath + "user/mailaddress/list.do",
+		success: function(result){
+			if(result.flag){
+				var mailAddress = result.data.mailAddress;
+				var str = '';
+				for (var i = 0; i < mailAddress.length; i++){
+					str += '<div class="contain">' +
+						'<input type="hidden" class="shipId" value="'+mailAddress[i].id+'" />' +
+						'<div class="shipTheme">' +
+							'<div class="shipName">' + mailAddress[i].name + '</div>' +
+							'<div class="shipMobile">' + mailAddress[i].contact + '</div>' +
+						'</div>' +
+						'<div class="shipAddress">' +
+							'<input type="hidden" class="mailProvince" value = "'+mailAddress[i].mailProvince+'"/>' + 
+							'<input type="hidden" class="mailCity" value = "'+mailAddress[i].mailCity+'"/>' + 
+							'<input type="hidden" class="mailArea" value = "'+mailAddress[i].mailArea+'"/>' +
+							'<input type="hidden" class="mailLocation" value = "'+mailAddress[i].mailLocation+'"/>' + 
+							'<span>' + mailAddress[i].mailProvince + mailAddress[i].mailCity + mailAddress[i].mailArea + mailAddress[i].mailLocation + '</span>' +
+						'</div>' +
+						'<div class="operation">' +
+							'<div class="setDefault">' +
+								'<input class="default" type="checkbox" name="">' +
+								'<span>设为默认地址</span>' +
+							'</div>' +
+							'<div class="compile">' +
+								'<img src="../../../img/app/address.png">' +
+								'<span id="copyreader">编辑</span>' +
+							'</div>' +
+							'<div class="delete">' +
+								'<img src="../../../img/app/address.png">' +
+								'<span id="delete">删除</span>' +
+							'</div>' +
+						'</div>' +
+					'</div>';
+				}
+				$(".shipBox").html(str);
+			}else{
+				myConfirm(result.msg);
+			}
+		},
+		error: function(){
+			myConfirm("请求失败!");
+		}
+	})
+}
+
+//删除地址
+function delAddress(id){
+	myConfirm("确定删除", function(){
+		$.myAjax({
+			url: basePath + "user/mailaddress/del.do",
+			data: {id: id},
+			success: function (result){
+				if (result.flag) {
+					myAlert("删除成功");
+					initPage();
+					$(".addressSave").addClass("none");
+					$('.newAdd').removeClass("hide");
+					$(".modificationBox").addClass("hide");
+					$(".shipBox").removeClass("hide");
+				} else {
+					myConfirm(result.flag);
+				}
+			},
+			error: function (){
+				myAlert("删除失败,请稍后重试!", "slow")
+			}
+		})
+	});
+}
+//保存地址
+function compileSave(){
+	$.myAjax({
+		url: basePath + "user/mailaddress/save.do",
+		data: $("#editAddressForm").serialize(),
+		success: function(result){
+			if (result.flag) {
+				myAlert("保存成功");
+				initPage();
+				$(".modificationBox").addClass("hide");
+				$(".shipBox").removeClass("hide");
+				$(".addressSave").addClass("none");
+				$('.newAdd').removeClass("hide");
+
+			}else{
+				myConfirm(result.flag)
+			}
+		},
+		error: function(){
+			myAlert("请求失败,请稍后重试!", "slow");
+		}
+	})
+}
+
+//保存信息验证
+function verify(){
+	if($(".recipients").val() == "" || $(".recipients").val() == null){
+		myConfirm("联系人不能为空!", function(){
+			$(".recipients").focus();
+		});
+		return false;
+	};
+	if($(".recipiPhone").val() == "" || $(".recipiPhone").val() == ""){
+		myConfirm("联系电话不能为空!", function(){
+			$(".recipiPhone").focus();
+		});
+		return false;
+	} else if(!(/^1[34578]\d{9}$/.test($(".recipiPhone").val()))){ 
+		myConfirm("手机号码有误，请重新输入！", function(){
+			$(".recipiPhone").focus();
+		}); 
+		return false;
+	};
+	if($(".prov").val() == "" || $(".prov").val() == ""){
+		myConfirm("所在地区不能为空!");
+		return false;
+	};
+	if($(".city").val() == "" || $(".city").val() == ""){
+		myConfirm("所在地区不能为空!");
+		return false;
+	};
+	if($(".recipiLocation").val() == "" || $(".recipiLocation").val() == ""){
+		myConfirm("街道不能为空!", function(){
+			$(".recipiLocation").focus();
+		});
+		return false;
+	};
+	return true;
+}
+</script>
+</html>

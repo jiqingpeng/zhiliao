@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>缴费信息</title>
+<link rel="shortcut icon" href="../../../img/webicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="../../../css/common/bootstrap.min.css">
+<link rel="stylesheet" href="../../../css/common/bootstrap-table.min.css">
+<link href="../../../css/style.css" rel="stylesheet"/>
+<link href="../../../css/main.css" rel="stylesheet"/>
+<style type="text/css">
+.insBtn {
+    cursor: pointer;
+}
+.insBtn span{
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+    border-radius: 9px;
+    border: 1px solid #ff8400;
+    color: #ff8400;
+    line-height: 16px;
+    text-align: center;
+    margin-left: 4px;
+}
+.mops-con {
+    position: relative;
+}
+.InsMask {
+    height: 100%;
+    width: 100%;
+    min-height: 650px;
+    background-color: rgba(51,51,51,0.4);
+    position: absolute;
+    top: 0px;
+    left: 0;
+    z-index: 999;
+}
+.feeInsCon {
+    position: absolute;
+    top: 80px;
+    left: 12%;
+    background: #fff;
+    z-index: 1000;
+    width: 80%;
+    border-radius: 4px;
+    max-height: 500px;
+    overflow-y: auto;
+}
+.closeIns {
+    height: 38px;
+    line-height: 38px;
+    width: 100%;
+    padding-left: 14px;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+.closeInsBtn{
+    float: right;
+    margin: 4px 14px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    width: 56px;
+    height: 28px;
+    line-height: 28px;
+    color: red;
+}
+pre { 
+    padding: 0 40px; 
+    width: 100%; 
+    word-wrap: break-word; 
+    white-space:pre-wrap; 
+    white-space: -moz-pre-wrap; 
+    background-color: #fff;
+    font-size: 14px; 
+    color: #333; 
+    border: none;
+}
+</style>
+</head>
+<body>
+<script type="text/javascript" src="../../../js/common/header.js"></script>
+<div class="mops-con">
+	<div class="con-nav">
+		<a href="payInfo.html">缴费管理</a>
+		<a href="">-&gt;</a>
+		<a href="payInfo.html">缴费信息</a>
+	</div>
+	<div class="con-box">
+    	<div id="subMenu">
+            <div id="subMenuBody">
+                <ul>
+                    <a href="generalFee.html"><li>费用配置</li></a>
+                	<a href="payInfo.html"><li class="menuAct">缴费信息</li></a>
+                    <a href="invoiceInfo.html"><li>发票管理</li></a>
+                    <a href="mailInfo.html"><li>邮寄管理</li></a>
+                </ul>
+            </div>
+        </div>
+        <div id="contentBody" class="mops-table">
+            <span class="insBtn">功能说明<span>?</span></span>
+            <input type="hidden" id="id"/>
+    		<table id="texttable">
+      		</table>
+    	</div>
+	</div>
+    <div class="InsMask none"></div>
+    <div class="feeInsCon none">
+        <div class="closeIns">
+            <span>缴费管理模块使用说明</span>
+            <button class="closeInsBtn">关 闭</button>
+        </div>
+<pre>本页面所展示的缴费信息是管理员发布活动时在“报名信息--支付及发票信息”功能模块所配置的参会费缴纳信息；参会用户通过平台在线支付并缴费成功的参会费类缴费信息均统一显示在此管理页面。根据参会用户实际在线缴纳的费用总额（非银行转帐操作），平台收取相应的手续费：线下签约合作单位，收取1%的手续费，网签合作单位收取3%手续费。
+每个自然月的5号为群英汇会议服务平台统一对帐日，财务部门将对上一个自然月结束的所有活动（有在线缴费款项发生的）进行统一核对帐目，核对无误后，当月15号以银行转帐的方式将核对后的款项金额（扣除手续费），统一转帐至主办方指定银行帐户。
+主办方如因特殊原因，需要提前结算款项，可与群英汇工作人员取得联系。结算流程：提交提现申请表—双方核对帐目―提交财务审核—转帐。
+备注：如有“已通过银行转帐”栏目内容，其中所显示的缴费信息为参会用户自主编辑并提交，实际是否已通过线下银行转帐将款项打入主办方指定的帐户，主办方需要自行核实并查证，平台不保证参会用户所提交信息的真实性，不承担任何法律责任。
+
+</pre>
+    </div>   
+</div> 
+<script type="text/javascript" src="../../../js/common/footer.js"></script>
+</body>
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/bootstrap-table.min.js"></script>
+<script src="../../../js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../../js/tableExport.js"></script>
+<script src="../../../js/bootstrap-table-export.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/main.js"></script>
+<script type="text/javascript">
+$(function(){
+    loading();
+    serialMenuAjax('admin/activity/menu.do', '缴费管理', sessionStorage.getItem('actId'), initPage);
+    $("#id").val(sessionStorage.getItem('actId'));
+    // 查看使用说明
+    $(".insBtn").click(function(){
+        $(".InsMask, .feeInsCon").show();
+    });
+    // 关闭使用说明
+    $(".closeInsBtn").click(function(){
+        $(".InsMask, .feeInsCon").hide();
+    });
+});
+//初始化页面
+function initPage(){
+    $.myAjax({
+        url: basePath + 'admin/activity/fee/list.do',
+        data: {id: $("#id").val()},
+        success: function(result){
+            if(result.flag){
+                initTable(result.data);
+            }
+        },
+        error: function(result){
+            myAlert("请求失败!",'slow');
+        }
+    });
+}
+//table表格
+function initTable(data){
+    var columns = getColumn(data);
+	$('#texttable').bootstrapTable({
+        dataLocale: 'zh-CN',                //表格汉化        
+        toolbar: '#toolbar',                //工具按钮用哪个容器       
+        striped: true,                      //是否显示行间隔色
+        cache: false,   
+        showExport:true,                    
+        pagination: true,                   //是否显示分页（*）
+        sortable: true,                     //是否启用排序
+        sortOrder: "asc",                   //排序方式
+        sidePagination: "client",           
+        strictSearch: false,
+        pageNumber:1,                       //初始化加载第一页，默认第一页
+        pageSize: 10, 
+        pageList: [10, 20, 30, 40, 50],
+        search: true,                       
+        showRefresh: true,
+        // showColumns: true,
+        columns: columns
+    });
+    $("#texttable").bootstrapTable('load', data.fee);
+}
+function getColumn(data){
+    var feeType = data.feeType,
+        fee = data.fee;
+    var column1 = [];
+    var backA = [],
+        weixinA = [];
+    for(var i=0;i<feeType.length;i++){
+        var bank = {},
+            weixin = {};
+        bank.field = 'bank'+i;
+        weixin.field = 'weixin'+i;
+        weixin.title = bank.title = feeType[i];
+        weixin.align = bank.align = 'center';
+        weixin.valign = bank.valign = 'middle';
+        bank.formatter = function(value,row,index){
+            var val = row.bank_transfer_trade_info;
+            for(var i=0;i<val.length;i++){
+                if(val[i].good_name == this.title){
+                    return val[i].good_count + ' 张';
+                }
+            }
+            return '-';
+        }
+        weixin.formatter = function(value,row,index){
+            var val = row.weixin_trade_info;
+            for(var i=0;i<val.length;i++){
+                if(val[i].good_name == this.title){
+                    return val[i].good_count + ' 张';
+                }
+            }
+            return '-';
+        }
+        backA.push(bank);
+        weixinA.push(weixin);
+    };
+    column1.push.apply(column1,backA.concat(weixinA));
+    column1.push({
+        field: 'weixin_total_fee',
+        title: '缴费金额(元)',
+        align: 'center',
+        sortable: true,
+        formatter: function(value,row,index){
+            if(value == '' || value == null){
+                return '-';
+            } else {
+                return value;
+            }
+        }
+    });
+    var columns = [[
+        {
+            align: 'center',
+            rowspan: 2,
+            valign: 'middle',
+            formatter: function(value,row,index){
+                return index+1;
+            }
+        },{
+            field: 'state',
+            title: '审核状态',
+            align: 'center',
+            rowspan: 2,
+            valign: 'middle',
+            sortable: true,
+            formatter: function(value,row,index){
+                if(value == 1){
+                    return "待审核"
+                }
+                if(value == 2){
+                    return "审核通过"
+                }
+                if(value == 8 || value == 9){
+                    return "已拒绝"
+                }
+                if(value == 4){
+                    return "未审核"
+                }
+            }
+        },{
+            field: 'name',
+            title: '姓名',
+            align: 'center',
+            rowspan: 2,
+            valign: 'middle',
+            sortable: true
+        },{
+            field: 'ctime',
+            title: '缴费时间',
+            align: 'center',
+            rowspan: 2,
+            valign: 'middle',
+            sortable: true
+        },{
+            field: 'corporation',
+            title: '单位',
+            align: 'center',
+            rowspan: 2,
+            valign: 'middle',
+            sortable: true
+        },{
+            field: 'mobile',
+            title: '联系电话',
+            align: 'center',
+            rowspan: 2,
+            valign: 'middle',
+            sortable: true
+        },{ 
+            field: 'bank_transfer_trade_info',
+            title: '银行转账',
+            colspan: feeType.length,
+            align: 'center'
+        },{ 
+            field: 'weixin_trade_info',
+            title: '平台缴费',
+            colspan: feeType.length+1,
+            align: 'center'
+        }],column1];
+    return columns;
+}
+</script>
+</html>
