@@ -180,12 +180,12 @@ body{
     margin-left:28%;
     width:60%;
 }
-.active{
-    display: none;
-}
 .pay-msg p, .bank-msg p{
     text-indent: 2em;
     line-height: 20px;
     font-size: 14px;
     color: #888;
+}
+.active{
+    display: none;
 }

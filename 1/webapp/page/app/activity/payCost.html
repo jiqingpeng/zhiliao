@@ -16,7 +16,6 @@
         left:0;
         bottom:40px;
         overflow-y: auto;
-        
     }
     .content .title{
         align-items: center;
@@ -27,6 +26,7 @@
         width:94%;
         padding:3%;
         background-color: #fff;
+        margin-bottom: 14px;
     }
     .content .pay-item{
        margin: 10px 5px 0 0;
@@ -121,8 +121,10 @@
         width:100%;
         display: flex;
         align-items: center;
-        height:40px;
+        height:34px;
         justify-content: space-between;
+        border-top: 1px solid #ccc;
+        margin-top: 10px;
     }
     .payp-box .payp-bord{
         border:1px solid #ccc;
@@ -153,12 +155,17 @@
         width:100%;
         display: flex;
         align-items: center;
-        /*height:40px;*/
         justify-content: space-between; 
     }
     .pay-list .payp-item .payp-inp{
         width:20px;
+        height: 16px;
+        margin: 0 4px;
         text-align:center;
+    }
+    .pnum-add, .pnum-redu {
+        height: 20px;
+        width: 20px;
     }
     .pay-list .check{
         border:1px solid red;
@@ -175,6 +182,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        margin: 4px 0;
     }
     .active{
         display: none;
@@ -189,6 +197,20 @@
         background:#000;
         opacity: 0.6;
     }
+    .note {
+        float: right;
+        margin-right: 6px;
+    }
+    .feeIns {
+        height: 18px;
+        width: 18px;
+        border: 1px solid #fff;
+        color: #fff;
+        line-height: 18px;
+        text-align: center;
+        border-radius: 10px;
+        display: inline-block;
+    }
 </style>
 </head>
 <body>
@@ -197,6 +219,9 @@
             <img src="../../../img/app/arrowLeft-icon.png">
         </div>
         <div class="navDetail">缴费</div>
+        <div class="note">
+            <a href="feeIns.html" class="feeIns">?</a>
+        </div>
     </div>
     <div class="content">
         <input type="hidden" class="pay-type">
@@ -208,7 +233,7 @@
             <ul class="online-mess"></ul>
         </div>
         <div class="pay-intructions spaceing">
-            <h3 class="tit">缴费说明:</h3>
+            <h3 class="tit">缴费类型:</h3>
             <div class="pay-list">
                 <ul class="feeSpecial"></ul>
                 <ul class="feeGeneral"></ul>
@@ -217,7 +242,7 @@
         <div class="note spaceing active">
             <h3 class="tit">备注:</h3>
             <div class="note-cont">
-                <p class="pay-item">如果选择银行卡转账，汇款信息如下:</p>
+                <p class="pay-item">如果选择银行线下转账，汇款信息如下:</p>
                 <p class="pay-item">
                     <span class="pay-nl">账户名称:</span>
                     <span class="pay-nr pay-company"></span>
@@ -274,111 +299,148 @@
 <script src="../../../js/zepto.md5.js"></script>
 <script src="../../../js/app/mtCommon.js"></script>
 <script>
-    $(function(){
-        var id = Request("actId");
-        init(id);
-        invoiceContent = null;
-        invoice = null;
-        num = 1;
-        $(document).on("click",'.check .pnum-redu',function(){
-            if(num<2){
-                num=num
-            }else{
-                num--;
-                $('.check .payp-inp').val(num);
-            }
-        });
-        $(document).on("click",'.check .pnum-add',function(){
-            num++;
-            $('.check .payp-inp').val(num);
-        });
-        $(document).on("click",'.pay-itembox',function(){
-            $('.pay-itembox').removeClass('check');
-            $(this).addClass('check');
-            $('.payp-item').addClass('active');
-            $(this).find('.payp-item').removeClass('active')
-            // $('.pay-list .payp-inp').val(1);
-        });
-        //平台缴费
-        $('.pay-platform').on("click",function(){
-            if(!isCheck()){
-                myConfirm("请选择转账的款项和数量，以便于主办方确认您的信息");
-                return;
-            }
-            $(".pay-type").val("1");
-            save(id)
-        });
-        //银行转账
-        $('.pay-bank').on("click",function(){
-            if(!isCheck()){
-                myConfirm("请选择转账的款项和数量，以便于主办方确认您的信息");
-                return;
-            }
-            $(".pay-type").val("");
-            save(id)
-        });
-        $('.payp-btn').on("click",function(){
-        });
-        $(document).on("click",".pay-pos .pay-item",function(){
-            $(".pay-pos .pay-item").css("border","1px solid #ccc");
-            $(this).css("border","1px solid red");
-            $(".pay-pos .pay-item").removeClass("check");
-            $(this).addClass("check");
-            payId =$(this).data('id') ;
-        });
-        $('.invoice').on("click",function(){
-            if(invoice){
-                window.location.href="invoice.html?actId="+id;
-            }else{
-                $('.invoice').off();
-                myConfirm("主办方不提供发票");
-            }
-        });
+var invoiceContent = null,
+    invoice = null,
+    invoiceType = '', // 开票类型
+    invoiceTakeType = ''; // 获取发票方式
+var num = null;
+var id = Request("actId");
+$(function(){
+    init();
+    $(document).on("click",'.check .pnum-redu',function(){
+        var num = $(this).next().val();
+        if(num<2){
+            num=1
+        }else{
+            num--;
+            $(this).next().val(num);
+        }
     });
-    function init(id){
-        var url = basePath+"mt/user/activity/get.do?id="+id+"&type=payment,base";
-        $.myAjax({
-            url: url,
-            success: function (result) {
-                if (result.flag) {
-                    console.log(result)
-                    var data = result.data;
-                    $('.tit-con').html(data.base.name);
-                    if(!(data.payment.invoiceType.length==0)){
-                        sessionStorage.setItem("invoiceContent",data.payment.invoiceType[0].content);
-                        invoice=true;
-                    };
-                    //show msg
-                    if(data.payment.onlinepayment){
-                        var str = '';
-                        for(var i = 0;i<data.payment.onlinepayment.order_list.length;i++){
-                            str += 
-                            '<li class="pmess-item">'+
-                                '<span class="">已缴费</span >'+
-                                '<span class="">'+
-                                    data.payment.onlinepayment.order_list[i].good_name+'*'+data.payment.onlinepayment.order_list[i].good_count
-                                '</span>'+
-                            '</li>';
-                        }
-                        $('.online-mess').html(str)
-                    };
-                    if(data.payment.banktrasfer){
-                        var str = '';
-                        for(var i = 0;i<data.payment.banktrasfer.order_list.length;i++){
-                            str += 
-                            '<li class="pmess-item">'+
-                                '<span class="">已转账</span >'+
-                                '<span class="">'+
-                                   data.payment.onlinepayment.order_list[i].good_name+'*'+data.payment.onlinepayment.order_list[i].good_count+
-                                '</span>'+
-                            '</li>'
-                        }
-                        $('.bank-mess').html(str)
+    $(document).on("click",'.check .pnum-add',function(){
+        var num = $(this).prev().val();
+        num++;
+        $(this).prev().val(num);
+    });
+    $(document).on("click",'.pay-itembox',function(){
+        $(this).siblings('.pay-itembox').find('.payp-inp').val(1);
+        num = $('.payp-inp').val();
+        $('.pay-itembox').removeClass('check');
+        $(this).addClass('check');
+        $('.payp-item').addClass('active');
+        $(this).find('.payp-item').removeClass('active')
+        // $('.pay-list .payp-inp').val(1);
+    });
+    //平台缴费
+    $('.pay-platform').on("click",function(){
+        if(!isCheck()){
+            myConfirm("请选择转账的款项和数量，以便于主办方确认您的信息");
+            return;
+        }
+        $(".pay-type").val("1");
+        save();
+    });
+    //银行转账
+    $('.pay-bank').on("click",function(){
+        if(!isCheck()){
+            myConfirm("请选择转账的款项和数量，以便于主办方确认您的信息");
+            return;
+        }
+        $(".pay-type").val("");
+        save();
+    });
+    $('.payp-btn').on("click",function(){
+    });
+    $(document).on("click",".pay-pos .pay-item",function(){
+        $(".pay-pos .pay-item").css("border","1px solid #ccc");
+        $(this).css("border","1px solid red");
+        $(".pay-pos .pay-item").removeClass("check");
+        $(this).addClass("check");
+        payId =$(this).data('id') ;
+    });
+    $('.invoice').on("click",function(){
+        if(invoice){
+            window.location.href="invoice.html?actId="+id+"&invoiceType="+invoiceType+"&invoiceTakeType="+invoiceTakeType;
+        }else{
+            $('.invoice').off();
+            myConfirm("主办方不提供发票");
+        }
+    });
+});
+function init(){
+    var url = basePath+"mt/user/activity/get.do?id="+id+"&type=payment,base";
+    $.myAjax({
+        url: url,
+        success: function (result) {
+            if (result.flag) {
+                var data = result.data;
+                $('.tit-con').html(data.base.name);
+                if(data.payment.invoiceType.length == 1){ // 发票类型
+                    // sessionStorage.setItem("invoiceContent",data.payment.invoiceType[0].content);
+                    invoice=true;
+                    invoiceType = data.payment.invoiceType[0].type;
+                } else if(data.payment.invoiceType.length == 2){
+                    invoice=true;
+                    invoiceType = "1,2";
+                }
+                if(data.payment.invoiceTakeType.length == 1){ // 获取发票方式判断
+                    invoiceType = data.payment.invoiceTakeType[0].type;
+                } else if(data.payment.invoiceType.length == 2){
+                    invoiceType = "1,2";
+                }
+                
+                //show msg
+                if(data.payment.onlinepayment){
+                    var str = '';
+                    for(var i = 0;i<data.payment.onlinepayment.order_list.length;i++){
+                        str += 
+                        '<li class="pmess-item">'+
+                            '<span class="">已通过平台缴费</span >'+
+                            '<span class="">'+
+                                data.payment.onlinepayment.order_list[i].good_name+'*'+data.payment.onlinepayment.order_list[i].good_count
+                            '</span>'+
+                        '</li>';
                     }
-                    if(!(data.payment.fee.length==0)){
-                        for(var i = 0; i < data.payment.fee.length; i ++){
-                            if("feeSpecial"==data.payment.fee[i].type){
-                                var str = 
+                    $('.online-mess').html(str)
+                };
+                if(data.payment.banktrasfer){
+                    var str = '';
+                    for(var i = 0;i<data.payment.banktrasfer.order_list.length;i++){
+                        str += 
+                        '<li class="pmess-item">'+
+                            '<span class="">已通过线下银行转账</span >'+
+                            '<span class="">'+
+                               data.payment.banktrasfer.order_list[i].good_name+'*'+data.payment.banktrasfer.order_list[i].good_count+
+                            '</span>'+
+                        '</li>'
+                    }
+                    $('.bank-mess').html(str)
+                }
+                if(!(data.payment.fee.length==0)){
+                    for(var i = 0; i < data.payment.fee.length; i ++){
+                        if("feeSpecial"==data.payment.fee[i].type){
+                            var str = 
+                            '<li class="pay-itembox" data-id="'+data.payment.fee[i].id+'">'+
+                                '<p class="pay-item">'+
+                                    '<span class="pay-num">￥'+data.payment.fee[i].totalFee+'</span>'+
+                                    '<span class="pay-ir">'+data.payment.fee[i].feeName+'</span>'+
+                                '</p>'+
+                                '<p class="payp-item active">'+
+                                    '<span class="pay-interests">'+
+                                        '权益保障'+
+                                    '</span>'+
+                                    '<span>'+
+                                        '<span>购买数量</span>&nbsp;'+
+                                        '<span>'+
+                                            '<button class="pnum-redu">-</button>'+
+                                            '<input type="text" class="payp-inp" value="1" readonly="readonly">'+
+                                            '<button class="pnum-add">+</button>'+
+                                        '</span>'+
+                                    '</span>'+
+                                '</p>'+
+                            '</li>';
+                            $('.feeSpecial').append(str);
+                        }else{
+                            var str = 
                                 '<li class="pay-itembox" data-id="'+data.payment.fee[i].id+'">'+
                                     '<p class="pay-item">'+
                                         '<span class="pay-num">￥'+data.payment.fee[i].totalFee+'</span>'+
@@ -386,10 +448,9 @@
                                     '</p>'+
                                     '<p class="payp-item active">'+
                                         '<span class="pay-interests">'+
-                                            '权益保障'+
                                         '</span>'+
                                         '<span>'+
-                                            '<span>购买数量</span>'+
+                                            '<span>购买数量</span>&nbsp;'+
                                             '<span>'+
                                                 '<button class="pnum-redu">-</button>'+
                                                 '<input type="text" class="payp-inp" value="1" readonly="readonly">'+
@@ -398,118 +459,101 @@
                                         '</span>'+
                                     '</p>'+
                                 '</li>';
-                                $('.feeSpecial').append(str);
-                            }else{
-                                var str = 
-                                    '<li class="pay-itembox" data-id="'+data.payment.fee[i].id+'">'+
-                                        '<p class="pay-item">'+
-                                            '<span class="pay-num">￥'+data.payment.fee[i].totalFee+'</span>'+
-                                            '<span class="pay-ir">'+data.payment.fee[i].feeName+'</span>'+
-                                        '</p>'+
-                                        '<p class="payp-item active">'+
-                                            '<span class="pay-interests">'+
-                                            '</span>'+
-                                            '<span>'+
-                                                '<span>购买数量</span>'+
-                                                '<span>'+
-                                                    '<button class="pnum-redu">-</button>'+
-                                                    '<input type="text" class="payp-inp" value="1" readonly="readonly">'+
-                                                    '<button class="pnum-add">+</button>'+
-                                                '</span>'+
-                                            '</span>'+
-                                        '</p>'+
-                                    '</li>';
-                                $('.feeGeneral').append(str)
-                            }
-                        };
-                        // $($('.pay-list .pay-itembox')[0]).addClass('check')
-                        //2种情况
-                        if(2==data.payment.payType.length){
-                            $(".pay-group").removeClass("active");
-                            $(".note").removeClass("active");
-                            for(var i = 0; i < data.payment.payType.length; i ++){
-                               if(2==data.payment.payType[i].type){
-                                    $(".pay-company").html(data.payment.payType[i].accountName);
-                                    $(".pay-accunt").html(data.payment.payType[i].accountNumber);
-                                    $(".pay-bankname").html(data.payment.payType[i].bankName);
-                                }; 
-                            };
-                        }else{
-                            if(2==data.payment.payType[0].type){
-                                $(".note").removeClass("active");
-                                $(".pay-bank").removeClass("active");
-                                $(".pay-company").html(data.payment.payType[0].accountName);
-                                $(".pay-accunt").html(data.payment.payType[0].accountNumber);
-                                $(".pay-bankname").html(data.payment.payType[0].bankName);
-                            }else{
-                                $(".pay-platform").removeClass("active");
-                            }
+                            $('.feeGeneral').append(str)
+                        }
+                    };
+                    // $($('.pay-list .pay-itembox')[0]).addClass('check')
+                    //2种情况
+                    if(2==data.payment.payType.length){
+                        $(".pay-group").removeClass("active");
+                        $(".note").removeClass("active");
+                        for(var i=0; i<data.payment.payType.length; i++){
+                           if(2==data.payment.payType[i].type){
+                                $(".pay-company").html(data.payment.payType[i].accountName);
+                                $(".pay-accunt").html(data.payment.payType[i].accountNumber);
+                                $(".pay-bankname").html(data.payment.payType[i].bankName);
+                            }; 
                         };
                     }else{
-                        myConfirm("本次活动免费或主办方未配置，如有疑问请联系主办方。",function(){
-                            window.history.go(-1);
-                        },function(){
-                            window.history.go(-1);
-                        });
+                        if(2==data.payment.payType[0].type){
+                            $(".note").removeClass("active");
+                            $(".pay-bank").removeClass("active");
+                            $(".pay-company").html(data.payment.payType[0].accountName);
+                            $(".pay-accunt").html(data.payment.payType[0].accountNumber);
+                            $(".pay-bankname").html(data.payment.payType[0].bankName);
+                            $(".pay-bank").css({"width":"100%"});
+                        }else{
+                            $(".pay-platform").removeClass("active");
+                            $(".pay-platform").css({"background-color":"red","width":"100%"});
+                        }
                     };
+                }else{
+                    myConfirm("本次活动免费或主办方未配置，如有疑问请联系主办方。",function(){
+                        window.history.go(-1);
+                    },function(){
+                        window.history.go(-1);
+                    });
                 };
-            },
-            error:function(){
-                myConfirm("请求错误")
-            }
+            };
+        },
+        error:function(){
+            myConfirm("请求错误");
+        }
+    });
+};
+function isWeixin() { 
+    var ua = window.navigator.userAgent.toLowerCase(); 
+    if (ua.match(/MicroMessenger/i) == 'micromessenger') { 
+        return true; 
+    } else { 
+        return false;
+    } 
+};
+function isCheck(){
+    var document = $(".pay-itembox");
+    if (document.hasClass('check')) { 
+        return true; 
+    } else { 
+        return false;
+    } 
+}
+function save(){
+    var payId = $(".check").data("id");
+    var str = $(".check").find('.pay-num').html();
+    var monum = str.substring(1,str.length);
+    var num = parseInt($(".check").find(".payp-inp").val());
+    var payType= $(".pay-type").val();
+    var invoType= $(".check").find('.pay-ir').html();
+    var money = num*monum;
+    if(payType){
+        window.location.href="../index.html?actId="+id+"&num="+num+"&payId="+payId+"&money="+money+"&invoType="+invoType+"&monum="+monum;
+    }else{
+        var fee=[{"count":num,"id":payId}];
+        fee = JSON.stringify(fee);
+        myConfirm("如果您确认已通过银行转帐或其他方式转帐成功，请点击‘确定’，并联系主办方核实到帐信息；如未转帐请点击‘取消’，转帐成功后再提交。",function(){
+            $.myAjax({
+                url: basePath+"user/activity/pay/admissionfee/banktransfer.do?id="+id+"&type=1",
+                data:{"fee":fee},
+                success: function (result) {
+                    if (result.flag) {
+                        // 页面提示
+                        // $(".payState").html("缴费状态：已通过银行转账").css("display","block")
+                    } else {
+                        if(result.msg.indexOf("重复") >= 0){
+                            myConfirm("您已提交过银行转账信息，如有变动，请线下联系主办方");
+                        } else {
+                            myConfirm(result.msg);
+                        }
+                    };
+                },
+                error:function(){
+                    myConfirm("请求错误!");
+                }
+            });
+            // $(".platform-pos").addClass("active");
+            // $(".mask").addClass("active");
         });
     };
-    function isWeixin() { 
-        var ua = window.navigator.userAgent.toLowerCase(); 
-        if (ua.match(/MicroMessenger/i) == 'micromessenger') { 
-            return true; 
-        } else { 
-            return false;
-        } 
-    };
-    function isCheck(){
-        var document = $(".pay-itembox");
-        console.log(document)
-        if (document.hasClass('check')) { 
-            return true; 
-        } else { 
-            return false;
-        } 
-    }
-    function save(id){
-        var payId = $(".check").data("id");
-        var str = $(".check").find('.pay-num').html();
-        var monum = str.substring(1,str.length);
-        var num = $(".check").find(".payp-inp").val();
-        var payType= $(".pay-type").val();
-        var invoType= $(".check").find('.pay-ir').html();
-        console.log(monum)
-        var money = num*monum;
-        if(payType){
-            window.location.href="../../weixin/index.html?actId="+id+"&num="+num+"&payId="+payId+"&money="+money+"&invoType="+invoType;
-        }else{
-            var fee=[{"num":num,"id":payId}];
-            fee = JSON.stringify(fee)
-            myConfirm("如果您确认已通过银行转帐或其他方式转帐成功，请点击‘确定’，并联系主办方核实到帐信息；如未转帐请点击‘取消’，转帐成功后再提交。",function(){
-                $.myAjax({
-                    url: basePath+"user/activity/pay/admissionfee/banktransfer.do?id="+id+"&type=1",
-                    data:{"fee":fee},
-                    success: function (result) {
-                        if (result.flag) {
-                            // 页面提示
-                            $(".payState").html("缴费状态：已通过银行转账").css("display","block")
-                        } else {
-                           myConfirm(result.msg);
-                        };
-                    },
-                    error:function(){
-                        myConfirm("请求错误!");
-                    }
-                });
-                // $(".platform-pos").addClass("active");
-                // $(".mask").addClass("active");
-            });
-        };
-    }
+}
 </script>
 </html>

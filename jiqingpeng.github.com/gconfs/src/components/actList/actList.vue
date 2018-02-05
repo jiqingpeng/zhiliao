@@ -97,13 +97,14 @@
 		padding:0 2%;
 		font-size:14px;
 		overflow-x: auto;
+		background:#f0f0f0;
 	}
 	.act-list{
 		width:96%;
-		padding:0 2%;
+		padding:10px 2%;
 		margin:5px 0;
 		background:#fff;
-		border-radius:4px;
+		border-radius:6px;
 		border:1px solid #fff;
 		box-shadow:0px 1px 0.3px #e8e8e8;
 	}

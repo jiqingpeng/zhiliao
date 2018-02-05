@@ -2,145 +2,72 @@
 	<transition>
 		<div class="invite">
 			<v-header></v-header>
-			<div class="swiper">
-				<swiper :options="swiperOption"  ref="mySwiper">  
-	                <!-- 这部分放你要渲染的那些内容 -->  
-	                <!-- <swiper-slide v-for="item in items"> 
-	                    <img :src="item" class="index_img">
-	                </swiper-slide>  --> 
-	                <swiper-slide class="home">
-	                	<img src="../../../static/inviTitle.png" alt="">
-	            		<article>
-	            			<div class="invit-group">
-	            				<header class="tit">2017中国东盟企业2017中国东盟企业</header>
-		            			<p class="time">
-		            				<span>会议时间</span>
-		            				<span>2017-11-15</span>
-		            			</p>
-		            			<p class="address">
-		            				<span>会议地点</span>
-		            				<span>北京市</span>
-		            			</p>
-	            			</div>
-	            		</article>
-	                </swiper-slide>
-	    			<swiper-slide class="home">
-	    				<article>
-	            			<div class="invit-group">
-	            				<header class="tit">欢迎词</header>
-		            			<div class="scroll">我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额我们这么多人什么的的干涉他额</div>
-	            			</div>
-	            		</article>
-	    			</swiper-slide>
-	    			<swiper-slide class="bg">
-	    				<article>
-	                		<header>活动日程</header>
-							<DateDetail></DateDetail>
-	                	</article>
-	    			</swiper-slide>
-	    			<swiper-slide class="bg">
-	    				<article>
-	                		<header>住址机构</header>
-							<OrgDetail></OrgDetail>
-	                	</article>
-	    			</swiper-slide>
-	                <!-- 这是轮播的小圆点 -->  
-	                <!-- <div class="swiper-pagination" slot="pagination"></div>   -->
-	            </swiper>
-			</div>
+			<section class="content postit">
+				<article class="invite-icon">
+					<img src="../../../static/invitationImg.png" alt="">
+				</article>
+				<Address></Address>
+				<article class="dist">
+					<header class="space-center">
+						<span class="item">组织机构</span>
+					</header>
+					<div class="space-center">
+						<p class="space-between line-count">
+							<span class="line bf60"></span>
+							<span class="line bccc"></span>
+						</p>
+					</div>
+					<OrgDetail class="dist item"></OrgDetail>
+				</article>
+				<article class="dist">
+					<p class="btn">
+						<span>已报名点击查看详情</span>
+					</p>
+					<p class="item space-center">
+						<img class="qrcode" src="../../../static/qrcode.jpg" alt="qrcode">
+					</p>
+					<p class="item space-center">
+						<span>微信扫一扫 关注更多</span>
+					</p>
+					<p class="item space-center cf60">
+						<span class="f30">盛情特邀您出席</span>
+					</p>
+				</article>
+				<article class="dist">
+					<div>xxx会议服务平台</div>
+				</article>	
+			</section>
 		</div>
 	</transition>
 </template>
 <script>
 	import Header from '@/components/Header/Header.vue'
+	import Address from '@/component/Address/Address.vue'
 	import OrgDetail from '@/components/OrgDetail/OrgDetail.vue'
-	import DateDetail from '@/components/DateDetail/DateDetail.vue'
-	import Vue from 'vue'
-	import { swiper, swiperSlide } from 'vue-awesome-swiper'
-	require('swiper/dist/css/swiper.css') 
 	export default{
 		name:"Invite",
-		data () {
-	      return {
-	        swiperOption: {  
-                	notNextTick: true,
-                    pagination: '.swiper-pagination',  
-                    slidesPerView: 'auto',  
-                    centeredSlides: true,  
-                    paginationClickable: true,
-                    direction : 'horizontal',
-                    // loop:"auto",
-                    // autoplay : 3000,
-                    onSlideChangeEnd: swiper => {  
-                        //这个位置放swiper的回调方法  
-                        this.page = swiper.realIndex+1;  
-                        this.index = swiper.realIndex; 
-                    },  
-                }, 
-            swiperSlides: [1, 2, 3, 4, 5]
-	      }
-    	},
+		
 	    mounted() {
-	      // setInterval(() => {
-	      //   console.log('simulate async data')
-	      //   let swiperSlides = this.swiperSlides
-	      //   if (swiperSlides.length < 10) swiperSlides.push(swiperSlides.length + 1)
-	      // }, 3000)
+	      
 	    },
 		components:{
 			"v-header":Header,
-			swiper,
-			swiperSlide,
-			OrgDetail,
-			DateDetail
+			Address,
+			OrgDetail
 		}
 	}
 </script>
 <style scoped lang="stylus">
-	.swiper
+	.invite-icon
 		width 100%
-		height 100%
-		position fixed
-		top 48px
-		.swiper-wrapper
-			width 100%;
-			height 100%
-			.home
-				width 100%
-				height 520px
-				position relative
-				img
-					width 100%
-					height 520px
-				article
-					width 100%
-					display flex
-					justify-content center
-					position absolute
-					left 0
-					top 50px
-					bottom 1px
-					overflow-y auto
-					color #fdad30
-					.invit-group
-						width 80%
-						display flex
-						flex-direction column
-						justify-content center
-						align-items center
-						
-					.tit
-						font-size 20px
-						text-align center
-					.time
-						margin-top 20px
-					.address
-						margin-top 20px
-			.h400
-				width 100%
-				height 500px
-				
-			.h500
-				width 100%
-				height 600px
+		img 
+			width 100%
+	.line-count
+		width 120px
+	.line
+		width 56px
+		height 6px
+		border-radius 6px
+	.qrcode
+		width 210px
 </style>

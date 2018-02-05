@@ -2,24 +2,7 @@
 	<div class="pay-sure">
 		<v-header></v-header>
 		<section class="pay-box postit content">
-			<article class="pay-tit dist">
-				<header class="item">{{item.name}}</header>
-				<div class="flex payt-body item">
-					<p class="address">
-						<img class="icon" src="../../../static/site-icon.png" alt="site-icon">
-						<span>{{item.address}}</span>
-					</p>
-					<p class="time">
-						<img class="icon" src="../../../static/time-icon.png" alt="time-icon">
-						<span>
-							<!-- <span>03/25</span>
-							<span>-</span>
-							<span>03/28</span> -->
-							{{item.date}}
-						</span>
-					</p>
-				</div>
-			</article>
+			<Address></Address>
 			<article class="pay-status dist">
 				<div class="space-between item">
 					<p>吉庆鹏</p>
@@ -49,10 +32,10 @@
 				<span>￥{{itemData.price*itemData.num}}</span>
 			</p>
 			<p class="flex1 online space-center" v-if="itemData.payType">
-				<span @click="goPaySure()">在线支付</span>
+				<span @click="sure">在线支付</span>
 			</p>
 			<p class="flex1 bank space-center" v-else>
-				<span @click="goPaySure()">银行转账</span>
+				<span @click="sure">银行转账</span>
 			</p>
 		</div>
 	</div>
@@ -91,8 +74,8 @@
 				this.nowIndex= index;
 				this.num= 1;
 			},	
-			goPayDetail:function(){
-				this.router.push()
+			sure:function(){
+				alert("支付成功")
 			}
 		}
 	}

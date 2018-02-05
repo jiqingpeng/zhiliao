@@ -1,7 +1,7 @@
 <template>
 	<div class="detail">
 		<v-header></v-header>
-		<section class="detail-box content">
+		<section class="detail-box content postit ">
 			<section class="intro dist">
 				<header class="tit">{{item.name}}</header>
 				<article>
@@ -82,29 +82,29 @@
 					</div class="latex-box">
 				</div>	
 			</section>
-			<section class="fnav dist">
-				<section class="fnav-list">
+			<section class="fnav">
+				<section class="fnav-list dist">
 					<div>
 						<img src="" alt="">
 						<span>机票高铁</span>
 					</div>
 					<div>></div>
 				</section>
-				<section class="fnav-list" @click="goInform()">
+				<section class="fnav-list  dist" @click="goInform()">
 					<div>
 						<img src="" alt="">
 						<span>活动通知</span>
 					</div>
 					<div>></div>
 				</section>
-				<section class="fnav-list">
+				<section class="fnav-list  dist">
 					<div>
 						<img src="" alt="">
 						<span>会议讨论</span>
 					</div>
 					<div>></div>
 				</section>
-				<section class="fnav-list" @click="goEnrol()">
+				<section class="fnav-list  dist" @click="goEnrol()">
 					<div>
 						<img src="" alt="">
 						<span>报名信息</span>
@@ -240,5 +240,4 @@
 					justify-content space-between
 					align-items center
 					height 40px
-		
 </style>

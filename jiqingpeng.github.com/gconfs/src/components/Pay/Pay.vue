@@ -2,24 +2,7 @@
 	<div class="pay">
 		<v-header></v-header>
 		<section class="pay-box postit content">
-			<article class="pay-tit dist">
-				<header class="item">{{item.name}}</header>
-				<div class="flex payt-body item">
-					<p class="address">
-						<img class="icon" src="../../../static/site-icon.png" alt="site-icon">
-						<span>{{item.address}}</span>
-					</p>
-					<p class="time">
-						<img class="icon" src="../../../static/time-icon.png" alt="time-icon">
-						<span>
-							<!-- <span>03/25</span>
-							<span>-</span>
-							<span>03/28</span> -->
-							{{item.date}}
-						</span>
-					</p>
-				</div>
-			</article>
+			<Address></Address>
 			<article class="pay-status dist">
 				<div class="space-between item">
 					<p>
@@ -81,6 +64,7 @@
 </template>
 <script>
 	import Header from "@/components/Header/Header.vue"
+	import Address from "@/component/Address/Address.vue"
 	import router from '../../router/index'
 	export default{
 		name:"Pay",
@@ -114,6 +98,7 @@
         },
 		components:{
 			"v-header":Header,
+			Address
 		},
 		methods:{
 			add:function(event){
@@ -121,6 +106,9 @@
 				event.stopPropagation(); 
 			},
 			redu:function(event){
+				if(this.num = 2){
+					this.num = 2
+				}
 				this.num--;
 				event.stopPropagation(); 
 			},	
@@ -142,10 +130,12 @@
 		flex 0.4
 	.time
 		flex 0.6
-	.item
-		padding 4px 0
 	.round
 		width 16px
+		height 16px
+		line-height 16px
+		text-align center
+		display inline-block
 		border 1px solid #ccc
 		border-radius 50%
 	.pay-item

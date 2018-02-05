@@ -168,8 +168,8 @@
         ;
     });
 
-    function getUrl(val) {
-        $.get(basePath + "user/activity/pay/admissionfee.do?id=25812d45fc27441ebacb6f9e3fe70322&type=" + val, function (json) {
+    function getUrl() {
+        $.get(basePath + "user/activity/pay/admissionfee.do?id=25812d45fc27441ebacb6f9e3fe70322&type=1", function (json) {
             var json = $.parseJSON(json);
             if (json.flag) {
                 if (1 == val) {
@@ -182,11 +182,9 @@
                 myAlert(json.msg);
             }
         });
-    }
-
-    function innergetUrl(val) {
-        $.get(basePath + "user/activity/pay/admissionfee.do?id=25812d45fc27441ebacb6f9e3fe70322&type=" + val +
-            "&url=" + encodeURIComponent(location.href),
+    };
+    function innergetUrl() {
+        $.get(basePath + "user/activity/pay/admissionfee.do?id=25812d45fc27441ebacb6f9e3fe70322&type=3&url=" + encodeURIComponent(location.href),
             function (json) {
                 var json = $.parseJSON(json);
                 json = json.data;
@@ -215,7 +213,7 @@
                     }
                 });
             });
-    }
+    };
 
 </script>
 </html>

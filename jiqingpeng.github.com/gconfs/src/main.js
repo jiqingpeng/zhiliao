@@ -20,26 +20,26 @@ Vue.use(VueLazyLoad, {
 		loading: './static/bg.png'
 	})
 	/* eslint-disable no-new */
-// document.addEventListener('deviceready', function() {
-// 	new Vue({
-// 		el: '#app',
-// 		router,
-// 		store,
-// 		template: '<App/>',
-// 		components: {
-// 			App
-// 		}
-// 	})
-// 	window.navigator.splashscreen.hide()
-// }, false);
+document.addEventListener('deviceready', function() {
+	new Vue({
+		el: '#app',
+		router,
+		store,
+		template: '<App/>',
+		components: {
+			App
+		}
+	})
+	window.navigator.splashscreen.hide()
+}, false);
 
 
-new Vue({
-	el: '#app',
-	store,
-	router,
-	template: '<App/>',
-	components: {
-		App
-	}
-})
+// new Vue({
+// 	el: '#app',
+// 	store,
+// 	router,
+// 	template: '<App/>',
+// 	components: {
+// 		App
+// 	}
+// })

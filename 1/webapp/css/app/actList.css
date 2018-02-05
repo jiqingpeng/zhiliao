@@ -160,6 +160,10 @@ a {text-decoration: none;color: #18B4FE;}
 	background: #ccc;
 	// color:#000;
 }
+.act-list .act-cont .sign{
+	background: #07ce5a;
+	// color:#000;
+}
 .act-cont .state-box .act-state{
 	font-size:14px;
 }
